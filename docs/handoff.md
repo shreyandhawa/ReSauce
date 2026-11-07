@@ -12,6 +12,48 @@ Each entry covers:
 
 ---
 
+## 2026-11-07: Milestone 1 complete (summary)
+
+**Status:** Milestone 1 (project foundation) is complete and verified. Milestone 2 is proposed below and awaits user approval.
+
+**What works (checked 2026-11-07):**
+- `python -m resauce` prints the name, version 0.1.0 and Python 3.14.3, then exits without errors.
+- `pytest` reports 1 passed.
+- Git ignores `.venv/` and `.env`. Only the project files are tracked.
+- The project lives at `~/Projects/ReSauce`, outside iCloud.
+- The code is on GitHub at `https://github.com/shreyandhawa/ReSauce` (private, branch `main`). GitHub matches the local copy.
+- `CLAUDE.md` holds the scientific integrity and engineering rules. `README.md` has the beginner setup guide.
+
+**What does not exist yet:** any scientific or medical logic, any data, and the web interface. This is intentional.
+
+**Milestone 2 (proposed, not yet approved): synthetic data foundation**
+
+Goal: decide what our synthetic inputs look like and load them reliably. No extraction or medical algorithms yet.
+1. Agree with the user on a simple file format (likely JSON) for two input types:
+   - a *clinical document*: an ID, a date, a type, and the full text
+   - a *research record*: the documented ICANS fields that we will later check against the documents
+2. Write a small, clearly labelled set of hand-made synthetic examples. No real patient data.
+3. Write Python code in `src/resauce/` that loads these files and reports clear errors for malformed input.
+4. Write tests for loading both valid and invalid files.
+5. Record which fields exist and why in `docs/`, so later milestones can trace evidence back to an exact document and location.
+
+Scope, format and data fields must be confirmed with the user before any implementation.
+
+**Open questions (carried forward):**
+- Confirm or change the Milestone 2 scope above.
+- Node.js 25 is a short-support release. Consider an LTS version before the frontend milestone.
+- No software licence has been chosen yet.
+
+**How to verify:**
+```bash
+cd ~/Projects/ReSauce
+source .venv/bin/activate
+python -m resauce
+pytest        # expect: 1 passed
+```
+
+---
+
 ## 2026-11-07: Milestone 1 verification and project move
 
 **Status:** Milestone 1 re-verified. The program runs and `pytest` reports 1 passed.
