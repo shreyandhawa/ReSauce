@@ -12,6 +12,29 @@ Each entry covers:
 
 ---
 
+## 2026-11-07: /finish-step skill added
+
+**Status:** Setup change only. No code or research content changed. Milestone 2 status is unchanged (Step 2 complete, see entry below).
+
+**Done:**
+- Added the project skill `.claude/skills/finish-step/SKILL.md`. Typing `/finish-step "commit message"` in Claude Code runs the end-of-step routine: run the tests, check which files changed, update this handoff log, commit only the step's files (no AI attribution), push, and show the raw git output.
+
+**Decisions & why:**
+- The same commit-and-push routine was written out again in every step prompt. A skill stores it once, so every step closes the same way and nothing is forgotten.
+- `disable-model-invocation: true`: only the user can start the skill. Claude cannot decide on its own to commit and push.
+
+**Next steps:**
+- Unchanged: Milestone 2 Step 3 (synthetic test cases), once the user approves the scope.
+
+**Open questions:**
+- Whitespace-only note text is accepted; fix in the next code step.
+
+**How to verify:**
+- In Claude Code, type `/` and check that `finish-step` appears in the list.
+- `cat .claude/skills/finish-step/SKILL.md` shows the skill's instructions.
+
+---
+
 ## 2026-11-07: Milestone 2 Step 2, data format and loaders
 
 **Status:** Milestone 2 Step 2 is complete. The data format spec (`docs/data-format.md` v0.1), the loader and the tests are written. `pytest` reports 75 passed. No synthetic patient cases, reference answers, extraction or medical logic exist yet.
