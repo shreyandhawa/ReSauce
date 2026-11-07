@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0058",
+  "document_id": "SYN-0058-D02",
+  "version": 1,
+  "status": "signed",
+  "note_type": "ice_assessment",
+  "author_role": "nurse",
+  "documented_at": "2034-05-26T09:30",
+  "amendment_reason": null,
+  "text": "ICE 2034-05-26. ICE @ 09:05: 8/10 (yr + hospital wrong). Up in chair, chatting. No sedating meds since adm."
+}

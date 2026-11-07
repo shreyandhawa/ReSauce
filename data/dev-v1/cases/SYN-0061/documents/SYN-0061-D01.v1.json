@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0061",
+  "document_id": "SYN-0061-D01",
+  "version": 1,
+  "status": "signed",
+  "note_type": "ice_assessment",
+  "author_role": "nurse",
+  "documented_at": "2031-05-01T19:20",
+  "amendment_reason": null,
+  "text": "Neurologic screening entry for the evening of 2031-05-01. The patient was sitting up watching television when approached at 18:45. Orientation was answered correctly apart from the year and the name of the hospital, all three objects were named, the hand command was followed, the written sentence trailed off after three words, and serial tens from 100 were correct, so the ICE screen totalled 7 of 10. No benzodiazepines, opioids or other sedating drugs appear on the administration record for the last day. The covering physician was told at 19:00."
+}

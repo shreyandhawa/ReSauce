@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0058",
+  "document_id": "SYN-0058-D05",
+  "version": 1,
+  "status": "signed",
+  "note_type": "nursing_note",
+  "author_role": "nurse",
+  "documented_at": "2034-05-30T18:10",
+  "amendment_reason": null,
+  "text": "RN 2034-05-30 day. ICE not done 2034-05-30: pt off unit in IR for line exchange + then apheresis 08:00-17:30, unable to perform checks today. Back on unit 17:40, VSS."
+}

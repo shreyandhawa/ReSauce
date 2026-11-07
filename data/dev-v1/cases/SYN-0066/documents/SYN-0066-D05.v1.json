@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0066",
+  "document_id": "SYN-0066-D05",
+  "version": 1,
+  "status": "signed",
+  "note_type": "neurology_consult",
+  "author_role": "neurologist",
+  "documented_at": "2036-11-14T15:30",
+  "amendment_reason": null,
+  "text": "Neurology consultation, 2036-11-14. The ICE at 14:45 was 6/10. The patient is awake, attentive and follows commands; cranial nerves are normal and there is no focal weakness. Given the drop in ICE, I recommend an EEG tomorrow morning to exclude non-convulsive seizures, continuing dexamethasone, and raising levetiracetam if the EEG is abnormal."
+}

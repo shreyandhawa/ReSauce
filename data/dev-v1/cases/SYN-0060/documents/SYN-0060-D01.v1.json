@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0060",
+  "document_id": "SYN-0060-D01",
+  "version": 1,
+  "status": "signed",
+  "note_type": "physician_progress_note",
+  "author_role": "attending_physician",
+  "documented_at": "2035-08-14T17:10",
+  "amendment_reason": null,
+  "text": "Day 0 note 2035-08-14. Autologous CD19 CAR-T infused 11:40. Pre-infusion ICE 09:30: 10/10. History: type 2 diabetes, prior knee replacement."
+}

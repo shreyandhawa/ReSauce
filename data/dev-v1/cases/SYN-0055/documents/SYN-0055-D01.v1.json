@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0055",
+  "document_id": "SYN-0055-D01",
+  "version": 1,
+  "status": "signed",
+  "note_type": "nursing_note",
+  "author_role": "nurse",
+  "documented_at": "2032-09-23T23:10",
+  "amendment_reason": null,
+  "text": "Night nursing 2032-09-23. 19:05 temp 38.5, HR 112, BP 118/76. Acetaminophen 19:10; provider reviewed, CRS grade 1. ICE 22:00 = 10/10. Watching a film with a sibling."
+}

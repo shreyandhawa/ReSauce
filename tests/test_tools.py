@@ -91,12 +91,25 @@ def test_make_briefs_seed_matters():
 
 
 def test_stored_briefs_match_a_fresh_run():
+    # The plan fingerprint is left out: briefs.json records the plan version it
+    # was made from (v0.3). Later plan edits that keep the scenario table
+    # (e.g. v0.3.1) change the fingerprint but not a single brief.
     ordering, briefs = make_briefs.build(PLAN_TEXT)
     stored_briefs = json.loads((REFERENCE / "briefs.json").read_text(encoding="utf-8"))
     stored_ordering = json.loads((REFERENCE / "ordering.json").read_text(encoding="utf-8"))
+    for data in (briefs, stored_briefs):
+        data.pop("dataset_plan")
     assert stored_briefs == briefs
     assert stored_ordering["id_to_scenario"] == ordering["id_to_scenario"]
     assert stored_ordering["input_order"] == ordering["input_order"]
+
+
+def test_plan_scenario_rows_match_the_stored_briefs():
+    stored = json.loads((REFERENCE / "briefs.json").read_text(encoding="utf-8"))["briefs"]
+    keys = ("scenario_id", "scenario", "rules", "expected_onset", "expected_grade", "type", "plain", "no_icans")
+    from_briefs = sorted(({k: b[k] for k in keys} for b in stored), key=lambda s: int(s["scenario_id"][3:]))
+    from_plan = [{k: s[k] for k in keys} for s in make_briefs.read_scenarios(PLAN_TEXT)]
+    assert from_plan == from_briefs
 
 
 def test_plan_has_72_scenarios_with_the_planned_types():

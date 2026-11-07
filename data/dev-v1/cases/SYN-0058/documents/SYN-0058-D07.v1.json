@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0058",
+  "document_id": "SYN-0058-D07",
+  "version": 1,
+  "status": "signed",
+  "note_type": "discharge_summary",
+  "author_role": "attending_physician",
+  "documented_at": "2034-06-04T13:40",
+  "amendment_reason": null,
+  "text": "D/C 2034-06-04. CAR-T 2034-05-23. CRS gr 1 D+1-2. ICANS D+3-D+5, single-dose dex. Line exchange 2034-05-30. ICE 2034-06-04 08:50 10/10."
+}

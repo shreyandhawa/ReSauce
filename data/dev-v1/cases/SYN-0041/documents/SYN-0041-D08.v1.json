@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0041",
+  "document_id": "SYN-0041-D08",
+  "version": 1,
+  "status": "signed",
+  "note_type": "discharge_summary",
+  "author_role": "attending_physician",
+  "documented_at": "2034-07-22T14:00",
+  "amendment_reason": null,
+  "text": "Discharge summery 2034-07-22. CRS grade 1 Day +1. Neurotoxicity Day +3 to +8, worst ICE 5/10 2034-07-15. EEG normal. ICE 2034-07-22 08:40 10/10."
+}

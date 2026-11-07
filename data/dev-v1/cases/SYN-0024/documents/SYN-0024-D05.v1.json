@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0024",
+  "document_id": "SYN-0024-D05",
+  "version": 1,
+  "status": "signed",
+  "note_type": "nursing_note",
+  "author_role": "nurse",
+  "documented_at": "2034-12-13T20:30",
+  "amendment_reason": null,
+  "text": "Nursing 2034-12-13: ICE at 19:40 was 9/10. Mild frontal headache since afternoon, acetaminophen given, relieved."
+}

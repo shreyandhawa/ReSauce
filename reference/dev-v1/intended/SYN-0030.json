@@ -1,0 +1,143 @@
+{
+  "answer_format": "0.1-provisional",
+  "case_id": "SYN-0030",
+  "scenario_id": "SC-24",
+  "scenario_label": "Onset finding before midnight, note after midnight; record uses the event date",
+  "case_type": "Neg",
+  "tags": [],
+  "status": "not clinician-verified",
+  "answer_kind": "intended",
+  "provenance": {
+    "clinical_methods": "v0.4",
+    "data_format": "v0.1.2",
+    "dataset_plan": "v0.3.1",
+    "dataset_id": "SYN-DS-DEV-V1",
+    "dataset_version": "0.3.0",
+    "ordering_seed": 20261107,
+    "written": "2026-11-07",
+    "written_by": "case author (Claude Code session, Milestone 2 Step 4 part 3)"
+  },
+  "out_of_scope": null,
+  "fields": {
+    "onset": {
+      "category": "7.7",
+      "record_value": "2035-01-26",
+      "documented_value": {
+        "date": "2035-01-26",
+        "study_day": 5
+      },
+      "signed_difference_days": 0,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [
+        {
+          "role": "first qualifying finding (ICE 8, Grade 1), event Day +5 23:30; note documented 2035-01-27 00:50",
+          "document_id": "SYN-0030-D02",
+          "version": 1,
+          "quote": "2035-01-26 at 23:30, ICE 8/10",
+          "start": 75,
+          "end": 104
+        }
+      ],
+      "record_history": null
+    },
+    "max_grade": {
+      "category": "7.7",
+      "record_value": 2,
+      "documented_value": {
+        "grade": 2
+      },
+      "signed_difference_days": null,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [
+        {
+          "role": "ICE 5 (Grade 2), Day +6",
+          "document_id": "SYN-0030-D03",
+          "version": 1,
+          "quote": "ICE 5/10 at 09:10",
+          "start": 32,
+          "end": 49
+        },
+        {
+          "role": "no competing cause",
+          "document_id": "SYN-0030-D03",
+          "version": 1,
+          "quote": "No sedating drugs in the last 24 hours.",
+          "start": 190,
+          "end": 229
+        }
+      ],
+      "record_history": null
+    }
+  },
+  "case_flags": {
+    "unassessed_period": {
+      "days_without_gradeable_assessment": [
+        0,
+        1,
+        2,
+        4,
+        7,
+        9,
+        10,
+        11,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28
+      ],
+      "not_assessable_periods": [
+        {
+          "days": [
+            9
+          ],
+          "evidence": [
+            {
+              "role": "not assessable, Day +9",
+              "document_id": "SYN-0030-D04",
+              "version": 1,
+              "quote": "No ICE possible on 2035-01-30: patient away from the ward from 07:30 to 19:00 for apheresis and restaging scans",
+              "start": 20,
+              "end": 131
+            }
+          ]
+        }
+      ]
+    },
+    "ungradeable_neurological_symptom": []
+  },
+  "other_flags": [],
+  "ambiguity_notes": [
+    "Onset uses the event date in the text (§6.1), which the record also uses.",
+    "The 'not assessable' day (Day +9, off the ward) changes neither category: the record grade equals the documented grade."
+  ],
+  "depends_on_open_points": [],
+  "author_checks": {
+    "distractors": [
+      "CRS fever",
+      "eczema",
+      "off-ward day"
+    ],
+    "negated_findings": [
+      "no focal deficit, no seizure"
+    ],
+    "positive_findings": [
+      "ICE 8 Day +5 23:30",
+      "ICE 5 Day +6"
+    ],
+    "brief_features": "mixed; 5 documents; extra not-assessable period"
+  }
+}

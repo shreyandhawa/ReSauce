@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0018",
+  "document_id": "SYN-0018-D06",
+  "version": 1,
+  "status": "signed",
+  "note_type": "physician_progress_note",
+  "author_role": "attending_physician",
+  "documented_at": "2035-06-19T15:10",
+  "amendment_reason": null,
+  "text": "D+5 2035-06-19. Lunch 12:30 with partner, conversing. Then eyes closed in chair at 13:40; opened eyes when name called loudly while RN tapped arm at same time; then attentive. ICE 14:00 = 5/10. No sedatives, no opioids. No sz. Power full. Dex 10 q6h."
+}

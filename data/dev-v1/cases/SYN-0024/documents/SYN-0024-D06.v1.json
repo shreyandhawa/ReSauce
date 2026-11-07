@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0024",
+  "document_id": "SYN-0024-D06",
+  "version": 1,
+  "status": "signed",
+  "note_type": "discharge_summary",
+  "author_role": "attending_physician",
+  "documented_at": "2034-12-16T15:10",
+  "amendment_reason": null,
+  "text": "Discharge summery. CAR-T 2034-12-05. CRS grade 1 Day +1. Neurotoxicity from 2034-12-10, worst ICE 6/10 on 2034-12-11, treated with dexamethasone. ICE 2034-12-16 at 08:40: 10/10. Home with family."
+}

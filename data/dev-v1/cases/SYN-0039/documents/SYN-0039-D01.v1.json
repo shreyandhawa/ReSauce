@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0039",
+  "document_id": "SYN-0039-D01",
+  "version": 1,
+  "status": "signed",
+  "note_type": "physician_progress_note",
+  "author_role": "attending_physician",
+  "documented_at": "2033-12-31T18:00",
+  "amendment_reason": null,
+  "text": "Day 0 note, 2033-12-31. Autologous CD19-targeted CAR-T cells were infused at 12:20 for refractory large B-cell lymphoma. Pre-infusion ICE at 10:00 was 10/10, with a normal neurological examination. Background history: childhood eczema and a fractured left wrist years ago, both irrelevant now. Plan: neuro checks with ICE every twelve hours, telemetry, and a low threshold for tocilizumab if fever develops."
+}

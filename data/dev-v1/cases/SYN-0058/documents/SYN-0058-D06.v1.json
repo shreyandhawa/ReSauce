@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0058",
+  "document_id": "SYN-0058-D06",
+  "version": 1,
+  "status": "signed",
+  "note_type": "physician_progress_note",
+  "author_role": "attending_physician",
+  "documented_at": "2034-06-01T10:50",
+  "amendment_reason": null,
+  "text": "Attending PN D+9 2034-06-01. ICE @ 09:00 10/10. Nonfocal exam. Dex done. PMH hypothyroid, on levothyroxine. Plan d/c D+12."
+}

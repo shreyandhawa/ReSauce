@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0058",
+  "document_id": "SYN-0058-D03",
+  "version": 1,
+  "status": "signed",
+  "note_type": "physician_progress_note",
+  "author_role": "advanced_practice_provider",
+  "documented_at": "2034-05-27T12:15",
+  "amendment_reason": null,
+  "text": "APP note D+4 2034-05-27.\nNeuro @ 10:30: orient 2/4, naming 2/3, cmd 1/1, attn 1/1; ICE total 6/10 as stated by examiner (writing item not attempted - pt declined, scored 0). Awake, attentive. No focal deficits. No sz.\nCRS resolved after toci 2034-05-25.\nP: dex 10 mg IV x1 now, repeat ICE q4h, neuro aware."
+}

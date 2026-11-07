@@ -12,6 +12,98 @@ Each entry covers:
 
 ---
 
+## 2026-11-07: Milestone 2 Step 4 part 3 (plan v0.3.1, development cases batch 3)
+
+**Status:**
+- `dataset-plan.md` is v0.3.1, approved.
+- 37 of 72 development cases are written; `data/dev-v1/dataset.json` is `dataset_version` 0.3.0.
+- `pytest` reports 97 passed; `tools.check_dev` reports 0 errors and 0 warnings (173 evidence references in 37 answer files).
+- Not committed (the user runs `/finish-step`).
+
+**Done:**
+- **`dataset-plan.md` v0.3 → v0.3.1** (changelog entry added; the scenario table is unchanged):
+  - §1 new order;
+  - §7.4: when locked cases are written, unchanged protections, new change-log protection;
+  - §7.5: trade-off disclosed;
+  - §4.2: workload, batches of about 17, skimming;
+  - §9 check 10: skimming;
+  - status line.
+- **Checked:** make_briefs reads exactly the same 72 scenario rows, and a fresh run would differ from the stored `briefs.json` only in the recorded plan fingerprint (sha256).
+- **Stopped as instructed**, because `test_stored_briefs_match_a_fresh_run` failed on that fingerprint.
+  - The user chose to edit that test. It now compares everything except the fingerprint. A new test, `test_plan_scenario_rows_match_the_stored_briefs`, checks that the plan's scenario rows equal those in the briefs.
+  - `briefs.json` is unchanged; it still records the v0.3 fingerprint it was made from.
+- **17 new cases:**
+
+| Case | Scenario | Content |
+|---|---|---|
+| SYN-0061 | SC-14 | ICE 0 in an awake patient with global aphasia; record Grade 3; record onset corrected without new documentation. |
+| SYN-0039 | SC-15 | Unarousable (voice, shaking, sternal rub) with ICE 0, two hours after eating breakfast and chatting; record Grade 3. |
+| SYN-0052 | SC-16 | ICE 0/10 with no consciousness information that day; record Grade 4. |
+| SYN-0002 | SC-18 | Partial ICE without a total plus new tremor on the record's onset date; first qualifying finding the next day. |
+| SYN-0058 | SC-19 | Partial ICE (writing declined) with a total stated by the examiner; record matches; record re-entered unchanged; one off-unit "not assessable" day. |
+| SYN-0069 | SC-20 | English-only ICE 4/10 with a documented language barrier; interpreter-assisted ICE 8 and 9; record Grade 1. |
+| SYN-0024 | SC-21 | Record onset day has "awakens spontaneously", not drowsy, ICE 10/10; first finding the next day. |
+| SYN-0055 | SC-22 | Daytime drowsiness with spontaneous waking (Grade 1) on the record's onset date; 3 documents. |
+| SYN-0018 | SC-23 | "Opened eyes when name called loudly while RN tapped arm at same time": voice (Grade 2) or touch (Grade 3); record Grade 2. |
+| SYN-0030 | SC-24 | ICE 8 at 23:30, written up at 00:50; record uses the event date; one off-ward "not assessable" day. |
+| SYN-0019 | SC-25 | Untimed ICE 8 in a day-shift summary; record uses the documentation date. |
+| SYN-0060 | SC-26 | "Overnight" ICE 7 in a Day +6 note; ICE 10 on both days of the range; record onset Day +5; record grade corrected without new documentation. |
+| SYN-0066 | SC-28 | EEG recorded Day +7, signed Day +10: one 3-minute non-convulsive seizure, ended after levetiracetam, back to baseline; record Grade 2 never revised; out-of-window clinic visit. |
+| SYN-0033 | SC-29 | Late entry (documented Day +11, between record versions) shows ICE 8 on Day +4; record onset revised. |
+| SYN-0005 | SC-30 | Progress note v1 ICE 5 corrected in signed v2 to ICE 8; record Grade 2 matches the superseded v1. |
+| SYN-0022 | SC-31 | Signed addendum adds a witnessed 40-second seizure with return to baseline; record Grade 2 not updated. |
+| SYN-0041 | SC-33 | Record revised from Grade 2 to 3 with no supporting documentation; normal EEG. |
+
+None of the 7.3 cases (SC-30, SC-33) has a documented "not assessable" period.
+
+**Decisions & why:**
+- **User decisions (2026-11-07):**
+  1. **Locked cases are written after the pipeline (Milestone 3) and before any evaluation (Milestone 4).** The protections stay (fresh writer session in the private repository, no pipeline code or development text, frozen catalogue and scoring definitions, baseline specification before locked results). New protection: changes to `clinical-methods.md` or the plan are logged with whether pipeline work prompted them. The trade-off is disclosed in plan §7.5: the locked set is no longer fixed before pipeline work.
+  2. **The remaining development cases are written in batches of about 17.**
+  3. **The user skims every development case** (about 2 minutes each: plausible notes, nothing that gives the answer away). Locked sampling is unchanged.
+  4. **Test change (this session):** compare stored briefs without the plan fingerprint, rather than editing or regenerating `briefs.json`. Why: the briefs are byte-identical apart from the fingerprint, and keeping the original file keeps the seeded record intact.
+- **Lessons from review, applied in all 17 cases:**
+  - every seizure states its duration and return to baseline;
+  - depressed consciousness is shown at a time when the patient had been awake shortly before;
+  - an excluded symptom (tremor) is followed by an ICE the next day.
+- **Signed onset difference** is also given for a 7.4 onset when it is defined (SYN-0002: −1), following plan §8.1.
+- **Checks during writing:**
+  - a script compared the new cases with the 20 earlier cases (only new text printed; earlier files not opened). Shared prose and ICE item-score phrasing were reworded until no 8-word run was shared;
+  - a script checked ICE item sums and found one wrong line, now fixed;
+  - typos that had slipped into negations or deciding observations were removed.
+
+**Next steps (new order):**
+1. Step 4 parts 4 and 5: the remaining 35 development cases, about 17 each, in fresh conversations; `dataset_version` 0.4.0, then 1.0.0.
+2. Step 5: independent two-stage answers, comparison and adjudication for the 72 development cases.
+3. Milestone 3: the pipeline.
+4. Step 6: locked cases (fresh session, private repository).
+5. Milestone 4: evaluation.
+
+**Open questions:**
+- Start the change log for `clinical-methods.md` and the plan (v0.3.1 §7.4): where should it live (e.g. `docs/rule-change-log.md`), and should it start with the v0.3.1 change itself?
+- `briefs.json` still records the v0.3 plan fingerprint. This is intended (the briefs were made from v0.3), but it could be noted in `reference/dev-v1/README.md` next time that file is edited.
+- Known limitation (from part 2): the unassessed-period lists are long by design.
+- Carried forward:
+  - `data-format.md` §6 says "non-empty";
+  - OOS flag reading;
+  - the answer format is provisional;
+  - NEW-11 to NEW-18;
+  - clinician involvement;
+  - baseline specification before locked results;
+  - scoring details;
+  - Node.js LTS version;
+  - no licence.
+
+**How to verify:**
+```bash
+cd ~/Projects/ReSauce
+.venv/bin/python -m pytest -p no:cacheprovider -v   # expect: 97 passed
+.venv/bin/python -m tools.check_dev                 # expect: 37 case(s) ... Result: PASSED
+git diff docs/dataset-plan.md                       # only the v0.3.1 edits; no scenario-table line changed
+```
+
+---
+
 ## 2026-11-07: Milestone 2 Step 4 part 2 (4 pilot fixes, batch 2 of development cases)
 
 **Status:**

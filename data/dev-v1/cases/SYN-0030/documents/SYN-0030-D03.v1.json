@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0030",
+  "document_id": "SYN-0030-D03",
+  "version": 1,
+  "status": "signed",
+  "note_type": "physician_progress_note",
+  "author_role": "attending_physician",
+  "documented_at": "2035-01-27T11:20",
+  "amendment_reason": null,
+  "text": "Progress note 2035-01-27\nNeuro: ICE 5/10 at 09:10 (1 of 4 orientation answers, 2 of 3 objects, command followed, no sentence, counted back); awake, conversing, no focal deficit, no seizure.\nNo sedating drugs in the last 24 hours.\nPlan: dexamethasone 10 mg IV q6h, ICE q4h, neurology."
+}

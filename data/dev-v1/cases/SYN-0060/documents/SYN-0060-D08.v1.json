@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0060",
+  "document_id": "SYN-0060-D08",
+  "version": 1,
+  "status": "signed",
+  "note_type": "nursing_note",
+  "author_role": "nurse",
+  "documented_at": "2035-08-25T20:00",
+  "amendment_reason": null,
+  "text": "Nursing 2035-08-25. ICE 19:15: 10/10. Slight tremor of the right hand when writing; doctor aware."
+}

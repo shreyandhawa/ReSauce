@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0061",
+  "document_id": "SYN-0061-D04",
+  "version": 1,
+  "status": "signed",
+  "note_type": "physician_progress_note",
+  "author_role": "attending_physician",
+  "documented_at": "2031-05-05T11:30",
+  "amendment_reason": null,
+  "text": "Progress note, post-infusion day 8 (2031-05-05)\n\nSpeech has returned over the last two days. At 09:15 this morning the ICE screen was 9/10, the only error being the written sentence. Strength remains full throughout. Dexamethasone is being weaned. Earlier history of gout, currently quiet, unchanged on allopurinol."
+}

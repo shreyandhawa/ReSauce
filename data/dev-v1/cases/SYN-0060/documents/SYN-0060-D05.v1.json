@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0060",
+  "document_id": "SYN-0060-D05",
+  "version": 1,
+  "status": "signed",
+  "note_type": "physician_progress_note",
+  "author_role": "attending_physician",
+  "documented_at": "2035-08-20T09:50",
+  "amendment_reason": null,
+  "text": "Attending note 2035-08-20.\nPer night-shift handover, overnight the ICE dropped to 7/10 (missed the hospital name and the written sentence, then the year); exact time not recorded.\nOn my exam at 09:15 the ICE is 10/10, all items correct; awake and alert. No sedatives or opioids given since 2035-08-16.\nPlan: ICE every 4 h, low threshold for dexamethasone."
+}

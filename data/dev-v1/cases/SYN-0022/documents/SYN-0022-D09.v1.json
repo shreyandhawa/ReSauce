@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0022",
+  "document_id": "SYN-0022-D09",
+  "version": 1,
+  "status": "signed",
+  "note_type": "nursing_note",
+  "author_role": "nurse",
+  "documented_at": "2034-02-19T19:30",
+  "amendment_reason": null,
+  "text": "Evening nursing note, 2034-02-19. ICE at 18:40 was 10/10. A slight tremor of both hands is visible when the patient holds a cup."
+}

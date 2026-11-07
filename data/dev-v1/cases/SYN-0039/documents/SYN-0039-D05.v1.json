@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0039",
+  "document_id": "SYN-0039-D05",
+  "version": 1,
+  "status": "signed",
+  "note_type": "nursing_note",
+  "author_role": "nurse",
+  "documented_at": "2034-01-06T11:15",
+  "amendment_reason": null,
+  "text": "Nursing event note, 2034-01-06. At 08:15 the patient ate breakfast, chatted with me about the weather and walked to the bathroom with help. At the 10:40 neuro check the patient could not be roused: no eye opening and no movement to a loud voice, to repeated shaking of both shoulders or to a firm sternal rub. Breathing was regular at 16 per minute, oxygen saturation 96% on room air, blood glucose 6.1 mmol/L, pupils 3 mm and reactive. Rapid response called at 10:45. No sedative, opioid, antihistamine or antipsychotic has been given during this admission."
+}

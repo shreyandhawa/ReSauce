@@ -1,0 +1,163 @@
+{
+  "answer_format": "0.1-provisional",
+  "case_id": "SYN-0069",
+  "scenario_id": "SC-20",
+  "scenario_label": "Low ICE with a documented language barrier decides the grade",
+  "case_type": "Flag",
+  "tags": [],
+  "status": "not clinician-verified",
+  "answer_kind": "intended",
+  "provenance": {
+    "clinical_methods": "v0.4",
+    "data_format": "v0.1.2",
+    "dataset_plan": "v0.3.1",
+    "dataset_id": "SYN-DS-DEV-V1",
+    "dataset_version": "0.3.0",
+    "ordering_seed": 20261107,
+    "written": "2026-11-07",
+    "written_by": "case author (Claude Code session, Milestone 2 Step 4 part 3)"
+  },
+  "out_of_scope": null,
+  "fields": {
+    "onset": {
+      "category": "7.7",
+      "record_value": "2034-04-28",
+      "documented_value": {
+        "date": "2034-04-28",
+        "study_day": 3
+      },
+      "signed_difference_days": 0,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [
+        {
+          "role": "first qualifying finding (ICE 8 via interpreter, Grade 1), Day +3",
+          "document_id": "SYN-0069-D03",
+          "version": 1,
+          "quote": "ICE with telephone interpreter at 08:45: 8/10",
+          "start": 16,
+          "end": 61
+        }
+      ],
+      "record_history": {
+        "a": true,
+        "b": true,
+        "c": false,
+        "explanation": "Onset changed 2034-04-29 -> 2034-04-28; current value agrees. Both record versions (Day +16, Day +21) are after the last document (Day +10): 7.7 plus 'revision without new documentation'."
+      }
+    },
+    "max_grade": {
+      "category": "7.5",
+      "record_value": 1,
+      "documented_value": {
+        "undetermined": "Grade 2 if the Day +4 English-language ICE 4/10 is accepted; Grade 1 if it is set aside because of the language barrier"
+      },
+      "signed_difference_days": null,
+      "difference_note": null,
+      "readings": [
+        {
+          "reading": "Day +4 ICE accepted",
+          "value": 2,
+          "category": "7.2"
+        },
+        {
+          "reading": "Day +4 ICE set aside (barrier)",
+          "value": 1,
+          "category": "7.7"
+        }
+      ],
+      "evidence": [
+        {
+          "role": "low ICE (Grade 2 if accepted), Day +4",
+          "document_id": "SYN-0069-D04",
+          "version": 1,
+          "quote": "ICE 4/10 at 14:20",
+          "start": 16,
+          "end": 33
+        },
+        {
+          "role": "documented language barrier (A10)",
+          "document_id": "SYN-0069-D04",
+          "version": 1,
+          "quote": "language barrier: interpreter line not reached after two attempts, ICE given in English, which the patient speaks only a little",
+          "start": 35,
+          "end": 162
+        },
+        {
+          "role": "interpreter-assisted ICE 9 (Grade 1), Day +6",
+          "document_id": "SYN-0069-D06",
+          "version": 1,
+          "quote": "ICE 9/10 (sentence incomplete)",
+          "start": 75,
+          "end": 105
+        }
+      ],
+      "record_history": {
+        "a": false,
+        "b": true,
+        "c": null,
+        "explanation": "Grade is 1 in both record versions; (a) fails."
+      }
+    }
+  },
+  "case_flags": {
+    "unassessed_period": {
+      "days_without_gradeable_assessment": [
+        1,
+        5,
+        7,
+        8,
+        9,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28
+      ],
+      "not_assessable_periods": []
+    },
+    "ungradeable_neurological_symptom": []
+  },
+  "other_flags": [
+    {
+      "flag": "revision without new documentation",
+      "field": "onset",
+      "detail": "Onset corrected from 2034-04-29 to 2034-04-28 with no new documentation in the interval.",
+      "evidence": []
+    }
+  ],
+  "ambiguity_notes": [
+    "Reason: assessment barrier (§7.5, A10, A23). The interpreter-assisted ICE scores are not affected by the barrier."
+  ],
+  "depends_on_open_points": [],
+  "author_checks": {
+    "distractors": [
+      "CRS fever",
+      "normal MRI",
+      "hypertension and prostate history"
+    ],
+    "negated_findings": [
+      "No seizure activity.",
+      "no hemorrhage, no edema"
+    ],
+    "positive_findings": [
+      "ICE 8 Day +3",
+      "ICE 4 (English) Day +4",
+      "ICE 9 Day +6"
+    ],
+    "brief_features": "mixed; 7 documents; normal imaging; record pattern 'corrected to agreeing value' on onset"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0005",
+  "document_id": "SYN-0005-D03",
+  "version": 1,
+  "status": "signed",
+  "note_type": "physician_progress_note",
+  "author_role": "resident_physician",
+  "documented_at": "2031-09-16T11:30",
+  "amendment_reason": null,
+  "text": "Progres note D+5 2031-09-16.\nICE at 10:05: 5/10 (orient. 1, objects 2, cmd 1, sentence 0, tens 1).\nAwake, alert, no focal deficit, no seizure activity. No sedating medication in 24 h.\nAfebrile since tocilizumab 2031-09-14. Plan: ICE q4h, steroids if ICE falls further. MRI brain booked."
+}

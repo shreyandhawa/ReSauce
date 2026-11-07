@@ -1,0 +1,17 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0052",
+  "record_id": "SYN-0052-R",
+  "versions": [
+    {
+      "version": 1,
+      "recorded_at": "2033-03-19T09:20",
+      "icans_reported": true,
+      "onset_date": "2033-03-02",
+      "max_grade": 4,
+      "change_reason": null
+    }
+  ]
+}

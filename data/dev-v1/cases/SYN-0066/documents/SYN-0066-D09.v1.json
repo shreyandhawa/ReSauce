@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0066",
+  "document_id": "SYN-0066-D09",
+  "version": 1,
+  "status": "signed",
+  "note_type": "physician_progress_note",
+  "author_role": "advanced_practice_provider",
+  "documented_at": "2036-12-19T10:30",
+  "amendment_reason": null,
+  "text": "Clinic review, 2036-12-19 (Day +41). ICE today at 10:00: 10/10. A mild postural tremor of both hands is present. Restaging scan booked. Levetiracetam to be weaned over two weeks."
+}

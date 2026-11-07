@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0061",
+  "document_id": "SYN-0061-D03",
+  "version": 1,
+  "status": "signed",
+  "note_type": "eeg_report",
+  "author_role": "neurologist",
+  "documented_at": "2031-05-02T17:05",
+  "amendment_reason": null,
+  "text": "Electroencephalogram report. Routine recording on 2031-05-02 from 15:20 to 15:55. The background contains a well-formed, symmetric posterior rhythm at 9 Hz that attenuates with eye opening. There is no focal or generalised slowing, no epileptiform activity and no electrographic seizure. Impression: normal EEG."
+}

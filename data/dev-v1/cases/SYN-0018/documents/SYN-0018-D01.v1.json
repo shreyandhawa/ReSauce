@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0018",
+  "document_id": "SYN-0018-D01",
+  "version": 1,
+  "status": "signed",
+  "note_type": "physician_progress_note",
+  "author_role": "attending_physician",
+  "documented_at": "2035-06-14T17:30",
+  "amendment_reason": null,
+  "text": "D0 2035-06-14. CAR-T in 10:30, no rxn. ICE 09:00 10/10. Hx: migraine w/o aura, rare. Plan ICE q12h."
+}

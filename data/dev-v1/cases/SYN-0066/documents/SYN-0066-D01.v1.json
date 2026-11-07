@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0066",
+  "document_id": "SYN-0066-D01",
+  "version": 1,
+  "status": "signed",
+  "note_type": "physician_progress_note",
+  "author_role": "attending_physician",
+  "documented_at": "2036-11-08T16:45",
+  "amendment_reason": null,
+  "text": "Infusion day note, 2036-11-08. The patient had CD19-targeted CAR-T cells (own cells) infused at 11:25 for relapsed follicular lymphoma that had transformed. Before infusion, at 09:05, the patient scored 10/10 on ICE; neurological examination unremarkable. Of note, the patient had a lacunar stroke six years ago without residual deficit and takes aspirin and a statin. Plan: ICE twice daily, seizure prophylaxis with levetiracetam 500 mg twice daily, and daily review."
+}

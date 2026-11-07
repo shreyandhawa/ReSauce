@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0030",
+  "document_id": "SYN-0030-D01",
+  "version": 1,
+  "status": "signed",
+  "note_type": "nursing_note",
+  "author_role": "nurse",
+  "documented_at": "2035-01-24T21:45",
+  "amendment_reason": null,
+  "text": "Nursing, 2035-01-24 evening. Fever 38.9 °C at 17:20, rigors; acetaminophen; team reviewed (CRS grade 1). ICE at 20:00: 10/10."
+}

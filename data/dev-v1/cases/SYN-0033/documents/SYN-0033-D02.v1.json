@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0033",
+  "document_id": "SYN-0033-D02",
+  "version": 1,
+  "status": "signed",
+  "note_type": "physician_progress_note",
+  "author_role": "resident_physician",
+  "documented_at": "2032-04-29T10:30",
+  "amendment_reason": null,
+  "text": "PN D+2 2032-04-29. Toci 8 mg/kg @ 07:15 for fever 39.2. ICE @ 09:00 10/10, A&O x4. Wt 64 kg. Allergy: NKDA.\nP: ICE q12h, LEV ppx."
+}

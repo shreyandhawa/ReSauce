@@ -1,0 +1,160 @@
+{
+  "answer_format": "0.1-provisional",
+  "case_id": "SYN-0002",
+  "scenario_id": "SC-18",
+  "scenario_label": "Partial ICE without total is the only assessment on the record's onset date; tremor that day",
+  "case_type": "Flag",
+  "tags": [],
+  "status": "not clinician-verified",
+  "answer_kind": "intended",
+  "provenance": {
+    "clinical_methods": "v0.4",
+    "data_format": "v0.1.2",
+    "dataset_plan": "v0.3.1",
+    "dataset_id": "SYN-DS-DEV-V1",
+    "dataset_version": "0.3.0",
+    "ordering_seed": 20261107,
+    "written": "2026-11-07",
+    "written_by": "case author (Claude Code session, Milestone 2 Step 4 part 3)"
+  },
+  "out_of_scope": null,
+  "fields": {
+    "onset": {
+      "category": "7.4",
+      "record_value": "2032-10-28",
+      "documented_value": {
+        "date": "2032-10-29",
+        "study_day": 5
+      },
+      "signed_difference_days": -1,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [
+        {
+          "role": "partial ICE without a total: not a gradeable assessment (A6, A34), record onset date Day +4",
+          "document_id": "SYN-0002-D03",
+          "version": 1,
+          "quote": "partial ICE @ 14:30: orient 4/4, naming 3/3; cmd/writing/attn not scored, no total",
+          "start": 110,
+          "end": 192
+        },
+        {
+          "role": "excluded symptom (tremor) on the record's onset date",
+          "document_id": "SYN-0002-D03",
+          "version": 1,
+          "quote": "new fine tremor both hands at rest + w/ reaching",
+          "start": 19,
+          "end": 67
+        },
+        {
+          "role": "first qualifying finding (ICE 8, Grade 1), Day +5",
+          "document_id": "SYN-0002-D04",
+          "version": 1,
+          "quote": "ICE 07:55 = 8/10",
+          "start": 16,
+          "end": 32
+        }
+      ],
+      "record_history": null
+    },
+    "max_grade": {
+      "category": "7.7",
+      "record_value": 2,
+      "documented_value": {
+        "grade": 2
+      },
+      "signed_difference_days": null,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [
+        {
+          "role": "ICE 5 (Grade 2), Day +6",
+          "document_id": "SYN-0002-D05",
+          "version": 1,
+          "quote": "ICE 08:40 5/10",
+          "start": 36,
+          "end": 50
+        },
+        {
+          "role": "no competing cause",
+          "document_id": "SYN-0002-D05",
+          "version": 1,
+          "quote": "No sedatives.",
+          "start": 166,
+          "end": 179
+        }
+      ],
+      "record_history": null
+    }
+  },
+  "case_flags": {
+    "unassessed_period": {
+      "days_without_gradeable_assessment": [
+        0,
+        3,
+        4,
+        7,
+        9,
+        10,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28
+      ],
+      "not_assessable_periods": []
+    },
+    "ungradeable_neurological_symptom": []
+  },
+  "other_flags": [
+    {
+      "flag": "record date matches an excluded or sub-threshold symptom",
+      "field": "onset",
+      "detail": "Tremor (excluded symptom) is documented on the record's onset date (Day +4), with no qualifying finding that day.",
+      "evidence": [
+        {
+          "role": "tremor on Day +4",
+          "document_id": "SYN-0002-D03",
+          "version": 1,
+          "quote": "new fine tremor both hands at rest + w/ reaching",
+          "start": 19,
+          "end": 67
+        }
+      ]
+    }
+  ],
+  "ambiguity_notes": [
+    "Record onset (Day +4) is earlier than the first qualifying finding (Day +5) and Day +4 has no gradeable assessment, so 7.4, not 7.1 (§7.1, A18).",
+    "The scored items of the partial ICE were all correct, but no total is computed (A6)."
+  ],
+  "depends_on_open_points": [],
+  "author_checks": {
+    "distractors": [
+      "CRS fever with tocilizumab",
+      "tremor (excluded)",
+      "ADHD history"
+    ],
+    "negated_findings": [
+      "no focal sx",
+      "No sz."
+    ],
+    "positive_findings": [
+      "ICE 8 Day +5",
+      "ICE 5 Day +6",
+      "tremor"
+    ],
+    "brief_features": "abbreviation-heavy; 7 documents"
+  }
+}

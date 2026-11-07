@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0039",
+  "document_id": "SYN-0039-D02",
+  "version": 1,
+  "status": "signed",
+  "note_type": "nursing_note",
+  "author_role": "nurse",
+  "documented_at": "2034-01-02T22:10",
+  "amendment_reason": null,
+  "text": "Evening nursing summary, 2034-01-02. Temperature reached 39.0 °C at 16:20 with a heart rate of 121; blood pressure held at 110/68 without fluids. The resident attended, documented grade 1 cytokine release syndrome, and acetaminophen was given at 16:35. ICE at 21:00 was 10/10, with quick and accurate answers."
+}

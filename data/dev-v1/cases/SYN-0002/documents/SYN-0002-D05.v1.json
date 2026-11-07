@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0002",
+  "document_id": "SYN-0002-D05",
+  "version": 1,
+  "status": "signed",
+  "note_type": "physician_progress_note",
+  "author_role": "attending_physician",
+  "documented_at": "2032-10-30T11:00",
+  "amendment_reason": null,
+  "text": "Attending PN D+6 2032-10-30.\nNeuro: ICE 08:40 5/10 (O 1/4 · names 2/3 · fingers 1/1 · wrote 0/1 · tens 1/1); awake, talking. Str 5/5 x4. No sz. Fine tremor persists.\nNo sedatives.\nP: dexameth 10 IV every 6 h; ICE every 4 h; neuro to follow."
+}

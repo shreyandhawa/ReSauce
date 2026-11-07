@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0066",
+  "document_id": "SYN-0066-D04",
+  "version": 1,
+  "status": "signed",
+  "note_type": "physician_progress_note",
+  "author_role": "attending_physician",
+  "documented_at": "2036-11-13T12:00",
+  "amendment_reason": null,
+  "text": "Progress note, 2036-11-13. The patient is awake and conversing, but the ICE score of 5/10 at 10:20 shows clear worsening: orientation 1 of 4, naming 2 of 3, command 1 of 1, no written sentence, counting correct. Strength is full and symmetric, and nursing have seen no seizure activity. No sedating medicines have been used. Dexamethasone 10 mg intravenously every six hours has been started, and neurology has been asked to see the patient."
+}

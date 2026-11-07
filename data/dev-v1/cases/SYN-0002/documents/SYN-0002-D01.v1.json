@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0002",
+  "document_id": "SYN-0002-D01",
+  "version": 1,
+  "status": "signed",
+  "note_type": "nursing_note",
+  "author_role": "nurse",
+  "documented_at": "2032-10-25T22:45",
+  "amendment_reason": null,
+  "text": "RN 2032-10-25 15-23.\nT 38.9 @ 18:20 -> APAP 1 g. HR 116, BP 112/70. BCx x2. MD aware.\nICE @ 21:30 10/10. A&O, conversant."
+}

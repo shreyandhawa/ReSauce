@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0069",
+  "document_id": "SYN-0069-D04",
+  "version": 1,
+  "status": "signed",
+  "note_type": "ice_assessment",
+  "author_role": "nurse",
+  "documented_at": "2034-04-29T15:00",
+  "amendment_reason": null,
+  "text": "ICE 2034-04-29. ICE 4/10 at 14:20; language barrier: interpreter line not reached after two attempts, ICE given in English, which the patient speaks only a little. Patient awake in the chair, nodding and attempting answers in Portuguese. Physician informed; repeat with interpreter requested."
+}

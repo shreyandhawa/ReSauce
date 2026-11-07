@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0005",
+  "document_id": "SYN-0005-D02",
+  "version": 1,
+  "status": "signed",
+  "note_type": "ice_assessment",
+  "author_role": "nurse",
+  "documented_at": "2031-09-15T21:15",
+  "amendment_reason": null,
+  "text": "ICE 2031-09-15: ICE 9/10 at 20:45 (sentence not completed, writing item 0). Awake, alert. No sedatives given."
+}

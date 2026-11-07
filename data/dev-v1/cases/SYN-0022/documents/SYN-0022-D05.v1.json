@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0022",
+  "document_id": "SYN-0022-D05",
+  "version": 1,
+  "status": "signed",
+  "note_type": "nursing_note",
+  "author_role": "nurse",
+  "documented_at": "2034-02-14T21:00",
+  "amendment_reason": null,
+  "text": "Evening nursing note, 2034-02-14. ICE at 20:10 was 7/10, missing the month, the hospital and the sentence. The patient was awake and watching television, and the physician was told."
+}

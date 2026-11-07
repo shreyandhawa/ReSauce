@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0033",
+  "document_id": "SYN-0033-D04",
+  "version": 1,
+  "status": "signed",
+  "note_type": "ice_assessment",
+  "author_role": "nurse",
+  "documented_at": "2032-05-02T09:40",
+  "amendment_reason": null,
+  "text": "ICE 2032-05-02 @ 09:05: 7/10 (-yr, -hospital, -sentence). Awake, OOB to chair. MD aware."
+}

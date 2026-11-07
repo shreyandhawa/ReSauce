@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0022",
+  "document_id": "SYN-0022-D01",
+  "version": 1,
+  "status": "signed",
+  "note_type": "physician_progress_note",
+  "author_role": "attending_physician",
+  "documented_at": "2034-02-09T17:20",
+  "amendment_reason": null,
+  "text": "Infusion day note, 2034-02-09. Autologous anti-CD19 CAR-T cells were given at 12:00 for relapsed mantle cell lymphoma, without reaction. Baseline ICE at 09:30 was 10/10. The patient also has well-controlled Crohn's disease. Plan: ICE twice daily and levetiracetam prophylaxis."
+}

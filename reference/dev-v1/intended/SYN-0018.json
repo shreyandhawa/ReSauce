@@ -1,0 +1,150 @@
+{
+  "answer_format": "0.1-provisional",
+  "case_id": "SYN-0018",
+  "scenario_id": "SC-23",
+  "scenario_label": "A consciousness phrase that could fit two categories decides the grade",
+  "case_type": "Flag",
+  "tags": [],
+  "status": "not clinician-verified",
+  "answer_kind": "intended",
+  "provenance": {
+    "clinical_methods": "v0.4",
+    "data_format": "v0.1.2",
+    "dataset_plan": "v0.3.1",
+    "dataset_id": "SYN-DS-DEV-V1",
+    "dataset_version": "0.3.0",
+    "ordering_seed": 20261107,
+    "written": "2026-11-07",
+    "written_by": "case author (Claude Code session, Milestone 2 Step 4 part 3)"
+  },
+  "out_of_scope": null,
+  "fields": {
+    "onset": {
+      "category": "7.7",
+      "record_value": "2035-06-17",
+      "documented_value": {
+        "date": "2035-06-17",
+        "study_day": 3
+      },
+      "signed_difference_days": 0,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [
+        {
+          "role": "first qualifying finding (ICE 8, Grade 1), Day +3",
+          "document_id": "SYN-0018-D04",
+          "version": 1,
+          "quote": "ICE 08:20 = 8/10",
+          "start": 12,
+          "end": 28
+        }
+      ],
+      "record_history": null
+    },
+    "max_grade": {
+      "category": "7.5",
+      "record_value": 2,
+      "documented_value": {
+        "undetermined": "Grade 2 or Grade 3, depending on whether the Day +5 13:40 response was to voice or to touch"
+      },
+      "signed_difference_days": null,
+      "difference_note": null,
+      "readings": [
+        {
+          "reading": "eye opening was a response to voice",
+          "value": 2,
+          "category": "7.7"
+        },
+        {
+          "reading": "eye opening needed the touch",
+          "value": 3,
+          "category": "7.2"
+        }
+      ],
+      "evidence": [
+        {
+          "role": "awake earlier; not ordinary sleep",
+          "document_id": "SYN-0018-D06",
+          "version": 1,
+          "quote": "Lunch 12:30 with partner, conversing.",
+          "start": 16,
+          "end": 53
+        },
+        {
+          "role": "voice and touch given together: fits 'awakens to voice' (Grade 2) or 'awakens only to tactile stimulus' (Grade 3)",
+          "document_id": "SYN-0018-D06",
+          "version": 1,
+          "quote": "eyes closed in chair at 13:40; opened eyes when name called loudly while RN tapped arm at same time; then attentive",
+          "start": 59,
+          "end": 174
+        },
+        {
+          "role": "ICE 5 (Grade 2), Day +5",
+          "document_id": "SYN-0018-D07",
+          "version": 1,
+          "quote": "ICE 21:10 = 5/10",
+          "start": 16,
+          "end": 32
+        },
+        {
+          "role": "no competing cause",
+          "document_id": "SYN-0018-D06",
+          "version": 1,
+          "quote": "No sedatives, no opioids.",
+          "start": 194,
+          "end": 219
+        }
+      ],
+      "record_history": null
+    }
+  },
+  "case_flags": {
+    "unassessed_period": {
+      "days_without_gradeable_assessment": [
+        7,
+        9,
+        11,
+        12,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28
+      ],
+      "not_assessable_periods": []
+    },
+    "ungradeable_neurological_symptom": []
+  },
+  "other_flags": [],
+  "ambiguity_notes": [
+    "Reason: consciousness wording (§7.5, A15). The only phrase in the dataset allowed to fit two Table 6 categories (NEW-15 exception for this scenario)."
+  ],
+  "depends_on_open_points": [],
+  "author_checks": {
+    "distractors": [
+      "CRS fever with tocilizumab",
+      "migraine history",
+      "headache Day +8 (excluded)"
+    ],
+    "negated_findings": [
+      "No papilledema.",
+      "No sz."
+    ],
+    "positive_findings": [
+      "ICE 8 Day +3",
+      "ICE 5 Day +5",
+      "ambiguous arousal Day +5"
+    ],
+    "brief_features": "terse; 11 documents"
+  }
+}

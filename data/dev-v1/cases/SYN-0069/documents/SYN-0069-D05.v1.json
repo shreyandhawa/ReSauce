@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0069",
+  "document_id": "SYN-0069-D05",
+  "version": 1,
+  "status": "signed",
+  "note_type": "imaging_report",
+  "author_role": "radiologist",
+  "documented_at": "2034-04-30T12:10",
+  "amendment_reason": null,
+  "text": "MRI brain with and without contrast, 2034-04-30 10:15. Age-appropriate volume loss. No acute infarct, no hemorrhage, no edema, no abnormal enhancement. Impression: no acute intracranial abnormality."
+}

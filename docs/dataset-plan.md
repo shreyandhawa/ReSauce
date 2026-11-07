@@ -1,10 +1,15 @@
 # ReSauce dataset plan
 
-- **Status:** v0.3, approved by the user (2026-11-07).
+- **Status:** v0.3.1, approved by the user (2026-11-07).
 - **Builds on:** `docs/clinical-methods.md` v0.4 (cited as §) and `docs/data-format.md` v0.1.1 (cited as "format §").
 - **This file contains no cases, case text, reference answers or code.** It plans them.
 
 ## Changelog
+
+**v0.3 → v0.3.1** (user decisions, 2026-11-07; the scenario catalogue, categories, case numbers and §8.3 scoring definitions are unchanged):
+- Locked cases are now written **after** the pipeline is built (Milestone 3) and **before** any evaluation run (Milestone 4), instead of before Milestone 3 (§1, §7.4). A new protection logs every change to `clinical-methods.md` or this plan made before locked writing (§7.4). The weaker commitment is disclosed in §7.5.
+- Readability check: the user skims every development case (about 2 minutes each). Locked-set sampling is unchanged (§4.2, §9 check 10).
+- The remaining development cases are written in batches of about 17 (§4.2).
 
 **v0.2 → v0.3** (the user's provisional decisions on NEW-1 to NEW-10 are in `clinical-methods.md` v0.4: A34 is new; A7, A15, A21–A26, A28–A30 and A32 are amended):
 - NEW-1 to NEW-10 move to the "resolved" table (§10.1). §10.2 now lists only the points found in this round, NEW-11 to NEW-18, each with an "avoid" rule.
@@ -40,13 +45,15 @@ Tags follow `docs/clinical-methods.md`:
 - It cannot show whether the rules in `clinical-methods.md` are clinically right. Only expert review can (§9 of that file).
 - Answers are derived from `clinical-methods.md`. Until a clinician reviews them, every answer is labelled **"not clinician-verified"**. A19–A34 and the v0.4 amendments are provisional user decisions, so answers that rest on them are doubly provisional.
 
-**Agreed order for the rest of Milestone 2** (user decision):
+**Agreed order** (user decisions; changed in v0.3.1):
 1. Step 3: this dataset plan.
 2. Step 4: development cases, plus a small loader fix (whitespace-only note text is currently accepted).
 3. Step 5: reference answers for the development cases.
-4. Step 6: locked evaluation cases.
+4. Milestone 3: the pipeline.
+5. Step 6: locked evaluation cases, written after the pipeline is built and before any evaluation run (§7.4).
+6. Milestone 4: evaluation.
 
-All four come before Milestone 3 (the pipeline).
+Steps 3 to 5 come before Milestone 3. Until v0.3.1, Step 6 also came before Milestone 3.
 
 ---
 
@@ -405,7 +412,7 @@ Development set (1 per scenario): 24 Neg of 68 scored (35.3%). The balance rules
 - **At least 40% Neg:** enough no-discrepancy fields to measure false alerts (§4.3). The real-world share of discrepancies is unknown, and this share does not claim to match it.
 - **At least a quarter of Neg cases are "no ICANS" records:** the user's rationale is that most real CAR-T patients do not develop ICANS, so a record of "no ICANS" is a common real situation. This rate is not sourced in this project's documents.
 - **Concentration:** in v0.2, 14 of 56 locked Neg cases came from SC-52 alone. Now 16 of 59 come from two scenarios with different designs (SC-52 and SC-72), 8 each. Their wording, distractors, note styles and number of formal assessments must still vary.
-- **Workload:** 225 cases in total (72 + 153), written in batches of about 10. The user reads all 72 development cases and about 38 locked cases (25% of 153) plus every locked case with a disagreement (§9 check 10).
+- **Workload:** 225 cases in total (72 + 153). The first 20 development cases were written in batches of about 10; the remaining development cases are written in batches of about 17 (user decision, v0.3.1). The user skims all 72 development cases (about 2 minutes each) and reads about 38 locked cases (25% of 153) plus every locked case with a disagreement (§9 check 10).
 - **Smaller alternative:** 1 locked case per scenario (72 cases, 68 scored, 86 no-discrepancy fields). The false-alert bound would then be 4.3% instead of 1.9% (§4.3), and the 40% and quarter rules would not be met without extra cases.
 
 ### 4.3 What this size can and cannot show
@@ -557,7 +564,9 @@ The pipeline (Milestone 3) must never read `reference/`. Only evaluation code ma
   3. compute the SHA-256 of the manifest;
   4. record that value, the locked repo's commit ID and the date in the main repo (e.g. `docs/locked-seal.md`).
 - Any later change to the locked set gets a new seal and a logged reason. Never silent.
-- **Written before Milestone 3 starts.**
+- **When (user decision, v0.3.1):** written after the pipeline is built (Milestone 3) and before any evaluation run (Milestone 4).
+- **Protections that do not change:** the locked writer is a fresh session in the separate private repository that never sees pipeline code or development case text; its inputs are only this plan, `clinical-methods.md` and `data-format.md`; the scenario catalogue (§2) and the scoring definitions (§8.3) stay frozen; the baseline specification is written before anyone sees locked results.
+- **New protection (v0.3.1):** if `clinical-methods.md` or this plan changes between now and locked writing, each change is logged with the date and whether pipeline development prompted it. The locked writer uses the logged versions.
 - **Adjudicator (user decision, v0.3):** the user adjudicates the locked set.
 - **Human leakage:** the user reads a random 25% sample of locked cases plus every locked case with a disagreement (§9 check 10), so the user sees part of the locked content. Sampling keeps this smaller than reading every case. The user must not describe locked cases in ReSauce sessions. This risk is reduced, not removed.
 
@@ -572,6 +581,8 @@ Proposed mitigations:
 - results are reported by author type (Claude-written vs clinician-written or edited).
 
 A non-Claude writer (a person, or another model) is **not used for now** (user decision, v0.3). Revisit if no clinician can write or edit a subset.
+
+**Trade-off of writing locked cases after the pipeline (v0.3.1).** The locked set is no longer fixed before pipeline work begins, so this commitment is weaker than originally planned. Whoever builds the pipeline (the user and Claude sessions) will know the pipeline's weak points when the locked cases are written, and could, even unintentionally, write cases that avoid or favour them. The protections in §7.4 (fresh writer session without pipeline code or development text, frozen catalogue and scoring definitions, logged rule changes) reduce this risk but do not remove it. It must be reported with the results.
 
 ---
 
@@ -660,7 +671,7 @@ Every case must pass all checks before it is accepted. [OPERATIONAL]
 | 7 | No real identifiers, brand names or institutions | Partly automatable (pattern and word lists); manual read |
 | 8 | At least 2 distractors, and both negated and positive findings | Manual checklist |
 | 9 | Event times in text are consistent with documentation times and record times | Manual now; partly automatable later |
-| 10 | Human readability check: reads like plausible notes. **Development:** the user reads every case. **Locked:** the user reads a random 25% sample (about 38 of 153) plus every case with a disagreement. The sample is drawn with a recorded seed; the sample list and seed are stored with the answers. | Manual; sampling automatable |
+| 10 | Human readability check: reads like plausible notes, and nothing gives the answer away. **Development:** the user skims every case (about 2 minutes each; v0.3.1). **Locked:** the user reads a random 25% sample (about 38 of 153) plus every case with a disagreement. The sample is drawn with a recorded seed; the sample list and seed are stored with the answers. | Manual; sampling automatable |
 | 11 | Note text is not empty or whitespace-only | Automated after the Step 4 loader fix |
 | 12 | For every multi-version record, the 7.6 conditions (a)–(c) are written down for each field (§5.1) | Manual |
 | 13 | The answer does not depend on any open point in §10.2, except where §8.1 records it (SC-47's grade, NEW-12) | Manual, using the "avoid" column of §10.2 |

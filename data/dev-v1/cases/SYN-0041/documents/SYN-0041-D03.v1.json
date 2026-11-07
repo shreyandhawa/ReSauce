@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0041",
+  "document_id": "SYN-0041-D03",
+  "version": 1,
+  "status": "signed",
+  "note_type": "physician_progress_note",
+  "author_role": "attending_physician",
+  "documented_at": "2034-07-15T12:15",
+  "amendment_reason": null,
+  "text": "Progress note 2034-07-15. ICE at 10:15 5/10 (orientation one of four, two of three objects, command yes, sentence no, counting yes). Awake, talking with family. No focal deficit. No seizure activity. No sedating medication. Dexamethasone started. EEG requested."
+}

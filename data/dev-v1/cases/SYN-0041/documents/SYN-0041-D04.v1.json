@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0041",
+  "document_id": "SYN-0041-D04",
+  "version": 1,
+  "status": "signed",
+  "note_type": "eeg_report",
+  "author_role": "neurologist",
+  "documented_at": "2034-07-16T15:30",
+  "amendment_reason": null,
+  "text": "EEG 2034-07-16 11:00-11:35. Posterior rhythm 9 Hz, reactive and symmetric. No slowing, no epileptiform discharges, no seizures. Impression: normal EEG."
+}

@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0039",
+  "document_id": "SYN-0039-D03",
+  "version": 1,
+  "status": "signed",
+  "note_type": "ice_assessment",
+  "author_role": "nurse",
+  "documented_at": "2034-01-03T10:05",
+  "amendment_reason": null,
+  "text": "ICE, 2034-01-03. Patient awake in the chair after breakfast. Orientation 3 of 4 (gave the previous year), naming 3 of 3, command 1 of 1, written sentence 0 of 1, counting 1 of 1. Total ICE 8/10 at 09:40. Physician aware."
+}

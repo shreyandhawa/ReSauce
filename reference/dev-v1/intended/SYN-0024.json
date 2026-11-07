@@ -1,0 +1,150 @@
+{
+  "answer_format": "0.1-provisional",
+  "case_id": "SYN-0024",
+  "scenario_id": "SC-21",
+  "scenario_label": "Recorded onset date has 'awakens spontaneously' with no drowsiness and ICE 10",
+  "case_type": "Pos",
+  "tags": [],
+  "status": "not clinician-verified",
+  "answer_kind": "intended",
+  "provenance": {
+    "clinical_methods": "v0.4",
+    "data_format": "v0.1.2",
+    "dataset_plan": "v0.3.1",
+    "dataset_id": "SYN-DS-DEV-V1",
+    "dataset_version": "0.3.0",
+    "ordering_seed": 20261107,
+    "written": "2026-11-07",
+    "written_by": "case author (Claude Code session, Milestone 2 Step 4 part 3)"
+  },
+  "out_of_scope": null,
+  "fields": {
+    "onset": {
+      "category": "7.1",
+      "record_value": "2034-12-09",
+      "documented_value": {
+        "date": "2034-12-10",
+        "study_day": 5
+      },
+      "signed_difference_days": -1,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [
+        {
+          "role": "awakens spontaneously with no drowsiness: not Grade 1 (A3), record onset date Day +4",
+          "document_id": "SYN-0024-D02",
+          "version": 1,
+          "quote": "Awakens spontaneously for 06:00 vitals and stays awake; not drowsy at any point this shift",
+          "start": 22,
+          "end": 112
+        },
+        {
+          "role": "ICE 10: formal Grade 0 assessment on the record's onset date",
+          "document_id": "SYN-0024-D02",
+          "version": 1,
+          "quote": "ICE 08:10 = 10/10",
+          "start": 164,
+          "end": 181
+        },
+        {
+          "role": "first qualifying finding (ICE 7, Grade 1), Day +5",
+          "document_id": "SYN-0024-D03",
+          "version": 1,
+          "quote": "ICE score 7/10 at 09:25",
+          "start": 16,
+          "end": 39
+        }
+      ],
+      "record_history": {
+        "a": false,
+        "b": false,
+        "c": null,
+        "explanation": "Version 2 re-enters the same values; nothing changed."
+      }
+    },
+    "max_grade": {
+      "category": "7.7",
+      "record_value": 2,
+      "documented_value": {
+        "grade": 2
+      },
+      "signed_difference_days": null,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [
+        {
+          "role": "ICE 6 (Grade 2), Day +6",
+          "document_id": "SYN-0024-D04",
+          "version": 1,
+          "quote": "ICE 6/10 at 08:00",
+          "start": 41,
+          "end": 58
+        },
+        {
+          "role": "no competing cause",
+          "document_id": "SYN-0024-D04",
+          "version": 1,
+          "quote": "No sedating medication given.",
+          "start": 217,
+          "end": 246
+        }
+      ],
+      "record_history": {
+        "a": false,
+        "b": true,
+        "c": null,
+        "explanation": "Version 2 re-enters the same values; nothing changed."
+      }
+    }
+  },
+  "case_flags": {
+    "unassessed_period": {
+      "days_without_gradeable_assessment": [
+        0,
+        2,
+        3,
+        7,
+        9,
+        10,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28
+      ],
+      "not_assessable_periods": []
+    },
+    "ungradeable_neurological_symptom": []
+  },
+  "other_flags": [],
+  "ambiguity_notes": [],
+  "depends_on_open_points": [],
+  "author_checks": {
+    "distractors": [
+      "CRS fever",
+      "headache Day +8 (excluded)",
+      "atrial fibrillation on apixaban"
+    ],
+    "negated_findings": [
+      "no tremor seen",
+      "no seizure activity"
+    ],
+    "positive_findings": [
+      "ICE 7 Day +5",
+      "ICE 6 Day +6"
+    ],
+    "brief_features": "with typos; 6 documents; record re-entered unchanged"
+  }
+}

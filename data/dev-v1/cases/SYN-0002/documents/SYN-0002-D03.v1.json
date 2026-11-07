@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0002",
+  "document_id": "SYN-0002-D03",
+  "version": 1,
+  "status": "signed",
+  "note_type": "nursing_note",
+  "author_role": "nurse",
+  "documented_at": "2032-10-28T16:00",
+  "amendment_reason": null,
+  "text": "RN 2032-10-28 day.\nnew fine tremor both hands at rest + w/ reaching - noticed by pt @ 14:00 when holding cup.\npartial ICE @ 14:30: orient 4/4, naming 3/3; cmd/writing/attn not scored, no total.\nVSS, afebrile. MD notified of tremor @ 14:10."
+}

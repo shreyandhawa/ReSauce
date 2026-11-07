@@ -1,0 +1,25 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0024",
+  "record_id": "SYN-0024-R",
+  "versions": [
+    {
+      "version": 1,
+      "recorded_at": "2034-12-20T09:40",
+      "icans_reported": true,
+      "onset_date": "2034-12-09",
+      "max_grade": 2,
+      "change_reason": null
+    },
+    {
+      "version": 2,
+      "recorded_at": "2034-12-24T14:00",
+      "icans_reported": true,
+      "onset_date": "2034-12-09",
+      "max_grade": 2,
+      "change_reason": "Data review"
+    }
+  ]
+}

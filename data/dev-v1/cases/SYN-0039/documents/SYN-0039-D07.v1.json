@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0039",
+  "document_id": "SYN-0039-D07",
+  "version": 1,
+  "status": "signed",
+  "note_type": "discharge_summary",
+  "author_role": "attending_physician",
+  "documented_at": "2034-01-12T15:20",
+  "amendment_reason": null,
+  "text": "Discharge summary. Admitted 2033-12-30, infused 2033-12-31, discharged 2034-01-12. Mild (grade 1) CRS began on Day +2. Neurotoxicity from Day +3, culminating on 2034-01-06 in an episode of unresponsiveness treated with high-dose methylprednisolone in intensive care; no intubation was needed. Recovery was steady: ICE 5/10 on 2034-01-08 at 09:00 and 10/10 on 2034-01-12 at 08:30. Follow-up in clinic in one week."
+}

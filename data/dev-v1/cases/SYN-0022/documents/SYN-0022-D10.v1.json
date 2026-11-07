@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0022",
+  "document_id": "SYN-0022-D10",
+  "version": 1,
+  "status": "signed",
+  "note_type": "other",
+  "author_role": "other",
+  "documented_at": "2034-02-21T15:00",
+  "amendment_reason": null,
+  "text": "Clinical pharmacist note, 2034-02-21. Discharge medicines reconciled: levetiracetam 1 g twice daily, dexamethasone taper ending 2034-02-23, acyclovir and co-trimoxazole prophylaxis. Mesalazine for Crohn's disease restarted."
+}

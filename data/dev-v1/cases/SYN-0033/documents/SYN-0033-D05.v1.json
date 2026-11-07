@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0033",
+  "document_id": "SYN-0033-D05",
+  "version": 1,
+  "status": "signed",
+  "note_type": "physician_progress_note",
+  "author_role": "attending_physician",
+  "documented_at": "2032-05-03T12:30",
+  "amendment_reason": null,
+  "text": "Attending PN D+6 2032-05-03. ICE 11:00 = 5/10 (O1 N2 C1 W0 A1). Awake, talking. No focal deficit, no sz. No sedating meds. Dex 10 mg IV q6h."
+}

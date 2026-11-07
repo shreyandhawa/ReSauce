@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0069",
+  "document_id": "SYN-0069-D01",
+  "version": 1,
+  "status": "signed",
+  "note_type": "physician_progress_note",
+  "author_role": "attending_physician",
+  "documented_at": "2034-04-25T16:30",
+  "amendment_reason": null,
+  "text": "Infusion note 2034-04-25.\nPrimary language Portuguese; limited English. Consent and teaching done through a professional interpreter.\nCD19-directed CAR-T cells infused 11:00, no reaction. Pre-infusion ICE at 09:10 (via interpreter): 10/10.\nHx: hypertension, benign prostatic hyperplasia.\nPlan: ICE twice daily, always with an interpreter."
+}

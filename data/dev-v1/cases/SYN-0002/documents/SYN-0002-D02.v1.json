@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0002",
+  "document_id": "SYN-0002-D02",
+  "version": 1,
+  "status": "signed",
+  "note_type": "physician_progress_note",
+  "author_role": "resident_physician",
+  "documented_at": "2032-10-26T11:15",
+  "amendment_reason": null,
+  "text": "PGY2 PN D+2 2032-10-26.\nCRS gr 1 -> toci 8 mg/kg IV @ 09:00. Afebrile since.\nNeuro @ 08:30: ICE 10/10, no focal sx.\nPMH: ADHD (no meds since age 18), seasonal allergies.\nP: ICE q12h, LEV ppx, trend CRP."
+}

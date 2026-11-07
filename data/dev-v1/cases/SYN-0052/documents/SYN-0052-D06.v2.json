@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0052",
+  "document_id": "SYN-0052-D06",
+  "version": 2,
+  "status": "signed",
+  "note_type": "discharge_summary",
+  "author_role": "attending_physician",
+  "documented_at": "2033-03-11T16:30",
+  "amendment_reason": "Corrected entry: follow-up date",
+  "text": "D/C summary 2033-03-11. Infusion 2033-02-27.\nCRS gr 1 D+1.\nICANS D+3 to D+10; dexamethasone.\nEEG 2033-03-05 normal.\nICE 2033-03-11 08:20: 10/10.\nF/u clinic 2033-03-19."
+}

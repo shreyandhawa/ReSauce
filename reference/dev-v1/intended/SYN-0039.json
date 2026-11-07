@@ -1,0 +1,141 @@
+{
+  "answer_format": "0.1-provisional",
+  "case_id": "SYN-0039",
+  "scenario_id": "SC-15",
+  "scenario_label": "ICE 0 in an unarousable patient, no competing cause; record Grade 3",
+  "case_type": "Pos",
+  "tags": [],
+  "status": "not clinician-verified",
+  "answer_kind": "intended",
+  "provenance": {
+    "clinical_methods": "v0.4",
+    "data_format": "v0.1.2",
+    "dataset_plan": "v0.3.1",
+    "dataset_id": "SYN-DS-DEV-V1",
+    "dataset_version": "0.3.0",
+    "ordering_seed": 20261107,
+    "written": "2026-11-07",
+    "written_by": "case author (Claude Code session, Milestone 2 Step 4 part 3)"
+  },
+  "out_of_scope": null,
+  "fields": {
+    "onset": {
+      "category": "7.7",
+      "record_value": "2034-01-03",
+      "documented_value": {
+        "date": "2034-01-03",
+        "study_day": 3
+      },
+      "signed_difference_days": 0,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [
+        {
+          "role": "first qualifying finding (ICE 8, Grade 1), Day +3",
+          "document_id": "SYN-0039-D03",
+          "version": 1,
+          "quote": "Total ICE 8/10 at 09:40",
+          "start": 179,
+          "end": 202
+        }
+      ],
+      "record_history": null
+    },
+    "max_grade": {
+      "category": "7.2",
+      "record_value": 3,
+      "documented_value": {
+        "grade": 4
+      },
+      "signed_difference_days": null,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [
+        {
+          "role": "patient awake earlier, so not ordinary sleep",
+          "document_id": "SYN-0039-D05",
+          "version": 1,
+          "quote": "At 08:15 the patient ate breakfast, chatted with me about the weather",
+          "start": 32,
+          "end": 101
+        },
+        {
+          "role": "unarousable to vigorous stimuli (Grade 4), Day +6 10:40",
+          "document_id": "SYN-0039-D05",
+          "version": 1,
+          "quote": "could not be roused: no eye opening and no movement to a loud voice, to repeated shaking of both shoulders or to a firm sternal rub",
+          "start": 177,
+          "end": 308
+        },
+        {
+          "role": "ICE 0 because unarousable (Grade 4)",
+          "document_id": "SYN-0039-D06",
+          "version": 1,
+          "quote": "ICE 0/10 because the patient could not be woken to attempt it",
+          "start": 165,
+          "end": 226
+        },
+        {
+          "role": "no competing cause",
+          "document_id": "SYN-0039-D05",
+          "version": 1,
+          "quote": "No sedative, opioid, antihistamine or antipsychotic has been given during this admission",
+          "start": 469,
+          "end": 557
+        }
+      ],
+      "record_history": null
+    }
+  },
+  "case_flags": {
+    "unassessed_period": {
+      "days_without_gradeable_assessment": [
+        1,
+        4,
+        7,
+        9,
+        10,
+        11,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28
+      ],
+      "not_assessable_periods": []
+    },
+    "ungradeable_neurological_symptom": []
+  },
+  "other_flags": [],
+  "ambiguity_notes": [
+    "Record lower by 1. Glucose, oxygenation and breathing are documented normal; no clinician attributes the episode to another cause."
+  ],
+  "depends_on_open_points": [],
+  "author_checks": {
+    "distractors": [
+      "CRS fever with tocilizumab",
+      "eczema and wrist fracture history"
+    ],
+    "negated_findings": [
+      "no gaze deviation and no observed seizure activity",
+      "no intubation was needed"
+    ],
+    "positive_findings": [
+      "ICE 8 Day +3",
+      "ICE 4 Day +5",
+      "unarousable, ICE 0 Day +6"
+    ],
+    "brief_features": "verbose; 7 documents"
+  }
+}

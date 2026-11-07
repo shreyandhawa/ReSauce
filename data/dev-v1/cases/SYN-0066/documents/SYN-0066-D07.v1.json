@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0066",
+  "document_id": "SYN-0066-D07",
+  "version": 1,
+  "status": "signed",
+  "note_type": "eeg_report",
+  "author_role": "neurologist",
+  "documented_at": "2036-11-18T08:50",
+  "amendment_reason": null,
+  "text": "EEG report (prolonged routine recording). Recorded 2036-11-15 from 09:40 to 11:10. The background showed mild diffuse slowing in the theta range. The study captured a single electrographic seizure arising over the right temporal region from 10:12 to 10:15 (3 minutes), with no visible clinical change. Levetiracetam 1 g was given intravenously at 10:13; the discharge stopped at 10:15, the background then returned to its pre-seizure baseline, and no further seizures occurred to the end of the study. Impression: one non-convulsive seizure of 3 minutes that ended after intravenous levetiracetam, with return to baseline; mild diffuse slowing."
+}

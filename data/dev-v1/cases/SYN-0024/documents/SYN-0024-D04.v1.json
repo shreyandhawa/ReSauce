@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0024",
+  "document_id": "SYN-0024-D04",
+  "version": 1,
+  "status": "signed",
+  "note_type": "physician_progress_note",
+  "author_role": "attending_physician",
+  "documented_at": "2034-12-11T11:40",
+  "amendment_reason": null,
+  "text": "Attending progres note D+6 (2034-12-11). ICE 6/10 at 08:00 (orient 1 of 4, objects 3 of 3, follows command, no sentence, counts back correctly). Awake, convers. Strength full, no facial weakness, no seizure activity. No sedating medication given. Dexamethasone 10 mg IV q6h from 09:00. Hx of atrial fibrillation on apixaban, rate controled."
+}

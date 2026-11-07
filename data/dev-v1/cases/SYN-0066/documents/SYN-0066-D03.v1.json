@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0066",
+  "document_id": "SYN-0066-D03",
+  "version": 1,
+  "status": "signed",
+  "note_type": "ice_assessment",
+  "author_role": "nurse",
+  "documented_at": "2036-11-12T09:15",
+  "amendment_reason": null,
+  "text": "Morning ICE screen on 2036-11-12, done at 08:40 with the patient sitting up after breakfast. The patient named the city and the hospital but gave the wrong month and year, named all three objects, followed the command, wrote a full sentence and counted down correctly, so the total was 8 out of 10. No sedating medicines had been given. The physician was informed."
+}

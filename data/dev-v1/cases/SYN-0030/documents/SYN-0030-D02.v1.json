@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0030",
+  "document_id": "SYN-0030-D02",
+  "version": 1,
+  "status": "signed",
+  "note_type": "nursing_note",
+  "author_role": "nurse",
+  "documented_at": "2035-01-27T00:50",
+  "amendment_reason": null,
+  "text": "Late-shift entry for the evening of 2035-01-26 (written after midnight).\n- 2035-01-26 at 23:30, ICE 8/10: wrong month, could not name the hospital, sentence incomplete; named objects and followed the command.\n- Awake, chatting with RN while the check was done. On-call doctor told at 23:45.\n- No sedating medicines given since admission. Afebrile."
+}

@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0055",
+  "document_id": "SYN-0055-D02",
+  "version": 1,
+  "status": "signed",
+  "note_type": "physician_progress_note",
+  "author_role": "advanced_practice_provider",
+  "documented_at": "2032-09-25T16:40",
+  "amendment_reason": null,
+  "text": "APP progress note, 2032-09-25.\nSlept well last night per RN (asleep 23:00-06:30). Up for breakfast and a shower this morning.\nOn my review at 15:00: drowsy through the afternoon, dozing off between sentences, but awakens spontaneously each time without being spoken to or touched, and stays awake while engaged. ICE at 15:20: 10/10. No sedatives, antihistamines or opioids given at any time this admission.\nNo focal weakness, no seizure activity. Afebrile since tocilizumab on 2032-09-24.\nAssessment: neurotoxicity with reduced alertness despite a normal ICE. Plan: ICE every 4 h, neuro checks, no steroids yet."
+}

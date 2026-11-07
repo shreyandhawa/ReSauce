@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0019",
+  "document_id": "SYN-0019-D01",
+  "version": 1,
+  "status": "signed",
+  "note_type": "nursing_note",
+  "author_role": "nurse",
+  "documented_at": "2036-11-03T22:00",
+  "amendment_reason": null,
+  "text": "Nursing note 2036-11-03. 17:40 temp 38.8, HR 118. Tylenol given 17:50, cultures drawn. Provider aware, CRS grade 1. 21:00 ICE 10/10, pt joking with nurse."
+}

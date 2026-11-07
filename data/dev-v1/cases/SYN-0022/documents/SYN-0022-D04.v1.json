@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0022",
+  "document_id": "SYN-0022-D04",
+  "version": 1,
+  "status": "signed",
+  "note_type": "ice_assessment",
+  "author_role": "nurse",
+  "documented_at": "2034-02-13T09:20",
+  "amendment_reason": null,
+  "text": "ICE screen, 2034-02-13. The patient was up and dressed; the ICE at 08:50 was 9/10, losing only the written sentence. No sedating medicines in the past day."
+}

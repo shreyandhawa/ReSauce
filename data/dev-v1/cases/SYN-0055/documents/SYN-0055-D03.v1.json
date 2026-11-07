@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0055",
+  "document_id": "SYN-0055-D03",
+  "version": 1,
+  "status": "signed",
+  "note_type": "discharge_summary",
+  "author_role": "attending_physician",
+  "documented_at": "2032-09-29T13:30",
+  "amendment_reason": null,
+  "text": "DISCHARGE SUMMARY\nInfusion 2032-09-21 · discharged 2032-09-29\n• CRS grade 1, Day +2 to +3; one tocilizumab dose.\n• Neurotoxicity: daytime drowsiness with spontaneous waking on 2032-09-25; ICE 9/10 on 2032-09-26 at 09:30; resolved without steroids.\n• Discharge ICE 2032-09-29 08:45: 10/10.\n• Other: asthma, salbutamol as needed."
+}

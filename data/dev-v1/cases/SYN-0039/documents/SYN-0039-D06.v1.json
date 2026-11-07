@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0039",
+  "document_id": "SYN-0039-D06",
+  "version": 1,
+  "status": "signed",
+  "note_type": "physician_progress_note",
+  "author_role": "attending_physician",
+  "documented_at": "2034-01-06T13:30",
+  "amendment_reason": null,
+  "text": "Attending note, 2034-01-06, written after the rapid response. On my examination at 11:00 the findings were the same: no response to voice or to painful stimulation, ICE 0/10 because the patient could not be woken to attempt it. No limb posturing, no gaze deviation and no observed seizure activity; the airway is maintained without support. Glucose and sodium are normal. Plan: methylprednisolone 1 g IV daily, transfer to the intensive care unit for monitoring, urgent EEG and head CT, neurology involved."
+}

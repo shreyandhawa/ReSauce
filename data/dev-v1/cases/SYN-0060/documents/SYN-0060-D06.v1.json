@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0060",
+  "document_id": "SYN-0060-D06",
+  "version": 1,
+  "status": "signed",
+  "note_type": "ice_assessment",
+  "author_role": "advanced_practice_provider",
+  "documented_at": "2035-08-22T11:20",
+  "amendment_reason": null,
+  "text": "ICE 2035-08-22: ICE 6/10 at 10:30 (orientation 2 right, 2 objects named, command done, no sentence, tens correct). Awake in chair after breakfast. No sedating medication. Dexamethasone 10 mg IV started 11:00."
+}

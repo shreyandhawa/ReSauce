@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0002",
+  "document_id": "SYN-0002-D07",
+  "version": 1,
+  "status": "signed",
+  "note_type": "discharge_summary",
+  "author_role": "attending_physician",
+  "documented_at": "2032-11-04T14:20",
+  "amendment_reason": null,
+  "text": "D/C summ. Adm 2032-10-23, CAR-T 2032-10-24, d/c 2032-11-04.\nCRS gr 1 D+1-2, toci x1.\nICANS D+5 to D+9, ICE nadir 5/10 2032-10-30; dex taper.\nPostural/action tremor from 2032-10-28, improving.\nICE 2032-11-04 @ 09:10 10/10."
+}

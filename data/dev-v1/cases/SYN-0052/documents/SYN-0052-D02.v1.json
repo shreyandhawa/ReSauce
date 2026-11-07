@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0052",
+  "document_id": "SYN-0052-D02",
+  "version": 1,
+  "status": "signed",
+  "note_type": "ice_assessment",
+  "author_role": "nurse",
+  "documented_at": "2033-03-02T10:40",
+  "amendment_reason": null,
+  "text": "2033-03-02. ICE 10:15 = 7/10 (month wrong, no sentence, counted 100-90-80 then stopped). Alert, sitting up. No sedatives last 24 h."
+}

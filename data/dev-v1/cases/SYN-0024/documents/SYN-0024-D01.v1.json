@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0024",
+  "document_id": "SYN-0024-D01",
+  "version": 1,
+  "status": "signed",
+  "note_type": "nursing_note",
+  "author_role": "nurse",
+  "documented_at": "2034-12-06T22:20",
+  "amendment_reason": null,
+  "text": "Evning nursing note 2034-12-06. Temp 38.7 at 18:00, chils, HR 109. Acetaminophen 650 mg 18:15. Provider aware, CRS grade 1 recorded.\nICE at 21:15 was 10/10."
+}

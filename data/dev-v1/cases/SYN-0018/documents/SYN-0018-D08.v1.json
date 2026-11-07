@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0018",
+  "document_id": "SYN-0018-D08",
+  "version": 1,
+  "status": "signed",
+  "note_type": "neurology_consult",
+  "author_role": "neurologist",
+  "documented_at": "2035-06-20T14:00",
+  "amendment_reason": null,
+  "text": "Neuro 2035-06-20. ICE 12:30 = 7/10. Awake, attends. No papilledema. Nonfocal. Agree dex."
+}

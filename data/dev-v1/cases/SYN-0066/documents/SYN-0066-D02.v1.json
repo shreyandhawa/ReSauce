@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0066",
+  "document_id": "SYN-0066-D02",
+  "version": 1,
+  "status": "signed",
+  "note_type": "nursing_note",
+  "author_role": "nurse",
+  "documented_at": "2036-11-10T22:15",
+  "amendment_reason": null,
+  "text": "Evening nursing note, 2036-11-10. A temperature of 38.5 °C was recorded at 18:30, with a heart rate of 108 and stable blood pressure. Acetaminophen was given and the physician documented grade 1 cytokine release syndrome. At 21:00 the patient, reading a novel, scored 10/10 on ICE."
+}

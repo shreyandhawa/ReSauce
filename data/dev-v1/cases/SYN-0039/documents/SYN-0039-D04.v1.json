@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0039",
+  "document_id": "SYN-0039-D04",
+  "version": 1,
+  "status": "signed",
+  "note_type": "physician_progress_note",
+  "author_role": "resident_physician",
+  "documented_at": "2034-01-05T12:40",
+  "amendment_reason": null,
+  "text": "Resident progress note, 2034-01-05. Fever settled after a single dose of tocilizumab on 2034-01-03. At 10:50 the patient was awake and talking but scored ICE 4/10 (orientation 1, naming 2, command 1, sentence 0, counting 0). Power is full, there is no facial droop and no seizure activity has been seen. Dexamethasone 10 mg IV every six hours started at 11:30."
+}

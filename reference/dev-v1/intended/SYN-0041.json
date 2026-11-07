@@ -1,0 +1,137 @@
+{
+  "answer_format": "0.1-provisional",
+  "case_id": "SYN-0041",
+  "scenario_id": "SC-33",
+  "scenario_label": "Record revised to a higher grade with no supporting documentation",
+  "case_type": "Pos",
+  "tags": [],
+  "status": "not clinician-verified",
+  "answer_kind": "intended",
+  "provenance": {
+    "clinical_methods": "v0.4",
+    "data_format": "v0.1.2",
+    "dataset_plan": "v0.3.1",
+    "dataset_id": "SYN-DS-DEV-V1",
+    "dataset_version": "0.3.0",
+    "ordering_seed": 20261107,
+    "written": "2026-11-07",
+    "written_by": "case author (Claude Code session, Milestone 2 Step 4 part 3)"
+  },
+  "out_of_scope": null,
+  "fields": {
+    "onset": {
+      "category": "7.7",
+      "record_value": "2034-07-14",
+      "documented_value": {
+        "date": "2034-07-14",
+        "study_day": 3
+      },
+      "signed_difference_days": 0,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [
+        {
+          "role": "first qualifying finding (ICE 8, Grade 1), Day +3",
+          "document_id": "SYN-0041-D02",
+          "version": 1,
+          "quote": "ICE 8/10 @ 08:25",
+          "start": 16,
+          "end": 32
+        }
+      ],
+      "record_history": {
+        "a": false,
+        "b": true,
+        "c": null,
+        "explanation": "Onset is the same in both record versions; (a) fails."
+      }
+    },
+    "max_grade": {
+      "category": "7.3",
+      "record_value": 3,
+      "documented_value": {
+        "grade": 2
+      },
+      "signed_difference_days": null,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [
+        {
+          "role": "ICE 5 (Grade 2), Day +4",
+          "document_id": "SYN-0041-D03",
+          "version": 1,
+          "quote": "ICE at 10:15 5/10",
+          "start": 26,
+          "end": 43
+        },
+        {
+          "role": "no seizure on EEG",
+          "document_id": "SYN-0041-D04",
+          "version": 1,
+          "quote": "No slowing, no epileptiform discharges, no seizures.",
+          "start": 75,
+          "end": 127
+        }
+      ],
+      "record_history": {
+        "a": true,
+        "b": false,
+        "c": false,
+        "explanation": "Grade changed 2 -> 3. The current value 3 is higher than the documented Grade 2, so (b) fails; no document version after record v1 (Day +12) supports Grade 3, so (c) fails. History shown; category 7.3."
+      }
+    }
+  },
+  "case_flags": {
+    "unassessed_period": {
+      "days_without_gradeable_assessment": [
+        0,
+        2,
+        5,
+        7,
+        9,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28
+      ],
+      "not_assessable_periods": []
+    },
+    "ungradeable_neurological_symptom": []
+  },
+  "other_flags": [],
+  "ambiguity_notes": [
+    "No documented 'not assessable' period anywhere in the window. So the over-graded record is 7.3, not 7.4 (A25)."
+  ],
+  "depends_on_open_points": [],
+  "author_checks": {
+    "distractors": [
+      "CRS fever",
+      "normal EEG",
+      "lupus history",
+      "headache Day +10 (excluded)"
+    ],
+    "negated_findings": [
+      "No focal deficit. No seizure activity.",
+      "No slowing, no epileptiform discharges"
+    ],
+    "positive_findings": [
+      "ICE 8 Day +3",
+      "ICE 5 Day +4",
+      "ICE 7 Day +6"
+    ],
+    "brief_features": "with typos; 8 documents; record revision (scenario); normal EEG"
+  }
+}

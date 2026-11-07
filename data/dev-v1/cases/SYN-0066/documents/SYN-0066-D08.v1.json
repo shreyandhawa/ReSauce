@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0066",
+  "document_id": "SYN-0066-D08",
+  "version": 1,
+  "status": "signed",
+  "note_type": "discharge_summary",
+  "author_role": "attending_physician",
+  "documented_at": "2036-11-21T14:10",
+  "amendment_reason": null,
+  "text": "Discharge summary. Infused 2036-11-08; discharged 2036-11-21. Mild CRS (grade 1) from Day +2. Neurotoxicity from Day +4 with an ICE low of 5/10, treated with dexamethasone. The EEG of 2036-11-15 recorded a single non-convulsive seizure that stopped after levetiracetam; levetiracetam was continued at 1 g twice daily. The ICE on 2036-11-21 at 09:00 was 10/10."
+}

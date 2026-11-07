@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0069",
+  "document_id": "SYN-0069-D07",
+  "version": 1,
+  "status": "signed",
+  "note_type": "discharge_summary",
+  "author_role": "attending_physician",
+  "documented_at": "2034-05-05T14:00",
+  "amendment_reason": null,
+  "text": "Discharge summary 2034-05-05. CRS grade 1 on Day +2. Mild neurotoxicity Day +3 to Day +6 on interpreter-assisted testing; a low English-language ICE on 2034-04-29. MRI normal. ICE 2034-05-05 09:00 with interpreter: 10/10."
+}

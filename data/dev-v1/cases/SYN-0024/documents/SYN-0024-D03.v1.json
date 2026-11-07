@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0024",
+  "document_id": "SYN-0024-D03",
+  "version": 1,
+  "status": "signed",
+  "note_type": "ice_assessment",
+  "author_role": "nurse",
+  "documented_at": "2034-12-10T09:50",
+  "amendment_reason": null,
+  "text": "ICE 2034-12-10: ICE score 7/10 at 09:25. Missed the month and the hospital name, sentence unfinished. Pt sitting up awake. No sedative given in last 24 h. Doctor paged 09:35."
+}

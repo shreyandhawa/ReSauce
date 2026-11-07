@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0019",
+  "document_id": "SYN-0019-D03",
+  "version": 1,
+  "status": "signed",
+  "note_type": "physician_progress_note",
+  "author_role": "attending_physician",
+  "documented_at": "2036-11-06T11:00",
+  "amendment_reason": null,
+  "text": "Progress note 2036-11-06: 08:30 ICE 6/10 (2 of 4 orientation, 1 of 3 objects, did the command, wrote a sentence, counted back ok). Awake. No focal deficit. No seizure. No sedatives given in 24 h. Dexamethasone started. Hx kidney stones."
+}

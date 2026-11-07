@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0058",
+  "document_id": "SYN-0058-D01",
+  "version": 1,
+  "status": "signed",
+  "note_type": "nursing_note",
+  "author_role": "nurse",
+  "documented_at": "2034-05-24T23:00",
+  "amendment_reason": null,
+  "text": "RN nights 2034-05-24. T 38.4 @ 19:40, rigors x1. APAP @ 19:50. HR 104. CRS gr 1 per covering MD.\nICE @ 22:10: 10/10. Settled."
+}

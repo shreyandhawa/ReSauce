@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0061",
+  "document_id": "SYN-0061-D02",
+  "version": 1,
+  "status": "signed",
+  "note_type": "physician_progress_note",
+  "author_role": "attending_physician",
+  "documented_at": "2031-05-02T14:10",
+  "amendment_reason": null,
+  "text": "Progress note, post-infusion day 5 (2031-05-02)\n\nThe patient had breakfast with family at 08:30 and was talking normally with them, according to both the family and the nurse. By late morning speech had become sparse. When I examined the patient at 13:30 the patient was awake, eyes open, tracking people around the room and reaching for the water cup unprompted, yet produces no words, cannot name a single object and follows no spoken or written command. Scored ICE 0/10 at 13:30: no orientation answers, no naming, no command following, no writing and no counting. Pupils are equal and brisk, the face is symmetric and all four limbs move with full power against gravity. No seizure activity has been witnessed, and nothing sedating has been given since admission.\n\nInterpretation: global aphasia in an awake patient after CAR-T cell therapy, which I regard as neurotoxicity. Plan: dexamethasone 10 mg intravenously every six hours, EEG this afternoon, neurology to see today, ICE every two hours."
+}

@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0069",
+  "document_id": "SYN-0069-D03",
+  "version": 1,
+  "status": "signed",
+  "note_type": "ice_assessment",
+  "author_role": "nurse",
+  "documented_at": "2034-04-28T09:20",
+  "amendment_reason": null,
+  "text": "ICE 2034-04-28. ICE with telephone interpreter at 08:45: 8/10 (wrong month, unable to finish the sentence). Awake and smiling, sitting in chair. No sedating medicines in the last day."
+}

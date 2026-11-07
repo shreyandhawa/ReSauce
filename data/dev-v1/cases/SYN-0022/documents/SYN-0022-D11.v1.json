@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0022",
+  "document_id": "SYN-0022-D11",
+  "version": 1,
+  "status": "signed",
+  "note_type": "discharge_summary",
+  "author_role": "attending_physician",
+  "documented_at": "2034-02-23T13:00",
+  "amendment_reason": null,
+  "text": "Discharge summary. Infused 2034-02-09; discharged 2034-02-23. Grade 1 cytokine release syndrome on Days +1 and +2. Neurotoxicity from Day +4, treated with dexamethasone. Discharge ICE on 2034-02-23 at 08:30 was 10/10."
+}

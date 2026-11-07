@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0018",
+  "document_id": "SYN-0018-D02",
+  "version": 1,
+  "status": "signed",
+  "note_type": "nursing_note",
+  "author_role": "nurse",
+  "documented_at": "2035-06-15T22:40",
+  "amendment_reason": null,
+  "text": "2035-06-15 eve. T 38.6 @ 19:00. APAP. CRS gr 1 per MD. ICE 21:30 = 10/10. Settled."
+}

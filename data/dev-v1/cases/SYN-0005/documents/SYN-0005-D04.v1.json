@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0005",
+  "document_id": "SYN-0005-D04",
+  "version": 1,
+  "status": "signed",
+  "note_type": "imaging_report",
+  "author_role": "radiologist",
+  "documented_at": "2031-09-17T13:20",
+  "amendment_reason": null,
+  "text": "MRI brain with and without contrast, 2031-09-17 10:40. No acute infarct, hemorrhage, edema or abnormal enhancement. Impression: normal MRI brain."
+}

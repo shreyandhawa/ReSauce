@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0030",
+  "document_id": "SYN-0030-D04",
+  "version": 1,
+  "status": "signed",
+  "note_type": "nursing_note",
+  "author_role": "nurse",
+  "documented_at": "2035-01-30T19:40",
+  "amendment_reason": null,
+  "text": "Nursing 2035-01-30: No ICE possible on 2035-01-30: patient away from the ward from 07:30 to 19:00 for apheresis and restaging scans. Back on ward 19:00, comfortable, vital signs normal."
+}

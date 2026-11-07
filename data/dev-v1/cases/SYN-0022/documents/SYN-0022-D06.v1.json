@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0022",
+  "document_id": "SYN-0022-D06",
+  "version": 1,
+  "status": "signed",
+  "note_type": "physician_progress_note",
+  "author_role": "attending_physician",
+  "documented_at": "2034-02-15T12:30",
+  "amendment_reason": null,
+  "text": "Attending progress note, 2034-02-15.\n\nOn rounds at 10:40 the patient was awake and talking; the ICE was 6/10, with errors in orientation (2 of 4), naming (2 of 3) and writing. Strength and coordination are normal, and no sedating medicine has been given during this admission. Cytokine release syndrome has settled since tocilizumab on 2034-02-11.\n\nPlan: dexamethasone 10 mg intravenously every six hours, ICE every four hours, neurology review tomorrow."
+}
