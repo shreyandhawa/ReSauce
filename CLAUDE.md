@@ -23,12 +23,14 @@ The current milestone and status are in `docs/handoff.md`.
 - Results on synthetic data are not clinical validation. Never describe them as such.
 - Comparisons with simpler methods must be measured on the same data. Never assume the outcome.
 - Record methods, parameters and data versions so every result can be reproduced.
+- Every rule you cite must exist in docs/clinical-methods.md. Never state a number you did not compute.
 - Do not implement medical algorithms until a milestone explicitly calls for them.
 
 ## Engineering
 - The Python core lives in `src/resauce/`. It must not import any UI or web code. The future interface calls the core, never the other way round.
 - Prefer simple, proven, maintainable solutions. Add no unnecessary frameworks, AI agents, plugins or infrastructure.
-- Every change comes with tests. Run `pytest` and confirm it passes before calling work done.
+- Test only code that decides answers (extraction, rules engine, scoring), with a few focused tests per rule, not exhaustive ones. No tests for glue code, formatting, scripts or the viewer. Run the test suite once at the end of a task, not after every edit.
+- At the end of each completed task, commit and push automatically: stage only the files you changed, by explicit path, with one clear message and no AI attribution. Never commit secrets, .venv or scratch files. The user does not run /finish-step any more.
 - Ask the user before adding a dependency, installing software, deleting or overwriting work, or deploying anything.
 - Never copy code from other projects.
 - Never commit secrets (`.env` files, keys, tokens).
@@ -42,6 +44,9 @@ The user is a beginner. For every action, explain in plain language:
 - how to verify it worked.
 
 Avoid jargon, and define any technical term the first time you use it.
+
+## Skills
+/code-review on new pipeline code before committing. /diagnose when a bug survives one fix attempt. /zoom-out when the user asks to understand code. caveman only when the user asks for terse output. Viewer and frontend work: impeccable, taste-skill, emil-design-eng.
 
 ## Session routine
 - Start: read `docs/handoff.md`.

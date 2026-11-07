@@ -1,10 +1,12 @@
 # ReSauce clinical methods: verifying documented ICANS
 
-- **Status:** Draft v0.4 (2026-11-07). Provisional decisions on the gaps found by `docs/dataset-plan.md` v0.1 (GAP-1 to GAP-15) are assumptions A19–A33. Provisional decisions on the follow-up points NEW-1 to NEW-10 (`docs/dataset-plan.md` v0.2 §10.2) amend some assumptions and add A34. Not yet reviewed by a clinician.
+- **Status:** Draft v0.4.1 (2026-11-07). Provisional decisions on the gaps found by `docs/dataset-plan.md` v0.1 (GAP-1 to GAP-15) are assumptions A19–A33. Provisional decisions on the follow-up points NEW-1 to NEW-10 (`docs/dataset-plan.md` v0.2 §10.2) amend some assumptions and add A34. v0.4.1 adds A35 (competing causes). Not yet reviewed by a clinician.
 - **Primary source:** Lee et al. 2019, the ASTCT consensus grading. I read it in full as the NIH author manuscript (PMC12180426); see §10.
 - **Purpose of this file:** to fix the clinical definitions that ReSauce code will later rely on, and to separate what the source says from what ReSauce chooses.
 
 ## Changelog
+
+**v0.4 → v0.4.1.** Adds assumption A35, a closed list of competing causes for attribution (§3.4, §7.5), tagged `[ASSUMPTION — EXPERT REVIEW]`. Logged change before locked-case writing. Not prompted by pipeline development; prompted by the reviewer's check of development cases (tocilizumab near findings in 15 of 20 cases; the intended answers already treat it as not competing).
 
 **v0.3 → v0.4.** The user made provisional decisions for NEW-1 to NEW-10 (listed in `docs/dataset-plan.md` v0.2 §10.2). Each one is a ReSauce choice pending clinician review, tagged `[ASSUMPTION — EXPERT REVIEW]`. Where an existing assumption covers the topic, it is amended (marked "*Amended in v0.4*" in §9). A34 is the only new assumption. No new source material was read.
 
@@ -170,6 +172,7 @@ Notes on the table:
 ReSauce's handling of attribution: [OPERATIONAL]
 - ReSauce will **not** decide attribution itself.
 - It extracts clinicians' documented attribution statements, with quotes.
+- What counts as a competing cause is a closed list (A35).
 - If a competing cause is documented near a finding and no clinician statement settles it, ReSauce reports the grade both with and without that finding, and labels the result *ambiguous evidence*, reason *attribution* (§7.5), when the two readings lead to different categories. Otherwise the shared category is used (§7.5, A23).
 
 **Timing of a competing cause.** A competing cause counts as "near" a finding (here) and as "coinciding" with it (§7.5) if it is documented in the same note as the finding, or documented as given or present within the 24 hours before the finding's event time (§6.1). [ASSUMPTION — EXPERT REVIEW] (A30) For a finding whose event time is a date range (§6.1), the 24 hours are counted back from the end of the range. This is the cautious choice: more results become ambiguous, none are hidden. [ASSUMPTION — EXPERT REVIEW] (A30)
@@ -439,7 +442,7 @@ Every 7.5 result has one of these reasons:
 
 | Reason | Situation |
 |---|---|
-| attribution | A finding that would change the grade or onset coincides with a documented competing cause (§3.4; timing rule A30), and no clinician statement attributes it either way. [OPERATIONAL] (A9) |
+| attribution | A finding that would change the grade or onset coincides with a documented competing cause (§3.4; timing rule A30; closed list of causes A35), and no clinician statement attributes it either way. [OPERATIONAL] (A9) |
 | conflicting assessments | Assessments at about the same time disagree (§6.4). |
 | assessment barrier | A documented language, hearing, vision or writing barrier, or baseline cognitive impairment, makes a low ICE score ambiguous (§4.1, A10). |
 | consciousness wording | A consciousness phrase could fit two Table 6 categories (A15). |
@@ -726,6 +729,10 @@ A19–A33 are provisional decisions made by the user so that synthetic test case
 - *Detail:* a neurological observation that meets no criterion and has no ICE total (e.g. "alert, confused") is not a gradeable assessment. A formal Grade 0 assessment is one kind of gradeable assessment. A partial ICE without a stated total is not one (A6), unless the same day has a qualifying finding.
 - *Why it matters:* this term decides §7.1 (whether a record's onset date can be refuted, or is insufficient evidence), the A24 flag and the day list of the unassessed-period flag.
 - *If wrong:* a broader definition (e.g. any neurological observation) would list fewer unassessed days and move some onset results away from 7.4; a narrower one (e.g. ICE totals only) would do the opposite.
+
+### Added in v0.4.1: competing causes
+
+**A35 [ASSUMPTION — EXPERT REVIEW] Competing causes (§3.4, §7.5) are a closed list, each documented as given or present, not merely suspected: sedating medication (benzodiazepines, opioids, propofol, dexmedetomidine, sedating antihistamines), hepatic failure, severe hypertension, eclampsia, a documented infection, an electrolyte abnormality, hypoglycaemia. These are never competing causes: CRS itself (including fever), and treatment for CRS or ICANS (tocilizumab, acetaminophen, corticosteroids such as dexamethasone, levetiracetam given as seizure prophylaxis).** Reason: the source lists immunosuppressive drugs among other causes, but these drugs are the standard treatment of the syndromes being graded; counting them would make almost every case ambiguous.
 
 ---
 
