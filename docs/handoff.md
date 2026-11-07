@@ -12,6 +12,30 @@ Each entry covers:
 
 ---
 
+## 2026-11-07: Claude Code project settings added
+
+**Status:** Setup change only. No code or research content changed. Milestone 2 status is unchanged (see entry below).
+
+**Done:**
+- Added `.claude/settings.json`:
+  - turns off commit and pull-request attribution (`attribution.commit` and `attribution.pr` set to empty strings, `sessionUrl` set to false);
+  - lets only `.venv/bin/python -m pytest`, `git status`, `git diff` and `git log` run without a permission prompt.
+- Added `.claude/settings.local.json` (personal settings) to `.gitignore`.
+
+**Decisions & why:**
+- A setting is enforced by Claude Code itself. A CLAUDE.md rule is only an instruction Claude reads and could miss. The CLAUDE.md attribution rule stays as a backup.
+- Used the empty-string form from the docs, not `"attribution": false`, because the docs say the `false` form needs Claude Code v2.1.281 or later. The empty-string form works on all versions.
+- Only read-only commands and the test command are pre-approved. Commits, pushes, deletions and installs still ask first.
+- Source: https://code.claude.com/docs/en/settings (and its settings-reference and permissions pages), read 2026-11-07.
+
+**Next steps:** Unchanged. Clinician review of assumptions A1–A18, then Step 2 after user approval.
+
+**Open questions:** None.
+
+**How to verify:** Open `.claude/settings.json`. Run `git check-ignore -v .claude/settings.local.json`. It should print the `.gitignore` line.
+
+---
+
 ## 2026-11-07: Milestone 2 Step 1, clinical methods drafted and internally reviewed
 
 **Status:** Milestone 2 Step 1 is drafted and internally reviewed. `docs/clinical-methods.md` v0.2 is committed. A clinician has not reviewed it yet. Step 2 has not started.

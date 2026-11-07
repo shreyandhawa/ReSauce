@@ -10,6 +10,7 @@ dist/
 # Secrets and local settings
 .env
 .env.*
+.claude/settings.local.json
 
 # Operating system clutter and logs
 .DS_Store
