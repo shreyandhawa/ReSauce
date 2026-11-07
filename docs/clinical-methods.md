@@ -1,6 +1,6 @@
 # ReSauce clinical methods: verifying documented ICANS
 
-- **Status:** Draft v0.1 (2026-11-07), Milestone 2 Step 1. **Not yet reviewed by a clinician.**
+- **Status:** Draft v0.2 (2026-11-07) — internal review fixes applied. Not yet reviewed by a clinician.
 - **Primary source:** Lee et al. 2019, the ASTCT consensus grading. I read it in full as the NIH author manuscript (PMC12180426); see §10.
 - **Purpose of this file:** to fix the clinical definitions that ReSauce code will later rely on, and to separate what the source says from what ReSauce chooses.
 
@@ -100,7 +100,7 @@ The ICE (Immune effector Cell-associated Encephalopathy) score is a 10-point bed
 | Motor findings² | N/A | N/A | N/A | Deep focal motor weakness such as hemiparesis or paraparesis | [SOURCE: Lee 2019, Table 6] |
 | Raised ICP / cerebral edema³ | N/A | N/A | Focal/local edema on neuroimaging | Diffuse cerebral edema on neuroimaging; decerebrate or decorticate posturing; cranial nerve VI palsy; papilledema; or Cushing's triad | [SOURCE: Lee 2019, Table 6] |
 
-1. Depressed consciousness counts only if it is attributable to no other cause, for example no sedating medication. [SOURCE: Lee 2019, Table 6 footnote ❖]
+1. Depressed consciousness counts only if it is attributable to no other cause, for example no sedating medication. [SOURCE: Lee 2019, Table 6 footnote ❖] Free-text descriptions of consciousness are mapped to these four categories using a clinician-approved phrase list. [ASSUMPTION — EXPERT REVIEW] (A15)
 2. Tremor and myoclonus may be graded with CTCAE v5.0 (the NCI's Common Terminology Criteria for Adverse Events), but they do not affect the ICANS grade. [SOURCE: Lee 2019, Table 6 footnote §]
 3. Intracranial hemorrhage, with or without edema, is excluded from ICANS grading and may be graded with CTCAE v5.0. [SOURCE: Lee 2019, Table 6 footnote #]
 
@@ -109,7 +109,7 @@ Notes on the table:
 - The Grade 4 text lists further signs of raised ICP that are not in Table 6, for example projectile vomiting with headache. [SOURCE: Lee 2019, §Grade 4 ICANS] ReSauce grades from Table 6 only and flags text-only signs for review. [ASSUMPTION — EXPERT REVIEW] (A12)
 - Grade 5 ICANS is defined by convention as death due to ICANS, where no other cause is the main factor. [SOURCE: Lee 2019, §Grade 5 ICANS] ReSauce does not assign Grade 5 (see §8). [OPERATIONAL]
 - Table 6 is labelled "for adults", but the source does not define the adult age range. Not specified in source.
-- The source does not define "Grade 0" or "no ICANS" for an assessment. ReSauce treats an assessment as Grade 0 when ICE = 10 and no domain criterion is met. [OPERATIONAL]
+- The source does not define "Grade 0" or "no ICANS" for an assessment. ReSauce treats an assessment as Grade 0 when ICE = 10 and no domain criterion is met. [OPERATIONAL] The Grade 1 consciousness criterion "awakens spontaneously" counts only when drowsiness is documented (A3). A narrative normal neurological note without a formal ICE score does not establish Grade 0 (A17).
 
 ### 3.4 Deriving the overall grade, and attribution
 
@@ -134,13 +134,13 @@ The patient below is fictional.
 
 On Day +6 after infusion, a note for synthetic patient SYN-EX-01 records:
 - ICE score 8/10 (missed the year and the counting-backwards task);
-- "patient rouses only to sternal rub, then answers questions";
+- "opens eyes only when gently shaken by the shoulder, then answers questions";
 - no sedating medication given in the previous 24 h.
 
 | Step | Result |
 |---|---|
 | ICE 8 | Grade 1 [SOURCE: Lee 2019, Table 6] |
-| Awakens only to tactile stimulus | Grade 3 [SOURCE: Lee 2019, Table 6] |
+| Awakens only to tactile stimulus | Grade 3 [SOURCE: Lee 2019, Table 6]. Phrase mapping per A15. |
 | No seizure, motor or ICP findings documented | No contribution from these domains. This is not proof they were absent (§7.4). |
 | Overall: most severe domain | **Grade 3** [SOURCE: Lee 2019, Table 6 footnote ‡] |
 
@@ -156,7 +156,7 @@ Reading only the ICE score would give Grade 1, which is two grades too low. The 
 |---|---|---|
 | Unarousable | ICE 0 because the patient is unarousable is Grade 4. [SOURCE: Lee 2019, Table 5; Table 6] | Grade 4 only if a note documents unarousability not attributed to another cause. [OPERATIONAL] |
 | Awake with global aphasia (mute, cannot follow commands) | ICE 0 may be Grade 3. [SOURCE: Lee 2019, Table 6 footnote ^; §Grade 3 ICANS] | Grade 3 needs documented wakefulness. ICE 0 with no consciousness information is *insufficient evidence* to choose between Grade 3 and 4. [OPERATIONAL] |
-| Sedated and/or intubated | The patient may not be assessable. Depressed consciousness must not be due to sedation. [SOURCE: Lee 2019, §Toxicities Excluded from the Definition of CRS; Table 6 footnote ❖] No grade rule is given for an unassessable patient. Not specified in source. | Record "not assessable" with the quoted reason. Never infer ICE 0 from sedation. [OPERATIONAL] |
+| Sedated and/or intubated | The patient may not be assessable. Depressed consciousness must not be due to sedation. [SOURCE: Lee 2019, §Toxicities Excluded from the Definition of CRS; Table 6 footnote ❖] No grade rule is given for an unassessable patient. Not specified in source. | Record "not assessable" with the quoted reason. Never infer ICE 0 from sedation. [OPERATIONAL] (A7) |
 | Intubation itself | Patients may be intubated for airway protection in Grade 4 ICANS. Intubation for neurological reasons is not captured again as Grade 4 CRS. [SOURCE: Lee 2019, §Grade 4 ICANS; §Grade 4 CRS] | Intubation is not a grading criterion on its own. [OPERATIONAL] |
 | Aphasia (partial) | ICE includes naming (expressive) and command following (receptive). Expressive aphasia is described as a very specific sign of ICANS. [SOURCE: Lee 2019, Table 5; §Symptoms of ICANS] | Scored through ICE as documented. |
 | Language barrier, hearing or vision loss, inability to write for other reasons, baseline cognitive impairment | Not specified in source. | If a note documents such a barrier, a low ICE score is flagged as *ambiguous*, not graded silently. [ASSUMPTION — EXPERT REVIEW] (A10) |
@@ -195,7 +195,7 @@ What the source specifies for children:
 - Reasons for the exclusion:
   - It avoids the age-12 inconsistency.
   - CAPD alone cannot separate Grade 1 from Grade 2.
-  - The age 18 cutoff is ReSauce's choice; the source gives none. (A9)
+  - The age 18 cutoff is ReSauce's choice; the source gives none. (A16)
 
 ---
 
@@ -226,7 +226,7 @@ Rules: [OPERATIONAL]
 | Typical timing | See §2 (during or after CRS; may recur a few days later) [SOURCE: Lee 2019, Introduction; §Symptoms of ICANS] | Context only. Not used as a rule. [OPERATIONAL] |
 | Grade across time | The source's "most severe event" rule is stated across *domains* [SOURCE: Lee 2019, Table 6 footnote ‡]. Whether "maximum grade" means the highest over time is not stated. | See maximum grade below. [ASSUMPTION — EXPERT REVIEW] (A2) |
 
-**Documentation-derived onset:** the earliest event time (compared as a calendar day) of a documented observation that meets any Grade ≥1 criterion in Table 6 and that no clinician attributes to another cause. Excluded symptoms (§4.2) do not count. [OPERATIONAL; see A4, A11]
+**Documentation-derived onset:** the earliest event time (compared as a calendar day) of a documented observation that meets any Grade ≥1 criterion in Table 6 and that no clinician attributes to another cause. Excluded symptoms (§4.2) do not count. [OPERATIONAL; see A4, A11, A18]
 
 **Documentation-derived maximum grade:** the highest per-assessment grade (§3.4) within the episode. [ASSUMPTION — EXPERT REVIEW] (A2)
 
@@ -270,6 +270,8 @@ All illustrations are fictional, with days counted from infusion (Day 0).
 **Conditions:** [OPERATIONAL]
 - If the documentation onset is a date range (§6.1), a mismatch is reported only when the record date lies outside the range.
 - A record onset *earlier* than the first documented finding is a mismatch only if a gradeable assessment on the record's date documents no ICANS. Otherwise it is *insufficient evidence* (§7.4).
+- A narrative normal neurological note without a formal ICE score does not count as documenting no ICANS (A17).
+- If the record dates onset from a first ICANS-compatible symptom that meets no Grade ≥1 criterion, the result is *insufficient evidence* (A18).
 
 **Example:** the record gives onset Day +4. The earliest qualifying note is Day +6 ("ICE 7/10"). A Day +4 note documents "ICE 10/10, alert". Result: mismatch, −2 days.
 
@@ -305,7 +307,7 @@ Because missing documentation does not prove a finding was absent, ReSauce repor
 
 **Definition:** a finding that would change the grade or onset coincides with a documented competing cause (§3.4), and no clinician statement attributes it either way. ReSauce reports the result with and without the finding. [OPERATIONAL] (A9)
 
-**Example:** a Day +5 note says "ICE 8/10; difficult to rouse; received lorazepam 2 h ago". The level of consciousness would give Grade 3, but sedation is documented [SOURCE: Lee 2019, Table 6 footnote ❖]. Result: Grade 3 if attributed to ICANS, Grade 1 (from ICE 8) if not. Ambiguous.
+**Example:** a Day +5 note says "ICE 8/10; awakens only when gently shaken; received lorazepam 2 h ago". The level of consciousness would give Grade 3, but sedation is documented [SOURCE: Lee 2019, Table 6 footnote ❖]. Result: Grade 3 if attributed to ICANS, Grade 1 (from ICE 8) if not. Ambiguous.
 
 ### 7.6 Legitimate revision (NOT an error)
 
@@ -395,6 +397,25 @@ Because missing documentation does not prove a finding was absent, ReSauce repor
 **A14. Lee 2019 is still the current standard for ICANS grading.**
 - *Why it matters:* later guidance was not reviewed.
 - *If wrong:* the criteria in §3 may need updating to newer guidance.
+
+**A15. Free-text consciousness descriptions are mapped to the four Table 6 categories using a clinician-approved phrase list.**
+- *Detail:* phrases such as "drowsy", "lethargic", "obtunded", "responds to pain" or "sternal rub" need a mapping. Until the list is approved, any phrase that could fit two categories is labelled ambiguous, not graded. A painful stimulus such as a sternal rub may meet the Grade 4 criterion ("vigorous or repetitive tactile stimuli") rather than Grade 3.
+- *Why it matters:* notes rarely use the Table 6 wording, and this domain alone can set Grade 3 or 4 (§3.5).
+- *If wrong:* consciousness-based grades would be assigned inconsistently, shifting the maximum grade by one or more levels.
+
+**A16. The initial scope is limited to patients aged ≥18 at infusion.**
+- *Why it matters:* this cutoff is ReSauce's choice; the source gives none (§5).
+- *If wrong:* a different cutoff would change which synthetic cases are in scope, and might bring in the pediatric pathway.
+
+**A17. A narrative normal neurological note without a formal ICE score does not establish Grade 0.**
+- *Detail:* a note such as "alert and oriented x4, neuro exam non-focal" is treated as insufficient evidence for ruling out ICANS on that date.
+- *Why it matters:* such notes are common, and they decide whether an earlier record onset can be refuted (§7.1).
+- *If wrong:* expert review may decide they count as negative evidence, turning some "insufficient evidence" results into mismatches.
+
+**A18. Abstractors may date onset from the first ICANS-compatible symptom.**
+- *Detail:* abstractors may use, for example, new confusion or word-finding difficulty, even without a formal grade. ReSauce's documentation-derived onset requires a Grade ≥1 criterion (§6.2), so the two may differ systematically. Under §7.1 such cases are insufficient evidence.
+- *Why it matters:* this could produce many onset flags that reflect a definitional difference, not an error.
+- *If wrong:* expert review should confirm this handling. If symptom-based onset is accepted, the onset rule in §6.2 must change.
 
 ---
 

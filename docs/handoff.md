@@ -12,6 +12,45 @@ Each entry covers:
 
 ---
 
+## 2026-11-07: Milestone 2 Step 1, clinical methods drafted and internally reviewed
+
+**Status:** Milestone 2 Step 1 is drafted and internally reviewed. `docs/clinical-methods.md` v0.2 is committed. A clinician has not reviewed it yet. Step 2 has not started.
+
+**Done:**
+- Read the primary source in full: Lee et al. 2019, ASTCT ICANS/CRS consensus grading (PMID 30592986, doi:10.1016/j.bbmt.2018.12.758).
+  - Version used: the NIH author manuscript (PMC12180426), retrieved from PubMed Central's official OAI service.
+  - The publisher's version could not be accessed.
+- Wrote `docs/clinical-methods.md` (v0.1, commit 59133fe). Every claim is tagged SOURCE, OPERATIONAL or ASSUMPTION — EXPERT REVIEW.
+- Applied internal review fixes (v0.2):
+  - consciousness wording in two examples;
+  - corrected cross-references (age cutoff, A3, A7);
+  - new assumptions A15–A18;
+  - checked the §8 citation to §Grade 2 CRS. It is correct and was left unchanged.
+
+**Decisions & why:**
+- Pediatric pathway excluded (adults ≥18 only): the source is inconsistent at age 12, and the CAPD tool cannot separate Grade 1 from Grade 2.
+- Missing ≠ absent:
+  - an over-graded record is reported as "not supported", never "wrong";
+  - a narrative normal neurological note does not rule out ICANS.
+- Attribution to other causes is taken only from clinician statements. ReSauce does not judge it.
+
+**Next steps:**
+- Clinician review of assumptions A1–A18 in `docs/clinical-methods.md` §9. This is the agenda for that review.
+- Step 2 (synthetic data format) only after the user approves it.
+
+**Open questions:**
+- Who will do the clinician review?
+- Carried forward: Node.js LTS version; no software licence chosen yet.
+
+**How to verify:**
+```bash
+cd ~/Projects/ReSauce
+git log --oneline -3     # expect the review-fix commit on top
+pytest                   # expect: 1 passed (no code changed)
+```
+
+---
+
 ## 2026-11-07: Milestone 1 complete (summary)
 
 **Status:** Milestone 1 (project foundation) is complete and verified. Milestone 2 is proposed below and awaits user approval.
