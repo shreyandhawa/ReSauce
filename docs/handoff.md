@@ -12,6 +12,84 @@ Each entry covers:
 
 ---
 
+## 2026-11-07: Milestone 2 Step 3 final review round (NEW-1 to NEW-10 decided provisionally)
+
+**Status:** Documents only. `docs/clinical-methods.md` is now v0.4 and `docs/dataset-plan.md` v0.3. This was the last planning round before Step 4. The plan is **not approved yet**; the case numbers are proposed for final approval. `data-format.md`, code, tests and settings are unchanged. No cases, case text, reference answers or code were written. No `data/` or `reference/` folders exist. `pytest` reports 75 passed. Not committed (the user runs `/finish-step`).
+
+**Done:**
+- `clinical-methods.md` v0.4:
+  - v0.3 → v0.4 changelog;
+  - NEW-1 to NEW-10 written into the rules, tagged `[ASSUMPTION — EXPERT REVIEW]`;
+  - existing assumptions amended where they cover the topic (A7, A15, A21–A26, A28–A30, A32; each marked "*Amended in v0.4*" in §9);
+  - one new assumption, A34 (gradeable assessment);
+  - new "Terms used in this section" in the §7 introduction;
+  - new case-level flag "ungradeable neurological symptom";
+  - cross-references checked: A1–A34 each defined once, no "not decided" text left.
+- `dataset-plan.md` v0.3:
+  - NEW-1 to NEW-10 moved to the resolved table (§10.1);
+  - edge-rule scenarios SC-65 to SC-71 (1 + 1 cases each);
+  - second "no ICANS" Neg scenario SC-72;
+  - new flags placed as distractors in named scenarios (§2.1);
+  - sizes recomputed by script;
+  - §2.1, §5.1, §8.1, §8.2 updated;
+  - user answers recorded (§11.1);
+  - 8 new open points, NEW-11 to NEW-18, each with an avoid rule (§10.2).
+
+**Decisions & why (made by the user; the clinical ones are provisional, pending clinician review):**
+- NEW-1: ICANS recorded, no qualifying finding, plus a "not assessable" period → A25 wins, grade 7.4. Why: an unassessed period could hide the recorded grade.
+- NEW-2: ungradeable symptoms do not block 7.7 in a "no ICANS" record; a new flag lists them. Why: keeps A21 as decided while making the symptoms visible. The clinician is asked whether they should block 7.7.
+- NEW-3: 7.5 only when the readings lead to different categories. Why: consistent with A33; an answer that every reading agrees on is not hidden as a review flag.
+- NEW-4: definitions of "gradeable assessment" (A34) and "documented 'not assessable' period" (A7). Why: several categories depend on them.
+- NEW-5: the unassessed-period flag is case-level, on every in-scope case. Why: one consistent rule instead of special cases.
+- NEW-6: the "record date matches" flag is added for any onset category. Why: the reviewer sees the likely reason for the record's date.
+- NEW-7: 7.6 condition (c) tests the last change. Why: that change produced the current value.
+- NEW-8: the window is applied per observation, by event date; a death makes the case out of scope whatever its date. Why: late entries about in-window events are real evidence.
+- NEW-9: onset is the earliest possible date; A30 for ranges counts back from the end of the range. Why: the cautious choice; more results become ambiguous, none are hidden.
+- NEW-10: baseline developmental delay is a fifth out-of-scope trigger. Why: §5 already excluded it.
+- Open-question answers:
+  - overlap threshold: 8 words;
+  - out-of-window documents in about 10% of cases: agreed;
+  - locked adjudicator: the user, and the 25% sample stays;
+  - non-Claude writer: not now;
+  - format Q1: the format stays, but every later version in the datasets gives a reason;
+  - SC-52 concentration: solved by the new SC-72;
+  - edge scenarios: 1 + 1 cases each, an exception because they test rules rather than categories.
+- §10.3 consequences accepted; SC-52 stays not "plain".
+- Proposed numbers (for final approval):
+  - 72 development cases; 153 locked cases (146 scored, 7 OOS);
+  - 40.4% Neg; 27.1% of Neg are "no ICANS";
+  - 2 extra "no ICANS" Neg cases (1 each in SC-52 and SC-72). The minimum was 1; 2 lets the extras be spread across both scenarios.
+
+**Next steps:**
+- User approves `dataset-plan.md` v0.3.
+- Then Step 4: development cases (72), plus the loader fix rejecting whitespace-only note text.
+
+**Open questions:**
+- `dataset-plan.md` §10.2, NEW-11 to NEW-18 (on the clinician agenda; cases avoid them). Notably:
+  - NEW-12: §7.3's second clause could make any ungradeable symptom a 7.3. SC-47's grade depends on this reading and is marked so; it is the only case that depends on an open point.
+  - NEW-13: whether "confused" is an ungradeable symptom when the note also has an ICE score. Until it is decided, free symptom words are kept out of most cases, which costs some realism.
+- `dataset-plan.md` §11.2:
+  - final approval of the numbers;
+  - clinician involvement (A1–A34, scenario realism, the A21 question, NEW-11 to NEW-18);
+  - a baseline specification before Milestone 3;
+  - scoring details.
+- §3.3 lists 6 rules that still have no scenario (e.g. NEW-1, NEW-7, NEW-10). The evaluation will not measure them.
+- Carried forward:
+  - `data-format.md` line 6 still cites clinical-methods v0.2;
+  - Node.js LTS version;
+  - no software licence chosen yet.
+
+**How to verify:**
+```bash
+cd ~/Projects/ReSauce
+.venv/bin/python -m pytest -p no:cacheprovider -v   # expect: 75 passed
+git status          # expect: 3 changed docs (clinical-methods, dataset-plan, handoff), no new folders
+git diff --stat     # only docs/ files
+```
+In `docs/clinical-methods.md`, check that §9 ends with A34 and that the changelog starts with "v0.3 → v0.4". In `docs/dataset-plan.md`, check that §2 lists SC-01 to SC-72, §10.1 lists NEW-1 to NEW-10 and §10.2 lists NEW-11 to NEW-18.
+
+---
+
 ## 2026-11-07: Milestone 2 Step 3 review fixes, gaps decided provisionally
 
 **Status:** Documents only. `docs/clinical-methods.md` is now v0.3, `docs/dataset-plan.md` v0.2 and `docs/data-format.md` v0.1.1. The dataset plan is still a draft and **not approved**. No cases, case text, reference answers or code were written. No `data/` or `reference/` folders exist. Code, tests and settings are unchanged. `pytest` reports 75 passed. Not committed (the user runs `/finish-step`).
