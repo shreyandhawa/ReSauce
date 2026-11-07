@@ -32,6 +32,7 @@ The current milestone and status are in `docs/handoff.md`.
 - Ask the user before adding a dependency, installing software, deleting or overwriting work, or deploying anything.
 - Never copy code from other projects.
 - Never commit secrets (`.env` files, keys, tokens).
+- Do not add "Co-Authored-By" or any other AI attribution lines to commit messages or pull requests.
 
 ## Working with the user
 The user is a beginner. For every action, explain in plain language:
@@ -54,3 +55,4 @@ pip install -e ".[dev]"      # one-time, and again after dependencies change
 python -m resauce            # run the program
 pytest                       # run the tests
 ```
+Do not add Co-Authored-By lines to commit messages.
