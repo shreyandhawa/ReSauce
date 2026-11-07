@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0028",
+  "document_id": "SYN-0028-D03",
+  "version": 1,
+  "status": "signed",
+  "note_type": "physician_progress_note",
+  "author_role": "resident_physician",
+  "documented_at": "2036-10-26T09:40",
+  "amendment_reason": null,
+  "text": "DAILY PROGRESS NOTE\nDate: 2036-10-26\nSymptoms: speech clear today\nNeuro: ICE 8/10 at 09:10 (orientation 3/4, attention 0/1)\nSeizure: none\nPlan: ICE every shift"
+}

@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0040",
+  "document_id": "SYN-0040-D03",
+  "version": 1,
+  "status": "signed",
+  "note_type": "physician_progress_note",
+  "author_role": "resident_physician",
+  "documented_at": "2036-06-20T10:15",
+  "amendment_reason": null,
+  "text": "CRS day 2, afebrile since 02:00 after tocilizumab. ICE 10/10 at 09:50. History of remote migraine, no headache now. Plan: continue monitoring."
+}

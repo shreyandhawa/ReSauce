@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0036",
+  "document_id": "SYN-0036-D05",
+  "version": 1,
+  "status": "signed",
+  "note_type": "physician_progress_note",
+  "author_role": "resident_physician",
+  "documented_at": "2034-02-28T09:55",
+  "amendment_reason": null,
+  "text": "Day 5. ICE 8/10 at 09:30 (orientation 3/4, attention 0/1, remaining items complete). Awake, no focal deficit. No seizure activity. Plan: ICE every shift."
+}

@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0029",
+  "document_id": "SYN-0029-D03",
+  "version": 1,
+  "status": "signed",
+  "note_type": "physician_progress_note",
+  "author_role": "resident_physician",
+  "documented_at": "2033-12-19T10:40",
+  "amendment_reason": null,
+  "text": "Day 6 note. ICE 5/10 at 10:10 on 19 Dec (orientation 1/4, naming 2/3, commands 1/1, writing 0/1, attention 1/1). Awake, no focal deficit, no seizure activity. Dexamethasone 10 mg IV started. Oral mucositis grade 2, painful swallowing, on saline rinses."
+}

@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0009",
+  "document_id": "SYN-0009-D12",
+  "version": 2,
+  "status": "signed",
+  "note_type": "discharge_summary",
+  "author_role": "attending_physician",
+  "documented_at": "2036-06-11T09:00",
+  "amendment_reason": "Corrected discharge weight",
+  "text": "Discharge summary. Admitted for CAR-T infusion on 28 May. Course: low-grade cytokine release syndrome from 30 May treated with one dose of tocilizumab and resolved. Neurological course: mild changes on ICE screening between 02 Jun and 05 Jun, with scores fluctuating (see the individual assessments), back to ICE 10/10 on 08 Jun. No seizures. Discharged home with follow-up in one week. Discharge weight 82.9 kg."
+}

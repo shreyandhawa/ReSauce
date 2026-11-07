@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0046",
+  "document_id": "SYN-0046-D05",
+  "version": 1,
+  "status": "signed",
+  "note_type": "ice_assessment",
+  "author_role": "nurse",
+  "documented_at": "2031-05-27T10:15",
+  "amendment_reason": null,
+  "text": "ICE 27 May 10:00: orientation 4/4, naming 3/3, commands 1/1, writing 1/1, attention 0/1 = 9/10. Awake, cooperative."
+}

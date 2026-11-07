@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0053",
+  "document_id": "SYN-0053-D01",
+  "version": 1,
+  "status": "signed",
+  "note_type": "nursing_note",
+  "author_role": "nurse",
+  "documented_at": "2035-11-07T21:35",
+  "amendment_reason": null,
+  "text": "RN note eve 07 Nov. Temp 37.0 after toci on 05 Nov. ICE 8/10 at 21:10 (orient 3/4, attn 0/1, rest full). Awake, cooperative. Fine tremor both hands noted. MD aware. No sz."
+}

@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0034",
+  "document_id": "SYN-0034-D04",
+  "version": 1,
+  "status": "signed",
+  "note_type": "physician_progress_note",
+  "author_role": "advanced_practice_provider",
+  "documented_at": "2035-06-07T11:15",
+  "amendment_reason": null,
+  "text": "D+10. Afebrile, eating well.\nInterval: fine hand tremor; ICE 7/10 at 09:10 on 02 Jun (lost 3: year, month, attention); alert; no seizures.\nPlan: ICE q shift, discharge planning."
+}

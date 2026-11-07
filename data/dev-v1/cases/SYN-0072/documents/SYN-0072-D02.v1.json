@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0072",
+  "document_id": "SYN-0072-D02",
+  "version": 1,
+  "status": "signed",
+  "note_type": "nursing_note",
+  "author_role": "nurse",
+  "documented_at": "2031-06-15T21:15",
+  "amendment_reason": null,
+  "text": "T 38.7 at 18:00, acetaminophen 650 mg, tocilizumab 19:20. T 37.5 at 21:00. No sz."
+}

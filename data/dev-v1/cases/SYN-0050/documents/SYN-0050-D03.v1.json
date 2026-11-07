@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0050",
+  "document_id": "SYN-0050-D03",
+  "version": 1,
+  "status": "signed",
+  "note_type": "neurology_consult",
+  "author_role": "neurologist",
+  "documented_at": "2032-08-27T11:40",
+  "amendment_reason": null,
+  "text": "Neurology consultation on 27 Aug. ICE 5/10 at 11:10 (orientation 1/4, naming 2/3, commands 1/1, writing 0/1, attention 1/1). Awakens to voice. Temperature now 37.6. The findings are consistent with ICANS and are not explained by the fever. No seizures, no focal motor deficit. Plan: dexamethasone 10 mg IV now, repeat ICE this evening."
+}

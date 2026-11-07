@@ -1,0 +1,158 @@
+{
+  "answer_format": "0.1-provisional",
+  "case_id": "SYN-0040",
+  "scenario_id": "SC-34",
+  "scenario_label": "Record onset corrected (clerical) with no new documentation; current value agrees",
+  "case_type": "Neg",
+  "tags": [
+    "revision without new documentation",
+    "multi-version record",
+    "amended note"
+  ],
+  "status": "not clinician-verified",
+  "answer_kind": "intended",
+  "provenance": {
+    "clinical_methods": "v0.4.1",
+    "data_format": "v0.1.2",
+    "dataset_plan": "v0.3.1",
+    "dataset_id": "SYN-DS-DEV-V1",
+    "dataset_version": "0.4.0",
+    "ordering_seed": 20261107,
+    "date_written": "2026-11-07"
+  },
+  "out_of_scope": null,
+  "fields": {
+    "onset": {
+      "category": "7.7",
+      "record_value": "2036-06-22",
+      "documented_value": {
+        "date": "2036-06-22",
+        "study_day": 5
+      },
+      "signed_difference_days": 0,
+      "difference_note": null,
+      "readings": null,
+      "evidence": [
+        {
+          "role": "earliest qualifying finding (ICE 8/10, Grade 1)",
+          "document_id": "SYN-0040-D05",
+          "version": 1,
+          "quote": "ICE 8/10 at 02:10",
+          "start": 13,
+          "end": 30
+        }
+      ],
+      "record_history": {
+        "a": true,
+        "b": true,
+        "c": false,
+        "explanation": "Onset changed from Day +4 to Day +5 (a). Current value agrees with the documents (b). No document version has documented_at after record version 1 (Day +12) and no later than record version 2 (Day +20); every document was written by Day +10 (c fails). So 7.7 plus 'revision without new documentation'."
+      }
+    },
+    "max_grade": {
+      "category": "7.7",
+      "record_value": 2,
+      "documented_value": {
+        "grade": 2
+      },
+      "signed_difference_days": null,
+      "difference_note": null,
+      "readings": null,
+      "evidence": [
+        {
+          "role": "worst ICE (5/10, Grade 2)",
+          "document_id": "SYN-0040-D07",
+          "version": 1,
+          "quote": "ICE 5/10 at 11:00",
+          "start": 38,
+          "end": 55
+        },
+        {
+          "role": "consciousness criterion (Grade 2)",
+          "document_id": "SYN-0040-D07",
+          "version": 1,
+          "quote": "Awakens to voice",
+          "start": 139,
+          "end": 155
+        }
+      ],
+      "record_history": {
+        "a": false,
+        "b": null,
+        "c": null,
+        "explanation": "Grade did not change between record versions, so 7.6 cannot apply."
+      }
+    }
+  },
+  "case_flags": {
+    "unassessed_period": {
+      "days_without_gradeable_assessment": [
+        1,
+        2,
+        8,
+        9,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28
+      ],
+      "not_assessable_periods": []
+    },
+    "ungradeable_neurological_symptom": []
+  },
+  "other_flags": [
+    {
+      "flag": "revision without new documentation",
+      "field": "onset",
+      "detail": "Record onset changed Day +4 to Day +5; the current value agrees but no document appeared in the interval",
+      "evidence": [
+        {
+          "role": "document that supports the current value (written before record version 1)",
+          "document_id": "SYN-0040-D05",
+          "version": 1,
+          "quote": "ICE 8/10 at 02:10",
+          "start": 13,
+          "end": 30
+        }
+      ]
+    }
+  ],
+  "ambiguity_notes": [
+    "The amendment to the Day +7 physician note (document 8) only corrects a blood pressure; it changes no neurological content."
+  ],
+  "depends_on_open_points": [],
+  "author_checks": {
+    "distractors": [
+      "CRS fever with acetaminophen and tocilizumab (not competing causes, A35)",
+      "remote migraine history",
+      "fine tremor (excluded symptom, Day +6)"
+    ],
+    "negated_findings": [
+      "No seizure activity",
+      "no focal motor deficit"
+    ],
+    "positive_findings": [
+      "ICE 8/10 on Day +5",
+      "ICE 5/10 and awakens to voice on Day +6"
+    ],
+    "brief_features_used": [
+      "multi_version_record (scenario)",
+      "amended_note random, documented before record version 1",
+      "style mixed"
+    ]
+  }
+}

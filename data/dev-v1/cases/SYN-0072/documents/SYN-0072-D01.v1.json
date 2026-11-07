@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0072",
+  "document_id": "SYN-0072-D01",
+  "version": 1,
+  "status": "signed",
+  "note_type": "physician_progress_note",
+  "author_role": "attending_physician",
+  "documented_at": "2031-06-14T17:30",
+  "amendment_reason": null,
+  "text": "Infusion d0. Uneventful. ICE 10/10 at 16:50. Hx migraine, no HA now."
+}

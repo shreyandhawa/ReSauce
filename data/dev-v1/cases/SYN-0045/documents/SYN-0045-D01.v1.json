@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0045",
+  "document_id": "SYN-0045-D01",
+  "version": 1,
+  "status": "signed",
+  "note_type": "physician_progress_note",
+  "author_role": "attending_physician",
+  "documented_at": "2035-03-25T10:10",
+  "amendment_reason": null,
+  "text": "Day 2 progress note. Fever to 38.9 overnight, consistent with early cytokine release syndrome; tocilizumab given at 07:30. ICE 10/10 at 09:45, alert and oriented. Neurological examination non-focal. No seizure activity. Plan: continue close monitoring."
+}

@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0050",
+  "document_id": "SYN-0050-D02",
+  "version": 1,
+  "status": "signed",
+  "note_type": "physician_progress_note",
+  "author_role": "attending_physician",
+  "documented_at": "2032-08-25T10:15",
+  "amendment_reason": null,
+  "text": "Day 5 progress note. The fever persists: 38.8 at 09:30, blood pressure 104/62. At 09:50 on 25 Aug ICE 7/10 (orientation 2/4, naming 3/3, commands 1/1, writing 1/1, attention 0/1). He is awake and speaking. In my assessment the reduced ICE score is due to ICANS rather than the fever alone; cytokine release syndrome and ICANS are present together. No focal deficit, no seizure activity. Plan: repeat ICE every four hours."
+}

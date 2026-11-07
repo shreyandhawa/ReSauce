@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0040",
+  "document_id": "SYN-0040-D01",
+  "version": 1,
+  "status": "signed",
+  "note_type": "physician_progress_note",
+  "author_role": "attending_physician",
+  "documented_at": "2036-06-17T18:30",
+  "amendment_reason": null,
+  "text": "Infusion day note.\nCAR-T cells infused 14:20 without reaction. Vitals stable.\nNeuro: ICE 10/10 at 17:45, alert, no focal deficits.\nPlan: CRS and neuro checks every shift."
+}

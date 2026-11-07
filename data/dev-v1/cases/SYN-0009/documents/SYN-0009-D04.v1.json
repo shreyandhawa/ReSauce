@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0009",
+  "document_id": "SYN-0009-D04",
+  "version": 1,
+  "status": "signed",
+  "note_type": "physician_progress_note",
+  "author_role": "resident_physician",
+  "documented_at": "2036-05-31T09:45",
+  "amendment_reason": null,
+  "text": "Day 3 progress note. Cytokine release syndrome, low grade, settling after tocilizumab; afebrile since 23:00. ICE 10/10 at 09:20 this morning. He reports a mild frontal headache, treated with acetaminophen. Neurological examination otherwise non-focal. Plan: continue monitoring; neurological checks every shift."
+}

@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0034",
+  "document_id": "SYN-0034-D03",
+  "version": 1,
+  "status": "signed",
+  "note_type": "ice_assessment",
+  "author_role": "nurse",
+  "documented_at": "2035-06-05T09:30",
+  "amendment_reason": null,
+  "text": "ICE 05 Jun 09:20 = 10/10. Alert. Back to baseline. No tremor."
+}

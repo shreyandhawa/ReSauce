@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0015",
+  "document_id": "SYN-0015-D03",
+  "version": 1,
+  "status": "signed",
+  "note_type": "physician_progress_note",
+  "author_role": "attending_physician",
+  "documented_at": "2034-02-21T09:45",
+  "amendment_reason": null,
+  "text": "D+5 PN. ICE 4/10 at 09:15 on 21 Feb (orient 1/4, name 1/3, cmd 1/1, write 0/1, attn 1/1). Awakens to voice, falls asleep when not stimulated. No focal motor def. No sz. Dex 10 mg IV started."
+}

@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0029",
+  "document_id": "SYN-0029-D05",
+  "version": 1,
+  "status": "signed",
+  "note_type": "physician_progress_note",
+  "author_role": "attending_physician",
+  "documented_at": "2033-12-20T09:20",
+  "amendment_reason": null,
+  "text": "Seen at 09:00. The reduced arousal found at 06:30 is attributed to the hydromorphone PCA started on 19 Dec, not to ICANS. PCA dose reduced, pain plan reviewed with palliative team. Recheck tomorrow morning."
+}

@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0042",
+  "document_id": "SYN-0042-D01",
+  "version": 1,
+  "status": "signed",
+  "note_type": "physician_progress_note",
+  "author_role": "resident_physician",
+  "documented_at": "2035-03-23T10:20",
+  "amendment_reason": null,
+  "text": "Day 4. CRS g1 s/p tocilizumab on 21 Mar, afebrile. ICE 10/10 at 09:50, alert. Fine tremor of both hands noted at 09:50. No focal deficit, no seizures. Plan: ICE every shift."
+}

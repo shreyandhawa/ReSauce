@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0053",
+  "document_id": "SYN-0053-D04",
+  "version": 1,
+  "status": "signed",
+  "note_type": "ice_assessment",
+  "author_role": "nurse",
+  "documented_at": "2035-11-10T09:20",
+  "amendment_reason": null,
+  "text": "ICE 10 Nov 09:15: orient 4/4, name 3/3, cmd 1/1, write 1/1, attn 1/1 = 10/10. Alert, no tremor today."
+}

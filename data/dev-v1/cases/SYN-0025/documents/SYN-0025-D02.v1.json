@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0025",
+  "document_id": "SYN-0025-D02",
+  "version": 1,
+  "status": "signed",
+  "note_type": "physician_progress_note",
+  "author_role": "attending_physician",
+  "documented_at": "2035-10-04T10:30",
+  "amendment_reason": null,
+  "text": "DAILY PROGRESS NOTE\nDate: 2035-10-04\nCRS: Grade 1, tocilizumab given 03 Oct, afebrile\nSymptoms: headache, new onset, 4/10, frontal. Acetaminophen 650 mg given.\nNeuro: headache as above. No focal deficit.\nSeizure: none\nPlan: monitor, reassess tomorrow"
+}

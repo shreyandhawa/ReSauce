@@ -1,0 +1,145 @@
+{
+  "answer_format": "0.1-provisional",
+  "case_id": "SYN-0053",
+  "scenario_id": "SC-36",
+  "scenario_label": "Same documents as the nursing/physician pair; record uses the physician note's date",
+  "case_type": "Pos",
+  "tags": [
+    "repeated observation",
+    "multi-version record"
+  ],
+  "status": "not clinician-verified",
+  "answer_kind": "intended",
+  "provenance": {
+    "clinical_methods": "v0.4.1",
+    "data_format": "v0.1.2",
+    "dataset_plan": "v0.3.1",
+    "dataset_id": "SYN-DS-DEV-V1",
+    "dataset_version": "0.4.0",
+    "ordering_seed": 20261107,
+    "date_written": "2026-11-07"
+  },
+  "out_of_scope": null,
+  "fields": {
+    "onset": {
+      "category": "7.1",
+      "record_value": "2035-11-08",
+      "documented_value": {
+        "date": "2035-11-07",
+        "study_day": 5
+      },
+      "signed_difference_days": 1,
+      "difference_note": null,
+      "readings": null,
+      "evidence": [
+        {
+          "role": "earliest observation (nursing, Day +5 21:10)",
+          "document_id": "SYN-0053-D01",
+          "version": 1,
+          "quote": "ICE 8/10 at 21:10",
+          "start": 52,
+          "end": 69
+        },
+        {
+          "role": "record date follows the physician note, restating the nursing score",
+          "document_id": "SYN-0053-D02",
+          "version": 1,
+          "quote": "Per RN, ICE 8/10 at 21:10 on 07 Nov",
+          "start": 8,
+          "end": 43
+        }
+      ],
+      "record_history": {
+        "a": false,
+        "b": null,
+        "c": null,
+        "explanation": "Both record versions hold the same values (Day +6, Grade 1); no field changed, so 7.6 cannot apply."
+      }
+    },
+    "max_grade": {
+      "category": "7.7",
+      "record_value": 1,
+      "documented_value": {
+        "grade": 1
+      },
+      "signed_difference_days": null,
+      "difference_note": null,
+      "readings": null,
+      "evidence": [
+        {
+          "role": "ICE 8/10 (Grade 1)",
+          "document_id": "SYN-0053-D01",
+          "version": 1,
+          "quote": "ICE 8/10 at 21:10",
+          "start": 52,
+          "end": 69
+        }
+      ],
+      "record_history": {
+        "a": false,
+        "b": null,
+        "c": null,
+        "explanation": "No change in the grade between record versions."
+      }
+    }
+  },
+  "case_flags": {
+    "unassessed_period": {
+      "days_without_gradeable_assessment": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        7,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28
+      ],
+      "not_assessable_periods": []
+    },
+    "ungradeable_neurological_symptom": []
+  },
+  "other_flags": [],
+  "ambiguity_notes": [
+    "Record Day +6 is one day after the earliest observation (Day +5 21:10): signed difference +1."
+  ],
+  "depends_on_open_points": [],
+  "author_checks": {
+    "distractors": [
+      "CRS fever with tocilizumab (Day +3)",
+      "fine tremor (excluded symptom)",
+      "normal EEG"
+    ],
+    "negated_findings": [
+      "No sz",
+      "no focal def",
+      "no tremor today"
+    ],
+    "positive_findings": [
+      "ICE 8/10 Day +5 and Day +6"
+    ],
+    "brief_features_used": [
+      "multi_version_record: same values re-entered",
+      "normal EEG distractor",
+      "style abbreviation-heavy"
+    ]
+  }
+}

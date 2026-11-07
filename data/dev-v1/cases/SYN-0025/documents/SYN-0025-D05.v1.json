@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0025",
+  "document_id": "SYN-0025-D05",
+  "version": 1,
+  "status": "signed",
+  "note_type": "neurology_consult",
+  "author_role": "neurologist",
+  "documented_at": "2035-10-07T12:00",
+  "amendment_reason": null,
+  "text": "NEUROLOGY CONSULT\nDate: 2035-10-07\nReason: falling ICE scores\nICE: 6/10 at 11:30 (orientation 2/4, naming 2/3, commands 1/1, writing 0/1, attention 1/1)\nLevel of consciousness: awakens to voice\nMotor: no focal deficit\nSeizure: none\nPlan: dexamethasone 10 mg IV, repeat ICE this evening"
+}

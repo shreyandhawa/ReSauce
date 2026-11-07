@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0045",
+  "document_id": "SYN-0045-D07",
+  "version": 1,
+  "status": "signed",
+  "note_type": "neurology_consult",
+  "author_role": "neurologist",
+  "documented_at": "2035-04-05T11:00",
+  "amendment_reason": null,
+  "text": "Neurology review, 05 Apr. ICE 5/10 at 10:30 (orientation 1/4, naming 2/3, commands 1/1, writing 0/1, attention 1/1). Awakens to voice and then settles back to sleep. No focal motor deficit and no seizure activity. Mild bilateral hand tremor. Impression: recurrent neurotoxicity after a documented full recovery on 30 Mar. Plan: dexamethasone 10 mg IV now, repeat ICE in the evening."
+}

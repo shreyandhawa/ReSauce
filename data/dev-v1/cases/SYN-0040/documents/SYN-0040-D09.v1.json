@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0040",
+  "document_id": "SYN-0040-D09",
+  "version": 1,
+  "status": "signed",
+  "note_type": "discharge_summary",
+  "author_role": "attending_physician",
+  "documented_at": "2036-06-27T16:20",
+  "amendment_reason": null,
+  "text": "Discharge summary.\nCRS grade 1, resolved after one dose of tocilizumab.\nNeurotoxicity: fluctuating ICE scores from 22 Jun, lowest ICE 5/10 on 23 Jun, treated with dexamethasone, recovered. ICE 10/10 on 27 Jun at 08:30.\nDischarged home with follow-up in 1 week."
+}

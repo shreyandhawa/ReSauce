@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0045",
+  "document_id": "SYN-0045-D03",
+  "version": 1,
+  "status": "signed",
+  "note_type": "physician_progress_note",
+  "author_role": "resident_physician",
+  "documented_at": "2035-03-28T09:30",
+  "amendment_reason": null,
+  "text": "Day 5 progress note. Reviewed the ICE of 8/10 recorded on 27 Mar. On 28 Mar at 09:05 ICE 7/10 (orientation 2/4, naming 3/3, commands 1/1, writing 1/1, attention 0/1). Awake, no focal deficit. Mild headache, acetaminophen given. Will repeat this evening."
+}

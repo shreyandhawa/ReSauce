@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0050",
+  "document_id": "SYN-0050-D01",
+  "version": 1,
+  "status": "signed",
+  "note_type": "physician_progress_note",
+  "author_role": "attending_physician",
+  "documented_at": "2032-08-24T14:20",
+  "amendment_reason": null,
+  "text": "Day 4 progress note. Cytokine release syndrome: temperature 39.2 at 12:00 with blood pressure 96/58, responding to a fluid bolus. Tocilizumab was given at 12:45 and acetaminophen 650 mg at 12:50. ICE 10/10 at 13:30, alert and oriented. No seizure activity and no focal weakness. Plan: continue close monitoring of fever and neurological status."
+}

@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0072",
+  "document_id": "SYN-0072-D03",
+  "version": 1,
+  "status": "signed",
+  "note_type": "physician_progress_note",
+  "author_role": "advanced_practice_provider",
+  "documented_at": "2031-06-20T10:05",
+  "amendment_reason": null,
+  "text": "D+6. Afebrile since d2. ICE 8/10 at 09:40 (orient 3/4, attn 0/1). Awake, coop. No focal def. No sz. Plan ICE q shift."
+}

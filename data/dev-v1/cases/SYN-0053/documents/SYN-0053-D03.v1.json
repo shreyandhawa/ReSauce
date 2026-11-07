@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0053",
+  "document_id": "SYN-0053-D03",
+  "version": 1,
+  "status": "signed",
+  "note_type": "eeg_report",
+  "author_role": "neurologist",
+  "documented_at": "2035-11-09T16:00",
+  "amendment_reason": null,
+  "text": "EEG routine, 30 min, 09 Nov.\nIndication: neuro surveillance after CAR-T.\nFindings: normal awake background, posterior rhythm 10 Hz, no slowing, no epileptiform discharges.\nImpression: normal EEG."
+}

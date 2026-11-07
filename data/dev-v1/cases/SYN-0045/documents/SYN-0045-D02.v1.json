@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0045",
+  "document_id": "SYN-0045-D02",
+  "version": 1,
+  "status": "signed",
+  "note_type": "nursing_note",
+  "author_role": "nurse",
+  "documented_at": "2035-03-27T20:45",
+  "amendment_reason": null,
+  "text": "Evening shift. ICE score 8/10 at 20:20 on 27 Mar (orientation 3/4, attention 0/1, other items complete). Awake and cooperative. Temperature 37.3. Physician informed. No seizure activity."
+}

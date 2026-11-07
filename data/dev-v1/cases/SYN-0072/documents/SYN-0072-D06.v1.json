@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0072",
+  "document_id": "SYN-0072-D06",
+  "version": 1,
+  "status": "signed",
+  "note_type": "discharge_summary",
+  "author_role": "attending_physician",
+  "documented_at": "2031-06-25T13:30",
+  "amendment_reason": null,
+  "text": "D/C summary. CRS g1 d1-d2, toci x1. Mild neurotoxicity d6-d7 (ICE 8-9/10), resolved, ICE 10/10 24 Jun. D/C home. D/C temp 36.8."
+}

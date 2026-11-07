@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0045",
+  "document_id": "SYN-0045-D06",
+  "version": 1,
+  "status": "signed",
+  "note_type": "nursing_note",
+  "author_role": "nurse",
+  "documented_at": "2035-04-04T21:15",
+  "amendment_reason": null,
+  "text": "Evening note 04 Apr. At 20:40 the patient had trouble with the ICE: score 7/10 (orientation 2/4, naming 3/3, commands 1/1, writing 1/1, attention 0/1). Awake and speaking. Temperature 37.0. No seizure activity. Doctor on call informed."
+}

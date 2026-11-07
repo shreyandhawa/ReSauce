@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0045",
+  "document_id": "SYN-0045-D08",
+  "version": 1,
+  "status": "signed",
+  "note_type": "discharge_summary",
+  "author_role": "attending_physician",
+  "documented_at": "2035-04-08T14:30",
+  "amendment_reason": null,
+  "text": "Discharge summary. Day 0 infusion. Mild cytokine release syndrome from 25 Mar, resolved after one dose of tocilizumab. Neurotoxicity in two phases: first from 27 Mar with ICE 8/10, resolved by 30 Mar (ICE 10/10); second from 04 Apr with lowest ICE 5/10 on 05 Apr, treated with dexamethasone. ICE 10/10 on 07 Apr. Normal MRI brain 31 Mar. Discharged home."
+}

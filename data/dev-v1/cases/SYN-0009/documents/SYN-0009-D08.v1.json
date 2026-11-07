@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0009",
+  "document_id": "SYN-0009-D08",
+  "version": 1,
+  "status": "signed",
+  "note_type": "physician_progress_note",
+  "author_role": "resident_physician",
+  "documented_at": "2036-06-04T15:05",
+  "amendment_reason": null,
+  "text": "Reviewed the patient following the nursing call. On my examination at 14:40 the ICE score was 8/10 (orientation 3/4, attention 0/1, all other items complete). He is awake, speaking in full sentences and following commands. No focal motor deficit, no seizure activity. I will ask the neurology team to see him in the morning and repeat the ICE this evening."
+}

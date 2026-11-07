@@ -1,0 +1,140 @@
+{
+  "answer_format": "0.1-provisional",
+  "case_id": "SYN-0029",
+  "scenario_id": "SC-43",
+  "scenario_label": "A clinician attributes the Grade 3 finding to another cause; the record counts it",
+  "case_type": "Pos",
+  "tags": [
+    "attribution",
+    "clinician statement"
+  ],
+  "status": "not clinician-verified",
+  "answer_kind": "intended",
+  "provenance": {
+    "clinical_methods": "v0.4.1",
+    "data_format": "v0.1.2",
+    "dataset_plan": "v0.3.1",
+    "dataset_id": "SYN-DS-DEV-V1",
+    "dataset_version": "0.4.0",
+    "ordering_seed": 20261107,
+    "date_written": "2026-11-07"
+  },
+  "out_of_scope": null,
+  "fields": {
+    "onset": {
+      "category": "7.7",
+      "record_value": "2033-12-18",
+      "documented_value": {
+        "date": "2033-12-18",
+        "study_day": 5
+      },
+      "signed_difference_days": 0,
+      "difference_note": null,
+      "readings": null,
+      "evidence": [
+        {
+          "role": "first qualifying finding (ICE 8/10, Grade 1)",
+          "document_id": "SYN-0029-D02",
+          "version": 1,
+          "quote": "ICE 8/10 at 15:10",
+          "start": 11,
+          "end": 28
+        }
+      ],
+      "record_history": null
+    },
+    "max_grade": {
+      "category": "7.3",
+      "record_value": 3,
+      "documented_value": {
+        "grade": 2
+      },
+      "signed_difference_days": null,
+      "difference_note": null,
+      "readings": null,
+      "evidence": [
+        {
+          "role": "highest supported grade: ICE 5/10 (Grade 2)",
+          "document_id": "SYN-0029-D03",
+          "version": 1,
+          "quote": "ICE 5/10 at 10:10",
+          "start": 12,
+          "end": 29
+        },
+        {
+          "role": "Grade 3 criterion met on Day +7, with opioid in the same note",
+          "document_id": "SYN-0029-D04",
+          "version": 1,
+          "quote": "opens eyes only when the shoulder is gently shaken",
+          "start": 110,
+          "end": 160
+        },
+        {
+          "role": "clinician attributes the Day +7 finding to hydromorphone",
+          "document_id": "SYN-0029-D05",
+          "version": 1,
+          "quote": "attributed to the hydromorphone PCA",
+          "start": 53,
+          "end": 88
+        }
+      ],
+      "record_history": null
+    }
+  },
+  "case_flags": {
+    "unassessed_period": {
+      "days_without_gradeable_assessment": [
+        0,
+        1,
+        2,
+        4,
+        7,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28
+      ],
+      "not_assessable_periods": []
+    },
+    "ungradeable_neurological_symptom": []
+  },
+  "other_flags": [],
+  "ambiguity_notes": [
+    "The only Grade 3 criterion (arousal only to tactile stimulus, Day +7 06:30) has an opioid in the same note and a clinician explicitly attributes it to the opioid and not to ICANS (A9, A35). It is therefore not a qualifying finding. The highest supported grade is 2. No 'not assessable' period is documented, so the over-graded record is 7.3 and Day +7 is only an undocumented day in the unassessed-period list."
+  ],
+  "depends_on_open_points": [],
+  "author_checks": {
+    "distractors": [
+      "hydromorphone (opioid, competing cause with clinician attribution)",
+      "CRS with tocilizumab",
+      "oral mucositis pain"
+    ],
+    "negated_findings": [
+      "No seizure activity",
+      "no focal deficit"
+    ],
+    "positive_findings": [
+      "ICE 8/10, ICE 5/10",
+      "arousal only to shoulder shake"
+    ],
+    "brief_features_used": [
+      "style mixed"
+    ]
+  }
+}

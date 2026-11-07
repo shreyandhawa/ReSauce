@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0057",
+  "document_id": "SYN-0057-D02",
+  "version": 1,
+  "status": "signed",
+  "note_type": "nursing_note",
+  "author_role": "nurse",
+  "documented_at": "2036-10-18T16:40",
+  "amendment_reason": null,
+  "text": "Neuro check 18 Oct at 16:15: ICE 8/10 (orientation 3/4, attention 0/1, other items full). Awake, pleasant. Temp 37.1. Physician informed. No seizure activity."
+}

@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0072",
+  "document_id": "SYN-0072-D05",
+  "version": 1,
+  "status": "signed",
+  "note_type": "ice_assessment",
+  "author_role": "nurse",
+  "documented_at": "2031-06-24T09:25",
+  "amendment_reason": null,
+  "text": "ICE 24 Jun 09:15 = 10/10. Alert."
+}

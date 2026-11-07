@@ -1,0 +1,141 @@
+{
+  "answer_format": "0.1-provisional",
+  "case_id": "SYN-0050",
+  "scenario_id": "SC-44",
+  "scenario_label": "Finding during CRS fever; a clinician explicitly attributes it to ICANS; record correct",
+  "case_type": "Neg",
+  "tags": [
+    "clinician statement",
+    "CRS fever"
+  ],
+  "status": "not clinician-verified",
+  "answer_kind": "intended",
+  "provenance": {
+    "clinical_methods": "v0.4.1",
+    "data_format": "v0.1.2",
+    "dataset_plan": "v0.3.1",
+    "dataset_id": "SYN-DS-DEV-V1",
+    "dataset_version": "0.4.0",
+    "ordering_seed": 20261107,
+    "date_written": "2026-11-07"
+  },
+  "out_of_scope": null,
+  "fields": {
+    "onset": {
+      "category": "7.7",
+      "record_value": "2032-08-25",
+      "documented_value": {
+        "date": "2032-08-25",
+        "study_day": 5
+      },
+      "signed_difference_days": 0,
+      "difference_note": null,
+      "readings": null,
+      "evidence": [
+        {
+          "role": "first qualifying finding (ICE 7/10, Grade 1) during fever",
+          "document_id": "SYN-0050-D02",
+          "version": 1,
+          "quote": "ICE 7/10 (orientation 2/4",
+          "start": 98,
+          "end": 123
+        },
+        {
+          "role": "clinician attributes the reduced ICE to ICANS",
+          "document_id": "SYN-0050-D02",
+          "version": 1,
+          "quote": "the reduced ICE score is due to ICANS rather than the fever alone",
+          "start": 223,
+          "end": 288
+        }
+      ],
+      "record_history": null
+    },
+    "max_grade": {
+      "category": "7.7",
+      "record_value": 2,
+      "documented_value": {
+        "grade": 2
+      },
+      "signed_difference_days": null,
+      "difference_note": null,
+      "readings": null,
+      "evidence": [
+        {
+          "role": "ICE 5/10 (Grade 2)",
+          "document_id": "SYN-0050-D03",
+          "version": 1,
+          "quote": "ICE 5/10 at 11:10",
+          "start": 34,
+          "end": 51
+        },
+        {
+          "role": "awakens to voice (Grade 2)",
+          "document_id": "SYN-0050-D03",
+          "version": 1,
+          "quote": "Awakens to voice",
+          "start": 125,
+          "end": 141
+        }
+      ],
+      "record_history": null
+    }
+  },
+  "case_flags": {
+    "unassessed_period": {
+      "days_without_gradeable_assessment": [
+        0,
+        1,
+        2,
+        3,
+        6,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28
+      ],
+      "not_assessable_periods": []
+    },
+    "ungradeable_neurological_symptom": []
+  },
+  "other_flags": [],
+  "ambiguity_notes": [
+    "CRS fever is never a competing cause (A35). The attending's statement on Day +5 and the neurologist's on Day +7 both attribute the findings to ICANS (A9)."
+  ],
+  "depends_on_open_points": [],
+  "author_checks": {
+    "distractors": [
+      "CRS fever, hypotension, tocilizumab and acetaminophen (none are competing causes, A35)"
+    ],
+    "negated_findings": [
+      "No focal deficit",
+      "no seizure activity",
+      "no focal motor deficit"
+    ],
+    "positive_findings": [
+      "ICE 7/10 on Day +5",
+      "ICE 5/10 on Day +7"
+    ],
+    "brief_features_used": [
+      "style verbose",
+      "3 documents"
+    ]
+  }
+}

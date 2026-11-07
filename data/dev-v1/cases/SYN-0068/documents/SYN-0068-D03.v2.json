@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0068",
+  "document_id": "SYN-0068-D03",
+  "version": 2,
+  "status": "unsigned",
+  "note_type": "other",
+  "author_role": "other",
+  "documented_at": "2036-07-18T08:30",
+  "amendment_reason": "Weight updated after rechecking the scale",
+  "text": "Dietitian note 17 Jul. Weight 71.9 kg, down 2 kg since admission. Appetite fair, taking oral supplements twice daily. Plan: continue supplements and review in 3 days."
+}

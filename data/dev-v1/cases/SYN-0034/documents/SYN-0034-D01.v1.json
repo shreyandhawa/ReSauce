@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0034",
+  "document_id": "SYN-0034-D01",
+  "version": 1,
+  "status": "signed",
+  "note_type": "ice_assessment",
+  "author_role": "nurse",
+  "documented_at": "2035-05-22T10:20",
+  "amendment_reason": null,
+  "text": "Pre-infusion baseline 22 May 10:10. ICE 10/10. Alert. Baseline for CAR-T."
+}

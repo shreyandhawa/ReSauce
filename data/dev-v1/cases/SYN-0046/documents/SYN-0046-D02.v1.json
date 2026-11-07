@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0046",
+  "document_id": "SYN-0046-D02",
+  "version": 1,
+  "status": "signed",
+  "note_type": "physician_progress_note",
+  "author_role": "attending_physician",
+  "documented_at": "2031-05-23T09:10",
+  "amendment_reason": null,
+  "text": "Day 5 note. ICE 8/10 at 08:50 (orientation 3/4, attention 0/1, rest complete). Awake. Lorazepam 0.5 mg IV given at 04:00 for nausea. No seizures. Recheck ICE this afternoon."
+}

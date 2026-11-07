@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0015",
+  "document_id": "SYN-0015-D04",
+  "version": 1,
+  "status": "signed",
+  "note_type": "neurology_consult",
+  "author_role": "neurologist",
+  "documented_at": "2034-02-22T11:30",
+  "amendment_reason": null,
+  "text": "Neuro consult 22 Feb. ICE 5/10 at 11:00 (orient 2/4, name 1/3, cmd 1/1, write 0/1, attn 1/1). Fine tremor. No sz, no focal motor def. Continue dex."
+}

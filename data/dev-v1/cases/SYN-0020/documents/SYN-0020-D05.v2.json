@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0020",
+  "document_id": "SYN-0020-D05",
+  "version": 2,
+  "status": "signed",
+  "note_type": "discharge_summary",
+  "author_role": "attending_physician",
+  "documented_at": "2035-01-04T08:00",
+  "amendment_reason": "Corrected discharge weight",
+  "text": "D/C summary. Hosp course: CRS g1 resolved s/p toci. Mild neurotoxicity: ICE 8/10 29 Dec-30 Dec, no treatment needed, ICE 10/10 01 Jan. D/C home, f/u 1 wk. D/C weight 71.2 kg."
+}

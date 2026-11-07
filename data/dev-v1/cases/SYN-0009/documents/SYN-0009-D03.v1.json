@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0009",
+  "document_id": "SYN-0009-D03",
+  "version": 1,
+  "status": "signed",
+  "note_type": "nursing_note",
+  "author_role": "nurse",
+  "documented_at": "2036-05-30T20:30",
+  "amendment_reason": null,
+  "text": "Evening summary. Fever to 39.0 at 17:45 with chills, blood pressure 102/64. Acetaminophen 650 mg given at 18:00 and tocilizumab infused from 19:10 as ordered by the team. Temperature 37.6 at 20:15. No seizure activity and no new weakness noted. Patient tolerating oral fluids."
+}

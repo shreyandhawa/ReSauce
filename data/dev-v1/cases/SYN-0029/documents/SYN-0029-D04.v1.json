@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0029",
+  "document_id": "SYN-0029-D04",
+  "version": 1,
+  "status": "signed",
+  "note_type": "nursing_note",
+  "author_role": "nurse",
+  "documented_at": "2033-12-20T06:50",
+  "amendment_reason": null,
+  "text": "Early report: hydromorphone PCA started at 21:00 on 19 Dec for mucositis pain. At 06:30 on 20 Dec the patient opens eyes only when the shoulder is gently shaken, then answers in short phrases. Temp 36.8. Physician informed."
+}

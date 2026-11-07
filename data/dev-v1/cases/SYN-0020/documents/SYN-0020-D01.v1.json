@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0020",
+  "document_id": "SYN-0020-D01",
+  "version": 1,
+  "status": "signed",
+  "note_type": "physician_progress_note",
+  "author_role": "resident_physician",
+  "documented_at": "2034-12-28T09:30",
+  "amendment_reason": null,
+  "text": "D+3 PN. CRS g1, Tmax 38.8 overnight, tocilizumab x1 given 27 Dec. Mild HA, acetaminophen PRN. ICE 10/10 at 09:10. No focal def. No sz."
+}

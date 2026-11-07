@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0036",
+  "document_id": "SYN-0036-D07",
+  "version": 2,
+  "status": "unsigned",
+  "note_type": "other",
+  "author_role": "other",
+  "documented_at": "2034-03-04T09:00",
+  "amendment_reason": "Weight corrected after rechecking the scale",
+  "text": "Pharmacy medication review 03 Mar. Current medications: filgrastim 300 mcg daily from 02 Mar, famotidine 20 mg daily, valacyclovir 500 mg twice daily, dexamethasone taper. No interactions identified. Weight 66.8 kg."
+}

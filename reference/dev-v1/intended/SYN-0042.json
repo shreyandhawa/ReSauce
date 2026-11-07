@@ -1,0 +1,165 @@
+{
+  "answer_format": "0.1-provisional",
+  "case_id": "SYN-0042",
+  "scenario_id": "SC-46",
+  "scenario_label": "Recorded onset date has an excluded symptom and a formal Grade 0 assessment; first qualifying finding is later",
+  "case_type": "Pos",
+  "tags": [
+    "excluded symptom on the record date",
+    "formal Grade 0 on the record date"
+  ],
+  "status": "not clinician-verified",
+  "answer_kind": "intended",
+  "provenance": {
+    "clinical_methods": "v0.4.1",
+    "data_format": "v0.1.2",
+    "dataset_plan": "v0.3.1",
+    "dataset_id": "SYN-DS-DEV-V1",
+    "dataset_version": "0.4.0",
+    "ordering_seed": 20261107,
+    "date_written": "2026-11-07"
+  },
+  "out_of_scope": null,
+  "fields": {
+    "onset": {
+      "category": "7.1",
+      "record_value": "2035-03-23",
+      "documented_value": {
+        "date": "2035-03-25",
+        "study_day": 6
+      },
+      "signed_difference_days": -2,
+      "difference_note": null,
+      "readings": null,
+      "evidence": [
+        {
+          "role": "record date: formal Grade 0 assessment",
+          "document_id": "SYN-0042-D01",
+          "version": 1,
+          "quote": "ICE 10/10 at 09:50",
+          "start": 51,
+          "end": 69
+        },
+        {
+          "role": "record date: excluded symptom",
+          "document_id": "SYN-0042-D01",
+          "version": 1,
+          "quote": "Fine tremor of both hands noted at 09:50",
+          "start": 78,
+          "end": 118
+        },
+        {
+          "role": "first qualifying finding",
+          "document_id": "SYN-0042-D02",
+          "version": 1,
+          "quote": "ICE 8/10 at 08:20",
+          "start": 0,
+          "end": 17
+        }
+      ],
+      "record_history": null
+    },
+    "max_grade": {
+      "category": "7.7",
+      "record_value": 2,
+      "documented_value": {
+        "grade": 2
+      },
+      "signed_difference_days": null,
+      "difference_note": null,
+      "readings": null,
+      "evidence": [
+        {
+          "role": "ICE 5/10",
+          "document_id": "SYN-0042-D03",
+          "version": 1,
+          "quote": "ICE 5/10 at 12:40",
+          "start": 26,
+          "end": 43
+        },
+        {
+          "role": "awakens to voice",
+          "document_id": "SYN-0042-D03",
+          "version": 1,
+          "quote": "Awakens to voice",
+          "start": 117,
+          "end": 133
+        }
+      ],
+      "record_history": null
+    }
+  },
+  "case_flags": {
+    "unassessed_period": {
+      "days_without_gradeable_assessment": [
+        0,
+        1,
+        2,
+        3,
+        5,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28
+      ],
+      "not_assessable_periods": []
+    },
+    "ungradeable_neurological_symptom": []
+  },
+  "other_flags": [
+    {
+      "flag": "record date matches an excluded or sub-threshold symptom",
+      "field": "onset",
+      "detail": "Tremor (excluded) on the record's onset date, Day +4, which also has a formal Grade 0 assessment (A24: the Grade 0 assessment wins, 7.1)",
+      "evidence": [
+        {
+          "role": "tremor on the record date",
+          "document_id": "SYN-0042-D01",
+          "version": 1,
+          "quote": "Fine tremor of both hands noted at 09:50",
+          "start": 78,
+          "end": 118
+        }
+      ]
+    }
+  ],
+  "ambiguity_notes": [
+    "Day +4 has ICE 10/10 and no qualifying finding, so a record onset of Day +4 is refuted (A24): 7.1, record two days early."
+  ],
+  "depends_on_open_points": [],
+  "author_checks": {
+    "distractors": [
+      "tremor (excluded symptom) on the record date",
+      "CRS with tocilizumab"
+    ],
+    "negated_findings": [
+      "No focal deficit",
+      "no seizures"
+    ],
+    "positive_findings": [
+      "ICE 8/10 on Day +6",
+      "ICE 5/10 on Day +7"
+    ],
+    "brief_features_used": [
+      "style mixed",
+      "3 documents"
+    ]
+  }
+}

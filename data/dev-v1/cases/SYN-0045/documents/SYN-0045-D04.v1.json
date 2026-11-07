@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0045",
+  "document_id": "SYN-0045-D04",
+  "version": 1,
+  "status": "signed",
+  "note_type": "ice_assessment",
+  "author_role": "nurse",
+  "documented_at": "2035-03-30T10:20",
+  "amendment_reason": null,
+  "text": "ICE assessment on 30 Mar at 10:05: orientation 4/4, naming 3/3, following commands 1/1, writing 1/1, attention 1/1. Total 10/10. Alert, no abnormal findings on neurological screen. The team notes full return to baseline."
+}

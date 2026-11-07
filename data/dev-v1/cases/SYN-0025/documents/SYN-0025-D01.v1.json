@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0025",
+  "document_id": "SYN-0025-D01",
+  "version": 1,
+  "status": "signed",
+  "note_type": "nursing_note",
+  "author_role": "nurse",
+  "documented_at": "2035-10-02T20:00",
+  "amendment_reason": null,
+  "text": "NURSING SHIFT SUMMARY\nDate: 2035-10-02\nTemp: 37.1 | HR 82 | BP 118/74\nNeuro: ICE 10/10 at 19:40\nPain: 0/10\nPlan: routine CAR-T monitoring"
+}

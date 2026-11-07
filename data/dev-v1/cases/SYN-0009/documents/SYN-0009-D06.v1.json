@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0009",
+  "document_id": "SYN-0009-D06",
+  "version": 1,
+  "status": "signed",
+  "note_type": "physician_progress_note",
+  "author_role": "attending_physician",
+  "documented_at": "2036-06-03T09:30",
+  "amendment_reason": null,
+  "text": "Day 6 progress note. The CRS has resolved and he has been afebrile for three days. ICE 8/10 at 09:05 (orientation 3/4, attention 0/1, remaining items complete). He is awake and speaking in full sentences. No headache today. No focal weakness. We will continue to check ICE every shift."
+}

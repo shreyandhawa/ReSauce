@@ -1,0 +1,180 @@
+{
+  "answer_format": "0.1-provisional",
+  "case_id": "SYN-0068",
+  "scenario_id": "SC-40",
+  "scenario_label": "Documented full resolution, then recurrence; record onset taken from the recurrence",
+  "case_type": "Pos",
+  "tags": [
+    "recurrence",
+    "unsigned later version"
+  ],
+  "status": "not clinician-verified",
+  "answer_kind": "intended",
+  "provenance": {
+    "clinical_methods": "v0.4.1",
+    "data_format": "v0.1.2",
+    "dataset_plan": "v0.3.1",
+    "dataset_id": "SYN-DS-DEV-V1",
+    "dataset_version": "0.4.0",
+    "ordering_seed": 20261107,
+    "date_written": "2026-11-07"
+  },
+  "out_of_scope": null,
+  "fields": {
+    "onset": {
+      "category": "7.1",
+      "record_value": "2036-07-19",
+      "documented_value": {
+        "date": "2036-07-12",
+        "study_day": 4
+      },
+      "signed_difference_days": 7,
+      "difference_note": null,
+      "readings": null,
+      "evidence": [
+        {
+          "role": "first-episode onset (ICE 8/10, Grade 1)",
+          "document_id": "SYN-0068-D01",
+          "version": 1,
+          "quote": "ICE 8/10 at 09:50",
+          "start": 68,
+          "end": 85
+        }
+      ],
+      "record_history": null
+    },
+    "max_grade": {
+      "category": "7.7",
+      "record_value": 2,
+      "documented_value": {
+        "grade": 2
+      },
+      "signed_difference_days": null,
+      "difference_note": null,
+      "readings": null,
+      "evidence": [
+        {
+          "role": "highest grade in the recurrence: ICE 5/10",
+          "document_id": "SYN-0068-D04",
+          "version": 1,
+          "quote": "scored ICE 5/10",
+          "start": 38,
+          "end": 53
+        },
+        {
+          "role": "opens eyes to voice (Grade 2)",
+          "document_id": "SYN-0068-D04",
+          "version": 1,
+          "quote": "Opens eyes to voice",
+          "start": 127,
+          "end": 146
+        }
+      ],
+      "record_history": null
+    }
+  },
+  "case_flags": {
+    "unassessed_period": {
+      "days_without_gradeable_assessment": [
+        0,
+        1,
+        2,
+        3,
+        5,
+        6,
+        8,
+        9,
+        10,
+        12,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28
+      ],
+      "not_assessable_periods": []
+    },
+    "ungradeable_neurological_symptom": []
+  },
+  "other_flags": [
+    {
+      "flag": "recurrence",
+      "field": null,
+      "detail": "Documented full resolution on Day +7 (ICE 10/10) then recurrence on Day +11",
+      "evidence": [
+        {
+          "role": "documented full resolution",
+          "document_id": "SYN-0068-D02",
+          "version": 1,
+          "quote": "Total 10/10",
+          "start": 103,
+          "end": 114
+        },
+        {
+          "role": "recurrence",
+          "document_id": "SYN-0068-D04",
+          "version": 1,
+          "quote": "scored ICE 5/10",
+          "start": 38,
+          "end": 53
+        }
+      ]
+    },
+    {
+      "flag": "unsigned later version",
+      "field": null,
+      "detail": "Dietitian note (document 3), version 2 is unsigned; it differs from version 1 only in the recorded weight (71.9 kg instead of 71.4 kg). The signed version 1 stays current.",
+      "evidence": [
+        {
+          "role": "signed version 1",
+          "document_id": "SYN-0068-D03",
+          "version": 1,
+          "quote": "Weight 71.4 kg",
+          "start": 23,
+          "end": 37
+        },
+        {
+          "role": "unsigned version 2",
+          "document_id": "SYN-0068-D03",
+          "version": 2,
+          "quote": "Weight 71.9 kg",
+          "start": 23,
+          "end": 37
+        }
+      ]
+    }
+  ],
+  "ambiguity_notes": [
+    "Onset: the documented onset is the first episode (Day +4). The record dates onset from the recurrence (Day +11), a difference of +7 days (7.1). Grade: the recurrence holds the highest grade (2); the record agrees (7.7)."
+  ],
+  "depends_on_open_points": [],
+  "author_checks": {
+    "distractors": [
+      "CRS with tocilizumab",
+      "headache and hand tremor (excluded symptoms)",
+      "unsigned later version of a non-neurological note"
+    ],
+    "negated_findings": [
+      "No seizures",
+      "no focal deficit"
+    ],
+    "positive_findings": [
+      "ICE 8/10 on Day +4",
+      "ICE 5/10 on Day +11"
+    ],
+    "brief_features_used": [
+      "unsigned later version (random)",
+      "style with typos (typos only in 'aferbile' and 'Temperatur')"
+    ]
+  }
+}

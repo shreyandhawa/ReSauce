@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0068",
+  "document_id": "SYN-0068-D01",
+  "version": 1,
+  "status": "signed",
+  "note_type": "physician_progress_note",
+  "author_role": "resident_physician",
+  "documented_at": "2036-07-12T10:20",
+  "amendment_reason": null,
+  "text": "Day 4 note. CRS grade 1 on 10 Jul, tocilizumab given, now aferbile. ICE 8/10 at 09:50 (orientation 3/4, attention 0/1). Awake, no focal deficit, no seizures. Mild headache, acetaminophen given. Will recheck ICE every shift."
+}

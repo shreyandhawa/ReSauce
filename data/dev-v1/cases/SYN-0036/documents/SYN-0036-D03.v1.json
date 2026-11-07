@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0036",
+  "document_id": "SYN-0036-D03",
+  "version": 1,
+  "status": "signed",
+  "note_type": "physician_progress_note",
+  "author_role": "attending_physician",
+  "documented_at": "2034-02-26T10:35",
+  "amendment_reason": null,
+  "text": "Day 3 note. CRS settling, afebrile since 01:00. Neuro: alert and oriented x4, speech clear, cranial nerves intact, strength 5/5 in all limbs, no focal deficit. Reports a mild headache 3/10, acetaminophen given. No seizure activity. Plan: continue monitoring."
+}

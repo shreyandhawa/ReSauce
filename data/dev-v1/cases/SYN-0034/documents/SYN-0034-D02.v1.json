@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0034",
+  "document_id": "SYN-0034-D02",
+  "version": 1,
+  "status": "signed",
+  "note_type": "physician_progress_note",
+  "author_role": "resident_physician",
+  "documented_at": "2035-06-02T10:00",
+  "amendment_reason": null,
+  "text": "D+5. CRS g1 resolved (toci 31 May). No HA.\nInterval: fine hand tremor; ICE 7/10 at 09:10 on 02 Jun (lost 3: year, month, attention); alert; no seizures.\nPlan: ICE q shift."
+}

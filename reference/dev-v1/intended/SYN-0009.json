@@ -1,0 +1,169 @@
+{
+  "answer_format": "0.1-provisional",
+  "case_id": "SYN-0009",
+  "scenario_id": "SC-38",
+  "scenario_label": "Two assessments within the same hour disagree and the disagreement decides the grade",
+  "case_type": "Flag",
+  "tags": [
+    "conflicting assessments",
+    "out-of-window document",
+    "amended note"
+  ],
+  "status": "not clinician-verified",
+  "answer_kind": "intended",
+  "provenance": {
+    "clinical_methods": "v0.4.1",
+    "data_format": "v0.1.2",
+    "dataset_plan": "v0.3.1",
+    "dataset_id": "SYN-DS-DEV-V1",
+    "dataset_version": "0.4.0",
+    "ordering_seed": 20261107,
+    "date_written": "2026-11-07"
+  },
+  "out_of_scope": null,
+  "fields": {
+    "onset": {
+      "category": "7.7",
+      "record_value": "2036-06-02",
+      "documented_value": {
+        "date": "2036-06-02",
+        "study_day": 5
+      },
+      "signed_difference_days": 0,
+      "difference_note": null,
+      "readings": null,
+      "evidence": [
+        {
+          "role": "first qualifying finding (ICE 9/10, Grade 1)",
+          "document_id": "SYN-0009-D05",
+          "version": 1,
+          "quote": "Total 9/10",
+          "start": 142,
+          "end": 152
+        }
+      ],
+      "record_history": null
+    },
+    "max_grade": {
+      "category": "7.5 (conflicting assessments)",
+      "record_value": 2,
+      "documented_value": {
+        "range": [
+          1,
+          2
+        ]
+      },
+      "signed_difference_days": null,
+      "difference_note": null,
+      "readings": [
+        {
+          "reading": "Nursing ICE 5/10 at 14:10 is used (Grade 2)",
+          "value": {
+            "grade": 2
+          },
+          "category": "7.7"
+        },
+        {
+          "reading": "Physician ICE 8/10 at 14:40 is used (Grade 1)",
+          "value": {
+            "grade": 1
+          },
+          "category": "7.3"
+        }
+      ],
+      "evidence": [
+        {
+          "role": "nursing ICE 5/10 at 14:10",
+          "document_id": "SYN-0009-D07",
+          "version": 1,
+          "quote": "ICE score 5/10",
+          "start": 49,
+          "end": 63
+        },
+        {
+          "role": "physician ICE 8/10 at 14:40, 30 minutes later",
+          "document_id": "SYN-0009-D08",
+          "version": 1,
+          "quote": "ICE score was 8/10",
+          "start": 80,
+          "end": 98
+        }
+      ],
+      "record_history": null
+    }
+  },
+  "case_flags": {
+    "unassessed_period": {
+      "days_without_gradeable_assessment": [
+        1,
+        2,
+        4,
+        9,
+        10,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28
+      ],
+      "not_assessable_periods": []
+    },
+    "ungradeable_neurological_symptom": []
+  },
+  "other_flags": [
+    {
+      "flag": "outside observation window",
+      "field": null,
+      "detail": "Pre-infusion baseline assessment (Day -3) is outside Day 0 to +28 and is not used",
+      "evidence": [
+        {
+          "role": "out-of-window observation",
+          "document_id": "SYN-0009-D01",
+          "version": 1,
+          "quote": "ICE total 10 out of 10",
+          "start": 74,
+          "end": 96
+        }
+      ]
+    }
+  ],
+  "ambiguity_notes": [
+    "Nursing ICE 5/10 (14:10) and physician ICE 8/10 (14:40) on Day +7 disagree within one hour and neither note settles which is right. Under reading 1 the maximum is Grade 2 (record Grade 2: 7.7); under reading 2 it is Grade 1 (record Grade 2 above it: 7.3, undocumented days only, no 'not assessable' period). The readings lead to different categories, so 7.5.",
+    "Onset is not affected: Day +5 ICE 9/10 is unambiguous."
+  ],
+  "depends_on_open_points": [],
+  "author_checks": {
+    "distractors": [
+      "CRS fever with acetaminophen and tocilizumab (not competing, A35)",
+      "frontal headache (excluded symptom)",
+      "amended discharge weight"
+    ],
+    "negated_findings": [
+      "No seizure activity",
+      "no focal weakness",
+      "no tremor"
+    ],
+    "positive_findings": [
+      "ICE 9/10 on Day +5",
+      "ICE 8/10 and 5/10 on Day +7"
+    ],
+    "brief_features_used": [
+      "out_of_window_document",
+      "amended_note random",
+      "style verbose",
+      "12 documents"
+    ]
+  }
+}

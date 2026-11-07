@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0009",
+  "document_id": "SYN-0009-D09",
+  "version": 1,
+  "status": "signed",
+  "note_type": "neurology_consult",
+  "author_role": "neurologist",
+  "documented_at": "2036-06-05T10:40",
+  "amendment_reason": null,
+  "text": "Neurology consultation requested for fluctuating ICE scores on 04 Jun. At 10:15 today ICE 9/10 (attention 0/1). Awake, no focal motor deficit, cranial nerves intact, no tremor, no seizure activity. Impression: mild neurotoxicity, fluctuating. Recommend continued ICE checks every shift. No change to treatment today."
+}

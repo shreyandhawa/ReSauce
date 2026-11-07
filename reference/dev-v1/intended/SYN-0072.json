@@ -1,0 +1,123 @@
+{
+  "answer_format": "0.1-provisional",
+  "case_id": "SYN-0072",
+  "scenario_id": "SC-49",
+  "scenario_label": "No notes on the days around the recorded onset (record Day +3, G1); first qualifying finding Day +6 at G1; nothing higher",
+  "case_type": "Flag",
+  "tags": [
+    "no notes around the record date"
+  ],
+  "status": "not clinician-verified",
+  "answer_kind": "intended",
+  "provenance": {
+    "clinical_methods": "v0.4.1",
+    "data_format": "v0.1.2",
+    "dataset_plan": "v0.3.1",
+    "dataset_id": "SYN-DS-DEV-V1",
+    "dataset_version": "0.4.0",
+    "ordering_seed": 20261107,
+    "date_written": "2026-11-07"
+  },
+  "out_of_scope": null,
+  "fields": {
+    "onset": {
+      "category": "7.4",
+      "record_value": "2031-06-17",
+      "documented_value": {
+        "date": "2031-06-20",
+        "study_day": 6
+      },
+      "signed_difference_days": -3,
+      "difference_note": "no notes and no gradeable assessment on or around the record's onset date (no documents between Day +2 and Day +5)",
+      "readings": null,
+      "evidence": [
+        {
+          "role": "first qualifying finding (ICE 8/10, Grade 1)",
+          "document_id": "SYN-0072-D03",
+          "version": 1,
+          "quote": "ICE 8/10 at 09:40",
+          "start": 24,
+          "end": 41
+        }
+      ],
+      "record_history": null
+    },
+    "max_grade": {
+      "category": "7.7",
+      "record_value": 1,
+      "documented_value": {
+        "grade": 1
+      },
+      "signed_difference_days": null,
+      "difference_note": null,
+      "readings": null,
+      "evidence": [
+        {
+          "role": "highest finding: ICE 8/10 (Grade 1)",
+          "document_id": "SYN-0072-D03",
+          "version": 1,
+          "quote": "ICE 8/10 at 09:40",
+          "start": 24,
+          "end": 41
+        }
+      ],
+      "record_history": null
+    }
+  },
+  "case_flags": {
+    "unassessed_period": {
+      "days_without_gradeable_assessment": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        8,
+        9,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28
+      ],
+      "not_assessable_periods": []
+    },
+    "ungradeable_neurological_symptom": []
+  },
+  "other_flags": [],
+  "ambiguity_notes": [
+    "No document lies between Day +1 and Day +6, so Day +3 has no gradeable assessment: onset 7.4 (the worked example of §7.4). The grade is supported (Grade 1) and undocumented days alone do not change it (A25): 7.7."
+  ],
+  "depends_on_open_points": [],
+  "author_checks": {
+    "distractors": [
+      "CRS fever with acetaminophen and tocilizumab",
+      "history of migraine, no headache now"
+    ],
+    "negated_findings": [
+      "No sz",
+      "no focal def"
+    ],
+    "positive_findings": [
+      "ICE 8/10 on Day +6",
+      "ICE 9/10 on Day +7"
+    ],
+    "brief_features_used": [
+      "amended_note random (discharge temperature)",
+      "style terse"
+    ]
+  }
+}

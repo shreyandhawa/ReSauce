@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0046",
+  "document_id": "SYN-0046-D01",
+  "version": 1,
+  "status": "signed",
+  "note_type": "physician_progress_note",
+  "author_role": "attending_physician",
+  "documented_at": "2031-05-21T10:00",
+  "amendment_reason": null,
+  "text": "Day 3. CRS grade 1, tocilizumab given 20 May, afebrile now. ICE 10/10 at 09:40. Neuro exam non-focal. Frail but eating. Plan: ICE every shift."
+}

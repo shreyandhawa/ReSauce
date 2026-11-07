@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0036",
+  "document_id": "SYN-0036-D01",
+  "version": 1,
+  "status": "signed",
+  "note_type": "physician_progress_note",
+  "author_role": "attending_physician",
+  "documented_at": "2034-02-24T17:40",
+  "amendment_reason": null,
+  "text": "Day 1 after infusion. Stable, afebrile so far. ICE 10/10 at 16:50. Plan: neurological and CRS checks every shift."
+}
