@@ -31,6 +31,7 @@ The current milestone and status are in `docs/handoff.md`.
 - Prefer simple, proven, maintainable solutions. Add no unnecessary frameworks, AI agents, plugins or infrastructure.
 - Test only code that decides answers (extraction, rules engine, scoring), with a few focused tests per rule, not exhaustive ones. No tests for glue code, formatting, scripts or the viewer. Run the test suite once at the end of a task, not after every edit.
 - At the end of each completed task, commit and push automatically: stage only the files you changed, by explicit path, with one clear message and no AI attribution. Never commit secrets, .venv or scratch files. The user does not run /finish-step any more.
+- docs/clinical-methods.md is large (77 KB). Read only the sections the task needs, usually §3, §4, §6 and §7 (about half the file). Skip the changelog, §9 and §10 unless asked. Never rely on a search hit alone: read the whole subsection it is in, plus the §7 introduction for any §7 rule.
 - Ask the user before adding a dependency, installing software, deleting or overwriting work, or deploying anything.
 - Never copy code from other projects.
 - Never commit secrets (`.env` files, keys, tokens).
