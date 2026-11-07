@@ -1,0 +1,418 @@
+# ReSauce clinical methods: verifying documented ICANS
+
+- **Status:** Draft v0.1 (2026-11-07), Milestone 2 Step 1. **Not yet reviewed by a clinician.**
+- **Primary source:** Lee et al. 2019, the ASTCT consensus grading. I read it in full as the NIH author manuscript (PMC12180426); see §10.
+- **Purpose of this file:** to fix the clinical definitions that ReSauce code will later rely on, and to separate what the source says from what ReSauce chooses.
+
+## How to read this document
+
+Every substantive claim carries one of these tags:
+
+| Tag | Meaning |
+|---|---|
+| `[SOURCE: Lee 2019, <location>]` | Stated in the primary source. Locations use the section headings and table numbers of the author manuscript. |
+| `[SECONDARY: <citation>]` | Taken from another published source. No such claims are used in this draft. |
+| `[OPERATIONAL]` | A definition ReSauce chooses because the source does not specify one. |
+| `[ASSUMPTION — EXPERT REVIEW]` | Uncertain; needs confirmation by a clinician. Each one is listed in §9. |
+
+"**Not specified in source**" means I searched the full text of Lee 2019 and found nothing on the point. It is a statement about the source's silence, not a clinical claim.
+
+The source is paraphrased throughout. Short criterion phrases (for example "awakens to voice") are kept close to the original because changing their wording could change their meaning.
+
+---
+
+## 1. Purpose and scope
+
+ReSauce is a computational proof of concept (POC). It performs a **retrospective** check of two fields in a structured research record against the synthetic clinical notes that should support them:
+
+- **(a) ICANS onset:** the date neurotoxicity began.
+- **(b) Maximum ICANS grade:** the most severe grade reached.
+
+For each field, ReSauce will report whether the notes support the recorded value. Every conclusion will cite the exact quoted note text it rests on (document ID, location and quote, per `CLAUDE.md`). [OPERATIONAL]
+
+This task fits a stated aim of the source: the consensus authors were asked to write criteria that are easy to apply at the bedside and easy to verify in chart review. [SOURCE: Lee 2019, §Efforts to Harmonize Immune Effector Cell-Associated CRS and Neurotoxicity Definitions and Grading] ReSauce tests one narrow version of that verification on synthetic data. It does not show that the approach works on real records.
+
+**ReSauce will NOT:** [OPERATIONAL]
+- give treatment, monitoring or management advice;
+- edit, correct or overwrite any source document or research record. It only reports;
+- reach a clinical conclusion without human review. Every flagged item is a *potential* discrepancy for a person to judge;
+- decide on its own that a finding is caused by something other than ICANS (see §3.4);
+- use real patient data. All inputs are synthetic.
+
+---
+
+## 2. Background
+
+**CAR-T therapy, in plain language.** A patient's own T cells (a type of white blood cell) are collected and genetically modified to carry a chimeric antigen receptor (CAR). The CAR lets the cells recognise and attack cancer cells, for example B-cell leukaemias and lymphomas. The modified cells are then infused back into the patient. [SOURCE: Lee 2019, Introduction]
+
+These therapies cause two characteristic toxicities: cytokine release syndrome (CRS) and neurotoxicity. [SOURCE: Lee 2019, Abstract]
+
+**CRS** is a body-wide inflammatory reaction. Under the consensus definition it must begin with fever, and it may include low blood pressure and low oxygen. [SOURCE: Lee 2019, §Definition of Cytokine Release Syndrome]
+
+**ICANS** (immune effector cell-associated neurotoxicity syndrome) is the neurological toxicity. It can appear as confusion or encephalopathy, difficulty with speech (aphasia), lethargy, poor concentration, agitation, tremor, seizures and, rarely, brain swelling (cerebral edema). [SOURCE: Lee 2019, Introduction]
+
+**How ICANS relates to and differs from CRS** (all from the source):
+- Neurotoxicity used to be considered together with CRS. It is now treated as a separate entity because its timing and its response to treatment differ. [SOURCE: Lee 2019, Introduction]
+- Neurological symptoms may occur during CRS, more commonly after it, and rarely before it. [SOURCE: Lee 2019, Introduction]
+- Neurotoxicity often develops well after the classic CRS symptoms have resolved. It usually does not respond to tocilizumab, an anti-cytokine drug that works for CRS. [SOURCE: Lee 2019, §Toxicities Excluded from the Definition of CRS]
+- Mild neurological symptoms may wax and wane with fever at first, and then recur a few days after CRS has resolved. Progression to severe neurotoxicity may take hours or days. [SOURCE: Lee 2019, §Symptoms of ICANS]
+- Grade 1 ICANS may be seen while CRS is waxing and waning with fevers. [SOURCE: Lee 2019, §Grade 1 ICANS]
+- Neurotoxicity occurring during or after CRS does not affect the CRS grade. It is graded separately on the ICANS scale. [SOURCE: Lee 2019, §Definition of CRS Resolution]
+- CRS can complicate the neurological assessment. High fever and drug therapy can cause delirium, and a sedated or intubated patient may not be assessable. [SOURCE: Lee 2019, §Toxicities Excluded from the Definition of CRS]
+- The source gives a typical time window for CRS: it rarely starts more than 14 days after therapy. [SOURCE: Lee 2019, §Symptoms Defining CRS Must be Attributed to Immune Effector Cell Engagement] **No equivalent onset window is given for ICANS.** Not specified in source.
+
+---
+
+## 3. ASTCT ICANS grading (adults)
+
+### 3.1 Definition of ICANS
+
+ICANS is defined as a disorder in which a pathological process involves the central nervous system after any immune therapy that activates or engages the body's own or infused T cells and/or other immune effector cells. Its signs can be progressive and may include aphasia, altered level of consciousness, impaired cognitive skills, motor weakness, seizures and cerebral edema. [SOURCE: Lee 2019, §Definition of Immune Effector Cell-Associated Neurotoxicity]
+
+The definition applies to any immune effector cell-engaging therapy, not only CAR-T. [SOURCE: Lee 2019, same section] ReSauce limits itself to CAR-T. [OPERATIONAL]
+
+The source describes a more specific feature that sets ICANS apart from other encephalopathies: a patient who is awake but mute and does not respond verbally or physically to an examiner. [SOURCE: Lee 2019, same section]
+
+### 3.2 ICE score
+
+The ICE (Immune effector Cell-associated Encephalopathy) score is a 10-point bedside screen for encephalopathy. It is a modified version of the earlier CARTOX-10 tool. [SOURCE: Lee 2019, §Consensus on ICANS Grading for Adults; Table 5]
+
+| ICE component | Points | Source |
+|---|---|---|
+| Orientation to year, month, city and hospital | 4 | [SOURCE: Lee 2019, Table 5] |
+| Naming 3 objects (e.g. clock, pen, button) | 3 | [SOURCE: Lee 2019, Table 5] |
+| Following commands (e.g. "show me 2 fingers") | 1 | [SOURCE: Lee 2019, Table 5] |
+| Writing a standard sentence | 1 | [SOURCE: Lee 2019, Table 5] |
+| Attention: counting backwards from 100 by ten | 1 | [SOURCE: Lee 2019, Table 5] |
+| **Total** | **10** | [SOURCE: Lee 2019, Table 5] |
+
+- A score of 10 means no impairment. [SOURCE: Lee 2019, Table 5]
+- The command-following item replaces one of the CARTOX-10 orientation items and adds an assessment of receptive aphasia. Comparing the two columns of Table 5, the dropped item is orientation to the head of state. [SOURCE: Lee 2019, Table 5; §Consensus on ICANS Grading for Adults]
+- The ICE score alone is **not** the ICANS grade. Grading also requires assessing level of consciousness, motor findings, seizures and signs of raised intracranial pressure (ICP) or cerebral edema. These can occur with or without encephalopathy. [SOURCE: Lee 2019, §Consensus on ICANS Grading for Adults]
+
+### 3.3 Domain criteria by grade
+
+| Domain | Grade 1 | Grade 2 | Grade 3 | Grade 4 | Source |
+|---|---|---|---|---|---|
+| ICE score | 7–9 | 3–6 | 0–2 | 0, because the patient is unarousable and cannot perform ICE | [SOURCE: Lee 2019, Table 6; Table 5] |
+| Depressed level of consciousness¹ | Awakens spontaneously | Awakens to voice | Awakens only to tactile stimulus | Unarousable, or needs vigorous or repetitive tactile stimuli to arouse; stupor or coma | [SOURCE: Lee 2019, Table 6] |
+| Seizure | N/A | N/A | Any clinical seizure (focal or generalised) that resolves rapidly, or non-convulsive seizures on EEG that resolve with intervention | Life-threatening prolonged seizure (>5 min), or repetitive clinical or electrical seizures without return to baseline in between | [SOURCE: Lee 2019, Table 6] |
+| Motor findings² | N/A | N/A | N/A | Deep focal motor weakness such as hemiparesis or paraparesis | [SOURCE: Lee 2019, Table 6] |
+| Raised ICP / cerebral edema³ | N/A | N/A | Focal/local edema on neuroimaging | Diffuse cerebral edema on neuroimaging; decerebrate or decorticate posturing; cranial nerve VI palsy; papilledema; or Cushing's triad | [SOURCE: Lee 2019, Table 6] |
+
+1. Depressed consciousness counts only if it is attributable to no other cause, for example no sedating medication. [SOURCE: Lee 2019, Table 6 footnote ❖]
+2. Tremor and myoclonus may be graded with CTCAE v5.0 (the NCI's Common Terminology Criteria for Adverse Events), but they do not affect the ICANS grade. [SOURCE: Lee 2019, Table 6 footnote §]
+3. Intracranial hemorrhage, with or without edema, is excluded from ICANS grading and may be graded with CTCAE v5.0. [SOURCE: Lee 2019, Table 6 footnote #]
+
+Notes on the table:
+- EEG changes such as generalised or frontal slowing, or frontal intermittent rhythmic delta activity (FIRDA), are not seizures. [SOURCE: Lee 2019, §Consensus on ICANS Grading for Adults]
+- The Grade 4 text lists further signs of raised ICP that are not in Table 6, for example projectile vomiting with headache. [SOURCE: Lee 2019, §Grade 4 ICANS] ReSauce grades from Table 6 only and flags text-only signs for review. [ASSUMPTION — EXPERT REVIEW] (A12)
+- Grade 5 ICANS is defined by convention as death due to ICANS, where no other cause is the main factor. [SOURCE: Lee 2019, §Grade 5 ICANS] ReSauce does not assign Grade 5 (see §8). [OPERATIONAL]
+- Table 6 is labelled "for adults", but the source does not define the adult age range. Not specified in source.
+- The source does not define "Grade 0" or "no ICANS" for an assessment. ReSauce treats an assessment as Grade 0 when ICE = 10 and no domain criterion is met. [OPERATIONAL]
+
+### 3.4 Deriving the overall grade, and attribution
+
+**Rule from the source:** the ICANS grade is set by the most severe event across the domains (ICE, level of consciousness, seizure, motor findings, raised ICP/edema) that is not attributable to any other cause. [SOURCE: Lee 2019, Table 6 footnote ‡; §Consensus on ICANS Grading for Adults] Equivalently, the overall grade is the highest of the domain grades.
+
+**ICE 0 needs context:**
+- ICE 0 in an *awake* patient with global aphasia may be classified as Grade 3.
+- ICE 0 in an *unarousable* patient may be classified as Grade 4.
+
+[SOURCE: Lee 2019, Table 6 footnote ^]
+
+**Attribution.** The source requires findings to be "not attributable to any other cause", but it gives no procedure for deciding attribution. Not specified in source. It does list other conditions that can cause neurological symptoms: hepatic failure, severe hypertension, eclampsia, infection, electrolyte abnormalities, and immunosuppressive or cytotoxic drugs. [SOURCE: Lee 2019, §Definition of Immune Effector Cell-Associated Neurotoxicity] It notes that sedating medication often complicates assessment in sick CRS patients. [SOURCE: Lee 2019, §Grade 4 ICANS]
+
+ReSauce's handling of attribution: [OPERATIONAL]
+- ReSauce will **not** decide attribution itself.
+- It extracts clinicians' documented attribution statements, with quotes.
+- If a competing cause is documented near a finding and no clinician statement settles it, ReSauce reports the grade both with and without that finding, and labels the result *ambiguous attribution* (§7).
+
+### 3.5 Worked example: ICE alone gives the wrong grade
+
+The patient below is fictional.
+
+On Day +6 after infusion, a note for synthetic patient SYN-EX-01 records:
+- ICE score 8/10 (missed the year and the counting-backwards task);
+- "patient rouses only to sternal rub, then answers questions";
+- no sedating medication given in the previous 24 h.
+
+| Step | Result |
+|---|---|
+| ICE 8 | Grade 1 [SOURCE: Lee 2019, Table 6] |
+| Awakens only to tactile stimulus | Grade 3 [SOURCE: Lee 2019, Table 6] |
+| No seizure, motor or ICP findings documented | No contribution from these domains. This is not proof they were absent (§7.4). |
+| Overall: most severe domain | **Grade 3** [SOURCE: Lee 2019, Table 6 footnote ‡] |
+
+Reading only the ICE score would give Grade 1, which is two grades too low. The source gives a similar example: ICE 3 (Grade 2 on its own) with a generalised seizure is Grade 3. [SOURCE: Lee 2019, Table 6 footnote ‡]
+
+---
+
+## 4. Limitations of the ICE score
+
+### 4.1 When ICE cannot be performed or interpreted
+
+| Situation | What the source says | ReSauce handling |
+|---|---|---|
+| Unarousable | ICE 0 because the patient is unarousable is Grade 4. [SOURCE: Lee 2019, Table 5; Table 6] | Grade 4 only if a note documents unarousability not attributed to another cause. [OPERATIONAL] |
+| Awake with global aphasia (mute, cannot follow commands) | ICE 0 may be Grade 3. [SOURCE: Lee 2019, Table 6 footnote ^; §Grade 3 ICANS] | Grade 3 needs documented wakefulness. ICE 0 with no consciousness information is *insufficient evidence* to choose between Grade 3 and 4. [OPERATIONAL] |
+| Sedated and/or intubated | The patient may not be assessable. Depressed consciousness must not be due to sedation. [SOURCE: Lee 2019, §Toxicities Excluded from the Definition of CRS; Table 6 footnote ❖] No grade rule is given for an unassessable patient. Not specified in source. | Record "not assessable" with the quoted reason. Never infer ICE 0 from sedation. [OPERATIONAL] |
+| Intubation itself | Patients may be intubated for airway protection in Grade 4 ICANS. Intubation for neurological reasons is not captured again as Grade 4 CRS. [SOURCE: Lee 2019, §Grade 4 ICANS; §Grade 4 CRS] | Intubation is not a grading criterion on its own. [OPERATIONAL] |
+| Aphasia (partial) | ICE includes naming (expressive) and command following (receptive). Expressive aphasia is described as a very specific sign of ICANS. [SOURCE: Lee 2019, Table 5; §Symptoms of ICANS] | Scored through ICE as documented. |
+| Language barrier, hearing or vision loss, inability to write for other reasons, baseline cognitive impairment | Not specified in source. | If a note documents such a barrier, a low ICE score is flagged as *ambiguous*, not graded silently. [ASSUMPTION — EXPERT REVIEW] (A10) |
+| Partially completed ICE (items not attempted) | Not specified in source. | No total is computed from partial items unless the note itself states a total. Otherwise *insufficient evidence*. [OPERATIONAL] (A6) |
+
+### 4.2 Neurological symptoms excluded from ICANS grading
+
+| Excluded finding | Source's reason | How the source says to handle it |
+|---|---|---|
+| Headache, tremor, myoclonus, asterixis, hallucinations | Less specific; usually managed symptomatically; do not trigger specific treatment such as corticosteroids [SOURCE: Lee 2019, §Symptoms and Signs Excluded from the Definition of ICANS] | Capture and report with CTCAE v5.0 [SOURCE: Lee 2019, same section; Table 6 footnote §] |
+| Weakness and balance problems from deconditioning or immobility | Common in transplant and intensive chemotherapy settings [SOURCE: Lee 2019, same section] | CTCAE v5.0 [SOURCE: Lee 2019, same section] |
+| Intracranial hemorrhage, with or without edema | Not a neurotoxicity feature; may result from coagulopathy [SOURCE: Lee 2019, §Grade 3 ICANS; Table 6 footnote #] | CTCAE v5.0 [SOURCE: Lee 2019, Table 6 footnote #] |
+
+Headache alone is described as not a useful marker of ICANS. [SOURCE: Lee 2019, §Symptoms of ICANS]
+
+**There is a tension in the source.** Tremor is listed among ICANS manifestations [SOURCE: Lee 2019, Introduction] and among the earliest signs of ICANS [SOURCE: Lee 2019, §Symptoms of ICANS], yet it is excluded from the definition and from grading. ReSauce will extract these findings, label them "excluded from ICANS grading", and use them neither for the grade nor for the onset date. [ASSUMPTION — EXPERT REVIEW] (A11) ReSauce will not produce CTCAE grades for them (§8). [OPERATIONAL]
+
+---
+
+## 5. Age scope
+
+What the source specifies for children:
+- **ICE in children:** it may be limited to children aged ≥12 years with enough cognitive ability to complete it. [SOURCE: Lee 2019, §Consensus on ICANS Grading for Children]
+- **Alternative tool:** for children under 12, the source recommends the Cornell Assessment of Pediatric Delirium (CAPD). [SOURCE: Lee 2019, same section; Table 7]
+- **CAPD structure:** 8 caregiver-observed items, each scored 0–4 based on interactions over a shift. Items 1–4 are reverse-scored. Age-specific anchors are given for ages 1–2. [SOURCE: Lee 2019, Table 7]
+- **CAPD and the grade:**
+  - A CAPD score ≥9 suggests delirium and is treated as Grade 3. [SOURCE: Lee 2019, §Consensus on ICANS Grading for Children; Table 8]
+  - In Table 8, CAPD <9 appears in both the Grade 1 and Grade 2 columns, and "unable to perform CAPD" is Grade 4. [SOURCE: Lee 2019, Table 8]
+- **Other pediatric uses:** CAPD may also be used above age 12 when there is baseline developmental delay, as it has been validated up to age 21. [SOURCE: Lee 2019, §Consensus on ICANS Grading for Children]
+- **Other domains:** seizure, motor, raised ICP/edema and level of consciousness are graded as in adults. [SOURCE: Lee 2019, same section; Table 8]
+- **Inconsistency at exactly age 12:** the text says ICE for "≥12" and CAPD for "<12" (also the Table 7 caption), but Table 8 says ICE for ">12" and CAPD for "≤12". [SOURCE: Lee 2019, §Consensus on ICANS Grading for Children; Table 7; Table 8]
+
+**Proposal:** the initial ReSauce scope **excludes the pediatric pathway entirely**. [OPERATIONAL]
+- Only synthetic patients aged ≥18 years at infusion, with no documented baseline developmental delay, are in scope.
+- Any note that contains a CAPD assessment marks the case as out of scope.
+- Reasons for the exclusion:
+  - It avoids the age-12 inconsistency.
+  - CAPD alone cannot separate Grade 1 from Grade 2.
+  - The age 18 cutoff is ReSauce's choice; the source gives none. (A9)
+
+---
+
+## 6. Time and documentation
+
+### 6.1 Event time and documentation time
+
+ReSauce defines three times: [OPERATIONAL]
+
+| Term | Meaning |
+|---|---|
+| Event time | When the finding occurred or was observed (e.g. "seizure at 03:10") |
+| Documentation time | When the note was written or signed |
+| Record time | When the research record entry was made or changed |
+
+Rules: [OPERATIONAL]
+- Onset is based on **event time**.
+- If a note gives no event time, documentation time is used and the result is marked *time-imprecise*.
+- Relative phrases ("overnight", "since yesterday") are turned into a date *range* relative to the note's documentation time, not a single date, and flagged.
+
+### 6.2 What the source does and does not define
+
+| Topic | Source | Status |
+|---|---|---|
+| ICANS onset date | Not specified in source. | ReSauce defines it below. [OPERATIONAL] |
+| ICANS resolution | Not specified in source for ICANS. The registry follow-up forms record which manifestations occurred and whether they resolved. [SOURCE: Lee 2019, §Data Collection and Reporting] | ReSauce does not verify resolution in this POC. [OPERATIONAL] |
+| CRS resolution | Defined for CRS only. [SOURCE: Lee 2019, §Definition of CRS Resolution] | Not applied to ICANS. [OPERATIONAL] |
+| Typical timing | See §2 (during or after CRS; may recur a few days later) [SOURCE: Lee 2019, Introduction; §Symptoms of ICANS] | Context only. Not used as a rule. [OPERATIONAL] |
+| Grade across time | The source's "most severe event" rule is stated across *domains* [SOURCE: Lee 2019, Table 6 footnote ‡]. Whether "maximum grade" means the highest over time is not stated. | See maximum grade below. [ASSUMPTION — EXPERT REVIEW] (A2) |
+
+**Documentation-derived onset:** the earliest event time (compared as a calendar day) of a documented observation that meets any Grade ≥1 criterion in Table 6 and that no clinician attributes to another cause. Excluded symptoms (§4.2) do not count. [OPERATIONAL; see A4, A11]
+
+**Documentation-derived maximum grade:** the highest per-assessment grade (§3.4) within the episode. [ASSUMPTION — EXPERT REVIEW] (A2)
+
+### 6.3 Amended or revised assessments
+
+The source does not address amendments. Not specified in source. ReSauce's rules: [OPERATIONAL]
+- Every version of a note is kept and cited by version ID. Nothing is overwritten.
+- The latest signed version is treated as current.
+- A superseded version is still reported if the research record matches it but not the current version. This is a likely sign that the record was not updated (§7).
+
+### 6.4 Repeated observations
+
+The source does not address duplicated or conflicting documentation. Not specified in source. ReSauce's rules: [OPERATIONAL]
+- **Same finding, several notes** (e.g. a nursing note and a physician note): grouped by event time. Onset uses the earliest observation.
+- **Copied-forward text** (text repeated unchanged from an earlier note) is not treated as new evidence. (A13)
+- **Conflicting assessments at about the same time** (e.g. one note gives ICE 6, another ICE 8, within the same hour): both are reported. Neither is chosen silently. The case is labelled *ambiguous*.
+
+### 6.5 Distinct episodes
+
+The source does not say when two neurological episodes count as separate events. Not specified in source. It describes symptoms that wax and wane and recur a few days after CRS resolves as part of the usual course. [SOURCE: Lee 2019, §Symptoms of ICANS]
+
+For this POC: [OPERATIONAL; see A5]
+- All ICANS findings after a single infusion, within the declared observation window, are treated as **one episode**.
+- A documented full resolution (ICE 10 with no domain findings) followed by recurrence is flagged for review, not split automatically.
+- The observation window is declared per dataset and recorded with every result.
+
+---
+
+## 7. Discrepancy categories
+
+Each category is a *potential* discrepancy for human review, never a verdict. [OPERATIONAL]
+
+Categories are assigned separately for onset and for maximum grade. Every assignment cites the quoted evidence. [OPERATIONAL]
+
+All illustrations are fictional, with days counted from infusion (Day 0).
+
+### 7.1 Onset date mismatch
+
+**Definition:** the research record's onset date and the documentation-derived onset (§6.2) differ by **1 or more calendar days**. The tolerance is 0 days. The signed difference is always reported. [OPERATIONAL] (A4)
+
+**Conditions:** [OPERATIONAL]
+- If the documentation onset is a date range (§6.1), a mismatch is reported only when the record date lies outside the range.
+- A record onset *earlier* than the first documented finding is a mismatch only if a gradeable assessment on the record's date documents no ICANS. Otherwise it is *insufficient evidence* (§7.4).
+
+**Example:** the record gives onset Day +4. The earliest qualifying note is Day +6 ("ICE 7/10"). A Day +4 note documents "ICE 10/10, alert". Result: mismatch, −2 days.
+
+### 7.2 Maximum grade mismatch
+
+**Definition:** the documents prove a grade **higher** than the record's maximum grade, because a quoted, unattributed observation meets a higher grade criterion. [OPERATIONAL] (A8)
+
+**Example:** the record gives maximum Grade 2. A Day +7 EEG report documents non-convulsive seizures that resolved with treatment, which is Grade 3 [SOURCE: Lee 2019, Table 6]. Result: mismatch, record lower by 1.
+
+### 7.3 Grade not supported by documented evidence
+
+**Definition:** the record's maximum grade is **higher** than any grade the quoted documentation supports, or the documentation describes neurological symptoms that are not gradeable (e.g. "confused" with no ICE or consciousness level). [OPERATIONAL]
+
+Because missing documentation does not prove a finding was absent, ReSauce reports an over-graded record as *unsupported*, never as *wrong*. [OPERATIONAL] (A8)
+
+**Example:** the record gives Grade 3. The notes contain ICE 5/10 (Grade 2) and "awakens to voice" (Grade 2), with no seizure, imaging or other Grade 3 finding. Result: not supported; the documentation supports Grade 2.
+
+### 7.4 Insufficient evidence (missing ≠ absent)
+
+**Definition:** the documentation needed to confirm or refute the recorded value does not exist or cannot be assessed. Examples:
+- no neurological assessment on the relevant days;
+- a sedated patient recorded as "not assessable";
+- ICE 0 with no consciousness information;
+- a partially completed ICE.
+
+[OPERATIONAL]
+
+**Rule:** the absence of a documented finding is never treated as evidence that the finding was absent. [OPERATIONAL]
+
+**Example:** the record gives Grade 1 with onset Day +3. There are no notes for Days +2 to +5. Result: insufficient evidence for both fields.
+
+### 7.5 Ambiguous attribution
+
+**Definition:** a finding that would change the grade or onset coincides with a documented competing cause (§3.4), and no clinician statement attributes it either way. ReSauce reports the result with and without the finding. [OPERATIONAL] (A9)
+
+**Example:** a Day +5 note says "ICE 8/10; difficult to rouse; received lorazepam 2 h ago". The level of consciousness would give Grade 3, but sedation is documented [SOURCE: Lee 2019, Table 6 footnote ❖]. Result: Grade 3 if attributed to ICANS, Grade 1 (from ICE 8) if not. Ambiguous.
+
+### 7.6 Legitimate revision (NOT an error)
+
+**Definition:** the research record changed over time, and the change is explained by later documentation, such as a late test result or an amended note. This is reported as information, not as a discrepancy. It can only be detected if the synthetic records carry a change history. [OPERATIONAL]
+
+**Example:** on Day +8 the record gives Grade 2. On Day +10 it is revised to Grade 3, after an EEG report signed on Day +10 documented a seizure on Day +7. Result: legitimate revision; the current record agrees with the documents.
+
+### 7.7 No discrepancy
+
+**Definition:** the record onset falls on the same calendar day as the documentation-derived onset (or within its date range), and the record's maximum grade equals the documentation-derived maximum grade. [OPERATIONAL]
+
+**Example:** record onset Day +5, maximum Grade 2. The first qualifying note is Day +5 (ICE 9), and the worst is Day +6 (ICE 4, awakens to voice). Result: no discrepancy.
+
+---
+
+## 8. Out of scope for this POC
+
+| Item | Reason |
+|---|---|
+| CRS grading | A separate syndrome with its own scale [SOURCE: Lee 2019, §Toxicities Excluded from the Definition of CRS]. CRS mentions are extracted only as context for timing and attribution. [OPERATIONAL] |
+| CTCAE grading of excluded symptoms | A different system that depends on activities of daily living. The source notes this is hard to apply to hospitalised patients. [SOURCE: Lee 2019, Introduction; §Consensus on ICANS Grading for Adults] Out of scope. [OPERATIONAL] |
+| Pediatric ICANS and CAPD | See §5. [OPERATIONAL] |
+| Grade 5 ICANS | Requires judging the cause of death. A documented death is flagged for review only. [OPERATIONAL] |
+| Treatment and management guidance | ReSauce is not a clinical tool. The source itself is a grading system, not a management protocol. [SOURCE: Lee 2019, §Grade 2 CRS] |
+| Automated attribution decisions | Requires clinical judgment (§3.4). [OPERATIONAL] |
+| Immune therapies other than CAR-T | The definition covers them [SOURCE: Lee 2019, §Definition of Immune Effector Cell-Associated Neurotoxicity], but they are kept out to keep the POC small. [OPERATIONAL] |
+| Neurological toxicities outside the ICANS definition | Not graded by this source. Not reviewed. [OPERATIONAL] |
+| Real patient data | Prohibited by `CLAUDE.md`. Only synthetic data is used. [OPERATIONAL] |
+| Guidance published after Lee 2019 | Not reviewed for this draft (A14). [OPERATIONAL] |
+
+---
+
+## 9. Assumptions requiring expert review
+
+**A1. The author manuscript matches the published article.**
+- *Why it matters:* all grading criteria were taken from the NIH author manuscript, which says "ASBMT" where the published title says "ASTCT".
+- *If wrong:* the criteria must be re-checked against the published version.
+
+**A2. "Maximum grade" means the highest per-assessment grade within one episode.**
+- *Why it matters:* the source's "most severe event" rule is stated across domains, not across time.
+- *If wrong:* the maximum-grade comparison (§7.2, §7.3) must be redefined.
+
+**A3. The Grade 1 "awakens spontaneously" criterion applies only when drowsiness is documented.**
+- *Why it matters:* read literally, every alert patient would score Grade 1. The source's Grade 1 text mentions drowsiness. [SOURCE: Lee 2019, §Grade 1 ICANS]
+- *If wrong:* many patients would be graded Grade 1 who should be Grade 0.
+
+**A4. Onset is compared by calendar day with zero tolerance.**
+- *Why it matters:* this choice determines how many onset mismatches are reported.
+- *If wrong:* a tolerance of ±1 day (or another rule) would reduce flags.
+
+**A5. All ICANS after one infusion is one episode.**
+- *Why it matters:* this choice drives both onset and maximum grade.
+- *If wrong:* recurrences would need their own onset and grade, and the episode-splitting rule must be defined.
+
+**A6. A partially completed ICE gives no total.**
+- *Why it matters:* this choice affects how many cases are labelled insufficient evidence.
+- *If wrong:* a rule is needed for scoring partial ICE (e.g. counting unattempted items as 0).
+
+**A7. A sedated or unassessable patient gives insufficient evidence, not a grade.**
+- *Why it matters:* this is common in ICU documentation.
+- *If wrong:* a convention for grading an unassessable patient is needed.
+
+**A8. Over-grading is reported as "not supported", under-grading as "mismatch".**
+- *Why it matters:* this asymmetry follows from the rule that missing ≠ absent.
+- *If wrong:* the category definitions in §7.2–7.3 must change.
+
+**A9. Attribution is taken only from clinicians' statements.**
+- *Why it matters:* it avoids ReSauce making clinical judgments.
+- *If wrong:* explicit attribution rules would be needed, which is beyond this POC.
+
+**A10. A documented language, hearing, vision or writing barrier makes a low ICE score ambiguous.**
+- *Why it matters:* the source does not address such barriers.
+- *If wrong:* ICE would be used as recorded, or a translated or adapted ICE would need defining.
+
+**A11. Excluded symptoms (e.g. tremor) count for neither grade nor onset.**
+- *Why it matters:* tremor is called an early ICANS sign, so a record might date onset from it.
+- *If wrong:* onset dates would shift earlier, and a new onset rule is needed.
+
+**A12. Grading uses Table 6 signs only; ICP signs mentioned only in the text are flagged.**
+- *Why it matters:* the text and the table differ slightly (§3.3).
+- *If wrong:* the text-only signs must be added to the extraction criteria.
+
+**A13. Copied-forward text is not independent evidence.**
+- *Why it matters:* copied text could otherwise inflate support or shift onset.
+- *If wrong:* it would be counted, and duplicate detection could be simplified.
+
+**A14. Lee 2019 is still the current standard for ICANS grading.**
+- *Why it matters:* later guidance was not reviewed.
+- *If wrong:* the criteria in §3 may need updating to newer guidance.
+
+---
+
+## 10. References
+
+1. Lee DW, Santomasso BD, Locke FL, Ghobadi A, Turtle CJ, Brudno JN, Maus MV, Park JH, Mead E, Pavletic S, Go WY, Eldjerou L, Gardner RA, Frey N, Curran KJ, Peggs K, Pasquini M, DiPersio JF, van den Brink MRM, Komanduri KV, Grupp SA, Neelapu SS. ASTCT Consensus Grading for Cytokine Release Syndrome and Neurologic Toxicity Associated with Immune Effector Cells. *Biol Blood Marrow Transplant.* 2019;25(4):625–638. doi:10.1016/j.bbmt.2018.12.758. PMID 30592986. PMCID PMC12180426 (author manuscript NIHMS2085838).
+
+The following were cited by Lee 2019 and are listed for traceability only. **They were not accessed.** Their identifiers are copied from Lee 2019's reference list and were not independently checked.
+
+2. National Cancer Institute. Common Terminology Criteria for Adverse Events (CTCAE) v5.0. https://ctep.cancer.gov/protocolDevelopment/electronic_applications/docs/CTCAE_v5_Quick_Reference_8.5x11.pdf (Lee ref. 13).
+3. Neelapu SS, et al. Chimeric antigen receptor T-cell therapy — assessment and management of toxicities. *Nat Rev Clin Oncol.* 2018;15(1):47–62. doi:10.1038/nrclinonc.2017.148. PMID 28925994 (Lee ref. 12; source of CARTOX-10).
+4. Traube C, et al. Cornell Assessment of Pediatric Delirium: a valid, rapid, observational tool for screening delirium in the PICU. *Crit Care Med.* 2014;42(3):656–663. doi:10.1097/CCM.0b013e3182a66b76. PMID 24145848 (Lee ref. 36).
+5. Silver G, et al. Delirium screening anchored in child development: the Cornell Assessment for Pediatric Delirium. *Palliat Support Care.* 2015;13(4):1005–1011. doi:10.1017/S1478951514000947. PMID 25127028 (Lee ref. 37).
+6. Mahadeo KM, et al. Management guidelines for paediatric patients receiving chimeric antigen receptor T cell therapy. *Nat Rev Clin Oncol.* 2018. doi:10.1038/s41571-018-0075-2. PMID 30082906 (Lee ref. 38).
+
+### Access note
+
+| Source | Access |
+|---|---|
+| Lee 2019 | **Full text** of the NIH author manuscript, read in full: all sections, Tables 1–8 and the references. Retrieved from PubMed Central's official OAI-PMH service (https://www.ncbi.nlm.nih.gov/pmc/oai/oai.cgi?verb=GetRecord&identifier=oai:pubmedcentral.nih.gov:12180426&metadataPrefix=pmc). The same tables also appear on the PMC article page (https://pmc.ncbi.nlm.nih.gov/articles/PMC12180426/). The publisher's version of record could not be accessed (journal site returned 403; DOI redirect returned no content), so differences from the published typeset version are possible (A1). PMC labels the manuscript "available for text mining" and usable under fair use; this document therefore paraphrases. |
+| References 2–6 | Not accessed (neither full text nor abstract). |
