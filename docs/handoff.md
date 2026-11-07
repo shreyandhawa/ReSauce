@@ -12,6 +12,63 @@ Each entry covers:
 
 ---
 
+## 2026-11-07: Milestone 2 Step 3, dataset plan drafted
+
+**Status:** Milestone 2 Step 3 is drafted. `docs/dataset-plan.md` v0.1 is a draft for user review and is **not approved**. No cases, case text, reference answers or code were written. No `data/` folder exists. `pytest` reports 75 passed (no code changed).
+
+**Done:**
+- Wrote `docs/dataset-plan.md` v0.1:
+  - 58 scenarios (SC-01 to SC-58), each with expected onset and grade categories (§7) and the rules and assumptions it exercises;
+  - a coverage matrix: every onset category (7.1, 7.4–7.7) and grade category (7.2–7.7) appears in both sets;
+  - proposed size: 58 development cases, 115 locked cases (100 scored now, 15 waiting on gaps), 42% no-discrepancy among scored locked cases;
+  - confidence intervals computed with the Wilson method (calculation shown), and what this size cannot show;
+  - construction, realism, safety, leakage-control and quality-check rules;
+  - an outline of the reference-answer procedure;
+  - 15 gaps where `clinical-methods.md` does not define the correct answer (GAP-1 to GAP-15), not decided.
+- Did not edit `clinical-methods.md`, `data-format.md`, code, tests or settings.
+
+**Decisions & why (made by the user before this step):**
+1. New order for the rest of Milestone 2: Step 3 dataset plan → Step 4 development cases (plus a small loader fix) → Step 5 reference answers → Step 6 locked evaluation cases. All before Milestone 3. Why: the test data and its answers must exist, and be fixed, before the pipeline is built, so the pipeline cannot be shaped around them.
+2. Locked evaluation cases live in a separate private GitHub repository that is never opened in ReSauce Claude Code sessions. Why: sessions that build the pipeline must never see the cases used to measure it.
+3. Reference answers: the case author records the intended answer separately; a fresh Claude session, given only the case, `clinical-methods.md` and `data-format.md`, derives answers without knowing the intent; the user reviews every disagreement (case bug or genuine ambiguity, both logged); answers are labelled "not clinician-verified" until expert review. Why: two independent readings catch case-writing mistakes and hidden ambiguities.
+
+**Decisions proposed in the plan (await approval):** case numbers; Pos/Neg/Flag/Gap case types; storage in `data/` and `reference/`; sealing the locked set with a SHA-256 fingerprint recorded in the main repo.
+
+**Next steps:**
+- User reviews `docs/dataset-plan.md`.
+- Step 4 (development cases) only after approval.
+- Carried forward to Step 4: reject whitespace-only note text in the loader.
+
+**Open questions:**
+- The 12 open questions in `docs/dataset-plan.md` §11 (approve numbers; who decides gaps; scoring of 7.4/7.5; baselines not yet specified; and others).
+- Gaps in `clinical-methods.md` (plan §10), not decided:
+  - GAP-1: record says no ICANS, notes document ICANS.
+  - GAP-2: record says ICANS, onset or grade empty.
+  - GAP-3: record says no ICANS, notes show none (7.7 or 7.4?).
+  - GAP-4: record says ICANS, no qualifying finding (onset category).
+  - GAP-5: non-attribution ambiguity (conflicts, barriers, phrases) has no category.
+  - GAP-6: §7.1 bullets 2 and 4 conflict.
+  - GAP-7: 7.3 vs 7.4 when an unassessed period exists.
+  - GAP-8: relative time phrases to date ranges; signed difference for a range.
+  - GAP-9: unsigned latest version, or no signed version.
+  - GAP-10: when a record revision counts as "explained".
+  - GAP-11: out-of-scope cases, flag only or also categories.
+  - GAP-12: time window for a "coinciding" competing cause.
+  - GAP-13: lightly edited copied-forward text.
+  - GAP-14: observation window not chosen.
+  - GAP-15: ICE 0 without consciousness information when record grade ≤ 2.
+- Carried forward: who does the clinician review; Node.js LTS version; no software licence chosen yet.
+
+**How to verify:**
+```bash
+cd ~/Projects/ReSauce
+.venv/bin/python -m pytest -p no:cacheprovider -v   # expect: 75 passed
+git status                                          # expect: docs/dataset-plan.md new, docs/handoff.md changed
+```
+Open `docs/dataset-plan.md` and check that §2 lists SC-01 to SC-58 and §10 lists GAP-1 to GAP-15.
+
+---
+
 ## 2026-11-07: /finish-step skill added
 
 **Status:** Setup change only. No code or research content changed. Milestone 2 status is unchanged (Step 2 complete, see entry below).
