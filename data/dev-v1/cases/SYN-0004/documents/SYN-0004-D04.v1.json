@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0004",
+  "document_id": "SYN-0004-D04",
+  "version": 1,
+  "status": "signed",
+  "note_type": "nursing_note",
+  "author_role": "nurse",
+  "documented_at": "2032-09-12T15:20",
+  "amendment_reason": null,
+  "text": "T 38.2, norepi weaning. ICE 10/10 at 14:50. No tremor, no sz."
+}

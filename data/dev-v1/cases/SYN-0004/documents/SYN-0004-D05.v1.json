@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0004",
+  "document_id": "SYN-0004-D05",
+  "version": 1,
+  "status": "signed",
+  "note_type": "ice_assessment",
+  "author_role": "nurse",
+  "documented_at": "2032-09-13T10:15",
+  "amendment_reason": null,
+  "text": "ICE 13 Sep 10:05 = 10/10. Alert, cooperative."
+}

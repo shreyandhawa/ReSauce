@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0051",
+  "document_id": "SYN-0051-D01",
+  "version": 1,
+  "status": "signed",
+  "note_type": "physician_progress_note",
+  "author_role": "attending_physician",
+  "documented_at": "2032-01-30T10:30",
+  "amendment_reason": null,
+  "text": "Day 2. Fever to 38.9 overnight, mild hypotension responding to fluids, cytokine release syndrome grade 1. Tocilizumab given at 06:00. Levetiracetam 500 mg twice daily running as seizure prophylaxis per protocol. ICE 10/10 at 09:55. No headache."
+}

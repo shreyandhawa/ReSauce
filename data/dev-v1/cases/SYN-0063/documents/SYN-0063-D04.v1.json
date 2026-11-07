@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0063",
+  "document_id": "SYN-0063-D04",
+  "version": 1,
+  "status": "signed",
+  "note_type": "physician_progress_note",
+  "author_role": "attending_physician",
+  "documented_at": "2033-01-26T09:30",
+  "amendment_reason": null,
+  "text": "D+7 PN. ICE 10/10 at 09:00. BG stable on feeds. No sz. Plan: ICE q shift."
+}

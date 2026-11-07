@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0032",
+  "document_id": "SYN-0032-D06",
+  "version": 1,
+  "status": "signed",
+  "note_type": "eeg_report",
+  "author_role": "neurologist",
+  "documented_at": "2034-08-03T16:30",
+  "amendment_reason": null,
+  "text": "EEG routine 30 min, 03 Aug.\nInd: neuro surveillance, reduced ICE.\nFindings: normal awake background, no slowing, no epileptiform discharges.\nImpression: normal EEG."
+}

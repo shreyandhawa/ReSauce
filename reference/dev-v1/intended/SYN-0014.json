@@ -1,0 +1,188 @@
+{
+  "answer_format": "0.1-provisional",
+  "case_id": "SYN-0014",
+  "scenario_id": "SC-67",
+  "scenario_label": "Record says no ICANS; formal Grade 0 assessments; a documented 'not assessable' period stated explicitly; an ungradeable symptom",
+  "case_type": "Flag",
+  "tags": [
+    "no ICANS",
+    "not assessable period",
+    "ungradeable neurological symptom",
+    "unsigned document"
+  ],
+  "status": "not clinician-verified",
+  "answer_kind": "intended",
+  "provenance": {
+    "clinical_methods": "v0.4.1",
+    "data_format": "v0.1.2",
+    "dataset_plan": "v0.3.1",
+    "dataset_id": "SYN-DS-DEV-V1",
+    "dataset_version": "1.0.0",
+    "ordering_seed": 20261107,
+    "date_written": "2026-11-07"
+  },
+  "out_of_scope": null,
+  "fields": {
+    "onset": {
+      "category": "7.4",
+      "record_value": null,
+      "documented_value": "none found",
+      "signed_difference_days": null,
+      "difference_note": "a documented 'not assessable' period is in the window (A21)",
+      "readings": null,
+      "evidence": [
+        {
+          "role": "formal Grade 0 assessment",
+          "document_id": "SYN-0014-D01",
+          "version": 1,
+          "quote": "= 10/10. Alert. Baseline",
+          "start": 21,
+          "end": 45
+        },
+        {
+          "role": "formal Grade 0 assessment",
+          "document_id": "SYN-0014-D03",
+          "version": 1,
+          "quote": "ICE 10/10 on 07 Jun at 09:30",
+          "start": 8,
+          "end": 36
+        },
+        {
+          "role": "documented 'not assessable' statement naming its days",
+          "document_id": "SYN-0014-D03",
+          "version": 1,
+          "quote": "ICE not done on 08 Jun and 09 Jun: intubated and sedated, unable to assess",
+          "start": 144,
+          "end": 218
+        }
+      ],
+      "record_history": null
+    },
+    "max_grade": {
+      "category": "7.4",
+      "record_value": null,
+      "documented_value": {
+        "undetermined": "no qualifying finding; a documented 'not assessable' period prevents confirming no ICANS (A21, A7)"
+      },
+      "signed_difference_days": null,
+      "difference_note": null,
+      "readings": null,
+      "evidence": [
+        {
+          "role": "documented 'not assessable' statement naming its days",
+          "document_id": "SYN-0014-D03",
+          "version": 1,
+          "quote": "ICE not done on 08 Jun and 09 Jun: intubated and sedated, unable to assess",
+          "start": 144,
+          "end": 218
+        }
+      ],
+      "record_history": null
+    }
+  },
+  "case_flags": {
+    "unassessed_period": {
+      "days_without_gradeable_assessment": [
+        0,
+        2,
+        3,
+        4,
+        5,
+        6,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28
+      ],
+      "not_assessable_periods": [
+        {
+          "days": [
+            8,
+            9
+          ],
+          "evidence": [
+            {
+              "role": "documented 'not assessable' statement naming its days",
+              "document_id": "SYN-0014-D03",
+              "version": 1,
+              "quote": "ICE not done on 08 Jun and 09 Jun: intubated and sedated, unable to assess",
+              "start": 144,
+              "end": 218
+            }
+          ]
+        }
+      ]
+    },
+    "ungradeable_neurological_symptom": [
+      {
+        "day": 5,
+        "evidence": [
+          {
+            "role": "ungradeable symptom (no ICE, no consciousness description)",
+            "document_id": "SYN-0014-D02",
+            "version": 1,
+            "quote": "Pt confused this PM",
+            "start": 15,
+            "end": 34
+          }
+        ]
+      }
+    ]
+  },
+  "other_flags": [
+    {
+      "flag": "unsigned document",
+      "field": null,
+      "detail": "Document 4 (dietitian note) has no signed version and is not used; it holds no neurological content",
+      "evidence": [
+        {
+          "role": "unsigned document",
+          "document_id": "SYN-0014-D04",
+          "version": 1,
+          "quote": "Tube feeds at 40 ml/h",
+          "start": 23,
+          "end": 44
+        }
+      ]
+    }
+  ],
+  "ambiguity_notes": [
+    "Formal Grade 0 assessments exist (Day +1 and Day +7) and no qualifying finding, but the window also contains a documented 'not assessable' period (Day +8 and Day +9), so both fields are 7.4 under A21. The sedating drug (propofol) appears only in the 'not assessable' statement; no finding is near it."
+  ],
+  "depends_on_open_points": [],
+  "author_checks": {
+    "distractors": [
+      "CRS-related respiratory failure with intubation and sedation",
+      "confused (ungradeable symptom, required)",
+      "unsigned non-neurological note"
+    ],
+    "negated_findings": [
+      "No sz"
+    ],
+    "positive_findings": [
+      "ICE 10/10 on Day +1 and Day +7"
+    ],
+    "brief_features_used": [
+      "unsigned document (random)",
+      "not_assessable_period (scenario), names its days",
+      "style abbreviation-heavy"
+    ]
+  }
+}

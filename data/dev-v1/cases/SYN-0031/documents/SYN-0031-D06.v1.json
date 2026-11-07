@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0031",
+  "document_id": "SYN-0031-D06",
+  "version": 1,
+  "status": "signed",
+  "note_type": "discharge_summary",
+  "author_role": "attending_physician",
+  "documented_at": "2033-01-02T09:40",
+  "amendment_reason": null,
+  "text": "DEATH SUMMARY\nThe patient died at 05:10 on 02 Jan in the intensive care unit with family present. Cause: septic shock with multi-organ failure.\nCourse: CRS grade 1 after infusion, treated with tocilizumab. Reduced ICE scores 21 Dec to 22 Dec, lowest 6/10, treated with dexamethasone and recovered, ICE 10/10 on 25 Dec. Gram-negative bacteraemia from 28 Dec."
+}

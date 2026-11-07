@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0032",
+  "document_id": "SYN-0032-D07",
+  "version": 1,
+  "status": "signed",
+  "note_type": "nursing_note",
+  "author_role": "nurse",
+  "documented_at": "2034-08-04T14:00",
+  "amendment_reason": null,
+  "text": "ICE 7/10 at 13:40 on 04 Aug (orient 3/4, name 3/3, cmd 1/1, write 0/1, attn 0/1). Awake, coop. T 36.8. Tremor persists."
+}

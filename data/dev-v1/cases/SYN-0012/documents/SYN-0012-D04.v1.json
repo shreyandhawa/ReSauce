@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0012",
+  "document_id": "SYN-0012-D04",
+  "version": 1,
+  "status": "signed",
+  "note_type": "physician_progress_note",
+  "author_role": "attending_physician",
+  "documented_at": "2033-09-05T10:45",
+  "amendment_reason": null,
+  "text": "Day 7 progress note. ICE 5/10 at 10:15 on 05 Sep (orientation 1/4, naming 2/3, commands 1/1, writing 0/1, attention 1/1). Awakens to voice. No focal motor deficit. Dexamethasone 10 mg IV started. Repeat ICE this evening."
+}

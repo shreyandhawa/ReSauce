@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0032",
+  "document_id": "SYN-0032-D05",
+  "version": 1,
+  "status": "signed",
+  "note_type": "neurology_consult",
+  "author_role": "neurologist",
+  "documented_at": "2034-08-03T12:05",
+  "amendment_reason": null,
+  "text": "Neuro consult 03 Aug. ICE 6/10 at 11:40 (orient 2/4, name 2/3, cmd 1/1, write 0/1, attn 1/1). Awakens to voice. Fine tremor. No sz, no focal motor def. Dex 10 mg IV."
+}

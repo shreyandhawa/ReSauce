@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0023",
+  "document_id": "SYN-0023-D04",
+  "version": 1,
+  "status": "signed",
+  "note_type": "nursing_note",
+  "author_role": "nurse",
+  "documented_at": "2031-01-30T10:20",
+  "amendment_reason": null,
+  "text": "Morning check 30 Jan at 10:00: ICE 8/10 (orientation 3/4, attention 0/1, other items complete). Awake. Temperature 36.9. Physician informed and will see the patient on rounds."
+}

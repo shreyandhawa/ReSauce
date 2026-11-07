@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0064",
+  "document_id": "SYN-0064-D06",
+  "version": 1,
+  "status": "signed",
+  "note_type": "discharge_summary",
+  "author_role": "attending_physician",
+  "documented_at": "2035-09-14T14:00",
+  "amendment_reason": null,
+  "text": "D/C summary. CRS g1, toci x1. Mild neurotox d4-d5 (ICE 7-8/10), no Rx needed, ICE 9/10 11 Sep, ICE 10/10 14 Sep. D/C home, f/u 1 wk."
+}

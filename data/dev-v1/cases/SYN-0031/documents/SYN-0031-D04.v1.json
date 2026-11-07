@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0031",
+  "document_id": "SYN-0031-D04",
+  "version": 1,
+  "status": "signed",
+  "note_type": "physician_progress_note",
+  "author_role": "attending_physician",
+  "documented_at": "2032-12-28T11:00",
+  "amendment_reason": null,
+  "text": "Day 12. Fever to 39.5 with hypotension. Blood cultures positive for gram-negative rods. Meropenem started and norepinephrine commenced. Transfered to the intensive care unit for monitoring."
+}

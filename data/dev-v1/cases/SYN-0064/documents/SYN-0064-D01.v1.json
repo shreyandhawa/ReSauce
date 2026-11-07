@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0064",
+  "document_id": "SYN-0064-D01",
+  "version": 1,
+  "status": "signed",
+  "note_type": "physician_progress_note",
+  "author_role": "resident_physician",
+  "documented_at": "2035-09-05T10:10",
+  "amendment_reason": null,
+  "text": "D+2 PN. CRS g1, toci x1 at 05:40, afebrile after. ICE 10/10 at 09:45. No sz."
+}

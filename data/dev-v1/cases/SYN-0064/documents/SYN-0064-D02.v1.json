@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0064",
+  "document_id": "SYN-0064-D02",
+  "version": 1,
+  "status": "signed",
+  "note_type": "nursing_note",
+  "author_role": "nurse",
+  "documented_at": "2035-09-07T14:30",
+  "amendment_reason": null,
+  "text": "ICE 8/10 at 14:05 on 07 Sep (orient 3/4, attn 0/1, rest full). Awake, coop. T 37.1. MD informed."
+}

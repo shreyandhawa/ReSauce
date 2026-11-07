@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0051",
+  "document_id": "SYN-0051-D06",
+  "version": 1,
+  "status": "signed",
+  "note_type": "discharge_summary",
+  "author_role": "attending_physician",
+  "documented_at": "2032-02-07T14:00",
+  "amendment_reason": null,
+  "text": "DISCHARGE SUMMARY\n\nPatient admitted on 28 Jan for CAR-T cell infusion for relapsed lymphoma. She recieved lymphodepleting chemotherapy before admision and the cells were infused on 28 Jan without any infusion reaction.\n\nHospital course.\n1. Cytokine release syndrome. Fever to 38.9 on 30 Jan with mild hypotension that responded to fluids. Tocilizumab was given once on 30 Jan and the fever settled within a day. Levetiracetam 500 mg twice daily was started on 29 Jan as seizure prophylaxis per protocol and continued until discharge.\n2. Neurological monitoring. ICE scores were 10/10 until 01 Feb, when the score fell to 8/10, and it was 7/10 on 02 Feb. She was awake and cooperative throughout. On 04 Feb at 14:20 she had one generalised tonic-clonic seizure lasting about 90 seconds, witnessed by the nurse; it stopped by itself without any medication and she was back to her baseline within 10 minutes. MRI brain on 05 Feb showed no acute abnormality. ICE was 10/10 on 06 Feb.\n3. Infection. Blood cultures remained negative. The neutrophil count was recovering by discharge.\n4. Nutrition and mobility. She was seen by the dietitian and by physiotherapy and was walking independantly on the ward before discharge.\n\nDischarge plan. Home on 07 Feb with her daughter. Follow-up in the CAR-T clinic in one week with blood tests. Levetiracetam to continue until reviewed in clinic. Advice given about fever and when to call."
+}

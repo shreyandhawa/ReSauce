@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0049",
+  "document_id": "SYN-0049-D03",
+  "version": 1,
+  "status": "signed",
+  "note_type": "physician_progress_note",
+  "author_role": "resident_physician",
+  "documented_at": "2032-07-25T09:55",
+  "amendment_reason": null,
+  "text": "Day 7. ICE 5/10 at 09:30 (orientation 1/4, naming 2/3, commands 1/1, writing 0/1, attention 1/1). Awakens to voice. Mild hand tremor. No focal motor deficit, no seizures. Dexamethasone 10 mg IV started."
+}

@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0051",
+  "document_id": "SYN-0051-D04",
+  "version": 1,
+  "status": "signed",
+  "note_type": "imaging_report",
+  "author_role": "radiologist",
+  "documented_at": "2032-02-05T15:20",
+  "amendment_reason": null,
+  "text": "MRI brain without contrast, 05 Feb.\nIndication: routine neurological surveillance after CAR-T therapy.\nFindings: no acute infarct, no haemorrhage, no mass effect, no cerebral edema. Ventricles and sulci appropriate for age.\nImpression: no acute intracranial abnormality."
+}

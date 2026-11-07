@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0004",
+  "document_id": "SYN-0004-D03",
+  "version": 1,
+  "status": "signed",
+  "note_type": "physician_progress_note",
+  "author_role": "attending_physician",
+  "documented_at": "2032-09-11T10:30",
+  "amendment_reason": null,
+  "text": "d+3. CRS g2 on low-dose norepi, Tmax 38.6. ICE 10/10 at 10:00. Mild HA, acetaminophen. No focal def."
+}

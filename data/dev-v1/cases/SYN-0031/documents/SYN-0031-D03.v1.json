@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0031",
+  "document_id": "SYN-0031-D03",
+  "version": 1,
+  "status": "signed",
+  "note_type": "physician_progress_note",
+  "author_role": "resident_physician",
+  "documented_at": "2032-12-22T10:40",
+  "amendment_reason": null,
+  "text": "Day 6. ICE 6/10 at 10:10 on 22 Dec (orientation 2/4, naming 2/3, commands 1/1, writing 1/1, attention 0/1). Awakens to voice. No focal deficit, no seizures. Dexamethasone 10 mg IV started."
+}

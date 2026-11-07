@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0032",
+  "document_id": "SYN-0032-D04",
+  "version": 1,
+  "status": "signed",
+  "note_type": "physician_progress_note",
+  "author_role": "attending_physician",
+  "documented_at": "2034-08-02T11:00",
+  "amendment_reason": null,
+  "text": "D+5 PN. CRS g1 resolving. ICE 8/10 at 10:30 on 02 Aug (orient 3/4, attn 0/1). Awake, no focal def. No sz. Plan: ICE q shift, EEG tomorrow."
+}

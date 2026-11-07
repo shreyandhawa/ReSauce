@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0011",
+  "document_id": "SYN-0011-D03",
+  "version": 1,
+  "status": "signed",
+  "note_type": "physician_progress_note",
+  "author_role": "resident_physician",
+  "documented_at": "2036-10-24T10:05",
+  "amendment_reason": null,
+  "text": "DAILY PROGRESS NOTE\nDate: 2036-10-24\nNeuro: ICE 7/10 at 09:40 (orientation 3/4, naming 3/3, commands 1/1, writing 0/1, attention 0/1)\nLevel: awake\nSeizure: none\nMild hand tremor\nPlan: dexamethasone 10 mg IV, ICE every shift"
+}

@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0035",
+  "document_id": "SYN-0035-D04",
+  "version": 1,
+  "status": "unsigned",
+  "note_type": "other",
+  "author_role": "other",
+  "documented_at": "2033-11-19T14:30",
+  "amendment_reason": null,
+  "text": "Dietitian note 19 Nov. Weight 58.2 kg. Appetite improving, taking oral supplements twice daily. Encourage fluids. Review again in 3 days."
+}

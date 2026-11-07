@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0071",
+  "document_id": "SYN-0071-D02",
+  "version": 1,
+  "status": "signed",
+  "note_type": "nursing_note",
+  "author_role": "nurse",
+  "documented_at": "2031-11-24T08:50",
+  "amendment_reason": null,
+  "text": "FLOWSHEET 2031-11-24\nTEMP 36.9 HR 84 BP 120/74 SPO2 98 RA\nNEURO: ICE 5/10 @0820 (ORIENT 1/4 NAME 2/3 CMD 1/1 WRT 0/1 ATTN 1/1)\nLOC: awakens to voice\nSZ: none\nMD notified 0835, DEX 10MG IV ordered"
+}

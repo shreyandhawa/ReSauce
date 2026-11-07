@@ -1,0 +1,134 @@
+{
+  "answer_format": "0.1-provisional",
+  "case_id": "SYN-0004",
+  "scenario_id": "SC-72",
+  "scenario_label": "Record says no ICANS; a course dominated by CRS; frequent formal Grade 0 assessments; no qualifying finding",
+  "case_type": "Neg",
+  "tags": [
+    "no ICANS",
+    "CRS-dominated"
+  ],
+  "status": "not clinician-verified",
+  "answer_kind": "intended",
+  "provenance": {
+    "clinical_methods": "v0.4.1",
+    "data_format": "v0.1.2",
+    "dataset_plan": "v0.3.1",
+    "dataset_id": "SYN-DS-DEV-V1",
+    "dataset_version": "1.0.0",
+    "ordering_seed": 20261107,
+    "date_written": "2026-11-07"
+  },
+  "out_of_scope": null,
+  "fields": {
+    "onset": {
+      "category": "7.7",
+      "record_value": null,
+      "documented_value": "none found",
+      "signed_difference_days": null,
+      "difference_note": null,
+      "readings": null,
+      "evidence": [
+        {
+          "role": "formal Grade 0 assessment during CRS",
+          "document_id": "SYN-0004-D02",
+          "version": 1,
+          "quote": "ICE 10/10 at 21:15",
+          "start": 98,
+          "end": 116
+        },
+        {
+          "role": "formal Grade 0 assessment after CRS",
+          "document_id": "SYN-0004-D06",
+          "version": 1,
+          "quote": "ICE 10/10 at 09:30",
+          "start": 35,
+          "end": 53
+        }
+      ],
+      "record_history": null
+    },
+    "max_grade": {
+      "category": "7.7",
+      "record_value": null,
+      "documented_value": {
+        "grade": 0
+      },
+      "signed_difference_days": null,
+      "difference_note": "formal Grade 0 assessments only",
+      "readings": null,
+      "evidence": [
+        {
+          "role": "formal Grade 0 assessment during CRS",
+          "document_id": "SYN-0004-D02",
+          "version": 1,
+          "quote": "ICE 10/10 at 21:15",
+          "start": 98,
+          "end": 116
+        },
+        {
+          "role": "formal Grade 0 assessment after CRS",
+          "document_id": "SYN-0004-D06",
+          "version": 1,
+          "quote": "ICE 10/10 at 09:30",
+          "start": 35,
+          "end": 53
+        }
+      ],
+      "record_history": null
+    }
+  },
+  "case_flags": {
+    "unassessed_period": {
+      "days_without_gradeable_assessment": [
+        0,
+        6,
+        8,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28
+      ],
+      "not_assessable_periods": []
+    },
+    "ungradeable_neurological_symptom": []
+  },
+  "other_flags": [],
+  "ambiguity_notes": [
+    "Formal Grade 0 assessments (ICE 10/10) on Days +1, +2, +3, +4, +5, +7 and +9, no qualifying finding and no 'not assessable' period: both fields 7.7 (§7.9(b)). Fever, hypotension, norepinephrine and tocilizumab are CRS and its treatment, never competing causes (A35)."
+  ],
+  "depends_on_open_points": [],
+  "author_checks": {
+    "distractors": [
+      "CRS fever, hypotension, norepinephrine, tocilizumab, acetaminophen (CRS and its treatment)",
+      "mild headache (excluded symptom)"
+    ],
+    "negated_findings": [
+      "No sz",
+      "no tremor",
+      "no focal def"
+    ],
+    "positive_findings": [
+      "ICE 10/10 on seven days"
+    ],
+    "brief_features_used": [
+      "style abbreviation-heavy",
+      "no_icans true"
+    ]
+  }
+}

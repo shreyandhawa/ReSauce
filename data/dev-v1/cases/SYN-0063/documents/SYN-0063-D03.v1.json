@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0063",
+  "document_id": "SYN-0063-D03",
+  "version": 1,
+  "status": "signed",
+  "note_type": "nursing_note",
+  "author_role": "nurse",
+  "documented_at": "2033-01-25T10:35",
+  "amendment_reason": null,
+  "text": "BG 2.8 mmol/L at 09:40 (hypoglycaemia), IV dextrose 09:50, recheck 10:30 BG 5.1. ICE 6/10 at 10:00 (orient 2/4, name 2/3, cmd 1/1, write 0/1, attn 1/1). Awake. MD informed."
+}

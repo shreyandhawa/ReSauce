@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0064",
+  "document_id": "SYN-0064-D03",
+  "version": 1,
+  "status": "signed",
+  "note_type": "physician_progress_note",
+  "author_role": "attending_physician",
+  "documented_at": "2035-09-08T09:50",
+  "amendment_reason": null,
+  "text": "D+5 PN. ICE 7/10 at 09:20 (orient 2/4, name 3/3, cmd 1/1, write 1/1, attn 0/1). Awake. No focal def. No sz. Plan: ICE q shift."
+}

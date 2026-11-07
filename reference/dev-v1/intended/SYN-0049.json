@@ -1,0 +1,89 @@
+{
+  "answer_format": "0.1-provisional",
+  "case_id": "SYN-0049",
+  "scenario_id": "SC-56",
+  "scenario_label": "Record maximum grade 5 with no documented death",
+  "case_type": "OOS",
+  "tags": [
+    "out of scope"
+  ],
+  "status": "not clinician-verified",
+  "answer_kind": "intended",
+  "provenance": {
+    "clinical_methods": "v0.4.1",
+    "data_format": "v0.1.2",
+    "dataset_plan": "v0.3.1",
+    "dataset_id": "SYN-DS-DEV-V1",
+    "dataset_version": "1.0.0",
+    "ordering_seed": 20261107,
+    "date_written": "2026-11-07"
+  },
+  "out_of_scope": {
+    "reason": "record Grade 5",
+    "source": "record.json, maximum grade 5",
+    "evidence": [
+      {
+        "role": "no death documented; discharged home",
+        "document_id": "SYN-0049-D04",
+        "version": 1,
+        "quote": "alive and well and was discharged home",
+        "start": 182,
+        "end": 220
+      }
+    ]
+  },
+  "fields": {
+    "onset": {
+      "category": "out of scope (record Grade 5)",
+      "record_value": "2032-07-24",
+      "documented_value": null,
+      "signed_difference_days": null,
+      "difference_note": null,
+      "readings": null,
+      "evidence": [],
+      "record_history": null
+    },
+    "max_grade": {
+      "category": "out of scope (record Grade 5)",
+      "record_value": 5,
+      "documented_value": null,
+      "signed_difference_days": null,
+      "difference_note": null,
+      "readings": null,
+      "evidence": [
+        {
+          "role": "no death documented; discharged home",
+          "document_id": "SYN-0049-D04",
+          "version": 1,
+          "quote": "alive and well and was discharged home",
+          "start": 182,
+          "end": 220
+        }
+      ],
+      "record_history": null
+    }
+  },
+  "case_flags": null,
+  "other_flags": [],
+  "ambiguity_notes": [
+    "The record's maximum grade is 5 (§8, A29). ReSauce does not assign Grade 5; the case is out of scope with no category. The documents show recovery and discharge, no death."
+  ],
+  "depends_on_open_points": [],
+  "author_checks": {
+    "distractors": [
+      "CRS with tocilizumab",
+      "headache and hand tremor (excluded symptoms)"
+    ],
+    "negated_findings": [
+      "No seizures",
+      "no focal motor deficit"
+    ],
+    "positive_findings": [
+      "ICE 5/10 on Day +7 (Grade 2)"
+    ],
+    "brief_features_used": [
+      "style mixed",
+      "record Grade 5 only here"
+    ]
+  }
+}

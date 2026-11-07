@@ -1,0 +1,90 @@
+{
+  "answer_format": "0.1-provisional",
+  "case_id": "SYN-0031",
+  "scenario_id": "SC-69",
+  "scenario_label": "Documented death inside the window; record grade 2 (not 5)",
+  "case_type": "OOS",
+  "tags": [
+    "out of scope"
+  ],
+  "status": "not clinician-verified",
+  "answer_kind": "intended",
+  "provenance": {
+    "clinical_methods": "v0.4.1",
+    "data_format": "v0.1.2",
+    "dataset_plan": "v0.3.1",
+    "dataset_id": "SYN-DS-DEV-V1",
+    "dataset_version": "1.0.0",
+    "ordering_seed": 20261107,
+    "date_written": "2026-11-07"
+  },
+  "out_of_scope": {
+    "reason": "documented death",
+    "source": "note text (document 6)",
+    "evidence": [
+      {
+        "role": "documented death inside the window",
+        "document_id": "SYN-0031-D06",
+        "version": 1,
+        "quote": "The patient died at 05:10 on 02 Jan",
+        "start": 14,
+        "end": 49
+      }
+    ]
+  },
+  "fields": {
+    "onset": {
+      "category": "out of scope (documented death)",
+      "record_value": "2032-12-21",
+      "documented_value": null,
+      "signed_difference_days": null,
+      "difference_note": null,
+      "readings": null,
+      "evidence": [],
+      "record_history": null
+    },
+    "max_grade": {
+      "category": "out of scope (documented death)",
+      "record_value": 2,
+      "documented_value": null,
+      "signed_difference_days": null,
+      "difference_note": null,
+      "readings": null,
+      "evidence": [
+        {
+          "role": "documented death inside the window",
+          "document_id": "SYN-0031-D06",
+          "version": 1,
+          "quote": "The patient died at 05:10 on 02 Jan",
+          "start": 14,
+          "end": 49
+        }
+      ],
+      "record_history": null
+    }
+  },
+  "case_flags": null,
+  "other_flags": [],
+  "ambiguity_notes": [
+    "A documented death makes the case out of scope whatever its date (§5, A29). The record grade is 2, not 5, and no category is assigned. The death summary gives sepsis as the cause; ReSauce does not judge causes."
+  ],
+  "depends_on_open_points": [],
+  "author_checks": {
+    "distractors": [
+      "CRS with tocilizumab",
+      "later sepsis"
+    ],
+    "negated_findings": [
+      "No focal deficit",
+      "no seizures"
+    ],
+    "positive_findings": [
+      "ICE 8/10 on Day +5",
+      "ICE 6/10 on Day +6"
+    ],
+    "brief_features_used": [
+      "death required, inside the window (Day +17)",
+      "style with typos (typos only in 'Transfered', 'famly')"
+    ]
+  }
+}

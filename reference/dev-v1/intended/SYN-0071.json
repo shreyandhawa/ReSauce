@@ -1,0 +1,134 @@
+{
+  "answer_format": "0.1-provisional",
+  "case_id": "SYN-0071",
+  "scenario_id": "SC-57",
+  "scenario_label": "Key findings only in templated, flowsheet-style notes with heavy abbreviations; record correct",
+  "case_type": "Neg",
+  "tags": [
+    "flowsheet style"
+  ],
+  "status": "not clinician-verified",
+  "answer_kind": "intended",
+  "provenance": {
+    "clinical_methods": "v0.4.1",
+    "data_format": "v0.1.2",
+    "dataset_plan": "v0.3.1",
+    "dataset_id": "SYN-DS-DEV-V1",
+    "dataset_version": "1.0.0",
+    "ordering_seed": 20261107,
+    "date_written": "2026-11-07"
+  },
+  "out_of_scope": null,
+  "fields": {
+    "onset": {
+      "category": "7.7",
+      "record_value": "2031-11-23",
+      "documented_value": {
+        "date": "2031-11-23",
+        "study_day": 4
+      },
+      "signed_difference_days": 0,
+      "difference_note": null,
+      "readings": null,
+      "evidence": [
+        {
+          "role": "first qualifying finding",
+          "document_id": "SYN-0071-D01",
+          "version": 1,
+          "quote": "ICE 8/10 @0840",
+          "start": 65,
+          "end": 79
+        }
+      ],
+      "record_history": null
+    },
+    "max_grade": {
+      "category": "7.7",
+      "record_value": 2,
+      "documented_value": {
+        "grade": 2
+      },
+      "signed_difference_days": null,
+      "difference_note": null,
+      "readings": null,
+      "evidence": [
+        {
+          "role": "ICE 5/10",
+          "document_id": "SYN-0071-D02",
+          "version": 1,
+          "quote": "ICE 5/10 @0820",
+          "start": 65,
+          "end": 79
+        },
+        {
+          "role": "awakens to voice (Grade 2)",
+          "document_id": "SYN-0071-D02",
+          "version": 1,
+          "quote": "LOC: awakens to voice",
+          "start": 127,
+          "end": 148
+        }
+      ],
+      "record_history": null
+    }
+  },
+  "case_flags": {
+    "unassessed_period": {
+      "days_without_gradeable_assessment": [
+        0,
+        1,
+        2,
+        3,
+        6,
+        7,
+        8,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28
+      ],
+      "not_assessable_periods": []
+    },
+    "ungradeable_neurological_symptom": []
+  },
+  "other_flags": [],
+  "ambiguity_notes": [
+    "All deciding findings are in abbreviation-heavy flowsheet entries; times are written without a colon (e.g. 0840). The amendment to document 4 changes only a blood pressure."
+  ],
+  "depends_on_open_points": [],
+  "author_checks": {
+    "distractors": [
+      "CRS (toci x1)",
+      "mild headache (excluded symptom)",
+      "normal EEG"
+    ],
+    "negated_findings": [
+      "SZ: none",
+      "no epileptiform discharges"
+    ],
+    "positive_findings": [
+      "ICE 8/10 on Day +4",
+      "ICE 5/10 on Day +5"
+    ],
+    "brief_features_used": [
+      "style templated (scenario)",
+      "normal EEG distractor",
+      "amended_note random"
+    ]
+  }
+}

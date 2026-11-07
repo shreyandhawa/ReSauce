@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0012",
+  "document_id": "SYN-0012-D01",
+  "version": 1,
+  "status": "signed",
+  "note_type": "physician_progress_note",
+  "author_role": "attending_physician",
+  "documented_at": "2033-08-31T10:25",
+  "amendment_reason": null,
+  "text": "Day 2 progress note. Cytokine release syndrome, grade 1: fever to 38.8 overnight, tocilizumab given at 07:00 and acetaminophen at 07:10. ICE 10/10 at 09:50, alert and oriented. No seizure activity. The plan is to continue close monitoring of fever and neurological status."
+}

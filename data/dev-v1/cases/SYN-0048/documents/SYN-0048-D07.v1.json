@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0048",
+  "document_id": "SYN-0048-D07",
+  "version": 1,
+  "status": "signed",
+  "note_type": "physician_progress_note",
+  "author_role": "attending_physician",
+  "documented_at": "2035-06-13T09:50",
+  "amendment_reason": null,
+  "text": "d+6. Afebrile, eating. Neuro non-focal. Plan: ICE q shift."
+}

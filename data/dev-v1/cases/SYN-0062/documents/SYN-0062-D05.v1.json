@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0062",
+  "document_id": "SYN-0062-D05",
+  "version": 1,
+  "status": "signed",
+  "note_type": "physician_progress_note",
+  "author_role": "attending_physician",
+  "documented_at": "2034-01-31T11:10",
+  "amendment_reason": null,
+  "text": "Called about ICE 0/10 at 09:45 on 31 Jan. Dexamethasone 10 mg IV given at 10:15. EEG ordered. Repeat ICE at 15:00."
+}

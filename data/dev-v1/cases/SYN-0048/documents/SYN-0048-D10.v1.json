@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0048",
+  "document_id": "SYN-0048-D10",
+  "version": 1,
+  "status": "signed",
+  "note_type": "discharge_summary",
+  "author_role": "attending_physician",
+  "documented_at": "2035-06-19T14:20",
+  "amendment_reason": null,
+  "text": "D/C summary. CRS g1 d2-d3, toci x1. Mild tremor d7, no other neuro findings. ICE 10/10 on 19 Jun. D/C home."
+}

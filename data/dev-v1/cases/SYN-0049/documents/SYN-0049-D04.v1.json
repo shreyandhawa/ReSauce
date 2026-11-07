@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0049",
+  "document_id": "SYN-0049-D04",
+  "version": 1,
+  "status": "signed",
+  "note_type": "discharge_summary",
+  "author_role": "attending_physician",
+  "documented_at": "2032-07-29T14:35",
+  "amendment_reason": null,
+  "text": "Discharge summary. Mild CRS, one dose of tocilizumab. Reduced ICE scores 24 Jul to 25 Jul, lowest 5/10, treated with dexamethasone and recovered, ICE 10/10 on 29 Jul. The patient is alive and well and was discharged home with his family. Follow-up in one week."
+}

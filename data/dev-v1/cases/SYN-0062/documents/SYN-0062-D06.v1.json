@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0062",
+  "document_id": "SYN-0062-D06",
+  "version": 1,
+  "status": "signed",
+  "note_type": "neurology_consult",
+  "author_role": "neurologist",
+  "documented_at": "2034-02-01T11:30",
+  "amendment_reason": null,
+  "text": "Neurology consult 01 Feb. ICE 6/10 at 11:00 (orientation 2/4, naming 2/3, commands 1/1, writing 0/1, attention 1/1). Awake, follows commands. Mild hand tremor. No seizure activity, no focal motor deficit. Continue dexamethasone."
+}

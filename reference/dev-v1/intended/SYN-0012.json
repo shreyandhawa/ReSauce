@@ -1,0 +1,100 @@
+{
+  "answer_format": "0.1-provisional",
+  "case_id": "SYN-0012",
+  "scenario_id": "SC-55",
+  "scenario_label": "Adult case with a CAPD assessment in a note",
+  "case_type": "OOS",
+  "tags": [
+    "out of scope"
+  ],
+  "status": "not clinician-verified",
+  "answer_kind": "intended",
+  "provenance": {
+    "clinical_methods": "v0.4.1",
+    "data_format": "v0.1.2",
+    "dataset_plan": "v0.3.1",
+    "dataset_id": "SYN-DS-DEV-V1",
+    "dataset_version": "1.0.0",
+    "ordering_seed": 20261107,
+    "date_written": "2026-11-07"
+  },
+  "out_of_scope": {
+    "reason": "CAPD assessment",
+    "source": "note text (document 3)",
+    "evidence": [
+      {
+        "role": "CAPD assessment in an adult's note",
+        "document_id": "SYN-0012-D03",
+        "version": 1,
+        "quote": "Cornell Assessment of Pediatric Delirium (CAPD) was completed at bedside at 14:00, total score 5",
+        "start": 74,
+        "end": 170
+      }
+    ]
+  },
+  "fields": {
+    "onset": {
+      "category": "out of scope (CAPD assessment)",
+      "record_value": "2033-09-03",
+      "documented_value": null,
+      "signed_difference_days": null,
+      "difference_note": null,
+      "readings": null,
+      "evidence": [
+        {
+          "role": "CAPD assessment in an adult's note",
+          "document_id": "SYN-0012-D03",
+          "version": 1,
+          "quote": "Cornell Assessment of Pediatric Delirium (CAPD) was completed at bedside at 14:00, total score 5",
+          "start": 74,
+          "end": 170
+        }
+      ],
+      "record_history": null
+    },
+    "max_grade": {
+      "category": "out of scope (CAPD assessment)",
+      "record_value": 2,
+      "documented_value": null,
+      "signed_difference_days": null,
+      "difference_note": null,
+      "readings": null,
+      "evidence": [
+        {
+          "role": "CAPD assessment in an adult's note",
+          "document_id": "SYN-0012-D03",
+          "version": 1,
+          "quote": "Cornell Assessment of Pediatric Delirium (CAPD) was completed at bedside at 14:00, total score 5",
+          "start": 74,
+          "end": 170
+        }
+      ],
+      "record_history": null
+    }
+  },
+  "case_flags": null,
+  "other_flags": [],
+  "ambiguity_notes": [
+    "A CAPD assessment in any note makes the case out of scope whatever the age (§5, A29). No category is assigned for either field, and the case-level flags do not apply."
+  ],
+  "depends_on_open_points": [],
+  "author_checks": {
+    "distractors": [
+      "CRS fever with tocilizumab and acetaminophen",
+      "mild hand tremor (excluded symptom)"
+    ],
+    "negated_findings": [
+      "No seizure activity",
+      "no focal motor deficit"
+    ],
+    "positive_findings": [
+      "ICE 8/10 on Day +5",
+      "ICE 5/10 on Day +7"
+    ],
+    "brief_features_used": [
+      "style verbose",
+      "death forbidden",
+      "CAPD only here"
+    ]
+  }
+}

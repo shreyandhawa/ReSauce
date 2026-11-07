@@ -1,0 +1,125 @@
+{
+  "answer_format": "0.1-provisional",
+  "case_id": "SYN-0048",
+  "scenario_id": "SC-66",
+  "scenario_label": "Record says ICANS with a grade; no qualifying finding anywhere; a formal Grade 0 assessment on the record's onset date",
+  "case_type": "Pos",
+  "tags": [
+    "no qualifying finding"
+  ],
+  "status": "not clinician-verified",
+  "answer_kind": "intended",
+  "provenance": {
+    "clinical_methods": "v0.4.1",
+    "data_format": "v0.1.2",
+    "dataset_plan": "v0.3.1",
+    "dataset_id": "SYN-DS-DEV-V1",
+    "dataset_version": "1.0.0",
+    "ordering_seed": 20261107,
+    "date_written": "2026-11-07"
+  },
+  "out_of_scope": null,
+  "fields": {
+    "onset": {
+      "category": "7.1",
+      "record_value": "2035-06-12",
+      "documented_value": "none found",
+      "signed_difference_days": null,
+      "difference_note": "no documented onset",
+      "readings": null,
+      "evidence": [
+        {
+          "role": "formal Grade 0 assessment on the record's onset date",
+          "document_id": "SYN-0048-D06",
+          "version": 1,
+          "quote": "= 10/10. Alert, cooperative",
+          "start": 69,
+          "end": 96
+        }
+      ],
+      "record_history": null
+    },
+    "max_grade": {
+      "category": "7.3",
+      "record_value": 2,
+      "documented_value": {
+        "grade": 0
+      },
+      "signed_difference_days": null,
+      "difference_note": "no qualifying finding anywhere in the window; only formal Grade 0 assessments",
+      "readings": null,
+      "evidence": [
+        {
+          "role": "formal Grade 0 assessment on the record's onset date",
+          "document_id": "SYN-0048-D06",
+          "version": 1,
+          "quote": "= 10/10. Alert, cooperative",
+          "start": 69,
+          "end": 96
+        },
+        {
+          "role": "another formal Grade 0 assessment",
+          "document_id": "SYN-0048-D09",
+          "version": 1,
+          "quote": "ICE 10/10 at 11:30",
+          "start": 26,
+          "end": 44
+        }
+      ],
+      "record_history": null
+    }
+  },
+  "case_flags": {
+    "unassessed_period": {
+      "days_without_gradeable_assessment": [
+        1,
+        2,
+        6,
+        8,
+        10,
+        11,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28
+      ],
+      "not_assessable_periods": []
+    },
+    "ungradeable_neurological_symptom": []
+  },
+  "other_flags": [],
+  "ambiguity_notes": [
+    "No qualifying finding exists in the window (§7.9(c)). A formal Grade 0 assessment (ICE 10/10) is documented on the record's onset date, Day +5, so onset is 7.1 'no documented onset' with no signed difference. Grade 7.3: no 'not assessable' statement exists, so A25 does not apply. The tremor on Day +7 and the headache on Day +3 are excluded symptoms on other days."
+  ],
+  "depends_on_open_points": [],
+  "author_checks": {
+    "distractors": [
+      "CRS fever with acetaminophen and tocilizumab",
+      "mild headache (Day +3) and tremor (Day +7), excluded symptoms"
+    ],
+    "negated_findings": [
+      "No sz",
+      "no focal def",
+      "no HA (Day +1)"
+    ],
+    "positive_findings": [
+      "ICE 10/10 on seven days"
+    ],
+    "brief_features_used": [
+      "style terse",
+      "10 documents"
+    ]
+  }
+}

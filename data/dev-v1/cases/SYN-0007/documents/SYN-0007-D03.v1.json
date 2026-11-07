@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0007",
+  "document_id": "SYN-0007-D03",
+  "version": 1,
+  "status": "signed",
+  "note_type": "physician_progress_note",
+  "author_role": "resident_physician",
+  "documented_at": "2032-04-23T10:50",
+  "amendment_reason": null,
+  "text": "D+5. CRS resolved. Pt confused this AM per RN. Reassess tomorrow. No sz, no focal def."
+}

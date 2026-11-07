@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0062",
+  "document_id": "SYN-0062-D03",
+  "version": 1,
+  "status": "signed",
+  "note_type": "physician_progress_note",
+  "author_role": "attending_physician",
+  "documented_at": "2034-01-30T09:45",
+  "amendment_reason": null,
+  "text": "Day 5. ICE 5/10 at 09:20 (orientation 1/4, naming 2/3, commands 1/1, writing 0/1, attention 1/1). No focal deficit, no seizure activity. Dexamethasone not started yet; recheck this afternoon."
+}

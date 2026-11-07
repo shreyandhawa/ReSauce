@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0049",
+  "document_id": "SYN-0049-D02",
+  "version": 1,
+  "status": "signed",
+  "note_type": "nursing_note",
+  "author_role": "nurse",
+  "documented_at": "2032-07-24T16:20",
+  "amendment_reason": null,
+  "text": "24 Jul 16:00: ICE 7/10 (orientation 2/4, attention 0/1, rest complete). Awake, cooperative. Temp 36.9. No seizure activity. Physician informed."
+}

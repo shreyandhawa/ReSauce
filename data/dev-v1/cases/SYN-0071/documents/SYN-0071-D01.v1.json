@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0071",
+  "document_id": "SYN-0071-D01",
+  "version": 1,
+  "status": "signed",
+  "note_type": "nursing_note",
+  "author_role": "nurse",
+  "documented_at": "2031-11-23T09:10",
+  "amendment_reason": null,
+  "text": "FLOWSHEET 2031-11-23\nTEMP 37.2 HR 90 BP 118/76 SPO2 97 RA\nNEURO: ICE 8/10 @0840 (ORIENT 3/4 NAME 3/3 CMD 1/1 WRT 1/1 ATTN 0/1)\nLOC: awake\nSZ: none\nHA: mild 3/10, acetaminophen PRN given\nCRS: g1, toci x1 22 Nov"
+}

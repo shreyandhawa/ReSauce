@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0059",
+  "document_id": "SYN-0059-D06",
+  "version": 1,
+  "status": "signed",
+  "note_type": "discharge_summary",
+  "author_role": "attending_physician",
+  "documented_at": "2034-12-17T14:00",
+  "amendment_reason": null,
+  "text": "DISCHARGE SUMMARY\nCRS: Grade 1, resolved after tocilizumab\nNeurotoxicity: ICE 8/10 on 09 Dec, lowest ICE 6/10 on 11 Dec, one brief seizure on 10 Dec (see addendum), levetiracetam started 13 Dec\nICE 10/10 on 15 Dec\nDisposition: home"
+}

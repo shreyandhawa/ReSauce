@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0023",
+  "document_id": "SYN-0023-D05",
+  "version": 1,
+  "status": "signed",
+  "note_type": "physician_progress_note",
+  "author_role": "attending_physician",
+  "documented_at": "2031-01-31T09:50",
+  "amendment_reason": null,
+  "text": "Day 6 progress note. ICE 8/10 at 09:30 on 31 Jan (orientation 3/4, attention 0/1). Awake, no focal deficit. Mild headache, acetaminophen given. The cytokine release syndrome has resolved. Continue ICE every shift."
+}

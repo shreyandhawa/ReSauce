@@ -1,0 +1,161 @@
+{
+  "answer_format": "0.1-provisional",
+  "case_id": "SYN-0032",
+  "scenario_id": "SC-62",
+  "scenario_label": "Onset revised after an amended note: a signed amendment adds an earlier, timed finding to an existing note",
+  "case_type": "Neg",
+  "tags": [
+    "amended note",
+    "multi-version record",
+    "out-of-window document"
+  ],
+  "status": "not clinician-verified",
+  "answer_kind": "intended",
+  "provenance": {
+    "clinical_methods": "v0.4.1",
+    "data_format": "v0.1.2",
+    "dataset_plan": "v0.3.1",
+    "dataset_id": "SYN-DS-DEV-V1",
+    "dataset_version": "1.0.0",
+    "ordering_seed": 20261107,
+    "date_written": "2026-11-07"
+  },
+  "out_of_scope": null,
+  "fields": {
+    "onset": {
+      "category": "7.6",
+      "record_value": "2034-08-01",
+      "documented_value": {
+        "date": "2034-08-01",
+        "study_day": 4
+      },
+      "signed_difference_days": 0,
+      "difference_note": null,
+      "readings": null,
+      "evidence": [
+        {
+          "role": "earlier, timed finding added by the signed amendment",
+          "document_id": "SYN-0032-D04",
+          "version": 2,
+          "quote": "ICE 8/10 at 23:30",
+          "start": 175,
+          "end": 192
+        }
+      ],
+      "record_history": {
+        "a": true,
+        "b": true,
+        "c": true,
+        "explanation": "Onset changed from Day +5 to Day +4 (a). The current value equals the documentation-derived onset (b). Document 4 version 2 supports the new value and has documented_at Day +8 15:00, after record version 1 (Day +7 18:00) and before record version 2 (Day +9 10:00) (c)."
+      }
+    },
+    "max_grade": {
+      "category": "7.7",
+      "record_value": 2,
+      "documented_value": {
+        "grade": 2
+      },
+      "signed_difference_days": null,
+      "difference_note": null,
+      "readings": null,
+      "evidence": [
+        {
+          "role": "ICE 6/10",
+          "document_id": "SYN-0032-D05",
+          "version": 1,
+          "quote": "ICE 6/10 at 11:40",
+          "start": 22,
+          "end": 39
+        },
+        {
+          "role": "awakens to voice",
+          "document_id": "SYN-0032-D05",
+          "version": 1,
+          "quote": "Awakens to voice",
+          "start": 94,
+          "end": 110
+        }
+      ],
+      "record_history": {
+        "a": false,
+        "b": null,
+        "c": null,
+        "explanation": "Grade did not change between record versions."
+      }
+    }
+  },
+  "case_flags": {
+    "unassessed_period": {
+      "days_without_gradeable_assessment": [
+        0,
+        2,
+        3,
+        8,
+        9,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28
+      ],
+      "not_assessable_periods": []
+    },
+    "ungradeable_neurological_symptom": []
+  },
+  "other_flags": [
+    {
+      "flag": "outside observation window",
+      "field": null,
+      "detail": "Pre-infusion baseline assessment (Day -5) is outside Day 0 to +28 and is not used",
+      "evidence": [
+        {
+          "role": "out-of-window observation",
+          "document_id": "SYN-0032-D01",
+          "version": 1,
+          "quote": "ICE 10/10. Alert. Baseline before conditioning",
+          "start": 36,
+          "end": 82
+        }
+      ]
+    }
+  ],
+  "ambiguity_notes": [
+    "Version 1 of document 4 supports onset Day +5; version 2 (signed, current) adds a timed finding on Day +4. The record moved from Day +5 to Day +4 after version 2 was written, so the earlier record value matches the superseded document version, not the current record."
+  ],
+  "depends_on_open_points": [],
+  "author_checks": {
+    "distractors": [
+      "CRS fever with tocilizumab",
+      "fine tremor (excluded symptom)",
+      "normal EEG"
+    ],
+    "negated_findings": [
+      "No sz",
+      "no focal def",
+      "no epileptiform discharges"
+    ],
+    "positive_findings": [
+      "ICE 8/10 on Day +4 (addendum) and Day +5",
+      "ICE 6/10 on Day +6"
+    ],
+    "brief_features_used": [
+      "amended_note and multi_version_record (scenario)",
+      "out_of_window_document",
+      "normal EEG distractor",
+      "style abbreviation-heavy"
+    ]
+  }
+}

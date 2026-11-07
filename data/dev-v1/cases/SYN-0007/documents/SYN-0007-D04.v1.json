@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0007",
+  "document_id": "SYN-0007-D04",
+  "version": 1,
+  "status": "signed",
+  "note_type": "physician_progress_note",
+  "author_role": "attending_physician",
+  "documented_at": "2032-04-24T10:20",
+  "amendment_reason": null,
+  "text": "D+6. A&Ox4, non-focal. Eating, mobilising with PT. Afebrile."
+}

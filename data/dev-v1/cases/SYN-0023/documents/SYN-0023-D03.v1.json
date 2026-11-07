@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0023",
+  "document_id": "SYN-0023-D03",
+  "version": 1,
+  "status": "signed",
+  "note_type": "physician_progress_note",
+  "author_role": "resident_physician",
+  "documented_at": "2031-01-29T21:20",
+  "amendment_reason": null,
+  "text": "Reviewed at the bedside after the nursing call. On my examination at 20:50 on 29 Jan the ICE was 10/10 (all items complete including the counting task). Alert, speaking fluently, no focal deficit, no seizure activity. No change to the plan; routine checks continue."
+}

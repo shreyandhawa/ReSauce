@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0012",
+  "document_id": "SYN-0012-D03",
+  "version": 1,
+  "status": "signed",
+  "note_type": "nursing_note",
+  "author_role": "nurse",
+  "documented_at": "2033-09-04T15:30",
+  "amendment_reason": null,
+  "text": "Afternoon shift note. As part of the unit's delirium screening pilot, the Cornell Assessment of Pediatric Delirium (CAPD) was completed at bedside at 14:00, total score 5. Temperature 37.1. Mild hand tremor noted. No seizure activity. Physician informed of the screening result."
+}

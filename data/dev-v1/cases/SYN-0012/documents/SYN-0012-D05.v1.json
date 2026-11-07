@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0012",
+  "document_id": "SYN-0012-D05",
+  "version": 1,
+  "status": "signed",
+  "note_type": "discharge_summary",
+  "author_role": "attending_physician",
+  "documented_at": "2033-09-08T13:50",
+  "amendment_reason": null,
+  "text": "Discharge summary. Admitted for CAR-T infusion on 29 Aug. Mild cytokine release syndrome treated with one dose of tocilizumab. Neurological monitoring showed a fall in ICE scores between 03 Sep and 05 Sep, treated with dexamethasone, with recovery to ICE 10/10 on 08 Sep. Discharged home with follow-up in one week."
+}

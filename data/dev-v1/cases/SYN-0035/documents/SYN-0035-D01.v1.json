@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0035",
+  "document_id": "SYN-0035-D01",
+  "version": 1,
+  "status": "signed",
+  "note_type": "physician_progress_note",
+  "author_role": "resident_physician",
+  "documented_at": "2033-11-14T10:30",
+  "amendment_reason": null,
+  "text": "Day 3 note. CRS grade 1 resolveing after tocilizumab (given 13 Nov). ICE 10/10 at 10:00. No seizures. Mild headache, acetominophen given. Plan: ICE every shift."
+}

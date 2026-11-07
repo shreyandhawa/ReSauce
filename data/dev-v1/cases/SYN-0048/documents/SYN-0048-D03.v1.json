@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0048",
+  "document_id": "SYN-0048-D03",
+  "version": 1,
+  "status": "signed",
+  "note_type": "nursing_note",
+  "author_role": "nurse",
+  "documented_at": "2035-06-09T22:05",
+  "amendment_reason": null,
+  "text": "T 39.2 at 20:15, BP 94/58 -> fluids. Acetaminophen 20:30, toci 21:10. T 38.1 at 21:55. No sz."
+}

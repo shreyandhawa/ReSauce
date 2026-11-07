@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0014",
+  "document_id": "SYN-0014-D04",
+  "version": 1,
+  "status": "unsigned",
+  "note_type": "other",
+  "author_role": "other",
+  "documented_at": "2033-06-10T11:00",
+  "amendment_reason": null,
+  "text": "Dietitian note 10 Jun. Tube feeds at 40 ml/h, tolerating. Weight 77.2 kg. Review in 3 d."
+}

@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0048",
+  "document_id": "SYN-0048-D09",
+  "version": 1,
+  "status": "signed",
+  "note_type": "neurology_consult",
+  "author_role": "neurologist",
+  "documented_at": "2035-06-16T12:00",
+  "amendment_reason": null,
+  "text": "Neuro consult for tremor. ICE 10/10 at 11:30 on 16 Jun. Alert, oriented. Mild postural tremor, no other abnormality. No sz, no focal def."
+}

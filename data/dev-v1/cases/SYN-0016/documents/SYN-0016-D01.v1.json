@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0016",
+  "document_id": "SYN-0016-D01",
+  "version": 1,
+  "status": "signed",
+  "note_type": "physician_progress_note",
+  "author_role": "attending_physician",
+  "documented_at": "2035-02-21T10:20",
+  "amendment_reason": null,
+  "text": "DAILY PROGRESS NOTE\nDate: 2035-02-21\nCRS: Grade 1, fever 38.7 overnight, tocilizumab given 06:15\nNeuro: ICE 10/10 at 09:50\nSeizure: none\nPlan: monitor"
+}

@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0032",
+  "document_id": "SYN-0032-D09",
+  "version": 1,
+  "status": "signed",
+  "note_type": "discharge_summary",
+  "author_role": "attending_physician",
+  "documented_at": "2034-08-09T13:40",
+  "amendment_reason": null,
+  "text": "D/C summary. CRS g1 s/p toci x1. Neurotox: ICE 8/10 from d4, lowest 6/10 d6, dex given, recovered, ICE 10/10 07 Aug. EEG normal. D/C home, f/u 1 wk."
+}

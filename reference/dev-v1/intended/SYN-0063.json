@@ -1,0 +1,200 @@
+{
+  "answer_format": "0.1-provisional",
+  "case_id": "SYN-0063",
+  "scenario_id": "SC-70",
+  "scenario_label": "Record says no ICANS; the only qualifying finding has a documented competing cause in the same note, and no clinician statement",
+  "case_type": "Flag",
+  "tags": [
+    "no ICANS",
+    "attribution",
+    "multi-version record"
+  ],
+  "status": "not clinician-verified",
+  "answer_kind": "intended",
+  "provenance": {
+    "clinical_methods": "v0.4.1",
+    "data_format": "v0.1.2",
+    "dataset_plan": "v0.3.1",
+    "dataset_id": "SYN-DS-DEV-V1",
+    "dataset_version": "1.0.0",
+    "ordering_seed": 20261107,
+    "date_written": "2026-11-07"
+  },
+  "out_of_scope": null,
+  "fields": {
+    "onset": {
+      "category": "7.5 (attribution)",
+      "record_value": null,
+      "documented_value": {
+        "date": "2033-01-25",
+        "study_day": 6
+      },
+      "signed_difference_days": null,
+      "difference_note": "if the finding counts: record has no onset",
+      "readings": [
+        {
+          "reading": "ICANS: the ICE 6/10 counts (Grade 2, onset Day +6); the record has no ICANS",
+          "value": {
+            "onset": "record has no onset",
+            "documented_date": "2033-01-25"
+          },
+          "category": "7.1"
+        },
+        {
+          "reading": "Not ICANS: the ICE 6/10 is set aside (hypoglycaemia); formal Grade 0 assessments, no finding, no 'not assessable' period",
+          "value": {
+            "onset": "none found"
+          },
+          "category": "7.7"
+        }
+      ],
+      "evidence": [
+        {
+          "role": "only potential finding: ICE 6/10 (Grade 2)",
+          "document_id": "SYN-0063-D03",
+          "version": 1,
+          "quote": "ICE 6/10 at 10:00",
+          "start": 81,
+          "end": 98
+        },
+        {
+          "role": "competing cause in the same note (hypoglycaemia)",
+          "document_id": "SYN-0063-D03",
+          "version": 1,
+          "quote": "BG 2.8 mmol/L at 09:40 (hypoglycaemia)",
+          "start": 0,
+          "end": 38
+        },
+        {
+          "role": "formal Grade 0 assessment on another day",
+          "document_id": "SYN-0063-D04",
+          "version": 1,
+          "quote": "ICE 10/10 at 09:00",
+          "start": 8,
+          "end": 26
+        }
+      ],
+      "record_history": {
+        "a": false,
+        "b": null,
+        "c": null,
+        "explanation": "Both record versions hold the same values (no ICANS); no field changed, so 7.6 cannot apply."
+      }
+    },
+    "max_grade": {
+      "category": "7.5 (attribution)",
+      "record_value": null,
+      "documented_value": {
+        "range": [
+          0,
+          2
+        ]
+      },
+      "signed_difference_days": null,
+      "difference_note": null,
+      "readings": [
+        {
+          "reading": "ICANS: the ICE 6/10 counts (Grade 2); record is Grade 0",
+          "value": {
+            "grade": 2
+          },
+          "category": "7.2"
+        },
+        {
+          "reading": "Not ICANS: the ICE 6/10 is set aside",
+          "value": {
+            "grade": 0
+          },
+          "category": "7.7"
+        }
+      ],
+      "evidence": [
+        {
+          "role": "only potential finding: ICE 6/10 (Grade 2)",
+          "document_id": "SYN-0063-D03",
+          "version": 1,
+          "quote": "ICE 6/10 at 10:00",
+          "start": 81,
+          "end": 98
+        },
+        {
+          "role": "competing cause in the same note (hypoglycaemia)",
+          "document_id": "SYN-0063-D03",
+          "version": 1,
+          "quote": "BG 2.8 mmol/L at 09:40 (hypoglycaemia)",
+          "start": 0,
+          "end": 38
+        },
+        {
+          "role": "formal Grade 0 assessment on another day",
+          "document_id": "SYN-0063-D04",
+          "version": 1,
+          "quote": "ICE 10/10 at 09:00",
+          "start": 8,
+          "end": 26
+        }
+      ],
+      "record_history": {
+        "a": false,
+        "b": null,
+        "c": null,
+        "explanation": "Both record versions hold the same values (no ICANS); no field changed, so 7.6 cannot apply."
+      }
+    }
+  },
+  "case_flags": {
+    "unassessed_period": {
+      "days_without_gradeable_assessment": [
+        0,
+        1,
+        2,
+        4,
+        8,
+        10,
+        11,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28
+      ],
+      "not_assessable_periods": []
+    },
+    "ungradeable_neurological_symptom": []
+  },
+  "other_flags": [],
+  "ambiguity_notes": [
+    "Hypoglycaemia (glucose 2.8 mmol/L at 09:40) is documented in the same note as ICE 6/10 at 10:00 (A30, A35). No clinician attributes the score either way (A9). Reading ICANS: onset 7.1 'record has no onset', grade 7.2. Reading not-ICANS: both 7.7 (formal Grade 0 assessments on Days +3, +5, +7, +9 and +12, no qualifying finding, no 'not assessable' period). The readings lead to different categories for each field, so both are 7.5.",
+    "The later formal Grade 0 assessments (Day +7 at 09:00) are within 24 hours of the hypoglycaemia but are not findings."
+  ],
+  "depends_on_open_points": [],
+  "author_checks": {
+    "distractors": [
+      "hypoglycaemia (competing cause, by design)",
+      "CRS with tocilizumab"
+    ],
+    "negated_findings": [
+      "No focal def",
+      "no sz"
+    ],
+    "positive_findings": [
+      "ICE 6/10 on Day +6"
+    ],
+    "brief_features_used": [
+      "multi_version_record: same values re-entered",
+      "style terse",
+      "no_icans true"
+    ]
+  }
+}
