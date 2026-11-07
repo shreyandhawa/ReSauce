@@ -12,6 +12,16 @@ Each entry covers:
 
 ---
 
+## 2026-11-07: Milestone 2 Step 4 parts 4 and 5 (development cases batches 4 and 5)
+
+- **Status:** 72 of 72 development cases and intended answers are written (`dataset_version` 1.0.0); no case was stopped. `tools.check_dev` reports 0 errors, 0 warnings (320 evidence references). `pytest` was not run (no code changed).
+- **Decisions:** the answer files for these 35 cases follow the README format; where it left details open I chose them (provenance keys, `readings` for 7.5 and same-category cases, `documented_value` `{"grade": 0}` where formal Grade 0 assessments exist and `{"undetermined": ...}` for 7.4 cases, signed difference given for 7.4 onsets that have a documented onset). Check these against batches 1 to 3 for consistency.
+- **Next steps:** the user's readability skim of all 72 cases (plan §9 check 10), then Step 5 (independent answers, comparison, disagreement log).
+- **Open questions:** SC-47's grade depends on NEW-12 (marked in its answer); NEW-11 to NEW-18 are still undecided. All answers are "not clinician-verified".
+- **How to verify:** `.venv/bin/python -m tools.check_dev`; `.venv/bin/python -m tools.show_case SYN-0040` (any case ID).
+
+---
+
 ## 2026-11-07: Milestone 2 Step 4 part 3 (plan v0.3.1, development cases batch 3)
 
 **Status:**

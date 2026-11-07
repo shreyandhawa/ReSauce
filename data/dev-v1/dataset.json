@@ -3,7 +3,7 @@
   "synthetic": true,
   "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
   "dataset_id": "SYN-DS-DEV-V1",
-  "dataset_version": "0.4.0",
+  "dataset_version": "1.0.0",
   "description": "ReSauce development dataset, version 1. Fictional synthetic cases.",
   "observation_window": {
     "start_day": 0,
