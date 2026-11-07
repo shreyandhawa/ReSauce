@@ -12,6 +12,84 @@ Each entry covers:
 
 ---
 
+## 2026-11-07: Milestone 2 Step 3 review fixes, gaps decided provisionally
+
+**Status:** Documents only. `docs/clinical-methods.md` is now v0.3, `docs/dataset-plan.md` v0.2 and `docs/data-format.md` v0.1.1. The dataset plan is still a draft and **not approved**. No cases, case text, reference answers or code were written. No `data/` or `reference/` folders exist. Code, tests and settings are unchanged. `pytest` reports 75 passed. Not committed (the user runs `/finish-step`).
+
+**Done:**
+- `clinical-methods.md` v0.3:
+  - changelog at the top;
+  - the user's 15 provisional gap decisions written as rules in the right sections, tagged `[ASSUMPTION — EXPERT REVIEW]`, and added to §9 as A19–A33;
+  - new category 7.8; 7.5 renamed "Ambiguous evidence";
+  - new §7.9 (record-level situations) and §7.10 (all extra flags);
+  - shared principle stated in §7: documents can show ICANS did not occur only through formal Grade 0 assessments;
+  - cross-references checked: A1–A33 each defined once; §7.1–§7.10 all exist.
+- `dataset-plan.md` v0.2:
+  - Gap type removed; former Gap scenarios re-categorised; SC-54 to 56 are type OOS;
+  - new scenarios SC-59 to SC-64;
+  - sizes recomputed by script;
+  - record history rule (§5.1), case-ID seed (§7.2), two-stage independent answer (§8.2), scoring definitions (§8.3), readability sampling (§9);
+  - §10 now holds the "resolved" table, 10 new open points (NEW-1 to NEW-10) and consequences to confirm.
+- `data-format.md` v0.1.1: §12 Q3 and Q5 marked answered (pointing to A27 and A32). The format itself is unchanged.
+
+**Decisions & why (made by the user; all provisional, pending clinician review):**
+- **The 15 gap decisions, A19–A33:**
+  - A19: a "no ICANS" record is Grade 0 with no onset (GAP-1).
+  - A20: new category 7.8 Missing recorded value (GAP-2).
+  - A21: a "no ICANS" record is 7.7 only with at least one formal Grade 0 assessment and no "not assessable" period, otherwise 7.4 (GAP-3).
+  - A22: ICANS recorded with no qualifying finding (GAP-4).
+  - A23: 7.5 widened with reasons (GAP-5).
+  - A24: on the record's onset date, a Grade 0 assessment beats a symptom (GAP-6).
+  - A25: a "not assessable" period gives 7.4, undocumented days give 7.3 plus a flag (GAP-7).
+  - A26: relative-time table (GAP-8).
+  - A27: unsigned content not used (GAP-9).
+  - A28: three conditions for 7.6 (GAP-10).
+  - A29: out of scope means flag only (GAP-11).
+  - A30: 24-hour competing-cause window (GAP-12).
+  - A31: lightly edited copies count as copied forward (GAP-13).
+  - A32: observation window Day 0 to +28 (GAP-14).
+  - A33: ICE 0 with no consciousness information gives Grade 3–4 (GAP-15).
+  - Why: reference answers need a definite rule for every scenario. Each choice is listed with "why it matters" and "if wrong" so a clinician can review it.
+- **Two-stage independent answers:** the checker derives the documentation-based values before seeing `record.json`. Why: seeing the record first could anchor it towards agreeing.
+- **Readability sampling:** the user reads every development case, and for locked cases a random 25% (seeded) plus every case with a disagreement. Why: less work, and less exposure to locked content.
+- **Scoring definitions fixed before results:**
+  - discrepancy alert = 7.1/7.2/7.3/7.8;
+  - review flag = 7.4/7.5;
+  - false alert = a discrepancy alert on a 7.6/7.7 field;
+  - review flags are counted separately;
+  - OOS cases are scored only on flagging.
+  - Why: definitions chosen after seeing results could be tuned to them.
+- **Proposed in the plan (await approval):**
+  - 64 development and 144 locked cases (138 scored, 6 OOS);
+  - 40.6% Neg; 25% of Neg are "no ICANS" (12 extra SC-52 cases);
+  - the 4-case rule kept only for SC-51 and SC-64;
+  - out-of-window documents in about 10% of cases.
+
+**Next steps:**
+- User reviews and approves `dataset-plan.md` v0.2 (and the v0.3 rules).
+- Then Step 4: development cases, plus the loader fix rejecting whitespace-only note text.
+
+**Open questions:**
+- `dataset-plan.md` §11 (12 questions), especially:
+  - approval of the numbers;
+  - NEW-1 to NEW-10 (§10.2), e.g. NEW-4 "gradeable assessment" is not defined precisely;
+  - whether to add scenarios for rules not yet covered (§3.3);
+  - SC-52 holding 14 of the 56 locked Neg cases.
+- `dataset-plan.md` §10.3: confirm the consequences of A25 (the §7.4 example and SC-49 grade changed to 7.7), and that SC-52 is not labelled "plain".
+- `data-format.md` line 6 still cites clinical-methods v0.2 (this step changed only §12 Q3/Q5 and the version line).
+- Carried forward: who does the clinician review (now A1–A33); format Q1; Node.js LTS version; no software licence chosen yet.
+
+**How to verify:**
+```bash
+cd ~/Projects/ReSauce
+.venv/bin/python -m pytest -p no:cacheprovider -v   # expect: 75 passed
+git status          # expect: 4 changed docs, no new folders
+git diff --stat     # only docs/ files
+```
+In `docs/clinical-methods.md`, check that §9 ends with A33 and that §7 has subsections 7.1 to 7.10. In `docs/dataset-plan.md`, check that §2 lists SC-01 to SC-64 and that §10.2 lists NEW-1 to NEW-10.
+
+---
+
 ## 2026-11-07: Milestone 2 Step 3, dataset plan drafted
 
 **Status:** Milestone 2 Step 3 is drafted. `docs/dataset-plan.md` v0.1 is a draft for user review and is **not approved**. No cases, case text, reference answers or code were written. No `data/` folder exists. `pytest` reports 75 passed (no code changed).

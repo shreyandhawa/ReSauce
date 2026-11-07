@@ -1,8 +1,33 @@
 # ReSauce clinical methods: verifying documented ICANS
 
-- **Status:** Draft v0.2 (2026-11-07) — internal review fixes applied. Not yet reviewed by a clinician.
+- **Status:** Draft v0.3 (2026-11-07). Provisional decisions on the gaps found by `docs/dataset-plan.md` v0.1 (GAP-1 to GAP-15) are added as assumptions A19–A33. Not yet reviewed by a clinician.
 - **Primary source:** Lee et al. 2019, the ASTCT consensus grading. I read it in full as the NIH author manuscript (PMC12180426); see §10.
 - **Purpose of this file:** to fix the clinical definitions that ReSauce code will later rely on, and to separate what the source says from what ReSauce chooses.
+
+## Changelog
+
+**v0.2 → v0.3.** The user made provisional decisions for GAP-1 to GAP-15 (listed in `docs/dataset-plan.md` v0.1 §10). Each one is a ReSauce choice pending clinician review, tagged `[ASSUMPTION — EXPERT REVIEW]` and listed in §9 as A19–A33. No new source material was read.
+
+| Gap | Change | Where | Assumption |
+|---|---|---|---|
+| — | Shared principle stated: documents can prove ICANS occurred; they can show it did not only through formal Grade 0 assessments. New term "formal Grade 0 assessment". New "unassessed-period flag". New list of all extra flags. | §3.3, §7 intro, §7.10 | — |
+| GAP-1 | Record "no ICANS" but notes document qualifying ICANS: record treated as Grade 0 with no onset; grade 7.2, onset 7.1 ("record has no onset"). | §7.9(a) | A19 |
+| GAP-2 | New category **7.8 Missing recorded value** (record reports ICANS, onset or grade empty). | §7 intro, §7.8 | A20 |
+| GAP-3 | Record "no ICANS", no qualifying finding: 7.7 only with at least one formal Grade 0 assessment and no "not assessable" period; otherwise 7.4. | §7.9(b) | A21 |
+| GAP-4 | Record reports ICANS, no qualifying finding: grade 7.3; onset 7.1 ("no documented onset") or 7.4. | §7.9(c) | A22 |
+| GAP-5 | §7.5 widened from "Ambiguous attribution" to **"Ambiguous evidence"**, with a required reason. Wording in §3.4, §4.1, §6.4 and A15 updated to point to it. | §7.5 | A23 |
+| GAP-6 | §7.1 bullets 2 and 4 reconciled: a formal Grade 0 assessment on the record's onset date wins over an excluded or sub-threshold symptom. Bullet 4 reworded to judge by the documents on that date. | §7.1 | A24 |
+| GAP-7 | A documented "not assessable" period turns 7.3 into 7.4; merely undocumented days do not. The §7.4 bullets and worked example are updated to match. | §7.3, §7.4 | A25 |
+| GAP-8 | Conversion table for relative time phrases; signed difference to the nearest end of a range. | §6.1, §7.1 | A26 |
+| GAP-9 | Unsigned content is never used for onset or grade; two new flags. | §6.3 | A27 |
+| GAP-10 | Three conditions for 7.6; new flag "revision without new documentation". | §7.6 | A28 |
+| GAP-11 | Out-of-scope cases get a flag and no §7 category. Documented death added as a trigger. | §5, §8 | A29 |
+| GAP-12 | Competing cause counts if in the same note or within the 24 hours before the finding. | §3.4, §7.5 | A30 |
+| GAP-13 | Copied-forward text includes copies differing only in dates, times or formatting. | §6.4 | A31 |
+| GAP-14 | Observation window Day 0 to Day +28 for both datasets; documents outside it are flagged and not used. | §6.2, §6.5 | A32 |
+| GAP-15 | ICE 0 with no consciousness information gives the grade range 3–4: record ≤ 2 → 7.2; record 3 or 4 → 7.4. | §4.1, §7.2, §7.4 | A33 |
+
+Points that applying these decisions left open are listed in `docs/dataset-plan.md` v0.2 §10.2. They are not decided here.
 
 ## How to read this document
 
@@ -109,7 +134,7 @@ Notes on the table:
 - The Grade 4 text lists further signs of raised ICP that are not in Table 6, for example projectile vomiting with headache. [SOURCE: Lee 2019, §Grade 4 ICANS] ReSauce grades from Table 6 only and flags text-only signs for review. [ASSUMPTION — EXPERT REVIEW] (A12)
 - Grade 5 ICANS is defined by convention as death due to ICANS, where no other cause is the main factor. [SOURCE: Lee 2019, §Grade 5 ICANS] ReSauce does not assign Grade 5 (see §8). [OPERATIONAL]
 - Table 6 is labelled "for adults", but the source does not define the adult age range. Not specified in source.
-- The source does not define "Grade 0" or "no ICANS" for an assessment. ReSauce treats an assessment as Grade 0 when ICE = 10 and no domain criterion is met. [OPERATIONAL] The Grade 1 consciousness criterion "awakens spontaneously" counts only when drowsiness is documented (A3). A narrative normal neurological note without a formal ICE score does not establish Grade 0 (A17).
+- The source does not define "Grade 0" or "no ICANS" for an assessment. ReSauce treats an assessment as Grade 0 when ICE = 10 and no domain criterion is met. [OPERATIONAL] This document calls such an assessment a **formal Grade 0 assessment**. The Grade 1 consciousness criterion "awakens spontaneously" counts only when drowsiness is documented (A3). A narrative normal neurological note without a formal ICE score does not establish Grade 0 (A17).
 
 ### 3.4 Deriving the overall grade, and attribution
 
@@ -126,7 +151,9 @@ Notes on the table:
 ReSauce's handling of attribution: [OPERATIONAL]
 - ReSauce will **not** decide attribution itself.
 - It extracts clinicians' documented attribution statements, with quotes.
-- If a competing cause is documented near a finding and no clinician statement settles it, ReSauce reports the grade both with and without that finding, and labels the result *ambiguous attribution* (§7).
+- If a competing cause is documented near a finding and no clinician statement settles it, ReSauce reports the grade both with and without that finding, and labels the result *ambiguous evidence*, reason *attribution* (§7.5).
+
+**Timing of a competing cause.** A competing cause counts as "near" a finding (here) and as "coinciding" with it (§7.5) if it is documented in the same note as the finding, or documented as given or present within the 24 hours before the finding's event time (§6.1). [ASSUMPTION — EXPERT REVIEW] (A30)
 
 ### 3.5 Worked example: ICE alone gives the wrong grade
 
@@ -155,11 +182,11 @@ Reading only the ICE score would give Grade 1, which is two grades too low. The 
 | Situation | What the source says | ReSauce handling |
 |---|---|---|
 | Unarousable | ICE 0 because the patient is unarousable is Grade 4. [SOURCE: Lee 2019, Table 5; Table 6] | Grade 4 only if a note documents unarousability not attributed to another cause. [OPERATIONAL] |
-| Awake with global aphasia (mute, cannot follow commands) | ICE 0 may be Grade 3. [SOURCE: Lee 2019, Table 6 footnote ^; §Grade 3 ICANS] | Grade 3 needs documented wakefulness. ICE 0 with no consciousness information is *insufficient evidence* to choose between Grade 3 and 4. [OPERATIONAL] |
-| Sedated and/or intubated | The patient may not be assessable. Depressed consciousness must not be due to sedation. [SOURCE: Lee 2019, §Toxicities Excluded from the Definition of CRS; Table 6 footnote ❖] No grade rule is given for an unassessable patient. Not specified in source. | Record "not assessable" with the quoted reason. Never infer ICE 0 from sedation. [OPERATIONAL] (A7) |
+| Awake with global aphasia (mute, cannot follow commands) | ICE 0 may be Grade 3. [SOURCE: Lee 2019, Table 6 footnote ^; §Grade 3 ICANS] | Grade 3 needs documented wakefulness. [OPERATIONAL] ICE 0 with no consciousness information cannot separate Grade 3 from Grade 4, so the documentation-derived grade is the range 3–4. A record of Grade 2 or lower is a grade mismatch (§7.2): the documents prove at least Grade 3. A record of Grade 3 or 4 is *insufficient evidence* (§7.4). [ASSUMPTION — EXPERT REVIEW] (A33) |
+| Sedated and/or intubated | The patient may not be assessable. Depressed consciousness must not be due to sedation. [SOURCE: Lee 2019, §Toxicities Excluded from the Definition of CRS; Table 6 footnote ❖] No grade rule is given for an unassessable patient. Not specified in source. | Record "not assessable" with the quoted reason. Never infer ICE 0 from sedation. [OPERATIONAL] (A7) A documented "not assessable" period affects §7.3 (A25) and §7.9(b) (A21). |
 | Intubation itself | Patients may be intubated for airway protection in Grade 4 ICANS. Intubation for neurological reasons is not captured again as Grade 4 CRS. [SOURCE: Lee 2019, §Grade 4 ICANS; §Grade 4 CRS] | Intubation is not a grading criterion on its own. [OPERATIONAL] |
 | Aphasia (partial) | ICE includes naming (expressive) and command following (receptive). Expressive aphasia is described as a very specific sign of ICANS. [SOURCE: Lee 2019, Table 5; §Symptoms of ICANS] | Scored through ICE as documented. |
-| Language barrier, hearing or vision loss, inability to write for other reasons, baseline cognitive impairment | Not specified in source. | If a note documents such a barrier, a low ICE score is flagged as *ambiguous*, not graded silently. [ASSUMPTION — EXPERT REVIEW] (A10) |
+| Language barrier, hearing or vision loss, inability to write for other reasons, baseline cognitive impairment | Not specified in source. | If a note documents such a barrier, a low ICE score is labelled *ambiguous evidence* (§7.5, reason *assessment barrier*), not graded silently. [ASSUMPTION — EXPERT REVIEW] (A10, A23) |
 | Partially completed ICE (items not attempted) | Not specified in source. | No total is computed from partial items unless the note itself states a total. Otherwise *insufficient evidence*. [OPERATIONAL] (A6) |
 
 ### 4.2 Neurological symptoms excluded from ICANS grading
@@ -197,6 +224,16 @@ What the source specifies for children:
   - CAPD alone cannot separate Grade 1 from Grade 2.
   - The age 18 cutoff is ReSauce's choice; the source gives none. (A16)
 
+**Handling of out-of-scope cases.** [ASSUMPTION — EXPERT REVIEW] (A29)
+- A case is out of scope if any of these holds:
+  - age under 18 at infusion;
+  - a CAPD assessment in any note;
+  - a record maximum grade of 5 (§8);
+  - a documented death (§8).
+- Such a case gets the extra flag **"out of scope (reason)"** and **no §7 category for either field**.
+- Such cases are scored only on whether they were flagged, never in discrepancy measurements.
+- The list above does not mention documented baseline developmental delay, which this section also excludes. Whether it triggers the same flag is not decided (`docs/dataset-plan.md` §10.2).
+
 ---
 
 ## 6. Time and documentation
@@ -214,7 +251,17 @@ ReSauce defines three times: [OPERATIONAL]
 Rules: [OPERATIONAL]
 - Onset is based on **event time**.
 - If a note gives no event time, documentation time is used and the result is marked *time-imprecise*.
-- Relative phrases ("overnight", "since yesterday") are turned into a date *range* relative to the note's documentation time, not a single date, and flagged.
+- Relative phrases ("overnight", "since yesterday") are turned into a date or date *range* relative to the note's documentation time, and flagged (*relative time*). The conversion uses the table below. [ASSUMPTION — EXPERT REVIEW] (A26)
+
+| Phrase in the note | Event date (D = the note's documentation date) |
+|---|---|
+| "overnight", "last night" | D−1 to D (range) |
+| "yesterday", "since yesterday" | D−1 |
+| "this morning", "earlier today" | D |
+| "N days ago" | D−N |
+| Any other phrase (e.g. "recently", "for a few days") | No event time: the documentation date is used and the result is marked *time-imprecise* (rule above) |
+
+When onset is a range, a mismatch (§7.1) is reported only if the record date is outside it, and the signed difference is measured to the nearest end of the range. [ASSUMPTION — EXPERT REVIEW] (A26)
 
 ### 6.2 What the source does and does not define
 
@@ -226,7 +273,9 @@ Rules: [OPERATIONAL]
 | Typical timing | See §2 (during or after CRS; may recur a few days later) [SOURCE: Lee 2019, Introduction; §Symptoms of ICANS] | Context only. Not used as a rule. [OPERATIONAL] |
 | Grade across time | The source's "most severe event" rule is stated across *domains* [SOURCE: Lee 2019, Table 6 footnote ‡]. Whether "maximum grade" means the highest over time is not stated. | See maximum grade below. [ASSUMPTION — EXPERT REVIEW] (A2) |
 
-**Documentation-derived onset:** the earliest event time (compared as a calendar day) of a documented observation that meets any Grade ≥1 criterion in Table 6 and that no clinician attributes to another cause. Excluded symptoms (§4.2) do not count. [OPERATIONAL; see A4, A11, A18]
+**Documentation-derived onset:** the earliest event time (compared as a calendar day) of a documented observation that meets any Grade ≥1 criterion in Table 6 and that no clinician attributes to another cause. Excluded symptoms (§4.2) do not count. [OPERATIONAL; see A4, A11, A18] Only signed content (§6.3, A27) in documents inside the observation window (§6.5, A32) counts.
+
+A **qualifying finding** is an observation that would count for this onset: it meets a Grade ≥1 criterion, no clinician attributes it to another cause, and it comes from signed content inside the observation window. [OPERATIONAL]
 
 **Documentation-derived maximum grade:** the highest per-assessment grade (§3.4) within the episode. [ASSUMPTION — EXPERT REVIEW] (A2)
 
@@ -237,12 +286,19 @@ The source does not address amendments. Not specified in source. ReSauce's rules
 - The latest signed version is treated as current.
 - A superseded version is still reported if the research record matches it but not the current version. This is a likely sign that the record was not updated (§7).
 
+Unsigned versions: [ASSUMPTION — EXPERT REVIEW] (A27)
+- Unsigned content is never used for onset or grade.
+- If a document has a later version that is unsigned, the latest signed version stays current. The case gets the extra flag **"unsigned later version"**, stating what differs.
+- A document with no signed version is not used as evidence. It gets the extra flag **"unsigned document"**.
+- Leaving out unsigned content can change a category (for example to 7.4). This is intended.
+
 ### 6.4 Repeated observations
 
 The source does not address duplicated or conflicting documentation. Not specified in source. ReSauce's rules: [OPERATIONAL]
 - **Same finding, several notes** (e.g. a nursing note and a physician note): grouped by event time. Onset uses the earliest observation.
 - **Copied-forward text** (text repeated unchanged from an earlier note) is not treated as new evidence. (A13)
-- **Conflicting assessments at about the same time** (e.g. one note gives ICE 6, another ICE 8, within the same hour): both are reported. Neither is chosen silently. The case is labelled *ambiguous*.
+  - Text counts as copied forward if it repeats an earlier note verbatim, or differs only in dates, times or formatting. Any change to clinical content (a score, a finding, a level of consciousness) makes it a new observation. [ASSUMPTION — EXPERT REVIEW] (A31)
+- **Conflicting assessments at about the same time** (e.g. one note gives ICE 6, another ICE 8, within the same hour): both are reported. Neither is chosen silently. The field is labelled *ambiguous evidence*, reason *conflicting assessments* (§7.5), if the conflict would change the onset or the grade. [ASSUMPTION — EXPERT REVIEW] (A23)
 
 ### 6.5 Distinct episodes
 
@@ -253,6 +309,12 @@ For this POC: [OPERATIONAL; see A5]
 - A documented full resolution (ICE 10 with no domain findings) followed by recurrence is flagged for review, not split automatically.
 - The observation window is declared per dataset and recorded with every result.
 
+Observation window for the ReSauce datasets: [ASSUMPTION — EXPERT REVIEW] (A32)
+- Both datasets (development and locked) declare **Day 0 to Day +28**, inclusive.
+- Documents outside the window are not used for any §7 category. They get the extra flag **"outside observation window"**.
+- Record values are compared as they are, even if they fall outside the window.
+- The source gives no typical onset window for ICANS (§2), so this choice is not taken from it.
+
 ---
 
 ## 7. Discrepancy categories
@@ -261,6 +323,24 @@ Each category is a *potential* discrepancy for human review, never a verdict. [O
 
 Categories are assigned separately for onset and for maximum grade. Every assignment cites the quoted evidence. [OPERATIONAL]
 
+| Category | Onset | Grade |
+|---|---|---|
+| 7.1 Onset date mismatch | yes | no |
+| 7.2 Maximum grade mismatch | no | yes |
+| 7.3 Grade not supported by documented evidence | no | yes |
+| 7.4 Insufficient evidence | yes | yes |
+| 7.5 Ambiguous evidence | yes | yes |
+| 7.6 Legitimate revision | yes | yes |
+| 7.7 No discrepancy | yes | yes |
+| 7.8 Missing recorded value | yes | yes |
+
+**Shared principle: missing ≠ absent.** This still holds for every category. Documents can prove that ICANS occurred. They can show that it did *not* occur only through formal Grade 0 assessments (§3.3). [OPERATIONAL; see A17, A21]
+
+Where the situations below are handled:
+- a record that reports no ICANS, or reports ICANS that no document supports: §7.9;
+- out-of-scope cases: no category at all (§5, A29);
+- extra flags, which add information without replacing the category: §7.10.
+
 All illustrations are fictional, with days counted from infusion (Day 0).
 
 ### 7.1 Onset date mismatch
@@ -268,16 +348,23 @@ All illustrations are fictional, with days counted from infusion (Day 0).
 **Definition:** the research record's onset date and the documentation-derived onset (§6.2) differ by **1 or more calendar days**. The tolerance is 0 days. The signed difference is always reported. [OPERATIONAL] (A4)
 
 **Conditions:** [OPERATIONAL]
-- If the documentation onset is a date range (§6.1), a mismatch is reported only when the record date lies outside the range.
-- A record onset *earlier* than the first documented finding is a mismatch only if a gradeable assessment on the record's date documents no ICANS. Otherwise it is *insufficient evidence* (§7.4).
+- If the documentation onset is a date range (§6.1), a mismatch is reported only when the record date lies outside the range. The signed difference is measured to the nearest end of the range. [ASSUMPTION — EXPERT REVIEW] (A26)
+- A record onset *earlier* than the first documented finding is a mismatch only if a gradeable assessment on the record's date documents no ICANS (a formal Grade 0 assessment, §3.3). Otherwise it is *insufficient evidence* (§7.4).
 - A narrative normal neurological note without a formal ICE score does not count as documenting no ICANS (A17).
-- If the record dates onset from a first ICANS-compatible symptom that meets no Grade ≥1 criterion, the result is *insufficient evidence* (A18).
+- If the record's onset date has only a first ICANS-compatible symptom that meets no Grade ≥1 criterion, or only an excluded symptom (§4.2), and **no gradeable assessment**, the result is *insufficient evidence* (A18).
+- If the record's onset date has such a symptom **and** a formal Grade 0 assessment, the second bullet wins: the result is a mismatch (7.1), with the extra flag **"record date matches an excluded or sub-threshold symptom"**. [ASSUMPTION — EXPERT REVIEW] (A24)
+- ReSauce judges by what the documents show on the record's date. It never guesses why the abstractor chose that date. [ASSUMPTION — EXPERT REVIEW] (A24)
+- A record that reports no ICANS has no onset; see §7.9(a). A record that reports ICANS with no qualifying finding: see §7.9(c). An empty onset: see §7.8.
 
 **Example:** the record gives onset Day +4. The earliest qualifying note is Day +6 ("ICE 7/10"). A Day +4 note documents "ICE 10/10, alert". Result: mismatch, −2 days.
 
 ### 7.2 Maximum grade mismatch
 
 **Definition:** the documents prove a grade **higher** than the record's maximum grade, because a quoted, unattributed observation meets a higher grade criterion. [OPERATIONAL] (A8)
+
+This includes:
+- ICE 0 with no consciousness information (grade range 3–4) when the record says Grade 2 or lower (§4.1). [ASSUMPTION — EXPERT REVIEW] (A33)
+- a record that reports no ICANS, which is compared as Grade 0 (§7.9(a)). [ASSUMPTION — EXPERT REVIEW] (A19)
 
 **Example:** the record gives maximum Grade 2. A Day +7 EEG report documents non-convulsive seizures that resolved with treatment, which is Grade 3 [SOURCE: Lee 2019, Table 6]. Result: mismatch, record lower by 1.
 
@@ -287,39 +374,124 @@ All illustrations are fictional, with days counted from infusion (Day 0).
 
 Because missing documentation does not prove a finding was absent, ReSauce reports an over-graded record as *unsupported*, never as *wrong*. [OPERATIONAL] (A8)
 
+**Unassessed periods.** [ASSUMPTION — EXPERT REVIEW] (A25) A higher grade could be hidden in time nobody assessed. So:
+- if the observation window contains a documented "not assessable" period (sedated, intubated; A7), the result is *insufficient evidence* (§7.4), not 7.3;
+- if days are merely undocumented (no gradeable assessment, but nothing says "not assessable"), the result stays 7.3 and gets the **unassessed-period flag** (§7.10).
+
+A record that reports ICANS with no qualifying finding anywhere: see §7.9(c).
+
 **Example:** the record gives Grade 3. The notes contain ICE 5/10 (Grade 2) and "awakens to voice" (Grade 2), with no seizure, imaging or other Grade 3 finding. Result: not supported; the documentation supports Grade 2.
 
 ### 7.4 Insufficient evidence (missing ≠ absent)
 
-**Definition:** the documentation needed to confirm or refute the recorded value does not exist or cannot be assessed. Examples:
-- no neurological assessment on the relevant days;
-- a sedated patient recorded as "not assessable";
-- ICE 0 with no consciousness information;
-- a partially completed ICE.
-
-[OPERATIONAL]
+**Definition:** the documentation needed to confirm or refute the recorded value does not exist or cannot be assessed. [OPERATIONAL] Examples:
+- no gradeable assessment on the record's onset date, when the record onset is earlier than the first documented finding (§7.1);
+- a documented "not assessable" period (e.g. a sedated patient) when the record's grade is above the supported grade (§7.3, A25);
+- ICE 0 with no consciousness information, when the record says Grade 3 or 4 (§4.1, A33);
+- a partially completed ICE (A6);
+- a record of "no ICANS" without the documentation that §7.9(b) requires (A21).
 
 **Rule:** the absence of a documented finding is never treated as evidence that the finding was absent. [OPERATIONAL]
 
-**Example:** the record gives Grade 1 with onset Day +3. There are no notes for Days +2 to +5. Result: insufficient evidence for both fields.
+**Example:** the record gives Grade 1 with onset Day +3. There are no notes for Days +2 to +5. The first qualifying finding is ICE 8 on Day +6, and no note shows a higher grade. Result: onset insufficient evidence (no gradeable assessment on Day +3, §7.1). Grade: no discrepancy (7.7), because the documents support Grade 1. (Changed in v0.3: this example used to give insufficient evidence for the grade too. Under A25, undocumented days alone no longer do that.)
 
-### 7.5 Ambiguous attribution
+### 7.5 Ambiguous evidence
 
-**Definition:** a finding that would change the grade or onset coincides with a documented competing cause (§3.4), and no clinician statement attributes it either way. ReSauce reports the result with and without the finding. [OPERATIONAL] (A9)
+(Called "Ambiguous attribution" up to v0.2.)
 
-**Example:** a Day +5 note says "ICE 8/10; awakens only when gently shaken; received lorazepam 2 h ago". The level of consciousness would give Grade 3, but sedation is documented [SOURCE: Lee 2019, Table 6 footnote ❖]. Result: Grade 3 if attributed to ICANS, Grade 1 (from ICE 8) if not. Ambiguous.
+**Definition:** the evidence can be read in more than one way, and the readings give a different onset or a different grade. ReSauce reports the result for each reading and states the reason. [ASSUMPTION — EXPERT REVIEW] (A23)
+
+Every 7.5 result has one of these reasons:
+
+| Reason | Situation |
+|---|---|
+| attribution | A finding that would change the grade or onset coincides with a documented competing cause (§3.4; timing rule A30), and no clinician statement attributes it either way. [OPERATIONAL] (A9) |
+| conflicting assessments | Assessments at about the same time disagree (§6.4). |
+| assessment barrier | A documented language, hearing, vision or writing barrier, or baseline cognitive impairment, makes a low ICE score ambiguous (§4.1, A10). |
+| consciousness wording | A consciousness phrase could fit two Table 6 categories (A15). |
+
+**Condition:** 7.5 is used only when the ambiguity would change the onset or the grade. Otherwise the field is categorised normally. [ASSUMPTION — EXPERT REVIEW] (A23)
+
+**Example (reason: attribution):** a Day +5 note says "ICE 8/10; awakens only when gently shaken; received lorazepam 2 h ago". The level of consciousness would give Grade 3, but sedation is documented [SOURCE: Lee 2019, Table 6 footnote ❖]. Result: Grade 3 if attributed to ICANS, Grade 1 (from ICE 8) if not. Ambiguous.
 
 ### 7.6 Legitimate revision (NOT an error)
 
 **Definition:** the research record changed over time, and the change is explained by later documentation, such as a late test result or an amended note. This is reported as information, not as a discrepancy. It can only be detected if the synthetic records carry a change history. [OPERATIONAL]
 
-**Example:** on Day +8 the record gives Grade 2. On Day +10 it is revised to Grade 3, after an EEG report signed on Day +10 documented a seizure on Day +7. Result: legitimate revision; the current record agrees with the documents.
+**Conditions.** [ASSUMPTION — EXPERT REVIEW] (A28) A field is 7.6 only when all three hold:
+- (a) its value changed between record versions;
+- (b) its current value meets the 7.7 conditions;
+- (c) a document version that supports the new value has `documented_at` after the previous record version's `recorded_at`, and no later than the `recorded_at` of the version that made the change.
+
+Otherwise:
+- If the current value agrees with the documents but (c) fails, the field is 7.7 with the extra flag **"revision without new documentation"**.
+- If the current value disagrees, the usual discrepancy category applies and the record history is shown.
+- Only the field whose value changed can be 7.6. The other field is categorised normally.
+
+Not decided: which change condition (c) tests when a field changed more than once (`docs/dataset-plan.md` §10.2).
+
+**Example:** on Day +8 the record gives Grade 2. On Day +10 it is revised to Grade 3, after an EEG report signed on Day +10 (before the revision) documented a seizure on Day +7. Result: legitimate revision; the current record agrees with the documents.
 
 ### 7.7 No discrepancy
 
 **Definition:** the record onset falls on the same calendar day as the documentation-derived onset (or within its date range), and the record's maximum grade equals the documentation-derived maximum grade. [OPERATIONAL]
 
+A record that reports no ICANS can also be 7.7, under the conditions in §7.9(b).
+
 **Example:** record onset Day +5, maximum Grade 2. The first qualifying note is Day +5 (ICE 9), and the worst is Day +6 (ICE 4, awakens to voice). Result: no discrepancy.
+
+### 7.8 Missing recorded value
+
+**Definition:** the record reports ICANS (`icans_reported` is true), but its onset date or its maximum grade is empty. This is a discrepancy for review. ReSauce reports the documentation-derived value alongside: a date or range, a grade or range, or "none found". The other field, if filled, is compared normally. [ASSUMPTION — EXPERT REVIEW] (A20)
+
+**Example:** the record reports ICANS with onset Day +5 and no maximum grade. The first qualifying note is Day +5 (ICE 9), and the worst is Day +6 (ICE 4, awakens to voice). Result: onset no discrepancy (7.7); grade missing recorded value (7.8), documentation-derived grade 2.
+
+### 7.9 Records that report no ICANS, or ICANS with no qualifying finding
+
+"Qualifying finding" is defined in §6.2.
+
+**(a) Record reports no ICANS; the documents contain a qualifying finding.** [ASSUMPTION — EXPERT REVIEW] (A19)
+- The record is treated as Grade 0 with no onset.
+- Grade: 7.2 (the documents prove a higher grade). The documented grade is reported.
+- Onset: 7.1, reported as **"record has no onset"**, with the documented onset and no signed difference.
+- The normal rules still apply. For example, if the only qualifying finding has ambiguous attribution, the field is 7.5.
+
+**(b) Record reports no ICANS; the documents contain no qualifying finding.** [ASSUMPTION — EXPERT REVIEW] (A21)
+- Both fields are 7.7 if the observation window contains:
+  - at least one formal Grade 0 assessment (§3.3);
+  - no qualifying finding; and
+  - no documented "not assessable" period.
+- Otherwise both fields are 7.4.
+- The unassessed-period flag (§7.10) is always added.
+- Whether a stricter coverage rule is needed (for example, a formal Grade 0 assessment every day) is a question for the clinician reviewer.
+
+**(c) Record reports ICANS; no qualifying finding exists anywhere in the window.** [ASSUMPTION — EXPERT REVIEW] (A22)
+- Grade: 7.3, as §7.3.
+- Onset: the second bullet of §7.1 applies.
+  - If a formal Grade 0 assessment exists on the record's onset date: 7.1, reported as **"no documented onset"**, with no signed difference.
+  - Otherwise: 7.4.
+- Not decided: if the window also contains a documented "not assessable" period, the §7.3 unassessed-period rule (A25) would give 7.4 for the grade, while this rule says 7.3 (`docs/dataset-plan.md` §10.2).
+
+**(d) Record reports ICANS, but onset or grade is empty:** see §7.8.
+
+### 7.10 Extra flags
+
+An extra flag adds information to a result. It never changes a category by itself. The rule behind a flag can change a category; for example, leaving out an unsigned document (§6.3) can lead to 7.4. The exception is "out of scope", which replaces both categories (§5). [OPERATIONAL]
+
+| Flag | When it is added | Defined in |
+|---|---|---|
+| time-imprecise | The note gives no event time, so documentation time is used. | §6.1 |
+| relative time | An event time comes from a relative phrase. | §6.1 (A26) |
+| text-only ICP sign | A raised-ICP sign appears that is in the source text but not in Table 6. | §3.3 (A12) |
+| superseded-version match | The record matches a superseded version but not the current one. | §6.3 |
+| unsigned later version | A document's latest version is unsigned; the flag states what differs. | §6.3 (A27) |
+| unsigned document | A document has no signed version and is not used. | §6.3 (A27) |
+| recurrence | A documented full resolution is followed by recurrence. | §6.5 |
+| outside observation window | A document lies outside the observation window and is not used. | §6.5 (A32) |
+| record date matches an excluded or sub-threshold symptom | §7.1, when a formal Grade 0 assessment on the record's onset date gives 7.1. | §7.1 (A24) |
+| unassessed period | Lists the days in the observation window with no gradeable assessment, and any documented "not assessable" period. Added in §7.3 (merely undocumented days) and always in §7.9(b). | §7.3 (A25), §7.9 (A21) |
+| revision without new documentation | A field's value changed and now agrees, but condition (c) of §7.6 fails. | §7.6 (A28) |
+| out of scope (reason) | Any trigger in §5. Replaces both categories. | §5 (A29) |
 
 ---
 
@@ -329,8 +501,8 @@ Because missing documentation does not prove a finding was absent, ReSauce repor
 |---|---|
 | CRS grading | A separate syndrome with its own scale [SOURCE: Lee 2019, §Toxicities Excluded from the Definition of CRS]. CRS mentions are extracted only as context for timing and attribution. [OPERATIONAL] |
 | CTCAE grading of excluded symptoms | A different system that depends on activities of daily living. The source notes this is hard to apply to hospitalised patients. [SOURCE: Lee 2019, Introduction; §Consensus on ICANS Grading for Adults] Out of scope. [OPERATIONAL] |
-| Pediatric ICANS and CAPD | See §5. [OPERATIONAL] |
-| Grade 5 ICANS | Requires judging the cause of death. A documented death is flagged for review only. [OPERATIONAL] |
+| Pediatric ICANS and CAPD | See §5. The case gets the "out of scope (reason)" flag and no §7 category. [OPERATIONAL; handling: ASSUMPTION — EXPERT REVIEW (A29)] |
+| Grade 5 ICANS | Requires judging the cause of death. [OPERATIONAL] A record of Grade 5, or a documented death, makes the case out of scope: it gets the "out of scope (reason)" flag and no §7 category (§5). [ASSUMPTION — EXPERT REVIEW] (A29) |
 | Treatment and management guidance | ReSauce is not a clinical tool. The source itself is a grading system, not a management protocol. [SOURCE: Lee 2019, §Grade 2 CRS] |
 | Automated attribution decisions | Requires clinical judgment (§3.4). [OPERATIONAL] |
 | Immune therapies other than CAR-T | The definition covers them [SOURCE: Lee 2019, §Definition of Immune Effector Cell-Associated Neurotoxicity], but they are kept out to keep the POC small. [OPERATIONAL] |
@@ -399,7 +571,7 @@ Because missing documentation does not prove a finding was absent, ReSauce repor
 - *If wrong:* the criteria in §3 may need updating to newer guidance.
 
 **A15. Free-text consciousness descriptions are mapped to the four Table 6 categories using a clinician-approved phrase list.**
-- *Detail:* phrases such as "drowsy", "lethargic", "obtunded", "responds to pain" or "sternal rub" need a mapping. Until the list is approved, any phrase that could fit two categories is labelled ambiguous, not graded. A painful stimulus such as a sternal rub may meet the Grade 4 criterion ("vigorous or repetitive tactile stimuli") rather than Grade 3.
+- *Detail:* phrases such as "drowsy", "lethargic", "obtunded", "responds to pain" or "sternal rub" need a mapping. Until the list is approved, any phrase that could fit two categories is labelled ambiguous evidence (§7.5, reason *consciousness wording*; A23), not graded. A painful stimulus such as a sternal rub may meet the Grade 4 criterion ("vigorous or repetitive tactile stimuli") rather than Grade 3.
 - *Why it matters:* notes rarely use the Table 6 wording, and this domain alone can set Grade 3 or 4 (§3.5).
 - *If wrong:* consciousness-based grades would be assigned inconsistently, shifting the maximum grade by one or more levels.
 
@@ -416,6 +588,80 @@ Because missing documentation does not prove a finding was absent, ReSauce repor
 - *Detail:* abstractors may use, for example, new confusion or word-finding difficulty, even without a formal grade. ReSauce's documentation-derived onset requires a Grade ≥1 criterion (§6.2), so the two may differ systematically. Under §7.1 such cases are insufficient evidence.
 - *Why it matters:* this could produce many onset flags that reflect a definitional difference, not an error.
 - *If wrong:* expert review should confirm this handling. If symptom-based onset is accepted, the onset rule in §6.2 must change.
+
+### Added in v0.3: provisional decisions on GAP-1 to GAP-15
+
+A19–A33 are provisional decisions made by the user so that synthetic test cases can be given definite answers. Each one is a ReSauce choice, not taken from the source, and needs clinician review. The gap numbers refer to `docs/dataset-plan.md` v0.1 §10.
+
+**A19. A record of "no ICANS" is compared as Grade 0 with no onset.** (GAP-1; §7.9(a))
+- *Detail:* if the documents contain a qualifying finding, grade is 7.2 (the documented grade is reported) and onset is 7.1, reported as "record has no onset" with no signed difference. Normal rules still apply (e.g. 7.5 for ambiguous attribution).
+- *Why it matters:* §7.1 and §7.2 assume a recorded value to compare. Without this rule, a record that misses ICANS entirely would have no category.
+- *If wrong:* a separate category (e.g. "ICANS not recorded") may be needed, and these cases would be counted differently.
+
+**A20. An empty onset or grade in a record that reports ICANS is its own category, 7.8 Missing recorded value.** (GAP-2; §7.8)
+- *Detail:* the documentation-derived value is reported alongside. The other field is compared normally.
+- *Why it matters:* an empty value cannot be compared, but it is a gap in the record that a reviewer should see.
+- *If wrong:* empty values might instead be treated as insufficient evidence (7.4) or not reported; the number of discrepancies would change.
+
+**A21. A record of "no ICANS" is confirmed (7.7) only if the observation window has at least one formal Grade 0 assessment, no qualifying finding and no documented "not assessable" period. Otherwise both fields are 7.4.** (GAP-3; §7.9(b))
+- *Detail:* the unassessed-period flag is always added. Whether a stricter coverage rule is needed (e.g. a formal Grade 0 assessment every day) is a question for the reviewer.
+- *Why it matters:* "no ICANS" records are judged only by this rule. One assessment is a weak standard, because ICANS could occur on days nobody assessed.
+- *If wrong:* a stricter rule would move many "no ICANS" records from 7.7 to 7.4. A looser rule (e.g. accepting narrative normal notes, cf. A17) would move some from 7.4 to 7.7.
+
+**A22. A record that reports ICANS with no qualifying finding anywhere gets grade 7.3, and onset 7.1 ("no documented onset") only if a formal Grade 0 assessment exists on the record's onset date; otherwise onset 7.4.** (GAP-4; §7.9(c))
+- *Why it matters:* §7.1 assumed a documented onset to compare with.
+- *If wrong:* onset might always be 7.4 in this situation, or a separate category may be needed.
+
+**A23. Ambiguity that is not about attribution also uses category 7.5 (renamed "Ambiguous evidence"), with a required reason.** (GAP-5; §7.5)
+- *Detail:* the reasons are attribution, conflicting assessments (§6.4), assessment barrier (A10) and consciousness wording (A15). 7.5 is used only when the ambiguity would change the onset or the grade. The result is reported for each reading.
+- *Why it matters:* §4.1, §6.4 and A15 called these situations "ambiguous" but no category existed for them.
+- *If wrong:* some reasons may belong under 7.4, or need their own categories; counts of review items would shift between categories.
+
+**A24. On the record's onset date, a formal Grade 0 assessment outweighs an excluded or sub-threshold symptom.** (GAP-6; §7.1)
+- *Detail:* the result is 7.1 with the flag "record date matches an excluded or sub-threshold symptom". The A18 rule (7.4) applies only when there is no gradeable assessment on that date. ReSauce judges by what the documents show on that date, not by guessing the abstractor's reasoning.
+- *Why it matters:* in v0.2 the second and fourth bullets of §7.1 gave different answers for this situation.
+- *If wrong:* if symptom-based onset is accepted (A18), these cases would be 7.4 or 7.7 instead of mismatches.
+
+**A25. A documented "not assessable" period anywhere in the observation window turns an unsupported grade (7.3) into insufficient evidence (7.4). Merely undocumented days do not; they give 7.3 plus the unassessed-period flag.** (GAP-7; §7.3)
+- *Why it matters:* under missing ≠ absent, a higher grade could be hidden in any unassessed time. This rule draws the line at documented inability to assess.
+- *If wrong:* undocumented days might also give 7.4 (fewer 7.3 results), or only periods close to the record's grade might count.
+
+**A26. Relative time phrases are converted with a fixed table (§6.1). Any other phrase gives no event time. For a range, the signed difference is measured to the nearest end.** (GAP-8; §6.1, §7.1)
+- *Why it matters:* §6.1 required a date range but gave no conversion, so the same phrase could be dated differently.
+- *If wrong:* onset dates taken from relative phrases would move by about a day, changing some 7.1 and 7.7 results.
+
+**A27. Unsigned content is never used for onset or grade.** (GAP-9; §6.3)
+- *Detail:* a later unsigned version gets the flag "unsigned later version"; a document with no signed version gets the flag "unsigned document". This can change a category.
+- *Why it matters:* unsigned text may be an unfinished draft. §6.3 already treated only signed versions as current, but did not say what to do with unsigned ones.
+- *If wrong:* unsigned content might be usable, at least when it is the only documentation, and some 7.4 results would change.
+
+**A28. A record revision counts as a legitimate revision (7.6) only if the value changed, the current value agrees with the documents, and a supporting document version appeared between the previous record version and the change.** (GAP-10; §7.6)
+- *Detail:* if the current value agrees but no new documentation appeared in that interval, the field is 7.7 with the flag "revision without new documentation". Only the changed field can be 7.6.
+- *Why it matters:* without a timing test, any revision that ends up correct would look "explained".
+- *If wrong:* more or fewer revisions would count as 7.6, and a revision without new documentation might deserve a discrepancy category rather than a flag.
+
+**A29. Out-of-scope cases (age under 18, a CAPD assessment, a record of Grade 5, or a documented death) get the flag "out of scope (reason)" and no §7 category for either field.** (GAP-11; §5, §8)
+- *Detail:* they are scored only on whether they were flagged.
+- *Why it matters:* §5 and §8 excluded these cases, but did not say whether categories were still computed.
+- *If wrong:* categories might still be computed for some (e.g. the onset of a Grade 5 record), and these cases would enter the discrepancy measurements.
+
+**A30. A competing cause counts if it is documented in the same note as the finding, or documented as given or present within the 24 hours before the finding's event time.** (GAP-12; §3.4, §7.5)
+- *Why it matters:* §3.4 said "near" and §7.5 said "coincides", without a time window.
+- *If wrong:* a longer window (e.g. for long-acting drugs) would produce more 7.5 results; a shorter one fewer.
+
+**A31. Text counts as copied forward if it repeats an earlier note verbatim or differs only in dates, times or formatting. Any change to clinical content makes it a new observation.** (GAP-13; §6.4)
+- *Why it matters:* v0.2 covered only unchanged copies, but templated notes often update the date.
+- *If wrong:* lightly edited copies might count as new evidence, or copies with small clinical edits might still count as copies. Both affect onset and the recurrence flag.
+
+**A32. Both ReSauce datasets use the observation window Day 0 to Day +28.** (GAP-14; §6.5)
+- *Detail:* documents outside the window are not used for categories and get the flag "outside observation window". Record values are compared as they are.
+- *Why it matters:* the onset, the maximum grade, the "no ICANS" rule (A21) and the unassessed-period flag all depend on the window. The source gives no ICANS onset window (§2).
+- *If wrong:* a longer window would bring later findings into the comparison; a shorter one would leave findings out.
+
+**A33. ICE 0 with no consciousness information gives the grade range 3–4.** (GAP-15; §4.1)
+- *Detail:* a record of Grade 2 or lower is 7.2 (the documents prove at least Grade 3). A record of Grade 3 or 4 is 7.4.
+- *Why it matters:* ICE 0–2 meets the Grade 3 ICE criterion (Table 6) whatever the consciousness level, but Grade 4 cannot be ruled out.
+- *If wrong:* if ICE 0 without consciousness information should not count at all, these cases would all be 7.4.
 
 ---
 

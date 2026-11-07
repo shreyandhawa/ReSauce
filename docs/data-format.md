@@ -1,6 +1,6 @@
 # ReSauce data format
 
-- **Status:** v0.1 (2026-11-07). Milestone 2 Step 2.
+- **Status:** v0.1.1 (2026-11-07). Milestone 2 Step 2. v0.1.1 only marks §12 Q3 and Q5 as answered; the format itself is unchanged (`schema_version` stays `"0.1"`).
 - **Implemented by:** `src/resauce/models.py` and `src/resauce/loader.py`.
 - **Tested by:** `tests/test_loader.py`, using the fixture in `tests/fixtures/format/valid_dataset/`.
 - **Clinical definitions:** `docs/clinical-methods.md` v0.2. Section numbers below (§) refer to that file.
@@ -278,9 +278,9 @@ If a document file cannot be read, or its `document_id` or `version` is invalid,
 
 1. Must every document version ≥ 2 give an `amendment_reason`, and every record version ≥ 2 a `change_reason`? Not enforced in v0.1.
 2. May `note_type` or `author_role` change between versions of one document? Not enforced in v0.1.
-3. Must the latest version of a document be `signed`? Not enforced. §6.3 only says the latest *signed* version is current.
+3. **Answered (provisionally) by `clinical-methods.md` v0.3 §6.3 (A27).** Must the latest version of a document be `signed`? No. The format keeps allowing unsigned versions. The pipeline never uses unsigned content for onset or grade: a later unsigned version gets the flag "unsigned later version", and a document with no signed version is not used as evidence and gets the flag "unsigned document". The loader is unchanged.
 4. Should the loader check that the dataset folder name equals `dataset_id`? Not enforced in v0.1.
-5. Should documents or record dates outside the observation window be rejected, or flagged by the pipeline? Not enforced; left to the pipeline.
+5. **Answered (provisionally) by `clinical-methods.md` v0.3 §6.5 (A32).** Should documents or record dates outside the observation window be rejected, or flagged by the pipeline? Flagged, not rejected. Both datasets declare Day 0 to Day +28. Documents outside the window are not used for categories and get the flag "outside observation window". Record values are compared as they are. The loader is unchanged.
 6. Should `onset_date` before `infusion_date` be rejected? Not enforced; it may be a deliberate test of the pipeline.
 7. The file format for reference answers is not yet defined (later step).
 8. Is a whole-number age enough, or will any test need finer age detail? Not needed for §5 as written.
