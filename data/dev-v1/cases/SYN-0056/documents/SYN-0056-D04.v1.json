@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0056",
+  "document_id": "SYN-0056-D04",
+  "version": 1,
+  "status": "signed",
+  "note_type": "discharge_summary",
+  "author_role": "attending_physician",
+  "documented_at": "2036-02-16T13:00",
+  "amendment_reason": null,
+  "text": "Discharge summary\nAdmitted 2036-02-06, CAR-T infusion 2036-02-07, discharged 2036-02-16.\nCRS: fever Day +3, tocilizumab x1, resolved.\nNeuro: ICE fell to 8/10 on 2036-02-10 and 5/10 on 2036-02-12. EEG 2036-02-12: generalized slowing with FIRDA, no seizures. Dexamethasone tapered over 4 days.\nICE at 08:00 on 2036-02-16: 10/10.\nDischarge meds: acyclovir 400 mg BID, levetiracetam 500 mg BID, pantoprazole 40 mg daily.\nFolow-up in clinic in one week."
+}

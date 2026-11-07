@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0006",
+  "document_id": "SYN-0006-D06",
+  "version": 1,
+  "status": "signed",
+  "note_type": "neurology_consult",
+  "author_role": "neurologist",
+  "documented_at": "2033-03-15T13:40",
+  "amendment_reason": null,
+  "text": "NEUROLOGY CONSULTATION\nDate: 2033-03-15\nReason: ICANS with vomiting and headache on 2033-03-13\nExam (13:00): ICE 8/10 | cranial nerves intact | no papilledema | strength and reflexes symmetric\nHeadache resolved; no further vomiting\nImpression: ICANS, improving\nRecommendations: continue dexamethasone with taper when ICE 10/10; imaging not needed unless vomiting or headache recur"
+}

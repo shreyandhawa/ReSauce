@@ -12,6 +12,79 @@ Each entry covers:
 
 ---
 
+## 2026-11-07: Milestone 2 Step 4 part 2 (4 pilot fixes, batch 2 of development cases)
+
+**Status:**
+- 20 of 72 development cases are written; `data/dev-v1/dataset.json` is now `dataset_version` 0.2.0.
+- No code, tests, settings, `briefs.json` or other docs were changed.
+- `pytest` reports 96 passed; `tools.check_dev` reports 0 errors and 0 warnings (104 evidence references in 20 answer files).
+- Not committed (the user runs `/finish-step`).
+
+**Done: review fixes to 4 pilot cases.** Briefs and every intended category are unchanged; answers and offsets were updated.
+1. **SYN-0021 (EEG report).**
+   - Change: now 3 discrete non-convulsive seizures, each under 2 minutes, with "the background returned to its baseline" between them, still "resolved after IV levetiracetam"; "c/w encephalopathy" removed.
+   - Why: "recurrent electrographic seizures" with no return to baseline could be read as Grade 4, and "encephalopathy" is a free descriptive word (plan §6, NEW-13).
+2. **SYN-0017.**
+   - Change: the "awakens only to tactile stimulus" check moved from 06:15 to 14:40, 25 minutes after the patient was seen awake and talking. The documents were renumbered by documentation time (physician note D04, CT D05, ICE check D06); all other facts kept.
+   - Why: at 06:15 the finding could be read as normal sleep.
+3. **SYN-0038.**
+   - Change: the word-finding complaint moved to 21:40 on Day +4 (no ICE that day), and the ICE assessment moved to 06:10 on Day +5. Still 6 documents; categories still 7.7 / 7.7. The unassessed-day list changed (Day +5 now assessed, Day +6 not).
+   - Why: a new neurological symptom followed by no ICE for 2 days was implausible.
+4. **SYN-0027.**
+   - Change: corrected "medicatons" in the sedating-medications negation, and also "dificulty" and "asymetry", which were typos inside negations too.
+   - Why: part 1 rule A (no typos in negations). The other typos stay for the style.
+
+**Done: 10 new cases (batch 2).**
+
+| Case | Scenario | Content |
+|---|---|---|
+| SYN-0044 | SC-02 | Brief Grade 1 only (ICE 8 one day), recorded correctly; 3 documents. |
+| SYN-0026 | SC-03 | A single ICE 6 is the only abnormal finding; record says Grade 1. Includes a physical therapy note (`other` / `other`, first use). |
+| SYN-0037 | SC-04 | Record Grade 3; notes show ICE 5 and awakens to voice only; normal MRI. |
+| SYN-0008 | SC-06 | Record onset 2 days after the first finding; out-of-window clinic visit on Day +35. |
+| SYN-0013 | SC-08 | ICE 8 with arousal only to a light touch at a daytime check (patient seen awake earlier); record correctly Grade 3; out-of-window baseline on Day −5. |
+| SYN-0003 | SC-09 | Domain chosen: a single self-limited generalized seizure (about 50 s, no benzodiazepine); record correctly Grade 3. |
+| SYN-0065 | SC-10 | CT report states diffuse cerebral edema; record Grade 3 (matches the ICE 2 only). |
+| SYN-0054 | SC-11 | Record Grade 3 counts a subdural hematoma (excluded, Table 6 footnote #; no surrounding edema); other findings Grade 2. |
+| SYN-0056 | SC-12 | Record Grade 3 counts EEG slowing with FIRDA (no seizures); other findings Grade 2. Record onset corrected without new documentation; signed medication-list amendment. |
+| SYN-0006 | SC-13 | Record Grade 4 rests on projectile vomiting with headache (text-only ICP sign, flagged); Table 6 findings Grade 2; papilledema, abducens palsy and posturing documented absent; no Cushing's triad. |
+
+None of the four 7.3 cases (SC-04, SC-11, SC-12, SC-13) has a documented "not assessable" period (A25).
+
+**Decisions & why:**
+- **SC-09 domain = clinical seizure.** It is the domain least likely to need an imaging or EEG report, which the brief forbids as a normal-report extra. No sedative was given, so A30 is not triggered.
+- **The arousal-only-to-touch findings (SYN-0013, and SYN-0017 after the fix) are at daytime checks**, with the patient documented awake shortly before. Why: so a reader cannot take them for sleep.
+- **No pilot wording reused.** New cases were checked by script for any 8-word run shared with the 10 pilot cases (the plan §9 check 5 threshold). The first run found two borrowed prose phrases and several ICE item-score lines; all were reworded, and the final run found none. Only my own new text was printed; the pilot files were not opened.
+- **Part A answers were edited directly**, not by re-running the part 1 helper script, which would have rewritten all pilot answers.
+
+**Next steps:**
+1. The user reads the 4 fixed and 10 new cases with `show_case`.
+2. The assistant reviews the user's comments and fixes the cases and answers.
+3. Part 3: the next 10 scenarios, in a fresh conversation, following `reference/dev-v1/briefs.json`; set `dataset_version` 0.3.0.
+
+**Open questions:**
+- **Known limitation (to disclose in the evaluation limitations):** each case is a selection of 3 to 12 documents, so most days in the 29-day window have no documented assessment. The unassessed-period list is therefore long by design. It reflects the selection of documents, not real clinical monitoring practice.
+- Carried forward:
+  - `data-format.md` §6 still says text must be "non-empty" (rule 26 says "visible text");
+  - confirm that out-of-scope cases carry no other flags;
+  - the answer format is provisional (Step 5);
+  - NEW-11 to NEW-18;
+  - clinician involvement;
+  - baseline specification before Milestone 3;
+  - scoring details;
+  - Node.js LTS version;
+  - no software licence yet.
+
+**How to verify:**
+```bash
+cd ~/Projects/ReSauce
+.venv/bin/python -m pytest -p no:cacheprovider -v   # expect: 96 passed
+.venv/bin/python -m tools.check_dev                 # expect: 20 case(s) ... Result: PASSED
+git status                                          # data/dev-v1, reference/dev-v1/intended and docs/handoff.md changed
+```
+
+---
+
 ## 2026-11-07: Milestone 2 Step 4 part 1 (loader fix, authoring tools, briefs, 10 pilot cases)
 
 **Status:** Step 4 part 1 of about 7 is done:

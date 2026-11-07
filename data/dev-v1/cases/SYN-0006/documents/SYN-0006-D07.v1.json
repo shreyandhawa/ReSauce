@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0006",
+  "document_id": "SYN-0006-D07",
+  "version": 1,
+  "status": "signed",
+  "note_type": "discharge_summary",
+  "author_role": "attending_physician",
+  "documented_at": "2033-03-19T12:00",
+  "amendment_reason": null,
+  "text": "DISCHARGE SUMMARY\nAdmission: 2033-03-08 | Infusion: 2033-03-09 | Discharge: 2033-03-19\nCRS: grade 1 on Day +1, acetaminophen only\nICANS: from 2033-03-12; ICE nadir 4/10 on 2033-03-13 with vomiting and headache; dexamethasone 2033-03-13 to 2033-03-17\nDischarge neuro screen: ICE 10/10 at 08:15 on 2033-03-19\nFollow-up: clinic in 1 week"
+}

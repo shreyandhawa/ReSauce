@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0065",
+  "document_id": "SYN-0065-D05",
+  "version": 1,
+  "status": "signed",
+  "note_type": "neurology_consult",
+  "author_role": "neurologist",
+  "documented_at": "2033-11-21T15:30",
+  "amendment_reason": null,
+  "text": "Neuro consult 2033-11-21.\nCT today reviewed.\nExam 15:00: awake. Follows 1-step commands. Pupils 3 mm, reactive. No papilledema. No CN VI palsy. No posturing.\nHR 78, BP 138/82, RR 16.\nRec: methylpred 1 g IV daily x3. HOB 30. Na goal 145-150. ICU."
+}

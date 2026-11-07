@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0054",
+  "document_id": "SYN-0054-D04",
+  "version": 1,
+  "status": "signed",
+  "note_type": "imaging_report",
+  "author_role": "radiologist",
+  "documented_at": "2031-06-02T12:20",
+  "amendment_reason": null,
+  "text": "CT HEAD WITHOUT CONTRAST\nPerformed: 2031-06-02 11:05\nFindings: acute left frontoparietal subdural hematoma, maximal thickness 8 mm. No midline shift. No surrounding cerebral edema. Brain parenchyma otherwise normal. No other hemorrhage.\nImpression: acute left subdural hematoma (8 mm) without mass effect."
+}

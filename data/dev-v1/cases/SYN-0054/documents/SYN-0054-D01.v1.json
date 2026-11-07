@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0054",
+  "document_id": "SYN-0054-D01",
+  "version": 1,
+  "status": "signed",
+  "note_type": "physician_progress_note",
+  "author_role": "advanced_practice_provider",
+  "documented_at": "2031-05-30T11:00",
+  "amendment_reason": null,
+  "text": "CELLULAR THERAPY DAILY NOTE\nService date: 2031-05-30 - Day +2\nEvents since last note: fever 38.8 °C at 02:10; tocilizumab given 03:00\nNeuro: ICE 10/10 (09:30) - awake, alert - no focal deficit\nHeme: platelets 18 x10^9/L, 1 unit transfused\nAssessment/Plan: CRS grade 1, settling - thrombocytopenia, keep platelets above 20"
+}

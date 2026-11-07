@@ -6,9 +6,9 @@
   "document_id": "SYN-0017-D04",
   "version": 1,
   "status": "signed",
-  "note_type": "ice_assessment",
-  "author_role": "nurse",
-  "documented_at": "2036-07-04T06:40",
+  "note_type": "physician_progress_note",
+  "author_role": "attending_physician",
+  "documented_at": "2036-07-04T10:30",
   "amendment_reason": null,
-  "text": "ICE ASSESSMENT FORM\nDate: 2036-07-04    Time of assessment: 06:15\nLevel of consciousness: awakens only to tactile stimulus (does not open eyes to voice; opened eyes after a touch on the shoulder)\nOrientation (year, month, city, hospital): 3/4\nNaming (3 objects): 3/3\nFollowing commands: 1/1\nWriting a standard sentence: 0/1\nAttention (count back from 100 by 10): 1/1\nICE TOTAL: 8/10\nSedating medications in previous 24 h: none\nComments: Once awake, completed ICE. Same items missed as yesterday. Team notified 06:25."
+  "text": "PROGRESS NOTE - CELLULAR THERAPY\nDate: 2036-07-04\nDay post infusion: +5\nSUBJECTIVE: Nursing ICE result from 2036-07-03 reviewed. Slept well; up to chair this morning.\nOBJECTIVE: Afebrile since 2036-07-02. HR 88. BP 122/76. SpO2 98% RA.\nNEURO (09:40): Awake, conversant. ICE 8/10 (missed hospital; unable to write a sentence). Pupils equal and reactive. Strength 5/5 in all four extremities. No seizure activity. No sedating medications given.\nASSESSMENT: ICANS after CAR-T. CRS resolved.\nPLAN: Dexamethasone 10 mg IV every 6 h. CT head today. ICE every 4 h. Neurology aware."
 }

@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0013",
+  "document_id": "SYN-0013-D04",
+  "version": 1,
+  "status": "signed",
+  "note_type": "nursing_note",
+  "author_role": "nurse",
+  "documented_at": "2033-10-29T21:00",
+  "amendment_reason": null,
+  "text": "NURSING SHIFT NOTE\nDate: 2033-10-29 | Shift: evening\nICE (20:15): 9/10 | arousal: awake, conversing\nVitals: afebrile, HR 76, BP 128/80\nOther: mild headache at 18:00, acetaminophen given; no tremor"
+}

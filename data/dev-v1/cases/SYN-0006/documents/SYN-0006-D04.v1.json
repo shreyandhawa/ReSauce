@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0006",
+  "document_id": "SYN-0006-D04",
+  "version": 1,
+  "status": "signed",
+  "note_type": "physician_progress_note",
+  "author_role": "attending_physician",
+  "documented_at": "2033-03-13T16:30",
+  "amendment_reason": null,
+  "text": "PROGRESS NOTE\nDate: 2033-03-13 | Day +4\nNeuro exam (15:45): ICE 4/10 (orientation 1/4, naming 2/3, command 1/1, writing 0/1, attention 0/1) | awake, attends to examiner | pupils equal and reactive | eye movements full, no abducens palsy | fundoscopy: sharp disc margins, no papilledema | no posturing | strength 5/5 throughout\nVitals: HR 90 | BP 124/76 | RR 16\nEvents: projectile vomiting with headache around midday (see nursing note)\nSedating medications in past 24 h: none (ondansetron only)\nAssessment: ICANS; vomiting with headache raises concern for raised intracranial pressure\nPlan: dexamethasone 10 mg IV q6h | CT head if vomiting recurs | ICE q4h"
+}

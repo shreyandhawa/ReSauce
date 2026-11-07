@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0065",
+  "document_id": "SYN-0065-D04",
+  "version": 1,
+  "status": "signed",
+  "note_type": "imaging_report",
+  "author_role": "radiologist",
+  "documented_at": "2033-11-21T11:40",
+  "amendment_reason": null,
+  "text": "CT head without contrast, 2033-11-21 10:45.\nDiffuse cerebral edema: effacement of sulci throughout both hemispheres, loss of gray-white differentiation, narrowed basal cisterns.\nNo hemorrhage. No midline shift. No herniation.\nImp: diffuse cerebral edema."
+}

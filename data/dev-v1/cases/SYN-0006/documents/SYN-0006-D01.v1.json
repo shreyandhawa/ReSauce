@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0006",
+  "document_id": "SYN-0006-D01",
+  "version": 1,
+  "status": "signed",
+  "note_type": "nursing_note",
+  "author_role": "nurse",
+  "documented_at": "2033-03-10T21:50",
+  "amendment_reason": null,
+  "text": "NURSING SHIFT ASSESSMENT\nDate: 2033-03-10 | Shift: 15:00-23:00\nTemp max: 38.6 °C (16:45) | HR 108 | BP 117/70 | SpO2 96% RA\nCRS actions: acetaminophen 650 mg (17:00); provider aware\nICE (20:30): 10/10 | arousal: alert\nNeuro other: no tremor, no headache"
+}

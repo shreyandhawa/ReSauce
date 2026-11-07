@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0044",
+  "document_id": "SYN-0044-D02",
+  "version": 1,
+  "status": "signed",
+  "note_type": "physician_progress_note",
+  "author_role": "advanced_practice_provider",
+  "documented_at": "2033-04-11T11:05",
+  "amendment_reason": null,
+  "text": "APP progress note - day +5 (2033-04-11)\nInterval: no fever since 2033-04-10 06:00. Apetite improving.\nExam 09:15: awake and fully alert, sitting up in bed. ICE 8/10 - could not name the city or the hospital, all other items correct. Pupils equal. Strength full in all four limbs, no focal findings. No sedating drugs given in the past day.\nHx: lumbar disc herniation, back pain controled with acetaminophen.\nA: ICANS, mild. CRS resolved.\nP: no steroids for now, ICE every 4 hours, call if ICE drops below 7. Levetiracetam prophylaxis contiuning."
+}

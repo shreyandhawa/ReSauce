@@ -1,0 +1,132 @@
+{
+  "answer_format": "0.1-provisional",
+  "case_id": "SYN-0044",
+  "scenario_id": "SC-02",
+  "scenario_label": "Brief Grade 1 only, recorded correctly",
+  "case_type": "Neg",
+  "tags": [
+    "plain"
+  ],
+  "status": "not clinician-verified",
+  "answer_kind": "intended",
+  "provenance": {
+    "clinical_methods": "v0.4",
+    "data_format": "v0.1.2",
+    "dataset_plan": "v0.3",
+    "dataset_id": "SYN-DS-DEV-V1",
+    "dataset_version": "0.2.0",
+    "ordering_seed": 20261107,
+    "written": "2026-11-07",
+    "written_by": "case author (Claude Code session, Milestone 2 Step 4 part 2)"
+  },
+  "out_of_scope": null,
+  "fields": {
+    "onset": {
+      "category": "7.7",
+      "record_value": "2033-04-11",
+      "documented_value": {
+        "date": "2033-04-11",
+        "study_day": 5
+      },
+      "signed_difference_days": 0,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [
+        {
+          "role": "first qualifying finding (ICE 8, Grade 1), Day +5",
+          "document_id": "SYN-0044-D02",
+          "version": 1,
+          "quote": "Exam 09:15: awake and fully alert, sitting up in bed. ICE 8/10",
+          "start": 102,
+          "end": 164
+        }
+      ],
+      "record_history": null
+    },
+    "max_grade": {
+      "category": "7.7",
+      "record_value": 1,
+      "documented_value": {
+        "grade": 1
+      },
+      "signed_difference_days": null,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [
+        {
+          "role": "ICE 8 (Grade 1), the only finding",
+          "document_id": "SYN-0044-D02",
+          "version": 1,
+          "quote": "ICE 8/10 - could not name the city or the hospital",
+          "start": 156,
+          "end": 206
+        },
+        {
+          "role": "no competing cause",
+          "document_id": "SYN-0044-D02",
+          "version": 1,
+          "quote": "No sedating drugs given in the past day.",
+          "start": 299,
+          "end": 339
+        }
+      ],
+      "record_history": null
+    }
+  },
+  "case_flags": {
+    "unassessed_period": {
+      "days_without_gradeable_assessment": [
+        0,
+        1,
+        2,
+        4,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28
+      ],
+      "not_assessable_periods": []
+    },
+    "ungradeable_neurological_symptom": []
+  },
+  "other_flags": [],
+  "ambiguity_notes": [
+    "ICE 10/10 on Day +6 documents resolution; no recurrence.",
+    "The headache on Day +6 is an excluded symptom (§4.2)."
+  ],
+  "depends_on_open_points": [],
+  "author_checks": {
+    "distractors": [
+      "CRS fever with tocilizumab",
+      "lumbar disc history",
+      "headache Day +6 (excluded)"
+    ],
+    "negated_findings": [
+      "No tremors noted. No seizure activity.",
+      "no focal findings"
+    ],
+    "positive_findings": [
+      "ICE 8/10 Day +5",
+      "fever 38.7"
+    ],
+    "brief_features": "with typos; 3 documents; age 44; infusion 2033-04-06"
+  }
+}

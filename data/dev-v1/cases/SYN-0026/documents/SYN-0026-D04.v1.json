@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0026",
+  "document_id": "SYN-0026-D04",
+  "version": 1,
+  "status": "signed",
+  "note_type": "ice_assessment",
+  "author_role": "nurse",
+  "documented_at": "2033-04-10T10:45",
+  "amendment_reason": null,
+  "text": "Bedside ICE screen, performed 2033-04-10 at 10:20.\n\nThe patient was awake and attentive, sitting in the recliner. Orientation 2 of 4: gave the wrong month and could not name the hospital. Naming 2 of 3: called the button a coin. Followed the two-finger command. Could not complete a written sentence. Counted down from 100 by tens correctly.\n\nICE total: 6/10.\n\nNo sedating medicines have been given at any point this admission. The physician was informed at 10:35."
+}

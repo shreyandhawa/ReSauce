@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0003",
+  "document_id": "SYN-0003-D01",
+  "version": 1,
+  "status": "signed",
+  "note_type": "physician_progress_note",
+  "author_role": "attending_physician",
+  "documented_at": "2034-01-26T16:10",
+  "amendment_reason": null,
+  "text": "Day 0 Attending Note, 2034-01-26\n\nThe patient, who has relapsed B-cell acute lymphoblastic leukemia, received the autologous anti-CD19 CAR-T cell product at 10:40 this morning without any infusion reaction. Lymphodepletion was completed on 2034-01-23.\n\nOther history is limited to mild persistent asthma, controlled with an inhaled steroid, and right carpal tunnel syndrome with intermittent numbness of the thumb and index finger, present for two years.\n\nAt 08:20, before the infusion, the ICE screen was 10/10 and the neurological examination showed normal strength, reflexes and coordination.\n\nPlan: levetiracetam 500 mg twice daily as seizure prophylaxis, ICE screening twice daily, and close monitoring for cytokine release syndrome."
+}

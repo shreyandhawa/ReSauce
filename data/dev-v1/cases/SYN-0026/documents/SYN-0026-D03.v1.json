@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0026",
+  "document_id": "SYN-0026-D03",
+  "version": 1,
+  "status": "signed",
+  "note_type": "other",
+  "author_role": "other",
+  "documented_at": "2033-04-09T14:00",
+  "amendment_reason": null,
+  "text": "Physical Therapy Evaluation, 2033-04-09\n\nSeen at the bedside from 13:10 to 13:40 for a mobility assessment during post-infusion monitoring. The patient followed every instruction given during the session. Sit-to-stand transfers needed standby assistance only. Walked 40 metres with a rolling walker; mild unsteadiness on turns, consistent with deconditioning and the known knee arthritis. No dizziness reported, and no falls this admission.\n\nRecommendations: walk in the hallway three times daily with staff, rolling walker at all times, review on 2033-04-11."
+}

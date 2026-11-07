@@ -1,0 +1,147 @@
+{
+  "answer_format": "0.1-provisional",
+  "case_id": "SYN-0054",
+  "scenario_id": "SC-11",
+  "scenario_label": "Record Grade 3 counts an intracranial hemorrhage; other findings Grade 2",
+  "case_type": "Pos",
+  "tags": [],
+  "status": "not clinician-verified",
+  "answer_kind": "intended",
+  "provenance": {
+    "clinical_methods": "v0.4",
+    "data_format": "v0.1.2",
+    "dataset_plan": "v0.3",
+    "dataset_id": "SYN-DS-DEV-V1",
+    "dataset_version": "0.2.0",
+    "ordering_seed": 20261107,
+    "written": "2026-11-07",
+    "written_by": "case author (Claude Code session, Milestone 2 Step 4 part 2)"
+  },
+  "out_of_scope": null,
+  "fields": {
+    "onset": {
+      "category": "7.7",
+      "record_value": "2031-06-01",
+      "documented_value": {
+        "date": "2031-06-01",
+        "study_day": 4
+      },
+      "signed_difference_days": 0,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [
+        {
+          "role": "time of first qualifying finding, Day +4",
+          "document_id": "SYN-0054-D02",
+          "version": 1,
+          "quote": "ICE RECORD - 2031-06-01, 07:20",
+          "start": 0,
+          "end": 30
+        },
+        {
+          "role": "first qualifying finding (ICE 7, Grade 1)",
+          "document_id": "SYN-0054-D02",
+          "version": 1,
+          "quote": "total 7/10",
+          "start": 72,
+          "end": 82
+        }
+      ],
+      "record_history": null
+    },
+    "max_grade": {
+      "category": "7.3",
+      "record_value": 3,
+      "documented_value": {
+        "grade": 2
+      },
+      "signed_difference_days": null,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [
+        {
+          "role": "ICE 4 (Grade 2), Day +5",
+          "document_id": "SYN-0054-D03",
+          "version": 1,
+          "quote": "ICE 4/10 (08:45)",
+          "start": 69,
+          "end": 85
+        },
+        {
+          "role": "awakens to voice (Grade 2)",
+          "document_id": "SYN-0054-D03",
+          "version": 1,
+          "quote": "awakens to voice, then stays engaged",
+          "start": 127,
+          "end": 163
+        },
+        {
+          "role": "intracranial hemorrhage: excluded from ICANS grading (Table 6 footnote #)",
+          "document_id": "SYN-0054-D04",
+          "version": 1,
+          "quote": "acute left frontoparietal subdural hematoma, maximal thickness 8 mm",
+          "start": 63,
+          "end": 130
+        }
+      ],
+      "record_history": null
+    }
+  },
+  "case_flags": {
+    "unassessed_period": {
+      "days_without_gradeable_assessment": [
+        0,
+        1,
+        3,
+        6,
+        7,
+        8,
+        9,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28
+      ],
+      "not_assessable_periods": []
+    },
+    "ungradeable_neurological_symptom": []
+  },
+  "other_flags": [],
+  "ambiguity_notes": [
+    "The subdural hematoma is an intracranial hemorrhage, excluded from ICANS grading (§4.2); the report states no surrounding edema.",
+    "No documented 'not assessable' period anywhere in the window. So the over-graded record is 7.3, not 7.4 (A25).",
+    "The headache on Day +5 is an excluded symptom."
+  ],
+  "depends_on_open_points": [],
+  "author_checks": {
+    "distractors": [
+      "CRS fever with tocilizumab",
+      "thrombocytopenia and transfusions",
+      "headache Day +5 (excluded)",
+      "subdural hematoma (excluded)"
+    ],
+    "negated_findings": [
+      "no focal deficit - no seizure",
+      "No surrounding cerebral edema."
+    ],
+    "positive_findings": [
+      "ICE 7/10 Day +4",
+      "ICE 4/10 and awakens to voice Day +5"
+    ],
+    "brief_features": "templated; 5 documents; age 53; infusion 2031-05-28"
+  }
+}

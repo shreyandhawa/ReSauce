@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0044",
+  "document_id": "SYN-0044-D03",
+  "version": 1,
+  "status": "signed",
+  "note_type": "ice_assessment",
+  "author_role": "nurse",
+  "documented_at": "2033-04-12T08:35",
+  "amendment_reason": null,
+  "text": "ICE screen 2033-04-12 @ 08:05\nyear / month / city / hospital - all correct (4)\nnaming clock, pen, button (3)\n2-finger command (1)\nsentence written (1)\ncounting 100 down by tens (1)\n= 10/10\nMild headace behind the eyes since waking, 3/10, acetaminophen offerred. No tremor."
+}

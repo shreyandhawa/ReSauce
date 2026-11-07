@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0008",
+  "document_id": "SYN-0008-D04",
+  "version": 1,
+  "status": "signed",
+  "note_type": "physician_progress_note",
+  "author_role": "advanced_practice_provider",
+  "documented_at": "2036-11-04T10:40",
+  "amendment_reason": null,
+  "text": "CELLULAR THERAPY CLINIC FOLLOW-UP [template]\nVisit date: 2036-11-04 | Post-infusion day: 35\nNeuro screen (10:05): ICE 10/10\nNeuro exam: mild bilateral postural tremor of the hands; strength full\nLabs: neutrophils recovering\nPlan: return in 4 weeks; restaging scan at Day +90"
+}

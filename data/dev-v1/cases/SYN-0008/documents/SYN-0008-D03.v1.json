@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0008",
+  "document_id": "SYN-0008-D03",
+  "version": 1,
+  "status": "signed",
+  "note_type": "discharge_summary",
+  "author_role": "attending_physician",
+  "documented_at": "2036-10-08T14:10",
+  "amendment_reason": null,
+  "text": "DISCHARGE SUMMARY [template]\nAdmission date: 2036-09-29 | Infusion date: 2036-09-30 | Discharge date: 2036-10-08\nCRS: fever on Day +1, tocilizumab x1, resolved\nNeuro course: ICE 8/10 on 2036-10-03; 5/10 on 2036-10-05; dexamethasone started 2036-10-05\nDischarge neuro screen: ICE 10/10 at 09:00 on 2036-10-08\nFollow-up: cellular therapy clinic Day +35"
+}

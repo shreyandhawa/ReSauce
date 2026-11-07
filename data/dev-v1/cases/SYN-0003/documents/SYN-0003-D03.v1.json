@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0003",
+  "document_id": "SYN-0003-D03",
+  "version": 1,
+  "status": "signed",
+  "note_type": "ice_assessment",
+  "author_role": "nurse",
+  "documented_at": "2034-01-30T09:10",
+  "amendment_reason": null,
+  "text": "ICE Assessment, 2034-01-30, performed at 08:30\n\nThe patient was awake and sitting up for breakfast. All four orientation questions were answered correctly, all three objects were named, and the two-finger command was followed. The patient could not produce a written sentence, writing only the first word. Counting backwards from 100 by tens was correct.\n\nICE score: 9/10.\n\nNo sedating medications in the previous 24 hours. Physician informed at 08:45."
+}

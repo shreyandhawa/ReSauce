@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0054",
+  "document_id": "SYN-0054-D02",
+  "version": 1,
+  "status": "signed",
+  "note_type": "ice_assessment",
+  "author_role": "nurse",
+  "documented_at": "2031-06-01T07:45",
+  "amendment_reason": null,
+  "text": "ICE RECORD - 2031-06-01, 07:20\nO 2/4 - N 3/3 - C 1/1 - W 0/1 - A 1/1 -> total 7/10\nArousal: alert\nSedatives in past 24 h: none"
+}

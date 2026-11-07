@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0003",
+  "document_id": "SYN-0003-D04",
+  "version": 1,
+  "status": "signed",
+  "note_type": "nursing_note",
+  "author_role": "nurse",
+  "documented_at": "2034-01-31T15:40",
+  "amendment_reason": null,
+  "text": "Nursing Event Note, 2034-01-31\n\nAt 14:52, while I was in the room, the patient had a generalized tonic-clonic seizure lasting about 50 seconds, which stopped on its own. The patient was turned on the side, oxygen was applied, and the rapid response team was called; no benzodiazepine was needed because the seizure had already ended. Vital signs afterwards: heart rate 118, blood pressure 132/80, oxygen saturation 98% on 2 L.\n\nBy 15:20 the patient was awake and answering questions. ICE at 15:25 was 7/10: the patient did not know the month or the name of the hospital and could not write a sentence, but named all objects, followed the command and counted correctly. There was a small bite mark on the left side of the tongue."
+}

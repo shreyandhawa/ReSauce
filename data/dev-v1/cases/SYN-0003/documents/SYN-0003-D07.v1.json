@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0003",
+  "document_id": "SYN-0003-D07",
+  "version": 1,
+  "status": "signed",
+  "note_type": "discharge_summary",
+  "author_role": "attending_physician",
+  "documented_at": "2034-02-06T14:00",
+  "amendment_reason": null,
+  "text": "Discharge Summary\n\nAdmitted 2034-01-25; CAR-T cell infusion 2034-01-26; discharged 2034-02-06.\n\nCourse: grade 2 cytokine release syndrome on Day +2, treated with fluids and one dose of tocilizumab. ICANS from Day +4, including a single self-limited generalized seizure on 2034-01-31; treated with dexamethasone, tapered over six days, and levetiracetam at an increased dose. No further seizures.\n\nDischarge ICE on 2034-02-06 at 09:30: 10/10.\n\nFollow-up: cellular therapy clinic in one week; neurology clinic in one month."
+}

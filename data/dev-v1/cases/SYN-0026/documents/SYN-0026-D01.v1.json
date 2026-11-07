@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0026",
+  "document_id": "SYN-0026-D01",
+  "version": 1,
+  "status": "signed",
+  "note_type": "physician_progress_note",
+  "author_role": "attending_physician",
+  "documented_at": "2033-04-06T17:40",
+  "amendment_reason": null,
+  "text": "Infusion Day Note, 2033-04-06\n\nThis 78-year-old patient with relapsed mantle cell lymphoma received autologous CD19-directed CAR-T cells at 13:15 today, three days after completing fludarabine and cyclophosphamide lymphodepletion. The infusion was uneventful, with no fever, rash or change in blood pressure during or after the product was given.\n\nComorbidities include type 2 diabetes managed with metformin, osteoarthritis of both knees, and cataract surgery on both eyes some years ago with good vision since; the patient reads without difficulty and wears no hearing aids.\n\nBefore the infusion, at 11:30, the bedside ICE screen was 10/10, and the neurological examination was unremarkable, with symmetric strength and a steady gait.\n\nPlan: ICE screening twice daily and with any change, vital signs every four hours, levetiracetam prophylaxis, and early mobilisation with physical therapy."
+}

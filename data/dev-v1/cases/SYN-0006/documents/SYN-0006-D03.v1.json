@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0006",
+  "document_id": "SYN-0006-D03",
+  "version": 1,
+  "status": "signed",
+  "note_type": "nursing_note",
+  "author_role": "nurse",
+  "documented_at": "2033-03-13T14:20",
+  "amendment_reason": null,
+  "text": "NURSING EVENT NOTE\nDate: 2033-03-13\nEvent: projectile vomiting x2 (12:40 and 13:05) with severe frontal headache, 8/10\nVitals at 13:10: HR 94 | BP 126/78 | RR 16 | SpO2 98% RA\nActions: ondansetron 4 mg IV at 13:15; provider at bedside 13:20"
+}

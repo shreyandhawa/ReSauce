@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0003",
+  "document_id": "SYN-0003-D02",
+  "version": 1,
+  "status": "signed",
+  "note_type": "nursing_note",
+  "author_role": "nurse",
+  "documented_at": "2034-01-28T23:40",
+  "amendment_reason": null,
+  "text": "Nursing Note, 2034-01-28, evening and night\n\nAt 19:30 the temperature rose to 39.4 °C and the blood pressure fell to 88/52. A 1-litre saline bolus brought it back to 106/64 by 20:30, and tocilizumab (8 mg/kg) followed at 20:45 once the physician had recorded grade 2 cytokine release syndrome. Oxygen saturation remained 97% on room air throughout.\n\nThe ICE screen at 22:15 was 10/10. The patient is talking with family, asked sensible questions about the fever, and is now trying to sleep."
+}

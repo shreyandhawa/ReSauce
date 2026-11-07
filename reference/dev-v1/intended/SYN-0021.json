@@ -73,20 +73,28 @@
           "end": 71
         },
         {
-          "role": "non-convulsive seizures on EEG",
+          "role": "non-convulsive seizures on EEG, each under 5 min",
           "document_id": "SYN-0021-D07",
           "version": 1,
-          "quote": "beginning 13:55, recurrent electrographic seizures arising from the L temporal region, each 40-90 s, w/o clinical correlate",
+          "quote": "3 discrete electrographic seizures arising from the L temporal region, onset 13:55, 14:08 and 14:27, each 40-90 s, w/o clinical correlate",
           "start": 192,
-          "end": 315
+          "end": 329
+        },
+        {
+          "role": "return to baseline between seizures, so not the Grade 4 'without return to baseline' pattern",
+          "document_id": "SYN-0021-D07",
+          "version": 1,
+          "quote": "Between seizures the background returned to its baseline (reactive theta).",
+          "start": 331,
+          "end": 405
         },
         {
           "role": "resolved with intervention (Grade 3)",
           "document_id": "SYN-0021-D07",
           "version": 1,
           "quote": "LEV 1 g IV given 14:20. Last electrographic seizure ended 14:28; none thereafter through end of recording.",
-          "start": 317,
-          "end": 423
+          "start": 406,
+          "end": 512
         }
       ],
       "record_history": {
@@ -129,6 +137,7 @@
   },
   "other_flags": [],
   "ambiguity_notes": [
+    "The seizures are non-convulsive, each under 2 minutes, with the EEG background back at baseline between them, and they stop after levetiracetam: Grade 3, not Grade 4 (no prolonged seizure, no repetitive seizures without return to baseline).",
     "Diffuse EEG slowing is not a seizure (§3.3 notes) and adds nothing.",
     "Levetiracetam is an antiseizure drug, not a documented sedative; no finding that could change onset or grade lies within 24 h after it."
   ],

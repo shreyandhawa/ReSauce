@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0065",
+  "document_id": "SYN-0065-D03",
+  "version": 1,
+  "status": "signed",
+  "note_type": "physician_progress_note",
+  "author_role": "attending_physician",
+  "documented_at": "2033-11-21T10:05",
+  "amendment_reason": null,
+  "text": "D+6 2033-11-21.\nICE 08:50: 2/10. Orient 0/4, naming 0/3, cmd 1/1, writing 0/1, count 1/1.\nAwake, eyes open. Moves all limbs.\nNo sedatives in 24 h.\nPlan: CT head stat. Dex 10 q6h. Neuro consult. ICU review."
+}

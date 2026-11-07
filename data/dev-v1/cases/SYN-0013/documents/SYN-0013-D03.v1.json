@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0013",
+  "document_id": "SYN-0013-D03",
+  "version": 1,
+  "status": "signed",
+  "note_type": "physician_progress_note",
+  "author_role": "attending_physician",
+  "documented_at": "2033-10-27T12:40",
+  "amendment_reason": null,
+  "text": "ATTENDING PROGRESS NOTE\nDate: 2033-10-27 | Day +3\nEvents: RN reports pt up in chair eating breakfast and chatting at 08:30.\nExam at 11:20: lying in bed with eyes closed. No eye opening or reply when spoken to loudly by name; opened eyes and looked at me only after a light touch on the forearm. Once roused, ICE 8/10 (orientation 3/4 - wrong month; writing 0/1).\nMedications in last 24 h: no benzodiazepines, opioids, antihistamines or other sedating agents.\nMotor: symmetric, no drift. No seizure activity seen.\nAssessment: ICANS; arousal reduced beyond what the ICE score alone shows.\nPlan: dexamethasone 10 mg IV q6h | neurology consult | ICE q2h"
+}

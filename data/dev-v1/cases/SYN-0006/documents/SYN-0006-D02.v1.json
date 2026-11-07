@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0006",
+  "document_id": "SYN-0006-D02",
+  "version": 1,
+  "status": "signed",
+  "note_type": "ice_assessment",
+  "author_role": "nurse",
+  "documented_at": "2033-03-12T08:20",
+  "amendment_reason": null,
+  "text": "ICE SCREEN\nDate/time: 2033-03-12 07:50\nOrientation 3/4 (missed: hospital) | Naming 3/3 | Command 1/1 | Sentence 0/1 | Count-back 1/1\nTOTAL 8/10\nArousal: alert | Sedating meds past 24 h: none"
+}

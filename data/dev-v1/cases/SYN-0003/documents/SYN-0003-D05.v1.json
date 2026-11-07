@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0003",
+  "document_id": "SYN-0003-D05",
+  "version": 1,
+  "status": "signed",
+  "note_type": "physician_progress_note",
+  "author_role": "attending_physician",
+  "documented_at": "2034-01-31T18:30",
+  "amendment_reason": null,
+  "text": "Attending Progress Note, Day +5 (2034-01-31)\n\nEvent: a single generalized seizure at 14:52, witnessed by nursing, lasting under one minute and stopping by itself. No benzodiazepine or other sedating drug was given before or after it. Levetiracetam was loaded with 1500 mg IV at 15:30 and increased to 1000 mg twice daily.\n\nExamination at 17:45: alert and conversing, ICE 8/10, full strength in all limbs, reflexes symmetric, plantar responses flexor, and no facial asymmetry. No further events since 14:52.\n\nAssessment: ICANS with a self-limited generalized seizure; cytokine release syndrome resolved.\n\nPlan: dexamethasone 10 mg IV every six hours, seizure precautions, neurology consultation, ICE every four hours."
+}

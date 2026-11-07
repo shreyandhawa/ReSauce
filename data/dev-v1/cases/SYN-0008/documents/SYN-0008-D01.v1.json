@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0008",
+  "document_id": "SYN-0008-D01",
+  "version": 1,
+  "status": "signed",
+  "note_type": "ice_assessment",
+  "author_role": "nurse",
+  "documented_at": "2036-10-03T07:55",
+  "amendment_reason": null,
+  "text": "IEC NEUROTOXICITY MONITORING SHEET\nAssessment date/time ........ 2036-10-03 07:30\nArousal ..................... awake, eyes open\nOrientation (0-4) ........... 3 (hospital name incorrect)\nNaming (0-3) ................ 3\nCommand (0-1) ............... 1\nWriting (0-1) ............... 0\nAttention (0-1) ............. 1\nICE SCORE ................... 8\nSeizure activity ............ none\nMotor weakness .............. none\nNotes ....................... fever resolved after tocilizumab on 2036-10-01; provider informed of ICE change"
+}

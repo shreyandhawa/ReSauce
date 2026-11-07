@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0044",
+  "document_id": "SYN-0044-D01",
+  "version": 1,
+  "status": "signed",
+  "note_type": "nursing_note",
+  "author_role": "nurse",
+  "documented_at": "2033-04-09T22:50",
+  "amendment_reason": null,
+  "text": "Evening shift summery, 2033-04-09\nTemp 38.7 at 17:30, pt shivering; HR 110, BP 121/75, O2 sat 96% on room air. Paged covering provider, blood cultres drawn x2, acetaminophen 1 g PO at 17:50. Tocilizumab 8 mg/kg given 19:15 per CRS order set.\nICE checked 20:40: 10/10.\nNo tremors noted. No seizure activity. Pt resting comfortably, partner at bedside."
+}

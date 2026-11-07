@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0056",
+  "document_id": "SYN-0056-D02",
+  "version": 1,
+  "status": "signed",
+  "note_type": "physician_progress_note",
+  "author_role": "resident_physician",
+  "documented_at": "2036-02-12T10:40",
+  "amendment_reason": null,
+  "text": "Resident progress note, day +5 (2036-02-12)\nICE at 08:15 was 5/10 (orientation 2, naming 1, two-finger command 1, sentence 0, counting 1).\nAsleep when I entered; awakens to voice and remained awake for the rest of the exam.\nNo sedating medications in the last 24 hours.\nStrength equal on both sides, no focal deficits, no seizure activity seen.\nAsessment: ICANS, CRS resolving.\nPlan: dexamethazone 10 mg IV q6h, EEG today to look for nonconvulsive seizures, ICE q4h."
+}

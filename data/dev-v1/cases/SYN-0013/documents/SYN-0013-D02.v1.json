@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0013",
+  "document_id": "SYN-0013-D02",
+  "version": 1,
+  "status": "signed",
+  "note_type": "ice_assessment",
+  "author_role": "nurse",
+  "documented_at": "2033-10-26T09:30",
+  "amendment_reason": null,
+  "text": "ICE FLOWSHEET ENTRY\nTime: 2033-10-26 09:00\nLevel of arousal: alert\nOrient 4/4 | Name objects 3/3 | Follow command 1/1 | Write sentence 0/1 | Count back 1/1\nTotal: 9/10\nSedative, opioid or antihistamine given in last 24 h: no\nFever: Tmax 38.9 at 03:20; tocilizumab given 04:00"
+}

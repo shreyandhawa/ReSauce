@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0013",
+  "document_id": "SYN-0013-D01",
+  "version": 1,
+  "status": "signed",
+  "note_type": "nursing_note",
+  "author_role": "nurse",
+  "documented_at": "2033-10-19T10:30",
+  "amendment_reason": null,
+  "text": "LYMPHODEPLETION VISIT - NURSING\nVisit date: 2033-10-19\nBaseline ICE (09:50): 10/10\nHandwriting sample: collected for comparison\nBaseline exam: no tremor | no focal weakness\nChemotherapy: fludarabine/cyclophosphamide, day 1 of 3, given without reaction"
+}

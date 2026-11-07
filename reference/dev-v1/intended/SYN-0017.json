@@ -60,16 +60,24 @@
       "readings": [],
       "evidence": [
         {
-          "role": "time of the grade-deciding finding, Day +5",
-          "document_id": "SYN-0017-D04",
+          "role": "time of the grade-deciding finding, Day +5 afternoon",
+          "document_id": "SYN-0017-D06",
           "version": 1,
-          "quote": "Date: 2036-07-04    Time of assessment: 06:15",
+          "quote": "Date: 2036-07-04    Time of assessment: 14:40",
           "start": 20,
           "end": 65
         },
         {
+          "role": "patient awake beforehand, so not ordinary sleep",
+          "document_id": "SYN-0017-D06",
+          "version": 1,
+          "quote": "Pt was awake in the chair and talking with a visitor at 14:15.",
+          "start": 437,
+          "end": 499
+        },
+        {
           "role": "awakens only to tactile stimulus (Grade 3)",
-          "document_id": "SYN-0017-D04",
+          "document_id": "SYN-0017-D06",
           "version": 1,
           "quote": "awakens only to tactile stimulus (does not open eyes to voice; opened eyes after a touch on the shoulder)",
           "start": 90,
@@ -77,7 +85,7 @@
         },
         {
           "role": "no competing cause",
-          "document_id": "SYN-0017-D04",
+          "document_id": "SYN-0017-D06",
           "version": 1,
           "quote": "Sedating medications in previous 24 h: none",
           "start": 383,
@@ -85,7 +93,7 @@
         },
         {
           "role": "ICE 8 (Grade 1) in the same assessment",
-          "document_id": "SYN-0017-D04",
+          "document_id": "SYN-0017-D06",
           "version": 1,
           "quote": "ICE TOTAL: 8/10",
           "start": 367,
@@ -130,7 +138,8 @@
   "other_flags": [],
   "ambiguity_notes": [
     "Grade by ICE alone would be 1 (= record); the level of consciousness sets Grade 3 (§3.5). Record lower by 2.",
-    "The physician assessment at 09:40 on Day +5 (awake, ICE 8/10) is more than 3 hours later, so it is not a conflicting assessment."
+    "The finding is at a daytime check, 25 minutes after the patient was seen awake and talking, so it is not ordinary sleep.",
+    "The physician assessment at 09:40 on Day +5 (awake, ICE 8/10) is about 5 hours earlier, so it is not a conflicting assessment."
   ],
   "depends_on_open_points": [],
   "author_checks": {

@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0008",
+  "document_id": "SYN-0008-D02",
+  "version": 1,
+  "status": "signed",
+  "note_type": "physician_progress_note",
+  "author_role": "attending_physician",
+  "documented_at": "2036-10-05T11:20",
+  "amendment_reason": null,
+  "text": "DAILY PROGRESS NOTE [inpatient template]\nDate of service: 2036-10-05 | Post-infusion day: 5\nNeuro screen (08:00): ICE 5/10 | arousal: awake | focal deficits: none | seizure: none\nVital signs: T 36.9 | HR 84 | BP 134/78 | SpO2 97% RA\nMedications of note: dexamethasone 10 mg IV q6h started today; no sedating drugs administered\nOther problems: chronic kidney disease stage 3, creatinine at baseline; hypothyroidism on levothyroxine\nAssessment: ICANS; CRS resolved\nPlan: ICE q4h | neurology review | falls precautions"
+}

@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0026",
+  "document_id": "SYN-0026-D07",
+  "version": 1,
+  "status": "signed",
+  "note_type": "discharge_summary",
+  "author_role": "attending_physician",
+  "documented_at": "2033-04-16T15:00",
+  "amendment_reason": null,
+  "text": "Discharge Summary\n\nAdmitted 2033-04-05; CAR-T cell infusion 2033-04-06; discharged 2033-04-16.\n\nHospital course: grade 1 cytokine release syndrome on Day +2, treated with acetaminophen alone. On 2033-04-10 the ICE score fell transiently to 6/10 and was back to 10/10 by the next morning after one dose of dexamethasone. A fine bilateral hand tremor appeared on Day +7 and was not treated. Physical therapy followed throughout for deconditioning.\n\nThe ICE screen on the day of discharge (2033-04-16, 09:00) was 10/10.\n\nFollow-up: cellular therapy clinic in one week, physical therapy as an outpatient, no driving for eight weeks."
+}

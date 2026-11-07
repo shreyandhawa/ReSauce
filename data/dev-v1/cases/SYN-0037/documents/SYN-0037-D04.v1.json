@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0037",
+  "document_id": "SYN-0037-D04",
+  "version": 1,
+  "status": "signed",
+  "note_type": "imaging_report",
+  "author_role": "radiologist",
+  "documented_at": "2031-08-19T18:20",
+  "amendment_reason": null,
+  "text": "MRI brain w/o and w/ gadolinium, 2031-08-19 15:30.\nNormal brain parenchyma. No hemorrhage, edema, infarct or abnormal enhancement.\nImp: no acute findings."
+}

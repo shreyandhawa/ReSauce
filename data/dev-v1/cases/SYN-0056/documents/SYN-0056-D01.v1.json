@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0056",
+  "document_id": "SYN-0056-D01",
+  "version": 1,
+  "status": "signed",
+  "note_type": "nursing_note",
+  "author_role": "nurse",
+  "documented_at": "2036-02-10T22:30",
+  "amendment_reason": null,
+  "text": "Night shift hand-over note, 2036-02-10\nPt had fever 38.6 at 15:00, given acetaminophen; tocilizumab given 16:10 per oncolgy.\nAt 21:05 ICE was 8/10 (missed the month, could not write a sentence).\nPt awake, alert, talking with spouse. No tremor. No seizures.\nWill recheck ICE in 4 hrs and let the night team know."
+}

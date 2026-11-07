@@ -46,7 +46,7 @@
           "end": 345
         },
         {
-          "role": "formal Grade 0 assessment, Day +6",
+          "role": "formal Grade 0 assessment, Day +5",
           "document_id": "SYN-0038-D04",
           "version": 1,
           "quote": "ICE total 10/10",
@@ -91,7 +91,7 @@
           "end": 345
         },
         {
-          "role": "formal Grade 0 assessment, Day +6",
+          "role": "formal Grade 0 assessment, Day +5",
           "document_id": "SYN-0038-D04",
           "version": 1,
           "quote": "ICE total 10/10",
@@ -116,7 +116,7 @@
         0,
         2,
         4,
-        5,
+        6,
         7,
         8,
         9,
@@ -150,8 +150,8 @@
             "document_id": "SYN-0038-D03",
             "version": 1,
             "quote": "pt reported word-finding difficulty while messaging family on phone",
-            "start": 78,
-            "end": 145
+            "start": 91,
+            "end": 158
           }
         ]
       }
@@ -159,7 +159,7 @@
   },
   "other_flags": [],
   "ambiguity_notes": [
-    "The word-finding difficulty does not block 7.7 (A21 as amended); it is listed in the case-level flag. No ICE assessment on that calendar day (NEW-14 avoid rule).",
+    "The word-finding difficulty (Day +4, 21:40) does not block 7.7 (A21 as amended); it is listed in the case-level flag. No ICE assessment on that calendar day; the next ICE is at 06:10 on Day +5 (NEW-14 avoid rule).",
     "Headache (Day +3) and hand tremor (Day +9) are excluded symptoms (§4.2), not ungradeable symptoms."
   ],
   "depends_on_open_points": [],

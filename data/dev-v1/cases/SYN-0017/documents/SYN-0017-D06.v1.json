@@ -6,9 +6,9 @@
   "document_id": "SYN-0017-D06",
   "version": 1,
   "status": "signed",
-  "note_type": "imaging_report",
-  "author_role": "radiologist",
-  "documented_at": "2036-07-04T13:20",
+  "note_type": "ice_assessment",
+  "author_role": "nurse",
+  "documented_at": "2036-07-04T15:05",
   "amendment_reason": null,
-  "text": "CT HEAD WITHOUT CONTRAST\nExam date/time: 2036-07-04 12:05\nClinical indication: neurotoxicity monitoring after CAR-T.\nComparison: none.\nFINDINGS: No acute intracranial hemorrhage. No mass effect or midline shift. Gray-white differentiation preserved. No evidence of cerebral edema. Ventricles and sulci normal for age. Visualized paranasal sinuses clear.\nIMPRESSION: No acute intracranial abnormality."
+  "text": "ICE ASSESSMENT FORM\nDate: 2036-07-04    Time of assessment: 14:40\nLevel of consciousness: awakens only to tactile stimulus (does not open eyes to voice; opened eyes after a touch on the shoulder)\nOrientation (year, month, city, hospital): 3/4\nNaming (3 objects): 3/3\nFollowing commands: 1/1\nWriting a standard sentence: 0/1\nAttention (count back from 100 by 10): 1/1\nICE TOTAL: 8/10\nSedating medications in previous 24 h: none\nComments: Pt was awake in the chair and talking with a visitor at 14:15. At the 14:40 check eyes were closed and pt did not respond when name was called; opened eyes only after the shoulder touch. Once awake, completed ICE. Same items missed as yesterday. Team notified 14:50."
 }

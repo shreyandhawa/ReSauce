@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0056",
+  "document_id": "SYN-0056-D03",
+  "version": 1,
+  "status": "signed",
+  "note_type": "eeg_report",
+  "author_role": "neurologist",
+  "documented_at": "2036-02-12T17:20",
+  "amendment_reason": null,
+  "text": "EEG report\nRecording: routine, 2036-02-12 13:30-14:10.\nBackground: generalized slowing in the delta-theta range, with frontal intermittent rhythmic delta activity (FIRDA).\nNo epileptiform discharges. No electrographic seizures. No clinical events captured.\nImpression: moderate generalized slowing with FIRDA; no seizures recorded."
+}

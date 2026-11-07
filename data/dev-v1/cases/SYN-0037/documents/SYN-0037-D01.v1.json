@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0037",
+  "document_id": "SYN-0037-D01",
+  "version": 1,
+  "status": "signed",
+  "note_type": "nursing_note",
+  "author_role": "nurse",
+  "documented_at": "2031-08-16T23:20",
+  "amendment_reason": null,
+  "text": "Shift note 2031-08-16.\nT 38.5 at 19:10. HR 104. NS 500 mL bolus, APAP.\nICE 22:00: 10/10. Awake."
+}

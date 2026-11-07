@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0026",
+  "document_id": "SYN-0026-D02",
+  "version": 1,
+  "status": "signed",
+  "note_type": "nursing_note",
+  "author_role": "nurse",
+  "documented_at": "2033-04-08T22:30",
+  "amendment_reason": null,
+  "text": "Evening nursing note, 2033-04-08\n\nA temperature of 38.4 °C was measured at 18:10; heart rate was 98 and blood pressure 128/74, and oxygen saturation stayed at 95% on room air. The covering physician reviewed the patient, recorded grade 1 cytokine release syndrome, and acetaminophen 650 mg was given at 18:25 with good effect. Blood cultures were sent.\n\nThe ICE screen at 21:00 was 10/10, with every item answered promptly. There is no shaking or tremor in the hands. The patient walked to the bathroom with the walker and is now resting."
+}

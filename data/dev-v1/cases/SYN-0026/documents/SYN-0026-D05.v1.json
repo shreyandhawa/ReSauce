@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0026",
+  "document_id": "SYN-0026-D05",
+  "version": 1,
+  "status": "signed",
+  "note_type": "physician_progress_note",
+  "author_role": "attending_physician",
+  "documented_at": "2033-04-11T12:15",
+  "amendment_reason": null,
+  "text": "Progress Note, Day +5 (2033-04-11)\n\nYesterday's nursing ICE of 6/10 at 10:20 was reviewed with the team, and a single dose of dexamethasone 10 mg IV was given at 11:30 on 2033-04-10. No further doses were needed.\n\nThis morning at 08:10 the patient was alert and conversational and scored 10/10 on the ICE screen, answering each item without hesitation. Strength is symmetric in all four limbs, there is no facial weakness, and nursing have seen no seizure activity. The fever has not returned since 2033-04-09.\n\nAssessment: brief neurotoxicity after CAR-T therapy, now back to baseline; cytokine release syndrome resolved.\n\nPlan: ICE every eight hours, continue levetiracetam, continue physical therapy, and aim for discharge around Day +10 if stable."
+}

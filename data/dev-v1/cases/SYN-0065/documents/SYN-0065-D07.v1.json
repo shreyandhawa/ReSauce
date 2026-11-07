@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0065",
+  "document_id": "SYN-0065-D07",
+  "version": 1,
+  "status": "signed",
+  "note_type": "discharge_summary",
+  "author_role": "attending_physician",
+  "documented_at": "2033-12-01T13:00",
+  "amendment_reason": null,
+  "text": "D/C summary. Infusion 2033-11-15. D/C 2033-12-01.\nCRS gr 1 D+1.\nICANS from D+4; CT 2033-11-21 diffuse cerebral edema; high-dose steroids; ICU 2033-11-21 to 2033-11-24.\nICE 2033-12-01 08:30: 10/10.\nF/u clinic 1 wk."
+}

@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0003",
+  "document_id": "SYN-0003-D06",
+  "version": 1,
+  "status": "signed",
+  "note_type": "neurology_consult",
+  "author_role": "neurologist",
+  "documented_at": "2034-02-02T13:00",
+  "amendment_reason": null,
+  "text": "Neurology Consultation, 2034-02-02\n\nAsked to see the patient after the generalized seizure on 2034-01-31. There have been no further clinical events since then, and the patient reports no new weakness or visual change.\n\nExamination at 12:15: ICE 9/10, missing only the written sentence. Cranial nerve examination is normal, power is full in every muscle group, reflexes are symmetric, and there is no papilledema.\n\nImpression: ICANS with one self-limited generalized seizure; the carpal tunnel symptoms are long-standing and unrelated.\n\nRecommendations: continue levetiracetam 1000 mg twice daily for at least two months, continue dexamethasone with a taper once the ICE is 10/10, and no driving for six months."
+}

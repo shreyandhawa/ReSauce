@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0037",
+  "document_id": "SYN-0037-D05",
+  "version": 1,
+  "status": "signed",
+  "note_type": "nursing_note",
+  "author_role": "nurse",
+  "documented_at": "2031-08-21T21:10",
+  "amendment_reason": null,
+  "text": "Note 2031-08-21.\nICE 20:30: 8/10. Awake.\nOccasional brief myoclonic jerks R arm. Provider aware."
+}

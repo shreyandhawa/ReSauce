@@ -1,0 +1,163 @@
+{
+  "answer_format": "0.1-provisional",
+  "case_id": "SYN-0008",
+  "scenario_id": "SC-06",
+  "scenario_label": "Record onset 2 days late",
+  "case_type": "Pos",
+  "tags": [
+    "plain"
+  ],
+  "status": "not clinician-verified",
+  "answer_kind": "intended",
+  "provenance": {
+    "clinical_methods": "v0.4",
+    "data_format": "v0.1.2",
+    "dataset_plan": "v0.3",
+    "dataset_id": "SYN-DS-DEV-V1",
+    "dataset_version": "0.2.0",
+    "ordering_seed": 20261107,
+    "written": "2026-11-07",
+    "written_by": "case author (Claude Code session, Milestone 2 Step 4 part 2)"
+  },
+  "out_of_scope": null,
+  "fields": {
+    "onset": {
+      "category": "7.1",
+      "record_value": "2036-10-05",
+      "documented_value": {
+        "date": "2036-10-03",
+        "study_day": 3
+      },
+      "signed_difference_days": 2,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [
+        {
+          "role": "time of first qualifying finding, Day +3",
+          "document_id": "SYN-0008-D01",
+          "version": 1,
+          "quote": "Assessment date/time ........ 2036-10-03 07:30",
+          "start": 35,
+          "end": 81
+        },
+        {
+          "role": "first qualifying finding (ICE 8, Grade 1)",
+          "document_id": "SYN-0008-D01",
+          "version": 1,
+          "quote": "ICE SCORE ................... 8",
+          "start": 315,
+          "end": 346
+        }
+      ],
+      "record_history": null
+    },
+    "max_grade": {
+      "category": "7.7",
+      "record_value": 2,
+      "documented_value": {
+        "grade": 2
+      },
+      "signed_difference_days": null,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [
+        {
+          "role": "ICE 5 (Grade 2), Day +5",
+          "document_id": "SYN-0008-D02",
+          "version": 1,
+          "quote": "Neuro screen (08:00): ICE 5/10",
+          "start": 92,
+          "end": 122
+        },
+        {
+          "role": "no competing cause",
+          "document_id": "SYN-0008-D02",
+          "version": 1,
+          "quote": "no sedating drugs administered",
+          "start": 296,
+          "end": 326
+        }
+      ],
+      "record_history": null
+    }
+  },
+  "case_flags": {
+    "unassessed_period": {
+      "days_without_gradeable_assessment": [
+        0,
+        1,
+        2,
+        4,
+        6,
+        7,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28
+      ],
+      "not_assessable_periods": []
+    },
+    "ungradeable_neurological_symptom": []
+  },
+  "other_flags": [
+    {
+      "flag": "outside observation window",
+      "field": null,
+      "detail": "Clinic follow-up on Day +35 is outside Day 0 to Day +28; its observations are not used.",
+      "evidence": [
+        {
+          "role": "Grade 0 assessment, Day +35",
+          "document_id": "SYN-0008-D04",
+          "version": 1,
+          "quote": "Neuro screen (10:05): ICE 10/10",
+          "start": 92,
+          "end": 123
+        },
+        {
+          "role": "excluded symptom, Day +35",
+          "document_id": "SYN-0008-D04",
+          "version": 1,
+          "quote": "mild bilateral postural tremor of the hands",
+          "start": 136,
+          "end": 179
+        }
+      ]
+    }
+  ],
+  "ambiguity_notes": [
+    "Record onset (Day +5) is 2 days after the documented onset (Day +3); the record date has a qualifying finding (ICE 5), so no 'record date matches' flag."
+  ],
+  "depends_on_open_points": [],
+  "author_checks": {
+    "distractors": [
+      "CRS fever with tocilizumab",
+      "chronic kidney disease and hypothyroidism",
+      "out-of-window clinic visit with tremor"
+    ],
+    "negated_findings": [
+      "focal deficits: none",
+      "Seizure activity ............ none"
+    ],
+    "positive_findings": [
+      "ICE 8 Day +3",
+      "ICE 5/10 Day +5"
+    ],
+    "brief_features": "templated; 4 documents (1 out of window); age 70; infusion 2036-09-30"
+  }
+}
