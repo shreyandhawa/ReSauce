@@ -74,4 +74,5 @@ CLAUDE.md        rules Claude Code follows on this project
 |---|---|
 | `pytest: command not found` or `No module named resauce` | Run `source .venv/bin/activate`, then try again. |
 | The environment stops working after a Python upgrade | Delete the `.venv` folder with `rm -rf .venv` (it's safe; setup recreates it), then repeat the one-time setup. |
+| `No module named resauce` even with the environment active | Make sure the project is **not** inside an iCloud-synced folder such as Documents or Desktop. iCloud can hide files Python needs. Keep it in `~/Projects/ReSauce`, then repeat the one-time setup. |
 | `python: command not found` | Use `python3` outside the environment. Once the environment is active, `python` works. |

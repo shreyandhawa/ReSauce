@@ -12,6 +12,28 @@ Each entry covers:
 
 ---
 
+## 2026-11-07: Milestone 1 verification and project move
+
+**Status:** Milestone 1 re-verified. The program runs and `pytest` reports 1 passed.
+
+**Done:**
+- A verification run found `python -m resauce` and `pytest` failing with "No module named resauce", even though both had passed at setup.
+- Cause: the project was in `~/Documents`, which iCloud syncs. macOS added the "hidden" flag to `.venv/`, and Python 3.14 skips hidden `.pth` files. That broke the link to `src/`. The code itself was fine: with `PYTHONPATH=src` the program ran and the test passed.
+- Moved the project to `~/Projects/ReSauce`, which is not synced, and rebuilt `.venv`. All checks pass.
+
+**Decisions & why:**
+- Keep the project out of iCloud-synced folders. Syncing also risks conflicts inside `.git/` and `.venv/`.
+
+**How to verify:**
+```bash
+cd ~/Projects/ReSauce
+source .venv/bin/activate
+python -m resauce
+pytest        # expect: 1 passed
+```
+
+---
+
 ## 2026-11-07: Milestone 1, project foundation
 
 **Status:** Milestone 1 complete. The project installs, the program runs, and the one test passes.
