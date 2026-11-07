@@ -55,4 +55,3 @@ pip install -e ".[dev]"      # one-time, and again after dependencies change
 python -m resauce            # run the program
 pytest                       # run the tests
 ```
-Do not add Co-Authored-By lines to commit messages.
