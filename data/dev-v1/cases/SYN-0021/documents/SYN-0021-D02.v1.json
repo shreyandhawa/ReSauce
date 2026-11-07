@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0021",
+  "document_id": "SYN-0021-D02",
+  "version": 1,
+  "status": "signed",
+  "note_type": "nursing_note",
+  "author_role": "nurse",
+  "documented_at": "2031-07-22T23:10",
+  "amendment_reason": null,
+  "text": "RN note 2031-07-22 PM\nT 38.8 @ 18:00 -> APAP 650 mg PO; BCx x2 sent. HR 106, BP 116/70, SpO2 97% RA.\nICE @ 21:00: 10/10. A&Ox4. No tremor. No HA.\nMD aware; CRS gr 1 per team."
+}

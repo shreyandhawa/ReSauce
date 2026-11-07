@@ -1,0 +1,153 @@
+{
+  "answer_format": "0.1-provisional",
+  "case_id": "SYN-0017",
+  "scenario_id": "SC-07",
+  "scenario_label": "ICE alone gives the wrong grade; record follows ICE",
+  "case_type": "Pos",
+  "tags": [],
+  "status": "not clinician-verified",
+  "answer_kind": "intended",
+  "provenance": {
+    "clinical_methods": "v0.4",
+    "data_format": "v0.1.2",
+    "dataset_plan": "v0.3",
+    "dataset_id": "SYN-DS-DEV-V1",
+    "dataset_version": "0.1.0",
+    "ordering_seed": 20261107,
+    "written": "2026-11-07",
+    "written_by": "case author (Claude Code session, Milestone 2 Step 4 part 1)"
+  },
+  "out_of_scope": null,
+  "fields": {
+    "onset": {
+      "category": "7.7",
+      "record_value": "2036-07-03",
+      "documented_value": {
+        "date": "2036-07-03",
+        "study_day": 4
+      },
+      "signed_difference_days": 0,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [
+        {
+          "role": "time of first qualifying finding, Day +4",
+          "document_id": "SYN-0017-D03",
+          "version": 1,
+          "quote": "Date: 2036-07-03    Time of assessment: 07:55",
+          "start": 20,
+          "end": 65
+        },
+        {
+          "role": "first qualifying finding (ICE 8, Grade 1)",
+          "document_id": "SYN-0017-D03",
+          "version": 1,
+          "quote": "ICE TOTAL: 8/10",
+          "start": 267,
+          "end": 282
+        }
+      ],
+      "record_history": null
+    },
+    "max_grade": {
+      "category": "7.2",
+      "record_value": 1,
+      "documented_value": {
+        "grade": 3
+      },
+      "signed_difference_days": null,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [
+        {
+          "role": "time of the grade-deciding finding, Day +5",
+          "document_id": "SYN-0017-D04",
+          "version": 1,
+          "quote": "Date: 2036-07-04    Time of assessment: 06:15",
+          "start": 20,
+          "end": 65
+        },
+        {
+          "role": "awakens only to tactile stimulus (Grade 3)",
+          "document_id": "SYN-0017-D04",
+          "version": 1,
+          "quote": "awakens only to tactile stimulus (does not open eyes to voice; opened eyes after a touch on the shoulder)",
+          "start": 90,
+          "end": 195
+        },
+        {
+          "role": "no competing cause",
+          "document_id": "SYN-0017-D04",
+          "version": 1,
+          "quote": "Sedating medications in previous 24 h: none",
+          "start": 383,
+          "end": 426
+        },
+        {
+          "role": "ICE 8 (Grade 1) in the same assessment",
+          "document_id": "SYN-0017-D04",
+          "version": 1,
+          "quote": "ICE TOTAL: 8/10",
+          "start": 367,
+          "end": 382
+        }
+      ],
+      "record_history": null
+    }
+  },
+  "case_flags": {
+    "unassessed_period": {
+      "days_without_gradeable_assessment": [
+        0,
+        3,
+        6,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28
+      ],
+      "not_assessable_periods": []
+    },
+    "ungradeable_neurological_symptom": []
+  },
+  "other_flags": [],
+  "ambiguity_notes": [
+    "Grade by ICE alone would be 1 (= record); the level of consciousness sets Grade 3 (§3.5). Record lower by 2.",
+    "The physician assessment at 09:40 on Day +5 (awake, ICE 8/10) is more than 3 hours later, so it is not a conflicting assessment."
+  ],
+  "depends_on_open_points": [],
+  "author_checks": {
+    "distractors": [
+      "CRS fever with tocilizumab",
+      "normal CT head",
+      "discharge summary that mentions only the ICE scores"
+    ],
+    "negated_findings": [
+      "No acute intracranial hemorrhage",
+      "No seizure activity",
+      "Denies headache"
+    ],
+    "positive_findings": [
+      "ICE 8/10 Day +4 and Day +5",
+      "awakens only to tactile stimulus Day +5"
+    ],
+    "brief_features": "templated; 8 documents; normal imaging; age 50; infusion 2036-06-29"
+  }
+}

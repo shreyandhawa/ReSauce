@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0043",
+  "document_id": "SYN-0043-D03",
+  "version": 1,
+  "status": "signed",
+  "note_type": "physician_progress_note",
+  "author_role": "attending_physician",
+  "documented_at": "2031-07-22T10:20",
+  "amendment_reason": null,
+  "text": "CTU progress note D+6 2031-07-22\nNeuro exam @ 08:10: ICE 6/10 (orientation 1/4, naming 3/3, cmds 1/1, writing 0/1, attn 1/1). Awake, alert, conversant. PERRL, no facial droop, strength 5/5 x4, no focal deficits. No sz.\nNo sedating meds in past 24 h.\nCRS: afebrile since tocilizumab, BP stable off fluids.\nA: ICANS after CAR-T; CRS improving.\nP: Dex 10 mg IV q6h. ICE q4h. EEG ordered. Neuro consult. Fall precautions."
+}

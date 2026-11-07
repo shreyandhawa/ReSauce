@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0021",
+  "document_id": "SYN-0021-D05",
+  "version": 1,
+  "status": "signed",
+  "note_type": "neurology_consult",
+  "author_role": "neurologist",
+  "documented_at": "2031-07-26T12:45",
+  "amendment_reason": null,
+  "text": "NEUROLOGY CONSULT - 2031-07-26\nReason: ICE decline after CAR-T.\nHPI: CAR-T D0 2031-07-19. ICE 7/10 on D+5, 5/10 on D+6. On dex since 2031-07-25. On LEV 500 BID ppx.\nExam @ 11:30: ICE 6/10 (orient 2/4, naming 2/3, cmds 1/1, writing 0/1, attn 1/1). Awake, attentive to examiner. CN intact. Str 5/5 x4, reflexes 2+ symmetric, toes downgoing. No myoclonus. No clinical sz.\nImp: ICANS. No focal findings. Nonconvulsive sz not excluded.\nRec: cEEG today. Cont dex. Cont LEV ppx. Will follow."
+}

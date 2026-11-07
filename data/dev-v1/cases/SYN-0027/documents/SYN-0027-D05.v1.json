@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0027",
+  "document_id": "SYN-0027-D05",
+  "version": 1,
+  "status": "signed",
+  "note_type": "nursing_note",
+  "author_role": "nurse",
+  "documented_at": "2036-08-30T07:50",
+  "amendment_reason": null,
+  "text": "ICU nursing note 2036-08-30, night shift\nRemains intubated on propofol infusion. FiO2 weaned to 55%, PEEP 10. Norepinephrine not required. Tmax 38.3 at 01:00.\nICE not done this shift (2036-08-30): intubated and sedated, unable to assess.\nPupils equal and reactive. Oral care and turns q2h."
+}

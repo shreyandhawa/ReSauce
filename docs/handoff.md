@@ -12,6 +12,98 @@ Each entry covers:
 
 ---
 
+## 2026-11-07: Milestone 2 Step 4 part 1 (loader fix, authoring tools, briefs, 10 pilot cases)
+
+**Status:** Step 4 part 1 of about 7 is done:
+- `dataset-plan.md` v0.3 is marked approved.
+- 10 of the 72 development cases exist in `data/dev-v1/` (`dataset_version` 0.1.0), each with an intended answer in `reference/dev-v1/intended/`.
+- `pytest` reports 96 passed. `tools.check_dev` reports 0 errors and 0 warnings.
+- Not committed (the user runs `/finish-step`).
+
+**Done:**
+- **Loader fix:** note text that is only whitespace (spaces, tabs, line breaks) is now rejected with a clear message. 3 new tests.
+- **Docs** (only the edits the user allowed):
+  - `data-format.md` v0.1.2: citation now clinical-methods v0.4; line 49 now says `data/` exists; rule 26 says text must contain visible text. All three are in the changelog line.
+  - `dataset-plan.md`: status line "v0.3, approved by the user (2026-11-07)"; §11.2 item 1 marked approved. Done *before* generating the briefs, so the recorded fingerprint is the approved plan.
+- **`tools/`** (new top-level package; the core never imports it):
+  - `make_briefs.py` writes `ordering.json` and `briefs.json`;
+  - `fill_offsets.py` fills in quote positions;
+  - `check_dev.py` prints the check report;
+  - `show_case.py` prints a case as readable text.
+  - `pyproject.toml` gained `pythonpath = ["."]`, so pytest can import `tools`.
+- **`reference/dev-v1/`:**
+  - `ordering.json`: seed 20261107, `random.Random`, input order SC-01…SC-72, ID-to-scenario map;
+  - `briefs.json`: 72 briefs, rules for all cases, totals, plan SHA-256;
+  - `README.md`: the provisional answer format;
+  - `intended/` for the 10 pilot cases.
+- **Feature totals in `briefs.json`:**
+  - styles: 12 each of 6;
+  - documents: 3:4, 4:12, 5:13, 6:13, 7:12, 8:10, 9:3, 10:2, 11:2, 12:1;
+  - infusion years: 2031–2036, 12 each; every month 6 times;
+  - one case under 18 (SC-54, age 14);
+  - out-of-window document 7; amended note 15 (20.8%); multi-version record 16; normal report 18 (9 EEG, 9 imaging); "not assessable" period 5 (2 required + 3 extra); unsigned version 6 (2 required + 4 extra); ungradeable symptom 5.
+- **Pilot cases:** SYN-0001 (SC-54), SYN-0010 (SC-01), SYN-0017 (SC-07), SYN-0021 (SC-27), SYN-0027 (SC-17), SYN-0038 (SC-52), SYN-0043 (SC-59), SYN-0047 (SC-41), SYN-0067 (SC-32), SYN-0070 (SC-05). 64 documents, 52 evidence references.
+- **New tests** (`tests/test_tools.py`, 18 tests):
+  - fill_offsets: one, none and several matches; file unchanged on failure;
+  - make_briefs: deterministic; stored files match a fresh run; plan has 72 scenarios (28/24/16/4); forced and forbidden features respected;
+  - check_dev: passes on `data/dev-v1`; banned word is an error, "pH 7.4" only a warning;
+  - show_case: time order, no answers;
+  - `src/resauce/` never imports `tools` or reads `reference/`.
+
+**Decisions & why:**
+- **User decisions this step:**
+  - 3 extra "not assessable" periods, with a non-sedation reason, after the documented onset, never on the day of the maximum grade, never on the record's onset date, and at least 2 days from any finding;
+  - 4 harmless unsigned versions (plan §7.1 needs unsigned versions outside SC-32/68 too);
+  - check_dev also checks brief conformance and answer/case pairing;
+  - `dataset_version` 0.1.0, raised each part, 1.0.0 when all 72 are done;
+  - "with typos" never touches numbers, scores, times, negations or deciding observation words;
+  - SC-17: sedation for a non-neurological reason, no mental-status words except ICE and Table 6 findings;
+  - category numbers in `data/` are warnings, not errors.
+- **Rules derived from the plan for the briefs** (listed in `briefs.json` → `rules_for_all_cases`):
+  - SC-54 age 13–17: avoids CAPD ages and the age-12 conflict in the source;
+  - no out-of-window document in OOS cases or SC-60: in SC-60 an out-of-window Grade 0 ICE would be the only formal assessment;
+  - no normal EEG/imaging report in SC-09–13, 27, 28: there an EEG, imaging, seizure or edema finding decides the answer;
+  - extra amendments change nothing neurological and, in multi-version-record cases, come before record v1, so no accidental 7.6;
+  - extra record versions use only the three §5.1 patterns, and only "same values re-entered" in "no ICANS" records;
+  - an extra document is added only if 3 documents stay for the scenario;
+  - unsigned extras are never placed in scenarios that already need an amendment (this was found and fixed during the step: it made the amendment total 14 instead of 15).
+- **Pilot-case choices** (each recorded in that answer's `ambiguity_notes`):
+  - SC-27: the EEG seizures resolve after IV levetiracetam (an antiseizure drug, not a sedative), so A30 is not triggered.
+  - SC-41: lorazepam was given "PRN for sleep". The word "anxious" was avoided, because it could read as a free symptom word.
+  - SC-52: the word-finding difficulty sits in a note with no ICE and no consciousness wording, on a day with no ICE assessment (NEW-13, NEW-14).
+  - OOS answers carry only the out-of-scope flag (A29 "flag only"; plan §8.2).
+- **Checks caught real mistakes:**
+  - check_dev found that SYN-0017 had an amendment its final brief did not ask for (removed);
+  - fill_offsets found a wrong date in one SYN-0017 answer quote (fixed);
+  - two discharge-summary phrases that made the unassessed-day list unclear were reworded.
+- Case JSON and answer JSON were produced by small throwaway helper scripts (outside the repo) from hand-written text. The files in `data/` and `reference/` are the source of truth.
+
+**Next steps:**
+1. User reads the 10 pilot cases with `show_case` (readability check, plan §9 check 10) and reports anything implausible.
+2. The assistant reviews the user's comments and fixes the cases and answers.
+3. Parts 2 to 7: about 10 cases each, in fresh conversations, following `reference/dev-v1/briefs.json` (and its `rules_for_all_cases`). Raise `dataset_version` each part.
+4. Then Step 5 (independent two-stage answers, comparison, adjudication). The answer format may be revised there.
+
+**Open questions:**
+- `data-format.md` §6 table still says text must be "non-empty". Only rule 26 was changed, as allowed, so the two now differ slightly.
+- Note type `other` and author role `other` are not used yet (plan §5.1 needs all 8 types and 7 roles across the set). Later parts should use them.
+- The answer format is provisional (Step 5), including where non-case-level flags live (`other_flags` with a `field` key).
+- Confirm the reading that out-of-scope cases carry no flags other than "out of scope (reason)".
+- `briefs.json` was generated with Python 3.14.3. The test `test_stored_briefs_match_a_fresh_run` will show if another Python version gives a different shuffle.
+- Carried forward: NEW-11 to NEW-18 (plan §10.2); clinician involvement; baseline specification before Milestone 3; scoring details; Node.js LTS version; no software licence chosen yet.
+
+**How to verify:**
+```bash
+cd ~/Projects/ReSauce
+.venv/bin/python -m pytest -p no:cacheprovider -v   # expect: 96 passed
+.venv/bin/python -m tools.check_dev                 # expect: 0 error(s) ... Result: PASSED
+.venv/bin/python -m tools.make_briefs               # rewrites briefs/ordering; git diff should show no change
+.venv/bin/python -m tools.show_case SYN-0010        # read a case (no answers shown)
+git status                                          # new: data/, reference/, tools/, tests/test_tools.py
+```
+
+---
+
 ## 2026-11-07: Milestone 2 Step 3 final review round (NEW-1 to NEW-10 decided provisionally)
 
 **Status:** Documents only. `docs/clinical-methods.md` is now v0.4 and `docs/dataset-plan.md` v0.3. This was the last planning round before Step 4. The plan is **not approved yet**; the case numbers are proposed for final approval. `data-format.md`, code, tests and settings are unchanged. No cases, case text, reference answers or code were written. No `data/` or `reference/` folders exist. `pytest` reports 75 passed. Not committed (the user runs `/finish-step`).

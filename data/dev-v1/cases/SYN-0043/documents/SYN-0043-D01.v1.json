@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0043",
+  "document_id": "SYN-0043-D01",
+  "version": 1,
+  "status": "signed",
+  "note_type": "physician_progress_note",
+  "author_role": "advanced_practice_provider",
+  "documented_at": "2031-07-20T11:30",
+  "amendment_reason": null,
+  "text": "CTU APP note - D+4 2031-07-20\nS: Tmax 39.4 @ 03:10, chills. Tolerating PO.\nO: HR 108, BP 98/60 -> 112/70 after 1 L NS bolus. SpO2 95% RA.\nNeuro @ 08:00: ICE 10/10, A&Ox4, nonfocal. No tremor.\nA: CRS gr 2 (fever + hypotension responsive to fluids).\nP: Tocilizumab 8 mg/kg IV x1 given 09:40. Cont LEV ppx. ICE q8h. Trend CRP/ferritin."
+}

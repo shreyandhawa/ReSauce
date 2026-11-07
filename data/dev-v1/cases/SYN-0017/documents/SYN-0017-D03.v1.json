@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0017",
+  "document_id": "SYN-0017-D03",
+  "version": 1,
+  "status": "signed",
+  "note_type": "ice_assessment",
+  "author_role": "nurse",
+  "documented_at": "2036-07-03T08:20",
+  "amendment_reason": null,
+  "text": "ICE ASSESSMENT FORM\nDate: 2036-07-03    Time of assessment: 07:55\nLevel of consciousness: alert\nOrientation (year, month, city, hospital): 3/4\nNaming (3 objects): 3/3\nFollowing commands: 1/1\nWriting a standard sentence: 0/1\nAttention (count back from 100 by 10): 1/1\nICE TOTAL: 8/10\nSedating medications in previous 24 h: none\nComments: Missed hospital name. Could not write a sentence. Team notified 08:05."
+}

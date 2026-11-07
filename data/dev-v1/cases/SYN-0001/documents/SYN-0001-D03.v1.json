@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0001",
+  "document_id": "SYN-0001-D03",
+  "version": 1,
+  "status": "signed",
+  "note_type": "physician_progress_note",
+  "author_role": "resident_physician",
+  "documented_at": "2031-08-09T10:30",
+  "amendment_reason": null,
+  "text": "PROGRESS NOTE - CELLULAR THERAPY\nDate: 2031-08-09 | Day: +2\nInterval: fever persisted; tocilizumab 8 mg/kg given at 23:10 on 2031-08-08; afebrile since 04:00\nVitals: T 37.0, HR 96, BP 110/66, SpO2 99% RA\nNeuro (08:00): ICE 10/10, alert, no focal deficits\nAssessment: CRS grade 1, resolving\nPlan: continue monitoring, ICE q12h"
+}

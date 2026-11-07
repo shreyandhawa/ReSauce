@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0001",
+  "document_id": "SYN-0001-D02",
+  "version": 1,
+  "status": "signed",
+  "note_type": "nursing_note",
+  "author_role": "nurse",
+  "documented_at": "2031-08-08T21:00",
+  "amendment_reason": null,
+  "text": "NURSING NOTE\nShift: evening\nVital signs: T 39.3 °C at 18:20, HR 128, BP 104/62, SpO2 98% RA\nInterventions: acetaminophen 15 mg/kg at 18:40; blood cultures x2; provider notified\nNeuro: ICE 10/10 at 20:00; alert; no tremor\nFamily: parent at bedside, updated"
+}

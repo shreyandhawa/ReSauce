@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0070",
+  "document_id": "SYN-0070-D04",
+  "version": 1,
+  "status": "signed",
+  "note_type": "physician_progress_note",
+  "author_role": "attending_physician",
+  "documented_at": "2031-03-08T10:15",
+  "amendment_reason": null,
+  "text": "D+7 (2031-03-08)\nNeuro 07:30: ICE 6/10 (orientation 1/4, naming 3/3, commands 1/1, writing 0/1, attention 1/1). Awake, alert, follows commands. No focal weakness. No seizure.\nNo sedating meds.\nCRS resolved.\nA: ICANS.\nP: Dexamethasone 10 mg IV q6h from 08:00. ICE q4h. Neuro aware."
+}

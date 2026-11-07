@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0067",
+  "document_id": "SYN-0067-D02",
+  "version": 1,
+  "status": "signed",
+  "note_type": "nursing_note",
+  "author_role": "nurse",
+  "documented_at": "2032-09-25T22:30",
+  "amendment_reason": null,
+  "text": "RN 2032-09-25.\n17:00 T 38.9. HR 114. BP 110/70.\n18:30 tocilizumab given.\n21:00 ICE 10/10. Alert. No tremor."
+}

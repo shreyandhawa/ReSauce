@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0047",
+  "document_id": "SYN-0047-D04",
+  "version": 1,
+  "status": "signed",
+  "note_type": "physician_progress_note",
+  "author_role": "resident_physician",
+  "documented_at": "2032-03-20T11:40",
+  "amendment_reason": null,
+  "text": "CTU progress note D+5 2032-03-20\nNeuro @ 08:00: ICE 5/10 (orient 1/4, naming 2/3, cmds 1/1, writing 0/1, attn 1/1). Awake, alert. PERRL, str 5/5 x4, no focal deficits. No sz.\nNo sedating meds in past 24 h.\nAfebrile since tocilizumab.\nA: ICANS post CAR-T.\nP: Dex 10 mg IV q6h from 09:00. ICE q4h. Neuro aware."
+}

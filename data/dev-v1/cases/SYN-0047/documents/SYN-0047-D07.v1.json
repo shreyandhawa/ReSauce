@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0047",
+  "document_id": "SYN-0047-D07",
+  "version": 1,
+  "status": "signed",
+  "note_type": "nursing_note",
+  "author_role": "nurse",
+  "documented_at": "2032-03-24T14:30",
+  "amendment_reason": null,
+  "text": "RN 2032-03-24 day\nICE @ 12:00: 10/10. A&Ox4.\nMild HA 11:00, APAP 650 mg PO, relief by 12:00.\nDex taper started. Ambulating indep."
+}

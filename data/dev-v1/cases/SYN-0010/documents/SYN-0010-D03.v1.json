@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0010",
+  "document_id": "SYN-0010-D03",
+  "version": 1,
+  "status": "signed",
+  "note_type": "physician_progress_note",
+  "author_role": "attending_physician",
+  "documented_at": "2032-06-24T11:05",
+  "amendment_reason": null,
+  "text": "Cellular Therapy Progress Note - Day +6 (2032-06-24)\n\nSubjective: Family at the bedside, asking appropriate questions about the plan. Fever recurred at 01:30 to 38.9 °C, and tocilizumab 8 mg/kg was given at 02:10 for grade 1 cytokine release syndrome with persistent fever.\n\nNeurologic examination at 07:45 on 2032-06-24: ICE score 4/10. Oriented to year only; named two of three objects; followed the two-finger command; unable to write a sentence; unable to count backwards. The patient is drowsy and awakens to voice, then drifts back to sleep without stimulation. No sedating medications have been given in the past 24 hours. Pupils equal and reactive, no facial asymmetry, moving all four extremities with full strength, no focal motor deficits, and no seizure activity reported by nursing.\n\nOther systems: blood pressure 112/70 without vasopressors, oxygen saturation 97% on room air, creatinine stable. Past medical history includes remote migraine, which the patient and family say has been quiet for many years and does not resemble the current picture.\n\nAssessment: neurotoxicity (ICANS) following CAR-T infusion, with fever from cytokine release syndrome now treated.\n\nPlan: dexamethasone 10 mg IV every 6 hours starting now; ICE every 4 hours; neurology informed; fall precautions; continue levetiracetam prophylaxis; repeat tocilizumab only if fever persists."
+}

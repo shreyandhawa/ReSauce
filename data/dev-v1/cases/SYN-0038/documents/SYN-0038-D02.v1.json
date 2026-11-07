@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0038",
+  "document_id": "SYN-0038-D02",
+  "version": 1,
+  "status": "signed",
+  "note_type": "physician_progress_note",
+  "author_role": "attending_physician",
+  "documented_at": "2035-03-12T10:40",
+  "amendment_reason": null,
+  "text": "Cellular Therapy Progress Note, Day +3 (2035-03-12)\n\nInterval: Fever to 39.0 °C on 2035-03-11 met criteria for grade 1 CRS and a single dose of tocilizumab 8 mg/kg was given at 03:15 on 2035-03-11; afebrile since. Reports a mild frontal headache this morning, relieved by acetaminophen.\n\nExam: T 37.2, HR 88, BP 120/76. Neuro at 08:15: ICE 10/10, alert, fully oriented, fluent speech, no focal deficits, no tremor.\n\nPlan: continue monitoring, ICE every 12 hours, levetiracetam prophylaxis, transfuse platelets if < 10."
+}

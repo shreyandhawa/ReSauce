@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0021",
+  "document_id": "SYN-0021-D04",
+  "version": 1,
+  "status": "signed",
+  "note_type": "physician_progress_note",
+  "author_role": "resident_physician",
+  "documented_at": "2031-07-25T12:20",
+  "amendment_reason": null,
+  "text": "CTU progress note D+6 2031-07-25\nS: Pt reports fatigue. Febrile to 38.4 @ 04:00, resolved after APAP.\nNeuro @ 07:40: ICE 5/10 (orient 1/4, naming 2/3, cmds 1/1, writing 0/1, attn 1/1). Awake, alert, conversant. PERRL. Str 5/5 x4. No focal wkns. No sz activity witnessed.\nNo sedating meds.\nA: ICANS post CAR-T. CRS gr 1, improving.\nP: Dex 10 mg IV q6h started 09:00. ICE q4h. Neuro consult. Cont LEV ppx. Fall precautions."
+}

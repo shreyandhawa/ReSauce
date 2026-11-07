@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0001",
+  "document_id": "SYN-0001-D04",
+  "version": 1,
+  "status": "signed",
+  "note_type": "ice_assessment",
+  "author_role": "nurse",
+  "documented_at": "2031-08-11T08:40",
+  "amendment_reason": null,
+  "text": "NEURO ASSESSMENT - ICE\nDate/time: 2031-08-11 08:10\nLevel of consciousness: alert\nOrientation: 3/4 | Naming: 3/3 | Commands: 1/1 | Writing: 0/1 | Attention: 1/1\nICE total: 8/10\nComment: missed hospital; unable to write a sentence; team notified"
+}

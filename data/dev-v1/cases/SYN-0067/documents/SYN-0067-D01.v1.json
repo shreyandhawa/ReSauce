@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0067",
+  "document_id": "SYN-0067-D01",
+  "version": 1,
+  "status": "signed",
+  "note_type": "physician_progress_note",
+  "author_role": "attending_physician",
+  "documented_at": "2032-09-22T15:20",
+  "amendment_reason": null,
+  "text": "D0 2032-09-22. CAR-T infused 10:30. No rxn.\nPre-infusion 08:40: ICE 10/10. Alert. Nonfocal.\nHx: vincristine neuropathy, stable.\nPlan: ICE q12h. LEV ppx."
+}

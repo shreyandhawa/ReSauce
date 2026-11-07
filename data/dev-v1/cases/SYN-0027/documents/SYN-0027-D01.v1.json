@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0027",
+  "document_id": "SYN-0027-D01",
+  "version": 1,
+  "status": "signed",
+  "note_type": "nursing_note",
+  "author_role": "nurse",
+  "documented_at": "2036-08-26T21:30",
+  "amendment_reason": null,
+  "text": "Nursing note 2036-08-26, evening\nTemp 39.2 C at 17:45 with rigors, HR 118, BP 110/68, SpO2 95% on room air. Provider notifed, tocilizumab 8 mg/kg IV given at 18:30, blood cultures sent.\nICE at 20:00: 10/10.\nNo tremor. Pateint tolerating dinner, voiding without dificulty."
+}

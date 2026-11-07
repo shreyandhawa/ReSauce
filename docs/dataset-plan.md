@@ -1,6 +1,6 @@
 # ReSauce dataset plan
 
-- **Status:** Draft v0.3 (2026-11-07), for user approval. Milestone 2 Step 3, last planning round before Step 4. **Not approved.** The case numbers are proposed for final approval (§11).
+- **Status:** v0.3, approved by the user (2026-11-07).
 - **Builds on:** `docs/clinical-methods.md` v0.4 (cited as §) and `docs/data-format.md` v0.1.1 (cited as "format §").
 - **This file contains no cases, case text, reference answers or code.** It plans them.
 
@@ -757,7 +757,7 @@ Every case must pass all checks before it is accepted. [OPERATIONAL]
 
 ### 11.2 Still open
 
-1. **Case numbers, proposed for final approval:** 72 development cases; 153 locked cases (146 scored, 7 OOS); 40.4% Neg among scored locked cases; 27.1% of Neg cases are "no ICANS" records (16: SC-52 8, SC-72 8). Rules still without a scenario are listed in §3.3.
+1. **Approved by the user (2026-11-07). Case numbers:** 72 development cases; 153 locked cases (146 scored, 7 OOS); 40.4% Neg among scored locked cases; 27.1% of Neg cases are "no ICANS" records (16: SC-52 8, SC-72 8). Rules still without a scenario are listed in §3.3.
 2. **Clinician involvement:** who reviews:
    - A1–A34, including the v0.4 amendments;
    - the realism of each scenario;

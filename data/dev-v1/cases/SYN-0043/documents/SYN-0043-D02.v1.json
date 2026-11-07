@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0043",
+  "document_id": "SYN-0043-D02",
+  "version": 1,
+  "status": "signed",
+  "note_type": "nursing_note",
+  "author_role": "nurse",
+  "documented_at": "2031-07-22T00:45",
+  "amendment_reason": null,
+  "text": "RN note, eve shift 2031-07-21 (entered after midnight)\n20:00 ICE 10/10, A&Ox4.\n2031-07-21 23:20 ICE 7/10 - missed yr + hospital, unable to write sentence; named 3/3, followed cmd, counted back OK. Pt awake, alert, talking.\nMD paged 23:30, aware; repeat ICE in AM.\nNo sz activity. No tremor. Afebrile since 12:00. VSS."
+}

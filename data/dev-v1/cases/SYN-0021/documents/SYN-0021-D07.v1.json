@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0021",
+  "document_id": "SYN-0021-D07",
+  "version": 1,
+  "status": "signed",
+  "note_type": "eeg_report",
+  "author_role": "neurologist",
+  "documented_at": "2031-07-29T09:15",
+  "amendment_reason": null,
+  "text": "EEG REPORT (continuous video EEG)\nRecording: 2031-07-26 13:40 to 16:00.\nIndication: ICE decline after CAR-T; r/o nonconvulsive sz.\nBackground: diffuse theta slowing, 5-6 Hz, reactive.\nEvents: beginning 13:55, recurrent electrographic seizures arising from the L temporal region, each 40-90 s, w/o clinical correlate. LEV 1 g IV given 14:20. Last electrographic seizure ended 14:28; none thereafter through end of recording.\nImpression:\n1. Nonconvulsive electrographic seizures, L temporal, resolved after IV levetiracetam.\n2. Diffuse slowing, c/w encephalopathy."
+}

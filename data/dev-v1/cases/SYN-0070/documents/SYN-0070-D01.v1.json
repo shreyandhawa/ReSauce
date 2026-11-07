@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0070",
+  "document_id": "SYN-0070-D01",
+  "version": 1,
+  "status": "signed",
+  "note_type": "physician_progress_note",
+  "author_role": "advanced_practice_provider",
+  "documented_at": "2031-03-02T10:40",
+  "amendment_reason": null,
+  "text": "CAR-T D+1 (2031-03-02)\nS: Fever to 39.1 at 02:30. Rigors. No HA.\nO: HR 112, BP 104/66, SpO2 96% RA.\nNeuro 09:00: ICE 10/10. Alert, oriented. Nonfocal.\nA: CRS gr 1.\nP: Cultures. Cefepime. Tocilizumab if fever persists >24 h. ICE q12h."
+}

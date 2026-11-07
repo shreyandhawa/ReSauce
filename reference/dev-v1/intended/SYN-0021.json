@@ -1,0 +1,153 @@
+{
+  "answer_format": "0.1-provisional",
+  "case_id": "SYN-0021",
+  "scenario_id": "SC-27",
+  "scenario_label": "Late-signed EEG report; record grade revised after it",
+  "case_type": "Neg",
+  "tags": [],
+  "status": "not clinician-verified",
+  "answer_kind": "intended",
+  "provenance": {
+    "clinical_methods": "v0.4",
+    "data_format": "v0.1.2",
+    "dataset_plan": "v0.3",
+    "dataset_id": "SYN-DS-DEV-V1",
+    "dataset_version": "0.1.0",
+    "ordering_seed": 20261107,
+    "written": "2026-11-07",
+    "written_by": "case author (Claude Code session, Milestone 2 Step 4 part 1)"
+  },
+  "out_of_scope": null,
+  "fields": {
+    "onset": {
+      "category": "7.7",
+      "record_value": "2031-07-24",
+      "documented_value": {
+        "date": "2031-07-24",
+        "study_day": 5
+      },
+      "signed_difference_days": 0,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [
+        {
+          "role": "time of first qualifying finding, Day +5",
+          "document_id": "SYN-0021-D03",
+          "version": 1,
+          "quote": "ICE 2031-07-24 @ 08:30",
+          "start": 0,
+          "end": 22
+        },
+        {
+          "role": "first qualifying finding (ICE 7, Grade 1)",
+          "document_id": "SYN-0021-D03",
+          "version": 1,
+          "quote": "TOTAL 7/10",
+          "start": 130,
+          "end": 140
+        }
+      ],
+      "record_history": {
+        "a": false,
+        "b": true,
+        "c": null,
+        "explanation": "Onset is 2031-07-24 in both record versions, so (a) fails and the field is categorised normally; (c) is not tested."
+      }
+    },
+    "max_grade": {
+      "category": "7.6",
+      "record_value": 3,
+      "documented_value": {
+        "grade": 3
+      },
+      "signed_difference_days": null,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [
+        {
+          "role": "event date of the seizures, Day +7",
+          "document_id": "SYN-0021-D07",
+          "version": 1,
+          "quote": "Recording: 2031-07-26 13:40 to 16:00.",
+          "start": 34,
+          "end": 71
+        },
+        {
+          "role": "non-convulsive seizures on EEG",
+          "document_id": "SYN-0021-D07",
+          "version": 1,
+          "quote": "beginning 13:55, recurrent electrographic seizures arising from the L temporal region, each 40-90 s, w/o clinical correlate",
+          "start": 192,
+          "end": 315
+        },
+        {
+          "role": "resolved with intervention (Grade 3)",
+          "document_id": "SYN-0021-D07",
+          "version": 1,
+          "quote": "LEV 1 g IV given 14:20. Last electrographic seizure ended 14:28; none thereafter through end of recording.",
+          "start": 317,
+          "end": 423
+        }
+      ],
+      "record_history": {
+        "a": true,
+        "b": true,
+        "c": true,
+        "explanation": "Grade changed 2 -> 3. Current value 3 equals the documented maximum. The EEG report SYN-0021-D07.v1 (documented 2031-07-29T09:15) supports Grade 3 and lies after record v1 (2031-07-27T11:00) and no later than record v2 (2031-07-29T15:30)."
+      }
+    }
+  },
+  "case_flags": {
+    "unassessed_period": {
+      "days_without_gradeable_assessment": [
+        1,
+        2,
+        4,
+        9,
+        10,
+        11,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28
+      ],
+      "not_assessable_periods": []
+    },
+    "ungradeable_neurological_symptom": []
+  },
+  "other_flags": [],
+  "ambiguity_notes": [
+    "Diffuse EEG slowing is not a seizure (§3.3 notes) and adds nothing.",
+    "Levetiracetam is an antiseizure drug, not a documented sedative; no finding that could change onset or grade lies within 24 h after it."
+  ],
+  "depends_on_open_points": [],
+  "author_checks": {
+    "distractors": [
+      "CRS fever",
+      "peripheral neuropathy history",
+      "headache on Day +12 (excluded)",
+      "EEG slowing"
+    ],
+    "negated_findings": [
+      "No focal wkns. No sz activity witnessed.",
+      "No myoclonus. No clinical sz."
+    ],
+    "positive_findings": [
+      "ICE 7/10, 5/10, 6/10",
+      "electrographic seizures on EEG"
+    ],
+    "brief_features": "abbreviation-heavy; 8 documents; multi-version record (scenario); age 30; infusion 2031-07-19"
+  }
+}

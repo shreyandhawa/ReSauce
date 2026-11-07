@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0038",
+  "document_id": "SYN-0038-D03",
+  "version": 1,
+  "status": "signed",
+  "note_type": "nursing_note",
+  "author_role": "nurse",
+  "documented_at": "2035-03-13T15:30",
+  "amendment_reason": null,
+  "text": "RN note 2035-03-13 day shift\nVSS, afebrile. Ate breakfast and lunch.\nAt 14:10 pt reported word-finding difficulty while messaging family on phone, says the right word \"takes a second to come.\" Notified covering APP at 14:20, APP to see pt; MRI brain ordered.\nMother at bedside, updated."
+}

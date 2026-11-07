@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0001",
+  "document_id": "SYN-0001-D07",
+  "version": 1,
+  "status": "signed",
+  "note_type": "physician_progress_note",
+  "author_role": "attending_physician",
+  "documented_at": "2031-08-14T11:00",
+  "amendment_reason": null,
+  "text": "PROGRESS NOTE - CELLULAR THERAPY\nDate: 2031-08-14 | Day: +7\nInterval: dexamethasone 10 mg IV q6h started 2031-08-12; CT head normal\nNeuro (09:30): ICE 9/10 (unable to write a sentence), alert, no focal deficits, no seizure activity\nAssessment: neurotoxicity after CAR-T, improving\nPlan: begin dexamethasone taper, ICE q8h"
+}

@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0021",
+  "document_id": "SYN-0021-D01",
+  "version": 1,
+  "status": "signed",
+  "note_type": "physician_progress_note",
+  "author_role": "attending_physician",
+  "documented_at": "2031-07-19T16:30",
+  "amendment_reason": null,
+  "text": "CTU attending note - D0 2031-07-19\nCAR-T (autologous anti-CD19) infused 10:05, tol well, no rxn.\nPre-infusion neuro @ 09:00: ICE 10/10, A&Ox4, CN II-XII intact, str 5/5 x4, nonfocal.\nPMH: B-ALL relapsed post allo-SCT; chemo-related periph neuropathy (feet, stable, numbness only).\nMeds: LEV 500 mg PO BID ppx started today, acyclovir, fluconazole.\nP: VS q4h, ICE q12h, CRS/ICANS monitoring per protocol."
+}

@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0038",
+  "document_id": "SYN-0038-D04",
+  "version": 1,
+  "status": "signed",
+  "note_type": "ice_assessment",
+  "author_role": "advanced_practice_provider",
+  "documented_at": "2035-03-15T08:45",
+  "amendment_reason": null,
+  "text": "ICE assessment - 2035-03-15 08:30\nOrientation: 4/4\nNaming: 3/3 (named without hesitation)\nCommands: 1/1\nWriting: 1/1\nAttention: 1/1\nICE total 10/10\nAlert, conversant, fluent speech. No tremor. No focal deficits."
+}

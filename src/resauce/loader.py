@@ -786,6 +786,13 @@ def _read_document_file(path: Path, case_id: str, problems: list[Problem]) -> di
             "must be null for version 1 (the original document is not an amendment)",
         )
     fields.string("text", allow_empty=False)
+    text = fields.values.get("text")
+    if text is not None and text.strip() == "":
+        fields.add(
+            "text",
+            "must contain visible text; whitespace only (spaces, tabs, "
+            "line breaks) is not allowed",
+        )
     if "\r" in fields.values.get("text", ""):
         fields.add(
             "text",

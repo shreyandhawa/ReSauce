@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0017",
+  "document_id": "SYN-0017-D08",
+  "version": 1,
+  "status": "signed",
+  "note_type": "discharge_summary",
+  "author_role": "attending_physician",
+  "documented_at": "2036-07-11T15:00",
+  "amendment_reason": null,
+  "text": "DISCHARGE SUMMARY - CELLULAR THERAPY\nAdmission: 2036-06-28    Discharge: 2036-07-11\nDiagnosis: relapsed large B-cell lymphoma; autologous anti-CD19 CAR-T infusion 2036-06-29.\nHOSPITAL COURSE:\n1. CRS grade 1 on Day +2 (fever without hypotension or hypoxia); one dose of tocilizumab; afebrile from Day +3.\n2. Neurotoxicity: ICE fell to 8/10 on 2036-07-03 and remained 8/10 on 2036-07-04. CT head unremarkable. Treated with dexamethasone, tapered over 5 days. ICE 10/10 on 2036-07-06.\n3. Neutropenia: G-CSF not required; ANC recovering at discharge.\nDISCHARGE EXAM: alert, oriented, no focal deficits.\nFOLLOW-UP: clinic in 1 week; no driving for 8 weeks after infusion."
+}

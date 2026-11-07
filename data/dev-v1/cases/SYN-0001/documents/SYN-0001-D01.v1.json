@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0001",
+  "document_id": "SYN-0001-D01",
+  "version": 1,
+  "status": "signed",
+  "note_type": "physician_progress_note",
+  "author_role": "attending_physician",
+  "documented_at": "2031-08-07T16:00",
+  "amendment_reason": null,
+  "text": "PROGRESS NOTE - CELLULAR THERAPY\nDate: 2031-08-07 | Day: +0\nDiagnosis: relapsed B-cell acute lymphoblastic leukemia, second relapse\nEvent: autologous anti-CD19 CAR-T infused at 11:45, no infusion reaction\nPre-infusion neuro (09:15): ICE 10/10, alert, oriented, nonfocal; attends 9th grade, no learning difficulties\nPlan: vital signs q4h, ICE q12h, levetiracetam prophylaxis, parent at bedside"
+}

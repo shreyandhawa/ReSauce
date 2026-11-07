@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0010",
+  "document_id": "SYN-0010-D04",
+  "version": 1,
+  "status": "signed",
+  "note_type": "ice_assessment",
+  "author_role": "nurse",
+  "documented_at": "2032-06-26T09:30",
+  "amendment_reason": null,
+  "text": "ICE assessment, 2032-06-26, performed at 08:50\n\nThe patient is awake and alert and greeted the nurse by name.\nOrientation: year, month, city and hospital all correct (4/4).\nNaming: clock, pen and button named correctly (3/3).\nFollowing commands: showed two fingers on request (1/1).\nWriting: wrote a complete standard sentence (1/1).\nAttention: counted backwards from 100 by tens without error (1/1).\nICE total: 10/10.\n\nNo tremor, no headache reported. Dexamethasone taper started this morning per the team."
+}

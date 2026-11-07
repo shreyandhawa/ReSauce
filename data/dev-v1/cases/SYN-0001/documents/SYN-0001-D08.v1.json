@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0001",
+  "document_id": "SYN-0001-D08",
+  "version": 1,
+  "status": "signed",
+  "note_type": "discharge_summary",
+  "author_role": "attending_physician",
+  "documented_at": "2031-08-18T14:00",
+  "amendment_reason": null,
+  "text": "DISCHARGE SUMMARY\nAdmission: 2031-08-06 | Discharge: 2031-08-18\nDiagnosis: relapsed B-cell acute lymphoblastic leukemia; CAR-T infusion 2031-08-07\nCourse: CRS grade 1 (Days +1 to +2), tocilizumab x1. Neurotoxicity from 2031-08-11, ICE nadir 6/10 on 2031-08-12, treated with dexamethasone, resolved. CT head normal.\nDischarge neuro: ICE 10/10 on 2031-08-18 at 09:00, no focal deficits.\nFollow-up: clinic in 1 week; school return per oncology."
+}

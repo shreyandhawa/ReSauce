@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0017",
+  "document_id": "SYN-0017-D06",
+  "version": 1,
+  "status": "signed",
+  "note_type": "imaging_report",
+  "author_role": "radiologist",
+  "documented_at": "2036-07-04T13:20",
+  "amendment_reason": null,
+  "text": "CT HEAD WITHOUT CONTRAST\nExam date/time: 2036-07-04 12:05\nClinical indication: neurotoxicity monitoring after CAR-T.\nComparison: none.\nFINDINGS: No acute intracranial hemorrhage. No mass effect or midline shift. Gray-white differentiation preserved. No evidence of cerebral edema. Ventricles and sulci normal for age. Visualized paranasal sinuses clear.\nIMPRESSION: No acute intracranial abnormality."
+}

@@ -1,0 +1,200 @@
+{
+  "answer_format": "0.1-provisional",
+  "case_id": "SYN-0027",
+  "scenario_id": "SC-17",
+  "scenario_label": "Sedated with documented 'not assessable' days; record G4; assessed days support G2",
+  "case_type": "Flag",
+  "tags": [],
+  "status": "not clinician-verified",
+  "answer_kind": "intended",
+  "provenance": {
+    "clinical_methods": "v0.4",
+    "data_format": "v0.1.2",
+    "dataset_plan": "v0.3",
+    "dataset_id": "SYN-DS-DEV-V1",
+    "dataset_version": "0.1.0",
+    "ordering_seed": 20261107,
+    "written": "2026-11-07",
+    "written_by": "case author (Claude Code session, Milestone 2 Step 4 part 1)"
+  },
+  "out_of_scope": null,
+  "fields": {
+    "onset": {
+      "category": "7.7",
+      "record_value": "2036-08-28",
+      "documented_value": {
+        "date": "2036-08-28",
+        "study_day": 4
+      },
+      "signed_difference_days": 0,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [
+        {
+          "role": "time of first qualifying finding, Day +4",
+          "document_id": "SYN-0027-D02",
+          "version": 1,
+          "quote": "ICE assesment 2036-08-28 at 08:00",
+          "start": 0,
+          "end": 33
+        },
+        {
+          "role": "first qualifying finding (ICE 7, Grade 1)",
+          "document_id": "SYN-0027-D02",
+          "version": 1,
+          "quote": "Total ICE 7/10",
+          "start": 118,
+          "end": 132
+        }
+      ],
+      "record_history": {
+        "a": true,
+        "b": true,
+        "c": false,
+        "explanation": "Onset changed 2036-08-29 -> 2036-08-28; the current value agrees with the documents. No document version is documented after record v1 (2036-09-13T10:00) and no later than v2 (2036-09-17T14:30); the last document is 2036-09-09T10:00. So 7.7 plus 'revision without new documentation'."
+      }
+    },
+    "max_grade": {
+      "category": "7.4",
+      "record_value": 4,
+      "documented_value": {
+        "grade": 2
+      },
+      "signed_difference_days": null,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [
+        {
+          "role": "ICE 5 (Grade 2), Day +5",
+          "document_id": "SYN-0027-D03",
+          "version": 1,
+          "quote": "Neuro at 07:30: ICE 5/10",
+          "start": 51,
+          "end": 75
+        },
+        {
+          "role": "awakens to voice (Grade 2), Day +5",
+          "document_id": "SYN-0027-D03",
+          "version": 1,
+          "quote": "Awakens to voice.",
+          "start": 149,
+          "end": 166
+        },
+        {
+          "role": "documented 'not assessable' period, Day +6",
+          "document_id": "SYN-0027-D05",
+          "version": 1,
+          "quote": "ICE not done this shift (2036-08-30): intubated and sedated, unable to assess.",
+          "start": 159,
+          "end": 237
+        },
+        {
+          "role": "documented 'not assessable' period, Day +7",
+          "document_id": "SYN-0027-D06",
+          "version": 1,
+          "quote": "NOT DONE - patient intubated and sedated on propofol, unable to assess today (2036-08-31).",
+          "start": 34,
+          "end": 124
+        }
+      ],
+      "record_history": {
+        "a": false,
+        "b": false,
+        "c": null,
+        "explanation": "Grade is 4 in both record versions, so (a) fails and the field is categorised normally."
+      }
+    }
+  },
+  "case_flags": {
+    "unassessed_period": {
+      "days_without_gradeable_assessment": [
+        0,
+        1,
+        3,
+        6,
+        7,
+        8,
+        9,
+        10,
+        12,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28
+      ],
+      "not_assessable_periods": [
+        {
+          "days": [
+            6
+          ],
+          "evidence": [
+            {
+              "role": "not assessable, Day +6",
+              "document_id": "SYN-0027-D05",
+              "version": 1,
+              "quote": "ICE not done this shift (2036-08-30): intubated and sedated, unable to assess.",
+              "start": 159,
+              "end": 237
+            }
+          ]
+        },
+        {
+          "days": [
+            7
+          ],
+          "evidence": [
+            {
+              "role": "not assessable, Day +7",
+              "document_id": "SYN-0027-D06",
+              "version": 1,
+              "quote": "NOT DONE - patient intubated and sedated on propofol, unable to assess today (2036-08-31).",
+              "start": 34,
+              "end": 124
+            }
+          ]
+        }
+      ]
+    },
+    "ungradeable_neurological_symptom": []
+  },
+  "other_flags": [
+    {
+      "flag": "revision without new documentation",
+      "field": "onset",
+      "detail": "Onset corrected from 2036-08-29 to 2036-08-28 with no new documentation in the interval.",
+      "evidence": []
+    }
+  ],
+  "ambiguity_notes": [
+    "Record Grade 4 is higher than any assessed grade (2), but Days +6 and +7 have documented 'not assessable' statements, so A25 gives 7.4, not 7.3.",
+    "Intubation and propofol were for respiratory failure during CRS; intubation is not a grading criterion (§4.1). Propofol started after the last Day +5 finding, and the next assessment (ICE 9/10 on Day +11) is more than 24 h after propofol stopped (Day +9 09:30)."
+  ],
+  "depends_on_open_points": [],
+  "author_checks": {
+    "distractors": [
+      "CRS fever, hypoxemia and intubation",
+      "normal EEG (Day +11)",
+      "typos in non-deciding text"
+    ],
+    "negated_findings": [
+      "no focal weakness. No seizure activity.",
+      "No epileptiform discharges."
+    ],
+    "positive_findings": [
+      "ICE 7/10 Day +4",
+      "ICE 5/10 and awakens to voice Day +5"
+    ],
+    "brief_features": "with typos; 8 documents; record pattern 'corrected to agreeing value' on onset; normal EEG; not-assessable period (scenario); age 42; infusion 2036-08-24"
+  }
+}

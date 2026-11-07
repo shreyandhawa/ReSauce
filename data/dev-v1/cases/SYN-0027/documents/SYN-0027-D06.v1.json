@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0027",
+  "document_id": "SYN-0027-D06",
+  "version": 1,
+  "status": "signed",
+  "note_type": "ice_assessment",
+  "author_role": "nurse",
+  "documented_at": "2036-08-31T08:10",
+  "amendment_reason": null,
+  "text": "ICE assesment 2036-08-31 at 08:00\nNOT DONE - patient intubated and sedated on propofol, unable to assess today (2036-08-31).\nWill reassess when sedation is off."
+}

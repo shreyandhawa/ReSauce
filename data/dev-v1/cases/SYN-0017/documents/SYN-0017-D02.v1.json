@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0017",
+  "document_id": "SYN-0017-D02",
+  "version": 1,
+  "status": "signed",
+  "note_type": "physician_progress_note",
+  "author_role": "resident_physician",
+  "documented_at": "2036-07-01T11:30",
+  "amendment_reason": null,
+  "text": "PROGRESS NOTE - CELLULAR THERAPY\nDate: 2036-07-01\nDay post infusion: +2\nWeight: 78 kg\nSUBJECTIVE: Fever and chills since 03:00. Mild nausea. Denies headache.\nOBJECTIVE: Tmax 38.9 °C (04:15). HR 110. BP 108/64. SpO2 95% RA.\nNEURO: ICE 10/10 at 08:00. Alert and oriented. No focal deficits. No tremor.\nASSESSMENT: CRS grade 1.\nPLAN: Tocilizumab 8 mg/kg IV given at 06:40 (dose by weight above). Blood cultures. Continue levetiracetam prophylaxis. ICE every 8 h."
+}

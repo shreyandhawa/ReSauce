@@ -1,9 +1,10 @@
 # ReSauce data format
 
-- **Status:** v0.1.1 (2026-11-07). Milestone 2 Step 2. v0.1.1 only marks §12 Q3 and Q5 as answered; the format itself is unchanged (`schema_version` stays `"0.1"`).
+- **Status:** v0.1.2 (2026-11-07). Milestone 2 Step 2. v0.1.1 only marks §12 Q3 and Q5 as answered; the format itself is unchanged (`schema_version` stays `"0.1"`).
+- **Changelog v0.1.1 → v0.1.2:** clinical-methods citation updated from v0.2 to v0.4; §2 no longer says the `data/` folder does not exist; rule 26 now says text must contain visible text, not whitespace only, matching the loader.
 - **Implemented by:** `src/resauce/models.py` and `src/resauce/loader.py`.
 - **Tested by:** `tests/test_loader.py`, using the fixture in `tests/fixtures/format/valid_dataset/`.
-- **Clinical definitions:** `docs/clinical-methods.md` v0.2. Section numbers below (§) refer to that file.
+- **Clinical definitions:** `docs/clinical-methods.md` v0.4. Section numbers below (§) refer to that file.
 
 Tags follow `docs/clinical-methods.md`. `[OPERATIONAL]` marks a choice ReSauce makes. Format rules are engineering choices, so most rules here are `[OPERATIONAL]`.
 
@@ -46,7 +47,7 @@ data/<dataset>/cases/<case_id>/documents/<document_id>.v<version>.json
 - `documents/` may be absent. An absent folder means the case has no documents.
 - There is one file per document **version**.
 - Files and folders whose names start with `.` (for example the macOS `.DS_Store` file) are ignored. Any other unexpected file or folder is an error. [OPERATIONAL]
-- No top-level `data/` folder exists yet. It will be created when synthetic cases are written (Step 3).
+- The top-level `data/` folder holds the synthetic datasets (development cases: `data/dev-v1/`, from Milestone 2 Step 4).
 
 **Reference answers** (the expected results used to score the pipeline) will be stored separately, in a later step. They will never be stored inside a case folder. This keeps answers out of the pipeline's inputs. [OPERATIONAL]
 
@@ -249,7 +250,7 @@ Versions:
 25. `change_reason` is `null` for record version 1.
 
 Content:
-26. `text` is non-empty and contains no `\r`.
+26. `text` contains visible text (not empty, not whitespace only) and contains no `\r`.
 27. If `icans_reported` is `false`, `onset_date` and `max_grade` are `null`.
 28. `observation_window`: both days ≥ 0, `start_day` ≤ `end_day`.
 

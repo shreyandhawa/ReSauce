@@ -1,0 +1,129 @@
+{
+  "answer_format": "0.1-provisional",
+  "case_id": "SYN-0043",
+  "scenario_id": "SC-59",
+  "scenario_label": "Finding before midnight, note after midnight; record uses the documentation date",
+  "case_type": "Pos",
+  "tags": [],
+  "status": "not clinician-verified",
+  "answer_kind": "intended",
+  "provenance": {
+    "clinical_methods": "v0.4",
+    "data_format": "v0.1.2",
+    "dataset_plan": "v0.3",
+    "dataset_id": "SYN-DS-DEV-V1",
+    "dataset_version": "0.1.0",
+    "ordering_seed": 20261107,
+    "written": "2026-11-07",
+    "written_by": "case author (Claude Code session, Milestone 2 Step 4 part 1)"
+  },
+  "out_of_scope": null,
+  "fields": {
+    "onset": {
+      "category": "7.1",
+      "record_value": "2031-07-22",
+      "documented_value": {
+        "date": "2031-07-21",
+        "study_day": 5
+      },
+      "signed_difference_days": 1,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [
+        {
+          "role": "first qualifying finding (ICE 7, Grade 1), event date Day +5; note documented 2031-07-22 00:45",
+          "document_id": "SYN-0043-D02",
+          "version": 1,
+          "quote": "2031-07-21 23:20 ICE 7/10",
+          "start": 79,
+          "end": 104
+        }
+      ],
+      "record_history": null
+    },
+    "max_grade": {
+      "category": "7.7",
+      "record_value": 2,
+      "documented_value": {
+        "grade": 2
+      },
+      "signed_difference_days": null,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [
+        {
+          "role": "ICE 6 (Grade 2), Day +6",
+          "document_id": "SYN-0043-D03",
+          "version": 1,
+          "quote": "Neuro exam @ 08:10: ICE 6/10",
+          "start": 33,
+          "end": 61
+        },
+        {
+          "role": "no competing cause",
+          "document_id": "SYN-0043-D03",
+          "version": 1,
+          "quote": "No sedating meds in past 24 h.",
+          "start": 219,
+          "end": 249
+        }
+      ],
+      "record_history": null
+    }
+  },
+  "case_flags": {
+    "unassessed_period": {
+      "days_without_gradeable_assessment": [
+        0,
+        1,
+        2,
+        3,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28
+      ],
+      "not_assessable_periods": []
+    },
+    "ungradeable_neurological_symptom": []
+  },
+  "other_flags": [],
+  "ambiguity_notes": [
+    "Onset uses the event time written in the text (§6.1), not the note's documentation time.",
+    "ICE 10/10 at 20:00 and ICE 7/10 at 23:20 on Day +5 are more than an hour apart, so they are not conflicting assessments."
+  ],
+  "depends_on_open_points": [],
+  "author_checks": {
+    "distractors": [
+      "CRS fever and hypotension with fluids and tocilizumab",
+      "normal EEG (Day +7)"
+    ],
+    "negated_findings": [
+      "No sz activity. No tremor.",
+      "no focal deficits"
+    ],
+    "positive_findings": [
+      "ICE 7/10 Day +5 23:20",
+      "ICE 6/10 Day +6"
+    ],
+    "brief_features": "abbreviation-heavy; 4 documents; normal EEG; age 44; infusion 2031-07-16"
+  }
+}

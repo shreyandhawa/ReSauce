@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0038",
+  "document_id": "SYN-0038-D05",
+  "version": 1,
+  "status": "signed",
+  "note_type": "imaging_report",
+  "author_role": "radiologist",
+  "documented_at": "2035-03-15T11:50",
+  "amendment_reason": null,
+  "text": "MRI BRAIN WITH AND WITHOUT CONTRAST\nDate of exam: 2035-03-15 09:30\nIndication: CAR-T recipient, monitoring.\nFindings: No acute infarct on diffusion-weighted imaging. No intracranial hemorrhage. No abnormal parenchymal or leptomeningeal enhancement. No cerebral edema. Ventricles normal in size.\nImpression: Normal MRI of the brain."
+}

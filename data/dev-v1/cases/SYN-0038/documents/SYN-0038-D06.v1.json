@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0038",
+  "document_id": "SYN-0038-D06",
+  "version": 1,
+  "status": "signed",
+  "note_type": "discharge_summary",
+  "author_role": "attending_physician",
+  "documented_at": "2035-03-19T13:00",
+  "amendment_reason": null,
+  "text": "DISCHARGE SUMMARY\nAdmitted 2035-03-08 for autologous anti-CD19 CAR-T cell infusion (2035-03-09) for relapsed B-cell acute lymphoblastic leukemia. Discharged 2035-03-19.\n\nCourse:\n- CRS grade 1 on Days +1 to +2, one dose of tocilizumab, afebrile from Day +2.\n- Neuro: no neurotoxicity. MRI brain normal. Fine bilateral hand tremor noted on 2035-03-18, not treated.\n- Discharge ICE on 2035-03-19 at 09:00: 10/10.\n\nFollow-up: clinic Day +14, labs twice weekly."
+}

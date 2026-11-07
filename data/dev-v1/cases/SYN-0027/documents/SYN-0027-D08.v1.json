@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0027",
+  "document_id": "SYN-0027-D08",
+  "version": 1,
+  "status": "signed",
+  "note_type": "discharge_summary",
+  "author_role": "attending_physician",
+  "documented_at": "2036-09-09T10:00",
+  "amendment_reason": null,
+  "text": "Discharge summary\nAdmission 2036-08-23, discharge 2036-09-09.\nAutologous anti-CD19 CAR-T cell infusion on 2036-08-24 for relapsed follicular lymphoma with transformation.\nHospital course:\n- CRS: fever from Day +2, tocilizumab x2. Progressive hypoxemic respiratory failure on Day +5; intubated 2036-08-29, propofol sedation, extubated 2036-09-02 at 10:00 (propofol stopped 09:30). CRS resolved by Day +9.\n- Neurotoxicity: ICE 7/10 on 2036-08-28, ICE 5/10 on 2036-08-29. Treated with dexamethasone. ICE 9/10 on 2036-09-04 at 08:00 and 10/10 on 2036-09-06 at 09:00. EEG 2036-09-04 normal.\n- Infectious: blood cultures negative.\nDischarge exam: ambulating independantly, no focal deficits.\nFollow-up in clinic in one week."
+}

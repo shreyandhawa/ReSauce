@@ -1,0 +1,183 @@
+{
+  "answer_format": "0.1-provisional",
+  "case_id": "SYN-0038",
+  "scenario_id": "SC-52",
+  "scenario_label": "Record says no ICANS; formal Grade 0 assessments; no qualifying finding",
+  "case_type": "Neg",
+  "tags": [
+    "no ICANS"
+  ],
+  "status": "not clinician-verified",
+  "answer_kind": "intended",
+  "provenance": {
+    "clinical_methods": "v0.4",
+    "data_format": "v0.1.2",
+    "dataset_plan": "v0.3",
+    "dataset_id": "SYN-DS-DEV-V1",
+    "dataset_version": "0.1.0",
+    "ordering_seed": 20261107,
+    "written": "2026-11-07",
+    "written_by": "case author (Claude Code session, Milestone 2 Step 4 part 1)"
+  },
+  "out_of_scope": null,
+  "fields": {
+    "onset": {
+      "category": "7.7",
+      "record_value": null,
+      "documented_value": "none found",
+      "signed_difference_days": null,
+      "difference_note": "record reports no ICANS (§7.9(b)); no signed difference",
+      "readings": [],
+      "evidence": [
+        {
+          "role": "formal Grade 0 assessment, Day +1",
+          "document_id": "SYN-0038-D01",
+          "version": 1,
+          "quote": "20:30 ICE 10/10, alert, conversant.",
+          "start": 149,
+          "end": 184
+        },
+        {
+          "role": "formal Grade 0 assessment, Day +3",
+          "document_id": "SYN-0038-D02",
+          "version": 1,
+          "quote": "Neuro at 08:15: ICE 10/10",
+          "start": 320,
+          "end": 345
+        },
+        {
+          "role": "formal Grade 0 assessment, Day +6",
+          "document_id": "SYN-0038-D04",
+          "version": 1,
+          "quote": "ICE total 10/10",
+          "start": 132,
+          "end": 147
+        },
+        {
+          "role": "formal Grade 0 assessment, Day +10",
+          "document_id": "SYN-0038-D06",
+          "version": 1,
+          "quote": "Discharge ICE on 2035-03-19 at 09:00: 10/10.",
+          "start": 365,
+          "end": 409
+        }
+      ],
+      "record_history": null
+    },
+    "max_grade": {
+      "category": "7.7",
+      "record_value": null,
+      "documented_value": {
+        "grade": 0
+      },
+      "signed_difference_days": null,
+      "difference_note": "record reports no ICANS, compared as Grade 0 (§7.9(b))",
+      "readings": [],
+      "evidence": [
+        {
+          "role": "formal Grade 0 assessment, Day +1",
+          "document_id": "SYN-0038-D01",
+          "version": 1,
+          "quote": "20:30 ICE 10/10, alert, conversant.",
+          "start": 149,
+          "end": 184
+        },
+        {
+          "role": "formal Grade 0 assessment, Day +3",
+          "document_id": "SYN-0038-D02",
+          "version": 1,
+          "quote": "Neuro at 08:15: ICE 10/10",
+          "start": 320,
+          "end": 345
+        },
+        {
+          "role": "formal Grade 0 assessment, Day +6",
+          "document_id": "SYN-0038-D04",
+          "version": 1,
+          "quote": "ICE total 10/10",
+          "start": 132,
+          "end": 147
+        },
+        {
+          "role": "formal Grade 0 assessment, Day +10",
+          "document_id": "SYN-0038-D06",
+          "version": 1,
+          "quote": "Discharge ICE on 2035-03-19 at 09:00: 10/10.",
+          "start": 365,
+          "end": 409
+        }
+      ],
+      "record_history": null
+    }
+  },
+  "case_flags": {
+    "unassessed_period": {
+      "days_without_gradeable_assessment": [
+        0,
+        2,
+        4,
+        5,
+        7,
+        8,
+        9,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28
+      ],
+      "not_assessable_periods": []
+    },
+    "ungradeable_neurological_symptom": [
+      {
+        "day": 4,
+        "evidence": [
+          {
+            "role": "ungradeable neurological symptom, Day +4",
+            "document_id": "SYN-0038-D03",
+            "version": 1,
+            "quote": "pt reported word-finding difficulty while messaging family on phone",
+            "start": 78,
+            "end": 145
+          }
+        ]
+      }
+    ]
+  },
+  "other_flags": [],
+  "ambiguity_notes": [
+    "The word-finding difficulty does not block 7.7 (A21 as amended); it is listed in the case-level flag. No ICE assessment on that calendar day (NEW-14 avoid rule).",
+    "Headache (Day +3) and hand tremor (Day +9) are excluded symptoms (§4.2), not ungradeable symptoms."
+  ],
+  "depends_on_open_points": [],
+  "author_checks": {
+    "distractors": [
+      "CRS fever with tocilizumab",
+      "headache Day +3",
+      "tremor Day +9",
+      "normal MRI brain"
+    ],
+    "negated_findings": [
+      "No tremor, no headache.",
+      "No intracranial hemorrhage."
+    ],
+    "positive_findings": [
+      "fever 38.7 and 39.0",
+      "word-finding difficulty Day +4"
+    ],
+    "brief_features": "mixed; 6 documents; normal imaging; ungradeable symptom required; age 22; infusion 2035-03-09"
+  }
+}

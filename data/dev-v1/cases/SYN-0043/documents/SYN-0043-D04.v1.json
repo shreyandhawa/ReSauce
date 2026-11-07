@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0043",
+  "document_id": "SYN-0043-D04",
+  "version": 1,
+  "status": "signed",
+  "note_type": "eeg_report",
+  "author_role": "neurologist",
+  "documented_at": "2031-07-23T15:00",
+  "amendment_reason": null,
+  "text": "EEG REPORT\nStudy: routine EEG, 2031-07-23 10:05-10:40.\nIndication: monitoring after CAR-T therapy.\nBackground: 8.5 Hz posterior dominant rhythm, symmetric and reactive to eye opening. Normal anterior-posterior gradient.\nNo focal or generalized slowing. No epileptiform discharges. No electrographic seizures.\nImpression: Normal EEG."
+}

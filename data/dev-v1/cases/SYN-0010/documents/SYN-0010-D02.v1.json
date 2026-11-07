@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0010",
+  "document_id": "SYN-0010-D02",
+  "version": 1,
+  "status": "signed",
+  "note_type": "nursing_note",
+  "author_role": "nurse",
+  "documented_at": "2032-06-23T21:40",
+  "amendment_reason": null,
+  "text": "Nursing note, evening shift, 2032-06-23\n\nThe patient spent most of the day resting in bed and walked in the hallway twice with standby assistance. A temperature of 38.6 °C was recorded at 14:00 with heart rate 104 and blood pressure 118/72; acetaminophen 650 mg was given at 14:20 per order and the temperature came down to 37.4 °C by 16:00. The covering provider was informed of the fever and blood cultures were drawn.\n\nNeurologic check at 20:15: ICE screen: 9/10. The patient was oriented to year, month, city and hospital, named all three objects, followed the two-finger command and counted backwards from 100 by tens correctly, but was not able to write a standard sentence, producing only two words before stopping. The patient was awake and alert and conversing appropriately throughout. No tremor observed. No seizure activity observed. The covering provider was paged with the result at 20:25 and asked for repeat ICE in the morning.\n\nIntake and output recorded. Skin intact. Call light within reach."
+}

@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0070",
+  "document_id": "SYN-0070-D03",
+  "version": 1,
+  "status": "signed",
+  "note_type": "ice_assessment",
+  "author_role": "nurse",
+  "documented_at": "2031-03-07T08:30",
+  "amendment_reason": null,
+  "text": "ICE 2031-03-07 07:50\nOrientation 2/4 (missed month, missed hospital)\nNaming 3/3\nCommands 1/1\nWriting 1/1\nAttention 1/1\nTotal 8/10\nLOC: alert.\nMD notified 08:00."
+}

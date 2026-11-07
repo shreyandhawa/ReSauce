@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0047",
+  "document_id": "SYN-0047-D06",
+  "version": 1,
+  "status": "signed",
+  "note_type": "physician_progress_note",
+  "author_role": "attending_physician",
+  "documented_at": "2032-03-21T11:15",
+  "amendment_reason": null,
+  "text": "CTU attending note D+6 2032-03-21\nNeuro @ 10:30: ICE 8/10 (orient 3/4, naming 3/3, cmds 1/1, writing 0/1, attn 1/1). Awake, conversant. Nonfocal. No sz.\nRN ICE @ 07:30 reviewed. Lorazepam 1 mg IV given @ 02:40 PRN for sleep.\nA: ICANS post CAR-T.\nP: Cont dex 10 mg q6h. ICE q4h. Neuro checks q2h x 12 h."
+}

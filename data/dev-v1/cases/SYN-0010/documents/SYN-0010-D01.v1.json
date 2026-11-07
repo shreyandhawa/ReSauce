@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "synthetic": true,
+  "fictional_notice": "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT.",
+  "case_id": "SYN-0010",
+  "document_id": "SYN-0010-D01",
+  "version": 1,
+  "status": "signed",
+  "note_type": "physician_progress_note",
+  "author_role": "attending_physician",
+  "documented_at": "2032-06-16T11:20",
+  "amendment_reason": null,
+  "text": "Cellular Therapy Unit - Admission Note\nDate of service: 2032-06-16\n\nThe patient is admitted for planned infusion of an autologous anti-CD19 CAR-T cell product for relapsed diffuse large B-cell lymphoma after two prior lines of therapy. Lymphodepleting chemotherapy with fludarabine and cyclophosphamide was completed as an outpatient. Cell infusion is scheduled for 2032-06-18.\n\nPast medical history is notable for hypertension, well controlled on amlodipine, and remote migraine without aura, with no episodes in more than ten years.\n\nPre-infusion neurologic baseline, assessed 2032-06-16 at 10:30: ICE score 10/10. The patient is alert, fully oriented, and conversing normally. Cranial nerves are intact, strength is 5/5 throughout, and there are no focal deficits. Handwriting sample obtained for later comparison.\n\nPlan: infusion on Day 0, ICE screening at least twice daily from Day 0, vital signs every 4 hours, levetiracetam prophylaxis per unit protocol."
+}
