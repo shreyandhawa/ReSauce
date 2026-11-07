@@ -12,6 +12,49 @@ Each entry covers:
 
 ---
 
+## 2026-11-07: Milestone 2 Step 2, data format and loaders
+
+**Status:** Milestone 2 Step 2 is complete. The data format spec (`docs/data-format.md` v0.1), the loader and the tests are written. `pytest` reports 75 passed. No synthetic patient cases, reference answers, extraction or medical logic exist yet.
+
+**Done:**
+- Wrote `docs/data-format.md` v0.1. It covers the folder layout, every field of every file, time and offset conventions, the evidence-reference shape, 28 validation rules, what the format leaves out and why, and open questions.
+- Added `src/resauce/models.py`: frozen dataclasses for `Dataset`, `ObservationWindow`, `Case`, `DocumentVersion` (with `version_id`), `ResearchRecord` (with `current`), `RecordVersion` and `EvidenceRef`.
+- Added `src/resauce/loader.py`: `load_dataset`, `load_case`, `check_evidence_ref`, `study_day` and `DataFormatError`. It collects every problem (file path, field, message) before raising one error.
+- Added a valid fixture in `tests/fixtures/format/valid_dataset/`: 2 cases, placeholder text only. It has a document with an amendment (2 versions), a record with 2 versions, and a case with no `documents/` folder.
+- Added `tests/test_loader.py` (74 tests). Invalid inputs are made by copying the fixture into a temporary folder and changing one thing.
+- One bug found and fixed while testing: an unreadable document file caused an extra, misleading "missing version" message. The loader now skips the numbering check for a document whose file could not be read (spec §10).
+
+**Decisions & why:**
+- Confirmed by the user before this step:
+  1. Note text is stored inside the JSON file (`text` field), not in separate `.txt` files.
+  2. Only documentation time is metadata. Event times stay in the note text for the pipeline to find. There is no "performed at" field.
+  3. Dates are fictional calendar dates (ISO 8601). Study day numbers are computed from the infusion date, never stored.
+  4. Standard library only. No new dependencies.
+- Proposed in the plan and approved by the user:
+  - every field must be present; empty values are written as `null`, never left out (keeps "forgotten" and "empty" apart);
+  - date and time formats are checked exactly with a pattern before parsing, because Python's own parser also accepts other forms;
+  - reason fields must be non-empty if not `null`;
+  - hidden files (e.g. `.DS_Store`) are ignored; other unexpected files are errors;
+  - documents are sorted by document number, then version;
+  - `cases/` must exist and contain at least one case.
+- Design principle: inputs hold only what a real chart export or research database would hold. This prevents answer leakage.
+
+**Next steps:**
+- Milestone 2 Step 3: write the synthetic test cases. Start only after the user approves the scope.
+- Clinician review of assumptions A1–A18 is still pending.
+
+**Open questions:**
+- The 8 format questions in `docs/data-format.md` §12 (e.g. must later versions give a reason; must the latest version be signed).
+- Carried forward: who does the clinician review; Node.js LTS version; no software licence chosen yet.
+
+**How to verify:**
+```bash
+cd ~/Projects/ReSauce
+.venv/bin/python -m pytest -p no:cacheprovider -v   # expect: 75 passed
+```
+
+---
+
 ## 2026-11-07: Claude Code project settings added
 
 **Status:** Setup change only. No code or research content changed. Milestone 2 status is unchanged (see entry below).
