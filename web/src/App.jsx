@@ -1,14 +1,17 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { api } from './api.js'
+import Icon from './components/Icon.jsx'
 import { useLoad, useRoute } from './lib/hooks.js'
-import Overview from './views/Overview.jsx'
+import About from './views/About.jsx'
+import Audit from './views/Audit.jsx'
+import CaseWorkspace from './views/CaseWorkspace.jsx'
 import Cases from './views/Cases.jsx'
-import Investigate from './views/Investigate.jsx'
-import Methods from './views/Methods.jsx'
-import { Problem } from './components/Bits.jsx'
+import Export from './views/Export.jsx'
+import NewCase from './views/NewCase.jsx'
+import ReviewQueue from './views/ReviewQueue.jsx'
+import Validation from './views/Validation.jsx'
 
 const THEMES = ['system', 'light', 'dark']
-const THEME_LABEL = { system: 'Theme: system', light: 'Theme: light', dark: 'Theme: dark' }
 
 function useTheme() {
   const [theme, setTheme] = useState(() => document.documentElement.dataset.theme || 'system')
@@ -24,54 +27,77 @@ function useTheme() {
 }
 
 const NAV = [
-  ['overview', '#/', 'Results'],
-  ['cases', '#/cases', 'Cases'],
-  ['methods', '#/methods', 'Methods & limitations'],
+  ['cases', '#/cases', 'Cases', 'cases'],
+  ['queue', '#/queue', 'Review queue', 'queue'],
+  ['audit', '#/audit', 'Audit trail', 'audit'],
+  ['export', '#/export', 'Export', 'export'],
+]
+const SECONDARY = [
+  ['validation', '#/validation', 'Validation', 'validation'],
+  ['about', '#/about', 'About & limitations', 'about'],
 ]
 
 export default function App() {
   const route = useRoute()
   const [theme, nextTheme] = useTheme()
-  const summary = useLoad(() => api.summary(), [])
-  const current = route.page === 'case' ? 'cases' : route.page
+  const workspace = useLoad(() => api.workspace(), [])
+  const queue = useLoad(() => api.queue(), [])
+  const refresh = useCallback(() => { workspace.reload(); queue.reload() }, [workspace.reload, queue.reload]) // eslint-disable-line react-hooks/exhaustive-deps
+  const current = route.page === 'case' || route.page === 'new' ? 'cases' : route.page
+  const counts = { cases: workspace.data?.case_count, queue: queue.data?.items.length }
+
+  useEffect(() => {
+    document.title = { case: `${route.id} · ReSauce`, new: 'New case · ReSauce' }[route.page] || `${[...NAV, ...SECONDARY].find(([p]) => p === current)?.[2] || 'Cases'} · ReSauce`
+  }, [route, current])
+
+  const link = ([page, href, label, icon]) => (
+    <a key={page} className="nav-link" href={href} aria-current={current === page ? 'page' : undefined}>
+      <Icon name={icon} size={18} />{label}
+      {counts[page] != null && <span className="count" aria-label={`${counts[page]}${page === 'queue' ? ' open findings' : ' cases'}`}>{counts[page]}</span>}
+    </a>
+  )
 
   return (
-    <>
+    <div className="shell">
       <a className="skip" href="#main">Skip to content</a>
-      <header className="masthead">
-        <div className="masthead-inner">
-          <a className="wordmark" href="#/">ReSauce</a>
-          <nav aria-label="Main">
-            {NAV.map(([page, href, label]) => (
-              <a key={page} href={href} aria-current={current === page ? 'page' : undefined}>{label}</a>
-            ))}
-          </nav>
-          <button type="button" className="theme" onClick={nextTheme} aria-label={`${THEME_LABEL[theme]}. Change theme`}>
-            {THEME_LABEL[theme]}
-          </button>
+      <nav className="sidebar" aria-label="Main">
+        <a className="brand" href="#/cases">ReSauce</a>
+        {NAV.map(link)}
+        <div className="nav-gap" />
+        <div className="nav-sub">Reference</div>
+        {SECONDARY.map(link)}
+        <div className="sidebar-foot">
+          <span>Workspace<br /><span className="mono">{workspace.data?.path || '…'}</span></span>
+          {workspace.data?.pipeline && (
+            <span>Pipeline <span className="mono">{workspace.data.pipeline.tag}</span>{workspace.data.pipeline.frozen_files_match ? '' : ' (frozen files changed)'}</span>
+          )}
+          <button type="button" className="theme-btn" onClick={nextTheme} aria-label={`Theme: ${theme}. Change theme`}>Theme: {theme}</button>
         </div>
-      </header>
-
-      <main id="main" tabIndex={-1}>
-        {summary.error ? (
-          <Problem title="The results could not be loaded" error={summary.error} />
-        ) : route.page === 'cases' ? (
-          <Cases />
-        ) : route.page === 'case' ? (
-          <Investigate key={route.id} caseId={route.id} summary={summary.data} />
-        ) : route.page === 'methods' ? (
-          <Methods summary={summary.data} />
-        ) : (
-          <Overview summary={summary.data} />
-        )}
-      </main>
-
-      <footer className="colophon">
-        <div className="colophon-inner">
-          <p><strong>Synthetic data only.</strong> Results on synthetic data are not clinical validation. ReSauce is a research proof of concept, not a clinical decision tool.</p>
-          {summary.data && <p>Reference answers: {summary.data.reference_label}.</p>}
-        </div>
-      </footer>
-    </>
+      </nav>
+      <div className="main">
+        <p className="banner" role="note"><Icon name="shield" size={14} />Synthetic data only. Do not load real patient records.</p>
+        <main id="main" tabIndex={-1}>
+          {workspace.error ? (
+            <div className="page"><p className="callout callout-alert">The ReSauce server could not be reached ({workspace.error.message}). Start it with <span className="mono">python -m app</span> and reload this page.</p></div>
+          ) : route.page === 'case' ? (
+            <CaseWorkspace key={route.id} caseId={route.id} onChanged={refresh} />
+          ) : route.page === 'new' ? (
+            <NewCase onChanged={refresh} />
+          ) : route.page === 'queue' ? (
+            <ReviewQueue key={route.params.case || 'all'} caseFilter={route.params.case} onChanged={refresh} />
+          ) : route.page === 'audit' ? (
+            <Audit />
+          ) : route.page === 'export' ? (
+            <Export />
+          ) : route.page === 'validation' ? (
+            <Validation />
+          ) : route.page === 'about' ? (
+            <About />
+          ) : (
+            <Cases workspace={workspace.data} onChanged={refresh} />
+          )}
+        </main>
+      </div>
+    </div>
   )
 }

@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import { Loading, Segmented } from '../components/Bits.jsx'
+import { api } from '../api.js'
+import { useLoad } from '../lib/hooks.js'
 import { rateValue } from '../lib/format.js'
 
 // Split notes taken from docs/evaluation-spec.md §1 (dev) and from the API (held-out).
@@ -25,48 +27,42 @@ const COUNT_ROWS = [
   ['review_results', '“review: …” results', 'the method could not decide'],
 ]
 
-export default function Overview({ summary }) {
+export default function Validation() {
+  const loaded = useLoad(() => api.summary(), [])
+  const summary = loaded.data
   const [field, setField] = useState('combined')
-  if (!summary) return <Loading label="Loading results" />
+  if (loaded.error) return <div className="page"><p className="callout callout-alert">The stored results could not be loaded: {loaded.error.message}</p></div>
+  if (!summary) return <div className="page"><Loading label="Loading results" /></div>
   const splits = summary.splits
   const title = summary.methods
 
   return (
-    <div className="page overview">
-      <section className="lede">
-        <h1>Does the research record say what the clinical documents say?</h1>
-        <div className="lede-text">
-          <p>
-            ReSauce reads the clinical notes behind a research record of ICANS after CAR-T therapy, extracts the
-            neurological observations, each with its exact quoted source, and rebuilds the timeline from Day 0 to Day +28.
-            It then compares the record’s onset date and maximum grade with what the documents show, and either flags
-            the difference with its evidence or states plainly that a person must decide.
-          </p>
-          <p className="lede-actions">
-            <a className="button button-primary" href="#/cases">Open a case and run it live</a>
-            <a className="button" href="#/methods">How it is scored</a>
-          </p>
+    <div className="page">
+      <div className="page-head">
+        <div>
+          <h1>Validation</h1>
+          <p className="sub">How the frozen pipeline scored against the reference answers on the stored evaluation runs, beside a simpler method (Baseline A) measured on the same cases. This is secondary to the workstation: it describes the method, not any case you are reviewing.</p>
         </div>
-      </section>
+      </div>
 
-      <aside className="disclosure" aria-label="Before reading these numbers">
+      <aside className="disclosure callout" aria-label="Before reading these numbers">
         <p><strong>Synthetic data.</strong> All {splits.reduce((n, s) => n + s.case_count, 0)} cases shown are fictional. Results on synthetic data are not clinical validation.</p>
         <p><strong>Reference answers:</strong> {summary.reference_label}.</p>
         <p><strong>Baseline A</strong> is conventional validation on the same extracted observations: no event-time reconstruction, attribution, observation window or record history (evaluation-spec §4).</p>
       </aside>
 
       <section className="results" aria-labelledby="results-title">
-        <div className="section-head">
-          <h2 id="results-title">Measured results</h2>
+        <div className="toolbar">
+          <h2 id="results-title" className="section-title" style={{ margin: 0 }}>Measured results</h2>
           <Segmented label="Fields counted" options={FIELD_OPTIONS} value={field} onChange={setField} />
         </div>
-        <p className="section-note">
+        <p className="note" style={{ marginBottom: 10 }}>
           Each in-scope case has two fields, onset date and maximum grade. Splits are reported separately and never pooled.
           Every rate shows its counts.
         </p>
 
-        <div className="table-scroll">
-          <table className="collation">
+        <div className="table-wrap">
+          <table className="data collation">
             <thead>
               <tr>
                 <th scope="col" rowSpan={2} className="measure-head">Measure</th>
@@ -133,7 +129,7 @@ export default function Overview({ summary }) {
           </table>
         </div>
 
-        <ol className="notes">
+        <ol className="split-notes">
           {splits.map((s) => (
             <li key={s.name} id={`note-${s.name}`}>
               <strong>{s.title}.</strong>{' '}
@@ -146,9 +142,18 @@ export default function Overview({ summary }) {
 
       <MissFigure splits={splits} field={field} title={title} />
 
+      <section aria-labelledby="score-title">
+        <h2 id="score-title" className="section-title">How fields are scored</h2>
+        <div className="prose">
+          <p>From docs/evaluation-spec.md §3. Each in-scope case has two fields, onset and maximum grade. A positive field has the reference category {summary.scoring.positive.join(', ')}; a negative field {summary.scoring.negative.join(' or ')}; a review field {summary.scoring.review.join(' or ')}. A detection is an alert (7.1, 7.2, 7.3 or 7.8) on a positive field; a miss is a positive field with no alert; a false alert is an alert on a negative field. Review flags (7.4, 7.5) and “review: …” results count as neither. No significance tests or confidence intervals: the splits are too small (evaluation-spec §3).</p>
+          <p><strong>Baseline A</strong> is conventional validation on the same extracted observations: the latest document versions, every finding dated by its documentation time, no attribution, observation window or record history (evaluation-spec §4). It can give 7.1, 7.2, 7.3, 7.7 or 7.8 only. Baseline B (a language model) has not been run.</p>
+          <p>The locked split has not been evaluated. After its final evaluation it is added here without code changes: <span className="mono">python -m app --results results/locked.json --data &lt;folder&gt; --reference &lt;folder&gt;</span>.</p>
+        </div>
+      </section>
+
       <section className="provenance" aria-labelledby="prov-title">
-        <h2 id="prov-title">Run record</h2>
-        <div className="prov-grid">
+        <h2 id="prov-title" className="section-title">Run record</h2>
+        <div className="cols-2">
           {splits.map((s) => <Provenance key={s.name} split={s} />)}
         </div>
       </section>
@@ -181,8 +186,8 @@ function MissFigure({ splits, field, title }) {
   ]
   return (
     <section className="figure" aria-labelledby="fig1-title">
-      <h2 id="fig1-title">Figure 1. Every positive field, and every false alert</h2>
-      <p className="section-note">
+      <h2 id="fig1-title" className="section-title">Figure 1. Every positive field, and every false alert</h2>
+      <p className="note">
         One square per field. Positive fields are those where the reference finds a discrepancy; a false alert is an alert on a field where the reference finds none.
       </p>
       <div className="fig-legend" aria-hidden="true">
@@ -221,8 +226,8 @@ function Provenance({ split }) {
   const md = split.metadata || {}
   const rt = split.runtime_seconds || {}
   return (
-    <dl className="prov">
-      <div className="prov-title">{split.title}</div>
+    <dl className="prov panel">
+      <dt style={{ gridColumn: '1 / -1', fontWeight: 700, color: 'var(--ink)' }}>{split.title}</dt>
       <dt>Results file</dt><dd className="mono">{split.results_file}</dd>
       <dt>Dataset</dt><dd className="mono">{md.dataset_id} v{md.dataset_version}</dd>
       <dt>Code commit</dt><dd className="mono">{md.code_commit?.slice(0, 7)}{md.uncommitted_changes_in_code_or_data ? ' (uncommitted changes: yes)' : ''}</dd>
