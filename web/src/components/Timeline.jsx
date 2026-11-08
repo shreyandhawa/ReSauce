@@ -9,10 +9,10 @@ const LANES = [
   ['Context', ['competing_cause', 'attribution', 'assessment_barrier', 'not_assessable', 'out_of_scope_mention']],
 ]
 const W = 520
-const LEFT = 104
+const LEFT = 118
 const RIGHT = W - 8
 const LANE_H = 30
-const TOP = 22
+const TOP = 26
 
 const fraction = (hhmm) => {
   if (!hhmm) return 0.5
@@ -42,7 +42,7 @@ export default function Timeline({ observations, use, window: win, recordOnsetDa
 
   // Show progress: the drop-in order follows event time, earliest first.
   const order = new Map([...placed].sort((a, b) => (a.event_day + fraction(a.event_time)) - (b.event_day + fraction(b.event_time))).map((o, i) => [o.id, i]))
-  const H = TOP + Math.max(lanes.length, 1) * LANE_H + 34
+  const H = TOP + Math.max(lanes.length, 1) * LANE_H + 46
   const ticks = []
   for (let d = start; d <= win.end_day; d++) ticks.push(d)
   const docOnset = documentedOnset?.study_day ?? documentedOnset?.study_days?.[0]
@@ -55,21 +55,21 @@ export default function Timeline({ observations, use, window: win, recordOnsetDa
       <svg viewBox={`0 0 ${W} ${H}`} role="group" aria-label={`Timeline, ${signedDay(win.start_day)} to ${signedDay(win.end_day)}: ${placed.length} observations. Marks are event time; ticks are documentation time.`}>
         {ticks.map((d) => (
           <g key={d} className={d % 7 === 0 ? 'tl-tick tl-tick-major' : 'tl-tick'}>
-            <line x1={x(d)} x2={x(d)} y1={TOP - 4} y2={H - 30} />
-            {(d % 7 === 0 || d === win.end_day) && <text x={x(d) + 2} y={TOP - 9}>{d === 0 ? 'Day 0' : `+${d}`}</text>}
+            <line x1={x(d)} x2={x(d)} y1={TOP - 4} y2={H - 42} />
+            {(d % 7 === 0 || d === win.end_day) && <text x={x(d) + 2} y={TOP - 10}>{d === 0 ? 'Day 0' : `+${d}`}</text>}
           </g>
         ))}
-        <line className="tl-axis" x1={LEFT} x2={RIGHT} y1={H - 30} y2={H - 30} />
+        <line className="tl-axis" x1={LEFT} x2={RIGHT} y1={H - 42} y2={H - 42} />
         {docOnset != null && (
           <g className="tl-doc-onset">
-            <rect x={x(docOnset)} width={Math.max(2, x((docOnsetEnd ?? docOnset) + 1) - x(docOnset))} y={TOP - 4} height={H - TOP - 26} />
-            <text className="tl-label" x={x(docOnset)} y={H - 16}>documented onset {signedDay(docOnset)}</text>
+            <rect x={x(docOnset)} width={Math.max(2, x((docOnsetEnd ?? docOnset) + 1) - x(docOnset))} y={TOP - 4} height={H - TOP - 38} />
+            <text className="tl-label" x={x(docOnset)} y={H - 24} textAnchor={recordOnsetDay != null && recordOnsetDay > docOnset ? 'end' : 'start'}>documented onset {signedDay(docOnset)}</text>
           </g>
         )}
         {recordOnsetDay != null && (
           <g className="tl-record">
-            <line x1={x(recordOnsetDay + 0.5)} x2={x(recordOnsetDay + 0.5)} y1={TOP - 4} y2={H - 30} />
-            <text className="tl-label" x={x(recordOnsetDay + 0.5)} y={H - 3}>record onset {signedDay(recordOnsetDay)}</text>
+            <line x1={x(recordOnsetDay + 0.5)} x2={x(recordOnsetDay + 0.5)} y1={TOP - 4} y2={H - 42} />
+            <text className="tl-label" x={x(recordOnsetDay + 0.5)} y={H - 6} textAnchor={docOnset != null && docOnset > recordOnsetDay ? 'end' : 'start'}>record onset {signedDay(recordOnsetDay)}</text>
           </g>
         )}
         {lanes.map(([name, list], laneIndex) => {
