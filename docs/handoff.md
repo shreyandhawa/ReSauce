@@ -12,6 +12,33 @@ Each entry covers:
 
 ---
 
+## 2026-11-08: Milestone 3 session 3 (evaluation spec, rule-based extraction)
+
+- **Status:** `docs/evaluation-spec.md` v0.1 is written before any results exist. `src/resauce/extract.py` + `src/resauce/phrases.py` form the first pipeline stage (deterministic, standard library only, no grading). `pytest`: 123 passed. Only the 20 dev cases and their intended answers were opened.
+- **Done:**
+  - Evaluation spec: dev split = the 20 cases, held-out (in-repo, not sealed) = the other 52, reported separately. Scoring per plan §8.3, which also settles its three open points. Baseline A (conventional validation on the same extraction output). Baseline B deferred. Limitations.
+  - `dataset-plan.md`: v0.3.2 changelog line only (the user no longer skims dev cases).
+  - Extractor: observations of 16 kinds, each with document, version, signed status, offsets, exact quote (checked with `check_evidence_ref`), status (present / absent / uncertain), event time and its source.
+  - Dev results (scratch check, not committed): 462 observations; 104 of 104 intended-answer evidence quotes are covered by an observation; 5 clauses unrecognised ("call if ICE drops below 7", "provider informed of ICE change", "arousal reduced beyond what the ICE score alone shows", 2 × "ICE decline after CAR-T"); 1 unresolved time (SYN-0006-D05 "headache 2/10" inherits a time from a "yesterday" clause, which lands after the documentation time).
+- **Decisions & why:**
+  - User (this session): no "§0 time box" exists in this file, so the session proceeded without one. Added assessment barriers (A10) and out-of-scope mentions (§5/A29). Plan edit = changelog line only, so the plan's status line still says v0.3.1 (the evaluation spec says so).
+  - Time rules d (date or time earlier in the same line) and e (note header) are [OPERATIONAL] choices, not §6.1 rules. Two different dates or two different A26 phrases in a clause → "unresolved", except when one date sits right next to the finding ("8/10 on DATE").
+  - Negation: "not" stops at a comma; list negations ("no X, Y, Z") cross commas. "ICE drops / change / decline" are no longer treated as non-scores, so they surface as unrecognised instead of vanishing.
+  - Consciousness words with no approved mapping (drowsy, lethargic, somnolent, obtunded) are reported with empty candidates (A15 gives no mapping).
+  - Fixed after /code-review: relative-phrase choice by table order, comma negation, over-broad "not assessable", "repetitive" from unrelated words ("multiple myeloma"), item scores lost when a total appeared elsewhere.
+- **Next steps:** rules engine (onset, grade, categories, flags) on the extraction output; Baseline A implementation; OOS by age and record Grade 5 (not extraction); Step 5 independent answers.
+- **Open questions:**
+  - Known extractor limits: misspelt words are missed silently (e.g. SYN-0044 "headace"); unsigned study days ("Day 5:") are not read as dates; 4-digit times without a colon ("1900-2300") are not read.
+  - Review follow-ups not done (judgement calls): `_Reader` is long; kind/status are strings checked at creation rather than their own types; the quote is the whole clause, so several observations can share one quote.
+  - The consciousness phrase list needs clinician approval (A15).
+- **How to verify:**
+  ```bash
+  .venv/bin/python -m pytest -p no:cacheprovider -q            # expect 123 passed
+  .venv/bin/python -m resauce.extract data/dev-v1/cases/SYN-0047  # lorazepam + "awakens only to tactile stimulus", with quotes
+  ```
+
+---
+
 ## 2026-11-07: Milestone 2 Step 4 parts 4 and 5 (development cases batches 4 and 5)
 
 - **Status:** 72 of 72 development cases and intended answers are written (`dataset_version` 1.0.0); no case was stopped. `tools.check_dev` reports 0 errors, 0 warnings (320 evidence references). `pytest` was not run (no code changed).

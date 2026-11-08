@@ -6,6 +6,8 @@
 
 ## Changelog
 
+**v0.3.1 → v0.3.2** (user decision, 2026-11-08): the user no longer skims the development cases. This replaces the skim described in §4.2 and §9 check 10, which are left as written. It is disclosed as a limitation (`docs/evaluation-spec.md` §6).
+
 **v0.3 → v0.3.1** (user decisions, 2026-11-07; the scenario catalogue, categories, case numbers and §8.3 scoring definitions are unchanged):
 - Locked cases are now written **after** the pipeline is built (Milestone 3) and **before** any evaluation run (Milestone 4), instead of before Milestone 3 (§1, §7.4). A new protection logs every change to `clinical-methods.md` or this plan made before locked writing (§7.4). The weaker commitment is disclosed in §7.5.
 - Readability check: the user skims every development case (about 2 minutes each). Locked-set sampling is unchanged (§4.2, §9 check 10).
