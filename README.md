@@ -18,7 +18,7 @@ ReSauce is a computational proof of concept. It checks whether a clinical resear
 3. **Reconstruct the timeline**, keeping the time an event happened apart from the time it was written down, and applying signed/unsigned and superseded document versions.
 4. **Compare** the record's onset date and maximum grade with what the documents support (ASTCT grading, written out in `docs/clinical-methods.md` §3).
 5. **Categorise** each field into one of the categories 7.1–7.8 of `docs/clinical-methods.md` §7 (for example "onset date mismatch" or "no discrepancy"), with flags, and list anything the rules cannot decide as "needs human review".
-6. **Show** it all in a local web app, including a live run on any case.
+6. **Review** in a local workstation app: run the pipeline on your cases, check each finding against the source text, record decisions in an audit log, and export.
 
 The pipeline is frozen (git tag `pipeline-freeze-v1`, see `docs/freeze.md`); `tests/test_freeze.py` checks that its files have not changed.
 
@@ -34,20 +34,25 @@ pip install -e ".[dev]"        # install ReSauce and its test tool (pytest)
 
 In every new terminal, run `source .venv/bin/activate` first.
 
-## Run the demo app
+## Use the workstation (step by step)
 
-```bash
-source .venv/bin/activate
-python -m app
-```
+The workstation is a local web app: it runs on your own computer, listens only on this computer (127.0.0.1), makes no network calls and works offline. It works on a **workspace folder** that holds your cases, every verification run, the audit log and exports. The default is `workspace/` in the project folder (never committed to git).
 
-Then open **http://localhost:8000** in a browser. Stop the app with **Ctrl+C**.
+1. **Start it.**
+   ```bash
+   source .venv/bin/activate
+   python -m app
+   ```
+   Open **http://localhost:8000** in a browser. Stop it with **Ctrl+C**. If port 8000 is taken: `python -m app --port 8001`. Another workspace folder (inside the project folder): `python -m app --workspace my-workspace`.
+2. **Bring cases.** On first start the workspace is empty: press **Load the synthetic example cases** to copy the 72 fictional cases from `data/dev-v1` (the originals are only read). Or press **New case** and fill in the form: case details, documents (paste the note or load a `.txt` file; add later versions with an amendment reason) and research record values. Saving asks you to confirm the case is fictional, writes it in the data format and checks it with the pipeline's own loader; any problem appears next to its field. **Open folder…** copies valid case folders from a folder inside the project.
+3. **Verify.** **Verify all** on the Cases screen runs the frozen pipeline on every case, with live progress. Or open one case and press **Verify**: observations are marked in the text as extraction finishes, events drop onto the Day 0 to Day +28 timeline, then each field shows the record value, the documented value and the category in plain words with its code (for example "Mismatch: record later than first finding (7.1)"). Tick **Compare with simple baseline** to run Baseline A as well.
+4. **Check the evidence.** Click any evidence quote: the document scrolls to the exact text and marks it. Hover a timeline event to see its text, and the reverse. For the example cases, the case screen also says whether the live output matches the stored evaluation run.
+5. **Review.** The **Review queue** lists every open finding, most serious first (discrepancy alerts 7.1, 7.2, 7.3, 7.8; then 7.4, 7.5 and "needs human review"; then other flags). For each: **Confirm discrepancy**, **Dismiss** or **Needs clinician**, with a required note. Your name is asked once per browser session. Keys: `J`/`K` next and previous, `C`/`D`/`L` choose a decision and jump to the note, `Ctrl`+`Enter` (or `⌘`+`Enter`) to record it.
+6. **Audit.** The **Audit trail** shows every run and decision (time, reviewer, case, field, decision, note, pipeline version with the frozen-file hashes), filterable. It is stored append-only in `workspace/audit.jsonl`. The pipeline output is never edited; decisions sit beside it.
+7. **Export.** **Export** writes a printable case report (open it and use the browser's Print to make a PDF) and a CSV of all findings and decisions, both into `workspace/exports/`.
+8. **Validation** (secondary) shows the stored evaluation results and their disclosures; **About & limitations** says what ReSauce is and is not.
 
-- If port 8000 is already in use, run `python -m app --port 8001` and open http://localhost:8001.
-- The app shows the measured results, every case, and an investigation view. In that view, **Run ReSauce** runs the frozen pipeline live on the case and reveals it stage by stage: extraction (highlights at the exact quoted text), timeline, comparison, verdict, then Baseline A and the reference answer. It shows the measured run time and whether the live output matches the stored evaluation run.
-- The app needs only Python: the built web page is stored in `web/dist/`.
-- Another results file (for example the locked set, after its final evaluation) can be added without code changes:
-  `python -m app --results <results file> --data <data folder> --reference <reference folder>`.
+The app needs only Python: the built web page is stored in `web/dist/`. Another results file for the Validation tab (for example the locked set, after its final evaluation) can be added without code changes: `python -m app --results <results file> --data <data folder> --reference <reference folder>`.
 
 **Changing the web page** (only needed for development) needs Node.js (an LTS version):
 
@@ -102,14 +107,15 @@ Out of scope (ReSauce only; Baseline A cannot flag it): dev 1 of 1 and held-out 
 - Each case holds 3 to 12 documents, so most days in the window have no documented assessment; the "unassessed period" lists are long by design.
 - Baseline B is not run. The locked set is not evaluated.
 
-The full list, with sources, is on the app's **Methods & limitations** page and in `docs/evaluation-spec.md` §6.
+The full list, with sources, is on the app's **About & limitations** page and in `docs/evaluation-spec.md` §6.
 
 ## Project layout
 
 ```
 src/resauce/     the pipeline (frozen): loader, extraction, timeline, rules engine, Baseline A, evaluation
-app/             the demo app's local web server (Python standard library only); it calls src/, never the reverse
-web/             the demo app's web page (Vite + React); web/dist/ is the built page
+app/             the workstation's local server (Python standard library only); it calls src/, never the reverse
+web/             the workstation's web page (Vite + React); web/dist/ is the built page
+workspace/       your workspace (created on first start; git-ignored)
 data/dev-v1/     72 synthetic cases
 reference/       reference answers and splits
 results/         the evaluation results (report.md, dev.json, held_out.json)
@@ -121,4 +127,4 @@ tests/           automated tests
 
 - **Data:** synthetic only, written for this project. Every file carries the notice "FICTIONAL SYNTHETIC DATA. NOT A REAL PATIENT." Never add real patient data.
 - **Licence:** no licence has been chosen yet.
-- The bundled fonts (Source Serif 4, IBM Plex Sans, IBM Plex Mono) are under the SIL Open Font Licence.
+- The bundled fonts (Atkinson Hyperlegible Next, IBM Plex Mono) are under the SIL Open Font Licence.

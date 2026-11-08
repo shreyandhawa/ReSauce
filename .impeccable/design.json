@@ -1,0 +1,645 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-08T22:55:42+00:00",
+  "title": "Design System: ReSauce",
+  "extensions": {
+    "colorMeta": {
+      "shell": {
+        "role": "primary",
+        "displayName": "Sign-Panel Petrol",
+        "canonical": "#0f3a44",
+        "darkTheme": "#0a272e",
+        "tonalRamp": [
+          "oklch(15% 0.024 216)",
+          "oklch(26% 0.031 216)",
+          "oklch(38% 0.038 216)",
+          "oklch(49% 0.045 216)",
+          "oklch(61% 0.045 216)",
+          "oklch(72% 0.038 216)",
+          "oklch(84% 0.031 216)",
+          "oklch(95% 0.024 216)"
+        ]
+      },
+      "shell-raised": {
+        "role": "primary",
+        "displayName": "Raised Petrol",
+        "canonical": "#17505d",
+        "darkTheme": "#134550",
+        "tonalRamp": [
+          "oklch(15% 0.030 216)",
+          "oklch(26% 0.039 216)",
+          "oklch(38% 0.048 216)",
+          "oklch(49% 0.057 216)",
+          "oklch(61% 0.057 216)",
+          "oklch(72% 0.048 216)",
+          "oklch(84% 0.039 216)",
+          "oklch(95% 0.030 216)"
+        ]
+      },
+      "shell-ink": {
+        "role": "primary",
+        "displayName": "Sign Legend White",
+        "canonical": "#f1f7f8",
+        "darkTheme": "#eef6f7",
+        "tonalRamp": [
+          "oklch(15% 0.003 209)",
+          "oklch(26% 0.004 209)",
+          "oklch(38% 0.005 209)",
+          "oklch(49% 0.006 209)",
+          "oklch(61% 0.006 209)",
+          "oklch(72% 0.005 209)",
+          "oklch(84% 0.004 209)",
+          "oklch(95% 0.003 209)"
+        ]
+      },
+      "shell-muted": {
+        "role": "primary",
+        "displayName": "Petrol Mist",
+        "canonical": "#a9c5cb",
+        "darkTheme": "#9dbac0",
+        "tonalRamp": [
+          "oklch(15% 0.015 212)",
+          "oklch(26% 0.020 212)",
+          "oklch(38% 0.025 212)",
+          "oklch(49% 0.029 212)",
+          "oklch(61% 0.029 212)",
+          "oklch(72% 0.025 212)",
+          "oklch(84% 0.020 212)",
+          "oklch(95% 0.015 212)"
+        ]
+      },
+      "accent": {
+        "role": "primary",
+        "displayName": "Action Teal",
+        "canonical": "#146a78",
+        "darkTheme": "#5bbac8",
+        "tonalRamp": [
+          "oklch(15% 0.039 212)",
+          "oklch(26% 0.050 212)",
+          "oklch(38% 0.061 212)",
+          "oklch(49% 0.073 212)",
+          "oklch(61% 0.073 212)",
+          "oklch(72% 0.061 212)",
+          "oklch(84% 0.050 212)",
+          "oklch(95% 0.039 212)"
+        ]
+      },
+      "accent-hover": {
+        "role": "primary",
+        "displayName": "Action Teal Pressed",
+        "canonical": "#0f5966",
+        "darkTheme": "#7ccad5",
+        "tonalRamp": [
+          "oklch(15% 0.034 213)",
+          "oklch(26% 0.045 213)",
+          "oklch(38% 0.055 213)",
+          "oklch(49% 0.065 213)",
+          "oklch(61% 0.065 213)",
+          "oklch(72% 0.055 213)",
+          "oklch(84% 0.045 213)",
+          "oklch(95% 0.034 213)"
+        ]
+      },
+      "accent-ink": {
+        "role": "primary",
+        "displayName": "On-Teal White",
+        "canonical": "#ffffff",
+        "darkTheme": "#082228",
+        "tonalRamp": [
+          "oklch(15% 0.000 90)",
+          "oklch(26% 0.000 90)",
+          "oklch(38% 0.000 90)",
+          "oklch(49% 0.000 90)",
+          "oklch(61% 0.000 90)",
+          "oklch(72% 0.000 90)",
+          "oklch(84% 0.000 90)",
+          "oklch(95% 0.000 90)"
+        ]
+      },
+      "accent-text": {
+        "role": "primary",
+        "displayName": "Teal Link Ink",
+        "canonical": "#11606d",
+        "darkTheme": "#7ccad5",
+        "tonalRamp": [
+          "oklch(15% 0.036 212)",
+          "oklch(26% 0.047 212)",
+          "oklch(38% 0.057 212)",
+          "oklch(49% 0.068 212)",
+          "oklch(61% 0.068 212)",
+          "oklch(72% 0.057 212)",
+          "oklch(84% 0.047 212)",
+          "oklch(95% 0.036 212)"
+        ]
+      },
+      "accent-soft": {
+        "role": "primary",
+        "displayName": "Selected Teal Wash",
+        "canonical": "#e1f0f2",
+        "darkTheme": "#163a40",
+        "tonalRamp": [
+          "oklch(15% 0.008 206)",
+          "oklch(26% 0.010 206)",
+          "oklch(38% 0.013 206)",
+          "oklch(49% 0.015 206)",
+          "oklch(61% 0.015 206)",
+          "oklch(72% 0.013 206)",
+          "oklch(84% 0.010 206)",
+          "oklch(95% 0.008 206)"
+        ]
+      },
+      "alert": {
+        "role": "secondary",
+        "displayName": "Discrepancy Signal",
+        "canonical": "#b2390d",
+        "darkTheme": "#ff9466",
+        "tonalRamp": [
+          "oklch(15% 0.081 37)",
+          "oklch(26% 0.105 37)",
+          "oklch(38% 0.129 37)",
+          "oklch(49% 0.152 37)",
+          "oklch(61% 0.152 37)",
+          "oklch(72% 0.129 37)",
+          "oklch(84% 0.105 37)",
+          "oklch(95% 0.081 37)"
+        ]
+      },
+      "alert-soft": {
+        "role": "secondary",
+        "displayName": "Discrepancy Wash",
+        "canonical": "#fcefe8",
+        "darkTheme": "#35201a",
+        "tonalRamp": [
+          "oklch(15% 0.008 50)",
+          "oklch(26% 0.011 50)",
+          "oklch(38% 0.013 50)",
+          "oklch(49% 0.016 50)",
+          "oklch(61% 0.016 50)",
+          "oklch(72% 0.013 50)",
+          "oklch(84% 0.011 50)",
+          "oklch(95% 0.008 50)"
+        ]
+      },
+      "alert-line": {
+        "role": "secondary",
+        "displayName": "Discrepancy Rule",
+        "canonical": "#ecc2ab",
+        "darkTheme": "#6b3a27",
+        "tonalRamp": [
+          "oklch(15% 0.028 50)",
+          "oklch(26% 0.037 50)",
+          "oklch(38% 0.045 50)",
+          "oklch(49% 0.053 50)",
+          "oklch(61% 0.053 50)",
+          "oklch(72% 0.045 50)",
+          "oklch(84% 0.037 50)",
+          "oklch(95% 0.028 50)"
+        ]
+      },
+      "ground": {
+        "role": "neutral",
+        "displayName": "Corridor Grey",
+        "canonical": "#f2f5f5",
+        "darkTheme": "#101517",
+        "tonalRamp": [
+          "oklch(15% 0.002 197)",
+          "oklch(26% 0.002 197)",
+          "oklch(38% 0.002 197)",
+          "oklch(49% 0.003 197)",
+          "oklch(61% 0.003 197)",
+          "oklch(72% 0.002 197)",
+          "oklch(84% 0.002 197)",
+          "oklch(95% 0.002 197)"
+        ]
+      },
+      "surface": {
+        "role": "neutral",
+        "displayName": "Board White",
+        "canonical": "#ffffff",
+        "darkTheme": "#172022",
+        "tonalRamp": [
+          "oklch(15% 0.000 90)",
+          "oklch(26% 0.000 90)",
+          "oklch(38% 0.000 90)",
+          "oklch(49% 0.000 90)",
+          "oklch(61% 0.000 90)",
+          "oklch(72% 0.000 90)",
+          "oklch(84% 0.000 90)",
+          "oklch(95% 0.000 90)"
+        ]
+      },
+      "surface-2": {
+        "role": "neutral",
+        "displayName": "Board Shade",
+        "canonical": "#f6f8f8",
+        "darkTheme": "#1c2629",
+        "tonalRamp": [
+          "oklch(15% 0.001 197)",
+          "oklch(26% 0.001 197)",
+          "oklch(38% 0.002 197)",
+          "oklch(49% 0.002 197)",
+          "oklch(61% 0.002 197)",
+          "oklch(72% 0.002 197)",
+          "oklch(84% 0.001 197)",
+          "oklch(95% 0.001 197)"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "canonical": "#1b2326",
+        "darkTheme": "#e4ebec",
+        "tonalRamp": [
+          "oklch(15% 0.006 223)",
+          "oklch(26% 0.008 223)",
+          "oklch(38% 0.010 223)",
+          "oklch(49% 0.012 223)",
+          "oklch(61% 0.012 223)",
+          "oklch(72% 0.010 223)",
+          "oklch(84% 0.008 223)",
+          "oklch(95% 0.006 223)"
+        ]
+      },
+      "ink-2": {
+        "role": "neutral",
+        "displayName": "Secondary Ink",
+        "canonical": "#4c5a61",
+        "darkTheme": "#aab8bc",
+        "tonalRamp": [
+          "oklch(15% 0.010 229)",
+          "oklch(26% 0.013 229)",
+          "oklch(38% 0.016 229)",
+          "oklch(49% 0.019 229)",
+          "oklch(61% 0.019 229)",
+          "oklch(72% 0.016 229)",
+          "oklch(84% 0.013 229)",
+          "oklch(95% 0.010 229)"
+        ]
+      },
+      "ink-3": {
+        "role": "neutral",
+        "displayName": "Tertiary Ink",
+        "canonical": "#6b7a80",
+        "darkTheme": "#8a9a9f",
+        "tonalRamp": [
+          "oklch(15% 0.010 224)",
+          "oklch(26% 0.013 224)",
+          "oklch(38% 0.016 224)",
+          "oklch(49% 0.019 224)",
+          "oklch(61% 0.019 224)",
+          "oklch(72% 0.016 224)",
+          "oklch(84% 0.013 224)",
+          "oklch(95% 0.010 224)"
+        ]
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "Hairline",
+        "canonical": "#dbe2e3",
+        "darkTheme": "#2a3639",
+        "tonalRamp": [
+          "oklch(15% 0.004 207)",
+          "oklch(26% 0.005 207)",
+          "oklch(38% 0.006 207)",
+          "oklch(49% 0.007 207)",
+          "oklch(61% 0.007 207)",
+          "oklch(72% 0.006 207)",
+          "oklch(84% 0.005 207)",
+          "oklch(95% 0.004 207)"
+        ]
+      },
+      "line-strong": {
+        "role": "neutral",
+        "displayName": "Control Rule",
+        "canonical": "#b8c5c8",
+        "darkTheme": "#3c4b4f",
+        "tonalRamp": [
+          "oklch(15% 0.007 213)",
+          "oklch(26% 0.009 213)",
+          "oklch(38% 0.012 213)",
+          "oklch(49% 0.014 213)",
+          "oklch(61% 0.014 213)",
+          "oklch(72% 0.012 213)",
+          "oklch(84% 0.009 213)",
+          "oklch(95% 0.007 213)"
+        ]
+      },
+      "banner": {
+        "role": "neutral",
+        "displayName": "Synthetic-Data Banner Grey",
+        "canonical": "#e7ecec",
+        "darkTheme": "#141c1e",
+        "tonalRamp": [
+          "oklch(15% 0.003 197)",
+          "oklch(26% 0.003 197)",
+          "oklch(38% 0.004 197)",
+          "oklch(49% 0.005 197)",
+          "oklch(61% 0.005 197)",
+          "oklch(72% 0.004 197)",
+          "oklch(84% 0.003 197)",
+          "oklch(95% 0.003 197)"
+        ]
+      },
+      "mark-obs": {
+        "role": "tertiary",
+        "displayName": "Observation Tint",
+        "canonical": "#e4f1f3",
+        "darkTheme": "#1a3337",
+        "tonalRamp": [
+          "oklch(15% 0.007 208)",
+          "oklch(26% 0.009 208)",
+          "oklch(38% 0.011 208)",
+          "oklch(49% 0.013 208)",
+          "oklch(61% 0.013 208)",
+          "oklch(72% 0.011 208)",
+          "oklch(84% 0.009 208)",
+          "oklch(95% 0.007 208)"
+        ]
+      },
+      "mark-obs-line": {
+        "role": "tertiary",
+        "displayName": "Observation Underline",
+        "canonical": "#3d8f9c",
+        "darkTheme": "#5bbac8",
+        "tonalRamp": [
+          "oklch(15% 0.040 209)",
+          "oklch(26% 0.052 209)",
+          "oklch(38% 0.063 209)",
+          "oklch(49% 0.075 209)",
+          "oklch(61% 0.075 209)",
+          "oklch(72% 0.063 209)",
+          "oklch(84% 0.052 209)",
+          "oklch(95% 0.040 209)"
+        ]
+      },
+      "mark-cite": {
+        "role": "tertiary",
+        "displayName": "Cited Evidence Tint",
+        "canonical": "#b9dde3",
+        "darkTheme": "#2c616b",
+        "tonalRamp": [
+          "oklch(15% 0.019 209)",
+          "oklch(26% 0.025 209)",
+          "oklch(38% 0.030 209)",
+          "oklch(49% 0.036 209)",
+          "oklch(61% 0.036 209)",
+          "oklch(72% 0.030 209)",
+          "oklch(84% 0.025 209)",
+          "oklch(95% 0.019 209)"
+        ]
+      },
+      "mark-flash": {
+        "role": "tertiary",
+        "displayName": "Evidence-Jump Flash",
+        "canonical": "#ffd8a8",
+        "darkTheme": "#7a4a17",
+        "tonalRamp": [
+          "oklch(15% 0.037 72)",
+          "oklch(26% 0.048 72)",
+          "oklch(38% 0.059 72)",
+          "oklch(49% 0.070 72)",
+          "oklch(61% 0.070 72)",
+          "oklch(72% 0.059 72)",
+          "oklch(84% 0.048 72)",
+          "oklch(95% 0.037 72)"
+        ]
+      },
+      "mark-hover": {
+        "role": "tertiary",
+        "displayName": "Linked Hover Tint",
+        "canonical": "#9fd2da",
+        "darkTheme": "#2f6c76",
+        "tonalRamp": [
+          "oklch(15% 0.026 208)",
+          "oklch(26% 0.034 208)",
+          "oklch(38% 0.042 208)",
+          "oklch(49% 0.050 208)",
+          "oklch(61% 0.050 208)",
+          "oklch(72% 0.042 208)",
+          "oklch(84% 0.034 208)",
+          "oklch(95% 0.026 208)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Page titles only."
+      },
+      "headline-id": {
+        "displayName": "Headline ID",
+        "purpose": "The case ID at the top of the case workspace, in Plex Mono."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Section, document, dialog and empty-state headings; queue item label."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Default text, tabular figures on."
+      },
+      "note": {
+        "displayName": "Note",
+        "purpose": "Clinical document text and note entry, on a 68ch measure."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Signs (700), field labels and buttons (600)."
+      },
+      "section-label": {
+        "displayName": "Section label",
+        "purpose": "Uppercase small headings of the workspace side panel and queue groups."
+      },
+      "mono": {
+        "displayName": "Mono",
+        "purpose": "IDs, dates, offsets, durations and counts."
+      }
+    },
+    "shadows": [
+      {
+        "name": "shadow",
+        "value": "0 1px 2px #0f3a4414, 0 4px 14px #0f3a4412",
+        "purpose": "Only for surfaces above the page: the focused review card and modal dialogs."
+      },
+      {
+        "name": "shadow-dark",
+        "value": "0 1px 2px #0006, 0 6px 18px #0005",
+        "purpose": "Dark-theme value of the same token."
+      },
+      {
+        "name": "focus-ring",
+        "value": "outline: 2px solid var(--focus); outline-offset: 2px",
+        "purpose": "Every focus-visible element."
+      },
+      {
+        "name": "field-focus",
+        "value": "0 0 0 3px var(--accent-soft)",
+        "purpose": "Halo around a focused input, select or textarea."
+      }
+    ],
+    "motion": [
+      {
+        "name": "dur-fast",
+        "value": "150ms",
+        "purpose": "Hover, press and colour feedback; leaving animations; reduced-motion ceiling in lib/motion.js."
+      },
+      {
+        "name": "dur-base",
+        "value": "200ms",
+        "purpose": "Entering content: dialogs, route cross-fade, queue card entry, save confirmation. 120ms under reduced motion."
+      },
+      {
+        "name": "dur-slow",
+        "value": "250ms",
+        "purpose": "Tab underline travel, marks and plates revealing, timeline drop-in. 120ms under reduced motion."
+      },
+      {
+        "name": "dur-layout",
+        "value": "320ms",
+        "purpose": "Case view expanding from its row; evidence-jump flash; status-change tint. 120ms under reduced motion."
+      },
+      {
+        "name": "dur-stagger",
+        "value": "18ms",
+        "purpose": "Per-item delay for reveals in reading or time order (capped). 0ms under reduced motion."
+      },
+      {
+        "name": "ease-out",
+        "value": "cubic-bezier(0.23, 1, 0.32, 1)",
+        "purpose": "Entering and press feedback."
+      },
+      {
+        "name": "ease-in",
+        "value": "cubic-bezier(0.55, 0, 1, 0.45)",
+        "purpose": "Leaving (short): queue card exit, route fade-out."
+      },
+      {
+        "name": "ease-move",
+        "value": "cubic-bezier(0.65, 0, 0.35, 1)",
+        "purpose": "Moving in place: the tab underline."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "stack",
+        "value": "1100px",
+        "purpose": "Workspace and queue become one column."
+      },
+      {
+        "name": "narrow",
+        "value": "760px",
+        "purpose": "Sidebar becomes a horizontal strip; grids collapse; 16px page sides."
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The single primary action of a view, such as Verify.",
+      "html": "<button class=\"ds-btn ds-btn-primary\">Verify</button>",
+      "css": ".ds-btn{display:inline-flex;align-items:center;gap:8px;min-height:38px;padding:7px 16px;border-radius:6px;border:1px solid var(--line-strong,#b8c5c8);background:var(--surface,#fff);color:var(--ink,#1b2326);font:600 1rem/1.5 var(--font,system-ui);cursor:pointer;transition:background-color 150ms ease,border-color 150ms ease,transform 150ms cubic-bezier(0.23,1,0.32,1)}.ds-btn:active{transform:scale(0.97)}.ds-btn:focus-visible{outline:2px solid var(--focus,#146a78);outline-offset:2px}.ds-btn-primary{background:var(--accent,#146a78);border-color:var(--accent,#146a78);color:var(--accent-ink,#fff)}.ds-btn-primary:hover{background:var(--accent-hover,#0f5966);border-color:var(--accent-hover,#0f5966)}"
+    },
+    {
+      "name": "Default Button",
+      "kind": "button",
+      "refersTo": "button-default",
+      "description": "Secondary actions on a white board.",
+      "html": "<button class=\"ds-btn\">Write and download CSV</button>",
+      "css": ".ds-btn{display:inline-flex;align-items:center;gap:8px;min-height:38px;padding:7px 16px;border-radius:6px;border:1px solid var(--line-strong,#b8c5c8);background:var(--surface,#fff);color:var(--ink,#1b2326);font:600 1rem/1.5 var(--font,system-ui);cursor:pointer;transition:border-color 150ms ease,transform 150ms cubic-bezier(0.23,1,0.32,1)}.ds-btn:hover{border-color:var(--ink-3,#6b7a80)}.ds-btn:active{transform:scale(0.97)}.ds-btn:focus-visible{outline:2px solid var(--focus,#146a78);outline-offset:2px}"
+    },
+    {
+      "name": "Text Field",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Form input with teal focus halo.",
+      "html": "<label class=\"ds-field\"><span class=\"ds-label\">Reviewer</span><input class=\"ds-input\" placeholder=\"Initials\"></label>",
+      "css": ".ds-field{display:grid;gap:4px;font-family:var(--font,system-ui)}.ds-label{font-size:0.875rem;font-weight:600;color:var(--ink,#1b2326)}.ds-input{min-height:38px;padding:7px 10px;border:1px solid var(--line-strong,#b8c5c8);border-radius:6px;background:var(--surface,#fff);color:var(--ink,#1b2326);font:inherit;transition:border-color 150ms ease,box-shadow 150ms ease}.ds-input:focus{outline:none;border-color:var(--accent,#146a78);box-shadow:0 0 0 3px var(--accent-soft,#e1f0f2)}"
+    },
+    {
+      "name": "Sidebar Navigation",
+      "kind": "nav",
+      "refersTo": "nav-link-active",
+      "description": "Petrol sign panel with white legends; current page raised with a pale-teal bar.",
+      "html": "<nav class=\"ds-nav\"><a class=\"ds-nav-link\" aria-current=\"page\" href=\"#\">Cases</a><a class=\"ds-nav-link\" href=\"#\">Review queue<span class=\"ds-count\">4</span></a><a class=\"ds-nav-link\" href=\"#\">Audit trail</a></nav>",
+      "css": ".ds-nav{background:var(--shell,#0f3a44);padding:20px 12px;display:flex;flex-direction:column;gap:2px;width:236px;font-family:var(--font,system-ui)}.ds-nav-link{position:relative;display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:6px;color:var(--shell-muted,#a9c5cb);text-decoration:none;transition:background-color 150ms ease,color 150ms ease}.ds-nav-link:hover{background:#ffffff12;color:var(--shell-ink,#f1f7f8)}.ds-nav-link:focus-visible{outline:2px solid var(--focus,#146a78);outline-offset:2px}.ds-nav-link[aria-current=page]{background:var(--shell-raised,#17505d);color:var(--shell-ink,#f1f7f8);font-weight:700}.ds-nav-link[aria-current=page]::before{content:'';position:absolute;left:0;top:8px;bottom:8px;width:3px;border-radius:2px;background:#8fd6e0}.ds-count{margin-left:auto;font-family:var(--mono,monospace);font-size:0.8125rem;background:var(--shell-line,#ffffff24);border-radius:999px;padding:0 8px;color:var(--shell-ink,#f1f7f8)}"
+    },
+    {
+      "name": "Discrepancy Sign",
+      "kind": "chip",
+      "refersTo": "label",
+      "description": "The fixed status sign: diamond + word + one colour.",
+      "html": "<span class=\"ds-sign ds-sign-alert\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 20 20\" aria-hidden=\"true\"><path d=\"M10 2.8 17.2 10 10 17.2 2.8 10Z\" fill=\"currentColor\"/></svg>Discrepancy</span> <span class=\"ds-sign\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 20 20\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.75\" stroke-linecap=\"round\" aria-hidden=\"true\"><circle cx=\"10\" cy=\"10\" r=\"7.2\"/><path d=\"M7.9 7.9a2.2 2.2 0 1 1 3 2.1c-.6.3-.9.8-.9 1.4v.3\"/></svg>Needs human review</span>",
+      "css": ".ds-sign{display:inline-flex;align-items:center;gap:7px;font:700 0.875rem/1.5 var(--font,system-ui);color:var(--ink,#1b2326);white-space:nowrap}.ds-sign-alert{color:var(--alert,#b2390d)}"
+    },
+    {
+      "name": "Finding Sign Plate",
+      "kind": "card",
+      "refersTo": "plate-alert",
+      "description": "A finding: sign, record vs document values, and evidence rows that jump to their quote.",
+      "html": "<div class=\"ds-plate ds-plate-alert\"><span class=\"ds-sign ds-sign-alert\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 20 20\" aria-hidden=\"true\"><path d=\"M10 2.8 17.2 10 10 17.2 2.8 10Z\" fill=\"currentColor\"/></svg>Discrepancy</span><div class=\"ds-plate-field\">Maximum ICANS grade</div><button class=\"ds-ev\"><span class=\"ds-ev-ref\">Progress note, Day +6</span><span class=\"ds-ev-quote\">quoted source text</span></button></div>",
+      "css": ".ds-plate{display:grid;gap:8px;border:1px solid var(--line,#dbe2e3);border-radius:10px;padding:14px 16px;background:var(--surface,#fff);font-family:var(--font,system-ui);color:var(--ink,#1b2326)}.ds-plate-alert{border-color:var(--alert-line,#ecc2ab);background:var(--alert-soft,#fcefe8)}.ds-sign{display:inline-flex;align-items:center;gap:7px;font-weight:700;font-size:0.875rem}.ds-sign-alert{color:var(--alert,#b2390d)}.ds-plate-field{font-weight:700}.ds-ev{display:grid;gap:1px;text-align:left;border:0;background:transparent;border-radius:6px;padding:5px 8px;margin:0 -8px;cursor:pointer;font:inherit;transition:transform 150ms cubic-bezier(0.23,1,0.32,1)}.ds-ev:hover,.ds-ev:focus-visible{background:var(--accent-soft,#e1f0f2)}.ds-ev:active{transform:scale(0.99)}.ds-ev-ref{font-size:0.8125rem;color:var(--ink-2,#4c5a61)}.ds-ev-quote{font-size:0.875rem}.ds-ev-quote::before{content:'\\201C'}.ds-ev-quote::after{content:'\\201D'}"
+    },
+    {
+      "name": "Decision Choice",
+      "kind": "chip",
+      "refersTo": "accent-soft",
+      "description": "Review decision options; the checked one lights teal.",
+      "html": "<div class=\"ds-choices\"><label class=\"ds-choice\"><input type=\"radio\" name=\"d\" checked>Confirm discrepancy</label><label class=\"ds-choice\"><input type=\"radio\" name=\"d\">Dismiss</label><label class=\"ds-choice\"><input type=\"radio\" name=\"d\">Needs clinician</label></div>",
+      "css": ".ds-choices{display:flex;gap:8px;font-family:var(--font,system-ui)}.ds-choice{position:relative;display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line-strong,#b8c5c8);border-radius:6px;padding:7px 14px;cursor:pointer;font-weight:600;background:var(--surface,#fff);transition:background-color 150ms ease,border-color 150ms ease,transform 150ms cubic-bezier(0.23,1,0.32,1)}.ds-choice:active{transform:scale(0.97)}.ds-choice input{position:absolute;opacity:0}.ds-choice:has(input:checked){border-color:var(--accent,#146a78);background:var(--accent-soft,#e1f0f2);color:var(--accent-text,#11606d)}.ds-choice:has(input:focus-visible){outline:2px solid var(--focus,#146a78);outline-offset:2px}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Hospital Signpost",
+    "overview": "ReSauce looks like the wayfinding of a well-run hospital: a deep petrol sign panel down the left, a calm cool-grey corridor behind the work, and white boards where the reading happens. Every status is a fixed sign made of one symbol, one word and at most one colour, so a reviewer who has been at the desk for hours, or watching on a projector, always knows where they are and what is waiting for them.\n\nDensity is that of a working tool, not a dashboard: tables, document text and finding plates sit close together, and hierarchy comes from type size, weight and a 68ch reading measure rather than from nested boxes. Colour is scarce on purpose. Teal means \"you can act here\" or \"this is selected\"; orange-red means \"discrepancy\" and never appears without its diamond and its word. Everything else is ink on neutral. The light and dark themes share one token set (`web/src/styles.css`, `:root` plus the dark overrides), toggled by `data-theme` or the system preference.",
+    "keyCharacteristics": [
+      "Petrol sign-panel sidebar with white legends; neutral ground; white work surfaces.",
+      "One action accent, one discrepancy signal, nothing else saturated.",
+      "A fixed status vocabulary (the sign) reused in every table, queue and plate.",
+      "Atkinson Hyperlegible Next for words, IBM Plex Mono for IDs, dates and offsets; tabular figures everywhere.",
+      "One motion token set; every animation names its job and has a reduced-motion form."
+    ],
+    "rules": [
+      {
+        "name": "The Accent Means Act Rule",
+        "body": "Teal appears only on things you can press, the thing that is selected, or progress you caused. Never on decoration, headings or charts that are not ReSauce's own method.",
+        "section": "colors"
+      },
+      {
+        "name": "The Never Colour Alone Rule",
+        "body": "Orange-red is always paired with the filled diamond symbol and a word (\"Discrepancy\", \"Discrepancy to review\"). A red element without its symbol and word is a bug.",
+        "section": "colors"
+      },
+      {
+        "name": "The Measure Not Boxes Rule",
+        "body": "Reading text is held to 68ch (`--measure`); hierarchy is made with size and weight, not extra containers.",
+        "section": "typography"
+      },
+      {
+        "name": "The Copyable Is Mono Rule",
+        "body": "IDs, dates, offsets and counts set in Plex Mono at 0.92em; words never do.",
+        "section": "typography"
+      },
+      {
+        "name": "The Only Floaters Lift Rule",
+        "body": "A surface carries the shadow only if it sits above the page (the focused review card, a dialog). Cards in the flow stay flat with a border.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** take every duration and curve from the motion tokens (fast 150ms, base 200ms, slow 250ms, layout 320ms; ease-out to enter, ease-in to leave, ease-move to travel in place; 18ms stagger) and say in a comment what job the motion does (orient, guide attention, show progress, connect cause and effect).",
+      "**Do** give every movement a reduced-motion form that keeps the information as an opacity or colour change, via the token overrides or `lib/motion.js`.",
+      "**Do** use the sign component for any new status, with an icon, a word and at most one colour.",
+      "**Do** keep the synthetic-data banner on every page.",
+      "**Do** set dark-theme values in both the system-preference block and the `data-theme=\"dark\"` block."
+    ],
+    "donts": [
+      "**Don't** show discrepancy, or any status, by colour alone.",
+      "**Don't** use teal for anything that cannot be acted on or is not selected.",
+      "**Don't** add bounce, shake or spring curves; entering eases out, leaving eases in.",
+      "**Don't** add shadows to in-flow cards; use the border.",
+      "**Don't** add KPI tiles or headline numbers; every figure on screen comes from the pipeline, results files or docs."
+    ]
+  }
+}

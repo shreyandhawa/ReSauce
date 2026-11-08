@@ -7,30 +7,31 @@
 web
 
 ## Stack
-Vite + React (plain JavaScript), built to `web/dist/` and served by a standard-library Python server (`python -m app`). Fonts bundled locally (SIL Open Font Licence) so the demo works offline. Chosen by the user.
+Vite + React (plain JavaScript), built to `web/dist/` and served by a standard-library Python server (`python -m app`) on 127.0.0.1 only. Fonts bundled locally (SIL Open Font Licence: Atkinson Hyperlegible Next, IBM Plex Mono) so it works offline. Chosen by the user.
 
 ## Users
-- The project author, presenting a live demo on a laptop and a projector.
-- The audience of that demo: clinicians (judge whether the clinical reasoning and evidence are credible), investors (judge whether the idea is worth pursuing), and technical experts (check reproducibility and traceability: that every result can be traced to its source text and re-run).
+- A researcher (or research data manager) on their own computer, checking research records against the documents behind them, often for long sessions.
+- Secondary: the project author showing it on a laptop and a projector, and technical reviewers checking reproducibility and traceability.
 
 ## Product Purpose
-ReSauce is a computational proof of concept. It checks whether clinical research records (onset date and maximum grade of ICANS after CAR-T therapy) agree with the clinical documents behind them, and shows the quoted evidence for every finding. The app shows the measured results against a simpler baseline and runs the frozen pipeline live on one case, stage by stage. Success: the audience can see exactly how a verdict follows from quoted source text, and what the measured results do and do not show.
+ReSauce is a computational proof of concept and a local researcher workstation. The researcher brings synthetic cases into a workspace folder, runs the frozen pipeline on them, reviews each finding (onset date and maximum grade of ICANS after CAR-T therapy) against the exact source text, records a decision with a note, and exports a report or CSV. Every run and decision goes into an append-only audit log with the pipeline version. The stored evaluation results are one secondary tab. Success: a researcher can go from a case to a recorded, traceable decision without leaving the app, and can see exactly which quoted text each finding rests on.
 
 ## Positioning
 Every observation and verdict links to the exact quoted text at its offsets in a specific document version; documentation time and event time are kept apart; uncertainty is reported as "needs human review" rather than guessed.
 
 ## Operating Context
-Live demo, presented by one person, on a laptop screen and a projector (possibly offline). Also used by a technical reviewer reading the results and the methods.
+One person at a desk, for hours, light or dark room; occasionally a projector. Offline, local only; the workspace folder lives inside the project folder in this proof of concept.
 
 ## Capabilities and Constraints
 - Synthetic data only. Not a clinical decision tool; results on synthetic data are not clinical validation.
 - Every number, label and claim on screen comes from the pipeline, the results files or the docs. No invented statistics, testimonials, logos, users or accuracy claims.
 - Reference answers are "intended answers, agreed by a blind re-derivation by a separate Claude session (same model family); not clinician-verified".
 - The held-out split is in-repo, not sealed, and "seen". The locked split is not yet evaluated.
-- The pipeline is frozen; the app calls it and never changes it.
+- The pipeline is frozen; the app calls it and never changes it. Its output is stored as run, never edited; review decisions are stored beside it in the audit log.
+- Everything the app writes stays inside the workspace folder; data/ is only read.
 
 ## Evidence on Hand
-`results/report.md`, `results/dev.json`, `results/held_out.json`, the 72 synthetic cases in `data/dev-v1/`, reference answers in `reference/dev-v1/intended/`, `docs/clinical-methods.md`, `docs/evaluation-spec.md`. No users, customers, testimonials, clinician validation or locked-set results exist; none may be shown.
+`results/report.md`, `results/dev.json`, `results/held_out.json`, the 72 synthetic cases in `data/dev-v1/` (copied into a workspace on request), reference answers in `reference/dev-v1/intended/` (Validation tab only), `docs/clinical-methods.md`, `docs/evaluation-spec.md`, `docs/freeze.md`. No users, customers, testimonials, clinician validation or locked-set results exist; none may be shown.
 
 ## Product Principles
 1. Traceable: every claim can be followed to its quoted source.
@@ -39,4 +40,4 @@ Live demo, presented by one person, on a laptop screen and a projector (possibly
 4. Measured, not asserted: comparisons only on the same data.
 
 ## Accessibility & Inclusion
-Keyboard accessible, readable contrast (WCAG AA), light and dark modes, legible on a projector.
+Keyboard accessible (including review shortcuts), readable contrast (WCAG AA), light and dark modes, legible on a projector, prefers-reduced-motion honoured. Discrepancy is never shown by colour alone: symbol + word + colour.
