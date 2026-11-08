@@ -293,7 +293,7 @@ def read_reference(reference_dir: Path, case_id: str) -> dict:
     oos = answer["out_of_scope"]
     fields = {name: answer["fields"][name]["category"] for name in FIELDS}
     for name, category in fields.items():
-        if reference_code(category) is None:  # never dropped silently: listed in reference_errors
+        if not oos and reference_code(category) is None:  # never dropped silently: listed in reference_errors
             raise ValueError(f"reference category for {name} is not 7.1 to 7.9: {category!r}")
     return {"out_of_scope": oos["reason"] if oos else None, "fields": fields}
 

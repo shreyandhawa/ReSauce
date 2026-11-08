@@ -109,3 +109,13 @@ def test_a_reference_category_outside_7_1_to_7_9_is_a_reference_error(tmp_path):
         assert "unclear" in str(exc)
     else:
         raise AssertionError("expected a reference error")
+
+
+def test_an_out_of_scope_reference_is_not_a_reference_error(tmp_path):
+    import json
+    from resauce.evaluate import read_reference
+    (tmp_path / "intended").mkdir()
+    field = {"category": "out of scope (age under 18)"}
+    answer = {"out_of_scope": {"reason": "age under 18"}, "fields": {"onset": field, "max_grade": field}}
+    (tmp_path / "intended" / "C1.json").write_text(json.dumps(answer))
+    assert read_reference(tmp_path, "C1")["out_of_scope"] == "age under 18"
