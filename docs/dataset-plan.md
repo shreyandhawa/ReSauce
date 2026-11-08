@@ -1,6 +1,6 @@
 # ReSauce dataset plan
 
-- **Status:** v0.3.1, approved by the user (2026-11-07).
+- **Status:** v0.3.2, approved by the user (2026-11-07).
 - **Builds on:** `docs/clinical-methods.md` v0.4 (cited as §) and `docs/data-format.md` v0.1.1 (cited as "format §").
 - **This file contains no cases, case text, reference answers or code.** It plans them.
 

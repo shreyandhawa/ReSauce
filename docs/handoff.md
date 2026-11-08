@@ -12,6 +12,48 @@ Each entry covers:
 
 ---
 
+## 2026-11-08: Milestone 3 session 4 (rules engine)
+
+- **Status:** `src/resauce/engine.py` + `src/resauce/timeline.py` turn extractor observations into a maximum grade, an onset, a §7 category per field, §7.10 flags and out-of-scope, one result per case in the intended-answer field format. `python -m resauce.engine <case folder>` prints it as JSON. `pytest`: 150 passed. Only the 20 dev cases and their intended answers were opened.
+- **Done:**
+  - Content (§6.3, A27, A32, A13/A31): latest signed version is current; unsigned content never used ("unsigned later version" / "unsigned document" flags); window per observation; whole-note copy-forward left out; unresolved event dates never given a date.
+  - Grading (§3.3–3.4, §4): ICE (ICE 0 by consciousness context, A33), mapped consciousness only ("awakens spontaneously" only with documented drowsiness, A3), seizures (>5 min, repetitive without baseline), deep focal motor, ICP/edema (hemorrhage excludes overlapping edema), excluded symptoms, EEG slowing not graded.
+  - Uncertainty as readings: each uncertain finding is a choice; every combination is a reading. Same category in every reading → that category (A23); otherwise the deciding choices give 7.5 (attribution, conflicting assessments, assessment barrier, consciousness wording), 7.4 (A6, A33) or "review: …".
+  - Categories §7.1–7.9 incl. record-earlier rule (formal Grade 0 needed), A25, 7.9(a)–(c), 7.8; §7.6 on the last record change (a/b/c) with "revision without new documentation"; flags: outside window, text-only ICP, time-imprecise, relative time, A24, recurrence, superseded-version match, unassessed period, ungradeable symptom. Unparsed extractor text is listed in `review_items`.
+  - Extractor: posturing now has the value "decerebrate or decorticate posturing" or "posturing (type not stated)".
+  - Docs: evaluation-spec §3 ("review: …" results are neither alerts nor review flags, reported separately) and §4 (Baseline A grades mapped consciousness categories; unmapped words stay ungraded); dataset-plan status line → v0.3.2.
+  - /code-review fixes: partial ICE was graded when its range fell in one grade (A6: now never a total); "over 5 minutes" seizures were Grade 3; generic/focal weakness could create a false formal Grade 0; flags without evidence; the reading cap was labelled as §7.5.
+- **Development check (not a result):** 40 of 40 field categories match the intended answers on the 20 dev cases; documented values, signed differences and unassessed-day lists also match. No mismatches to explain. This is expected to be optimistic: the extractor's phrase lists were built from these same 20 cases, and the same writer wrote cases and answers. The held-out 52 cases were not run.
+- **Rules not implemented** (each returns "review: not implemented (§…)" only when it would change the category; none was triggered on the dev cases):
+  - §3.3: edema with no stated extent; posturing not named decerebrate/decorticate; motor findings other than hemiparesis/hemiplegia/paraparesis/paraplegia (weakness, focal weakness, drift, monoparesis …); status epilepticus with no stated duration; a seizure duration range that spans 5 minutes.
+  - §6.4 / A13, A31: partial copy-forward (only whole-note copies are detected).
+  - §7.5 readings above 1024 combinations (an engine limit).
+  - Not built at all: CTCAE grading (§8, out of scope), Grade 5 (§8).
+  - Separate review result: an unresolved event date that would change a category → "review: unresolved event date (§6.1)".
+- **Decisions & why** (all [OPERATIONAL], for clinician review):
+  - A clinician statement settles attribution only if it is in the same clause as the finding (naming ICANS keeps it; naming a listed cause or "unrelated" excludes it). A general "A: ICANS" line elsewhere settles nothing, so it cannot hide a competing cause.
+  - A competing cause applies to every finding near it, ICE included. The §7.5 lorazepam example keeps ICE 8, so the engine gives one more reading than the example (same category). Cautious choice, as A30.
+  - Only competing causes with status present count ("r/o infection" does not).
+  - Conflicting assessments: ICE totals from different documents within 60 minutes with different grades.
+  - An "assessment" (for ICE 0 context, A3 drowsiness, formal Grade 0) = same document version, same event date.
+  - Onset ranges come only from A26 range phrases ("overnight"); a documentation-time date is a single date flagged time-imprecise (§6.1).
+  - Out-of-scope mentions (CAPD, death, developmental delay) count in any document version, signed or not.
+- **Next steps:** Baseline A implementation and scoring code (evaluation-spec §3–4) on the dev split, then the held-out split reported separately; Step 5 independent answers.
+- **Open questions for the clinician:**
+  - The extractor's own date rules d (date earlier in the line) and e (note header) are ReSauce choices, not §6.1 rules.
+  - Unmapped consciousness words (drowsy, sleepy, lethargic, somnolent, obtunded) are never graded; they only serve as A3 drowsiness context. They need an approved mapping (A15).
+  - Should generic or focal weakness ever map to Table 6 Grade 4?
+  - The attribution-statement rule, the 60-minute conflict window and present-only competing causes above.
+  - Does a competing cause such as a sedative affect the ICE score too, or only depressed consciousness (§3.4 vs the §7.5 example)?
+- **How to verify:**
+  ```bash
+  .venv/bin/python -m pytest -p no:cacheprovider -q                 # expect 150 passed
+  .venv/bin/python -m resauce.engine data/dev-v1/cases/SYN-0017     # grade 7.2, documented Grade 3 (ICE alone too low)
+  .venv/bin/python -m resauce.engine data/dev-v1/cases/SYN-0047     # grade 7.5, reason attribution (lorazepam)
+  ```
+
+---
+
 ## 2026-11-08: Milestone 3 session 3 (evaluation spec, rule-based extraction)
 
 - **Status:** `docs/evaluation-spec.md` v0.1 is written before any results exist. `src/resauce/extract.py` + `src/resauce/phrases.py` form the first pipeline stage (deterministic, standard library only, no grading). `pytest`: 123 passed. Only the 20 dev cases and their intended answers were opened.

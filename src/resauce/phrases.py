@@ -228,7 +228,10 @@ ICP_SIGNS = (
     (r"\bpapill?o?edema\b|\bpapilloedema\b", "papilledema"),
     (r"\b(?:cranial nerve VI|CN ?VI|sixth (?:cranial )?nerve|abducens)\s+(?:nerve\s+)?pals(?:y|ies)\b",
      "cranial nerve VI palsy"),
-    (r"\b(?:decerebrate |decorticate |extensor |flexor )?posturing\b", "posturing"),
+    # Table 6 names decerebrate and decorticate posturing only; any other
+    # wording keeps the type open for the engine.
+    (r"\b(?:decerebrate|decorticate)\s+posturing\b", "decerebrate or decorticate posturing"),
+    (r"(?<!decerebrate )(?<!decorticate )\b(?:extensor |flexor )?posturing\b", "posturing (type not stated)"),
     (r"\bcushing'?s? triad\b", "Cushing's triad"),
 )
 # A12: raised-ICP signs in the source text but not in Table 6. Only the

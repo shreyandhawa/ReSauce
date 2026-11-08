@@ -41,6 +41,7 @@ Each in-scope case has two **fields**, onset and maximum grade. Each field gets 
 | Miss | A positive field with no alert. The report also states how many misses received a review flag instead. |
 | False alert | An alert on a negative field (reference 7.6 or 7.7). |
 | Alert on a review field | Reported separately. It counts as neither a detection nor a false alert. |
+| "review: …" result | A field the method could not decide (e.g. "review: not implemented (§…)" for a rule not yet built, or an unresolved event date). It counts as **neither an alert nor a review flag**, and is reported separately with its count per field. |
 
 These rules settle the three points that plan §8.3 left open: a detection does not need the exact category (exact agreement is reported separately); alerts on review fields are kept out of precision and recall; methods without review flags are compared on alerts only (below).
 
@@ -69,7 +70,8 @@ What a careful data manager would check without temporal reconciliation. It is b
   - a seizure → Grade 3; Grade 4 if it is documented as lasting more than 5 minutes, or as repetitive without return to baseline;
   - hemiparesis or paraparesis → Grade 4;
   - raised ICP or edema: focal edema → Grade 3; diffuse cerebral edema, papilledema, cranial nerve VI palsy, decerebrate or decorticate posturing, or Cushing's triad → Grade 4.
-  - Level of consciousness and text-only ICP signs are not graded.
+  - level of consciousness, only where the extractor has mapped the observation to a Table 6 category: awakens spontaneously → Grade 1, awakens to voice → Grade 2, awakens only to tactile stimulus → Grade 3, unarousable → Grade 4. This is what a careful data manager would do with the same wording.
+  - Not graded: consciousness words with no approved mapping (e.g. "drowsy", "lethargic"; A15) and text-only ICP signs.
 - **Onset:** the earliest `documented_at` date of a document with a Grade ≥1 finding. **Maximum grade:** the highest grade found.
 - **Categories:**
   - the record reports no ICANS but a finding exists → grade 7.2, onset 7.1;
