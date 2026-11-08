@@ -31,6 +31,37 @@ This replaces the earlier plan of a 3 to 4 hour time box. No "§0 time box" exis
 
 ---
 
+## 2026-11-08: Step 9 (demo app, live, and README)
+
+- **Status:** a local demo app runs the frozen pipeline live and shows the measured results. Commits `a063182` "App: backend", `f72ada8` "App: frontend", `88091da` "README" (pushed). `src/`, `tests/`, `data/`, `reference/`, `results/` unchanged (`git diff --name-only aea8b63 HEAD -- …` is empty). `pytest`: 176 passed (incl. `test_freeze.py`).
+- **Done:**
+  - `app/` (standard library only; calls the core, the core never imports it): `python -m app` serves `GET /api/summary`, `GET /api/cases`, `GET /api/cases/<id>`, `POST /api/cases/<id>/run` and the built page `web/dist/`. Live run = `load_case` → `extract_case` → `load_window` + `engine.evaluate_case` → `baseline_a.evaluate_case`, timed per stage, with `matches_stored` (JSON equality with the stored output, per method). Only case IDs in a loaded results file are served. Extra splits without code changes: `--results F --data D --reference R` (repeatable), `--no-defaults`.
+  - `web/` (Vite + React, plain JS; fonts bundled from npm, OFL): Results (collation table with bars + Figure 1, disclosures beside the numbers, run record), Cases (filters: split; which method disagrees), investigation view (documents with highlights at exact code-point offsets | record; staged reveal: extraction, timeline, comparison, verdict, Baseline A and reference), Methods & limitations. Light/dark, keyboard, reduced motion.
+  - `README.md` rewritten for a newcomer; numbers only from `results/report.md`; locked-set placeholder.
+  - `PRODUCT.md` and `.impeccable/surfaces/web-src-app-jsx.md` (design skill files; user approved adding PRODUCT.md, with technical experts in the audience).
+- **Checks made:**
+  - All 162 numbers in `/api/summary` that `results/report.md` shows (both splits, both methods: score table, exact agreement, evidence validity, out of scope) equal the report (script in the session scratchpad, not committed).
+  - Live run on all 72 cases in memory before building: 0 differences from `results/*.json`. Through the app: SYN-0043 (positive, onset 7.1; Baseline A misses it), SYN-0003 (negative, 7.7/7.7, contains `°`), SYN-0001 (out of scope, age under 18, contains `°`), SYN-0047 (7.5): `matches_stored` true for both methods.
+  - Highlights: every observation and evidence reference of SYN-0043, 0003, 0001 (173 references, 8 of them after a non-ASCII character) gives exactly its quote through `web/src/lib/offsets.js`; an astral-character test shows naive UTF-16 slicing would be off by one. Visual check in headless Chrome (screenshots, light/dark, 1440×900 and 1280×720), no console errors; impeccable detector: 0 findings.
+  - Path traversal attempts on the static server return 404.
+- **Decisions & why:**
+  - Vite + React and bundled fonts: chosen by the user. Node upgraded 25.8.0 → 26.13.0 (Homebrew, with the user's approval). npm packages (pinned in `web/package-lock.json`): react, react-dom, vite, @vitejs/plugin-react, @fontsource-variable/source-serif-4, @fontsource/ibm-plex-sans, @fontsource/ibm-plex-mono. No chart, router or animation library.
+  - `web/dist/` is committed (`.gitignore` exception) so the demo needs only Python.
+  - Agreement in the case list follows the evaluator: exact category equality in scope; out of scope = flagged with the same reason (`evaluate._same_reason`); Baseline A shows "n/a" on out-of-scope cases (it cannot flag them); a method error is its own state.
+  - The stage reveal is paced for the audience (1.7 s per stage) and labelled as such; the measured run time is shown separately.
+  - The design direction ("critical edition": paper and ink, one vermilion accent for ReSauce's marks) was chosen with the user via the impeccable skill.
+- **Not as planned (disclosed):** the handoff had no "Visual design" section; the task's "Look and feel" text was the brief. The skill `frontend-design` is not installed; `design-taste-frontend` and `dataviz` were not loaded (impeccable and emil-design-eng were used). The `/code-review` for the backend ran as two sub-agents and its findings were fixed before the commit; the frontend/README review sub-agents stopped on a usage limit, so that review was done in the main session instead (it found and fixed a toggle-button accessibility issue and an unused helper). A simulated Tab key in headless Chrome did not move focus, so Tab order was not machine-checked; all controls are native links or buttons.
+- **Next steps:** (1) the user rehearses the demo (suggested cases: SYN-0043, SYN-0047, SYN-0001, SYN-0003). (2) Locked set as planned; after its final evaluation, start the app with `--results results/locked.json --data <locked data> --reference <locked reference>` and fill the README placeholder. (3) Optional: a second `/code-review` of the frontend by sub-agents once the usage limit resets.
+- **Open questions:** port 8000 was taken on this machine by a Claude helper process during the session; if so at demo time, use `--port 8001`. Licence still not chosen.
+- **How to verify:**
+  ```bash
+  .venv/bin/python -m pytest -p no:cacheprovider -q   # 176 passed
+  .venv/bin/python -m app                             # open http://localhost:8000 (or --port 8001)
+  curl -s -X POST localhost:8000/api/cases/SYN-0043/run | python3 -m json.tool | grep -A2 matches_stored
+  ```
+
+---
+
 ## 2026-11-08: Step 6 part 1 (value conventions and locked starter kit)
 
 - **Status:** the three open format items from Step 5a are settled and the locked repo's starter kit exists. **The generator was not run and the writer has not started.** No case IDs, briefs or case text exist for the locked set. `src/` and `results/` untouched; tests not run (no code under test changed).
