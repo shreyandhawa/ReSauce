@@ -52,7 +52,7 @@ This replaces the earlier plan of a 3 to 4 hour time box. No "§0 time box" exis
   - 4, 5, 6: `signed_difference_days` (and, for 6, `difference_note`) for a 7.5 onset (SYN-0023, SYN-0046, SYN-0063).
   - 11, 12: evidence for an out-of-scope case when no note states the trigger (SYN-0001 age only in `case.json`; SYN-0049 record value).
   - 13: where `derivation` goes (top level in 60 files, inside each field in 12).
-- **Next steps:** the user decides the format items before the locked answers are written (Step 5b); the rule gaps go to the clinician with A19 to A34. Step 6 as planned.
+- **Next steps:** the three open format items were settled afterwards (see "Value conventions" in `reference/dev-v1/README.md`); the clinician agenda is A1–A35 plus the listed rule gaps (items 14 to 30). Step 6 as planned.
 - **How to verify:** `.venv/bin/python -m tools.compare_answers` then `git diff reference/dev-v1/comparison.md` shows no change; `.venv/bin/python -m pytest -p no:cacheprovider -q` passes.
 
 ---
