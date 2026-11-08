@@ -31,11 +31,37 @@ This replaces the earlier plan of a 3 to 4 hour time box. No "§0 time box" exis
 
 ---
 
+## 2026-11-08: Step 5a close-out fix (blind-run notes and unclear rules)
+
+- **Status:** the real blind-run report is saved as `reference/dev-v1/independent-run-notes.md` (exactly as given). `comparison.md` §8 lists every unclear rule, one line each with batch and case ID: 13 format gaps (8 settled by a Value convention in `reference/dev-v1/README.md`, 5 open; item 6 is settled for `documented_value` but not for `difference_note`) and 17 rule gaps. `tools/compare_answers.py` produces the same §8; sections 1 to 7 of `comparison.md` are unchanged (checked with `git diff`: one changed hunk, in §8). `src/`, `clinical-methods.md`, `results/` and all answers untouched. The entry below (pipeline frozen) said the notes file was missing; that is corrected there.
+- **Clinician open items (rule gaps; numbers are those in `comparison.md` §8; none were listed before):**
+  - 14, 15: does "ICE not done, patient off the unit / away from the ward" count as a documented not-assessable period (§7 intro, A7)? (SYN-0011, SYN-0030)
+  - 16: how many minutes is "about the same time" in §6.4? (SYN-0009; the answer used 30)
+  - 17: can an explicit clinician attribution itself be read as ambiguous under §7.5? (SYN-0029)
+  - 18: does a general line such as "A: ICANS post CAR-T" attribute a specific finding (A9)? (SYN-0047; if yes its grade becomes 7.7)
+  - 19: does treatment given before the finding remove a competing cause (A30, A35)? (SYN-0063)
+  - 20: when does a documented language barrier invalidate an ICE (A10)? (SYN-0069)
+  - 21, 22: does an excluded or ungradeable symptom (headache; a symptom with no ICE total) block 7.7 (§7.9(b), A21)? (SYN-0004, 0009, 0038)
+  - 23: is subdural or other intracranial hemorrhage a competing cause (A35)? (SYN-0054)
+  - 24, 25: is "awakens spontaneously, not drowsy" plus ICE 10/10 a formal Grade 0 assessment, and is the same with drowsiness a gradeable finding for onset (A3, §3.3)? (SYN-0024, SYN-0055)
+  - 26: does a changed date in copied-forward text after a documented resolution show a new observation (A31)? (SYN-0034)
+  - 27, 28: §7.6(c): does a record version made after the documents count as "revision without new documentation", and can a later general summary support the changed value? (SYN-0027; Batch 5, no case ID given)
+  - 29: does a relative-time range containing an earlier formal Grade 0 on the record date count as two readings or one range (§7.5, A26)? (SYN-0060)
+  - 30: may a documented resolution then recurrence be split into two episodes when the record looks like a deliberate second onset (A5)? (SYN-0068)
+- **Answer-format open items (format gaps with no Value convention yet):**
+  - 4, 5, 6: `signed_difference_days` (and, for 6, `difference_note`) for a 7.5 onset (SYN-0023, SYN-0046, SYN-0063).
+  - 11, 12: evidence for an out-of-scope case when no note states the trigger (SYN-0001 age only in `case.json`; SYN-0049 record value).
+  - 13: where `derivation` goes (top level in 60 files, inside each field in 12).
+- **Next steps:** the user decides the format items before the locked answers are written (Step 5b); the rule gaps go to the clinician with A19 to A34. Step 6 as planned.
+- **How to verify:** `.venv/bin/python -m tools.compare_answers` then `git diff reference/dev-v1/comparison.md` shows no change; `.venv/bin/python -m pytest -p no:cacheprovider -q` passes.
+
+---
+
 ## 2026-11-08: Step 5a close-out and Step 4 (pipeline frozen)
 
 - **Status:** Step 5a is closed and the pipeline is frozen. Tag `pipeline-freeze-v1` is on commit `7c4a449` ("Step 4: pipeline freeze"); the frozen source and the evaluation are at `ec7519e`. `pytest`: 176 passed. `python -m resauce.evaluate` was run once (dev and held-out), 0 method errors.
 - **Done:**
-  - Saved the pasted blind-run report as `reference/dev-v1/independent-run-notes.md`, unedited. **It is not the original notes file**: it only says the original (with the "unclear rules" list) could not be found. So `comparison.md` §8 has **no format-gap or rule-gap lines** (none were made up), and **no rule gaps were added to the clinician items** (there are none to add). Needs the user: if the original notes file exists, send it and §8 and the clinician items get filled. `tools/compare_answers.py` now writes this §8 wording.
+  - **Corrected afterwards (see the entry above):** the first save of `reference/dev-v1/independent-run-notes.md` was the wrong text (a message saying the notes were missing). It was replaced by the real blind-run report, and `comparison.md` §8 now lists 30 items. The statements in this entry that the notes file was missing, that §8 had no lines and that no rule gaps were added are no longer true.
   - Adjudication (decided by the user): no category disagreements (144 of 144; the 4 out-of-scope cases differ only in reason wording), no real value disagreements. The intended answers stay the reference, unedited.
   - `reference/dev-v1/README.md`: new "Value conventions (from Step 5a)" section (grade 0 or undetermined, 7.5 and 7.4 fields, unchanged record history, five fixed out-of-scope strings: `age under 18`, `CAPD assessment`, `record Grade 5`, `documented death`, `developmental delay`, the strings the engine uses).
   - Reference label changed in `docs/evaluation-spec.md` §2 and in `evaluate.py` to "intended answers, agreed by a blind re-derivation by a separate Claude session (same model family); not clinician-verified".
@@ -51,7 +77,7 @@ This replaces the earlier plan of a 3 to 4 hour time box. No "§0 time box" exis
   - The `--split-name` report goes to `report-NAME.md` so a locked run cannot overwrite the dev/held-out report.
   - Out-of-scope strings follow the engine and the intended answers, not the longer wording of the independent answers.
 - **Next steps:** Step 6: write the 153 locked cases in a separate private repo, without access to ReSauce `src/` (§0). Then Step 5b (blind answers for them), Baseline B if an API key exists, and the final evaluation once on the locked set with `--split-name locked`.
-- **Open questions:** (1) Is the original `independent-run-notes.md` (unclear-rules list) available? (2) The sentence in `docs/evaluation-spec.md` §6 about misspelt words is still the old one (it is outdated since session 4b); `docs/` is not frozen, so it can be corrected. (3) The limitation lines "answers are not independently verified" in `evaluation-spec.md` §6 now partly conflict with the new label; the report text was left as is. (4) Clinician items from session 4b and the assumptions A19 to A34 are still unanswered.
+- **Open questions:** (1) (answered: the notes file is now saved) (2) The sentence in `docs/evaluation-spec.md` §6 about misspelt words is still the old one (it is outdated since session 4b); `docs/` is not frozen, so it can be corrected. (3) The limitation lines "answers are not independently verified" in `evaluation-spec.md` §6 now partly conflict with the new label; the report text was left as is. (4) Clinician items from session 4b and the assumptions A19 to A34 are still unanswered.
 - **How to verify:**
   ```bash
   .venv/bin/python -m pytest -p no:cacheprovider -q    # expect 176 passed

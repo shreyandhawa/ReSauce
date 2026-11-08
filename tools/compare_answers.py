@@ -46,6 +46,52 @@ SPLITS = REF / "splits.json"
 OUTPUT = REF / "comparison.md"
 NOTES = REF / "independent-run-notes.md"
 
+
+# Section 8, written by hand from the saved blind-run notes (the notes are free text).
+UNCLEAR_RULES = r"""
+Taken from `reference/dev-v1/independent-run-notes.md` (the blind-run report), one line each. "Format gap" = the answer format does not say; "rule gap" = `clinical-methods.md` does not say. For each format gap, "settled" names the Value convention in `reference/dev-v1/README.md` that now answers it; "open" means no convention does. Nothing here was adjudicated against a clinician. The report gives no case ID for items 7, 10 and 28; that is stated there.
+
+### Format gaps
+
+1. Batch 1, SYN-0002: whether a signed difference is reported for a 7.4 onset where the record is earlier than the first finding (gave −1). **Format gap, settled** by the 7.4 onset convention.
+2. Batch 3, SYN-0025, SYN-0028, SYN-0036: the same question (reported the difference as informational). **Format gap, settled** by the 7.4 onset convention.
+3. Batch 6, SYN-0072: §7.1 says "always reported" but the answer format gives null only for §7.9 (gave −3). **Format gap, settled** by the 7.4 onset convention.
+4. Batch 2, SYN-0023: for a 7.5 onset with two readings that give different dates, whether the signed difference is the nearest reading (as A23 does for same-category readings) or null (used null). **Format gap, open**: the 7.5 convention fixes `documented_value` and `readings`, not the signed difference.
+5. Batch 4, SYN-0046: which difference to report when readings split between 7.1 and 7.7 (gave the range, a null difference and per-reading differences in `readings`). **Format gap, open** for the signed difference; the `documented_value` part is settled by the 7.5 convention.
+6. Batch 6, SYN-0063: no form for `documented_value` or `difference_note` when onset is 7.5 (used `{"undetermined": …}`; for the grade, a numeric range). **Format gap, settled** for `documented_value` by the 7.5 convention; `difference_note` for 7.5 is not covered, so that part is **open**.
+7. Batch 1, the 7.4 "no ICANS" cases (the report gives no case ID): no `documented_value` form for no qualifying finding (used `{"undetermined": …}`). **Format gap, settled** by the no-qualifying-finding convention.
+8. Batch 2, SYN-0016: the same (§7.3 and §7.9(c) give no grade value; used `{"undetermined": …}`). **Format gap, settled** by the no-qualifying-finding convention.
+9. Batch 4, SYN-0048: the same (used `{"grade": 0}` and "none found"). **Format gap, settled** by the no-qualifying-finding convention.
+10. Batches 2 to 6 (no case IDs given): the format does not cover an unchanged field in a multi-version record `record_history` (all used `a` false, the rest null, with an explanation). **Format gap, settled** by the unchanged-field convention.
+11. Batch 1, SYN-0001: out-of-scope evidence when no note states the trigger (age is only in `case.json`); cited `case.json` plus a corroborating note quote. **Format gap, open**: the out-of-scope convention fixes only the reason strings.
+12. Batch 5, SYN-0049: the trigger is a record value, not a document; put the record field in `source` plus one context quote. **Format gap, open**: same reason as item 11.
+13. Batch 6 (format note): `docs/answer-format.md` is the dev-v1 reference README, with no spec for independent answers; `derivation` was put inside each field object and `ambiguity_notes` at top level, and earlier batches may have placed `derivation` differently (60 files top-level, 12 inside the fields). **Format gap, open**: no convention says where `derivation` goes.
+
+### Rule gaps
+
+14. Batch 1, SYN-0011: whether "ICE not done, patient off the unit for CT" counts as a documented not-assessable period (§7 intro, A7; the example there is sedation or intubation). **Rule gap.**
+15. Batch 3, SYN-0030: the same for "No ICE possible: patient away from the ward" (no category changed). **Rule gap.**
+16. Batch 1, SYN-0009: §6.4 "about the same time" has no stated window (treated 30 minutes as conflicting). **Rule gap.**
+17. Batch 3, SYN-0029: §7.5 covers only findings no clinician attributes; whether an explicit attribution can itself be read as ambiguous (treated as settled). **Rule gap.**
+18. Batch 4, SYN-0047: whether a general line such as "A: ICANS post CAR-T" attributes a specific finding (treated as not attributing, per A9; if it did, the grade would be 7.7). **Rule gap** (A9).
+19. Batch 6, SYN-0063: A30 and A35 do not say whether treatment before the finding removes the competing cause (ICE taken after dextrose, recheck glucose later); treated the cause as present, giving 7.5. **Rule gap.**
+20. Batch 6, SYN-0069: A10 has no criterion for when a documented language barrier invalidates an ICE (used 7.5). **Rule gap** (A10).
+21. Batch 1, SYN-0004, SYN-0009: whether an excluded symptom such as headache blocks 7.7 under §7.9(b) (read §7.10 and A21 as saying no). **Rule gap.**
+22. Batch 4, SYN-0038: whether an ungradeable symptom with no ICE total blocks 7.7 (A21 leaves it open; followed v0.4, no). **Rule gap** (A21).
+23. Batch 5, SYN-0054: the A35 competing-cause list does not mention subdural or other intracranial hemorrhage (treated as not competing). **Rule gap** (A35).
+24. Batch 2, SYN-0024: whether "awakens spontaneously, not drowsy" plus ICE 10/10 is a formal Grade 0 assessment (only implied by A3 and §3.3; treated as one). **Rule gap.**
+25. Batch 5, SYN-0055: whether "awakens spontaneously" with drowsiness and ICE 10/10 is a gradeable qualifying finding for onset (applied A3 literally). **Rule gap** (A3).
+26. Batch 3, SYN-0034: whether a changed date in copied-forward text shows a real new observation after a documented resolution (A31; the category is the same either way). **Rule gap** (A31).
+27. Batch 3, SYN-0027: whether a later record version made after the documents existed counts as "revision without new documentation" in §7.6(c) (applied (c) literally). **Rule gap.**
+28. Batch 5 (the report gives no case ID): whether a document must support the changed value on its own or a later general summary is enough for §7.6(c) (treated any supporting version as eligible; none passed the date test). **Rule gap.**
+29. Batch 5, SYN-0060: §7.5 and A26 do not say whether a relative-time range that contains an earlier formal Grade 0 on the record date is two readings (7.5) or one range (7.7) (used 7.7). **Rule gap** (A26).
+30. Batch 6, SYN-0068: A5 says documented full resolution then recurrence is flagged, not split; the record's 07-19 may be a deliberate second-episode onset, but the rules do not allow splitting. **Rule gap** (A5).
+
+### Run notes that are not unclear rules
+
+Batch 6's first subagent hit a rate limit and wrote nothing; a fresh one ran. Batch 3's subagent saw the header lines of `answers/SYN-0001.json` by mistake and says it did not use them.
+"""
+
 FIELDS = ("onset", "max_grade")
 DATE = re.compile(r"[0-9]{4}-[0-9]{2}-[0-9]{2}")
 CODE = re.compile(r"\s*(7\.[1-8])\b")
@@ -617,19 +663,11 @@ def main() -> int:
     out.append("## 8. Unclear rules reported in the blind run notes")
     out.append("")
     if NOTES.exists():
-        out.append(
-            f"`{NOTES.relative_to(ROOT)}` is saved, but it lists **no unclear rules**: it only "
-            "reports that the original notes file (with the \"format gap\" / \"rule gap\" list) "
-            "was not found. No entry was made up. When the original blind-run notes are supplied, "
-            "list each unclear rule here, one line each, marked \"format gap\" (answer format) or "
-            "\"rule gap\" (clinical-methods)."
-        )
+        out.append(UNCLEAR_RULES.rstrip("\n"))
     else:
         out.append(
             f"**Not produced.** `{NOTES.relative_to(ROOT)}` was not found when this report "
-            "was generated, so no list of \"unclear rules\" could be made and none was invented. "
-            "Each one is to be marked \"format gap\" (answer-format) or \"rule gap\" "
-            "(clinical-methods) once the notes file is available."
+            "was generated, so no list of \"unclear rules\" could be made and none was invented."
         )
     out.append("")
 
