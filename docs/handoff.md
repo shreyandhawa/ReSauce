@@ -31,6 +31,24 @@ This replaces the earlier plan of a 3 to 4 hour time box. No "§0 time box" exis
 
 ---
 
+## 2026-11-08: Step 6 part 1 (value conventions and locked starter kit)
+
+- **Status:** the three open format items from Step 5a are settled and the locked repo's starter kit exists. **The generator was not run and the writer has not started.** No case IDs, briefs or case text exist for the locked set. `src/` and `results/` untouched; tests not run (no code under test changed).
+- **Done, ReSauce (commit `f9f76ea`):** `reference/dev-v1/README.md` has three new value conventions: 7.5 onset (`signed_difference_days` null, `difference_note` "ambiguous (7.5): see readings", each reading gives its own difference); out-of-scope trigger stated only in `case.json` or `record.json` (an evidence item with `document_id` "case.json"/"record.json", `version`, `start`, `end` null, `quote` = field and value as written; existing keys, `evaluate.py` not changed); `derivation` inside each field object, not scored. `comparison.md` §8 items 4, 5, 6, 11, 12, 13 now say "settled" (`tools/compare_answers.py`, regenerated; only §8 changed). The clinician agenda is now stated as A1–A35 plus the rule gaps 14 to 30.
+- **Done, `~/Projects/ReSauce-locked` (remote `github.com/shreyandhawa/ReSauce-locked`, branch `main`, commit "Locked repo starter kit"):** `docs/` holds `clinical-methods.md`, `data-format.md`, `dataset-plan.md` (copied unchanged) and `answer-format.md` (the dev README, adapted: SYN-5001-style examples, no dev-only files or tools, all value conventions kept). `tools/make_locked_briefs.py` (seed 20261108, SYN-5001 to SYN-5153, asserts 153 cases, 7 OOS, 59 Neg, 57 Pos, 30 Flag; optional features scaled by 153/72, numbers in its docstring). `tools/check_locked.py` (valid JSON, case IDs against `ordering.json`, evidence quotes at offsets, §9 check 14). `CLAUDE.md` for the writer, `.gitignore`. No `src/`, tests, results, dev data or other tools.
+- **Checks made:** the count assertion and the scenario parse were exercised without writing any file (153 / 7 / 59 / 57 / 30; 22 "no ICANS" cases, as plan §4.1). `check_locked.py` was tried on a throwaway fixture in the scratch folder: it failed on a wrong offset and a missing `change_reason`, and passed after both were fixed. The full generator `main()` was not run.
+- **Decisions & why:**
+  - Optional-feature numbers were scaled by 153/72 and rounded (e.g. out-of-window documents 15, normal reports 38, multi-version extras 21); the plan does not fix them, so these are [OPERATIONAL] choices, stated in the script docstring.
+  - Infusion years for locked cases are 2037 to 2042 (dev uses 2031 to 2036), so dates are new.
+  - SC-69's brief says the death is documented after Day +28 (plan §2.15: locked case), where the dev brief says inside the window.
+  - `check_locked.py` has a `--final` flag that also requires all 153 cases; without it a partly written set can pass.
+  - `data-format.md` was copied unchanged, so it still contains the example ID `SYN-0001-D01` (a format example, not case content).
+- **Next steps:** (1) the user starts a fresh Claude Code session in `~/Projects/ReSauce-locked`; the writer runs `make_locked_briefs` once and writes the batches. (2) Step 5b: blind answers for the locked set. (3) Baseline B if an API key exists; final evaluation once with `--split-name locked`. (4) Clinician review of A1–A35 and rule gaps 14 to 30.
+- **Open questions:** batch size for the writer (the kit says "as the user says"; the plan's batch size for development cases was about 17). `fill_offsets.py` is deliberately not in the kit, so the writer computes offsets itself.
+- **How to verify:** `git log -1 --stat f9f76ea`; `.venv/bin/python -m tools.compare_answers` then `git diff reference/dev-v1/comparison.md` shows no change; in `~/Projects/ReSauce-locked`: `git status` clean, `python3 -m tools.check_locked` says "Result: FAILED" only because `ordering.json` is not made yet (expected).
+
+---
+
 ## 2026-11-08: Step 5a close-out fix (blind-run notes and unclear rules)
 
 - **Status:** the real blind-run report is saved as `reference/dev-v1/independent-run-notes.md` (exactly as given). `comparison.md` §8 lists every unclear rule, one line each with batch and case ID: 13 format gaps (8 settled by a Value convention in `reference/dev-v1/README.md`, 5 open; item 6 is settled for `documented_value` but not for `difference_note`) and 17 rule gaps. `tools/compare_answers.py` produces the same §8; sections 1 to 7 of `comparison.md` are unchanged (checked with `git diff`: one changed hunk, in §8). `src/`, `clinical-methods.md`, `results/` and all answers untouched. The entry below (pipeline frozen) said the notes file was missing; that is corrected there.
