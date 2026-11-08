@@ -1,10 +1,13 @@
-"""Start the ReSauce demo app: `python -m app` (from the repository root).
+"""Start the ReSauce workstation: `python -m app` (from the repository root).
 
-By default it shows the dev and held-out results (results/dev.json, results/held_out.json)
-with the cases in data/dev-v1 and the reference answers in reference/dev-v1.
+    python -m app                          # uses the workspace folder workspace/ (created if missing)
+    python -m app --workspace <folder>     # another workspace folder inside this repository
 
-Add another split (for example the locked set, after its final evaluation) without code
-changes by giving a results file, its data folder and its reference folder, in that order:
+The workspace holds the researcher's cases, runs, audit log and exports. Synthetic data only.
+
+The Validation tab shows the stored evaluation results (results/dev.json and
+results/held_out.json by default). Add another split, for example the locked set after its
+final evaluation, by giving a results file, its data folder and its reference folder:
 
     python -m app --results results/locked.json --data <data folder> --reference <reference folder>
 
@@ -19,12 +22,15 @@ from pathlib import Path
 
 from app.api import Api
 from app.server import serve
-from app.sources import DEFAULT_SPLITS, Sources
+from app.sources import DEFAULT_SPLITS, ROOT, Sources
+from app.workspace import Workspace, WorkspaceError
+from app.workstation import Workstation
 
 
 def main(argv: list[str]) -> int:
-    parser = argparse.ArgumentParser(prog="python -m app", description="ReSauce demo app (synthetic data only).")
-    parser.add_argument("--host", default="127.0.0.1", help="address to listen on (default: this computer only)")
+    parser = argparse.ArgumentParser(prog="python -m app", description="ReSauce workstation (synthetic data only).")
+    parser.add_argument("--workspace", type=Path, default=ROOT / "workspace", metavar="FOLDER",
+                        help="the workspace folder, inside this repository (default: workspace/)")
     parser.add_argument("--port", type=int, default=8000)
     parser.add_argument("--results", action="append", default=[], type=Path, metavar="FILE",
                         help="a results file from python -m resauce.evaluate (repeatable)")
@@ -38,18 +44,18 @@ def main(argv: list[str]) -> int:
     if not (len(args.results) == len(args.data) == len(args.reference)):
         parser.error("give --results, --data and --reference the same number of times, one set per split")
     triples = ([] if args.no_defaults else list(DEFAULT_SPLITS)) + list(zip(args.results, args.data, args.reference))
-    if not triples:
-        parser.error("no splits to show")
 
     try:
+        workspace = Workspace(args.workspace if args.workspace.is_absolute() else Path.cwd() / args.workspace)
         sources = Sources(triples)
-    except ValueError as exc:
+    except (ValueError, WorkspaceError) as exc:
         print(f"Cannot start: {exc}")
         return 1
+    print(f"  workspace: {workspace.folder} ({len(workspace.case_ids())} cases)")
     for split in sources.splits:
-        print(f"  split {split.name}: {len(split.results.get('cases', []))} cases from {split.results_path.name}")
+        print(f"  validation split {split.name}: {len(split.results.get('cases', []))} cases from {split.results_path.name}")
     try:
-        serve(Api(sources), args.host, args.port)
+        serve(Api(sources), Workstation(workspace, sources), args.port)
     except OSError as exc:
         print(f"Could not start on port {args.port}: {exc}. Try another port, e.g. --port 8001.")
         return 1

@@ -21,3 +21,6 @@ node_modules/
 
 # The built demo web page is committed so the app runs with Python only (rebuild: cd web && npm run build).
 !web/dist/
+
+# The researcher workspace (cases, runs, audit log, exports); never committed.
+workspace/
