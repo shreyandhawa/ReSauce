@@ -12,6 +12,23 @@ Each entry covers:
 
 ---
 
+## 2026-11-08: Evaluation re-run after scoring fix (pipeline unchanged)
+
+**Bug:** `reference_class()` in `src/resauce/evaluate.py` returned None for reference categories written with a reason, e.g. "7.5 (attribution)". Those fields were silently left out of the class counts and exact agreement. Fix: score by the leading code (full text kept in the per-case output); a reference category that is not 7.1 to 7.9 (in-scope cases) is now a reference error, listed in the report. A first version of the fix wrongly rejected "out of scope (…)" categories; fixed in a second commit. Two focused tests plus one for that case. Engine, extractor, phrases and Baseline A unchanged.
+
+**Numbers changed (old → new, from results/report.md), held-out split (the other split's tables did not change):**
+- Review-class fields, ReSauce onset / max_grade / combined: 8 / 5 / 13 → 11 / 7 / 18. Baseline A: same.
+- Baseline A review results: onset 5 → 8, max_grade 3 → 4, combined 8 → 12.
+- ReSauce exact agreement, all fields: onset 0.78 (38/49) → 0.84 (41/49); max_grade 0.84 (41/49) → 0.88 (43/49); combined 0.81 (79/98) → 0.86 (84/98).
+- Reference category 7.5 fields: 2 → 7 (of which a review flag: 1 → 6).
+- Unchanged: precision, recall, F1, detections, misses, false alerts, positive-only agreement, out-of-scope results.
+
+Not checked: which split each table above belongs to was read from line positions in the report; confirm against results/report.md. Results are on synthetic data with unverified intended answers, not clinical validation.
+
+**Next steps:** none from this fix.
+
+---
+
 ## 2026-11-08: Milestone 4 (reduced), session 5 (Baseline A and evaluation runner)
 
 - **Status:** Baseline A (`src/resauce/baseline_a.py`) and the evaluation runner (`src/resauce/evaluate.py`, `python -m resauce.evaluate`) are built. The official run happened once, after the code commit `aca0884` was pushed. Results are in `results/report.md`, `results/dev.json` and `results/held_out.json`. `pytest`: 163 passed. I opened only the 20 dev cases and their intended answers. Held-out cases and answers were touched only by the runner; I did not open `results/held_out.json`, only `results/report.md`. Nothing in the engine, extractor, phrase lists or Baseline A was changed after the held-out numbers appeared.
