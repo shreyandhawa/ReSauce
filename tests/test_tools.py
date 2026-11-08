@@ -197,8 +197,17 @@ def test_show_case_prints_documents_in_time_order_without_answers():
 # ---------------------------------------------------------------------------
 
 
+# evaluate.py is the evaluation runner (evaluation-spec §3): the one module allowed to read
+# reference answers (reference/dev-v1/README.md). No other module may import it.
+EVALUATION_MODULE = "evaluate.py"
+
+
 @pytest.mark.parametrize("path", sorted((ROOT / "src" / "resauce").glob("*.py")), ids=lambda p: p.name)
 def test_core_does_not_use_tools_or_reference(path):
     source = path.read_text(encoding="utf-8")
     assert "import tools" not in source and "from tools" not in source
+    if path.name == EVALUATION_MODULE:
+        return
     assert "reference/" not in source and '"reference"' not in source
+    assert "resauce.evaluate" not in source and "import evaluate" not in source
+    assert "from resauce import evaluate" not in source

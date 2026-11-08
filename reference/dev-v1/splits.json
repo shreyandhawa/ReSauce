@@ -1,0 +1,11 @@
+{
+  "dataset_id": "SYN-DS-DEV-V1",
+  "source": "docs/evaluation-spec.md §1",
+  "dev": [
+    "SYN-0001", "SYN-0003", "SYN-0006", "SYN-0008", "SYN-0010",
+    "SYN-0013", "SYN-0017", "SYN-0021", "SYN-0026", "SYN-0027",
+    "SYN-0037", "SYN-0038", "SYN-0043", "SYN-0044", "SYN-0047",
+    "SYN-0054", "SYN-0056", "SYN-0065", "SYN-0067", "SYN-0070"
+  ],
+  "held_out_rule": "every other case folder in data/dev-v1/cases (in-repo, not sealed)"
+}
