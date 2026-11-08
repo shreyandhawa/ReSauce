@@ -1,0 +1,86 @@
+{
+  "answer_format": "0.1-provisional",
+  "case_id": "SYN-0042",
+  "answer_kind": "independent",
+  "status": "not clinician-verified",
+  "provenance": {
+    "clinical_methods_version": "v0.4.1",
+    "data_format_version": "v0.1.2",
+    "dataset_id": "SYN-DS-DEV-V1",
+    "dataset_version": "1.0.0",
+    "date_written": "2026-11-08"
+  },
+  "out_of_scope": null,
+  "fields": {
+    "onset": {
+      "category": "7.1",
+      "record_value": "2035-03-23",
+      "documented_value": {
+        "date": "2035-03-25",
+        "study_day": 6
+      },
+      "signed_difference_days": -2,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [
+        {
+          "role": "earliest qualifying finding (ICE 8/10, Grade 1)",
+          "document_id": "SYN-0042-D02",
+          "version": 1,
+          "quote": "ICE 8/10 at 08:20 on 25 Mar"
+        },
+        {
+          "role": "formal Grade 0 assessment on the record's onset date (Day +4)",
+          "document_id": "SYN-0042-D01",
+          "version": 1,
+          "quote": "ICE 10/10 at 09:50, alert."
+        },
+        {
+          "role": "excluded symptom (tremor) on the record's onset date",
+          "document_id": "SYN-0042-D01",
+          "version": 1,
+          "quote": "Fine tremor of both hands noted at 09:50."
+        }
+      ],
+      "record_history": null
+    },
+    "max_grade": {
+      "category": "7.7",
+      "record_value": 2,
+      "documented_value": {
+        "grade": 2
+      },
+      "signed_difference_days": null,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [
+        {
+          "role": "ICE 5/10 (Grade 2)",
+          "document_id": "SYN-0042-D03",
+          "version": 1,
+          "quote": "ICE 5/10 at 12:40"
+        },
+        {
+          "role": "awakens to voice (Grade 2)",
+          "document_id": "SYN-0042-D03",
+          "version": 1,
+          "quote": "Awakens to voice."
+        },
+        {
+          "role": "no seizure or focal deficit",
+          "document_id": "SYN-0042-D03",
+          "version": 1,
+          "quote": "No focal motor deficit, no seizures."
+        }
+      ],
+      "record_history": null
+    }
+  },
+  "derivation": {
+    "onset": "Onset (6.2, 7.1, A24): the first qualifying finding is ICE 8/10 on 2035-03-25 (Day +6). The record's date (Day +4) is earlier, and a formal Grade 0 assessment (ICE 10/10, alert) on that date refutes it. The tremor that day is excluded (A11) but A24 says the Grade 0 assessment wins, so 7.1, signed difference -2, with the flag 'record date matches an excluded or sub-threshold symptom'.",
+    "max_grade": "Max grade (3.3, 7.7): Grade 2 (ICE 5/10, awakens to voice) on Day +7 equals the record, so 7.7."
+  },
+  "ambiguity_notes": [
+    "The record onset was probably set from the Day +4 tremor (A18/A24). ReSauce judges only by what the documents show on that date and does not guess the reason. Without the Day +4 ICE 10/10 this onset would be 7.4. Tocilizumab and dexamethasone are treatment (A35)."
+  ]
+}

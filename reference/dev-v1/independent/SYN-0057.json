@@ -1,0 +1,82 @@
+{
+  "answer_format": "0.1-provisional",
+  "case_id": "SYN-0057",
+  "answer_kind": "independent",
+  "status": "not clinician-verified",
+  "provenance": {
+    "clinical_methods_version": "v0.4.1",
+    "data_format_version": "v0.1.2",
+    "date_written": "2026-11-08"
+  },
+  "out_of_scope": null,
+  "fields": {
+    "onset": {
+      "category": "7.7",
+      "record_value": "2036-10-18",
+      "documented_value": {
+        "date": "2036-10-18",
+        "study_day": 4
+      },
+      "signed_difference_days": 0,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [
+        {
+          "role": "earliest qualifying finding (ICE 8/10 = Grade 1), Day 4",
+          "document_id": "SYN-0057-D02",
+          "version": 1,
+          "quote": "Neuro check 18 Oct at 16:15: ICE 8/10 (orientation 3/4, attention 0/1, other items full)."
+        },
+        {
+          "role": "earlier ICE 10/10 (Day 2)",
+          "document_id": "SYN-0057-D01",
+          "version": 1,
+          "quote": "ICE 10/10 at 09:50, alert."
+        }
+      ],
+      "record_history": null
+    },
+    "max_grade": {
+      "category": "7.8",
+      "record_value": null,
+      "documented_value": {
+        "grade": 2
+      },
+      "signed_difference_days": null,
+      "difference_note": "record reports ICANS but max_grade is empty",
+      "readings": [],
+      "evidence": [
+        {
+          "role": "highest grade: ICE 6/10 (Grade 2), Day 5",
+          "document_id": "SYN-0057-D03",
+          "version": 1,
+          "quote": "ICE 6/10 at 09:00 on 19 Oct (orientation 2/4, naming 2/3, commands 1/1, writing 0/1, attention 1/1)."
+        },
+        {
+          "role": "excluded symptom (headache), not used",
+          "document_id": "SYN-0057-D03",
+          "version": 1,
+          "quote": "Mild headache, acetaminophen given."
+        },
+        {
+          "role": "EEG normal",
+          "document_id": "SYN-0057-D04",
+          "version": 1,
+          "quote": "Impression: normal EEG."
+        },
+        {
+          "role": "discharge summary: lowest ICE 6/10",
+          "document_id": "SYN-0057-D08",
+          "version": 1,
+          "quote": "lowest ICE 6/10 on 19 Oct"
+        }
+      ],
+      "record_history": null
+    }
+  },
+  "derivation": {
+    "onset": "Section 6.2: earliest qualifying observation is ICE 8/10 on 18 Oct = Day 4 (Grade 1). Record onset 2036-10-18 equals it, so 7.7 (the empty grade does not affect the onset comparison, A20).",
+    "max_grade": "Section 7.8 / A20: the record reports ICANS but max_grade is null, so the field is 7.8 and the documentation-derived grade is reported. ICE 6/10 (Grade 2) is the worst finding; headache is excluded; no seizure, motor or consciousness criterion beyond 'awake'."
+  },
+  "ambiguity_notes": "The record has no grade, so there is nothing to compare; 7.8 is reported with documented Grade 2. No ambiguity in the documents: all ICE totals are stated and all consciousness descriptions are 'awake'. record_value is null (empty), not zero."
+}

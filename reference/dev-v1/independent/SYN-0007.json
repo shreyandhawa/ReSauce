@@ -1,0 +1,93 @@
+{
+  "answer_format": "0.1-provisional",
+  "case_id": "SYN-0007",
+  "answer_kind": "independent",
+  "status": "not clinician-verified",
+  "provenance": {
+    "clinical_methods_version": "0.4.1",
+    "data_format_version": "0.1.2",
+    "dataset_id": "SYN-DS-DEV-V1",
+    "dataset_version": "1.0.0",
+    "date_written": "2026-11-08"
+  },
+  "out_of_scope": null,
+  "fields": {
+    "onset": {
+      "category": "7.4",
+      "record_value": null,
+      "documented_value": "none found",
+      "signed_difference_days": null,
+      "difference_note": "record has no onset; no documented onset and no formal Grade 0 assessment",
+      "readings": [],
+      "evidence": [
+        {
+          "role": "ungradeable neurological symptom ('confused', no ICE or consciousness level), Day +5",
+          "document_id": "SYN-0007-D03",
+          "version": 1,
+          "quote": "Pt confused this AM per RN."
+        },
+        {
+          "role": "no seizure/focal deficit; reassessment planned but no ICE total anywhere",
+          "document_id": "SYN-0007-D03",
+          "version": 1,
+          "quote": "Reassess tomorrow. No sz, no focal def."
+        },
+        {
+          "role": "narrative normal exam only: not a formal Grade 0 assessment (A17)",
+          "document_id": "SYN-0007-D04",
+          "version": 1,
+          "quote": "A&Ox4, non-focal. Eating, mobilising with PT."
+        },
+        {
+          "role": "narrative normal exam only",
+          "document_id": "SYN-0007-D05",
+          "version": 1,
+          "quote": "Neuro exam non-focal at discharge."
+        }
+      ],
+      "record_history": null
+    },
+    "max_grade": {
+      "category": "7.4",
+      "record_value": null,
+      "documented_value": {
+        "undetermined": "no ICE total or other gradeable assessment anywhere in the window, so 'no ICANS' cannot be confirmed"
+      },
+      "signed_difference_days": null,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [
+        {
+          "role": "ungradeable neurological symptom ('confused', no ICE or consciousness level), Day +5",
+          "document_id": "SYN-0007-D03",
+          "version": 1,
+          "quote": "Pt confused this AM per RN."
+        },
+        {
+          "role": "no seizure/focal deficit; reassessment planned but no ICE total anywhere",
+          "document_id": "SYN-0007-D03",
+          "version": 1,
+          "quote": "Reassess tomorrow. No sz, no focal def."
+        },
+        {
+          "role": "narrative normal exam only: not a formal Grade 0 assessment (A17)",
+          "document_id": "SYN-0007-D04",
+          "version": 1,
+          "quote": "A&Ox4, non-focal. Eating, mobilising with PT."
+        },
+        {
+          "role": "narrative normal exam only",
+          "document_id": "SYN-0007-D05",
+          "version": 1,
+          "quote": "Neuro exam non-focal at discharge."
+        }
+      ],
+      "record_history": null
+    }
+  },
+  "derivation": {
+    "onset": "Record reports no ICANS and there is no qualifying finding. Section 7.9(b) (A21) gives 7.7 only with at least one formal Grade 0 assessment (ICE 10/10, section 3.3); none exists. Narrative normal notes do not count (A17), so 7.4.",
+    "max_grade": "Same rule: both fields are 7.4 together when no formal Grade 0 assessment exists (section 7.9(b)). Missing is not absent (section 7.4)."
+  },
+  "ambiguity_notes": "'Confused this AM' on Day +5 is an ungradeable neurological symptom (section 7 intro): it neither counts as a qualifying finding nor blocks 7.7 by itself; it is listed in the case-level flag. The 7.4 result rests only on the absence of any formal Grade 0 assessment. If the reviewer decided narrative normal notes count (A17), the answer would change to 7.7. No 'not assessable' statement exists."
+}

@@ -1,0 +1,104 @@
+{
+  "answer_format": "0.1-provisional",
+  "case_id": "SYN-0056",
+  "answer_kind": "independent",
+  "status": "not clinician-verified",
+  "provenance": {
+    "clinical_methods_version": "v0.4.1",
+    "data_format_version": "v0.1.2",
+    "date_written": "2026-11-08"
+  },
+  "out_of_scope": null,
+  "fields": {
+    "onset": {
+      "category": "7.7",
+      "record_value": "2036-02-10",
+      "documented_value": {
+        "date": "2036-02-10",
+        "study_day": 3
+      },
+      "signed_difference_days": 0,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [
+        {
+          "role": "earliest qualifying finding (ICE 8/10 = Grade 1), Day 3",
+          "document_id": "SYN-0056-D01",
+          "version": 1,
+          "quote": "At 21:05 ICE was 8/10 (missed the month, could not write a sentence)."
+        },
+        {
+          "role": "tocilizumab and acetaminophen are treatment, not competing causes",
+          "document_id": "SYN-0056-D01",
+          "version": 1,
+          "quote": "Pt had fever 38.6 at 15:00, given acetaminophen; tocilizumab given 16:10 per oncolgy."
+        },
+        {
+          "role": "discharge summary corroborates (documented before the previous record version)",
+          "document_id": "SYN-0056-D04",
+          "version": 2,
+          "quote": "ICE fell to 8/10 on 2036-02-10 and 5/10 on 2036-02-12."
+        }
+      ],
+      "record_history": {
+        "a": true,
+        "b": true,
+        "c": false,
+        "explanation": "Onset changed from 2036-02-12 (v1) to 2036-02-10 (v2), reason 'Data correction'. The current value Day 3 equals the documented onset, so (b) holds. Condition (c) fails: the supporting documents (nursing note documented 2036-02-10T22:30; discharge summary v1 2036-02-16T13:00 and v2 2036-02-16T16:20) were all documented before v1 was recorded (2036-02-22T09:40), so none appeared in the interval between the previous record version and the change. Result 7.7 with flag 'revision without new documentation'."
+      }
+    },
+    "max_grade": {
+      "category": "7.3",
+      "record_value": 3,
+      "documented_value": {
+        "grade": 2
+      },
+      "signed_difference_days": null,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [
+        {
+          "role": "highest grade: ICE 5/10 (Grade 2), Day 5",
+          "document_id": "SYN-0056-D02",
+          "version": 1,
+          "quote": "ICE at 08:15 was 5/10 (orientation 2, naming 1, two-finger command 1, sentence 0, counting 1)."
+        },
+        {
+          "role": "awakens to voice (Grade 2); no sedatives",
+          "document_id": "SYN-0056-D02",
+          "version": 1,
+          "quote": "Asleep when I entered; awakens to voice and remained awake for the rest of the exam."
+        },
+        {
+          "role": "no sedating drugs",
+          "document_id": "SYN-0056-D02",
+          "version": 1,
+          "quote": "No sedating medications in the last 24 hours."
+        },
+        {
+          "role": "no seizure on EEG; slowing/FIRDA are not seizures",
+          "document_id": "SYN-0056-D03",
+          "version": 1,
+          "quote": "No electrographic seizures."
+        },
+        {
+          "role": "no motor deficit or seizure on exam",
+          "document_id": "SYN-0056-D02",
+          "version": 1,
+          "quote": "Strength equal on both sides, no focal deficits, no seizure activity seen."
+        }
+      ],
+      "record_history": {
+        "a": false,
+        "b": false,
+        "c": null,
+        "explanation": "Max grade was 3 in both versions (no value change), so 7.6 cannot apply. The current value is higher than the documents support, so 7.3 applies."
+      }
+    }
+  },
+  "derivation": {
+    "onset": "Section 6.2: earliest qualifying observation is ICE 8/10 at 21:05 on 2036-02-10 = Day 3 (Grade 1). Current record Day 3 agrees. Section 7.6 / A28: the value changed and agrees, but no supporting document version was documented after the previous record version's recorded_at (2036-02-22), so (c) fails: 7.7 with 'revision without new documentation'.",
+    "max_grade": "Section 3.3 / 3.4: ICE 5/10 and 'awakens to voice' are Grade 2. EEG slowing with FIRDA is not a seizure (section 3.3 notes); no seizure, motor or imaging finding. Highest supported grade is 2, below the record's Grade 3, so 7.3 (A8). No documented 'not assessable' period, so not 7.4."
+  },
+  "ambiguity_notes": "The record Grade 3 has no documentary support: the EEG was requested to look for non-convulsive seizures and found none, which is a negated finding. Acyclovir and levetiracetam appear only in the discharge medication list (no documented infection or seizure), so they are not competing causes. The discharge summary has a v2 that only corrects the acyclovir dose; it does not affect either field. The signed v2 text is cited for the onset corroboration because v2 is current."
+}

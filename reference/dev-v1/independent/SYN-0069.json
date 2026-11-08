@@ -1,0 +1,105 @@
+{
+  "answer_format": "0.1-provisional",
+  "case_id": "SYN-0069",
+  "answer_kind": "independent",
+  "status": "not clinician-verified",
+  "provenance": {
+    "clinical_methods_version": "0.4.1",
+    "data_format_version": "0.1.2",
+    "date": "2026-11-08",
+    "model": "claude-sonnet-5-5 (Sonnet 5.5)"
+  },
+  "out_of_scope": null,
+  "fields": {
+    "onset": {
+      "category": "7.7",
+      "record_value": "2034-04-28",
+      "documented_value": {
+        "date": "2034-04-28",
+        "study_day": 3
+      },
+      "signed_difference_days": 0,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [
+        {
+          "role": "earliest qualifying finding, interpreter-assisted: ICE 8 = Grade 1 (Day 3)",
+          "document_id": "SYN-0069-D03",
+          "version": 1,
+          "quote": "ICE with telephone interpreter at 08:45: 8/10 (wrong month, unable to finish the sentence)."
+        },
+        {
+          "role": "no competing cause",
+          "document_id": "SYN-0069-D03",
+          "version": 1,
+          "quote": "No sedating medicines in the last day."
+        },
+        {
+          "role": "formal Grade 0 on Day 2",
+          "document_id": "SYN-0069-D02",
+          "version": 1,
+          "quote": "ICE at 20:30 through the video interpreter: 10/10."
+        }
+      ],
+      "record_history": {
+        "a": true,
+        "b": true,
+        "c": false,
+        "explanation": "Onset changed 2034-04-29 (v1) to 2034-04-28 (v2, recorded 2034-05-16T14:10). The current value agrees with the documents (a, b true), but no supporting document has documented_at between 2034-05-11T10:20 and 2034-05-16T14:10 (the supporting ICE note SYN-0069-D03 is documented 2034-04-28T09:20), so (c) fails: 7.7 with the flag 'revision without new documentation', not 7.6."
+      },
+      "derivation": "The earliest qualifying finding is the interpreter-assisted ICE 8/10 on 2034-04-28 (Day 3), unaffected by the language barrier. Current record onset equals it. The revision fails condition (c) (A28), so 7.7."
+    },
+    "max_grade": {
+      "category": "7.5",
+      "record_value": 1,
+      "documented_value": {
+        "range": [
+          1,
+          2
+        ]
+      },
+      "signed_difference_days": null,
+      "difference_note": null,
+      "readings": [
+        {
+          "reading": "ICE 4/10 on 2034-04-29 taken at face value (Grade 2)",
+          "value": 2,
+          "category": "7.2"
+        },
+        {
+          "reading": "ICE 4/10 set aside because of the documented language barrier; highest other grade is 1",
+          "value": 1,
+          "category": "7.7"
+        }
+      ],
+      "evidence": [
+        {
+          "role": "ICE 4 = Grade 2 if valid; documented language barrier (A10)",
+          "document_id": "SYN-0069-D04",
+          "version": 1,
+          "quote": "ICE 4/10 at 14:20; language barrier: interpreter line not reached after two attempts, ICE given in English, which the patient speaks only a little."
+        },
+        {
+          "role": "Grade 1 with interpreter",
+          "document_id": "SYN-0069-D03",
+          "version": 1,
+          "quote": "ICE with telephone interpreter at 08:45: 8/10 (wrong month, unable to finish the sentence)."
+        },
+        {
+          "role": "Grade 1 with interpreter",
+          "document_id": "SYN-0069-D06",
+          "version": 1,
+          "quote": "Examined at 10:00 with an in-person interpreter: ICE 9/10 (sentence incomplete)."
+        }
+      ],
+      "record_history": {
+        "a": false,
+        "b": null,
+        "c": null,
+        "explanation": "max_grade unchanged (1) between v1 and v2."
+      },
+      "derivation": "The only Grade 2 evidence is an ICE given in English to a patient with limited English, with a documented language barrier, so the low ICE is ambiguous (A10). Face value gives Grade 2 (7.2 against record 1); setting it aside gives Grade 1 (7.7). The categories differ, so 7.5, reason assessment barrier (section 7.5, A23)."
+    }
+  },
+  "ambiguity_notes": "Reason: assessment barrier (A10, A23). Reading A: ICE 4/10 counts, Grade 2, record Grade 1 is lower, 7.2. Reading B: ICE 4 not valid, highest valid grade 1, 7.7. The ICE 4 is the only Grade 2 evidence; the interpreter-assisted ICEs on 04-28 (8) and 05-01 (9) are Grade 1. Onset is the same under both readings (2034-04-28), so onset is 7.7. The documented_value range 1-2 spans the two readings. MRI normal."
+}

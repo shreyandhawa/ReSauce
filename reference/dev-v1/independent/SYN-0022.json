@@ -1,0 +1,76 @@
+{
+  "answer_format": "0.1-provisional",
+  "case_id": "SYN-0022",
+  "answer_kind": "independent",
+  "status": "not clinician-verified",
+  "provenance": {
+    "clinical_methods_version": "v0.4.1",
+    "data_format_version": "v0.1.2",
+    "date": "2026-11-08"
+  },
+  "out_of_scope": null,
+  "fields": {
+    "onset": {
+      "category": "7.7",
+      "record_value": "2034-02-13",
+      "documented_value": {
+        "date": "2034-02-13",
+        "study_day": 4
+      },
+      "signed_difference_days": 0,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [
+        {
+          "role": "first Grade >=1 finding (ICE 9/10)",
+          "document_id": "SYN-0022-D04",
+          "version": 1,
+          "quote": "the ICE at 08:50 was 9/10, losing only the written sentence"
+        },
+        {
+          "role": "ICE 10/10 on Day +2",
+          "document_id": "SYN-0022-D03",
+          "version": 1,
+          "quote": "ICE at 09:15: 10/10; no abnormal neurological signs."
+        }
+      ],
+      "record_history": null
+    },
+    "max_grade": {
+      "category": "7.2",
+      "record_value": 2,
+      "documented_value": {
+        "grade": 3
+      },
+      "signed_difference_days": null,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [
+        {
+          "role": "witnessed generalized seizure, resolved rapidly, in signed addendum (current version)",
+          "document_id": "SYN-0022-D06",
+          "version": 2,
+          "quote": "at 15:10 on 2034-02-15 I witnessed a generalized tonic-clonic seizure lasting about 40 seconds, which stopped without treatment"
+        },
+        {
+          "role": "no sedating medicine",
+          "document_id": "SYN-0022-D06",
+          "version": 2,
+          "quote": "no sedating medicine has been given during this admission"
+        },
+        {
+          "role": "ICE 6/10 (Grade 2) on Day +6",
+          "document_id": "SYN-0022-D06",
+          "version": 2,
+          "quote": "the ICE was 6/10"
+        }
+      ],
+      "record_history": null
+    }
+  },
+  "derivation": {
+    "onset": "Section 6.2: earliest Grade >=1 finding is ICE 9/10 on Day +4 (2034-02-13), equal to the record date, so 7.7.",
+    "max_grade": "Current signed version v2 of the Day +6 note (section 6.3) adds a witnessed generalised seizure lasting about 40 seconds that stopped without treatment, with return to baseline: Table 6 Grade 3 (clinical seizure that resolves rapidly), not Grade 4 (not prolonged, no repetition). Record Grade 2 is lower than the proven Grade 3, so 7.2."
+  },
+  "ambiguity_notes": "The record Grade 2 matches the superseded v1 of the Day +6 note (ICE 6/10, no seizure) but not the current v2, which would earn the 'superseded-version match' flag. The seizure is documented only in the addendum. Levetiracetam prophylaxis and dexamethasone are not competing causes (A35); Crohn's disease and the Day +10 hand tremor (excluded, section 4.2) are distractors. The addendum reports 'back to the pre-seizure state within 20 minutes', which is rapid resolution, not Grade 4."
+}

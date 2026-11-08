@@ -1,0 +1,98 @@
+{
+  "answer_format": "0.1-provisional",
+  "case_id": "SYN-0029",
+  "answer_kind": "independent",
+  "status": "not clinician-verified",
+  "provenance": {
+    "clinical_methods_version": "v0.4.1",
+    "data_format_version": "v0.1.2",
+    "dataset_id": "SYN-DS-DEV-V1",
+    "dataset_version": "1.0.0",
+    "date_written": "2026-11-08"
+  },
+  "out_of_scope": null,
+  "fields": {
+    "onset": {
+      "category": "7.7",
+      "record_value": "2033-12-18",
+      "documented_value": {
+        "date": "2033-12-18",
+        "study_day": 5
+      },
+      "signed_difference_days": 0,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [
+        {
+          "role": "first Grade >=1 finding: ICE 8/10, Day +5",
+          "document_id": "SYN-0029-D02",
+          "version": 1,
+          "quote": "ICE 8/10 at 15:10 on 18 Dec"
+        },
+        {
+          "role": "previous ICE, formal Grade 0",
+          "document_id": "SYN-0029-D01",
+          "version": 1,
+          "quote": "ICE 10/10 at 09:45."
+        }
+      ],
+      "record_history": null
+    },
+    "max_grade": {
+      "category": "7.3",
+      "record_value": 3,
+      "documented_value": {
+        "grade": 2
+      },
+      "signed_difference_days": null,
+      "difference_note": null,
+      "readings": [
+        {
+          "reading": "Reduced arousal on 20 Dec excluded: clinician attributes it to hydromorphone, not ICANS (A9)",
+          "value": {
+            "grade": 2
+          },
+          "category": "7.3"
+        }
+      ],
+      "evidence": [
+        {
+          "role": "ICE 5/10 = Grade 2, highest supported",
+          "document_id": "SYN-0029-D03",
+          "version": 1,
+          "quote": "ICE 5/10 at 10:10 on 19 Dec"
+        },
+        {
+          "role": "tactile-only arousal finding (would be Grade 3)",
+          "document_id": "SYN-0029-D04",
+          "version": 1,
+          "quote": "the patient opens eyes only when the shoulder is gently shaken"
+        },
+        {
+          "role": "opioid given before the finding",
+          "document_id": "SYN-0029-D04",
+          "version": 1,
+          "quote": "hydromorphone PCA started at 21:00 on 19 Dec for mucositis pain"
+        },
+        {
+          "role": "clinician attribution to another cause",
+          "document_id": "SYN-0029-D05",
+          "version": 1,
+          "quote": "The reduced arousal found at 06:30 is attributed to the hydromorphone PCA started on 19 Dec, not to ICANS."
+        },
+        {
+          "role": "later ICE, Grade 1",
+          "document_id": "SYN-0029-D06",
+          "version": 1,
+          "quote": "= 7/10"
+        }
+      ],
+      "record_history": null
+    }
+  },
+  "derivation": {
+    "onset": "First qualifying finding is ICE 8/10 on 2033-12-18 (Day +5) (§6.2). Record equals it: 7.7.",
+    "max_grade": "The 20 Dec tactile-only arousal would be Grade 3 (Table 6), but opioid sedation is documented and the attending explicitly attributes it to hydromorphone, not ICANS (§3.4, A9, A35). It is not a qualifying finding. Highest supported grade is 2 (ICE 5/10 on 19 Dec). Record Grade 3 is higher, no documented 'not assessable' period: 7.3 (§7.3)."
+  },
+  "ambiguity_notes": "Because a clinician statement attributes the finding to another cause, the 7.5 attribution reason (which requires that no statement attributes it either way) does not apply. If the statement were disregarded the grade would be 3 and the record would match (7.7), so this case depends on A9. No not-assessable period documented, so 7.3 and not 7.4. Oral mucositis is not a neurological finding."
+}

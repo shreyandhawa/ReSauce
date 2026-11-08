@@ -1,0 +1,95 @@
+{
+  "answer_format": "0.1-provisional",
+  "case_id": "SYN-0062",
+  "answer_kind": "independent",
+  "status": "not clinician-verified",
+  "provenance": {
+    "clinical_methods_version": "0.4.1",
+    "data_format_version": "0.1.2",
+    "date": "2026-11-08",
+    "model": "claude-sonnet-5-5 (Sonnet 5.5)"
+  },
+  "out_of_scope": null,
+  "fields": {
+    "onset": {
+      "category": "7.7",
+      "record_value": "2034-01-29",
+      "documented_value": {
+        "date": "2034-01-29",
+        "study_day": 4
+      },
+      "signed_difference_days": 0,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [
+        {
+          "role": "formal Grade 0 on Day 2, before onset",
+          "document_id": "SYN-0062-D01",
+          "version": 1,
+          "quote": "ICE 10/10 at 09:30"
+        },
+        {
+          "role": "earliest qualifying finding: ICE 8 = Grade 1 (Day 4)",
+          "document_id": "SYN-0062-D02",
+          "version": 1,
+          "quote": "ICE 8/10 at 14:00 on 29 Jan"
+        },
+        {
+          "role": "CRS treatment, not a competing cause (A35)",
+          "document_id": "SYN-0062-D01",
+          "version": 1,
+          "quote": "tocilizumab given at 06:10"
+        }
+      ],
+      "record_history": null,
+      "derivation": "First Grade 1 criterion is ICE 8/10 on 29 Jan (Day 4); the tocilizumab on Day 2 is CRS treatment and not a competing cause (A35). Record onset 2034-01-29 equals it (7.7)."
+    },
+    "max_grade": {
+      "category": "7.2",
+      "record_value": 2,
+      "documented_value": {
+        "range": [
+          3,
+          4
+        ]
+      },
+      "signed_difference_days": null,
+      "difference_note": null,
+      "readings": [
+        {
+          "reading": "ICE 0 as Grade 3 (awake)",
+          "value": 3,
+          "category": "7.2"
+        },
+        {
+          "reading": "ICE 0 as Grade 4 (unarousable)",
+          "value": 4,
+          "category": "7.2"
+        }
+      ],
+      "evidence": [
+        {
+          "role": "ICE 0 on 31 Jan with no consciousness information",
+          "document_id": "SYN-0062-D04",
+          "version": 1,
+          "quote": "Neuro chek 31 Jan at 09:45: ICE 0/10."
+        },
+        {
+          "role": "physician note of the same ICE 0; no consciousness level given",
+          "document_id": "SYN-0062-D05",
+          "version": 1,
+          "quote": "Called about ICE 0/10 at 09:45 on 31 Jan."
+        },
+        {
+          "role": "Grade 2 on Day 5 (lower than the ICE 0 day)",
+          "document_id": "SYN-0062-D03",
+          "version": 1,
+          "quote": "ICE 5/10 at 09:20"
+        }
+      ],
+      "record_history": null,
+      "derivation": "ICE 0/10 on 31 Jan has no consciousness information anywhere on that day, so the documented grade is the range 3-4 (section 4.1, A33). The record says Grade 2, below the whole range, so the documents prove a higher grade: 7.2."
+    }
+  },
+  "ambiguity_notes": "Grade: ICE 0/10 on 31 Jan with no documentation of wakefulness or unarousability, so range 3-4 (A33). Record Grade 2 is below both ends, so both readings give 7.2 and the category is 7.2, not 7.5 (section 7.5 condition). Tremor on 01 Feb is an excluded symptom. Tocilizumab and dexamethasone are treatments, not competing causes."
+}

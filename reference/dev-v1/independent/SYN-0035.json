@@ -1,0 +1,66 @@
+{
+  "answer_format": "0.1-provisional",
+  "case_id": "SYN-0035",
+  "answer_kind": "independent",
+  "status": "not clinician-verified",
+  "provenance": {
+    "clinical_methods_version": "v0.4.1",
+    "data_format_version": "v0.1.2",
+    "dataset_id": "SYN-DS-DEV-V1",
+    "dataset_version": "1.0.0",
+    "date_written": "2026-11-08"
+  },
+  "out_of_scope": null,
+  "fields": {
+    "onset": {
+      "category": "7.8",
+      "record_value": null,
+      "documented_value": {
+        "date": "2033-11-16",
+        "study_day": 5
+      },
+      "signed_difference_days": null,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [
+        {
+          "role": "earliest qualifying finding: ICE 8/10, Day +5",
+          "document_id": "SYN-0035-D02",
+          "version": 1,
+          "quote": "ICE 8/10 at 15:00 on 16 Nov (orientation 3/4, attention 0/1, rest complete)"
+        },
+        {
+          "role": "previous formal Grade 0",
+          "document_id": "SYN-0035-D01",
+          "version": 1,
+          "quote": "ICE 10/10 at 10:00."
+        }
+      ],
+      "record_history": null
+    },
+    "max_grade": {
+      "category": "7.7",
+      "record_value": 2,
+      "documented_value": {
+        "grade": 2
+      },
+      "signed_difference_days": null,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [
+        {
+          "role": "ICE 5/10 and awakens to voice = Grade 2",
+          "document_id": "SYN-0035-D03",
+          "version": 1,
+          "quote": "ICE 5/10 at 11:10 (orientation 1/4, naming 2/3, commands 1/1, writing 0/1, attention 1/1). Awakens to voice."
+        }
+      ],
+      "record_history": null
+    }
+  },
+  "derivation": {
+    "onset": "The record reports ICANS but the onset date is empty: 7.8 (§7.8, A20). Documentation-derived onset is reported alongside: ICE 8/10 on 2033-11-16 (Day +5). No signed difference.",
+    "max_grade": "Highest supported grade is 2 (ICE 5/10, awakens to voice). The record's Grade 2 is filled and equals it: 7.7 (§7.8: the other field is compared normally)."
+  },
+  "ambiguity_notes": "The unsigned dietitian note (SYN-0035-D04) is not used (A27) and is irrelevant anyway. Hand tremor and headache are excluded (A11, §4.2)."
+}

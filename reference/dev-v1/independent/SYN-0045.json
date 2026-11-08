@@ -1,0 +1,86 @@
+{
+  "answer_format": "0.1-provisional",
+  "case_id": "SYN-0045",
+  "answer_kind": "independent",
+  "status": "not clinician-verified",
+  "provenance": {
+    "clinical_methods_version": "v0.4.1",
+    "data_format_version": "v0.1.2",
+    "dataset_id": "SYN-DS-DEV-V1",
+    "dataset_version": "1.0.0",
+    "date_written": "2026-11-08"
+  },
+  "out_of_scope": null,
+  "fields": {
+    "onset": {
+      "category": "7.7",
+      "record_value": "2035-03-27",
+      "documented_value": {
+        "date": "2035-03-27",
+        "study_day": 4
+      },
+      "signed_difference_days": 0,
+      "difference_note": "first episode onset; a documented full recovery then recurrence exists (recurrence flag, 6.5)",
+      "readings": [],
+      "evidence": [
+        {
+          "role": "earliest qualifying finding (ICE 8/10, Grade 1)",
+          "document_id": "SYN-0045-D02",
+          "version": 1,
+          "quote": "ICE score 8/10 at 20:20 on 27 Mar"
+        },
+        {
+          "role": "preceding formal Grade 0 assessment",
+          "document_id": "SYN-0045-D01",
+          "version": 1,
+          "quote": "ICE 10/10 at 09:45, alert and oriented."
+        }
+      ],
+      "record_history": null
+    },
+    "max_grade": {
+      "category": "7.7",
+      "record_value": 2,
+      "documented_value": {
+        "grade": 2
+      },
+      "signed_difference_days": null,
+      "difference_note": "highest grade occurs in the second phase, after documented full recovery",
+      "readings": [],
+      "evidence": [
+        {
+          "role": "ICE 5/10 (Grade 2), second phase",
+          "document_id": "SYN-0045-D07",
+          "version": 1,
+          "quote": "ICE 5/10 at 10:30"
+        },
+        {
+          "role": "awakens to voice (Grade 2)",
+          "document_id": "SYN-0045-D07",
+          "version": 1,
+          "quote": "Awakens to voice and then settles back to sleep."
+        },
+        {
+          "role": "documented full resolution before the recurrence",
+          "document_id": "SYN-0045-D04",
+          "version": 1,
+          "quote": "The team notes full return to baseline."
+        },
+        {
+          "role": "recurrence stated by neurologist",
+          "document_id": "SYN-0045-D07",
+          "version": 1,
+          "quote": "Impression: recurrent neurotoxicity after a documented full recovery on 30 Mar."
+        }
+      ],
+      "record_history": null
+    }
+  },
+  "derivation": {
+    "onset": "Onset (6.2, 6.5, 7.7): first Grade >=1 observation is ICE 8/10 on 2035-03-27 (Day +4), equal to the record. Under 6.5 all findings after one infusion form one episode, so the onset is the first one, 7.7.",
+    "max_grade": "Max grade (6.5, A2, A5, 7.7): the highest per-assessment grade across the window is Grade 2 (ICE 5/10, awakens to voice on Day +13, after a documented full resolution on Day +7). Equals the record, so 7.7."
+  },
+  "ambiguity_notes": [
+    "Full resolution (ICE 10/10 on 30 Mar) followed by recurrence triggers the 'recurrence' flag (6.5); the episode is not split automatically (A5). If the episodes were split, the first episode's maximum would be Grade 1, not 2, and the recorded Grade 2 would come from the second; onset would still match the first episode. This is a clinician question about A5, not a second reading under 7.5. Headache and tremor are excluded symptoms (4.2). Tocilizumab and dexamethasone are treatment (A35)."
+  ]
+}

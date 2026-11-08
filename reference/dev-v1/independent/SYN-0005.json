@@ -1,0 +1,96 @@
+{
+  "answer_format": "0.1-provisional",
+  "case_id": "SYN-0005",
+  "answer_kind": "independent",
+  "status": "not clinician-verified",
+  "provenance": {
+    "clinical_methods_version": "0.4.1",
+    "data_format_version": "0.1.2",
+    "dataset_id": "SYN-DS-DEV-V1",
+    "dataset_version": "1.0.0",
+    "date_written": "2026-11-08"
+  },
+  "out_of_scope": null,
+  "fields": {
+    "onset": {
+      "category": "7.7",
+      "record_value": "2031-09-15",
+      "documented_value": {
+        "date": "2031-09-15",
+        "study_day": 4
+      },
+      "signed_difference_days": 0,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [
+        {
+          "role": "first qualifying finding: ICE 9/10, awake (Grade 1)",
+          "document_id": "SYN-0005-D02",
+          "version": 1,
+          "quote": "ICE 9/10 at 20:45 (sentence not completed, writing item 0). Awake, alert. No sedatives given."
+        },
+        {
+          "role": "Day +2 ICE 10/10 before record date",
+          "document_id": "SYN-0005-D01",
+          "version": 1,
+          "quote": "ICE 20:00 = 10/10."
+        },
+        {
+          "role": "current version of Day +5 note also Grade 1 (ICE 8), so no earlier finding",
+          "document_id": "SYN-0005-D03",
+          "version": 2,
+          "quote": "ICE at 10:05: 8/10 (orient. 3, objects 3, cmd 1, sentence 0, tens 1)."
+        }
+      ],
+      "record_history": null
+    },
+    "max_grade": {
+      "category": "7.3",
+      "record_value": 2,
+      "documented_value": {
+        "grade": 1
+      },
+      "signed_difference_days": null,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [
+        {
+          "role": "current signed version: ICE 8/10 (Grade 1)",
+          "document_id": "SYN-0005-D03",
+          "version": 2,
+          "quote": "ICE at 10:05: 8/10 (orient. 3, objects 3, cmd 1, sentence 0, tens 1)."
+        },
+        {
+          "role": "correction explains the change",
+          "document_id": "SYN-0005-D03",
+          "version": 2,
+          "quote": "Correction: ICE scores were entered from the wrong flowsheet column; values above are the ones obtained at 10:05."
+        },
+        {
+          "role": "superseded version: ICE 5/10 (Grade 2) that matches the record, not current",
+          "document_id": "SYN-0005-D03",
+          "version": 1,
+          "quote": "ICE at 10:05: 5/10 (orient. 1, objects 2, cmd 1, sentence 0, tens 1)."
+        },
+        {
+          "role": "highest other assessment Grade 1",
+          "document_id": "SYN-0005-D02",
+          "version": 1,
+          "quote": "ICE 9/10 at 20:45"
+        },
+        {
+          "role": "no imaging abnormality, no edema",
+          "document_id": "SYN-0005-D04",
+          "version": 1,
+          "quote": "Impression: normal MRI brain."
+        }
+      ],
+      "record_history": null
+    }
+  },
+  "derivation": {
+    "onset": "Day +4 ICE 9/10 is the first Grade 1 criterion and falls on the record date: 7.7 (sections 6.2, 7.7). The v1/v2 difference in the Day +5 note does not move onset (both ICE 5 and ICE 8 are later than Day +4).",
+    "max_grade": "Section 6.3: the latest signed version (D03 v2, ICE 8/10, Grade 1) is current; the superseded ICE 5/10 (Grade 2) is not used. Highest supported grade is 1, below the record's 2, so 7.3 'not supported' (sections 7.3, A8). No 'not assessable' period, so not 7.4 (A25). The record is single-version, so 7.6 does not apply."
+  },
+  "ambiguity_notes": "The record's Grade 2 matches the superseded version (D03 v1), not the current one: extra flag 'superseded-version match' (section 6.3/7.10) with likely cause 'record not updated'. The correction is explicit that v1 values came from the wrong flowsheet column, so no genuine two-reading ambiguity is treated (section 7.5 not used)."
+}

@@ -1,0 +1,88 @@
+{
+  "answer_format": "0.1-provisional",
+  "case_id": "SYN-0055",
+  "answer_kind": "independent",
+  "status": "not clinician-verified",
+  "provenance": {
+    "clinical_methods_version": "v0.4.1",
+    "data_format_version": "v0.1.2",
+    "date_written": "2026-11-08"
+  },
+  "out_of_scope": null,
+  "fields": {
+    "onset": {
+      "category": "7.7",
+      "record_value": "2032-09-25",
+      "documented_value": {
+        "date": "2032-09-25",
+        "study_day": 4
+      },
+      "signed_difference_days": 0,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [
+        {
+          "role": "drowsiness with spontaneous awakening = Grade 1 consciousness criterion (A3), Day 4",
+          "document_id": "SYN-0055-D02",
+          "version": 1,
+          "quote": "drowsy through the afternoon, dozing off between sentences, but awakens spontaneously each time without being spoken to or touched"
+        },
+        {
+          "role": "no sedatives or competing cause",
+          "document_id": "SYN-0055-D02",
+          "version": 1,
+          "quote": "No sedatives, antihistamines or opioids given at any time this admission."
+        },
+        {
+          "role": "clinician assessment of neurotoxicity",
+          "document_id": "SYN-0055-D02",
+          "version": 1,
+          "quote": "Assessment: neurotoxicity with reduced alertness despite a normal ICE."
+        },
+        {
+          "role": "earlier formal Grade 0 assessment (Day 2)",
+          "document_id": "SYN-0055-D01",
+          "version": 1,
+          "quote": "ICE 22:00 = 10/10."
+        }
+      ],
+      "record_history": null
+    },
+    "max_grade": {
+      "category": "7.7",
+      "record_value": 1,
+      "documented_value": {
+        "grade": 1
+      },
+      "signed_difference_days": null,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [
+        {
+          "role": "ICE 9/10 (Grade 1) on Day 5",
+          "document_id": "SYN-0055-D03",
+          "version": 1,
+          "quote": "ICE 9/10 on 2032-09-26 at 09:30"
+        },
+        {
+          "role": "no steroid, resolved",
+          "document_id": "SYN-0055-D03",
+          "version": 1,
+          "quote": "resolved without steroids"
+        },
+        {
+          "role": "no focal or seizure finding",
+          "document_id": "SYN-0055-D02",
+          "version": 1,
+          "quote": "No focal weakness, no seizure activity."
+        }
+      ],
+      "record_history": null
+    }
+  },
+  "derivation": {
+    "onset": "Section 3.3 footnote / A3: 'awakens spontaneously' counts as Grade 1 when drowsiness is documented, as here, with an explicit absence of sedating drugs. This Day 4 observation (2032-09-25) is the earliest qualifying one, although ICE was 10/10. Record Day 4 equals documented Day 4, so 7.7.",
+    "max_grade": "The worst findings are Grade 1 (drowsy with spontaneous awakening Day 4, ICE 9/10 Day 5). No Grade 2 or higher criterion appears. Record Grade 1 equals documented Grade 1, so 7.7."
+  },
+  "ambiguity_notes": "The onset depends on A3 (drowsiness documented with spontaneous awakening counts as Grade 1 despite ICE 10/10). If a clinician reviewer did not accept it, the first Grade 1 finding would be ICE 9/10 on Day 5 and the Day 4 note would be a formal Grade 0 assessment at ICE 10/10, giving 7.1 with a signed difference of -1 (record Day 4, documented Day 5). Under the stated rule A3 applies, so 7.7. No consciousness wording is ambiguous: the note explicitly says 'without being spoken to or touched', which excludes the 'awakens to voice' category."
+}

@@ -1,0 +1,88 @@
+{
+  "answer_format": "0.1-provisional",
+  "case_id": "SYN-0017",
+  "answer_kind": "independent",
+  "status": "not clinician-verified",
+  "provenance": {
+    "clinical_methods_version": "v0.4.1",
+    "data_format_version": "v0.1.2",
+    "date": "2026-11-08"
+  },
+  "out_of_scope": null,
+  "fields": {
+    "onset": {
+      "category": "7.7",
+      "record_value": "2036-07-03",
+      "documented_value": {
+        "date": "2036-07-03",
+        "study_day": 4
+      },
+      "signed_difference_days": 0,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [
+        {
+          "role": "first Grade >=1 finding (ICE 8/10)",
+          "document_id": "SYN-0017-D03",
+          "version": 1,
+          "quote": "ICE TOTAL: 8/10"
+        },
+        {
+          "role": "no sedating meds",
+          "document_id": "SYN-0017-D03",
+          "version": 1,
+          "quote": "Sedating medications in previous 24 h: none"
+        },
+        {
+          "role": "ICE 10/10 on Day +2 (prior formal Grade 0)",
+          "document_id": "SYN-0017-D02",
+          "version": 1,
+          "quote": "NEURO: ICE 10/10 at 08:00."
+        }
+      ],
+      "record_history": null
+    },
+    "max_grade": {
+      "category": "7.2",
+      "record_value": 1,
+      "documented_value": {
+        "grade": 3
+      },
+      "signed_difference_days": null,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [
+        {
+          "role": "Grade 3 consciousness: awakens only to tactile stimulus",
+          "document_id": "SYN-0017-D06",
+          "version": 1,
+          "quote": "Level of consciousness: awakens only to tactile stimulus (does not open eyes to voice; opened eyes after a touch on the shoulder)"
+        },
+        {
+          "role": "no sedating medication in 24 h",
+          "document_id": "SYN-0017-D06",
+          "version": 1,
+          "quote": "Sedating medications in previous 24 h: none"
+        },
+        {
+          "role": "physician ICE 8/10 earlier same day (Grade 1)",
+          "document_id": "SYN-0017-D04",
+          "version": 1,
+          "quote": "ICE 8/10 (missed hospital; unable to write a sentence)"
+        },
+        {
+          "role": "no cerebral edema (no further Grade 3/4 domain)",
+          "document_id": "SYN-0017-D05",
+          "version": 1,
+          "quote": "No evidence of cerebral edema."
+        }
+      ],
+      "record_history": null
+    }
+  },
+  "derivation": {
+    "onset": "Section 6.2: earliest Grade >=1 finding is ICE 8/10 (Grade 1, no sedation) on Day +4 (2036-07-03), unattributed. Record onset is the same day, so 7.7.",
+    "max_grade": "Section 3.3/3.4 and A2: highest per-assessment grade. The Day +5 14:40 ICE form documents awakening only to tactile stimulus with no sedating drugs (Grade 3), above the ICE-based Grade 1. Record Grade 1 is lower than the proven Grade 3, so 7.2 (section 7.2)."
+  },
+  "ambiguity_notes": "Considered whether the 09:40 'awake, conversant' physician exam and the 14:15 'awake in the chair' observation conflict with the 14:40 finding (section 6.4). They are hours apart, and fluctuation is expected (section 2), so not conflicting assessments at about the same time; the Grade 3 finding stands. Levetiracetam prophylaxis, dexamethasone and tocilizumab are not competing causes (A35). Normal CT head means no edema criterion applies."
+}

@@ -1,0 +1,75 @@
+{
+  "answer_format": "0.1-provisional",
+  "case_id": "SYN-0064",
+  "answer_kind": "independent",
+  "status": "not clinician-verified",
+  "provenance": {
+    "clinical_methods_version": "0.4.1",
+    "data_format_version": "0.1.2",
+    "date": "2026-11-08",
+    "model": "claude-sonnet-5-5 (Sonnet 5.5)"
+  },
+  "out_of_scope": null,
+  "fields": {
+    "onset": {
+      "category": "7.7",
+      "record_value": "2035-09-07",
+      "documented_value": {
+        "date": "2035-09-07",
+        "study_day": 4
+      },
+      "signed_difference_days": 0,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [
+        {
+          "role": "earliest qualifying finding: ICE 8 = Grade 1 (Day 4)",
+          "document_id": "SYN-0064-D02",
+          "version": 1,
+          "quote": "ICE 8/10 at 14:05 on 07 Sep (orient 3/4, attn 0/1, rest full)."
+        },
+        {
+          "role": "formal Grade 0, Day 2",
+          "document_id": "SYN-0064-D01",
+          "version": 1,
+          "quote": "ICE 10/10 at 09:45."
+        }
+      ],
+      "record_history": null,
+      "derivation": "Earliest signed qualifying finding is ICE 8/10 on 2035-09-07 (Day 4, Grade 1). It equals the record onset (7.7). The tocilizumab on Day 2 is CRS treatment, not a competing cause (A35)."
+    },
+    "max_grade": {
+      "category": "7.7",
+      "record_value": 1,
+      "documented_value": {
+        "grade": 1
+      },
+      "signed_difference_days": null,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [
+        {
+          "role": "highest signed per-assessment grade: ICE 7 = Grade 1",
+          "document_id": "SYN-0064-D03",
+          "version": 1,
+          "quote": "ICE 7/10 at 09:20 (orient 2/4, name 3/3, cmd 1/1, write 1/1, attn 0/1). Awake."
+        },
+        {
+          "role": "Grade 1",
+          "document_id": "SYN-0064-D05",
+          "version": 1,
+          "quote": "ICE 11 Sep 09:55: orient 4/4, name 3/3, cmd 1/1, write 1/1, attn 0/1 = 9/10. Awake."
+        },
+        {
+          "role": "NOT USED: the only version of this document is unsigned (A27); would be Grade 2",
+          "document_id": "SYN-0064-D04",
+          "version": 1,
+          "quote": "ICE 4/10 at 11:00 (orient 1/4, name 1/3, cmd 1/1, write 0/1, attn 1/1). Awakens to voice."
+        }
+      ],
+      "record_history": null,
+      "derivation": "SYN-0064-D04 has no signed version, so it is not evidence (section 6.3, A27) and its ICE 4/Grade 2 is excluded. The highest signed grade is Grade 1, equal to the record (7.7)."
+    }
+  },
+  "ambiguity_notes": "The unsigned neurology consult (SYN-0064-D04, ICE 4/10, awakens to voice, Grade 2) would change the grade to 2 (7.2), but A27 says unsigned content is never used, so this is not a second reading; it is a flag matter ('unsigned document'), noted here. Onset is unaffected. Tremor is an excluded symptom."
+}

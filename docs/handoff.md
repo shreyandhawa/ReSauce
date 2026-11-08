@@ -31,6 +31,40 @@ This replaces the earlier plan of a 3 to 4 hour time box. No "§0 time box" exis
 
 ---
 
+## 2026-11-08: Step 5a (independent answers and comparison)
+
+- **Status:** 72 independent (blind) answers are in `reference/dev-v1/independent/` and compared with the intended answers by `tools/compare_answers.py`; the result is `reference/dev-v1/comparison.md`. Nothing in `src/` changed, no tests added (tool only), `pytest` and `python -m resauce.evaluate` not run. No answer file was changed. Nothing is adjudicated yet.
+- **How the independent answers were made (as reported by the user in the task; I did not see the run):**
+  - Written by Claude Opus in a separate folder, `~/Projects/ReSauce-blind`. It held only the cases, `clinical-methods.md`, `data-format.md` and the answer-format README. It held no intended answers, plan, briefs, handoff, code or results.
+  - 72 cases in 6 batches of 12, each batch in a separate subagent. The run was interrupted by a usage limit and resumed.
+  - The provenance of the first five batches' files does not record the model. The user states all 72 were written by Opus.
+  - Batch 3: the subagent saw only the header lines (format, case_id, kind, status) of `answers/SYN-0001.json`, no answer content. Batch 6: the first subagent hit a rate limit and wrote nothing before a fresh one ran.
+  - The files are not uniform: `derivation` is a top-level object in 60 files and written inside each field in 12; `documented_value` for 7.4, 7.5 and no-ICANS fields is written as an "undetermined" object, "none found", `null`, a range or grade 0.
+- **Problems found when starting:**
+  1. The 72 answers were in `~/Projects/ReSauce-blind/answers/`, not in `reference/dev-v1/independent/`. I **copied** them (byte-identical, checked with `diff -r`); the originals are untouched.
+  2. `reference/dev-v1/independent-run-notes.md` does not exist (not in the repo, not in the blind folder, not found by a disk search). So it was not read or committed, and the list of "unclear rules" (format gap / rule gap) was **not produced**; `comparison.md` §8 says so. The batch 3 and batch 6 facts above come from the task text, not from that file. **Needs the user:** supply the notes file; the section can then be added.
+- **Result (numbers exactly as `comparison.md` shows them; synthetic data, neither side clinician-verified):**
+  - All 72 cases: out of scope 72 of 72 agree; onset category 72 of 72 agree; max grade category 72 of 72 agree; category overall 144 of 144 agree.
+  - Documented value, where both sides are in scope: onset 68 cases: 67 agree, 1 differ only in form, 0 real disagreement; max grade 68 cases: 64 agree, 4 differ only in form, 0 real disagreement; overall 136 comparisons: 131 agree, 5 differ only in form, 0 real disagreement.
+  - Dev split (20 cases): category 40 of 40 agree; value 38 comparisons: 37 agree, 1 form only, 0 real. Held-out split (52 cases, not sealed): category 104 of 104 agree; value 98 comparisons: 94 agree, 4 form only, 0 real.
+  - Evidence quotes: 451 checked, 0 not found exactly once. Files missing, unreadable or incomplete: none.
+  - The 5 form-only rows: SYN-0016 (intended Grade 0, independent no value), SYN-0018, SYN-0047, SYN-0069 (intended "undetermined", independent a grade range) and SYN-0063 (onset: independent "undetermined", intended a date). All five are in categories that agree.
+- **Decisions & why:**
+  - Out-of-scope "same reason" is judged by which of the five §5 triggers the text names (the two sides word it differently); both texts are shown.
+  - Value groups follow the task: agree / form only (a grade or date missing on one or both sides, or written differently) / real. A grade or date present on one side only counts as "form", as instructed, so those five are listed in `comparison.md` §7 for a person to look at, not dismissed.
+  - Two "undetermined" values with different reason text count as agreeing. `signed_difference_days` is not compared.
+  - Check of the tool: a temporary copy with one category and one grade changed was flagged as one category row and one real-value row; the temporary copy is not kept.
+- **Caution:** complete agreement is between two answer sets written by Claude models from the same rules text. It shows the rules are applied consistently by them, not that either is clinically right. The shared assumptions (A19 to A34) still await the clinician.
+- **Next steps:** adjudication (decide the 5 form-only rows and anything the clinician must settle), then freeze the pipeline (§0). Add the "unclear rules" section once the notes file is available.
+- **Open questions:** where is `independent-run-notes.md`?
+- **How to verify:**
+  ```bash
+  .venv/bin/python -m tools.compare_answers   # rewrites reference/dev-v1/comparison.md; expect 0 file and 0 quote problems
+  diff -r ~/Projects/ReSauce-blind/answers reference/dev-v1/independent   # expect no output
+  ```
+
+---
+
 ## 2026-11-08: Milestone 3 session 4b (remaining engine rules and extractor gaps)
 
 - **Status:** engine and extractor gaps from session 4 and 3 are closed or listed. `pytest`: 174 passed. Only the 20 dev cases and their intended answers were opened (a scratch script read `reference/dev-v1/splits.json`). `python -m resauce.evaluate` was **not** run; `results/` is unchanged. No case IDs in `src/`. The session 5 held-out run is still the only run made before these pipeline changes; later held-out numbers must be labelled "seen" (§0).

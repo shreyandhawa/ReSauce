@@ -1,0 +1,92 @@
+{
+  "answer_format": "0.1-provisional",
+  "case_id": "SYN-0039",
+  "answer_kind": "independent",
+  "status": "not clinician-verified",
+  "provenance": {
+    "clinical_methods_version": "v0.4.1",
+    "data_format_version": "v0.1.2",
+    "dataset_id": "SYN-DS-DEV-V1",
+    "dataset_version": "1.0.0",
+    "date_written": "2026-11-08"
+  },
+  "out_of_scope": null,
+  "fields": {
+    "onset": {
+      "category": "7.7",
+      "record_value": "2034-01-03",
+      "documented_value": {
+        "date": "2034-01-03",
+        "study_day": 3
+      },
+      "signed_difference_days": 0,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [
+        {
+          "role": "earliest qualifying finding (ICE 8/10, Grade 1)",
+          "document_id": "SYN-0039-D03",
+          "version": 1,
+          "quote": "Total ICE 8/10 at 09:40."
+        },
+        {
+          "role": "preceding formal Grade 0 assessment",
+          "document_id": "SYN-0039-D02",
+          "version": 1,
+          "quote": "ICE at 21:00 was 10/10, with quick and accurate answers."
+        }
+      ],
+      "record_history": null
+    },
+    "max_grade": {
+      "category": "7.2",
+      "record_value": 3,
+      "documented_value": {
+        "grade": 4
+      },
+      "signed_difference_days": null,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [
+        {
+          "role": "unarousable to voice, shaking, sternal rub (Grade 4 consciousness)",
+          "document_id": "SYN-0039-D05",
+          "version": 1,
+          "quote": "could not be roused: no eye opening and no movement to a loud voice, to repeated shaking of both shoulders or to a firm sternal rub."
+        },
+        {
+          "role": "no sedation (no competing cause)",
+          "document_id": "SYN-0039-D05",
+          "version": 1,
+          "quote": "No sedative, opioid, antihistamine or antipsychotic has been given during this admission."
+        },
+        {
+          "role": "attending confirms ICE 0 because unarousable",
+          "document_id": "SYN-0039-D06",
+          "version": 1,
+          "quote": "ICE 0/10 because the patient could not be woken to attempt it."
+        },
+        {
+          "role": "metabolic causes excluded",
+          "document_id": "SYN-0039-D06",
+          "version": 1,
+          "quote": "Glucose and sodium are normal."
+        },
+        {
+          "role": "earlier Grade 2 (context)",
+          "document_id": "SYN-0039-D04",
+          "version": 1,
+          "quote": "scored ICE 4/10 (orientation 1, naming 2, command 1, sentence 0, counting 0)"
+        }
+      ],
+      "record_history": null
+    }
+  },
+  "derivation": {
+    "onset": "Onset (6.2, 7.7): the first Grade >=1 observation is ICE 8/10 on 2034-01-03 (Day +3), the record's date, so 7.7.",
+    "max_grade": "Max grade (3.3, 3.4, 7.2): on Day +6 the patient was unarousable to voice, shaking and sternal rub with ICE 0, which is Grade 4 (Table 6) with no sedation or other cause documented. The record says Grade 3, lower than the documents prove, so 7.2 (A8)."
+  },
+  "ambiguity_notes": [
+    "ICE 0 here comes with a documented consciousness level (unarousable), so the A33 range 3-4 does not apply; the grade is 4. No competing cause is documented (no sedatives, glucose and sodium normal). Methylprednisolone and dexamethasone are treatment (A35). No second reading exists."
+  ]
+}

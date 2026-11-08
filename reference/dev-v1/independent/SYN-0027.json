@@ -1,0 +1,106 @@
+{
+  "answer_format": "0.1-provisional",
+  "case_id": "SYN-0027",
+  "answer_kind": "independent",
+  "status": "not clinician-verified",
+  "provenance": {
+    "clinical_methods_version": "v0.4.1",
+    "data_format_version": "v0.1.2",
+    "dataset_id": "SYN-DS-DEV-V1",
+    "dataset_version": "1.0.0",
+    "date_written": "2026-11-08"
+  },
+  "out_of_scope": null,
+  "fields": {
+    "onset": {
+      "category": "7.7",
+      "record_value": "2036-08-28",
+      "documented_value": {
+        "date": "2036-08-28",
+        "study_day": 4
+      },
+      "signed_difference_days": 0,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [
+        {
+          "role": "first Grade >=1 finding: ICE 7/10, no sedation, Day +4",
+          "document_id": "SYN-0027-D02",
+          "version": 1,
+          "quote": "Total ICE 7/10"
+        },
+        {
+          "role": "no sedating medication",
+          "document_id": "SYN-0027-D02",
+          "version": 1,
+          "quote": "No sedating medications in last 24 h."
+        },
+        {
+          "role": "previous ICE, formal Grade 0",
+          "document_id": "SYN-0027-D01",
+          "version": 1,
+          "quote": "ICE at 20:00: 10/10."
+        }
+      ],
+      "record_history": {
+        "a": true,
+        "b": true,
+        "c": false,
+        "explanation": "Onset changed 2036-08-29 -> 2036-08-28 (a). Current value agrees with documents (b). The only documents supporting Day +4 (ICE 7/10 note documented 2036-08-28T08:40; discharge summary documented 2036-09-09) were documented before the previous record version's recorded_at 2036-09-13T10:00, so (c) fails. No 7.6; 7.7 with flag 'revision without new documentation'."
+      }
+    },
+    "max_grade": {
+      "category": "7.4",
+      "record_value": 4,
+      "documented_value": {
+        "grade": 2
+      },
+      "signed_difference_days": null,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [
+        {
+          "role": "ICE 5/10 = Grade 2",
+          "document_id": "SYN-0027-D03",
+          "version": 1,
+          "quote": "ICE 5/10 (orientation 1/4, naming 2/3, commands 1/1, writing 0/1, attention 1/1). Awakens to voice."
+        },
+        {
+          "role": "no sedation at the time of this assessment",
+          "document_id": "SYN-0027-D03",
+          "version": 1,
+          "quote": "No sedating medications given."
+        },
+        {
+          "role": "documented not-assessable period Day +6",
+          "document_id": "SYN-0027-D05",
+          "version": 1,
+          "quote": "ICE not done this shift (2036-08-30): intubated and sedated, unable to assess."
+        },
+        {
+          "role": "documented not-assessable period Day +7",
+          "document_id": "SYN-0027-D06",
+          "version": 1,
+          "quote": "NOT DONE - patient intubated and sedated on propofol, unable to assess today (2036-08-31)."
+        },
+        {
+          "role": "no seizure activity on EEG, normal",
+          "document_id": "SYN-0027-D07",
+          "version": 1,
+          "quote": "Impression: Normal EEG."
+        }
+      ],
+      "record_history": {
+        "a": false,
+        "b": false,
+        "c": false,
+        "explanation": "Grade did not change (4 in both versions), so the field cannot be 7.6."
+      }
+    }
+  },
+  "derivation": {
+    "onset": "First qualifying finding is ICE 7/10 on 2036-08-28 (Day +4) (§6.2). The current record version (Day +4) equals it. §7.6 condition (c) fails (supporting documents predate the previous record version's recorded_at), so the field is 7.7, not 7.6 (A28), with flag 'revision without new documentation'.",
+    "max_grade": "Documents support at most Grade 2 (ICE 5/10, awakens to voice; Day +5). Record Grade 4 is higher, which would be 7.3, but the window has documented 'not assessable' periods (2036-08-30, 08-31: intubated and sedated, unable to assess), so a higher grade cannot be excluded: 7.4 (§7.3 unassessed periods, A25, A7)."
+  },
+  "ambiguity_notes": "Hypoxemia/CRS and tocilizumab/dexamethasone are not competing causes (A35). Propofol started after the Grade 2 assessments (22:10 on Day +5), so it does not affect them. The grade 'documented_value' of 2 is the highest supported grade, not a refutation of Grade 4. Normal EEG on 09-04 and ICE 9/10 on 09-04 do not rule out Grade 3-4 on the unassessed days. Version history: the 'Corrected entry' reason gives no document reference; I judged only by timing rule (c)."
+}

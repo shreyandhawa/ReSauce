@@ -1,0 +1,133 @@
+{
+  "answer_format": "0.1-provisional",
+  "case_id": "SYN-0046",
+  "answer_kind": "independent",
+  "status": "not clinician-verified",
+  "provenance": {
+    "clinical_methods_version": "v0.4.1",
+    "data_format_version": "v0.1.2",
+    "dataset_id": "SYN-DS-DEV-V1",
+    "dataset_version": "1.0.0",
+    "date_written": "2026-11-08"
+  },
+  "out_of_scope": null,
+  "fields": {
+    "onset": {
+      "category": "7.5",
+      "record_value": "2031-05-24",
+      "documented_value": {
+        "range": [
+          "2031-05-23",
+          "2031-05-24"
+        ],
+        "study_days": [
+          5,
+          6
+        ]
+      },
+      "signed_difference_days": null,
+      "difference_note": "ambiguous evidence, reason: attribution; per-reading differences in readings",
+      "readings": [
+        {
+          "reading": "Day +5 ICE 8/10 counts as ICANS (lorazepam not the cause)",
+          "value": {
+            "date": "2031-05-23",
+            "study_day": 5,
+            "signed_difference_days": 1
+          },
+          "category": "7.1"
+        },
+        {
+          "reading": "Day +5 ICE 8/10 attributed to lorazepam and excluded; earliest unaffected finding is Day +6 ICE 6/10",
+          "value": {
+            "date": "2031-05-24",
+            "study_day": 6,
+            "signed_difference_days": 0
+          },
+          "category": "7.7"
+        }
+      ],
+      "evidence": [
+        {
+          "role": "Day +5 ICE 8/10 (Grade 1), possible onset",
+          "document_id": "SYN-0046-D02",
+          "version": 1,
+          "quote": "ICE 8/10 at 08:50 (orientation 3/4, attention 0/1, rest complete)."
+        },
+        {
+          "role": "competing cause: sedating benzodiazepine 4 h earlier, no clinician attribution",
+          "document_id": "SYN-0046-D02",
+          "version": 1,
+          "quote": "Lorazepam 0.5 mg IV given at 04:00 for nausea."
+        },
+        {
+          "role": "Day +6 ICE 6/10 (Grade 2), unaffected by lorazepam (31 h later)",
+          "document_id": "SYN-0046-D03",
+          "version": 1,
+          "quote": "24 May 11:00: ICE 6/10 (orientation 2/4, naming 2/3, commands 1/1, writing 1/1, attention 0/1)."
+        },
+        {
+          "role": "preceding formal Grade 0 assessment",
+          "document_id": "SYN-0046-D01",
+          "version": 1,
+          "quote": "ICE 10/10 at 09:40."
+        }
+      ],
+      "record_history": null
+    },
+    "max_grade": {
+      "category": "7.7",
+      "record_value": 2,
+      "documented_value": {
+        "grade": 2
+      },
+      "signed_difference_days": null,
+      "difference_note": "both readings give Grade 2, same category (7.5 condition, A23)",
+      "readings": [
+        {
+          "reading": "Day +5 ICE 8/10 counts",
+          "value": {
+            "grade": 2
+          },
+          "category": "7.7"
+        },
+        {
+          "reading": "Day +5 ICE 8/10 excluded",
+          "value": {
+            "grade": 2
+          },
+          "category": "7.7"
+        }
+      ],
+      "evidence": [
+        {
+          "role": "ICE 5/10 (Grade 2)",
+          "document_id": "SYN-0046-D04",
+          "version": 1,
+          "quote": "ICE 5/10 at 14:30 on 24 May"
+        },
+        {
+          "role": "awakens to voice, stays awake (Grade 2)",
+          "document_id": "SYN-0046-D04",
+          "version": 1,
+          "quote": "Awakens to voice and stays awake while spoken to."
+        },
+        {
+          "role": "Day +6 ICE 6/10 (Grade 2)",
+          "document_id": "SYN-0046-D03",
+          "version": 1,
+          "quote": "24 May 11:00: ICE 6/10 (orientation 2/4, naming 2/3, commands 1/1, writing 1/1, attention 0/1)."
+        }
+      ],
+      "record_history": null
+    }
+  },
+  "derivation": {
+    "onset": "Onset (3.4, 7.5, A30, A35): the Day +5 ICE 8/10 finding falls 4.8 h after IV lorazepam (a closed-list sedating drug, in the same note) and no clinician attributes it. If it counts, onset is Day +5 and the record (Day +6) is 7.1 (+1). If excluded, the earliest unaffected finding is Day +6, equal to the record: 7.7. The readings give different categories, so 7.5, reason attribution.",
+    "max_grade": "Max grade (3.4, 7.5 condition, 7.7): under both readings the highest grade is 2 (Day +6, ICE 6/10 and 5/10, awakens to voice), far from the lorazepam (31 h earlier, outside the 24 h rule A30). The Day +5 finding is only Grade 1. Both readings give 7.7, so the shared category is used, not 7.5."
+  },
+  "ambiguity_notes": [
+    "Onset is 7.5 only because the readings split between 7.1 and 7.7. The documented onset is shown as the range of the two readings (2031-05-23 to 2031-05-24); the signed difference is given per reading and not as a single value.",
+    "The Day +6 findings are not near the lorazepam: 04:00 on 05-23 to 11:00 on 05-24 is 31 h, outside the 24 h rule (A30). Age 85 is in scope (>=18). Tocilizumab, dexamethasone are treatment (A35). Tremor on Day +6 is excluded."
+  ]
+}

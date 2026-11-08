@@ -1,0 +1,69 @@
+{
+  "answer_format": "0.1-provisional",
+  "case_id": "SYN-0071",
+  "answer_kind": "independent",
+  "status": "not clinician-verified",
+  "provenance": {
+    "clinical_methods_version": "0.4.1",
+    "data_format_version": "0.1.2",
+    "date": "2026-11-08",
+    "model": "claude-sonnet-5-5 (Sonnet 5.5)"
+  },
+  "out_of_scope": null,
+  "fields": {
+    "onset": {
+      "category": "7.7",
+      "record_value": "2031-11-23",
+      "documented_value": {
+        "date": "2031-11-23",
+        "study_day": 4
+      },
+      "signed_difference_days": 0,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [
+        {
+          "role": "earliest qualifying finding: ICE 8 = Grade 1 (Day 4)",
+          "document_id": "SYN-0071-D01",
+          "version": 1,
+          "quote": "NEURO: ICE 8/10 @0840 (ORIENT 3/4 NAME 3/3 CMD 1/1 WRT 1/1 ATTN 0/1)"
+        },
+        {
+          "role": "no depressed consciousness",
+          "document_id": "SYN-0071-D01",
+          "version": 1,
+          "quote": "LOC: awake"
+        }
+      ],
+      "record_history": null,
+      "derivation": "Earliest Grade >=1 finding is ICE 8/10 on 2031-11-23 (Day 4), equal to the record (7.7). The mild headache is an excluded symptom; tocilizumab is CRS treatment (A35)."
+    },
+    "max_grade": {
+      "category": "7.7",
+      "record_value": 2,
+      "documented_value": {
+        "grade": 2
+      },
+      "signed_difference_days": null,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [
+        {
+          "role": "ICE 5 = Grade 2",
+          "document_id": "SYN-0071-D02",
+          "version": 1,
+          "quote": "NEURO: ICE 5/10 @0820 (ORIENT 1/4 NAME 2/3 CMD 1/1 WRT 0/1 ATTN 1/1)"
+        },
+        {
+          "role": "awakens to voice = Grade 2",
+          "document_id": "SYN-0071-D02",
+          "version": 1,
+          "quote": "LOC: awakens to voice"
+        }
+      ],
+      "record_history": null,
+      "derivation": "ICE 5 and awakens to voice both give Grade 2 on 2031-11-24; nothing higher is documented (EEG normal, no seizure). Equal to the record (7.7)."
+    }
+  },
+  "ambiguity_notes": "No ambiguity. SYN-0071-D04 v2 only corrects a blood pressure value, so the ICE 10/10 content is unchanged and not a new observation."
+}

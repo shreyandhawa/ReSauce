@@ -1,0 +1,98 @@
+{
+  "answer_format": "0.1-provisional",
+  "case_id": "SYN-0058",
+  "answer_kind": "independent",
+  "status": "not clinician-verified",
+  "provenance": {
+    "clinical_methods_version": "v0.4.1",
+    "data_format_version": "v0.1.2",
+    "date_written": "2026-11-08"
+  },
+  "out_of_scope": null,
+  "fields": {
+    "onset": {
+      "category": "7.7",
+      "record_value": "2034-05-26",
+      "documented_value": {
+        "date": "2034-05-26",
+        "study_day": 3
+      },
+      "signed_difference_days": 0,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [
+        {
+          "role": "earliest qualifying finding (ICE 8/10 = Grade 1), Day 3",
+          "document_id": "SYN-0058-D02",
+          "version": 1,
+          "quote": "ICE @ 09:05: 8/10 (yr + hospital wrong)."
+        },
+        {
+          "role": "no sedatives",
+          "document_id": "SYN-0058-D02",
+          "version": 1,
+          "quote": "No sedating meds since adm."
+        },
+        {
+          "role": "earlier ICE 10/10 (Day 1)",
+          "document_id": "SYN-0058-D01",
+          "version": 1,
+          "quote": "ICE @ 22:10: 10/10. Settled."
+        }
+      ],
+      "record_history": {
+        "a": false,
+        "b": null,
+        "c": null,
+        "explanation": "Record v2 (reason 'Data review') changed no field value (onset 2034-05-26, grade 2 in both versions), so 7.6 cannot apply; categories follow the usual rules."
+      }
+    },
+    "max_grade": {
+      "category": "7.7",
+      "record_value": 2,
+      "documented_value": {
+        "grade": 2
+      },
+      "signed_difference_days": null,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [
+        {
+          "role": "highest grade: examiner-stated ICE total 6/10 (Grade 2), Day 4",
+          "document_id": "SYN-0058-D03",
+          "version": 1,
+          "quote": "ICE total 6/10 as stated by examiner (writing item not attempted - pt declined, scored 0)."
+        },
+        {
+          "role": "awake, no focal or seizure finding",
+          "document_id": "SYN-0058-D03",
+          "version": 1,
+          "quote": "Awake, attentive. No focal deficits. No sz."
+        },
+        {
+          "role": "documented 'not assessable' day (Day 7); does not change this category",
+          "document_id": "SYN-0058-D05",
+          "version": 1,
+          "quote": "ICE not done 2034-05-30: pt off unit in IR for line exchange + then apheresis 08:00-17:30, unable to perform checks today."
+        },
+        {
+          "role": "recovery",
+          "document_id": "SYN-0058-D06",
+          "version": 1,
+          "quote": "ICE @ 09:00 10/10. Nonfocal exam."
+        }
+      ],
+      "record_history": {
+        "a": false,
+        "b": null,
+        "c": null,
+        "explanation": "Record v2 (reason 'Data review') changed no field value (onset 2034-05-26, grade 2 in both versions), so 7.6 cannot apply; categories follow the usual rules."
+      }
+    }
+  },
+  "derivation": {
+    "onset": "Section 6.2: earliest qualifying observation is ICE 8/10 on 2034-05-26 = Day 3 (Grade 1). Record Day 3 equals it, so 7.7.",
+    "max_grade": "Section 3.3 / A6 / A34: the Day 4 note states a total (6/10) and scores the unattempted writing item as 0, so ICE 6/10 (Grade 2) counts. Record Grade 2 equals documented Grade 2, so 7.7. A 'not assessable' statement on Day 7 does not matter because the record grade is supported, not above the supported grade."
+  },
+  "ambiguity_notes": "Possible doubt: the writing item was 'not attempted - pt declined'. A6 removes a total only for a partial ICE without a stated total; here the examiner states 6/10 and scores the item 0 (all items scored, A34), so the total is used. Declining is not a documented language, hearing, vision or writing barrier or baseline cognitive impairment (A10), so no 7.5. If the Day 4 total were discarded, the highest supported grade would be 1 and the documented 'not assessable' day would make the result 7.4; I do not apply that reading because the note states the total. The Day 7 'not assessable' statement (apheresis/IR) is recorded for the case-level unassessed-period flag."
+}

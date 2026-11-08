@@ -1,0 +1,136 @@
+{
+  "answer_format": "0.1-provisional",
+  "case_id": "SYN-0063",
+  "answer_kind": "independent",
+  "status": "not clinician-verified",
+  "provenance": {
+    "clinical_methods_version": "0.4.1",
+    "data_format_version": "0.1.2",
+    "date": "2026-11-08",
+    "model": "claude-sonnet-5-5 (Sonnet 5.5)"
+  },
+  "out_of_scope": null,
+  "fields": {
+    "onset": {
+      "category": "7.5",
+      "record_value": null,
+      "documented_value": {
+        "undetermined": "depends on attribution of the Day 6 ICE 6/10: onset 2033-01-25 (Day 6) if ICANS, none if hypoglycaemia"
+      },
+      "signed_difference_days": null,
+      "difference_note": "Reading 1: record has no onset (no signed difference). Reading 2: no onset expected.",
+      "readings": [
+        {
+          "reading": "ICE 6/10 on 2033-01-25 counts as ICANS (Grade 2)",
+          "value": {
+            "date": "2033-01-25",
+            "study_day": 6
+          },
+          "category": "7.1 (record has no onset, 7.9(a))"
+        },
+        {
+          "reading": "ICE 6/10 attributed to hypoglycaemia, no qualifying finding; Grade 0 assessments exist, no not-assessable period",
+          "value": "none found",
+          "category": "7.7 (7.9(b))"
+        }
+      ],
+      "evidence": [
+        {
+          "role": "finding on 2033-01-25 (Day 6): ICE 6 = Grade 2",
+          "document_id": "SYN-0063-D03",
+          "version": 1,
+          "quote": "ICE 6/10 at 10:00 (orient 2/4, name 2/3, cmd 1/1, write 0/1, attn 1/1). Awake."
+        },
+        {
+          "role": "documented competing cause in the same note (A35, A30)",
+          "document_id": "SYN-0063-D03",
+          "version": 1,
+          "quote": "BG 2.8 mmol/L at 09:40 (hypoglycaemia)"
+        },
+        {
+          "role": "hypoglycaemia treated before the ICE; no clinician statement on attribution",
+          "document_id": "SYN-0063-D03",
+          "version": 1,
+          "quote": "IV dextrose 09:50, recheck 10:30 BG 5.1."
+        },
+        {
+          "role": "formal Grade 0 assessment (needed for reading 2, section 7.9(b))",
+          "document_id": "SYN-0063-D01",
+          "version": 1,
+          "quote": "ICE 22 Jan 10:00 = 10/10. Alert."
+        },
+        {
+          "role": "later formal Grade 0 assessment",
+          "document_id": "SYN-0063-D04",
+          "version": 1,
+          "quote": "ICE 10/10 at 09:00."
+        }
+      ],
+      "record_history": {
+        "a": false,
+        "b": null,
+        "c": null,
+        "explanation": "Record v2 (change_reason 'Data review') has the same values as v1 (icans_reported false, onset and grade null); no field value changed, so 7.6 does not apply."
+      },
+      "derivation": "A finding (ICE 6) coincides in the same note with a documented hypoglycaemia (closed list A35, timing A30) and no clinician attributes it either way. The two readings give 7.1 (record has no onset) and 7.7, which differ, so 7.5 with reason attribution (section 7.5, 7.9(a)/(b))."
+    },
+    "max_grade": {
+      "category": "7.5",
+      "record_value": null,
+      "documented_value": {
+        "range": [
+          0,
+          2
+        ]
+      },
+      "signed_difference_days": null,
+      "difference_note": null,
+      "readings": [
+        {
+          "reading": "ICE 6/10 counts as ICANS (Grade 2); record treated as Grade 0",
+          "value": 2,
+          "category": "7.2 (7.9(a))"
+        },
+        {
+          "reading": "ICE 6/10 attributed to hypoglycaemia; formal Grade 0 assessments, no qualifying finding",
+          "value": 0,
+          "category": "7.7 (7.9(b))"
+        }
+      ],
+      "evidence": [
+        {
+          "role": "finding on 2033-01-25 (Day 6): ICE 6 = Grade 2",
+          "document_id": "SYN-0063-D03",
+          "version": 1,
+          "quote": "ICE 6/10 at 10:00 (orient 2/4, name 2/3, cmd 1/1, write 0/1, attn 1/1). Awake."
+        },
+        {
+          "role": "documented competing cause in the same note (A35, A30)",
+          "document_id": "SYN-0063-D03",
+          "version": 1,
+          "quote": "BG 2.8 mmol/L at 09:40 (hypoglycaemia)"
+        },
+        {
+          "role": "hypoglycaemia treated before the ICE; no clinician statement on attribution",
+          "document_id": "SYN-0063-D03",
+          "version": 1,
+          "quote": "IV dextrose 09:50, recheck 10:30 BG 5.1."
+        },
+        {
+          "role": "formal Grade 0 assessment (needed for reading 2, section 7.9(b))",
+          "document_id": "SYN-0063-D01",
+          "version": 1,
+          "quote": "ICE 22 Jan 10:00 = 10/10. Alert."
+        }
+      ],
+      "record_history": {
+        "a": false,
+        "b": null,
+        "c": null,
+        "explanation": "Record v2 (change_reason 'Data review') has the same values as v1 (icans_reported false, onset and grade null); no field value changed, so 7.6 does not apply."
+      },
+      "derivation": "Same finding and competing cause: Grade 2 (7.2 against a record of no ICANS) or Grade 0 (7.7 under 7.9(b)). The categories differ, so 7.5, reason attribution (section 7.5, A23, A30, A35)."
+    }
+  },
+  "ambiguity_notes": "Reason: attribution. The only qualifying finding (ICE 6/10 on Day 6) is documented in the same note as hypoglycaemia (BG 2.8 mmol/L, dextrose given 10 min before the ICE, recheck BG 5.1 only at 10:30). Hypoglycaemia is on the closed list (A35) and no clinician states a cause (A9). Reading A: finding counts, so record 'no ICANS' (compared as Grade 0 with no onset) gives grade 7.2 (documented 2) and onset 7.1 'record has no onset' (documented 2033-01-25, no signed difference). Reading B: finding excluded, no qualifying finding; formal Grade 0 assessments exist (ICE 10/10 on Day 3, 5, 7, 9 and 12), no 'not assessable' period, so both fields 7.7. Categories differ so 7.5. Tocilizumab is not a competing cause. Documented_value for the 7.5 fields is a summary (undetermined or range 0-2 for grade); the answer-format has no defined shape for onset under 7.5, so see readings. The v2 record is unchanged in value."
+}

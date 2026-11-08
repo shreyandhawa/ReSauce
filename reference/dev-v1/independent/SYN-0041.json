@@ -1,0 +1,97 @@
+{
+  "answer_format": "0.1-provisional",
+  "case_id": "SYN-0041",
+  "answer_kind": "independent",
+  "status": "not clinician-verified",
+  "provenance": {
+    "clinical_methods_version": "v0.4.1",
+    "data_format_version": "v0.1.2",
+    "dataset_id": "SYN-DS-DEV-V1",
+    "dataset_version": "1.0.0",
+    "date_written": "2026-11-08"
+  },
+  "out_of_scope": null,
+  "fields": {
+    "onset": {
+      "category": "7.7",
+      "record_value": "2034-07-14",
+      "documented_value": {
+        "date": "2034-07-14",
+        "study_day": 3
+      },
+      "signed_difference_days": 0,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [
+        {
+          "role": "earliest qualifying finding (ICE 8/10, Grade 1)",
+          "document_id": "SYN-0041-D02",
+          "version": 1,
+          "quote": "ICE 8/10 @ 08:25 - wrong month, no sentence."
+        },
+        {
+          "role": "preceding formal Grade 0 assessment",
+          "document_id": "SYN-0041-D01",
+          "version": 1,
+          "quote": "ICE 21:30 = 10/10."
+        }
+      ],
+      "record_history": {
+        "a": false,
+        "b": null,
+        "c": null,
+        "explanation": "onset_date 2034-07-14 in both record versions; unchanged."
+      }
+    },
+    "max_grade": {
+      "category": "7.3",
+      "record_value": 3,
+      "documented_value": {
+        "grade": 2
+      },
+      "signed_difference_days": null,
+      "difference_note": "record value is the current version (v2, 3); v1 was 2",
+      "readings": [],
+      "evidence": [
+        {
+          "role": "highest ICE 5/10 (Grade 2)",
+          "document_id": "SYN-0041-D03",
+          "version": 1,
+          "quote": "ICE at 10:15 5/10"
+        },
+        {
+          "role": "awake, no focal or seizure finding, no sedation",
+          "document_id": "SYN-0041-D03",
+          "version": 1,
+          "quote": "Awake, talking with family. No focal deficit. No seizure activity. No sedating medication."
+        },
+        {
+          "role": "normal EEG, no seizure",
+          "document_id": "SYN-0041-D04",
+          "version": 1,
+          "quote": "Impression: normal EEG."
+        },
+        {
+          "role": "discharge summary: worst ICE 5/10",
+          "document_id": "SYN-0041-D08",
+          "version": 1,
+          "quote": "worst ICE 5/10 2034-07-15"
+        }
+      ],
+      "record_history": {
+        "a": true,
+        "b": false,
+        "c": null,
+        "explanation": "max_grade changed 2 -> 3 (v2, recorded 2034-07-27T15:00, reason 'Data review'). The current value 3 is higher than any supported grade (2), so condition (b) fails and 7.6 does not apply. The usual category (7.3) applies. Condition (c) is not tested."
+      }
+    }
+  },
+  "derivation": {
+    "onset": "Onset (6.2, 7.7): first Grade >=1 observation is ICE 8/10 on 2034-07-14 (Day +3), the record's date; the onset never changed, so 7.7.",
+    "max_grade": "Max grade (3.4, 7.3, 7.6): the documents support Grade 2 at most (ICE 5/10, awake, no seizure, normal EEG). The record was revised from 2 to 3, but the current value is not supported, so 7.6 fails condition (b). The record is higher than any supported grade and nothing says 'not assessable', so 7.3."
+  },
+  "ambiguity_notes": [
+    "The v1 record (Grade 2) matched the documents; the revision to 3 ('Data review') is unsupported. Under 6.3 the superseded-version match flag would apply (record matched an earlier version). No document after 2034-07-23 supports Grade 3 in any case (the last document is dated 2034-07-22).",
+    "Lupus history and hydroxychloroquine are not on the competing-cause list (A35). Headache on Day +10 is excluded (4.2). Dexamethasone is treatment."
+  ]
+}

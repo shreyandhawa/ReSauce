@@ -1,0 +1,79 @@
+{
+  "answer_format": "0.1-provisional",
+  "case_id": "SYN-0016",
+  "answer_kind": "independent",
+  "status": "not clinician-verified",
+  "provenance": {
+    "clinical_methods_version": "v0.4.1",
+    "data_format_version": "v0.1.2",
+    "date": "2026-11-08"
+  },
+  "out_of_scope": null,
+  "fields": {
+    "onset": {
+      "category": "7.4",
+      "record_value": "2035-02-23",
+      "documented_value": "none found",
+      "signed_difference_days": null,
+      "difference_note": "no qualifying finding; no gradeable assessment on record date (confused, no ICE)",
+      "readings": [],
+      "evidence": [
+        {
+          "role": "sub-threshold symptom on record onset date, no ICE",
+          "document_id": "SYN-0016-D02",
+          "version": 1,
+          "quote": "Mental status: patient confused this afternoon"
+        },
+        {
+          "role": "ICE 10/10 on Day +2",
+          "document_id": "SYN-0016-D01",
+          "version": 1,
+          "quote": "Neuro: ICE 10/10 at 09:50"
+        },
+        {
+          "role": "ICE 10/10 on Day +5",
+          "document_id": "SYN-0016-D03",
+          "version": 1,
+          "quote": "TOTAL: 10/10"
+        }
+      ],
+      "record_history": null
+    },
+    "max_grade": {
+      "category": "7.3",
+      "record_value": 2,
+      "documented_value": {
+        "undetermined": "no qualifying finding anywhere in the window; only ungradeable symptoms and ICE 10/10 assessments (Days +2, +5, +7)"
+      },
+      "signed_difference_days": null,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [
+        {
+          "role": "ungradeable symptom, Day +6",
+          "document_id": "SYN-0016-D04",
+          "version": 1,
+          "quote": "disoriented to time and agitated during the morning"
+        },
+        {
+          "role": "ICE 10/10 on Day +7",
+          "document_id": "SYN-0016-D05",
+          "version": 1,
+          "quote": "TOTAL: 10/10"
+        },
+        {
+          "role": "ungradeable symptom, Day +4 (record onset date)",
+          "document_id": "SYN-0016-D02",
+          "version": 1,
+          "quote": "Mental status: patient confused this afternoon"
+        }
+      ],
+      "record_history": null
+    }
+  },
+  "derivation": {
+    "onset": "Record reports ICANS but no qualifying finding exists (no ICE below 10, no consciousness or other criterion), so section 7.9(c)/A22 applies. Onset is 7.1 only if a formal Grade 0 assessment is on the record's onset date (Day +4); there is none (only 'confused', no ICE), so 7.4. The sub-threshold symptom on that date also earns the A24 flag.",
+    "max_grade": "Section 7.9(c): no qualifying finding gives 7.3 (record Grade 2 unsupported), the notes only describe ungradeable symptoms (section 7.3 definition). No documented 'not assessable' period exists, so A25 does not turn it into 7.4."
+  },
+  "ambiguity_notes": "Documented grade is reported as undetermined: the formal ICE 10/10 assessments are Grade 0, but under missing != absent they do not prove no ICANS on other days, and 'confused'/'disoriented ... agitated' are ungradeable symptoms. If a reviewer reads the documented grade as 0, the category (7.3) is unchanged. Acetaminophen for headache and fever with tocilizumab are not relevant competing causes."
+}

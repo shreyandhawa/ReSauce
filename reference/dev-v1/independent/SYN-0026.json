@@ -1,0 +1,78 @@
+{
+  "answer_format": "0.1-provisional",
+  "case_id": "SYN-0026",
+  "answer_kind": "independent",
+  "status": "not clinician-verified",
+  "provenance": {
+    "clinical_methods_version": "v0.4.1",
+    "data_format_version": "v0.1.2",
+    "dataset_id": "SYN-DS-DEV-V1",
+    "dataset_version": "1.0.0",
+    "date_written": "2026-11-08"
+  },
+  "out_of_scope": null,
+  "fields": {
+    "onset": {
+      "category": "7.7",
+      "record_value": "2033-04-10",
+      "documented_value": {
+        "date": "2033-04-10",
+        "study_day": 4
+      },
+      "signed_difference_days": 0,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [
+        {
+          "role": "first Grade >=1 finding: ICE 6/10, awake, Day +4",
+          "document_id": "SYN-0026-D04",
+          "version": 1,
+          "quote": "ICE total: 6/10."
+        },
+        {
+          "role": "no sedation, so no competing cause",
+          "document_id": "SYN-0026-D04",
+          "version": 1,
+          "quote": "No sedating medicines have been given at any point this admission."
+        },
+        {
+          "role": "previous ICE, formal Grade 0, Day +2",
+          "document_id": "SYN-0026-D02",
+          "version": 1,
+          "quote": "The ICE screen at 21:00 was 10/10"
+        }
+      ],
+      "record_history": null
+    },
+    "max_grade": {
+      "category": "7.2",
+      "record_value": 1,
+      "documented_value": {
+        "grade": 2
+      },
+      "signed_difference_days": null,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [
+        {
+          "role": "ICE 6/10 = Grade 2 (range 3-6)",
+          "document_id": "SYN-0026-D04",
+          "version": 1,
+          "quote": "ICE total: 6/10."
+        },
+        {
+          "role": "awake and attentive, so consciousness domain adds nothing higher",
+          "document_id": "SYN-0026-D04",
+          "version": 1,
+          "quote": "The patient was awake and attentive, sitting in the recliner."
+        }
+      ],
+      "record_history": null
+    }
+  },
+  "derivation": {
+    "onset": "First qualifying finding is ICE 6/10 on 2033-04-10 (Day +4, event time 10:20) (§6.2). Earlier ICE scores were 10/10. Record onset equals it: 7.7.",
+    "max_grade": "ICE 6/10 is Grade 2 (Table 6). No higher domain finding. The record says 1, lower than the documented 2: 7.2 (§7.2, A8)."
+  },
+  "ambiguity_notes": "Distractors checked and not used: PT note unsteadiness is deconditioning (excluded, §4.2); tremor on 2033-04-13 is excluded (A11); good vision, no hearing aids, so no assessment barrier (A10); the 'could not complete a written sentence' is just an ICE item miss, not a documented writing barrier; levetiracetam and dexamethasone are treatment, not competing causes (A35). No ambiguity found."
+}

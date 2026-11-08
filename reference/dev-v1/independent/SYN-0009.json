@@ -1,0 +1,120 @@
+{
+  "answer_format": "0.1-provisional",
+  "case_id": "SYN-0009",
+  "answer_kind": "independent",
+  "status": "not clinician-verified",
+  "provenance": {
+    "clinical_methods_version": "0.4.1",
+    "data_format_version": "0.1.2",
+    "dataset_id": "SYN-DS-DEV-V1",
+    "dataset_version": "1.0.0",
+    "date_written": "2026-11-08"
+  },
+  "out_of_scope": null,
+  "fields": {
+    "onset": {
+      "category": "7.7",
+      "record_value": "2036-06-02",
+      "documented_value": {
+        "date": "2036-06-02",
+        "study_day": 5
+      },
+      "signed_difference_days": 0,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [
+        {
+          "role": "first qualifying finding: ICE 9/10, awake (Grade 1) on Day +5",
+          "document_id": "SYN-0009-D05",
+          "version": 1,
+          "quote": "ICE assessment on 02 Jun at 10:55: orientation 3/4 (could not give the date), naming 3/3, following commands 1/1, writing 1/1, attention 1/1. Total 9/10."
+        },
+        {
+          "role": "Day +3 ICE 10/10 (formal Grade 0) before the record date",
+          "document_id": "SYN-0009-D04",
+          "version": 1,
+          "quote": "ICE 10/10 at 09:20 this morning."
+        },
+        {
+          "role": "Day +3 headache: excluded symptom, not onset",
+          "document_id": "SYN-0009-D04",
+          "version": 1,
+          "quote": "He reports a mild frontal headache, treated with acetaminophen."
+        }
+      ],
+      "record_history": null
+    },
+    "max_grade": {
+      "category": "7.5",
+      "record_value": 2,
+      "documented_value": {
+        "range": [
+          1,
+          2
+        ]
+      },
+      "signed_difference_days": null,
+      "difference_note": null,
+      "readings": [
+        {
+          "reading": "Nursing ICE 5/10 at 14:10 on Day +7 taken as the assessment (physician ICE 8 at 14:40 not preferred)",
+          "value": {
+            "grade": 2
+          },
+          "category": "7.7"
+        },
+        {
+          "reading": "Physician ICE 8/10 at 14:40 on Day +7 taken as the assessment (nursing ICE 5 not preferred); all other assessments are Grade 1",
+          "value": {
+            "grade": 1
+          },
+          "category": "7.3"
+        }
+      ],
+      "evidence": [
+        {
+          "role": "reading A: nursing ICE 5/10 (Grade 2), awake",
+          "document_id": "SYN-0009-D07",
+          "version": 1,
+          "quote": "ICE score 5/10 (orientation 2/4, naming 1/3, following commands 1/1, writing 0/1, attention 1/1)"
+        },
+        {
+          "role": "reading A: awake, struggled with naming",
+          "document_id": "SYN-0009-D07",
+          "version": 1,
+          "quote": "The patient was awake and tried to do each task but struggled with the naming items."
+        },
+        {
+          "role": "reading B: physician ICE 8/10, 30 minutes later (Grade 1)",
+          "document_id": "SYN-0009-D08",
+          "version": 1,
+          "quote": "On my examination at 14:40 the ICE score was 8/10 (orientation 3/4, attention 0/1, all other items complete)."
+        },
+        {
+          "role": "Day +6 ICE 8/10 (Grade 1)",
+          "document_id": "SYN-0009-D06",
+          "version": 1,
+          "quote": "ICE 8/10 at 09:05"
+        },
+        {
+          "role": "Day +8 ICE 9/10 (Grade 1); neurology describes fluctuation",
+          "document_id": "SYN-0009-D09",
+          "version": 1,
+          "quote": "At 10:15 today ICE 9/10 (attention 0/1)."
+        },
+        {
+          "role": "neurology note names the fluctuating scores of Day +7",
+          "document_id": "SYN-0009-D09",
+          "version": 1,
+          "quote": "Neurology consultation requested for fluctuating ICE scores on 04 Jun."
+        }
+      ],
+      "record_history": null
+    }
+  },
+  "derivation": {
+    "onset": "Day +5 ICE 9/10 is the first Grade 1 finding (section 6.2) and equals the record date. Both Day +7 readings are later, so onset is the same under every reading: 7.7.",
+    "max_grade": "Two assessments about 30 minutes apart on Day +7 disagree (ICE 5 = Grade 2, ICE 8 = Grade 1). Section 6.4: both are reported, neither chosen silently. Reading A gives max grade 2 = record (7.7), reading B gives max 1 < record 2 (7.3). Different categories, so 7.5, reason conflicting assessments (section 7.5, A23)."
+  },
+  "ambiguity_notes": "Reason: conflicting assessments. Reading A (ICE 5, nursing) -> documented grade 2 -> 7.7; reading B (ICE 8, physician) -> documented grade 1 -> 7.3. No competing cause, no assessment barrier, and the consciousness descriptions are all 'awake'. Day +9 'Sleeping at intervals, easily woken' is ordinary sleep, not a described depressed level of consciousness, and is not treated as a finding; if it were read as 'awakens to voice' reading B would also reach Grade 2 and the grade would become 7.7. Pre-conditioning ICE (Day -3) and the weight correction in D12 v2 are not relevant (outside window / non-clinical)."
+}

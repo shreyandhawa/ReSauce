@@ -1,0 +1,123 @@
+{
+  "answer_format": "0.1-provisional",
+  "case_id": "SYN-0011",
+  "answer_kind": "independent",
+  "status": "not clinician-verified",
+  "provenance": {
+    "clinical_methods_version": "0.4.1",
+    "data_format_version": "0.1.2",
+    "dataset_id": "SYN-DS-DEV-V1",
+    "dataset_version": "1.0.0",
+    "date_written": "2026-11-08"
+  },
+  "out_of_scope": null,
+  "fields": {
+    "onset": {
+      "category": "7.7",
+      "record_value": "2036-10-23",
+      "documented_value": {
+        "date": "2036-10-23",
+        "study_day": 4
+      },
+      "signed_difference_days": 0,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [
+        {
+          "role": "first qualifying finding: ICE 6/10 (Grade 2), awake, on the record date",
+          "document_id": "SYN-0011-D02",
+          "version": 1,
+          "quote": "Neuro: ICE 6/10 at 09:30 (orientation 2/4, naming 2/3, commands 1/1, writing 0/1, attention 1/1)"
+        },
+        {
+          "role": "awake",
+          "document_id": "SYN-0011-D02",
+          "version": 1,
+          "quote": "Level: awake"
+        },
+        {
+          "role": "Day +2 ICE 10/10 earlier",
+          "document_id": "SYN-0011-D01",
+          "version": 1,
+          "quote": "Neuro: ICE 10/10 at 09:55"
+        }
+      ],
+      "record_history": null
+    },
+    "max_grade": {
+      "category": "7.2",
+      "record_value": 1,
+      "documented_value": {
+        "grade": 2
+      },
+      "signed_difference_days": null,
+      "difference_note": null,
+      "readings": [
+        {
+          "reading": "Day +7 depressed consciousness (opens eyes only to gentle shaking, Grade 3) attributed to ICANS",
+          "value": {
+            "grade": 3
+          },
+          "category": "7.2"
+        },
+        {
+          "reading": "Day +7 depressed consciousness attributed to lorazepam given 4 h earlier (not counted); grade from ICE 6/10 on Day +4 (Grade 2)",
+          "value": {
+            "grade": 2
+          },
+          "category": "7.2"
+        }
+      ],
+      "evidence": [
+        {
+          "role": "undisputed Grade 2: ICE 6/10, awake, no sedation that day",
+          "document_id": "SYN-0011-D02",
+          "version": 1,
+          "quote": "Neuro: ICE 6/10 at 09:30 (orientation 2/4, naming 2/3, commands 1/1, writing 0/1, attention 1/1)"
+        },
+        {
+          "role": "competing cause: lorazepam within 24 h before the consciousness finding",
+          "document_id": "SYN-0011-D04",
+          "version": 1,
+          "quote": "Medication: lorazepam 1 mg PO at 12:30 before MRI (claustrophobia)"
+        },
+        {
+          "role": "tactile-stimulus arousal: Grade 3 consciousness criterion",
+          "document_id": "SYN-0011-D04",
+          "version": 1,
+          "quote": "at 16:30 opens eyes only when the shoulder is gently shaken, then answers questions"
+        },
+        {
+          "role": "ICE 5/10 same afternoon (Grade 2)",
+          "document_id": "SYN-0011-D04",
+          "version": 1,
+          "quote": "ICE 5/10 at 16:45"
+        },
+        {
+          "role": "no clinician attribution either way",
+          "document_id": "SYN-0011-D05",
+          "version": 1,
+          "quote": "Seen at 18:15, see nursing note above"
+        },
+        {
+          "role": "Day +5 ICE 7/10, mild tremor (excluded)",
+          "document_id": "SYN-0011-D03",
+          "version": 1,
+          "quote": "Mild hand tremor"
+        },
+        {
+          "role": "Day +11 ICE not done (off unit for CT): possible not-assessable statement, no category effect here",
+          "document_id": "SYN-0011-D07",
+          "version": 1,
+          "quote": "ICE not done on 30 Oct; patient off the unit from 13:00 to 15:30 for a CT scan of the chest"
+        }
+      ],
+      "record_history": null
+    }
+  },
+  "derivation": {
+    "onset": "ICE 6/10 (Grade 2) on Day +4 is the first qualifying finding and is on the record date: 7.7 (section 6.2, 7.7).",
+    "max_grade": "Day +7 'opens eyes only when the shoulder is gently shaken' is Grade 3 but lorazepam was given at 12:30, within 24 h (A30, A35), with no clinician attribution: two readings (section 7.5). Reading Grade 3 and reading Grade 2 (from ICE 6/10, which stands independently) are both above the record's Grade 1, so both give 7.2. Per section 7.5/A23 the shared category is used with the lowest proven grade, 2, not 7.5."
+  },
+  "ambiguity_notes": "Reason would be attribution (sedating benzodiazepine within 24 h of the consciousness finding, A30/A35), but the readings lead to the same category (7.2), so 7.5 is not used (A23 amended, NEW-3). Documented grade is the lowest proven under every reading (2); the other reading is 3. If lorazepam were also taken to invalidate the same-afternoon ICE 5/10, the Day +4 ICE 6/10 still proves Grade 2, so the answer is unchanged. 'ICE not done on 30 Oct ... off the unit' could be read as a documented 'not assessable' statement; it would affect only 7.3 versus 7.4 and the unassessed-period flag, so it does not change this case. Tremor on Day +5 is excluded (4.2)."
+}

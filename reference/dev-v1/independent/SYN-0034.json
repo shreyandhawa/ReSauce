@@ -1,0 +1,110 @@
+{
+  "answer_format": "0.1-provisional",
+  "case_id": "SYN-0034",
+  "answer_kind": "independent",
+  "status": "not clinician-verified",
+  "provenance": {
+    "clinical_methods_version": "v0.4.1",
+    "data_format_version": "v0.1.2",
+    "dataset_id": "SYN-DS-DEV-V1",
+    "dataset_version": "1.0.0",
+    "date_written": "2026-11-08"
+  },
+  "out_of_scope": null,
+  "fields": {
+    "onset": {
+      "category": "7.7",
+      "record_value": "2035-06-02",
+      "documented_value": {
+        "date": "2035-06-02",
+        "study_day": 5
+      },
+      "signed_difference_days": 0,
+      "difference_note": null,
+      "readings": [
+        {
+          "reading": "SYN-0034-D05 and D04 treated as copied-forward text (A31): onset from D02",
+          "value": {
+            "date": "2035-06-02",
+            "study_day": 5
+          },
+          "category": "7.7"
+        },
+        {
+          "reading": "SYN-0034-D05 treated as a new observation on Day +12: onset unchanged (earliest finding still D02)",
+          "value": {
+            "date": "2035-06-02",
+            "study_day": 5
+          },
+          "category": "7.7"
+        }
+      ],
+      "evidence": [
+        {
+          "role": "first Grade >=1 finding: ICE 7/10, alert, Day +5",
+          "document_id": "SYN-0034-D02",
+          "version": 1,
+          "quote": "ICE 7/10 at 09:10 on 02 Jun (lost 3: year, month, attention); alert; no seizures."
+        },
+        {
+          "role": "copy of the same text, no new evidence",
+          "document_id": "SYN-0034-D04",
+          "version": 1,
+          "quote": "ICE 7/10 at 09:10 on 02 Jun (lost 3: year, month, attention); alert; no seizures."
+        }
+      ],
+      "record_history": null
+    },
+    "max_grade": {
+      "category": "7.7",
+      "record_value": 1,
+      "documented_value": {
+        "grade": 1
+      },
+      "signed_difference_days": null,
+      "difference_note": null,
+      "readings": [
+        {
+          "reading": "D05 copied forward (A31): no new observation",
+          "value": {
+            "grade": 1
+          },
+          "category": "7.7"
+        },
+        {
+          "reading": "D05 new observation (ICE 7/10 on 09 Jun): still Grade 1",
+          "value": {
+            "grade": 1
+          },
+          "category": "7.7"
+        }
+      ],
+      "evidence": [
+        {
+          "role": "ICE 7/10 = Grade 1",
+          "document_id": "SYN-0034-D02",
+          "version": 1,
+          "quote": "ICE 7/10 at 09:10 on 02 Jun (lost 3: year, month, attention); alert; no seizures."
+        },
+        {
+          "role": "ICE back to 10/10 (resolution)",
+          "document_id": "SYN-0034-D03",
+          "version": 1,
+          "quote": "ICE 05 Jun 09:20 = 10/10. Alert. Back to baseline. No tremor."
+        },
+        {
+          "role": "text repeats D02 with only date/time changed (copied forward)",
+          "document_id": "SYN-0034-D05",
+          "version": 1,
+          "quote": "ICE 7/10 at 09:25 on 09 Jun (lost 3: year, month, attention); alert; no seizures."
+        }
+      ],
+      "record_history": null
+    }
+  },
+  "derivation": {
+    "onset": "First qualifying finding is ICE 7/10 on 2035-06-02 (Day +5) (§6.2). The fine hand tremor is excluded (§4.2, A11). Record equals it: 7.7.",
+    "max_grade": "ICE 7/10 is Grade 1; it is the highest supported grade. D04 repeats D02 verbatim and D05 repeats it differing only in date/time, so both are copied forward and not new evidence (§6.4, A13, A31). Equals the record: 7.7."
+  },
+  "ambiguity_notes": "Under A31 D05 (same wording, 09:25 on 09 Jun instead of 09:10 on 02 Jun) is copied-forward text, so no recurrence is recorded after the 06-05 ICE 10/10. If it were counted as a real new observation (a Grade 1 recurrence), onset and grade would be unchanged, and only the 'recurrence' flag would be added; both readings give the same category. The pre-infusion baseline (22 May, Day -6) is outside the window and not used."
+}

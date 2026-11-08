@@ -1,0 +1,102 @@
+{
+  "answer_format": "0.1-provisional",
+  "case_id": "SYN-0003",
+  "answer_kind": "independent",
+  "status": "not clinician-verified",
+  "provenance": {
+    "clinical_methods_version": "0.4.1",
+    "data_format_version": "0.1.2",
+    "dataset_id": "SYN-DS-DEV-V1",
+    "dataset_version": "1.0.0",
+    "date_written": "2026-11-08"
+  },
+  "out_of_scope": null,
+  "fields": {
+    "onset": {
+      "category": "7.7",
+      "record_value": "2034-01-30",
+      "documented_value": {
+        "date": "2034-01-30",
+        "study_day": 4
+      },
+      "signed_difference_days": 0,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [
+        {
+          "role": "first qualifying finding: ICE 9/10 on Day +4 (Grade 1)",
+          "document_id": "SYN-0003-D03",
+          "version": 1,
+          "quote": "ICE score: 9/10."
+        },
+        {
+          "role": "assessment date",
+          "document_id": "SYN-0003-D03",
+          "version": 1,
+          "quote": "ICE Assessment, 2034-01-30, performed at 08:30"
+        },
+        {
+          "role": "awake, no sedating medication",
+          "document_id": "SYN-0003-D03",
+          "version": 1,
+          "quote": "No sedating medications in the previous 24 hours."
+        },
+        {
+          "role": "Day +2 ICE 10/10, earlier than record",
+          "document_id": "SYN-0003-D02",
+          "version": 1,
+          "quote": "The ICE screen at 22:15 was 10/10."
+        }
+      ],
+      "record_history": null
+    },
+    "max_grade": {
+      "category": "7.7",
+      "record_value": 3,
+      "documented_value": {
+        "grade": 3
+      },
+      "signed_difference_days": null,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [
+        {
+          "role": "generalised clinical seizure that resolved rapidly: Grade 3",
+          "document_id": "SYN-0003-D04",
+          "version": 1,
+          "quote": "the patient had a generalized tonic-clonic seizure lasting about 50 seconds, which stopped on its own"
+        },
+        {
+          "role": "no sedating drug before the seizure (no competing cause)",
+          "document_id": "SYN-0003-D05",
+          "version": 1,
+          "quote": "No benzodiazepine or other sedating drug was given before or after it."
+        },
+        {
+          "role": "physician confirms ICANS with seizure",
+          "document_id": "SYN-0003-D05",
+          "version": 1,
+          "quote": "Assessment: ICANS with a self-limited generalized seizure"
+        },
+        {
+          "role": "neurologist confirms; carpal tunnel unrelated",
+          "document_id": "SYN-0003-D06",
+          "version": 1,
+          "quote": "Impression: ICANS with one self-limited generalized seizure; the carpal tunnel symptoms are long-standing and unrelated."
+        },
+        {
+          "role": "ICE 7/10 same day (Grade 2 by ICE; lower than seizure)",
+          "document_id": "SYN-0003-D04",
+          "version": 1,
+          "quote": "ICE at 15:25 was 7/10"
+        }
+      ],
+      "record_history": null
+    }
+  },
+  "derivation": {
+    "onset": "First Grade >=1 criterion is ICE 9/10 on Day +4 (2034-01-30), the same calendar day as the record, so 7.7 (sections 6.2, 7.7; A4 zero tolerance).",
+    "max_grade": "A brief generalised clinical seizure that resolved on its own meets Grade 3 (Table 6, section 3.3); the most severe domain sets the grade (section 3.4). No competing cause is documented (levetiracetam is prophylaxis, A35). Record Grade 3 equals documented Grade 3: 7.7."
+  },
+  "ambiguity_notes": "None material. Carpal tunnel numbness is a long-standing, clinician-labelled unrelated distractor and is not an ICANS finding. Day +4 ICE 9/10 with an unwritten sentence is Grade 1 (ICE 7-9)."
+}

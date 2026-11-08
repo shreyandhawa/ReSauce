@@ -1,0 +1,103 @@
+{
+  "answer_format": "0.1-provisional",
+  "case_id": "SYN-0040",
+  "answer_kind": "independent",
+  "status": "not clinician-verified",
+  "provenance": {
+    "clinical_methods_version": "v0.4.1",
+    "data_format_version": "v0.1.2",
+    "dataset_id": "SYN-DS-DEV-V1",
+    "dataset_version": "1.0.0",
+    "date_written": "2026-11-08"
+  },
+  "out_of_scope": null,
+  "fields": {
+    "onset": {
+      "category": "7.7",
+      "record_value": "2036-06-22",
+      "documented_value": {
+        "date": "2036-06-22",
+        "study_day": 5
+      },
+      "signed_difference_days": 0,
+      "difference_note": "revision without new documentation (A28): onset value changed v1->v2 but no supporting document falls between the two record times",
+      "readings": [],
+      "evidence": [
+        {
+          "role": "earliest qualifying finding (ICE 8/10, Grade 1)",
+          "document_id": "SYN-0040-D05",
+          "version": 1,
+          "quote": "ICE 8/10 at 02:10 on 22 Jun"
+        },
+        {
+          "role": "same-day confirmation",
+          "document_id": "SYN-0040-D06",
+          "version": 1,
+          "quote": "ICE 8/10 at 09:00, same pattern as the overnight score."
+        },
+        {
+          "role": "formal Grade 0 on the earlier v1 record date (21 Jun)",
+          "document_id": "SYN-0040-D04",
+          "version": 1,
+          "quote": "Total 10/10. Alert, cooperative."
+        }
+      ],
+      "record_history": {
+        "a": true,
+        "b": true,
+        "c": false,
+        "explanation": "Onset changed from 2036-06-21 (v1, recorded 2036-06-29T09:00) to 2036-06-22 (v2, recorded 2036-07-07T14:00). The current value agrees with the documents. Documents that support Day +5 onset (SYN-0040-D05 documented 2036-06-22T02:40, D06 2036-06-22T09:20, D09 2036-06-27T16:20) were all documented before v1 was recorded, so none falls in the interval after 2036-06-29T09:00 and up to 2036-07-07T14:00. Condition (c) fails: 7.7 with the flag 'revision without new documentation'."
+      }
+    },
+    "max_grade": {
+      "category": "7.7",
+      "record_value": 2,
+      "documented_value": {
+        "grade": 2
+      },
+      "signed_difference_days": null,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [
+        {
+          "role": "ICE 5/10 (Grade 2)",
+          "document_id": "SYN-0040-D07",
+          "version": 1,
+          "quote": "ICE 5/10 at 11:00 on 23 Jun"
+        },
+        {
+          "role": "awakens to voice (Grade 2)",
+          "document_id": "SYN-0040-D07",
+          "version": 1,
+          "quote": "Awakens to voice, drifts back to sleep when not stimulated."
+        },
+        {
+          "role": "excluded symptom (tremor), not graded",
+          "document_id": "SYN-0040-D07",
+          "version": 1,
+          "quote": "Fine tremor of both hands."
+        },
+        {
+          "role": "no seizure or motor finding",
+          "document_id": "SYN-0040-D07",
+          "version": 1,
+          "quote": "No seizure activity, no focal motor deficit."
+        }
+      ],
+      "record_history": {
+        "a": false,
+        "b": null,
+        "c": null,
+        "explanation": "max_grade 2 in both record versions; the value never changed, so 7.6 does not apply."
+      }
+    }
+  },
+  "derivation": {
+    "onset": "Onset (6.2, 7.6, 7.7, A28): documentation onset is Day +5 (2036-06-22, ICE 8/10 at 02:10). The current record (v2) matches. Onset changed value (a true) and the current value is 7.7 (b true), but condition (c) fails, so the field is 7.7 with the flag 'revision without new documentation', not 7.6.",
+    "max_grade": "Max grade (3.3, 7.7): worst is Grade 2 (ICE 5/10 and awakens to voice on Day +6). The record says 2 in both versions, so 7.7."
+  },
+  "ambiguity_notes": [
+    "The record history is the key point. Every supporting document was written before record v1 (2036-06-29), so no new documentation explains the correction; the v1 date (Day +4) was contradicted by ICE 10/10 on that day. If the clinician decides a clerical correction should count as 7.6 without new documentation, the onset would become 7.6.",
+    "SYN-0040-D08 v2 changes only a blood pressure value; the latest signed version is current and the ICE content is identical (not new evidence, A31). Tremor is excluded (A11). Tocilizumab and dexamethasone are treatment (A35). Overnight ICE 8 and morning ICE 8 agree, so no conflict."
+  ]
+}

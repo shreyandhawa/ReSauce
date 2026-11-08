@@ -1,0 +1,86 @@
+{
+  "answer_format": "0.1-provisional",
+  "case_id": "SYN-0044",
+  "answer_kind": "independent",
+  "status": "not clinician-verified",
+  "provenance": {
+    "clinical_methods_version": "v0.4.1",
+    "data_format_version": "v0.1.2",
+    "dataset_id": "SYN-DS-DEV-V1",
+    "dataset_version": "1.0.0",
+    "date_written": "2026-11-08"
+  },
+  "out_of_scope": null,
+  "fields": {
+    "onset": {
+      "category": "7.7",
+      "record_value": "2033-04-11",
+      "documented_value": {
+        "date": "2033-04-11",
+        "study_day": 5
+      },
+      "signed_difference_days": 0,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [
+        {
+          "role": "earliest qualifying finding (ICE 8/10, Grade 1)",
+          "document_id": "SYN-0044-D02",
+          "version": 1,
+          "quote": "ICE 8/10 - could not name the city or the hospital, all other items correct."
+        },
+        {
+          "role": "preceding formal Grade 0 assessment",
+          "document_id": "SYN-0044-D01",
+          "version": 1,
+          "quote": "ICE checked 20:40: 10/10."
+        }
+      ],
+      "record_history": null
+    },
+    "max_grade": {
+      "category": "7.7",
+      "record_value": 1,
+      "documented_value": {
+        "grade": 1
+      },
+      "signed_difference_days": null,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [
+        {
+          "role": "ICE 8/10 (Grade 1), awake and alert",
+          "document_id": "SYN-0044-D02",
+          "version": 1,
+          "quote": "Exam 09:15: awake and fully alert, sitting up in bed."
+        },
+        {
+          "role": "no sedation, full strength",
+          "document_id": "SYN-0044-D02",
+          "version": 1,
+          "quote": "Strength full in all four limbs, no focal findings. No sedating drugs given in the past day."
+        },
+        {
+          "role": "later normal ICE",
+          "document_id": "SYN-0044-D03",
+          "version": 1,
+          "quote": "= 10/10"
+        },
+        {
+          "role": "excluded symptom (headache), not graded",
+          "document_id": "SYN-0044-D03",
+          "version": 1,
+          "quote": "Mild headace behind the eyes since waking, 3/10, acetaminophen offerred."
+        }
+      ],
+      "record_history": null
+    }
+  },
+  "derivation": {
+    "onset": "Onset (6.2, 7.7): first Grade >=1 observation is ICE 8/10 on 2033-04-11 (Day +5), equal to the record, so 7.7.",
+    "max_grade": "Max grade (3.3, 7.7): the worst is ICE 8/10 (Grade 1); no Grade 2+ finding exists. Equals the record's 1, so 7.7."
+  },
+  "ambiguity_notes": [
+    "Headache (Day +6) is excluded (4.2) and not used. Lumbar disc herniation history and acetaminophen use are not competing causes (A35). No second reading changes either category."
+  ]
+}

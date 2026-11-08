@@ -1,0 +1,75 @@
+{
+  "answer_format": "0.1-provisional",
+  "case_id": "SYN-0072",
+  "answer_kind": "independent",
+  "status": "not clinician-verified",
+  "provenance": {
+    "clinical_methods_version": "0.4.1",
+    "data_format_version": "0.1.2",
+    "date": "2026-11-08",
+    "model": "claude-sonnet-5-5 (Sonnet 5.5)"
+  },
+  "out_of_scope": null,
+  "fields": {
+    "onset": {
+      "category": "7.4",
+      "record_value": "2031-06-17",
+      "documented_value": {
+        "date": "2031-06-20",
+        "study_day": 6
+      },
+      "signed_difference_days": -3,
+      "difference_note": "record 2031-06-17 is 3 days before the documented onset 2031-06-20; no gradeable assessment on the record date, so this is insufficient evidence, not a mismatch",
+      "readings": [],
+      "evidence": [
+        {
+          "role": "earliest qualifying finding: ICE 8 = Grade 1 (Day 6, 2031-06-20)",
+          "document_id": "SYN-0072-D03",
+          "version": 1,
+          "quote": "ICE 8/10 at 09:40 (orient 3/4, attn 0/1)."
+        },
+        {
+          "role": "latest earlier note (Day 1): no ICE total; no document dated Day 3",
+          "document_id": "SYN-0072-D02",
+          "version": 1,
+          "quote": "T 38.7 at 18:00, acetaminophen 650 mg, tocilizumab 19:20."
+        },
+        {
+          "role": "discharge summary dates neurotoxicity to d6-d7, not d3",
+          "document_id": "SYN-0072-D06",
+          "version": 2,
+          "quote": "Mild neurotoxicity d6-d7 (ICE 8-9/10)"
+        }
+      ],
+      "record_history": null,
+      "derivation": "The first qualifying finding is ICE 8/10 on Day 6 (2031-06-20). The record onset (Day 3, 2031-06-17) is earlier, and no gradeable assessment exists on 2031-06-17 (no note that day, last ICE 10/10 on Day 0), so the early date can be neither confirmed nor refuted: 7.4 (section 7.1 second bullet, 7.4). Difference reported as -3 for reference."
+    },
+    "max_grade": {
+      "category": "7.7",
+      "record_value": 1,
+      "documented_value": {
+        "grade": 1
+      },
+      "signed_difference_days": null,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [
+        {
+          "role": "Grade 1",
+          "document_id": "SYN-0072-D03",
+          "version": 1,
+          "quote": "ICE 8/10 at 09:40 (orient 3/4, attn 0/1)."
+        },
+        {
+          "role": "Grade 1",
+          "document_id": "SYN-0072-D04",
+          "version": 1,
+          "quote": "ICE 21 Jun 09:20: orient 4/4, name 3/3, cmd 1/1, write 1/1, attn 0/1 = 9/10. Awake."
+        }
+      ],
+      "record_history": null,
+      "derivation": "Highest documented grade is 1 (ICE 8 on Day 6, ICE 9 on Day 7); nothing higher. Equals the record (7.7)."
+    }
+  },
+  "ambiguity_notes": "Onset: record Day 3 precedes the first documented finding (Day 6) with no gradeable assessment on Day 3, so 7.4 and not 7.1. I report documented onset 2031-06-20 and difference -3 for information; the category is 7.4. D06 v2 only corrects a discharge temperature."
+}

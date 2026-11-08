@@ -93,4 +93,4 @@ Deferred until an API key is available. This is disclosed in every report until 
 - **The user does not read the development cases** (dataset plan, v0.3.2 changelog entry). They are checked only by `tools.check_dev` and by the reviewer's sampled reviews.
 - The held-out split is not sealed (same writer, same repository).
 - Rules that are not yet implemented return a review result, never a guess.
-- The extractor's phrase lists were built from the 20 dev cases and `clinical-methods.md` only. Misspelt finding words are missed without a warning.
+- The extractor's phrase lists were built from the 20 dev cases and `clinical-methods.md` only. Since session 4b, a word of 6 or more letters that is one letter away from a list word is read as an uncertain "spelling variant" and listed for review. Swapped letters (for example "seziure") are two changes, so they are still missed without a warning, as are shorter words.

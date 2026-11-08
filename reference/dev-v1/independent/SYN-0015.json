@@ -1,0 +1,76 @@
+{
+  "answer_format": "0.1-provisional",
+  "case_id": "SYN-0015",
+  "answer_kind": "independent",
+  "status": "not clinician-verified",
+  "provenance": {
+    "clinical_methods_version": "v0.4.1",
+    "data_format_version": "v0.1.2",
+    "date": "2026-11-08"
+  },
+  "out_of_scope": null,
+  "fields": {
+    "onset": {
+      "category": "7.1",
+      "record_value": null,
+      "documented_value": {
+        "date": "2034-02-20",
+        "study_day": 4
+      },
+      "signed_difference_days": null,
+      "difference_note": "record has no onset",
+      "readings": [],
+      "evidence": [
+        {
+          "role": "first Grade >=1 finding (ICE 7/10 -> Grade 1)",
+          "document_id": "SYN-0015-D02",
+          "version": 1,
+          "quote": "ICE 7/10 at 14:00 on 20 Feb"
+        },
+        {
+          "role": "CRS treatment context, not a competing cause",
+          "document_id": "SYN-0015-D01",
+          "version": 1,
+          "quote": "CRS g1, toci x1 18 Feb 03:00"
+        }
+      ],
+      "record_history": null
+    },
+    "max_grade": {
+      "category": "7.2",
+      "record_value": null,
+      "documented_value": {
+        "grade": 2
+      },
+      "signed_difference_days": null,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [
+        {
+          "role": "ICE 4/10 -> Grade 2",
+          "document_id": "SYN-0015-D03",
+          "version": 1,
+          "quote": "ICE 4/10 at 09:15 on 21 Feb"
+        },
+        {
+          "role": "awakens to voice -> Grade 2",
+          "document_id": "SYN-0015-D03",
+          "version": 1,
+          "quote": "Awakens to voice, falls asleep when not stimulated."
+        },
+        {
+          "role": "ICE 5/10 on Day +6",
+          "document_id": "SYN-0015-D04",
+          "version": 1,
+          "quote": "ICE 5/10 at 11:00"
+        }
+      ],
+      "record_history": null
+    }
+  },
+  "derivation": {
+    "onset": "Record reports no ICANS but the notes contain qualifying findings, so section 7.9(a)/A19 applies: record treated as Grade 0 with no onset; onset is 7.1 'record has no onset'. Earliest qualifying finding is ICE 7/10 on Day +4 (2034-02-20), Grade 1; no signed difference is given.",
+    "max_grade": "Section 7.9(a): record compared as Grade 0, documents prove higher, so 7.2. Highest per-assessment grade is 2 (ICE 4/10 and 'awakens to voice' on Day +5; ICE 5/10 on Day +6). No competing cause: tocilizumab and dexamethasone are treatments (A35)."
+  },
+  "ambiguity_notes": "No competing cause or conflict. Tremor on Day +6 is an excluded symptom (section 4.2, A11). Day +5 consciousness phrase 'awakens to voice' maps cleanly to Grade 2; ICE gives Grade 2 as well."
+}

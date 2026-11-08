@@ -1,0 +1,94 @@
+{
+  "answer_format": "0.1-provisional",
+  "case_id": "SYN-0018",
+  "answer_kind": "independent",
+  "status": "not clinician-verified",
+  "provenance": {
+    "clinical_methods_version": "v0.4.1",
+    "data_format_version": "v0.1.2",
+    "date": "2026-11-08"
+  },
+  "out_of_scope": null,
+  "fields": {
+    "onset": {
+      "category": "7.7",
+      "record_value": "2035-06-17",
+      "documented_value": {
+        "date": "2035-06-17",
+        "study_day": 3
+      },
+      "signed_difference_days": 0,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [
+        {
+          "role": "first Grade >=1 finding (ICE 8/10)",
+          "document_id": "SYN-0018-D04",
+          "version": 1,
+          "quote": "ICE 08:20 = 8/10 (-month, -sentence). Alert, eating."
+        },
+        {
+          "role": "ICE 10/10 on Day +2",
+          "document_id": "SYN-0018-D03",
+          "version": 1,
+          "quote": "ICE 09:40 10/10"
+        }
+      ],
+      "record_history": null
+    },
+    "max_grade": {
+      "category": "7.5",
+      "record_value": 2,
+      "documented_value": {
+        "range": [
+          2,
+          3
+        ]
+      },
+      "signed_difference_days": null,
+      "difference_note": "reason: consciousness wording",
+      "readings": [
+        {
+          "reading": "'opened eyes when name called loudly' counted as awakens to voice (Grade 2)",
+          "value": {
+            "grade": 2
+          },
+          "category": "7.7"
+        },
+        {
+          "reading": "simultaneous arm tap counted as awakens only to tactile stimulus (Grade 3)",
+          "value": {
+            "grade": 3
+          },
+          "category": "7.2"
+        }
+      ],
+      "evidence": [
+        {
+          "role": "ambiguous consciousness phrase (voice and touch together)",
+          "document_id": "SYN-0018-D06",
+          "version": 1,
+          "quote": "opened eyes when name called loudly while RN tapped arm at same time"
+        },
+        {
+          "role": "ICE 5/10 (Grade 2)",
+          "document_id": "SYN-0018-D06",
+          "version": 1,
+          "quote": "ICE 14:00 = 5/10. No sedatives, no opioids."
+        },
+        {
+          "role": "ICE 6/10 on Day +4 (Grade 2)",
+          "document_id": "SYN-0018-D05",
+          "version": 1,
+          "quote": "ICE 19:50 = 6/10"
+        }
+      ],
+      "record_history": null
+    }
+  },
+  "derivation": {
+    "onset": "Section 6.2: first Grade >=1 finding is ICE 8/10 on Day +3 (2035-06-17) = record date, so 7.7.",
+    "max_grade": "ICE alone gives Grade 2 (5/10 to 6/10). The Day +5 13:40 consciousness note gives voice and touch at the same time, which could fit Grade 2 (voice) or Grade 3 (tactile). Under A15 and section 7.5 the two readings lead to different categories (record Grade 2: 7.7 vs 7.2), so 7.5, reason consciousness wording."
+  },
+  "ambiguity_notes": "Grade field is 7.5 (consciousness wording): Grade 2 reading gives 7.7, Grade 3 reading gives 7.2. Not decided silently; documented value is the range 2 to 3. The patient also had lunch and was conversing at 12:30, so the closed eyes at 13:40 could be drowsiness; no sedatives or opioids were given, so no competing cause. Migraine history and Day +8 headache are excluded or irrelevant (section 4.2)."
+}

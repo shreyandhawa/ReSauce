@@ -1,0 +1,98 @@
+{
+  "answer_format": "0.1-provisional",
+  "case_id": "SYN-0051",
+  "answer_kind": "independent",
+  "status": "not clinician-verified",
+  "provenance": {
+    "clinical_methods_version": "v0.4.1",
+    "data_format_version": "v0.1.2",
+    "date_written": "2026-11-08"
+  },
+  "out_of_scope": null,
+  "fields": {
+    "onset": {
+      "category": "7.7",
+      "record_value": "2032-02-01",
+      "documented_value": {
+        "date": "2032-02-01",
+        "study_day": 4
+      },
+      "signed_difference_days": 0,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [
+        {
+          "role": "earliest qualifying finding (ICE 8/10 = Grade 1), Day 4",
+          "document_id": "SYN-0051-D02",
+          "version": 1,
+          "quote": "Neuro check 01 Feb 16:20: ICE 8/10 (orientation 3/4, attention 0/1, the rest complete)."
+        },
+        {
+          "role": "later ICE 7/10 (the superseded record v1 date, Day 5)",
+          "document_id": "SYN-0051-D03",
+          "version": 1,
+          "quote": "ICE 7/10 at 09:10 on 02 Feb"
+        },
+        {
+          "role": "discharge summary also dates the fall to 01 Feb",
+          "document_id": "SYN-0051-D06",
+          "version": 1,
+          "quote": "ICE scores were 10/10 until 01 Feb, when the score fell to 8/10, and it was 7/10 on 02 Feb."
+        }
+      ],
+      "record_history": {
+        "a": true,
+        "b": true,
+        "c": false,
+        "explanation": "Onset changed from 2032-02-02 (v1) to 2032-02-01 (v2), reason 'Onset date corrected'. The current value 2032-02-01 equals the documented onset (Day 4), so condition (b) holds. Condition (c) fails: the documents that support it (nursing note documented 2032-02-01T16:40, discharge summary 2032-02-07T14:00) were both documented before v1 was recorded (2032-02-09T10:00), so no supporting document appeared after the previous record version. Result 7.7 with the flag 'revision without new documentation'."
+      }
+    },
+    "max_grade": {
+      "category": "7.2",
+      "record_value": 1,
+      "documented_value": {
+        "grade": 3
+      },
+      "signed_difference_days": null,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [
+        {
+          "role": "generalised seizure, rapidly self-resolving = Grade 3 (Day 6, 04 Feb)",
+          "document_id": "SYN-0051-D06",
+          "version": 1,
+          "quote": "On 04 Feb at 14:20 she had one generalised tonic-clonic seizure lasting about 90 seconds, witnessed by the nurse; it stopped by itself without any medication and she was back to her baseline within 10 minutes."
+        },
+        {
+          "role": "levetiracetam is seizure prophylaxis, not a competing cause (A35)",
+          "document_id": "SYN-0051-D01",
+          "version": 1,
+          "quote": "Levetiracetam 500 mg twice daily running as seizure prophylaxis per protocol."
+        },
+        {
+          "role": "imaging normal, no edema (no higher criterion)",
+          "document_id": "SYN-0051-D04",
+          "version": 1,
+          "quote": "no acute infarct, no haemorrhage, no mass effect, no cerebral edema"
+        },
+        {
+          "role": "ICE nadir 7/10 (Grade 1)",
+          "document_id": "SYN-0051-D03",
+          "version": 1,
+          "quote": "ICE 7/10 at 09:10 on 02 Feb"
+        }
+      ],
+      "record_history": {
+        "a": false,
+        "b": false,
+        "c": null,
+        "explanation": "Max grade was 1 in both versions (no value change), so 7.6 cannot apply. The current value disagrees with the documents, so the usual category (7.2) applies."
+      }
+    }
+  },
+  "derivation": {
+    "onset": "Section 6.2: earliest qualifying observation is ICE 8/10 on 01 Feb = Day 4 (Grade 1). Record is Day 4 now, so the content agrees (7.7 conditions). Section 7.6 / A28: the value changed (a) and agrees (b), but (c) fails because no supporting document version post-dates the previous record version (recorded 2032-02-09), so 7.7 with 'revision without new documentation'.",
+    "max_grade": "Section 3.3: a generalised seizure of about 90 s that stopped by itself with return to baseline is a rapidly resolving clinical seizure, Grade 3 (not >5 min, not repetitive). Levetiracetam is prophylaxis and not a competing cause (A35). Record Grade 1 is lower than the documented Grade 3, so 7.2 (section 7.2). The value did not change between record versions, so 7.6 does not apply."
+  },
+  "ambiguity_notes": "The seizure is documented only in the signed discharge summary, as a past event with exact date and time (04 Feb, Day 6, inside the window), so it counts. No ICE or note on Day 6 contradicts it. Onset: the record was corrected to Day 4 after the documents (all pre-dating v1) already supported Day 4, so the 'revision without new documentation' flag applies; it is not a legitimate revision (7.6). Edge consideration: the discharge summary is documented before the previous record version, and the Day 4 nursing note also, so condition (c) fails whichever document is used."
+}

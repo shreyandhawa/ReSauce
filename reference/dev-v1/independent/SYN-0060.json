@@ -1,0 +1,127 @@
+{
+  "answer_format": "0.1-provisional",
+  "case_id": "SYN-0060",
+  "answer_kind": "independent",
+  "status": "not clinician-verified",
+  "provenance": {
+    "clinical_methods_version": "v0.4.1",
+    "data_format_version": "v0.1.2",
+    "date_written": "2026-11-08"
+  },
+  "out_of_scope": null,
+  "fields": {
+    "onset": {
+      "category": "7.7",
+      "record_value": "2035-08-19",
+      "documented_value": {
+        "range": [
+          "2035-08-19",
+          "2035-08-20"
+        ],
+        "study_days": [
+          5,
+          6
+        ]
+      },
+      "signed_difference_days": 0,
+      "difference_note": "record date lies inside the documented range (Day 5 to Day 6); measured to the nearest end",
+      "readings": [
+        {
+          "reading": "A26 table: 'overnight' in the Day 6 note gives the range D-1 to D = 2035-08-19 to 2035-08-20; earliest exact qualifying finding is Day 8, so the onset is the range Day 5 to Day 6",
+          "value": {
+            "range": [
+              "2035-08-19",
+              "2035-08-20"
+            ]
+          },
+          "category": "7.7"
+        }
+      ],
+      "evidence": [
+        {
+          "role": "earliest candidate: overnight ICE 7/10 (Grade 1), dated by the relative phrase 'overnight' in the 2035-08-20 note",
+          "document_id": "SYN-0060-D05",
+          "version": 1,
+          "quote": "Per night-shift handover, overnight the ICE dropped to 7/10 (missed the hospital name and the written sentence, then the year); exact time not recorded."
+        },
+        {
+          "role": "ICE 10/10 on the record date (08:10, 2035-08-19)",
+          "document_id": "SYN-0060-D04",
+          "version": 1,
+          "quote": "ICE 2035-08-19 at 08:10: 10/10. Awake, cheerful."
+        },
+        {
+          "role": "no sedatives (supports no competing cause)",
+          "document_id": "SYN-0060-D05",
+          "version": 1,
+          "quote": "No sedatives or opioids given since 2035-08-16."
+        },
+        {
+          "role": "earliest exactly dated qualifying finding: ICE 6/10 on Day 8",
+          "document_id": "SYN-0060-D06",
+          "version": 1,
+          "quote": "ICE 2035-08-22: ICE 6/10 at 10:30"
+        }
+      ],
+      "record_history": {
+        "a": false,
+        "b": null,
+        "c": null,
+        "explanation": "Onset was 2035-08-19 in both record versions, so no change and 7.6 cannot apply to onset."
+      }
+    },
+    "max_grade": {
+      "category": "7.7",
+      "record_value": 2,
+      "documented_value": {
+        "grade": 2
+      },
+      "signed_difference_days": null,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [
+        {
+          "role": "highest grade: ICE 6/10 (Grade 2), Day 8",
+          "document_id": "SYN-0060-D06",
+          "version": 1,
+          "quote": "ICE 2035-08-22: ICE 6/10 at 10:30 (orientation 2 right, 2 objects named, command done, no sentence, tens correct)."
+        },
+        {
+          "role": "no sedating medication",
+          "document_id": "SYN-0060-D06",
+          "version": 1,
+          "quote": "Awake in chair after breakfast. No sedating medication."
+        },
+        {
+          "role": "later ICE 8/10 (Grade 1), no seizure",
+          "document_id": "SYN-0060-D07",
+          "version": 1,
+          "quote": "ICE 08:50: 8/10. Awake, full strength, no seizure activity."
+        },
+        {
+          "role": "tremor is an excluded symptom, not used",
+          "document_id": "SYN-0060-D08",
+          "version": 1,
+          "quote": "Slight tremor of the right hand when writing; doctor aware."
+        },
+        {
+          "role": "discharge summary: worst ICE 6/10",
+          "document_id": "SYN-0060-D10",
+          "version": 1,
+          "quote": "worst ICE 6/10 on 2035-08-22"
+        }
+      ],
+      "record_history": {
+        "a": true,
+        "b": true,
+        "c": false,
+        "explanation": "Max grade changed from 3 (v1, recorded 2035-09-04T10:00) to 2 (v2, recorded 2035-09-08T16:00, reason 'Corrected entry'). The current value 2 equals the documented grade, so (b) holds. Condition (c) fails: every document supporting Grade 2 (ICE assessment documented 2035-08-22T11:20, discharge summary documented 2035-08-29T13:00) was documented before v1 was recorded, and no document is dated after 2035-09-04. Result 7.7 with the flag 'revision without new documentation'."
+      }
+    }
+  },
+  "derivation": {
+    "onset": "Section 6.1 / 6.2 / A26: the earliest candidate is the overnight ICE 7/10 (Grade 1) in the Day 6 note; 'overnight' converts to the range 2035-08-19 to 2035-08-20 (Day 5 to Day 6). The earliest exactly dated qualifying finding is Day 8, so the onset is that range. The record date Day 5 lies inside it, so no mismatch (section 7.1, A26) and 7.7; flagged relative time and time-imprecise.",
+    "max_grade": "Section 3.3: ICE 6/10 on Day 8 is the worst finding (Grade 2); no seizure, motor, imaging or consciousness criterion higher; tremor is excluded. Current record Grade 2 equals it. Section 7.6 / A28: changed 3 to 2 and agrees, but no supporting document post-dates the previous record version (recorded 2035-09-04), so 7.7 with 'revision without new documentation'."
+  },
+  "ambiguity_notes": "Onset ambiguity: the ICE 10/10 at 08:10 on 2035-08-19 and the 'overnight' drop (documented 2035-08-20, event time not recorded) could be read as the drop happening on the night of 19-20 Aug, i.e. Day 6 only. I did not apply that reading because A26 turns 'overnight' mechanically into the range D-1 to D, and ReSauce must not guess beyond the table; the record date is inside the range, so 7.7. If the onset were taken as Day 6 only, it would be 7.1 with a signed difference of -1 (and the Day 5 ICE 10/10 would be a formal Grade 0 assessment on the record date). Not 7.5: the reasons in section 7.5 (attribution, conflicting assessments at the same time, barrier, consciousness wording) do not apply. The attending's ICE 10/10 at 09:15 on Day 6 is a separate later assessment, not a conflicting reading. The second-hand source ('per night-shift handover') is still a signed clinician note."
+}

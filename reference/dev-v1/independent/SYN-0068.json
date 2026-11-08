@@ -1,0 +1,81 @@
+{
+  "answer_format": "0.1-provisional",
+  "case_id": "SYN-0068",
+  "answer_kind": "independent",
+  "status": "not clinician-verified",
+  "provenance": {
+    "clinical_methods_version": "0.4.1",
+    "data_format_version": "0.1.2",
+    "date": "2026-11-08",
+    "model": "claude-sonnet-5-5 (Sonnet 5.5)"
+  },
+  "out_of_scope": null,
+  "fields": {
+    "onset": {
+      "category": "7.1",
+      "record_value": "2036-07-19",
+      "documented_value": {
+        "date": "2036-07-12",
+        "study_day": 4
+      },
+      "signed_difference_days": 7,
+      "difference_note": "record 2036-07-19 is 7 days after the documented onset 2036-07-12 (record minus documents); the 2036-07-19 ICE 5/10 is a recurrence after documented recovery, not a new episode (A5)",
+      "readings": [],
+      "evidence": [
+        {
+          "role": "earliest qualifying finding: ICE 8 = Grade 1 (Day 4, 2036-07-12)",
+          "document_id": "SYN-0068-D01",
+          "version": 1,
+          "quote": "ICE 8/10 at 09:50 (orientation 3/4, attention 0/1)."
+        },
+        {
+          "role": "documented full resolution on Day 7",
+          "document_id": "SYN-0068-D02",
+          "version": 1,
+          "quote": "Total 10/10. Alert and cooperative. Back to baseline."
+        },
+        {
+          "role": "recurrence on 2036-07-19 = the record's onset date",
+          "document_id": "SYN-0068-D04",
+          "version": 1,
+          "quote": "At 20:30 patient scored ICE 5/10"
+        },
+        {
+          "role": "neurologist describes a second episode",
+          "document_id": "SYN-0068-D05",
+          "version": 1,
+          "quote": "Reviewed for second episode of reduced ICE scores after a documented recovery on 15 Jul."
+        }
+      ],
+      "record_history": null,
+      "derivation": "All ICANS after one infusion is one episode (section 6.5, A5), so onset is the earliest qualifying finding: ICE 8/10 on 2036-07-12. The record has 2036-07-19, 7 days later, tolerance 0: 7.1, signed difference +7."
+    },
+    "max_grade": {
+      "category": "7.7",
+      "record_value": 2,
+      "documented_value": {
+        "grade": 2
+      },
+      "signed_difference_days": null,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [
+        {
+          "role": "awakens to voice = Grade 2",
+          "document_id": "SYN-0068-D04",
+          "version": 1,
+          "quote": "Opens eyes to voice, then drifts off."
+        },
+        {
+          "role": "ICE 5 = Grade 2",
+          "document_id": "SYN-0068-D04",
+          "version": 1,
+          "quote": "Evening note 19 Jul. At 20:30 patient scored ICE 5/10 (orientation 1/4, naming 2/3, commands 1/1, writing 0/1, attention 1/1)."
+        }
+      ],
+      "record_history": null,
+      "derivation": "Highest per-assessment grade over the single episode is 2 (ICE 5, eyes open to voice; ICE 6 on 21 Jul). Equal to the record (7.7)."
+    }
+  },
+  "ambiguity_notes": "Possible alternative reading: the record may treat 19 Jul as a second episode. Section 6.5/A5 says all findings after one infusion are one episode and recurrence is only flagged for review, so I used the earliest finding (12 Jul). Tremor and headache are excluded. The unsigned D03 v2 dietitian note is irrelevant."
+}

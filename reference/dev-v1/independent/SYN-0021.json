@@ -1,0 +1,92 @@
+{
+  "answer_format": "0.1-provisional",
+  "case_id": "SYN-0021",
+  "answer_kind": "independent",
+  "status": "not clinician-verified",
+  "provenance": {
+    "clinical_methods_version": "v0.4.1",
+    "data_format_version": "v0.1.2",
+    "date": "2026-11-08"
+  },
+  "out_of_scope": null,
+  "fields": {
+    "onset": {
+      "category": "7.7",
+      "record_value": "2031-07-24",
+      "documented_value": {
+        "date": "2031-07-24",
+        "study_day": 5
+      },
+      "signed_difference_days": 0,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [
+        {
+          "role": "first Grade >=1 finding (ICE 7/10)",
+          "document_id": "SYN-0021-D03",
+          "version": 1,
+          "quote": "TOTAL 7/10"
+        },
+        {
+          "role": "no sedating meds",
+          "document_id": "SYN-0021-D03",
+          "version": 1,
+          "quote": "No sedating meds last 24 h."
+        },
+        {
+          "role": "ICE 10/10 on Day +3",
+          "document_id": "SYN-0021-D02",
+          "version": 1,
+          "quote": "ICE @ 21:00: 10/10."
+        }
+      ],
+      "record_history": {
+        "a": false,
+        "b": true,
+        "c": null,
+        "explanation": "Onset was 2031-07-24 in both record versions, so it did not change and cannot be 7.6; categorised normally (7.7)."
+      }
+    },
+    "max_grade": {
+      "category": "7.6",
+      "record_value": 3,
+      "documented_value": {
+        "grade": 3
+      },
+      "signed_difference_days": null,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [
+        {
+          "role": "non-convulsive seizures on EEG resolving with levetiracetam -> Grade 3",
+          "document_id": "SYN-0021-D07",
+          "version": 1,
+          "quote": "Nonconvulsive electrographic seizures, L temporal, each <2 min with return to baseline background between them; resolved after IV levetiracetam."
+        },
+        {
+          "role": "return to baseline between seizures (not Grade 4)",
+          "document_id": "SYN-0021-D07",
+          "version": 1,
+          "quote": "Between seizures the background returned to its baseline (reactive theta)."
+        },
+        {
+          "role": "Grade 2 level from ICE",
+          "document_id": "SYN-0021-D04",
+          "version": 1,
+          "quote": "Neuro @ 07:40: ICE 5/10"
+        }
+      ],
+      "record_history": {
+        "a": true,
+        "b": true,
+        "c": true,
+        "explanation": "Grade changed 2 to 3 between v1 (recorded 2031-07-27T11:00) and v2 (recorded 2031-07-29T15:30). Current Grade 3 equals the documented Grade 3 (7.7 conditions met). SYN-0021-D07 v1 (EEG report, documented 2031-07-29T09:15) supports Grade 3 and was documented after v1 and before v2."
+      }
+    }
+  },
+  "derivation": {
+    "onset": "Section 6.2: earliest Grade >=1 finding is ICE 7/10 (Grade 1) on Day +5 (2031-07-24), equal to the record date. Onset did not change between record versions, so 7.7 (section 7.6: only the changed field can be 7.6).",
+    "max_grade": "EEG on Day +7 (2031-07-26) shows non-convulsive electrographic seizures that resolved after IV levetiracetam, Grade 3 'non-convulsive seizures on EEG that resolve with intervention' (Table 6). Return to baseline between seizures excludes Grade 4. Record changed 2 to 3 (a), current value meets 7.7 (b), and the signed EEG report (documented 2031-07-29T09:15) falls after v1 recorded_at (2031-07-27T11:00) and before v2 recorded_at (2031-07-29T15:30) (c), so 7.6 (A28)."
+  },
+  "ambiguity_notes": "Levetiracetam was prophylaxis and treatment, not a competing cause (A35). Seizure is Grade 3, not Grade 4, because baseline returned between events and each lasted under 2 minutes. The change reason 'Data review' is generic; the test is the document timing (c), which is met. D06 (07-27, EEG pending) predates the report so it does not support Grade 3. Baseline peripheral neuropathy numbness is not a Table 6 criterion."
+}

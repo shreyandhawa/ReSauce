@@ -1,0 +1,82 @@
+{
+  "answer_format": "0.1-provisional",
+  "case_id": "SYN-0013",
+  "answer_kind": "independent",
+  "status": "not clinician-verified",
+  "provenance": {
+    "clinical_methods_version": "v0.4.1",
+    "data_format_version": "v0.1.2",
+    "date": "2026-11-08"
+  },
+  "out_of_scope": null,
+  "fields": {
+    "onset": {
+      "category": "7.7",
+      "record_value": "2033-10-26",
+      "documented_value": {
+        "date": "2033-10-26",
+        "study_day": 2
+      },
+      "signed_difference_days": 0,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [
+        {
+          "role": "first Grade >=1 finding (ICE 9/10 -> Grade 1), onset day",
+          "document_id": "SYN-0013-D02",
+          "version": 1,
+          "quote": "Total: 9/10"
+        },
+        {
+          "role": "no sedating cause that day",
+          "document_id": "SYN-0013-D02",
+          "version": 1,
+          "quote": "Sedative, opioid or antihistamine given in last 24 h: no"
+        },
+        {
+          "role": "discharge summary agrees on onset date",
+          "document_id": "SYN-0013-D05",
+          "version": 1,
+          "quote": "onset 2033-10-26 (ICE 9/10)"
+        }
+      ],
+      "record_history": null
+    },
+    "max_grade": {
+      "category": "7.7",
+      "record_value": 3,
+      "documented_value": {
+        "grade": 3
+      },
+      "signed_difference_days": null,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [
+        {
+          "role": "Grade 3 consciousness: opened eyes only after a light touch, no response to loud voice",
+          "document_id": "SYN-0013-D03",
+          "version": 1,
+          "quote": "opened eyes and looked at me only after a light touch on the forearm"
+        },
+        {
+          "role": "no response to voice",
+          "document_id": "SYN-0013-D03",
+          "version": 1,
+          "quote": "No eye opening or reply when spoken to loudly by name"
+        },
+        {
+          "role": "no sedating medication, so depressed consciousness counts",
+          "document_id": "SYN-0013-D03",
+          "version": 1,
+          "quote": "Medications in last 24 h: no benzodiazepines, opioids, antihistamines or other sedating agents."
+        }
+      ],
+      "record_history": null
+    }
+  },
+  "derivation": {
+    "onset": "Section 6.2: earliest event time of a Grade >=1 finding. Day +2 (2033-10-26) has ICE 9/10 (Table 6 Grade 1, section 3.3), no competing cause (tocilizumab and fever are not competing causes, A35). Record is the same day, so section 7.7/7.1 tolerance 0 gives no mismatch.",
+    "max_grade": "Section 3.3/3.4 and A2: highest per-assessment grade. Day +3 exam documents arousal only to light touch with no sedating drugs in 24 h, which is the Grade 3 'awakens only to tactile stimulus' criterion (touch was light, not vigorous, so not Grade 4). ICE 8 alone would be Grade 1, but the most severe domain sets the grade. Record Grade 3 equals this, so 7.7."
+  },
+  "ambiguity_notes": "Not ambiguous. The RN report of the patient up in a chair at 08:30 on Day +3 is about 3 hours before the exam and is fluctuation, not a conflicting assessment at about the same time (section 6.4). Day +5 headache is an excluded symptom (section 4.2). Tocilizumab given 04:00 on Day +2 is treatment for CRS, not a competing cause (A35)."
+}

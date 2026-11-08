@@ -1,0 +1,108 @@
+{
+  "answer_format": "0.1-provisional",
+  "case_id": "SYN-0006",
+  "answer_kind": "independent",
+  "status": "not clinician-verified",
+  "provenance": {
+    "clinical_methods_version": "0.4.1",
+    "data_format_version": "0.1.2",
+    "dataset_id": "SYN-DS-DEV-V1",
+    "dataset_version": "1.0.0",
+    "date_written": "2026-11-08"
+  },
+  "out_of_scope": null,
+  "fields": {
+    "onset": {
+      "category": "7.7",
+      "record_value": "2033-03-12",
+      "documented_value": {
+        "date": "2033-03-12",
+        "study_day": 3
+      },
+      "signed_difference_days": 0,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [
+        {
+          "role": "first qualifying finding: ICE 8/10, alert (Grade 1)",
+          "document_id": "SYN-0006-D02",
+          "version": 1,
+          "quote": "TOTAL 8/10"
+        },
+        {
+          "role": "alert, no sedating meds",
+          "document_id": "SYN-0006-D02",
+          "version": 1,
+          "quote": "Arousal: alert | Sedating meds past 24 h: none"
+        },
+        {
+          "role": "Day +1 ICE 10/10 earlier",
+          "document_id": "SYN-0006-D01",
+          "version": 1,
+          "quote": "ICE (20:30): 10/10 | arousal: alert"
+        }
+      ],
+      "record_history": null
+    },
+    "max_grade": {
+      "category": "7.3",
+      "record_value": 4,
+      "documented_value": {
+        "grade": 2
+      },
+      "signed_difference_days": null,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [
+        {
+          "role": "worst assessment: ICE 4/10, awake (Grade 2)",
+          "document_id": "SYN-0006-D04",
+          "version": 1,
+          "quote": "ICE 4/10 (orientation 1/4, naming 2/3, command 1/1, writing 0/1, attention 0/1) | awake, attends to examiner"
+        },
+        {
+          "role": "no papilledema, VI palsy or posturing (no Table 6 Grade 4 sign)",
+          "document_id": "SYN-0006-D04",
+          "version": 1,
+          "quote": "eye movements full, no abducens palsy | fundoscopy: sharp disc margins, no papilledema | no posturing"
+        },
+        {
+          "role": "no motor finding",
+          "document_id": "SYN-0006-D04",
+          "version": 1,
+          "quote": "strength 5/5 throughout"
+        },
+        {
+          "role": "text-only ICP sign (projectile vomiting with headache), not in Table 6",
+          "document_id": "SYN-0006-D03",
+          "version": 1,
+          "quote": "projectile vomiting x2 (12:40 and 13:05) with severe frontal headache, 8/10"
+        },
+        {
+          "role": "clinician concern only, no ICP finding",
+          "document_id": "SYN-0006-D04",
+          "version": 1,
+          "quote": "Assessment: ICANS; vomiting with headache raises concern for raised intracranial pressure"
+        },
+        {
+          "role": "neurology: no papilledema, ICE 8",
+          "document_id": "SYN-0006-D06",
+          "version": 1,
+          "quote": "ICE 8/10 | cranial nerves intact | no papilledema"
+        },
+        {
+          "role": "Day +5 ICE 6/10 (Grade 2)",
+          "document_id": "SYN-0006-D05",
+          "version": 1,
+          "quote": "TOTAL 6/10"
+        }
+      ],
+      "record_history": null
+    }
+  },
+  "derivation": {
+    "onset": "ICE 8/10 on Day +3 is the first Grade 1 finding and is on the record date: 7.7 (sections 6.2, 7.7).",
+    "max_grade": "Grade is taken from Table 6 only (A12). ICE 4/10 in an awake patient is Grade 2; projectile vomiting with headache is a text-only ICP sign (flagged, not graded), and the exam excludes papilledema, VI palsy and posturing. Documented 2 is below the record's 4, so 7.3 (section 7.3, A8). No 'not assessable' period, so not 7.4."
+  },
+  "ambiguity_notes": "Extra flag 'text-only ICP sign' (projectile vomiting with headache, D03/D04). Record Grade 4 may have been chosen from that clinical concern, but ReSauce does not guess the abstractor's reasoning (A24 principle) and grades from Table 6 only (A12). Headache is an excluded symptom (4.2). Ondansetron is not a sedating competing cause on the A35 list."
+}

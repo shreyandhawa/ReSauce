@@ -1,0 +1,81 @@
+{
+  "answer_format": "0.1-provisional",
+  "case_id": "SYN-0066",
+  "answer_kind": "independent",
+  "status": "not clinician-verified",
+  "provenance": {
+    "clinical_methods_version": "0.4.1",
+    "data_format_version": "0.1.2",
+    "date": "2026-11-08",
+    "model": "claude-sonnet-5-5 (Sonnet 5.5)"
+  },
+  "out_of_scope": null,
+  "fields": {
+    "onset": {
+      "category": "7.7",
+      "record_value": "2036-11-12",
+      "documented_value": {
+        "date": "2036-11-12",
+        "study_day": 4
+      },
+      "signed_difference_days": 0,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [
+        {
+          "role": "earliest qualifying finding: ICE 8 = Grade 1 (Day 4)",
+          "document_id": "SYN-0066-D03",
+          "version": 1,
+          "quote": "so the total was 8 out of 10"
+        },
+        {
+          "role": "no competing cause",
+          "document_id": "SYN-0066-D03",
+          "version": 1,
+          "quote": "No sedating medicines had been given."
+        },
+        {
+          "role": "formal Grade 0 on Day 2 (during CRS)",
+          "document_id": "SYN-0066-D02",
+          "version": 1,
+          "quote": "scored 10/10 on ICE"
+        }
+      ],
+      "record_history": null,
+      "derivation": "First Grade >=1 finding is ICE 8/10 on 2036-11-12 (Day 4), equal to the record (7.7). The earlier history of lacunar stroke is not a Table 6 finding."
+    },
+    "max_grade": {
+      "category": "7.2",
+      "record_value": 2,
+      "documented_value": {
+        "grade": 3
+      },
+      "signed_difference_days": null,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [
+        {
+          "role": "non-convulsive seizure on EEG, 3 min (<=5 min)",
+          "document_id": "SYN-0066-D07",
+          "version": 1,
+          "quote": "The study captured a single electrographic seizure arising over the right temporal region from 10:12 to 10:15 (3 minutes), with no visible clinical change."
+        },
+        {
+          "role": "resolved with intervention = Grade 3 (Table 6)",
+          "document_id": "SYN-0066-D07",
+          "version": 1,
+          "quote": "Impression: one non-convulsive seizure of 3 minutes that ended after intravenous levetiracetam, with return to baseline; mild diffuse slowing."
+        },
+        {
+          "role": "Grade 2 on the ICE domain",
+          "document_id": "SYN-0066-D04",
+          "version": 1,
+          "quote": "the ICE score of 5/10 at 10:20 shows clear worsening"
+        }
+      ],
+      "record_history": null,
+      "derivation": "A 3-minute non-convulsive electrographic seizure that resolved with IV levetiracetam meets Grade 3 (Table 6); it is not Grade 4 (not >5 min, returned to baseline). Levetiracetam is treatment and not a competing cause (A35). Record 2 is below the documented 3: 7.2."
+    }
+  },
+  "ambiguity_notes": "The EEG report is documented on 2036-11-18 (Day 10) but the seizure is dated 2036-11-15 (Day 7), inside the window, so it is used. The clinic note of 2036-12-19 (Day +41, tremor, ICE 10/10) is outside the observation window and not used. Tremor is excluded. The seizure was 3 minutes, so Grade 4 is not met."
+}

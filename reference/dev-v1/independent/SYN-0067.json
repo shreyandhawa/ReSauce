@@ -1,0 +1,81 @@
+{
+  "answer_format": "0.1-provisional",
+  "case_id": "SYN-0067",
+  "answer_kind": "independent",
+  "status": "not clinician-verified",
+  "provenance": {
+    "clinical_methods_version": "0.4.1",
+    "data_format_version": "0.1.2",
+    "date": "2026-11-08",
+    "model": "claude-sonnet-5-5 (Sonnet 5.5)"
+  },
+  "out_of_scope": null,
+  "fields": {
+    "onset": {
+      "category": "7.7",
+      "record_value": "2032-09-27",
+      "documented_value": {
+        "date": "2032-09-27",
+        "study_day": 5
+      },
+      "signed_difference_days": 0,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [
+        {
+          "role": "event time of the ICE",
+          "document_id": "SYN-0067-D03",
+          "version": 1,
+          "quote": "ICE 2032-09-27 08:20"
+        },
+        {
+          "role": "earliest qualifying finding: ICE 8 = Grade 1 (Day 5)",
+          "document_id": "SYN-0067-D03",
+          "version": 1,
+          "quote": "Total 8/10"
+        },
+        {
+          "role": "formal Grade 0 on Day 3",
+          "document_id": "SYN-0067-D02",
+          "version": 1,
+          "quote": "21:00 ICE 10/10. Alert. No tremor."
+        }
+      ],
+      "record_history": null,
+      "derivation": "First Grade >=1 finding is ICE 8/10 on 2032-09-27 (Day 5), equal to record onset (7.7)."
+    },
+    "max_grade": {
+      "category": "7.7",
+      "record_value": 2,
+      "documented_value": {
+        "grade": 2
+      },
+      "signed_difference_days": null,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [
+        {
+          "role": "ICE 6 = Grade 2, alert, no other domain",
+          "document_id": "SYN-0067-D04",
+          "version": 1,
+          "quote": "07:50 ICE 6/10 (orient 2/4, naming 2/3, cmds 1/1, writing 0/1, attn 1/1). Awake, alert. No focal deficits. No seizure."
+        },
+        {
+          "role": "no competing cause",
+          "document_id": "SYN-0067-D04",
+          "version": 1,
+          "quote": "No sedating meds."
+        },
+        {
+          "role": "NOT USED: version 2 is unsigned (A27); would be Grade 3",
+          "document_id": "SYN-0067-D04",
+          "version": 2,
+          "quote": "Awakens only to tactile stimulus."
+        }
+      ],
+      "record_history": null,
+      "derivation": "The latest signed version of D04 is v1 (ICE 6, alert = Grade 2). The unsigned v2 addendum (awakens only to tactile stimulus = Grade 3) is never used (A27, section 6.3). Documented Grade 2 equals record Grade 2 (7.7)."
+    }
+  },
+  "ambiguity_notes": "The unsigned addendum in SYN-0067-D04 v2 would give Grade 3 (7.2) but is excluded by A27; it generates the 'unsigned later version' flag, not a second reading. Tremor on Day 10 is excluded; prior vincristine neuropathy is not an ICANS finding."
+}

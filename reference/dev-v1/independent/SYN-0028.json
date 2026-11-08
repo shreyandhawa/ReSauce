@@ -1,0 +1,78 @@
+{
+  "answer_format": "0.1-provisional",
+  "case_id": "SYN-0028",
+  "answer_kind": "independent",
+  "status": "not clinician-verified",
+  "provenance": {
+    "clinical_methods_version": "v0.4.1",
+    "data_format_version": "v0.1.2",
+    "dataset_id": "SYN-DS-DEV-V1",
+    "dataset_version": "1.0.0",
+    "date_written": "2026-11-08"
+  },
+  "out_of_scope": null,
+  "fields": {
+    "onset": {
+      "category": "7.4",
+      "record_value": "2036-10-25",
+      "documented_value": {
+        "date": "2036-10-26",
+        "study_day": 4
+      },
+      "signed_difference_days": -1,
+      "difference_note": "Record date is 1 day before the documented onset. Only a sub-threshold symptom (word-finding difficulty) with no gradeable assessment on the record date, so insufficient evidence, not a mismatch. Difference given for information.",
+      "readings": [],
+      "evidence": [
+        {
+          "role": "record date: sub-threshold symptom, no ICE total",
+          "document_id": "SYN-0028-D02",
+          "version": 1,
+          "quote": "Speech: word-finding difficulty noted during afternoon care"
+        },
+        {
+          "role": "earliest qualifying finding (ICE 8, Grade 1), Day +4",
+          "document_id": "SYN-0028-D03",
+          "version": 1,
+          "quote": "Neuro: ICE 8/10 at 09:10 (orientation 3/4, attention 0/1)"
+        },
+        {
+          "role": "previous formal Grade 0, Day +2 (not record date)",
+          "document_id": "SYN-0028-D01",
+          "version": 1,
+          "quote": "Neuro: ICE 10/10 at 09:50"
+        }
+      ],
+      "record_history": null
+    },
+    "max_grade": {
+      "category": "7.7",
+      "record_value": 2,
+      "documented_value": {
+        "grade": 2
+      },
+      "signed_difference_days": null,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [
+        {
+          "role": "ICE 6/10 = Grade 2",
+          "document_id": "SYN-0028-D04",
+          "version": 1,
+          "quote": "ICE: 6/10 at 11:20 (orientation 2/4, naming 2/3, commands 1/1, writing 0/1, attention 1/1)"
+        },
+        {
+          "role": "awakens to voice = Grade 2",
+          "document_id": "SYN-0028-D04",
+          "version": 1,
+          "quote": "Level of consciousness: awakens to voice"
+        }
+      ],
+      "record_history": null
+    }
+  },
+  "derivation": {
+    "onset": "Documented onset is ICE 8/10 on 2036-10-26 (Day +4) (§6.2). On the record date 2036-10-25 there is only word-finding difficulty, an ungradeable (sub-threshold) symptom, and no gradeable assessment (A34). §7.1 bullet 4 / A18: insufficient evidence, 7.4.",
+    "max_grade": "Highest supported grade is 2 (ICE 6/10, awakens to voice). Equals the record: 7.7."
+  },
+  "ambiguity_notes": "Flag 'record date matches an excluded or sub-threshold symptom' applies (word-finding difficulty on 2036-10-25, no qualifying finding that day; A24 amended), and the case-level 'ungradeable neurological symptom' flag applies. No formal Grade 0 on the record date, so A24's mismatch route does not apply. Difference -1 is informational."
+}

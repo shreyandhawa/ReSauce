@@ -1,0 +1,86 @@
+{
+  "answer_format": "0.1-provisional",
+  "case_id": "SYN-0059",
+  "answer_kind": "independent",
+  "status": "not clinician-verified",
+  "provenance": {
+    "clinical_methods_version": "v0.4.1",
+    "data_format_version": "v0.1.2",
+    "date_written": "2026-11-08"
+  },
+  "out_of_scope": null,
+  "fields": {
+    "onset": {
+      "category": "7.7",
+      "record_value": "2034-12-09",
+      "documented_value": {
+        "date": "2034-12-09",
+        "study_day": 4
+      },
+      "signed_difference_days": 0,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [
+        {
+          "role": "earliest qualifying finding (ICE 8/10 = Grade 1), Day 4",
+          "document_id": "SYN-0059-D02",
+          "version": 1,
+          "quote": "Neuro: ICE 8/10 at 15:15 (orientation 3/4, attention 0/1)"
+        },
+        {
+          "role": "earlier ICE 10/10 (Day 2)",
+          "document_id": "SYN-0059-D01",
+          "version": 1,
+          "quote": "Neuro: ICE 10/10 at 09:50"
+        }
+      ],
+      "record_history": {
+        "a": false,
+        "b": null,
+        "c": null,
+        "explanation": "Onset was 2034-12-09 in both record versions (no change), so 7.6 cannot apply to onset."
+      }
+    },
+    "max_grade": {
+      "category": "7.6",
+      "record_value": 3,
+      "documented_value": {
+        "grade": 3
+      },
+      "signed_difference_days": null,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [
+        {
+          "role": "generalised seizure ~1 min, self-resolved, back to baseline in 5 min = Grade 3 (event 10 Dec, Day 5; added by addendum)",
+          "document_id": "SYN-0059-D03",
+          "version": 2,
+          "quote": "Addendum 13 Dec: night nurse reports a witnessed seizure at 03:10 on 10 Dec, generalised, lasting about 1 minute, stopped without treatment, back to baseline within 5 minutes."
+        },
+        {
+          "role": "ICE 6/10 (Grade 2) is the worst ICE",
+          "document_id": "SYN-0059-D03",
+          "version": 2,
+          "quote": "Neuro: ICE 6/10 at 10:40 (orientation 2/4, naming 2/3, commands 1/1, writing 0/1, attention 1/1)"
+        },
+        {
+          "role": "discharge summary corroborates the seizure",
+          "document_id": "SYN-0059-D06",
+          "version": 1,
+          "quote": "one brief seizure on 10 Dec (see addendum), levetiracetam started 13 Dec"
+        }
+      ],
+      "record_history": {
+        "a": true,
+        "b": true,
+        "c": true,
+        "explanation": "Max grade changed from 2 (v1, recorded 2034-12-12T09:30) to 3 (v2, recorded 2034-12-14T10:00). The current value 3 equals the documented grade (generalised seizure, Grade 3). The supporting document version SYN-0059-D03 v2 (addendum) has documented_at 2034-12-13T12:00, after the previous record version's recorded_at (2034-12-12T09:30) and before the recorded_at of v2 (2034-12-14T10:00). All three conditions hold: 7.6."
+      }
+    }
+  },
+  "derivation": {
+    "onset": "Section 6.2: earliest qualifying observation is ICE 8/10 on 2034-12-09 = Day 4 (Grade 1). Record Day 4 in both versions equals it: 7.7. No onset change, so not 7.6.",
+    "max_grade": "Section 3.3: a generalised seizure of about 1 minute that stopped without treatment with return to baseline is a rapidly resolving clinical seizure, Grade 3; ICE 6/10 gives only Grade 2. The current record Grade 3 equals the documented Grade 3. Section 7.6 / A28: the value changed 2 to 3 (a), agrees (b), and the addendum version (documented 2034-12-13T12:00) lies after the previous record version (2034-12-12T09:30) and before the change (2034-12-14T10:00) (c). So 7.6."
+  },
+  "ambiguity_notes": "The seizure appears only in the signed v2 of the Day 6 note (latest signed version, so current). Its event date (10 Dec, Day 5) is in the window and no competing cause is documented; levetiracetam was started after the seizure. In the superseded v1 of that note the seizure is absent, which explains why record v1 held Grade 2. The record history shows the earlier record agreeing with the superseded document version, not an error. Both 'night nurse reports' and the exact time make it an event time with no relative-time conversion needed."
+}

@@ -1,0 +1,66 @@
+{
+  "answer_format": "0.1-provisional",
+  "case_id": "SYN-0031",
+  "answer_kind": "independent",
+  "status": "not clinician-verified",
+  "provenance": {
+    "clinical_methods_version": "v0.4.1",
+    "data_format_version": "v0.1.2",
+    "dataset_id": "SYN-DS-DEV-V1",
+    "dataset_version": "1.0.0",
+    "date_written": "2026-11-08"
+  },
+  "out_of_scope": {
+    "reason": "documented death",
+    "source": "clinical-methods §5, §8, A29",
+    "evidence": [
+      {
+        "role": "documented death on 2033-01-02 (Day +17)",
+        "document_id": "SYN-0031-D06",
+        "version": 1,
+        "quote": "The patient died at 05:10 on 02 Jan in the intensive care unit with family present."
+      }
+    ]
+  },
+  "fields": {
+    "onset": {
+      "category": "out of scope (documented death)",
+      "record_value": "2032-12-21",
+      "documented_value": null,
+      "signed_difference_days": null,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [
+        {
+          "role": "documented death on 2033-01-02 (Day +17)",
+          "document_id": "SYN-0031-D06",
+          "version": 1,
+          "quote": "The patient died at 05:10 on 02 Jan in the intensive care unit with family present."
+        }
+      ],
+      "record_history": null
+    },
+    "max_grade": {
+      "category": "out of scope (documented death)",
+      "record_value": 2,
+      "documented_value": null,
+      "signed_difference_days": null,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [
+        {
+          "role": "documented death on 2033-01-02 (Day +17)",
+          "document_id": "SYN-0031-D06",
+          "version": 1,
+          "quote": "The patient died at 05:10 on 02 Jan in the intensive care unit with family present."
+        }
+      ],
+      "record_history": null
+    }
+  },
+  "derivation": {
+    "onset": "A documented death makes the case out of scope whatever its date (§5, §8, A29). No §7 category.",
+    "max_grade": "Same: out of scope (documented death), no §7 category."
+  },
+  "ambiguity_notes": "The death note says the cause was septic shock with multi-organ failure; I did not judge whether ICANS contributed (Grade 5 is not assigned, §8). The record maximum is 2, not 5, so the trigger is the documented death, not a Grade 5 record. I did not compute documentation-derived values."
+}

@@ -13,6 +13,8 @@ Every answer here is **"not clinician-verified"**. Answers rest on `docs/clinica
 | `ordering.json` | The seed (20261107), the generator (`random.Random`), the input order SC-01 … SC-72, and which case ID belongs to which scenario (plan §7.2). | `tools/make_briefs.py` |
 | `briefs.json` | One writing brief per case: scenario, expected categories (from the plan), and the dataset-wide features assigned with the same seeded generator. It also holds the rules every case follows, the feature totals and the fingerprint (SHA-256) of the plan it was made from. | `tools/make_briefs.py` |
 | `intended/<case_id>.json` | The case author's intended answer for one case (plan §8.1, §8.2 step 1). | Written by hand; offsets filled by `tools/fill_offsets.py` |
+| `independent/<case_id>.json` | A second, blind answer for each of the 72 cases (`answer_kind` `"independent"`). Made by Claude Opus in a separate folder (`~/Projects/ReSauce-blind`) that held only the cases, `clinical-methods.md`, `data-format.md` and the answer-format README, never the intended answers, plan, briefs, handoff, code or results. Same format as the intended answers, plus a `derivation` text (top-level in most files, inside each field in 12). Copied here unchanged. **Not clinician-verified.** | Written blind (Step 5a) |
+| `comparison.md` | Independent against intended answers: agreement counts and a list of the differences. Nothing is adjudicated in it. | `tools/compare_answers.py` |
 
 Re-create the first two with `.venv/bin/python -m tools.make_briefs`. The same seed and the same plan give identical files.
 

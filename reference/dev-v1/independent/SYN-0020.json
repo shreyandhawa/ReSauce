@@ -1,0 +1,70 @@
+{
+  "answer_format": "0.1-provisional",
+  "case_id": "SYN-0020",
+  "answer_kind": "independent",
+  "status": "not clinician-verified",
+  "provenance": {
+    "clinical_methods_version": "v0.4.1",
+    "data_format_version": "v0.1.2",
+    "date": "2026-11-08"
+  },
+  "out_of_scope": null,
+  "fields": {
+    "onset": {
+      "category": "7.7",
+      "record_value": "2034-12-29",
+      "documented_value": {
+        "date": "2034-12-29",
+        "study_day": 4
+      },
+      "signed_difference_days": 0,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [
+        {
+          "role": "first Grade >=1 finding (ICE 8/10)",
+          "document_id": "SYN-0020-D02",
+          "version": 1,
+          "quote": "ICE 8/10 at 21:30 (orient 3/4, attn 0/1, rest full)"
+        },
+        {
+          "role": "ICE 10/10 on Day +3",
+          "document_id": "SYN-0020-D01",
+          "version": 1,
+          "quote": "ICE 10/10 at 09:10"
+        }
+      ],
+      "record_history": null
+    },
+    "max_grade": {
+      "category": "7.7",
+      "record_value": 1,
+      "documented_value": {
+        "grade": 1
+      },
+      "signed_difference_days": null,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [
+        {
+          "role": "ICE 8/10 re-check, Grade 1",
+          "document_id": "SYN-0020-D03",
+          "version": 1,
+          "quote": "I re-checked at 08:15 today: ICE 8/10 (orient 3/4, attn 0/1)"
+        },
+        {
+          "role": "ICE back to 10/10",
+          "document_id": "SYN-0020-D04",
+          "version": 1,
+          "quote": "= 10/10. Alert."
+        }
+      ],
+      "record_history": null
+    }
+  },
+  "derivation": {
+    "onset": "Section 6.2: first Grade >=1 finding is ICE 8/10 on Day +4 (2034-12-29) = record date, so 7.7.",
+    "max_grade": "All ICE scores in the window are 8/10 or 10/10; ICE 7-9 is Grade 1. Awake, no focal deficit, no seizure. Highest grade 1 = record, so 7.7."
+  },
+  "ambiguity_notes": "The discharge summary has two versions (v2 corrects only the weight); no neurological content differs, so the version change is irrelevant. Record has a single version, so no 7.6. Mild headache and tocilizumab are not competing causes or gradeable findings (A35, section 4.2)."
+}

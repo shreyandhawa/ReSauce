@@ -1,0 +1,52 @@
+{
+  "answer_format": "0.1-provisional",
+  "case_id": "SYN-0012",
+  "answer_kind": "independent",
+  "status": "not clinician-verified",
+  "provenance": {
+    "clinical_methods_version": "0.4.1",
+    "data_format_version": "0.1.2",
+    "dataset_id": "SYN-DS-DEV-V1",
+    "dataset_version": "1.0.0",
+    "date_written": "2026-11-08"
+  },
+  "out_of_scope": {
+    "reason": "CAPD (Cornell Assessment of Pediatric Delirium) documented in a note (section 5, A29); patient age 65 is in scope by age",
+    "source": "SYN-0012-D03 v1",
+    "evidence": [
+      {
+        "role": "CAPD assessment recorded in a note",
+        "document_id": "SYN-0012-D03",
+        "version": 1,
+        "quote": "the Cornell Assessment of Pediatric Delirium (CAPD) was completed at bedside at 14:00, total score 5"
+      }
+    ]
+  },
+  "fields": {
+    "onset": {
+      "category": "out of scope (CAPD assessment documented)",
+      "record_value": "2033-09-03",
+      "documented_value": null,
+      "signed_difference_days": null,
+      "difference_note": "out of scope: no section 7 category",
+      "readings": [],
+      "evidence": [],
+      "record_history": null
+    },
+    "max_grade": {
+      "category": "out of scope (CAPD assessment documented)",
+      "record_value": 2,
+      "documented_value": null,
+      "signed_difference_days": null,
+      "difference_note": "out of scope: no section 7 category",
+      "readings": [],
+      "evidence": [],
+      "record_history": null
+    }
+  },
+  "derivation": {
+    "onset": "Section 5: any note containing a CAPD assessment makes the case out of scope (A29), whatever the patient's age; no section 7 category is assigned.",
+    "max_grade": "Same CAPD trigger (section 5, A29); no category for the grade field."
+  },
+  "ambiguity_notes": "The CAPD was done in a unit delirium-screening pilot on a 65-year-old; the rule has no exception for adult patients or for the reason it was used, so the trigger applies as written. Other notes (ICE 8 on Day +5, ICE 5 on Day +7) would otherwise support onset and grade, but are not graded."
+}

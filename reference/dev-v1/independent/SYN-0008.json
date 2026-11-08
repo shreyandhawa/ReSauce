@@ -1,0 +1,102 @@
+{
+  "answer_format": "0.1-provisional",
+  "case_id": "SYN-0008",
+  "answer_kind": "independent",
+  "status": "not clinician-verified",
+  "provenance": {
+    "clinical_methods_version": "0.4.1",
+    "data_format_version": "0.1.2",
+    "dataset_id": "SYN-DS-DEV-V1",
+    "dataset_version": "1.0.0",
+    "date_written": "2026-11-08"
+  },
+  "out_of_scope": null,
+  "fields": {
+    "onset": {
+      "category": "7.1",
+      "record_value": "2036-10-05",
+      "documented_value": {
+        "date": "2036-10-03",
+        "study_day": 3
+      },
+      "signed_difference_days": 2,
+      "difference_note": "record later than documented onset",
+      "readings": [],
+      "evidence": [
+        {
+          "role": "first qualifying finding: ICE 8, awake (Grade 1) on Day +3",
+          "document_id": "SYN-0008-D01",
+          "version": 1,
+          "quote": "ICE SCORE ................... 8"
+        },
+        {
+          "role": "awake",
+          "document_id": "SYN-0008-D01",
+          "version": 1,
+          "quote": "Arousal ..................... awake, eyes open"
+        },
+        {
+          "role": "assessment date",
+          "document_id": "SYN-0008-D01",
+          "version": 1,
+          "quote": "Assessment date/time ........ 2036-10-03 07:30"
+        },
+        {
+          "role": "record date Day +5: ICE 5/10 (later, worse)",
+          "document_id": "SYN-0008-D02",
+          "version": 1,
+          "quote": "Neuro screen (08:00): ICE 5/10 | arousal: awake | focal deficits: none | seizure: none"
+        },
+        {
+          "role": "discharge summary also dates ICE 8 on Day +3",
+          "document_id": "SYN-0008-D03",
+          "version": 1,
+          "quote": "ICE 8/10 on 2036-10-03"
+        }
+      ],
+      "record_history": null
+    },
+    "max_grade": {
+      "category": "7.7",
+      "record_value": 2,
+      "documented_value": {
+        "grade": 2
+      },
+      "signed_difference_days": null,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [
+        {
+          "role": "worst assessment: ICE 5/10, awake (Grade 2)",
+          "document_id": "SYN-0008-D02",
+          "version": 1,
+          "quote": "Neuro screen (08:00): ICE 5/10 | arousal: awake | focal deficits: none | seizure: none"
+        },
+        {
+          "role": "no sedating drugs",
+          "document_id": "SYN-0008-D02",
+          "version": 1,
+          "quote": "no sedating drugs administered"
+        },
+        {
+          "role": "outside window (Day +35): not used",
+          "document_id": "SYN-0008-D04",
+          "version": 1,
+          "quote": "Neuro exam: mild bilateral postural tremor of the hands; strength full"
+        },
+        {
+          "role": "outside window (Day +35) ICE: not used",
+          "document_id": "SYN-0008-D04",
+          "version": 1,
+          "quote": "Neuro screen (10:05): ICE 10/10"
+        }
+      ],
+      "record_history": null
+    }
+  },
+  "derivation": {
+    "onset": "Documentation-derived onset is Day +3 (ICE 8, Grade 1; section 6.2). The record's Day +5 is later than the documented onset: the 'earlier than first finding' condition does not apply, so 7.1 with difference +2 (record minus documents; section 7.1, A4).",
+    "max_grade": "ICE 5/10 in an awake patient is Grade 2, equal to the record's 2, so 7.7. The Day +35 clinic note (ICE 10, tremor) is outside the Day 0-28 window and not used (section 6.5, A32); it would not change the grade anyway."
+  },
+  "ambiguity_notes": "Flag 'outside observation window' lists the Day +35 visit (D04). Chronic kidney disease and hypothyroidism are baseline and not on the A35 competing-cause list. No ambiguity in category."
+}

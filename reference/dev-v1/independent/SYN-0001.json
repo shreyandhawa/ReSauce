@@ -1,0 +1,52 @@
+{
+  "answer_format": "0.1-provisional",
+  "case_id": "SYN-0001",
+  "answer_kind": "independent",
+  "status": "not clinician-verified",
+  "provenance": {
+    "clinical_methods_version": "0.4.1",
+    "data_format_version": "0.1.2",
+    "dataset_id": "SYN-DS-DEV-V1",
+    "dataset_version": "1.0.0",
+    "date_written": "2026-11-08"
+  },
+  "out_of_scope": {
+    "reason": "age under 18 at infusion (A29, section 5, A16)",
+    "source": "case.json age_at_infusion = 14 (age is not stated in any note); the notes are consistent with a minor",
+    "evidence": [
+      {
+        "role": "corroborates minor age (school grade); the deciding fact is case.json age_at_infusion 14",
+        "document_id": "SYN-0001-D01",
+        "version": 1,
+        "quote": "attends 9th grade, no learning difficulties"
+      }
+    ]
+  },
+  "fields": {
+    "onset": {
+      "category": "out of scope (age under 18 at infusion)",
+      "record_value": "2031-08-11",
+      "documented_value": null,
+      "signed_difference_days": null,
+      "difference_note": "out of scope: no section 7 category",
+      "readings": [],
+      "evidence": [],
+      "record_history": null
+    },
+    "max_grade": {
+      "category": "out of scope (age under 18 at infusion)",
+      "record_value": 2,
+      "documented_value": null,
+      "signed_difference_days": null,
+      "difference_note": "out of scope: no section 7 category",
+      "readings": [],
+      "evidence": [],
+      "record_history": null
+    }
+  },
+  "derivation": {
+    "onset": "Section 5 and A29: age under 18 at infusion (14 in case.json) is an out-of-scope trigger, so the case gets the out-of-scope flag and no section 7 category.",
+    "max_grade": "Same out-of-scope trigger (section 5, A29); no category is assigned for the grade field either."
+  },
+  "ambiguity_notes": "None for scope: age 14 is below the ReSauce cutoff of 18 (A16). The notes also contain ordinary ICANS-like findings (ICE 8/10 on Day +4, nadir 6/10 on Day +5) but they are deliberately not graded because the case is out of scope. No CAPD assessment appears; the single deciding trigger is age."
+}

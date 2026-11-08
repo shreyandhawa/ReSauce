@@ -1,0 +1,102 @@
+{
+  "answer_format": "0.1-provisional",
+  "case_id": "SYN-0002",
+  "answer_kind": "independent",
+  "status": "not clinician-verified",
+  "provenance": {
+    "clinical_methods_version": "0.4.1",
+    "data_format_version": "0.1.2",
+    "dataset_id": "SYN-DS-DEV-V1",
+    "dataset_version": "1.0.0",
+    "date_written": "2026-11-08"
+  },
+  "out_of_scope": null,
+  "fields": {
+    "onset": {
+      "category": "7.4",
+      "record_value": "2032-10-28",
+      "documented_value": {
+        "date": "2032-10-29",
+        "study_day": 5
+      },
+      "signed_difference_days": -1,
+      "difference_note": "record onset (Day +4) is one day earlier than the first documented qualifying finding (Day +5); difference given for information. Day +4 has no gradeable assessment (tremor is an excluded symptom; partial ICE has no total), so it is neither confirmed nor refuted",
+      "readings": [],
+      "evidence": [
+        {
+          "role": "record-date excluded symptom (tremor, not used for onset, A11)",
+          "document_id": "SYN-0002-D03",
+          "version": 1,
+          "quote": "new fine tremor both hands at rest + w/ reaching"
+        },
+        {
+          "role": "partial ICE with no total on the record date: not gradeable (A6, A34)",
+          "document_id": "SYN-0002-D03",
+          "version": 1,
+          "quote": "partial ICE @ 14:30: orient 4/4, naming 3/3; cmd/writing/attn not scored, no total."
+        },
+        {
+          "role": "first qualifying finding: ICE 8/10, awake (Grade 1)",
+          "document_id": "SYN-0002-D04",
+          "version": 1,
+          "quote": "ICE 07:55 = 8/10 (-hospital, -sentence). Awake, eating breakfast."
+        },
+        {
+          "role": "Day +2 ICE 10/10 (before record date, consistent)",
+          "document_id": "SYN-0002-D02",
+          "version": 1,
+          "quote": "Neuro @ 08:30: ICE 10/10, no focal sx."
+        }
+      ],
+      "record_history": null
+    },
+    "max_grade": {
+      "category": "7.7",
+      "record_value": 2,
+      "documented_value": {
+        "grade": 2
+      },
+      "signed_difference_days": null,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [
+        {
+          "role": "Grade 1 (ICE 8/10)",
+          "document_id": "SYN-0002-D04",
+          "version": 1,
+          "quote": "ICE 07:55 = 8/10 (-hospital, -sentence)."
+        },
+        {
+          "role": "worst assessment: ICE 5/10, awake (Grade 2); no sedatives",
+          "document_id": "SYN-0002-D05",
+          "version": 1,
+          "quote": "ICE 08:40 5/10 (O 1/4 · names 2/3 · fingers 1/1 · wrote 0/1 · tens 1/1); awake, talking."
+        },
+        {
+          "role": "no sedatives, no competing cause",
+          "document_id": "SYN-0002-D05",
+          "version": 1,
+          "quote": "No sedatives."
+        },
+        {
+          "role": "no seizure or motor finding",
+          "document_id": "SYN-0002-D05",
+          "version": 1,
+          "quote": "Str 5/5 x4. No sz."
+        },
+        {
+          "role": "discharge summary agrees with nadir",
+          "document_id": "SYN-0002-D07",
+          "version": 1,
+          "quote": "ICE nadir 5/10 2032-10-30"
+        }
+      ],
+      "record_history": null
+    }
+  },
+  "derivation": {
+    "onset": "Documentation-derived onset is Day +5 (first Grade 1 criterion, ICE 8/10; section 6.2). On the record's date (Day +4) there is only an excluded tremor (section 4.2, A11) and a partial ICE with no total (A6), so no gradeable assessment (A34). A record onset earlier than the first finding is a mismatch only with a formal Grade 0 assessment on that date (section 7.1 bullets 2-4), so the result is insufficient evidence (A18) plus the A24/NEW-6 flag.",
+    "max_grade": "Highest per-assessment grade is 2 (ICE 5/10, awake, Day +6; section 3.3, 6.2 A2), equal to the record's 2, so 7.7 (section 7.7). Tremor is excluded and does not grade (section 4.2)."
+  },
+  "ambiguity_notes": "Onset difference of -1 is reported for information although the category is 7.4 (section 7.9 withholds a difference only for the no-onset situations); a reviewer should treat it as not confirmed rather than as a mismatch. Flag 'record date matches an excluded or sub-threshold symptom' applies (tremor on Day +4, no qualifying finding that day). PMH ADHD (D02, 'no meds since age 18') is not documented developmental delay and is not an out-of-scope trigger (section 5); this is a judgement on the word 'delay'. No competing cause is documented; dexamethasone is treatment."
+}

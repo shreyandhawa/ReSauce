@@ -1,0 +1,88 @@
+{
+  "answer_format": "0.1-provisional",
+  "case_id": "SYN-0050",
+  "answer_kind": "independent",
+  "status": "not clinician-verified",
+  "provenance": {
+    "clinical_methods_version": "v0.4.1",
+    "data_format_version": "v0.1.2",
+    "date_written": "2026-11-08"
+  },
+  "out_of_scope": null,
+  "fields": {
+    "onset": {
+      "category": "7.7",
+      "record_value": "2032-08-25",
+      "documented_value": {
+        "date": "2032-08-25",
+        "study_day": 5
+      },
+      "signed_difference_days": 0,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [
+        {
+          "role": "earliest qualifying finding (ICE 7/10 = Grade 1)",
+          "document_id": "SYN-0050-D02",
+          "version": 1,
+          "quote": "At 09:50 on 25 Aug ICE 7/10 (orientation 2/4, naming 3/3, commands 1/1, writing 1/1, attention 0/1)."
+        },
+        {
+          "role": "clinician attribution to ICANS, not fever",
+          "document_id": "SYN-0050-D02",
+          "version": 1,
+          "quote": "In my assessment the reduced ICE score is due to ICANS rather than the fever alone"
+        },
+        {
+          "role": "earlier gradeable assessment, no ICANS (Day 4)",
+          "document_id": "SYN-0050-D01",
+          "version": 1,
+          "quote": "ICE 10/10 at 13:30, alert and oriented."
+        }
+      ],
+      "record_history": null
+    },
+    "max_grade": {
+      "category": "7.7",
+      "record_value": 2,
+      "documented_value": {
+        "grade": 2
+      },
+      "signed_difference_days": null,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [
+        {
+          "role": "highest grade: ICE 5/10 (Grade 2)",
+          "document_id": "SYN-0050-D03",
+          "version": 1,
+          "quote": "ICE 5/10 at 11:10 (orientation 1/4, naming 2/3, commands 1/1, writing 0/1, attention 1/1)"
+        },
+        {
+          "role": "consciousness: awakens to voice (Grade 2)",
+          "document_id": "SYN-0050-D03",
+          "version": 1,
+          "quote": "Awakens to voice."
+        },
+        {
+          "role": "clinician attribution to ICANS, not fever",
+          "document_id": "SYN-0050-D03",
+          "version": 1,
+          "quote": "The findings are consistent with ICANS and are not explained by the fever."
+        },
+        {
+          "role": "no seizure or motor finding",
+          "document_id": "SYN-0050-D03",
+          "version": 1,
+          "quote": "No seizures, no focal motor deficit."
+        }
+      ],
+      "record_history": null
+    }
+  },
+  "derivation": {
+    "onset": "Section 6.2: earliest signed, unattributed Grade >=1 observation is ICE 7/10 on 25 Aug = Day 5 (Grade 1). Fever is CRS and never a competing cause (A35), and the clinician attributes the drop to ICANS (A9). Record Day 5 equals documented Day 5, so 7.7 (section 7.7, zero tolerance, A4).",
+    "max_grade": "Section 3.3 / 3.4: ICE 5/10 (Grade 2) and awakens to voice (Grade 2) on Day 7 are the worst findings; no seizure, motor or ICP finding. Documented Grade 2 equals record Grade 2, so 7.7."
+  },
+  "ambiguity_notes": "Fever and CRS are present when the ICE fell, but A35 says CRS and fever are never competing causes, and tocilizumab, acetaminophen and dexamethasone are treatment, not competing causes. Both notes also carry explicit clinician statements attributing the ICE drop to ICANS. No second reading changes either category. Only the Day 4 ICE 10/10 precedes the onset."
+}

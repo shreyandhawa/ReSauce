@@ -1,0 +1,76 @@
+{
+  "answer_format": "0.1-provisional",
+  "case_id": "SYN-0019",
+  "answer_kind": "independent",
+  "status": "not clinician-verified",
+  "provenance": {
+    "clinical_methods_version": "v0.4.1",
+    "data_format_version": "v0.1.2",
+    "date": "2026-11-08"
+  },
+  "out_of_scope": null,
+  "fields": {
+    "onset": {
+      "category": "7.7",
+      "record_value": "2036-11-05",
+      "documented_value": {
+        "date": "2036-11-05",
+        "study_day": 4
+      },
+      "signed_difference_days": 0,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [
+        {
+          "role": "first Grade >=1 finding (ICE 8/10)",
+          "document_id": "SYN-0019-D02",
+          "version": 1,
+          "quote": "ICE 8/10 - missed the month and could not write a sentence."
+        },
+        {
+          "role": "no sedating meds",
+          "document_id": "SYN-0019-D02",
+          "version": 1,
+          "quote": "No sedating meds."
+        },
+        {
+          "role": "ICE 10/10 on Day +2",
+          "document_id": "SYN-0019-D01",
+          "version": 1,
+          "quote": "21:00 ICE 10/10"
+        }
+      ],
+      "record_history": null
+    },
+    "max_grade": {
+      "category": "7.7",
+      "record_value": 2,
+      "documented_value": {
+        "grade": 2
+      },
+      "signed_difference_days": null,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [
+        {
+          "role": "ICE 6/10 -> Grade 2",
+          "document_id": "SYN-0019-D03",
+          "version": 1,
+          "quote": "08:30 ICE 6/10 (2 of 4 orientation, 1 of 3 objects, did the command, wrote a sentence, counted back ok)"
+        },
+        {
+          "role": "no sedatives",
+          "document_id": "SYN-0019-D03",
+          "version": 1,
+          "quote": "No sedatives given in 24 h"
+        }
+      ],
+      "record_history": null
+    }
+  },
+  "derivation": {
+    "onset": "Section 6.2: earliest Grade >=1 finding is ICE 8/10 (Grade 1) on Day +4 (2036-11-05), equal to the record date, so 7.7.",
+    "max_grade": "Highest per-assessment grade is Grade 2 (ICE 6/10 on Day +5; items sum 2+1+1+1+1 = 6). No other domain meets a higher criterion. Record Grade 2, so 7.7."
+  },
+  "ambiguity_notes": "No ambiguity. Fever with acetaminophen and CRS on Day +2 predate the findings and are not competing causes (A35). Kidney stone history is a distractor with no documented attribution."
+}

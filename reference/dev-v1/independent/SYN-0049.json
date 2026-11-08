@@ -1,0 +1,50 @@
+{
+  "answer_format": "0.1-provisional",
+  "case_id": "SYN-0049",
+  "answer_kind": "independent",
+  "status": "not clinician-verified",
+  "provenance": {
+    "clinical_methods_version": "v0.4.1",
+    "data_format_version": "v0.1.2",
+    "date_written": "2026-11-08"
+  },
+  "out_of_scope": {
+    "reason": "record maximum grade of 5 (clinical-methods section 5, section 8, A29)",
+    "source": "record.json version 1: max_grade = 5, icans_reported = true, onset_date 2032-07-24",
+    "evidence": [
+      {
+        "role": "context only: the notes document no death, so the Grade 5 comes from the record alone",
+        "document_id": "SYN-0049-D04",
+        "version": 1,
+        "quote": "The patient is alive and well and was discharged home with his family."
+      }
+    ]
+  },
+  "fields": {
+    "onset": {
+      "category": "out of scope (record maximum grade 5)",
+      "record_value": "2032-07-24",
+      "documented_value": null,
+      "signed_difference_days": null,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [],
+      "record_history": null
+    },
+    "max_grade": {
+      "category": "out of scope (record maximum grade 5)",
+      "record_value": 5,
+      "documented_value": null,
+      "signed_difference_days": null,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [],
+      "record_history": null
+    }
+  },
+  "derivation": {
+    "onset": "Section 5 / A29: a record maximum grade of 5 is an out-of-scope trigger. The case gets the out-of-scope flag and no section 7 category for either field.",
+    "max_grade": "Section 5 / section 8 / A29: ReSauce does not assign Grade 5; a record of Grade 5 makes the case out of scope with no category, whatever the documents show."
+  },
+  "ambiguity_notes": "The record says Grade 5 (death due to ICANS), yet the discharge summary says the patient is alive and was discharged home. This contradiction does not change the outcome: the rule triggers on the record value alone, and no category is assigned. It is worth a human look as a likely data-entry error. No documented death was found, so the trigger is the record grade only. Age 77, no CAPD, no developmental delay documented."
+}

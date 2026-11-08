@@ -1,0 +1,98 @@
+{
+  "answer_format": "0.1-provisional",
+  "case_id": "SYN-0053",
+  "answer_kind": "independent",
+  "status": "not clinician-verified",
+  "provenance": {
+    "clinical_methods_version": "v0.4.1",
+    "data_format_version": "v0.1.2",
+    "date_written": "2026-11-08"
+  },
+  "out_of_scope": null,
+  "fields": {
+    "onset": {
+      "category": "7.1",
+      "record_value": "2035-11-08",
+      "documented_value": {
+        "date": "2035-11-07",
+        "study_day": 5
+      },
+      "signed_difference_days": 1,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [
+        {
+          "role": "earliest qualifying finding (ICE 8/10 = Grade 1), Day 5 (07 Nov)",
+          "document_id": "SYN-0053-D01",
+          "version": 1,
+          "quote": "ICE 8/10 at 21:10 (orient 3/4, attn 0/1, rest full)."
+        },
+        {
+          "role": "tocilizumab is treatment, not a competing cause",
+          "document_id": "SYN-0053-D01",
+          "version": 1,
+          "quote": "Temp 37.0 after toci on 05 Nov."
+        },
+        {
+          "role": "excluded symptom (tremor), not used",
+          "document_id": "SYN-0053-D01",
+          "version": 1,
+          "quote": "Fine tremor both hands noted."
+        },
+        {
+          "role": "physician confirms the 07 Nov ICE",
+          "document_id": "SYN-0053-D02",
+          "version": 1,
+          "quote": "Per RN, ICE 8/10 at 21:10 on 07 Nov."
+        }
+      ],
+      "record_history": {
+        "a": false,
+        "b": null,
+        "c": null,
+        "explanation": "Record v2 (reason 'Data review') changed no field value (onset 2035-11-08 and grade 1 in both versions), so 7.6 cannot apply; categories follow the usual rules."
+      }
+    },
+    "max_grade": {
+      "category": "7.7",
+      "record_value": 1,
+      "documented_value": {
+        "grade": 1
+      },
+      "signed_difference_days": null,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [
+        {
+          "role": "ICE 8/10 (Grade 1) is the worst finding",
+          "document_id": "SYN-0053-D02",
+          "version": 1,
+          "quote": "Own exam 08:20: ICE 8/10 (orient 3/4, attn 0/1), awake, no focal def."
+        },
+        {
+          "role": "EEG normal, no seizure",
+          "document_id": "SYN-0053-D03",
+          "version": 1,
+          "quote": "Impression: normal EEG."
+        },
+        {
+          "role": "resolution",
+          "document_id": "SYN-0053-D04",
+          "version": 1,
+          "quote": "= 10/10. Alert, no tremor today."
+        }
+      ],
+      "record_history": {
+        "a": false,
+        "b": null,
+        "c": null,
+        "explanation": "Record v2 (reason 'Data review') changed no field value (onset 2035-11-08 and grade 1 in both versions), so 7.6 cannot apply; categories follow the usual rules."
+      }
+    }
+  },
+  "derivation": {
+    "onset": "Section 6.2 / 7.1: the earliest qualifying observation is ICE 8/10 at 21:10 on 07 Nov = Day 5 (Grade 1); tremor is excluded (A11) and tocilizumab is not a competing cause (A35). The record says 2035-11-08 (Day 6), a calendar day later. Zero tolerance (A4) gives 7.1 with signed difference record minus documented = +1.",
+    "max_grade": "Section 3.3: ICE 8/10 is Grade 1 and nothing higher is documented (alert, no focal deficit, normal EEG). Record Grade 1 equals documented Grade 1, so 7.7."
+  },
+  "ambiguity_notes": "The RN note was documented at 21:35 on Day 5 and gives its own event time (21:10, 07 Nov), so the onset date is Day 5, not Day 6 when the physician repeated the score. The record is later than the documents, so no formal Grade 0 assessment is needed on the record date for 7.1 (that condition applies only to a record earlier than the first finding). The record has two versions with identical values, so there is no legitimate revision."
+}

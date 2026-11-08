@@ -1,0 +1,82 @@
+{
+  "answer_format": "0.1-provisional",
+  "case_id": "SYN-0033",
+  "answer_kind": "independent",
+  "status": "not clinician-verified",
+  "provenance": {
+    "clinical_methods_version": "v0.4.1",
+    "data_format_version": "v0.1.2",
+    "dataset_id": "SYN-DS-DEV-V1",
+    "dataset_version": "1.0.0",
+    "date_written": "2026-11-08"
+  },
+  "out_of_scope": null,
+  "fields": {
+    "onset": {
+      "category": "7.6",
+      "record_value": "2032-05-01",
+      "documented_value": {
+        "date": "2032-05-01",
+        "study_day": 4
+      },
+      "signed_difference_days": 0,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [
+        {
+          "role": "earliest qualifying finding: ICE 8/10 at 22:10 on 2032-05-01 (late entry, event date in window)",
+          "document_id": "SYN-0033-D08",
+          "version": 1,
+          "quote": "LATE ENTRY for 2032-05-01 22:10: ICE 8/10 (missed month + sentence)"
+        },
+        {
+          "role": "same day morning ICE 10/10 (formal Grade 0)",
+          "document_id": "SYN-0033-D03",
+          "version": 1,
+          "quote": "ICE 2032-05-01 @ 08:20: 10/10."
+        },
+        {
+          "role": "next-day ICE 7/10, Grade 1 (previous record value Day +5)",
+          "document_id": "SYN-0033-D04",
+          "version": 1,
+          "quote": "ICE 2032-05-02 @ 09:05: 7/10"
+        }
+      ],
+      "record_history": {
+        "a": true,
+        "b": true,
+        "c": true,
+        "explanation": "Onset changed 2032-05-02 -> 2032-05-01 (a). Current value agrees with documents (b). SYN-0033-D08 (signed late entry, documented_at 2032-05-08T16:15) documents ICE 8/10 at 22:10 on 2032-05-01; this is after the previous record version's recorded_at 2032-05-06T10:00 and before the change at 2032-05-11T14:30 (c). Legitimate revision."
+      }
+    },
+    "max_grade": {
+      "category": "7.7",
+      "record_value": 2,
+      "documented_value": {
+        "grade": 2
+      },
+      "signed_difference_days": null,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [
+        {
+          "role": "ICE 5/10 = Grade 2, awake, no sedation",
+          "document_id": "SYN-0033-D05",
+          "version": 1,
+          "quote": "ICE 11:00 = 5/10 (O1 N2 C1 W0 A1). Awake, talking."
+        }
+      ],
+      "record_history": {
+        "a": false,
+        "b": false,
+        "c": false,
+        "explanation": "Grade did not change (2 in both versions), so the field cannot be 7.6; categorised normally."
+      }
+    }
+  },
+  "derivation": {
+    "onset": "The late entry (documented 2032-05-08) describes an event on 2032-05-01 22:10, inside the window, so it is used by event date (§6.2, §6.5 A32). Earliest qualifying finding is Day +4. Current record equals it. All three §7.6 conditions hold (the late entry was documented between the two record versions): 7.6.",
+    "max_grade": "Highest supported grade is 2 (ICE 5/10 on 2032-05-03). Equals the record, unchanged: 7.7."
+  },
+  "ambiguity_notes": "The discharge summary line 'ICANS D+5-D+8' is a summary with no event time or finding and agrees with the earlier record value; I did not use it as an earlier or conflicting finding. The ICE 10/10 at 08:20 and ICE 8/10 at 22:10 on 2032-05-01 are different times of day with different totals: a worsening, not a conflict (§6.4 'about the same time' does not apply). D02 v2 (allergy correction) is irrelevant to onset or grade. Headache on 05-05 is excluded."
+}

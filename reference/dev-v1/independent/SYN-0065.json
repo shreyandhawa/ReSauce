@@ -1,0 +1,87 @@
+{
+  "answer_format": "0.1-provisional",
+  "case_id": "SYN-0065",
+  "answer_kind": "independent",
+  "status": "not clinician-verified",
+  "provenance": {
+    "clinical_methods_version": "0.4.1",
+    "data_format_version": "0.1.2",
+    "date": "2026-11-08",
+    "model": "claude-sonnet-5-5 (Sonnet 5.5)"
+  },
+  "out_of_scope": null,
+  "fields": {
+    "onset": {
+      "category": "7.7",
+      "record_value": "2033-11-19",
+      "documented_value": {
+        "date": "2033-11-19",
+        "study_day": 4
+      },
+      "signed_difference_days": 0,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [
+        {
+          "role": "earliest qualifying finding: ICE 8 = Grade 1 (Day 4)",
+          "document_id": "SYN-0065-D02",
+          "version": 1,
+          "quote": "ICE 2033-11-19 07:45 = 8/10 (missed month, sentence)."
+        },
+        {
+          "role": "formal Grade 0 on Day 1 (fever and CRS present; antipyretic is not a competing cause)",
+          "document_id": "SYN-0065-D01",
+          "version": 1,
+          "quote": "ICE 21:00: 10/10."
+        }
+      ],
+      "record_history": null,
+      "derivation": "Earliest Grade >=1 finding is ICE 8/10 on 2033-11-19 (Day 4), matching the record (7.7). CRS, fever and acetaminophen are never competing causes (A35)."
+    },
+    "max_grade": {
+      "category": "7.2",
+      "record_value": 3,
+      "documented_value": {
+        "grade": 4
+      },
+      "signed_difference_days": null,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [
+        {
+          "role": "diffuse cerebral edema on neuroimaging = Grade 4 (Table 6)",
+          "document_id": "SYN-0065-D04",
+          "version": 1,
+          "quote": "Diffuse cerebral edema: effacement of sulci throughout both hemispheres, loss of gray-white differentiation, narrowed basal cisterns."
+        },
+        {
+          "role": "imaging impression",
+          "document_id": "SYN-0065-D04",
+          "version": 1,
+          "quote": "Imp: diffuse cerebral edema."
+        },
+        {
+          "role": "ICE 2 = Grade 3 on the same day",
+          "document_id": "SYN-0065-D03",
+          "version": 1,
+          "quote": "ICE 08:50: 2/10."
+        },
+        {
+          "role": "no competing cause",
+          "document_id": "SYN-0065-D03",
+          "version": 1,
+          "quote": "No sedatives in 24 h."
+        },
+        {
+          "role": "not hemorrhage (which would be excluded from ICANS grading)",
+          "document_id": "SYN-0065-D04",
+          "version": 1,
+          "quote": "No hemorrhage. No midline shift. No herniation."
+        }
+      ],
+      "record_history": null,
+      "derivation": "Diffuse cerebral edema on CT on 2033-11-21 meets Grade 4 (Table 6, raised ICP/edema), with no competing cause documented. The record says 3, so the documents prove a higher grade: 7.2 (documented 4, record lower by 1)."
+    }
+  },
+  "ambiguity_notes": "No ambiguity. Highest grade comes from the imaging domain, not the ICE; ICE 2 with awake patient is Grade 3 and consistent with the record, but the most severe domain sets the grade (section 3.4). Discharge summary also mentions the CT edema."
+}

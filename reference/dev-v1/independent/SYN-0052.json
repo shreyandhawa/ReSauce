@@ -1,0 +1,91 @@
+{
+  "answer_format": "0.1-provisional",
+  "case_id": "SYN-0052",
+  "answer_kind": "independent",
+  "status": "not clinician-verified",
+  "provenance": {
+    "clinical_methods_version": "v0.4.1",
+    "data_format_version": "v0.1.2",
+    "date_written": "2026-11-08"
+  },
+  "out_of_scope": null,
+  "fields": {
+    "onset": {
+      "category": "7.7",
+      "record_value": "2033-03-02",
+      "documented_value": {
+        "date": "2033-03-02",
+        "study_day": 3
+      },
+      "signed_difference_days": 0,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [
+        {
+          "role": "earliest qualifying finding (ICE 7/10 = Grade 1), Day 3",
+          "document_id": "SYN-0052-D02",
+          "version": 1,
+          "quote": "2033-03-02. ICE 10:15 = 7/10 (month wrong, no sentence, counted 100-90-80 then stopped). Alert, sitting up. No sedatives last 24 h."
+        },
+        {
+          "role": "earlier ICE 10/10 (Day 1)",
+          "document_id": "SYN-0052-D01",
+          "version": 1,
+          "quote": "ICE 20:15: 10/10. Alert."
+        },
+        {
+          "role": "discharge summary agrees",
+          "document_id": "SYN-0052-D06",
+          "version": 2,
+          "quote": "ICANS D+3 to D+10; dexamethasone."
+        }
+      ],
+      "record_history": null
+    },
+    "max_grade": {
+      "category": "7.4",
+      "record_value": 4,
+      "documented_value": {
+        "range": [
+          3,
+          4
+        ]
+      },
+      "signed_difference_days": null,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [
+        {
+          "role": "ICE 0/10 with no consciousness information (Day 5): grade range 3-4 (A33)",
+          "document_id": "SYN-0052-D03",
+          "version": 1,
+          "quote": "ICE 0/10 at 09:50."
+        },
+        {
+          "role": "no sedation or consciousness description on that day; only BP/HR and steroid start",
+          "document_id": "SYN-0052-D03",
+          "version": 1,
+          "quote": "BP 146/84, HR 92, afebrile. MD informed 10:00."
+        },
+        {
+          "role": "EEG normal (no seizure)",
+          "document_id": "SYN-0052-D04",
+          "version": 1,
+          "quote": "No epileptiform discharges. No seizures. Normal study."
+        },
+        {
+          "role": "later ICE 6/10 (Grade 2)",
+          "document_id": "SYN-0052-D05",
+          "version": 1,
+          "quote": "ICE 09:30: 6/10. Awake, conversant."
+        }
+      ],
+      "record_history": null
+    }
+  },
+  "derivation": {
+    "onset": "Section 6.2: the earliest qualifying observation is ICE 7/10 on 2033-03-02 = Day 3 (Grade 1), no sedatives. Record Day 3 equals documented Day 3, so 7.7.",
+    "max_grade": "Section 4.1 / A33: ICE 0 on Day 5 with no consciousness information gives the documentation-derived range 3-4 (Grade 3 if awake with aphasia, Grade 4 if unarousable). The record says Grade 4, which lies inside the range and cannot be confirmed or refuted, so 7.4 (section 7.4 list; A33: record 3 or 4 is insufficient evidence)."
+  },
+  "ambiguity_notes": "Grade: the rules for ICE 0 apply directly (A33). Nothing in the Day 5 note says awake or unarousable; the Day 3 'Alert' and the Day 8 'Awake, conversant' are different days and are not used to infer consciousness on Day 5. No competing cause is documented (dexamethasone was started after the assessment and is treatment; BP 146/84 is not severe hypertension). The EEG on Day 6 is normal and is not a gradeable assessment. The drop from ICE 7 to 0 within two days may suggest unarousability, but ReSauce must not infer it. Document SYN-0052-D06 has a v2 that changes only the follow-up date, which does not affect either field; the v2 text is cited for the onset corroboration."
+}

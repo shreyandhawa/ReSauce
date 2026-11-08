@@ -1,0 +1,88 @@
+{
+  "answer_format": "0.1-provisional",
+  "case_id": "SYN-0032",
+  "answer_kind": "independent",
+  "status": "not clinician-verified",
+  "provenance": {
+    "clinical_methods_version": "v0.4.1",
+    "data_format_version": "v0.1.2",
+    "dataset_id": "SYN-DS-DEV-V1",
+    "dataset_version": "1.0.0",
+    "date_written": "2026-11-08"
+  },
+  "out_of_scope": null,
+  "fields": {
+    "onset": {
+      "category": "7.6",
+      "record_value": "2034-08-01",
+      "documented_value": {
+        "date": "2034-08-01",
+        "study_day": 4
+      },
+      "signed_difference_days": 0,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [
+        {
+          "role": "earliest qualifying finding: ICE 8/10, 2034-08-01 23:30, added in signed addendum (v2)",
+          "document_id": "SYN-0032-D04",
+          "version": 2,
+          "quote": "Addendum 05 Aug: RN flowsheet shows ICE 8/10 at 23:30 on 01 Aug (orient 3/4, attn 0/1), not seen when this note was written."
+        },
+        {
+          "role": "v1 of the note only had 02 Aug (Day +5), the previous record value",
+          "document_id": "SYN-0032-D04",
+          "version": 1,
+          "quote": "ICE 8/10 at 10:30 on 02 Aug (orient 3/4, attn 0/1)"
+        },
+        {
+          "role": "previous formal Grade 0, Day +1",
+          "document_id": "SYN-0032-D02",
+          "version": 1,
+          "quote": "ICE 10/10 at 16:40"
+        }
+      ],
+      "record_history": {
+        "a": true,
+        "b": true,
+        "c": true,
+        "explanation": "Onset changed 2034-08-02 -> 2034-08-01 (a). Current value agrees with documents (b). SYN-0032-D04 v2 (signed addendum, documented_at 2034-08-05T15:00) documents ICE 8/10 at 23:30 on 01 Aug; this is after the previous record version's recorded_at 2034-08-04T18:00 and before the change at 2034-08-06T10:00 (c). Legitimate revision."
+      }
+    },
+    "max_grade": {
+      "category": "7.7",
+      "record_value": 2,
+      "documented_value": {
+        "grade": 2
+      },
+      "signed_difference_days": null,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [
+        {
+          "role": "ICE 6/10 = Grade 2, awakens to voice",
+          "document_id": "SYN-0032-D05",
+          "version": 1,
+          "quote": "ICE 6/10 at 11:40 (orient 2/4, name 2/3, cmd 1/1, write 0/1, attn 1/1). Awakens to voice."
+        },
+        {
+          "role": "EEG normal, no seizure",
+          "document_id": "SYN-0032-D06",
+          "version": 1,
+          "quote": "Impression: normal EEG."
+        }
+      ],
+      "record_history": {
+        "a": false,
+        "b": false,
+        "c": false,
+        "explanation": "Grade did not change (2 in both versions), so the field cannot be 7.6; categorised normally."
+      }
+    }
+  },
+  "derivation": {
+    "onset": "Documentation-derived onset is the earliest qualifying finding, ICE 8/10 at 23:30 on 2034-08-01 (Day +4), from the latest signed version of D04 (§6.3). The current record (Day +4) equals it. All three §7.6 conditions hold, so 7.6.",
+    "max_grade": "Highest supported grade is 2 (ICE 6/10, awakens to voice). Equals the record, unchanged between versions: 7.7."
+  },
+  "ambiguity_notes": "The pre-infusion baseline ICE (SYN-0032-D01, 2034-07-23, Day -5) is outside the observation window (Day 0 to +28), is not used, and belongs in the 'outside observation window' flag. Tremor is excluded (A11). Discharge summary 'ICE 8/10 from d4' agrees with Day +4. Dexamethasone and tocilizumab are treatment, not competing causes (A35)."
+}

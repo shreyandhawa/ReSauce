@@ -1,0 +1,102 @@
+{
+  "answer_format": "0.1-provisional",
+  "case_id": "SYN-0038",
+  "answer_kind": "independent",
+  "status": "not clinician-verified",
+  "provenance": {
+    "clinical_methods_version": "v0.4.1",
+    "data_format_version": "v0.1.2",
+    "dataset_id": "SYN-DS-DEV-V1",
+    "dataset_version": "1.0.0",
+    "date_written": "2026-11-08"
+  },
+  "out_of_scope": null,
+  "fields": {
+    "onset": {
+      "category": "7.7",
+      "record_value": null,
+      "documented_value": "none found",
+      "signed_difference_days": null,
+      "difference_note": "record reports no ICANS; no qualifying finding; formal Grade 0 assessments present",
+      "readings": [],
+      "evidence": [
+        {
+          "role": "formal Grade 0 assessment (ICE 10/10, all items scored)",
+          "document_id": "SYN-0038-D04",
+          "version": 1,
+          "quote": "ICE total 10/10"
+        },
+        {
+          "role": "formal Grade 0 assessment",
+          "document_id": "SYN-0038-D02",
+          "version": 1,
+          "quote": "Neuro at 08:15: ICE 10/10, alert, fully oriented, fluent speech, no focal deficits, no tremor."
+        },
+        {
+          "role": "formal Grade 0 assessment at discharge",
+          "document_id": "SYN-0038-D06",
+          "version": 1,
+          "quote": "Discharge ICE on 2035-03-19 at 09:00: 10/10."
+        },
+        {
+          "role": "ungradeable neurological symptom (no ICE total, no consciousness level); does not block 7.7",
+          "document_id": "SYN-0038-D03",
+          "version": 1,
+          "quote": "pt reported word-finding difficulty while messaging family on phone"
+        }
+      ],
+      "record_history": null
+    },
+    "max_grade": {
+      "category": "7.7",
+      "record_value": null,
+      "documented_value": {
+        "grade": 0
+      },
+      "signed_difference_days": null,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [
+        {
+          "role": "formal Grade 0 assessment",
+          "document_id": "SYN-0038-D04",
+          "version": 1,
+          "quote": "ICE total 10/10"
+        },
+        {
+          "role": "normal imaging, no edema",
+          "document_id": "SYN-0038-D05",
+          "version": 1,
+          "quote": "Impression: Normal MRI of the brain."
+        },
+        {
+          "role": "discharge summary: no neurotoxicity",
+          "document_id": "SYN-0038-D06",
+          "version": 1,
+          "quote": "Neuro: no neurotoxicity. MRI brain normal."
+        },
+        {
+          "role": "excluded symptom (tremor), not graded",
+          "document_id": "SYN-0038-D06",
+          "version": 1,
+          "quote": "Fine bilateral hand tremor noted on 2035-03-18, not treated."
+        },
+        {
+          "role": "excluded symptom (headache), not graded",
+          "document_id": "SYN-0038-D02",
+          "version": 1,
+          "quote": "Reports a mild frontal headache this morning, relieved by acetaminophen."
+        }
+      ],
+      "record_history": null
+    }
+  },
+  "derivation": {
+    "onset": "Onset (7.9(b), A21): the record reports no ICANS and no qualifying finding exists. The window has several formal Grade 0 assessments (ICE 10/10 on Days +1, +3, +5, +10) and no documented 'not assessable' period, so the field is 7.7.",
+    "max_grade": "Max grade (7.9(b), A19, A21): same rule as onset. Compared as Grade 0, the documents support Grade 0 and nothing higher, so 7.7."
+  },
+  "ambiguity_notes": [
+    "Word-finding difficulty on 2035-03-13 21:40 (Day +4) is an ungradeable neurological symptom: no ICE total or consciousness level on that evening. Under A21 (v0.4) it does not block 7.7, but a clinician should decide whether it should. If it should block, both fields would become 7.4. The ICE 10/10 at 06:10 the next morning also shows no deficit.",
+    "Headache (Day +3) and tremor (Day +9) are excluded symptoms (4.2) and are not part of the ungradeable-symptom flag. Tocilizumab and levetiracetam prophylaxis are treatment, not competing causes (A35)."
+  ]
+}

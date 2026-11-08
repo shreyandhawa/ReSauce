@@ -1,0 +1,109 @@
+{
+  "answer_format": "0.1-provisional",
+  "case_id": "SYN-0054",
+  "answer_kind": "independent",
+  "status": "not clinician-verified",
+  "provenance": {
+    "clinical_methods_version": "v0.4.1",
+    "data_format_version": "v0.1.2",
+    "date_written": "2026-11-08"
+  },
+  "out_of_scope": null,
+  "fields": {
+    "onset": {
+      "category": "7.7",
+      "record_value": "2031-06-01",
+      "documented_value": {
+        "date": "2031-06-01",
+        "study_day": 4
+      },
+      "signed_difference_days": 0,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [
+        {
+          "role": "earliest qualifying finding (ICE 7/10 = Grade 1), Day 4",
+          "document_id": "SYN-0054-D02",
+          "version": 1,
+          "quote": "O 2/4 - N 3/3 - C 1/1 - W 0/1 - A 1/1 -> total 7/10"
+        },
+        {
+          "role": "no sedatives",
+          "document_id": "SYN-0054-D02",
+          "version": 1,
+          "quote": "Sedatives in past 24 h: none"
+        },
+        {
+          "role": "earlier ICE 10/10 (Day 2)",
+          "document_id": "SYN-0054-D01",
+          "version": 1,
+          "quote": "Neuro: ICE 10/10 (09:30) - awake, alert - no focal deficit"
+        }
+      ],
+      "record_history": null
+    },
+    "max_grade": {
+      "category": "7.3",
+      "record_value": 3,
+      "documented_value": {
+        "grade": 2
+      },
+      "signed_difference_days": null,
+      "difference_note": null,
+      "readings": [
+        {
+          "reading": "Findings count as written; the subdural hematoma is not a listed competing cause (A35) and no clinician attributes the ICE fall to it",
+          "value": {
+            "grade": 2
+          },
+          "category": "7.3"
+        },
+        {
+          "reading": "If the ICE 4/10 and 'awakens to voice' were attributed to the subdural hematoma, the highest unattributed grade would be Grade 1 (ICE 7/10, Day 4)",
+          "value": {
+            "grade": 1
+          },
+          "category": "7.3"
+        }
+      ],
+      "evidence": [
+        {
+          "role": "highest grade: ICE 4/10 (Grade 2) and awakens to voice (Grade 2), Day 5",
+          "document_id": "SYN-0054-D03",
+          "version": 1,
+          "quote": "ICE 4/10 (08:45): O 1/4 - N 1/3 - C 1/1 - W 0/1 - A 1/1 - awakens to voice, then stays engaged - no focal deficit - no seizure"
+        },
+        {
+          "role": "no sedating medication",
+          "document_id": "SYN-0054-D03",
+          "version": 1,
+          "quote": "Sedating medications in past 24 h: none"
+        },
+        {
+          "role": "excluded symptom (headache), not used",
+          "document_id": "SYN-0054-D03",
+          "version": 1,
+          "quote": "New: frontal headache 6/10 since 06:00 (patient report)"
+        },
+        {
+          "role": "intracranial hemorrhage is excluded from ICANS grading; no edema, so no ICP criterion",
+          "document_id": "SYN-0054-D04",
+          "version": 1,
+          "quote": "acute left frontoparietal subdural hematoma, maximal thickness 8 mm. No midline shift. No surrounding cerebral edema."
+        },
+        {
+          "role": "discharge summary: ICE nadir 4/10, no higher finding",
+          "document_id": "SYN-0054-D05",
+          "version": 1,
+          "quote": "Neurotoxicity: ICE nadir 4/10 on 2031-06-02; dexamethasone 2031-06-02 to 2031-06-05"
+        }
+      ],
+      "record_history": null
+    }
+  },
+  "derivation": {
+    "onset": "Section 6.2: the earliest qualifying observation is ICE 7/10 on 2031-06-01 = Day 4 (Grade 1, no sedatives). Record Day 4 equals documented Day 4, so 7.7.",
+    "max_grade": "Section 3.3 / 4.2: ICE 4/10 and awakens to voice are Grade 2. The subdural hematoma is an intracranial hemorrhage, excluded from ICANS grading (Table 6 footnote #), and headache is an excluded symptom; no edema or seizure. The highest supported grade is 2, below the record's Grade 3, so 7.3 (section 7.3, 'unsupported', A8). No documented 'not assessable' period exists, so A25 does not move it to 7.4."
+  },
+  "ambiguity_notes": "The hematoma and low platelets are not on the closed competing-cause list (A35), so the Grade 2 findings are not attributable-ambiguous under the rules. Even if a reviewer treated the hematoma as a competing cause, the unattributed highest grade would fall to Grade 1, which is still below the record's Grade 3, so both readings give 7.3 (section 7.5 same-category rule). The platelet transfusion and platelet counts are not a competing cause. The record's Grade 3 has no documented support (no seizure, no edema, ICE never 0-2)."
+}

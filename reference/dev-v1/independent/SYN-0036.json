@@ -1,0 +1,78 @@
+{
+  "answer_format": "0.1-provisional",
+  "case_id": "SYN-0036",
+  "answer_kind": "independent",
+  "status": "not clinician-verified",
+  "provenance": {
+    "clinical_methods_version": "v0.4.1",
+    "data_format_version": "v0.1.2",
+    "dataset_id": "SYN-DS-DEV-V1",
+    "dataset_version": "1.0.0",
+    "date_written": "2026-11-08"
+  },
+  "out_of_scope": null,
+  "fields": {
+    "onset": {
+      "category": "7.4",
+      "record_value": "2034-02-26",
+      "documented_value": {
+        "date": "2034-02-28",
+        "study_day": 5
+      },
+      "signed_difference_days": -2,
+      "difference_note": "Record date is 2 days before the documented onset. On the record date there is only a narrative normal exam and an excluded symptom (headache), no gradeable assessment, so insufficient evidence, not a mismatch. Difference given for information.",
+      "readings": [],
+      "evidence": [
+        {
+          "role": "record date: narrative normal exam, no ICE total (A17)",
+          "document_id": "SYN-0036-D03",
+          "version": 1,
+          "quote": "Neuro: alert and oriented x4, speech clear, cranial nerves intact, strength 5/5 in all limbs, no focal deficit."
+        },
+        {
+          "role": "record date: excluded symptom",
+          "document_id": "SYN-0036-D03",
+          "version": 1,
+          "quote": "Reports a mild headache 3/10, acetaminophen given."
+        },
+        {
+          "role": "earliest qualifying finding (ICE 8, Grade 1), Day +5",
+          "document_id": "SYN-0036-D05",
+          "version": 1,
+          "quote": "ICE 8/10 at 09:30 (orientation 3/4, attention 0/1, remaining items complete)"
+        },
+        {
+          "role": "formal Grade 0 the day after the record date (not record date)",
+          "document_id": "SYN-0036-D04",
+          "version": 1,
+          "quote": "Total 10/10."
+        }
+      ],
+      "record_history": null
+    },
+    "max_grade": {
+      "category": "7.7",
+      "record_value": 2,
+      "documented_value": {
+        "grade": 2
+      },
+      "signed_difference_days": null,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [
+        {
+          "role": "ICE 5/10 and awakens to voice = Grade 2",
+          "document_id": "SYN-0036-D06",
+          "version": 1,
+          "quote": "ICE 5/10 at 11:45 (orientation 1/4, naming 2/3, commands 1/1, writing 0/1, attention 1/1). Awakens to voice."
+        }
+      ],
+      "record_history": null
+    }
+  },
+  "derivation": {
+    "onset": "Documented onset is ICE 8/10 on 2034-02-28 (Day +5) (§6.2). On the record date 2034-02-26 the notes give a narrative normal exam (does not establish Grade 0, A17) and headache (excluded, §4.2) and no ICE total, so no gradeable assessment (A34): 7.4 (§7.1 bullet 2).",
+    "max_grade": "Highest supported grade is 2 (ICE 5/10, awakens to voice). Equals the record: 7.7."
+  },
+  "ambiguity_notes": "Flag 'record date matches an excluded or sub-threshold symptom' applies (headache on 02-26, no qualifying finding). The ICE 10/10 on 02-27 is the day after the record date, so it cannot refute a 02-26 onset. The unsigned later version of the pharmacy note (SYN-0036-D07 v2) is not used (A27); it is irrelevant to onset and grade. Difference -2 is informational."
+}

@@ -1,0 +1,98 @@
+{
+  "answer_format": "0.1-provisional",
+  "case_id": "SYN-0037",
+  "answer_kind": "independent",
+  "status": "not clinician-verified",
+  "provenance": {
+    "clinical_methods_version": "v0.4.1",
+    "data_format_version": "v0.1.2",
+    "dataset_id": "SYN-DS-DEV-V1",
+    "dataset_version": "1.0.0",
+    "date_written": "2026-11-08"
+  },
+  "out_of_scope": null,
+  "fields": {
+    "onset": {
+      "category": "7.7",
+      "record_value": "2031-08-18",
+      "documented_value": {
+        "date": "2031-08-18",
+        "study_day": 3
+      },
+      "signed_difference_days": 0,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [
+        {
+          "role": "earliest qualifying finding (ICE 7/10, Grade 1)",
+          "document_id": "SYN-0037-D02",
+          "version": 1,
+          "quote": "ICE 2031-08-18 07:40: 7/10."
+        },
+        {
+          "role": "preceding formal Grade 0 assessment (context)",
+          "document_id": "SYN-0037-D01",
+          "version": 1,
+          "quote": "ICE 22:00: 10/10. Awake."
+        }
+      ],
+      "record_history": null
+    },
+    "max_grade": {
+      "category": "7.3",
+      "record_value": 3,
+      "documented_value": {
+        "grade": 2
+      },
+      "signed_difference_days": null,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [
+        {
+          "role": "highest ICE: 5/10 (Grade 2)",
+          "document_id": "SYN-0037-D03",
+          "version": 1,
+          "quote": "ICE 08:30: 5/10."
+        },
+        {
+          "role": "consciousness: awakens to voice (Grade 2), no sedatives",
+          "document_id": "SYN-0037-D03",
+          "version": 1,
+          "quote": "Asleep on arrival; awakens to voice, stays awake for exam."
+        },
+        {
+          "role": "no sedating medication",
+          "document_id": "SYN-0037-D03",
+          "version": 1,
+          "quote": "No sedatives in last 24h."
+        },
+        {
+          "role": "no motor or seizure finding (no Grade 3/4 domain)",
+          "document_id": "SYN-0037-D03",
+          "version": 1,
+          "quote": "Moves all 4 limbs symmetrically. No sz."
+        },
+        {
+          "role": "no edema on imaging",
+          "document_id": "SYN-0037-D04",
+          "version": 1,
+          "quote": "Normal brain parenchyma. No hemorrhage, edema, infarct or abnormal enhancement."
+        },
+        {
+          "role": "excluded symptom (myoclonus), not graded",
+          "document_id": "SYN-0037-D05",
+          "version": 1,
+          "quote": "Occasional brief myoclonic jerks R arm."
+        }
+      ],
+      "record_history": null
+    }
+  },
+  "derivation": {
+    "onset": "Onset (section 6.2, 7.7): the earliest Grade >=1 observation is ICE 7/10 on 2031-08-18 (Day +3, Grade 1 from the ICE range 7-9). The record onset is the same calendar day, so 7.7.",
+    "max_grade": "Max grade (3.3, 3.4, 7.3): the worst per-assessment grade is Grade 2 (ICE 5/10 and awakens to voice on Day +4, no sedatives). No seizure, motor, edema or Grade 3/4 consciousness finding exists, and myoclonus is excluded (4.2). The record says 3, higher than any supported grade, and there is no documented 'not assessable' period, so 7.3 (7.3, A25)."
+  },
+  "ambiguity_notes": [
+    "No competing cause is documented near any finding. Dexamethasone is CRS/ICANS treatment (A35). Myoclonus on Day +6 is an excluded symptom (4.2, A11) and not used. Nothing in the notes says 'not assessable', so undocumented days do not turn 7.3 into 7.4 (A25). No second reading changes either category."
+  ]
+}

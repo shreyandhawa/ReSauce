@@ -1,0 +1,113 @@
+{
+  "answer_format": "0.1-provisional",
+  "case_id": "SYN-0023",
+  "answer_kind": "independent",
+  "status": "not clinician-verified",
+  "provenance": {
+    "clinical_methods_version": "v0.4.1",
+    "data_format_version": "v0.1.2",
+    "date": "2026-11-08"
+  },
+  "out_of_scope": null,
+  "fields": {
+    "onset": {
+      "category": "7.5",
+      "record_value": "2031-01-30",
+      "documented_value": {
+        "range": [
+          "2031-01-29",
+          "2031-01-30"
+        ],
+        "study_days": [
+          4,
+          5
+        ]
+      },
+      "signed_difference_days": null,
+      "difference_note": "two readings: record is +1 day after reading 1 (7.1), same day as reading 2 (7.7); not a date range",
+      "readings": [
+        {
+          "reading": "nursing ICE 9/10 at 20:15 on 29 Jan counted (Grade 1), onset 2031-01-29",
+          "value": {
+            "date": "2031-01-29",
+            "study_day": 4
+          },
+          "category": "7.1"
+        },
+        {
+          "reading": "resident ICE 10/10 at 20:50 on 29 Jan counted (Grade 0 that day), onset 2031-01-30 from ICE 8/10",
+          "value": {
+            "date": "2031-01-30",
+            "study_day": 5
+          },
+          "category": "7.7"
+        }
+      ],
+      "evidence": [
+        {
+          "role": "nursing ICE 9/10 at 20:15 on 29 Jan",
+          "document_id": "SYN-0023-D02",
+          "version": 1,
+          "quote": "ICE 9/10 (orientation 4/4, naming 3/3, commands 1/1, writing 1/1, attention 0/1)"
+        },
+        {
+          "role": "resident ICE 10/10 at 20:50 on 29 Jan, about 35 minutes later",
+          "document_id": "SYN-0023-D03",
+          "version": 1,
+          "quote": "the ICE was 10/10 (all items complete including the counting task)"
+        },
+        {
+          "role": "ICE 8/10 on Day +5",
+          "document_id": "SYN-0023-D04",
+          "version": 1,
+          "quote": "ICE 8/10 (orientation 3/4, attention 0/1, other items complete)"
+        }
+      ],
+      "record_history": null
+    },
+    "max_grade": {
+      "category": "7.7",
+      "record_value": 1,
+      "documented_value": {
+        "grade": 1
+      },
+      "signed_difference_days": null,
+      "difference_note": null,
+      "readings": [
+        {
+          "reading": "Day +4 ICE 9/10 counted or not",
+          "value": {
+            "grade": 1
+          },
+          "category": "7.7"
+        }
+      ],
+      "evidence": [
+        {
+          "role": "ICE 8/10 -> Grade 1 on Day +5",
+          "document_id": "SYN-0023-D04",
+          "version": 1,
+          "quote": "ICE 8/10 (orientation 3/4, attention 0/1, other items complete)"
+        },
+        {
+          "role": "ICE 8/10 re-check on Day +6",
+          "document_id": "SYN-0023-D05",
+          "version": 1,
+          "quote": "ICE 8/10 at 09:30 on 31 Jan"
+        },
+        {
+          "role": "ICE 9/10 on Day +8",
+          "document_id": "SYN-0023-D06",
+          "version": 1,
+          "quote": "ICE 9/10 at 10:45 (attention 0/1)"
+        }
+      ],
+      "record_history": null
+    }
+  },
+  "derivation": {
+    "onset": "Two assessments about 35 minutes apart on Day +4 disagree (ICE 9/10 vs 10/10; section 6.4). If the 9/10 counts, onset is Day +4 and the record (Day +5) is a 7.1 mismatch of +1 day; if the 10/10 counts, onset is Day +5 (ICE 8/10) and the record matches (7.7). The readings give different categories, so 7.5, reason conflicting assessments (section 7.5).",
+    "max_grade": "Every reading gives Grade 1 as the highest (ICE 7-9; no other domain), equal to the record, so the same category 7.7 under both readings and 7.5 is not used (section 7.5, A23)."
+  },
+  "ambiguity_notes": "Onset is 7.5 (conflicting assessments). Signed difference is not given as one number: +1 under the reading using the nursing ICE, 0 under the resident ICE. Documented_value lists both candidate dates but this is not a date range in the section 6.1 sense, so the 'inside the range' mismatch rule is not applied. Grade is unaffected by the conflict. Headache and acetaminophen on Day +6 are excluded; tocilizumab on Day +2 is not a competing cause (A35)."
+}

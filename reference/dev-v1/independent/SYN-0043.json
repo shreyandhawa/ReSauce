@@ -1,0 +1,80 @@
+{
+  "answer_format": "0.1-provisional",
+  "case_id": "SYN-0043",
+  "answer_kind": "independent",
+  "status": "not clinician-verified",
+  "provenance": {
+    "clinical_methods_version": "v0.4.1",
+    "data_format_version": "v0.1.2",
+    "dataset_id": "SYN-DS-DEV-V1",
+    "dataset_version": "1.0.0",
+    "date_written": "2026-11-08"
+  },
+  "out_of_scope": null,
+  "fields": {
+    "onset": {
+      "category": "7.1",
+      "record_value": "2031-07-22",
+      "documented_value": {
+        "date": "2031-07-21",
+        "study_day": 5
+      },
+      "signed_difference_days": 1,
+      "difference_note": "documentation entered 2031-07-22T00:45 after midnight; event time is 2031-07-21 23:20",
+      "readings": [],
+      "evidence": [
+        {
+          "role": "earliest qualifying finding (ICE 7/10 at 23:20 on 21 Jul, Grade 1)",
+          "document_id": "SYN-0043-D02",
+          "version": 1,
+          "quote": "2031-07-21 23:20 ICE 7/10 - missed yr + hospital, unable to write sentence"
+        },
+        {
+          "role": "preceding ICE 10/10 earlier that shift",
+          "document_id": "SYN-0043-D02",
+          "version": 1,
+          "quote": "20:00 ICE 10/10, A&Ox4."
+        }
+      ],
+      "record_history": null
+    },
+    "max_grade": {
+      "category": "7.7",
+      "record_value": 2,
+      "documented_value": {
+        "grade": 2
+      },
+      "signed_difference_days": null,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [
+        {
+          "role": "ICE 6/10 (Grade 2)",
+          "document_id": "SYN-0043-D03",
+          "version": 1,
+          "quote": "Neuro exam @ 08:10: ICE 6/10 (orientation 1/4, naming 3/3, cmds 1/1, writing 0/1, attn 1/1)."
+        },
+        {
+          "role": "awake and alert, no focal deficit",
+          "document_id": "SYN-0043-D03",
+          "version": 1,
+          "quote": "Awake, alert, conversant."
+        },
+        {
+          "role": "no sedating medication",
+          "document_id": "SYN-0043-D03",
+          "version": 1,
+          "quote": "No sedating meds in past 24 h."
+        }
+      ],
+      "record_history": null
+    }
+  },
+  "derivation": {
+    "onset": "Onset (6.1, 6.2, 7.1): the nursing note was documented at 00:45 on 22 Jul but gives the event time 2031-07-21 23:20, so the event date is 21 Jul (Day +5). The record says 22 Jul (Day +6), one day later: 7.1, signed difference +1.",
+    "max_grade": "Max grade (3.3, 7.7): the worst is ICE 6/10 (Grade 2) on Day +6, awake and alert, no seizure or other findings. Equals the record, so 7.7."
+  },
+  "ambiguity_notes": [
+    "The event-time rule (6.1) puts the first finding on 21 Jul even though the documentation date is 22 Jul; using the documentation date would give 7.7 for onset. Event time is stated explicitly in the text, so the rule is not ambiguous. EEG normal; tocilizumab, dexamethasone and levetiracetam are treatment (A35)."
+  ]
+}

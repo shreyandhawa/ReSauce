@@ -1,0 +1,105 @@
+{
+  "answer_format": "0.1-provisional",
+  "case_id": "SYN-0004",
+  "answer_kind": "independent",
+  "status": "not clinician-verified",
+  "provenance": {
+    "clinical_methods_version": "0.4.1",
+    "data_format_version": "0.1.2",
+    "dataset_id": "SYN-DS-DEV-V1",
+    "dataset_version": "1.0.0",
+    "date_written": "2026-11-08"
+  },
+  "out_of_scope": null,
+  "fields": {
+    "onset": {
+      "category": "7.7",
+      "record_value": null,
+      "documented_value": "none found",
+      "signed_difference_days": null,
+      "difference_note": "record has no onset; no documented onset",
+      "readings": [],
+      "evidence": [
+        {
+          "role": "formal Grade 0 assessment: ICE 10/10, alert",
+          "document_id": "SYN-0004-D01",
+          "version": 1,
+          "quote": "ICE 10/10 at 17:20. Alert."
+        },
+        {
+          "role": "formal Grade 0 assessment, no tremor or seizure",
+          "document_id": "SYN-0004-D04",
+          "version": 1,
+          "quote": "ICE 10/10 at 14:50. No tremor, no sz."
+        },
+        {
+          "role": "formal Grade 0 assessment: ICE 10/10, alert",
+          "document_id": "SYN-0004-D05",
+          "version": 1,
+          "quote": "ICE 13 Sep 10:05 = 10/10. Alert, cooperative."
+        },
+        {
+          "role": "ICE 10/10 on each check through Day +9",
+          "document_id": "SYN-0004-D07",
+          "version": 1,
+          "quote": "ICE 10/10 on each check incl 17 Sep 08:40."
+        },
+        {
+          "role": "only neurological symptom: headache, an excluded symptom (4.2), not a qualifying finding",
+          "document_id": "SYN-0004-D03",
+          "version": 1,
+          "quote": "Mild HA, acetaminophen."
+        }
+      ],
+      "record_history": null
+    },
+    "max_grade": {
+      "category": "7.7",
+      "record_value": null,
+      "documented_value": {
+        "grade": 0
+      },
+      "signed_difference_days": null,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [
+        {
+          "role": "formal Grade 0 assessment: ICE 10/10, alert",
+          "document_id": "SYN-0004-D01",
+          "version": 1,
+          "quote": "ICE 10/10 at 17:20. Alert."
+        },
+        {
+          "role": "formal Grade 0 assessment, no tremor or seizure",
+          "document_id": "SYN-0004-D04",
+          "version": 1,
+          "quote": "ICE 10/10 at 14:50. No tremor, no sz."
+        },
+        {
+          "role": "formal Grade 0 assessment: ICE 10/10, alert",
+          "document_id": "SYN-0004-D05",
+          "version": 1,
+          "quote": "ICE 13 Sep 10:05 = 10/10. Alert, cooperative."
+        },
+        {
+          "role": "ICE 10/10 on each check through Day +9",
+          "document_id": "SYN-0004-D07",
+          "version": 1,
+          "quote": "ICE 10/10 on each check incl 17 Sep 08:40."
+        },
+        {
+          "role": "only neurological symptom: headache, an excluded symptom (4.2), not a qualifying finding",
+          "document_id": "SYN-0004-D03",
+          "version": 1,
+          "quote": "Mild HA, acetaminophen."
+        }
+      ],
+      "record_history": null
+    }
+  },
+  "derivation": {
+    "onset": "The record reports no ICANS and the documents hold no qualifying finding. Section 7.9(b): 7.7 when the window has at least one formal Grade 0 assessment (ICE 10/10, alert; section 3.3), no qualifying finding and no documented 'not assessable' period. All three hold.",
+    "max_grade": "Same rule (section 7.9(b), A21): both fields are 7.7 together; the documented grade is 0 (every ICE 10/10, no domain finding)."
+  },
+  "ambiguity_notes": "A mild headache on Day +3 is an excluded symptom (section 4.2), so it neither blocks 7.7 nor appears in the ungradeable-symptom flag. CRS fever and norepinephrine are not neurological findings. Coverage is not daily (no assessment on Days 0 and 6 documented), which is the open stricter-coverage question in 7.9(b) and does not change the answer under the current rule."
+}

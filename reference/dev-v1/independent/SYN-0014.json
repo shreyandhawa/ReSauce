@@ -1,0 +1,73 @@
+{
+  "answer_format": "0.1-provisional",
+  "case_id": "SYN-0014",
+  "answer_kind": "independent",
+  "status": "not clinician-verified",
+  "provenance": {
+    "clinical_methods_version": "v0.4.1",
+    "data_format_version": "v0.1.2",
+    "date": "2026-11-08"
+  },
+  "out_of_scope": null,
+  "fields": {
+    "onset": {
+      "category": "7.4",
+      "record_value": null,
+      "documented_value": "none found",
+      "signed_difference_days": null,
+      "difference_note": "record has no onset; no qualifying finding; documented not-assessable period",
+      "readings": [],
+      "evidence": [
+        {
+          "role": "formal Grade 0 assessment (Day +1)",
+          "document_id": "SYN-0014-D01",
+          "version": 1,
+          "quote": "ICE d+1 01 Jun 20:00 = 10/10. Alert. Baseline."
+        },
+        {
+          "role": "formal Grade 0 assessment (Day +7)",
+          "document_id": "SYN-0014-D03",
+          "version": 1,
+          "quote": "ICE 10/10 on 07 Jun at 09:30 (before intubation)"
+        },
+        {
+          "role": "documented not-assessable period, Days +8 and +9",
+          "document_id": "SYN-0014-D03",
+          "version": 1,
+          "quote": "ICE not done on 08 Jun and 09 Jun: intubated and sedated, unable to assess"
+        }
+      ],
+      "record_history": null
+    },
+    "max_grade": {
+      "category": "7.4",
+      "record_value": null,
+      "documented_value": {
+        "undetermined": "no qualifying finding in the notes, but a documented not-assessable period (Days +8 to +9) means a grade could be hidden"
+      },
+      "signed_difference_days": null,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [
+        {
+          "role": "documented not-assessable period",
+          "document_id": "SYN-0014-D03",
+          "version": 1,
+          "quote": "ICE not done on 08 Jun and 09 Jun: intubated and sedated, unable to assess"
+        },
+        {
+          "role": "ungradeable neurological symptom, no ICE (does not block 7.7 on its own)",
+          "document_id": "SYN-0014-D02",
+          "version": 1,
+          "quote": "Pt confused this PM, MD aware."
+        }
+      ],
+      "record_history": null
+    }
+  },
+  "derivation": {
+    "onset": "Record reports no ICANS and no qualifying finding exists, so section 7.9(b) applies. Formal Grade 0 assessments exist (Day +1, Day +7), but the observation window also holds a documented 'not assessable' period (Days +8, +9: 'unable to assess'), so 7.9(b)/A21 gives 7.4 rather than 7.7.",
+    "max_grade": "Same rule, section 7.9(b) and A21: because of the documented not-assessable period the 'no ICANS' record cannot be confirmed, so the grade is also 7.4. The Day +5 'confused' is an ungradeable symptom; it does not change the outcome (section 7 introduction, A21)."
+  },
+  "ambiguity_notes": "The unsigned dietitian note (D04) is ignored (A27). Day +5 'confused this PM' with T 37.9 meets no Table 6 criterion and has no ICE (ungradeable neurological symptom, not a qualifying finding). Propofol sedation and intubation are mentioned together with an explicit statement that assessment was not possible, so the not-assessable period counts (A7). If a clinician judged that sedation alone does not count, the result would be 7.7, but the note does state 'unable to assess'. No further competing reading."
+}

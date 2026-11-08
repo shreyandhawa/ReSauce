@@ -1,0 +1,78 @@
+{
+  "answer_format": "0.1-provisional",
+  "case_id": "SYN-0030",
+  "answer_kind": "independent",
+  "status": "not clinician-verified",
+  "provenance": {
+    "clinical_methods_version": "v0.4.1",
+    "data_format_version": "v0.1.2",
+    "dataset_id": "SYN-DS-DEV-V1",
+    "dataset_version": "1.0.0",
+    "date_written": "2026-11-08"
+  },
+  "out_of_scope": null,
+  "fields": {
+    "onset": {
+      "category": "7.7",
+      "record_value": "2035-01-26",
+      "documented_value": {
+        "date": "2035-01-26",
+        "study_day": 5
+      },
+      "signed_difference_days": 0,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [
+        {
+          "role": "first Grade >=1 finding: ICE 8/10, event 2035-01-26 23:30, awake, no sedation (note documented 01-27)",
+          "document_id": "SYN-0030-D02",
+          "version": 1,
+          "quote": "2035-01-26 at 23:30, ICE 8/10"
+        },
+        {
+          "role": "awake",
+          "document_id": "SYN-0030-D02",
+          "version": 1,
+          "quote": "Awake, chatting with RN while the check was done."
+        },
+        {
+          "role": "previous formal Grade 0",
+          "document_id": "SYN-0030-D01",
+          "version": 1,
+          "quote": "ICE at 20:00: 10/10."
+        }
+      ],
+      "record_history": null
+    },
+    "max_grade": {
+      "category": "7.7",
+      "record_value": 2,
+      "documented_value": {
+        "grade": 2
+      },
+      "signed_difference_days": null,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [
+        {
+          "role": "ICE 5/10 = Grade 2, awake, no sedation",
+          "document_id": "SYN-0030-D03",
+          "version": 1,
+          "quote": "ICE 5/10 at 09:10"
+        },
+        {
+          "role": "statement that ICE was not possible on Day +9 (patient off ward)",
+          "document_id": "SYN-0030-D04",
+          "version": 1,
+          "quote": "No ICE possible on 2035-01-30: patient away from the ward from 07:30 to 19:00 for apheresis and restaging scans."
+        }
+      ],
+      "record_history": null
+    }
+  },
+  "derivation": {
+    "onset": "Event time of the ICE 8/10 is 2035-01-26 23:30 (Day +5), taken from the text, not the documentation date 2035-01-27 (§6.1). Record onset 2035-01-26 equals it: 7.7.",
+    "max_grade": "Highest supported grade is 2 (ICE 5/10, awake). Equals the record: 7.7. The record grade is not above the supported grade, so no unassessed-period rule changes the category (§7.3/A25 do not apply)."
+  },
+  "ambiguity_notes": "unclear whether the 2035-01-30 statement ('No ICE possible', patient away from ward for apheresis/scans) is a documented 'not assessable' period under A7: the definition says 'could not be performed', which it literally meets, though the patient was not unassessable clinically. It does not change any category here (grade is 7.7 either way). I listed it as a not-assessable period for the case-level flag. Also note the ICE event is just before midnight; documentation date would give Day +6 if event time were ignored."
+}

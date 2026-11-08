@@ -1,0 +1,96 @@
+{
+  "answer_format": "0.1-provisional",
+  "case_id": "SYN-0010",
+  "answer_kind": "independent",
+  "status": "not clinician-verified",
+  "provenance": {
+    "clinical_methods_version": "0.4.1",
+    "data_format_version": "0.1.2",
+    "dataset_id": "SYN-DS-DEV-V1",
+    "dataset_version": "1.0.0",
+    "date_written": "2026-11-08"
+  },
+  "out_of_scope": null,
+  "fields": {
+    "onset": {
+      "category": "7.7",
+      "record_value": "2032-06-23",
+      "documented_value": {
+        "date": "2032-06-23",
+        "study_day": 5
+      },
+      "signed_difference_days": 0,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [
+        {
+          "role": "first qualifying finding: ICE 9/10, awake and alert (Grade 1) on Day +5",
+          "document_id": "SYN-0010-D02",
+          "version": 1,
+          "quote": "Neurologic check at 20:15: ICE screen: 9/10."
+        },
+        {
+          "role": "awake and alert",
+          "document_id": "SYN-0010-D02",
+          "version": 1,
+          "quote": "The patient was awake and alert and conversing appropriately throughout."
+        },
+        {
+          "role": "Day -2 baseline ICE 10/10 (outside window, not used)",
+          "document_id": "SYN-0010-D01",
+          "version": 1,
+          "quote": "Pre-infusion neurologic baseline, assessed 2032-06-16 at 10:30: ICE score 10/10."
+        }
+      ],
+      "record_history": null
+    },
+    "max_grade": {
+      "category": "7.7",
+      "record_value": 2,
+      "documented_value": {
+        "grade": 2
+      },
+      "signed_difference_days": null,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [
+        {
+          "role": "ICE 4/10 (Grade 2)",
+          "document_id": "SYN-0010-D03",
+          "version": 1,
+          "quote": "Neurologic examination at 07:45 on 2032-06-24: ICE score 4/10."
+        },
+        {
+          "role": "awakens to voice (Grade 2), no sedating medication in 24 h",
+          "document_id": "SYN-0010-D03",
+          "version": 1,
+          "quote": "The patient is drowsy and awakens to voice, then drifts back to sleep without stimulation. No sedating medications have been given in the past 24 hours."
+        },
+        {
+          "role": "no focal motor deficit or seizure",
+          "document_id": "SYN-0010-D03",
+          "version": 1,
+          "quote": "moving all four extremities with full strength, no focal motor deficits, and no seizure activity reported by nursing"
+        },
+        {
+          "role": "migraine history clinically distinguished from current picture (not a competing cause)",
+          "document_id": "SYN-0010-D03",
+          "version": 1,
+          "quote": "remote migraine, which the patient and family say has been quiet for many years and does not resemble the current picture"
+        },
+        {
+          "role": "recovery: ICE 10/10 on Day +8",
+          "document_id": "SYN-0010-D04",
+          "version": 1,
+          "quote": "ICE total: 10/10."
+        }
+      ],
+      "record_history": null
+    }
+  },
+  "derivation": {
+    "onset": "ICE 9/10 on Day +5 (2032-06-23) is the first Grade 1 finding and matches the record date: 7.7 (sections 6.2, 7.7).",
+    "max_grade": "ICE 4/10 and 'awakens to voice' both give Grade 2 (Table 6); both readings of the consciousness domain agree. No competing cause (tocilizumab and dexamethasone are treatment, A35). Record 2 = documented 2: 7.7."
+  },
+  "ambiguity_notes": "None. Distractors: remote migraine, controlled hypertension (not severe), and the Day -2 baseline ICE (outside the window). 'Drowsy, awakens to voice' is Grade 2 only; no tactile-stimulus wording appears."
+}

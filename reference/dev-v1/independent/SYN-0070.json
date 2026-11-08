@@ -1,0 +1,75 @@
+{
+  "answer_format": "0.1-provisional",
+  "case_id": "SYN-0070",
+  "answer_kind": "independent",
+  "status": "not clinician-verified",
+  "provenance": {
+    "clinical_methods_version": "0.4.1",
+    "data_format_version": "0.1.2",
+    "date": "2026-11-08",
+    "model": "claude-sonnet-5-5 (Sonnet 5.5)"
+  },
+  "out_of_scope": null,
+  "fields": {
+    "onset": {
+      "category": "7.1",
+      "record_value": "2031-03-05",
+      "documented_value": {
+        "date": "2031-03-07",
+        "study_day": 6
+      },
+      "signed_difference_days": -2,
+      "difference_note": "record 2031-03-05 is 2 days before the documented onset 2031-03-07; a formal Grade 0 assessment on the record date refutes it",
+      "readings": [],
+      "evidence": [
+        {
+          "role": "earliest qualifying finding: ICE 8 = Grade 1 (Day 6, 2031-03-07)",
+          "document_id": "SYN-0070-D03",
+          "version": 1,
+          "quote": "Total 8/10"
+        },
+        {
+          "role": "no consciousness depression",
+          "document_id": "SYN-0070-D03",
+          "version": 1,
+          "quote": "LOC: alert."
+        },
+        {
+          "role": "formal Grade 0 assessment on the record's onset date 2031-03-05",
+          "document_id": "SYN-0070-D02",
+          "version": 1,
+          "quote": "20:30 ICE 10/10. Alert. Speech clear. No tremor. No HA."
+        }
+      ],
+      "record_history": null,
+      "derivation": "Earliest qualifying finding is ICE 8/10 on 2031-03-07 (Day 6). Record onset 2031-03-05 is earlier, and a formal Grade 0 assessment (ICE 10/10, alert) exists on that date, so it is a mismatch (section 7.1, second bullet): 7.1, signed difference -2."
+    },
+    "max_grade": {
+      "category": "7.7",
+      "record_value": 2,
+      "documented_value": {
+        "grade": 2
+      },
+      "signed_difference_days": null,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [
+        {
+          "role": "ICE 6 = Grade 2",
+          "document_id": "SYN-0070-D04",
+          "version": 1,
+          "quote": "Neuro 07:30: ICE 6/10 (orientation 1/4, naming 3/3, commands 1/1, writing 0/1, attention 1/1). Awake, alert, follows commands."
+        },
+        {
+          "role": "no competing cause",
+          "document_id": "SYN-0070-D04",
+          "version": 1,
+          "quote": "No sedating meds."
+        }
+      ],
+      "record_history": null,
+      "derivation": "Highest grade is ICE 6/10 (Grade 2) on 2031-03-08; the later fine tremor is excluded. Equals the record (7.7)."
+    }
+  },
+  "ambiguity_notes": "No genuine ambiguity. The 03-05 note documents ICE 10/10 so the earlier record onset is refuted, not merely unsupported (A17 does not apply since a formal ICE total exists)."
+}

@@ -1,0 +1,132 @@
+{
+  "answer_format": "0.1-provisional",
+  "case_id": "SYN-0047",
+  "answer_kind": "independent",
+  "status": "not clinician-verified",
+  "provenance": {
+    "clinical_methods_version": "v0.4.1",
+    "data_format_version": "v0.1.2",
+    "dataset_id": "SYN-DS-DEV-V1",
+    "dataset_version": "1.0.0",
+    "date_written": "2026-11-08"
+  },
+  "out_of_scope": null,
+  "fields": {
+    "onset": {
+      "category": "7.7",
+      "record_value": "2032-03-19",
+      "documented_value": {
+        "date": "2032-03-19",
+        "study_day": 4
+      },
+      "signed_difference_days": 0,
+      "difference_note": "both readings give the same onset (Day +4), so 7.5 is not used",
+      "readings": [
+        {
+          "reading": "Day +6 sedation-affected finding counts or not; onset is unaffected",
+          "value": {
+            "date": "2032-03-19",
+            "study_day": 4
+          },
+          "category": "7.7"
+        }
+      ],
+      "evidence": [
+        {
+          "role": "earliest qualifying finding (ICE 8/10, Grade 1; no sedatives)",
+          "document_id": "SYN-0047-D03",
+          "version": 1,
+          "quote": "TOTAL 8/10"
+        },
+        {
+          "role": "no sedating medication on Day +4",
+          "document_id": "SYN-0047-D03",
+          "version": 1,
+          "quote": "LOC: alert. Sedating meds last 24 h: none."
+        },
+        {
+          "role": "preceding formal Grade 0 assessment",
+          "document_id": "SYN-0047-D02",
+          "version": 1,
+          "quote": "ICE @ 21:00: 10/10. A&Ox4. No tremor."
+        }
+      ],
+      "record_history": null
+    },
+    "max_grade": {
+      "category": "7.5",
+      "record_value": 3,
+      "documented_value": {
+        "range": [
+          2,
+          3
+        ]
+      },
+      "signed_difference_days": null,
+      "difference_note": "ambiguous evidence, reason: attribution (consciousness finding with lorazepam given 4 h 50 min before)",
+      "readings": [
+        {
+          "reading": "Day +6 'awakens only to tactile stimulus' counts as ICANS Grade 3",
+          "value": {
+            "grade": 3
+          },
+          "category": "7.7"
+        },
+        {
+          "reading": "Day +6 consciousness finding attributed to lorazepam and excluded; highest remaining is Grade 2 (Day +5 ICE 5/10)",
+          "value": {
+            "grade": 2
+          },
+          "category": "7.3"
+        }
+      ],
+      "evidence": [
+        {
+          "role": "Grade 3 consciousness finding",
+          "document_id": "SYN-0047-D05",
+          "version": 1,
+          "quote": "LOC: awakens only to tactile stimulus (no eye opening to voice; opened eyes to touch on arm)"
+        },
+        {
+          "role": "competing cause: IV lorazepam 4 h 50 min earlier, same note",
+          "document_id": "SYN-0047-D05",
+          "version": 1,
+          "quote": "Sedating meds last 24 h: lorazepam 1 mg IV @ 02:40 (PRN for sleep, per pt request)."
+        },
+        {
+          "role": "attending notes the lorazepam, no attribution of the drowsiness",
+          "document_id": "SYN-0047-D06",
+          "version": 1,
+          "quote": "Lorazepam 1 mg IV given @ 02:40 PRN for sleep."
+        },
+        {
+          "role": "general assessment, not specific to the 07:30 finding",
+          "document_id": "SYN-0047-D06",
+          "version": 1,
+          "quote": "A: ICANS post CAR-T."
+        },
+        {
+          "role": "highest grade without the Day +6 consciousness finding: ICE 5/10 (Grade 2), no sedatives",
+          "document_id": "SYN-0047-D04",
+          "version": 1,
+          "quote": "ICE 5/10 (orient 1/4, naming 2/3, cmds 1/1, writing 0/1, attn 1/1). Awake, alert."
+        },
+        {
+          "role": "no sedation on Day +5",
+          "document_id": "SYN-0047-D04",
+          "version": 1,
+          "quote": "No sedating meds in past 24 h."
+        }
+      ],
+      "record_history": null
+    }
+  },
+  "derivation": {
+    "onset": "Onset (6.2, 7.7): ICE 8/10 on 2032-03-19 (Day +4, no sedation) is the earliest qualifying finding under every reading, equal to the record. Same category in all readings, so 7.7.",
+    "max_grade": "Max grade (3.4, 7.5, A30, A35, A9): the Day +6 07:30 finding (awakens only to tactile stimulus = Grade 3) is documented in the same note as IV lorazepam given at 02:40, and no clinician statement attributes it either way. If it counts, the maximum is 3 and matches the record (7.7). If excluded, the maximum is 2 (Day +5), so the record's 3 is unsupported (7.3). Different categories, so 7.5, reason attribution."
+  },
+  "ambiguity_notes": [
+    "The attending note's 'A: ICANS post CAR-T' is a general assessment line; it does not say the 07:30 tactile-stimulus finding was due to ICANS rather than lorazepam, so under A9 it is not an attribution statement. If a reviewer reads it as attributing the findings to ICANS, the grade would be 7.7 (Grade 3).",
+    "The attending's 10:30 ICE 8/10, 'awake, conversant' is 3 hours after the 07:30 assessment; not 'about the same time', so not a conflicting-assessments case (6.4) but it suggests the drowsiness was transient. Sertraline is not on the competing-cause list (A35); dexamethasone, tocilizumab and levetiracetam are treatment. The Day +9 headache is excluded."
+  ]
+}

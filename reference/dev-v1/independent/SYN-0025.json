@@ -1,0 +1,84 @@
+{
+  "answer_format": "0.1-provisional",
+  "case_id": "SYN-0025",
+  "answer_kind": "independent",
+  "status": "not clinician-verified",
+  "provenance": {
+    "clinical_methods_version": "v0.4.1",
+    "data_format_version": "v0.1.2",
+    "dataset_id": "SYN-DS-DEV-V1",
+    "dataset_version": "1.0.0",
+    "date_written": "2026-11-08"
+  },
+  "out_of_scope": null,
+  "fields": {
+    "onset": {
+      "category": "7.4",
+      "record_value": "2035-10-04",
+      "documented_value": {
+        "date": "2035-10-06",
+        "study_day": 5
+      },
+      "signed_difference_days": -2,
+      "difference_note": "Record date is 2 days before the documented onset, but no gradeable assessment exists on the record date (only an excluded symptom, headache), so it is insufficient evidence, not a mismatch. Difference given for information.",
+      "readings": [],
+      "evidence": [
+        {
+          "role": "record date: only an excluded symptom, no ICE total or qualifying finding",
+          "document_id": "SYN-0025-D02",
+          "version": 1,
+          "quote": "Symptoms: headache, new onset, 4/10, frontal."
+        },
+        {
+          "role": "earliest qualifying finding (ICE 8, Grade 1) = documented onset Day +5",
+          "document_id": "SYN-0025-D04",
+          "version": 1,
+          "quote": "Neuro: ICE 8/10 at 09:20 (orientation 3/4, attention 0/1)"
+        },
+        {
+          "role": "last gradeable assessment before the record date (formal Grade 0, Day +1, not on record date)",
+          "document_id": "SYN-0025-D01",
+          "version": 1,
+          "quote": "Neuro: ICE 10/10 at 19:40"
+        },
+        {
+          "role": "formal Grade 0 assessment after the record date (Day +4), not on record date",
+          "document_id": "SYN-0025-D03",
+          "version": 1,
+          "quote": "TOTAL: 10/10"
+        }
+      ],
+      "record_history": null
+    },
+    "max_grade": {
+      "category": "7.7",
+      "record_value": 2,
+      "documented_value": {
+        "grade": 2
+      },
+      "signed_difference_days": null,
+      "difference_note": null,
+      "readings": [],
+      "evidence": [
+        {
+          "role": "ICE 6/10 = Grade 2",
+          "document_id": "SYN-0025-D05",
+          "version": 1,
+          "quote": "ICE: 6/10 at 11:30 (orientation 2/4, naming 2/3, commands 1/1, writing 0/1, attention 1/1)"
+        },
+        {
+          "role": "awakens to voice = Grade 2; no sedation documented",
+          "document_id": "SYN-0025-D05",
+          "version": 1,
+          "quote": "Level of consciousness: awakens to voice"
+        }
+      ],
+      "record_history": null
+    }
+  },
+  "derivation": {
+    "onset": "Documented onset is the first Grade >=1 finding, ICE 8/10 on 2035-10-06 (Day +5) (§6.2). Headache is an excluded symptom (§4.2, A11) and gives no onset. The record date 2035-10-04 has no gradeable assessment (A34), so the earlier record onset cannot be refuted: 7.4 (§7.1 bullets 2-3, A18), not 7.1.",
+    "max_grade": "Highest supported grade is 2 (ICE 6/10 and awakens to voice, Table 6). No seizure, motor or ICP finding, no competing cause (dexamethasone, tocilizumab and acetaminophen are treatment, A35). Equals the record: 7.7 (§7.7)."
+  },
+  "ambiguity_notes": "Onset: the excluded-symptom flag 'record date matches an excluded or sub-threshold symptom' applies (headache on 2035-10-04, no qualifying finding that day; A24 as amended). Headache on 10-04 is not an ICANS-compatible gradeable finding; I did not treat it as onset. A formal Grade 0 (ICE 10/10) exists on 10-05, but that is not the record date, so §7.1 bullet 2 (mismatch) does not apply. Difference -2 is informational only for 7.4."
+}

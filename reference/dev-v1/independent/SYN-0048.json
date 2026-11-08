@@ -1,0 +1,83 @@
+{
+  "answer_format": "0.1-provisional",
+  "case_id": "SYN-0048",
+  "answer_kind": "independent",
+  "status": "not clinician-verified",
+  "provenance": {
+    "clinical_methods_version": "v0.4.1",
+    "data_format_version": "v0.1.2",
+    "dataset_id": "SYN-DS-DEV-V1",
+    "dataset_version": "1.0.0",
+    "date_written": "2026-11-08"
+  },
+  "out_of_scope": null,
+  "fields": {
+    "onset": {
+      "category": "7.1",
+      "record_value": "2035-06-12",
+      "documented_value": "none found",
+      "signed_difference_days": null,
+      "difference_note": "no documented onset (7.9(c)): formal Grade 0 assessment on the record's onset date",
+      "readings": [],
+      "evidence": [
+        {
+          "role": "formal Grade 0 assessment on the record's onset date (Day +5)",
+          "document_id": "SYN-0048-D06",
+          "version": 1,
+          "quote": "ICE 12 Jun 11:05: orient 4/4, name 3/3, cmd 1/1, write 1/1, attn 1/1 = 10/10. Alert, cooperative."
+        },
+        {
+          "role": "excluded symptom (tremor) on Day +7, not the record date",
+          "document_id": "SYN-0048-D08",
+          "version": 1,
+          "quote": "Fine tremor both hands today."
+        },
+        {
+          "role": "discharge summary: no other neuro findings",
+          "document_id": "SYN-0048-D10",
+          "version": 1,
+          "quote": "Mild tremor d7, no other neuro findings."
+        }
+      ],
+      "record_history": null
+    },
+    "max_grade": {
+      "category": "7.3",
+      "record_value": 2,
+      "documented_value": {
+        "grade": 0
+      },
+      "signed_difference_days": null,
+      "difference_note": "no qualifying finding anywhere in the window; no documented 'not assessable' period",
+      "readings": [],
+      "evidence": [
+        {
+          "role": "formal Grade 0 assessment",
+          "document_id": "SYN-0048-D06",
+          "version": 1,
+          "quote": "ICE 12 Jun 11:05: orient 4/4, name 3/3, cmd 1/1, write 1/1, attn 1/1 = 10/10. Alert, cooperative."
+        },
+        {
+          "role": "neurology consult: ICE 10/10, tremor only",
+          "document_id": "SYN-0048-D09",
+          "version": 1,
+          "quote": "ICE 10/10 at 11:30 on 16 Jun. Alert, oriented. Mild postural tremor, no other abnormality."
+        },
+        {
+          "role": "excluded symptom (headache)",
+          "document_id": "SYN-0048-D04",
+          "version": 1,
+          "quote": "Mild HA 3/10, acetaminophen. ICE 10/10 at 09:40."
+        }
+      ],
+      "record_history": null
+    }
+  },
+  "derivation": {
+    "onset": "Onset (7.9(c), 7.1): the record reports ICANS but no qualifying finding exists anywhere in the window (every ICE is 10/10; tremor and headache are excluded, 4.2). A formal Grade 0 assessment exists on the record's onset date (ICE 10/10 on Day +5), so 7.1 reported as 'no documented onset', with no signed difference.",
+    "max_grade": "Max grade (7.9(c), 7.3, A22): no qualifying finding exists and no 'not assessable' period is documented, so the record's Grade 2 is not supported: 7.3."
+  },
+  "ambiguity_notes": [
+    "Documented value is given as 'none found' for onset and Grade 0 for the grade (formal Grade 0 assessments on several days); there is no documented grade above 0. The unassessed days (no ICE total) are not 'not assessable' statements, so A25 does not turn 7.3 into 7.4. The flag 'record date matches an excluded or sub-threshold symptom' is not added: the tremor is on Day +7, not on the record's onset date (Day +5). Tocilizumab is treatment (A35)."
+  ]
+}
