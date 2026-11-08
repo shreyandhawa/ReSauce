@@ -12,6 +12,61 @@ Each entry covers:
 
 ---
 
+## 2026-11-08: Milestone 4 (reduced), session 5 (Baseline A and evaluation runner)
+
+- **Status:** Baseline A (`src/resauce/baseline_a.py`) and the evaluation runner (`src/resauce/evaluate.py`, `python -m resauce.evaluate`) are built. The official run happened once, after the code commit `aca0884` was pushed. Results are in `results/report.md`, `results/dev.json` and `results/held_out.json`. `pytest`: 163 passed. I opened only the 20 dev cases and their intended answers. Held-out cases and answers were touched only by the runner; I did not open `results/held_out.json`, only `results/report.md`. Nothing in the engine, extractor, phrase lists or Baseline A was changed after the held-out numbers appeared.
+- **Done:**
+  - `baseline_a.py`: evaluation-spec §4. It uses the same extractor observations (status `present` only), the latest version of each document whether signed or not, the `documented_at` date as the time, the current record version only, no window, no attribution. It grades only the §4 sources and outputs only 7.1/7.2/7.3/7.7/7.8. It has its own Table 6 constants (it does not import the engine). It outputs the same field format as the engine.
+  - `reference/dev-v1/splits.json`: the 20 dev IDs. The held-out split is every other case folder. `src/` contains no case IDs.
+  - `evaluate.py`: scoring per evaluation-spec §3 as pure functions (`score_method`), run per split, with the results written to `results/<split>.json` and `results/report.md`. A method error on a case is recorded as "error" with the message, counted, and the run carries on. Neither split had any.
+  - Tests: 6 scoring tests, plus 1 for an errored case (`tests/test_evaluate.py`), and 4 small Baseline A tests (`tests/test_baseline_a.py`; the task said "scoring only", but Baseline A decides answers, so CLAUDE.md allows them).
+- **Choices where §4 was silent** (all [OPERATIONAL], for review):
+  1. Partial ICE counts only if all five items are scored; the extractor's item sum then acts as the total ("same ICE parsing"). Otherwise it is not graded.
+  2. ICE 0 → Grade 3, as the §4 table says, with no consciousness context (ReSauce's A33 is not applied).
+  3. Hemiplegia and paraplegia count with hemiparesis and paraparesis (Grade 4). §4 names only the "-paresis" words.
+  4. No hemorrhage exclusion for edema (§4 has no exclusion step).
+  5. A seizure is Grade 4 only when it is documented as over 5 minutes (a lower bound above 5 minutes, or "over 5 minutes") or repetitive without return to baseline. A range that starts at 5 minutes, an unstated duration and "status epilepticus" without a duration stay Grade 3.
+  6. "Awakens spontaneously" is Grade 1 with no drowsiness condition (that is ReSauce's A3).
+  7. The 7.8 check comes before "no finding → 7.7", following the order of the §4 list.
+  8. `documented_value` is "none found" when there is no Grade 1+ finding.
+- **Choices in the runner where evaluation-spec §3 was silent** (also stated in the report):
+  - An errored case counts its positive fields as misses (and its fields as disagreements), so a method cannot look better by crashing. There were none in this run.
+  - F1 = 2PR/(P+R), written with counts as 2·det ÷ (2·det + false alerts + misses). It is 0 when there are no detections but precision and recall are both defined, and undefined when either is undefined.
+  - Evidence validity is checked over every evidence reference in a method's output, including out-of-scope cases and flags.
+  - An out-of-scope reason matches the reference after lower-casing and trimming whitespace.
+  - Reference out-of-scope cases are not scored for Baseline A at all.
+- **Test change to flag:** `tests/test_tools.py::test_core_does_not_use_tools_or_reference` forbade any mention of `reference/` in every module of `src/resauce`. I exempted `evaluate.py` only, because it is the sanctioned reader of reference answers (`reference/dev-v1/README.md`), and I added assertions that no other module mentions or imports `resauce.evaluate`. Please check you agree.
+- **Headline counts, exactly as `results/report.md` shows them** (fields; each in-scope case has onset and maximum grade; combined = both fields pooled; the splits are not pooled):
+
+  | Split | Method | Positive | Detections | Misses | False alerts | Alerts on review fields | "review: …" | Precision | Recall | F1 |
+  |---|---|---|---|---|---|---|---|---|---|---|
+  | dev (20 cases: 19 in scope, 1 out of scope) | ReSauce | 10 | 10 | 0 | 0 | 0 | 0 | 1.00 (10/10) | 1.00 (10/10) | 1.00 (20/20) |
+  | dev | Baseline A | 10 | 9 | 1 | 1 | 1 | 0 | 0.90 (9/10) | 0.90 (9/10) | 0.90 (18/20) |
+  | held-out (52 cases: 49 in scope, 3 out of scope; in-repo, not sealed) | ReSauce | 20 | 16 | 4 | 3 | 1 | 5 | 0.84 (16/19) | 0.80 (16/20) | 0.82 (32/39) |
+  | held-out | Baseline A | 20 | 14 | 6 | 9 | 8 | 0 | 0.61 (14/23) | 0.70 (14/20) | 0.65 (28/43) |
+
+  - Exact-category agreement, all in-scope fields / positive fields only: dev ReSauce 1.00 (38/38) / 1.00 (10/10); dev Baseline A 0.87 (33/38) / 0.90 (9/10); held-out ReSauce 0.81 (79/98) / 0.80 (16/20); held-out Baseline A 0.65 (64/98) / 0.70 (14/20).
+  - Held-out ReSauce misses: 4, of which 2 got a review flag (7.4/7.5) and 2 got a "review: …" result. Held-out Baseline A misses: 6, none with a review flag (it cannot give one).
+  - Out of scope (ReSauce): dev 1 of 1 flagged with the matching reason; held-out 3 of 3 flagged with the matching reason; 0 in-scope cases wrongly flagged on either split.
+  - Evidence-quote validity: 1.00 on both splits for both methods (dev 135/135 and 68/68; held-out 391/391 and 147/147).
+  - Errors: 0 on both splits for both methods.
+  - These are scores against intended answers that are not independently verified and not clinician-verified, on synthetic data. They are not clinical validation. The extractor's phrase lists were built from the 20 dev cases, so the dev split is not an independent test of the extractor. The held-out split is not sealed.
+- **Not done / open items:**
+  - The held-out misses, false alerts and `review: …` results have not been looked at case by case, on purpose (held-out rule). Any error analysis would have to be planned with the held-out status in mind (looking at them would use them up as a held-out set).
+  - Misses and review flags are tabled for the combined fields only, not per field.
+  - Baseline B (LLM) is still deferred (no API key).
+  - Step 5 (independent answers) is still to do. Those answers will replace the intended answers, and earlier results are kept.
+  - Clinician review of the Baseline A choices above, and of the open questions from session 4.
+- **How to verify:**
+  ```bash
+  .venv/bin/python -m pytest -p no:cacheprovider -q                 # expect 163 passed
+  .venv/bin/python -m resauce.baseline_a data/dev-v1/cases/SYN-0017 # a dev case only
+  # results/report.md: the code commit shown is aca0884654fef34582274ea647c353c6ca7ec111
+  ```
+  Do not re-run `python -m resauce.evaluate` unless a new, recorded run is intended: the run is written over `results/`.
+
+---
+
 ## 2026-11-08: Milestone 3 session 4 (rules engine)
 
 - **Status:** `src/resauce/engine.py` + `src/resauce/timeline.py` turn extractor observations into a maximum grade, an onset, a §7 category per field, §7.10 flags and out-of-scope, one result per case in the intended-answer field format. `python -m resauce.engine <case folder>` prints it as JSON. `pytest`: 150 passed. Only the 20 dev cases and their intended answers were opened.
