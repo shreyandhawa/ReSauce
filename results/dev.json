@@ -1,12 +1,12 @@
 {
  "metadata": {
-  "code_commit": "f1d1c79fc77468384046447ea5096e504900e302",
+  "code_commit": "c03e7a4339bfcabe11a062916adf9fdb4e9ef30e",
   "uncommitted_changes_in_code_or_data": true,
   "dataset_id": "SYN-DS-DEV-V1",
   "dataset_version": "1.0.0",
   "reference_answer_commit": "5059a9b0980cf474f31086be913a371322047e1f",
-  "reference_label": "intended answers, not independently verified, not clinician-verified",
-  "date": "2026-11-08T07:07:26-06:00",
+  "reference_label": "intended answers, agreed by a blind re-derivation by a separate Claude session (same model family); not clinician-verified",
+  "date": "2026-11-08T11:28:45-06:00",
   "python_version": "3.14.3",
   "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O"
  },
@@ -146,9 +146,9 @@
     ]
    },
    "runtime_seconds": {
-    "extract": 0.009366041980683804,
-    "resauce": 1.4417339116334915e-05,
-    "baseline_a": 3.8708094507455826e-05
+    "extract": 0.014163000043481588,
+    "resauce": 2.8916634619235992e-05,
+    "baseline_a": 5.070911720395088e-05
    }
   },
   {
@@ -408,9 +408,9 @@
     ]
    },
    "runtime_seconds": {
-    "extract": 0.007576291915029287,
-    "resauce": 0.0003089169040322304,
-    "baseline_a": 3.204122185707092e-05
+    "extract": 0.019619625061750412,
+    "resauce": 0.0003820420242846012,
+    "baseline_a": 3.633275628089905e-05
    }
   },
   {
@@ -637,9 +637,9 @@
     ]
    },
    "runtime_seconds": {
-    "extract": 0.005475874990224838,
-    "resauce": 0.00019858311861753464,
-    "baseline_a": 2.2166874259710312e-05
+    "extract": 0.008928750175982714,
+    "resauce": 0.0002232501283288002,
+    "baseline_a": 2.3750122636556625e-05
    }
   },
   {
@@ -869,9 +869,9 @@
     ]
    },
    "runtime_seconds": {
-    "extract": 0.003423958085477352,
-    "resauce": 0.000136583112180233,
-    "baseline_a": 1.666741445660591e-05
+    "extract": 0.005624957848340273,
+    "resauce": 0.0001582917757332325,
+    "baseline_a": 2.0207837224006653e-05
    }
   },
   {
@@ -1078,9 +1078,9 @@
     ]
    },
    "runtime_seconds": {
-    "extract": 0.006397834047675133,
-    "resauce": 0.0001933341845870018,
-    "baseline_a": 1.808255910873413e-05
+    "extract": 0.014020832721143961,
+    "resauce": 0.00021512527018785477,
+    "baseline_a": 1.987488940358162e-05
    }
   },
   {
@@ -1309,9 +1309,9 @@
     ]
    },
    "runtime_seconds": {
-    "extract": 0.004156125243753195,
-    "resauce": 0.00016645807772874832,
-    "baseline_a": 1.8709339201450348e-05
+    "extract": 0.0068272920325398445,
+    "resauce": 0.000172292347997427,
+    "baseline_a": 2.1292362362146378e-05
    }
   },
   {
@@ -1524,9 +1524,9 @@
     ]
    },
    "runtime_seconds": {
-    "extract": 0.008514250162988901,
-    "resauce": 0.0002243751659989357,
-    "baseline_a": 2.2791791707277298e-05
+    "extract": 0.014282125048339367,
+    "resauce": 0.0003233752213418484,
+    "baseline_a": 2.533290535211563e-05
    }
   },
   {
@@ -1792,9 +1792,9 @@
     ]
    },
    "runtime_seconds": {
-    "extract": 0.006639250088483095,
-    "resauce": 0.00023966701701283455,
-    "baseline_a": 2.8499867767095566e-05
+    "extract": 0.011805415619164705,
+    "resauce": 0.0002943342551589012,
+    "baseline_a": 3.033410757780075e-05
    }
   },
   {
@@ -2022,9 +2022,9 @@
     ]
    },
    "runtime_seconds": {
-    "extract": 0.006770083215087652,
-    "resauce": 0.00024366611614823341,
-    "baseline_a": 1.950003206729889e-05
+    "extract": 0.013398624956607819,
+    "resauce": 0.0002572499215602875,
+    "baseline_a": 2.2707972675561905e-05
    }
   },
   {
@@ -2053,7 +2053,7 @@
        "difference_note": null,
        "readings": [
         {
-         "reading": "ICE 7/10 (SYN-0027-D08.v1, 2036-08-28): Grade 1; ICE 5/10 (SYN-0027-D08.v1, 2036-08-29): Grade 2; ICE 9/10 (SYN-0027-D08.v1, 2036-09-04): Grade 1",
+         "reading": "ICE 7/10 (SYN-0027-D08.v1, 2036-08-28): Grade 1; ICE 5/10 (SYN-0027-D08.v1, 2036-08-29): Grade 2",
          "value": {
           "date": "2036-08-28",
           "study_day": 4
@@ -2112,7 +2112,7 @@
        "difference_note": null,
        "readings": [
         {
-         "reading": "ICE 7/10 (SYN-0027-D08.v1, 2036-08-28): Grade 1; ICE 5/10 (SYN-0027-D08.v1, 2036-08-29): Grade 2; ICE 9/10 (SYN-0027-D08.v1, 2036-09-04): Grade 1",
+         "reading": "ICE 7/10 (SYN-0027-D08.v1, 2036-08-28): Grade 1; ICE 5/10 (SYN-0027-D08.v1, 2036-08-29): Grade 2",
          "value": {
           "grade": 2
          },
@@ -2257,11 +2257,26 @@
        ]
       }
      ],
-     "review_items": []
+     "review_items": [
+      {
+       "rule": "extraction",
+       "detail": "'Infectious' read as a spelling variant of 'infections' (competing_cause); not used as evidence",
+       "evidence": [
+        {
+         "role": "spelling variant",
+         "document_id": "SYN-0027-D08",
+         "version": 1,
+         "quote": "- Infectious: blood cultures negative.",
+         "start": 586,
+         "end": 624
+        }
+       ]
+      }
+     ]
     },
     "evidence_valid": [
-     13,
-     13
+     14,
+     14
     ]
    },
    "baseline_a": {
@@ -2335,9 +2350,9 @@
     ]
    },
    "runtime_seconds": {
-    "extract": 0.005803749896585941,
-    "resauce": 0.00037508411332964897,
-    "baseline_a": 2.1249987185001373e-05
+    "extract": 0.01153808319941163,
+    "resauce": 0.0005989591591060162,
+    "baseline_a": 6.400002166628838e-05
    }
   },
   {
@@ -2518,9 +2533,9 @@
     ]
    },
    "runtime_seconds": {
-    "extract": 0.002310999669134617,
-    "resauce": 0.00011737504974007607,
-    "baseline_a": 1.8333084881305695e-05
+    "extract": 0.0035080406814813614,
+    "resauce": 0.00013062497600913048,
+    "baseline_a": 1.9667204469442368e-05
    }
   },
   {
@@ -2714,9 +2729,9 @@
     ]
    },
    "runtime_seconds": {
-    "extract": 0.004036417230963707,
-    "resauce": 0.00013587530702352524,
-    "baseline_a": 8.708331733942032e-06
+    "extract": 0.006679499987512827,
+    "resauce": 0.00015262514352798462,
+    "baseline_a": 1.0415911674499512e-05
    }
   },
   {
@@ -2891,9 +2906,9 @@
     ]
    },
    "runtime_seconds": {
-    "extract": 0.0034152502194046974,
-    "resauce": 0.00011095823720097542,
-    "baseline_a": 1.541711390018463e-05
+    "extract": 0.005184416193515062,
+    "resauce": 0.00015829084441065788,
+    "baseline_a": 2.1750107407569885e-05
    }
   },
   {
@@ -3012,12 +3027,26 @@
          "end": 507
         }
        ]
+      },
+      {
+       "rule": "extraction",
+       "detail": "'headace' read as a spelling variant of 'headache' (excluded_symptom); not used as evidence",
+       "evidence": [
+        {
+         "role": "spelling variant",
+         "document_id": "SYN-0044-D03",
+         "version": 1,
+         "quote": "Mild headace behind the eyes since waking, 3/10, acetaminophen offerred.",
+         "start": 189,
+         "end": 261
+        }
+       ]
       }
      ]
     },
     "evidence_valid": [
-     4,
-     4
+     5,
+     5
     ]
    },
    "baseline_a": {
@@ -3075,9 +3104,9 @@
     ]
    },
    "runtime_seconds": {
-    "extract": 0.002303292043507099,
-    "resauce": 8.88751819729805e-05,
-    "baseline_a": 1.3750046491622925e-05
+    "extract": 0.004689542111009359,
+    "resauce": 0.00010404177010059357,
+    "baseline_a": 1.3125129044055939e-05
    }
   },
   {
@@ -3106,7 +3135,7 @@
        "difference_note": null,
        "readings": [
         {
-         "reading": "ICE 7/10 (SYN-0047-D05.v1, 2032-03-21): Grade 1; awakens only to tactile stimulus (SYN-0047-D05.v1, 2032-03-21): Grade 3; awakens only to tactile stimulus (SYN-0047-D05.v1, 2032-03-21): Grade 3; ICE 8/10 (SYN-0047-D06.v1, 2032-03-21): Grade 1",
+         "reading": "awakens only to tactile stimulus (SYN-0047-D05.v1, 2032-03-21): Grade 3; awakens only to tactile stimulus (SYN-0047-D05.v1, 2032-03-21): Grade 3",
          "value": {
           "date": "2032-03-19",
           "study_day": 4
@@ -3305,9 +3334,9 @@
     ]
    },
    "runtime_seconds": {
-    "extract": 0.004220165777951479,
-    "resauce": 0.00035012513399124146,
-    "baseline_a": 2.0083971321582794e-05
+    "extract": 0.006324875168502331,
+    "resauce": 0.00030837487429380417,
+    "baseline_a": 2.2709369659423828e-05
    }
   },
   {
@@ -3505,9 +3534,9 @@
     ]
    },
    "runtime_seconds": {
-    "extract": 0.003641874995082617,
-    "resauce": 0.000138790812343359,
-    "baseline_a": 1.8500257283449173e-05
+    "extract": 0.006154624745249748,
+    "resauce": 0.00016020797193050385,
+    "baseline_a": 2.141715958714485e-05
    }
   },
   {
@@ -3756,9 +3785,9 @@
     ]
    },
    "runtime_seconds": {
-    "extract": 0.0042017498053610325,
-    "resauce": 0.00021170778200030327,
-    "baseline_a": 1.875031739473343e-05
+    "extract": 0.006444707978516817,
+    "resauce": 0.00025170808658003807,
+    "baseline_a": 2.0833220332860947e-05
    }
   },
   {
@@ -3955,9 +3984,9 @@
     ]
    },
    "runtime_seconds": {
-    "extract": 0.0028887921944260597,
-    "resauce": 0.00011895783245563507,
-    "baseline_a": 1.929188147187233e-05
+    "extract": 0.0046128747053444386,
+    "resauce": 0.0004093749448657036,
+    "baseline_a": 3.2875221222639084e-05
    }
   },
   {
@@ -4170,9 +4199,9 @@
     ]
    },
    "runtime_seconds": {
-    "extract": 0.003476874902844429,
-    "resauce": 0.00019412487745285034,
-    "baseline_a": 1.654215157032013e-05
+    "extract": 0.004534250125288963,
+    "resauce": 0.000254875048995018,
+    "baseline_a": 1.89170241355896e-05
    }
   },
   {
@@ -4345,9 +4374,9 @@
     ]
    },
    "runtime_seconds": {
-    "extract": 0.002784042153507471,
-    "resauce": 0.0001044590026140213,
-    "baseline_a": 1.400010660290718e-05
+    "extract": 0.004640332888811827,
+    "resauce": 0.0001548328436911106,
+    "baseline_a": 2.0707957446575165e-05
    }
   }
  ],
@@ -4584,8 +4613,8 @@
     "wrongly_flagged_ids": []
    },
    "evidence_validity": {
-    "n": 135,
-    "d": 135,
+    "n": 137,
+    "d": 137,
     "value": 1.0
    },
    "errors": []
@@ -4821,10 +4850,10 @@
   }
  },
  "runtime_seconds": {
-  "extract": 0.09740291861817241,
-  "resauce": 0.0036723343655467033,
-  "baseline_a": 0.0004017944447696209,
-  "wall_clock": 0.11187629122287035
+  "extract": 0.17298187129199505,
+  "resauce": 0.00473879324272275,
+  "baseline_a": 0.000516960397362709,
+  "wall_clock": 0.19533216720446944
  },
  "reference_errors": []
 }

@@ -65,3 +65,21 @@ One JSON object per case. All keys are always present; empty values are `null` o
 - Study days count from the infusion date (Day 0), as `resauce.loader.study_day` does.
 - "Gradeable assessment" (A34): an ICE total documented for that day, or a qualifying finding. Normal EEG or imaging reports and narrative normal exams are not gradeable assessments.
 - Signed difference for onset: record minus documents, e.g. record Day +4 and documented onset Day +6 gives −2 (`clinical-methods.md` §7.1 example).
+
+## Value conventions (from Step 5a)
+
+Adjudication (decided by the user, 2026-11-08): the intended and independent answers have no category disagreements (144 of 144; the 4 out-of-scope cases agree and differ only in the wording of the reason) and no real value disagreements. **The intended answers stay the reference, unedited.** The five "form only" rows in `comparison.md` §7 are differences of how a value is written, and the conventions below settle them for all future answers.
+
+- **Grade with no qualifying finding:** `{"grade": 0}` if a formal Grade 0 assessment exists in the window, otherwise `{"undetermined": reason}`. **Onset with no qualifying finding:** `"none found"`.
+- **Category 7.5 (ambiguous) field:** `documented_value` is `{"undetermined": reason}`. Each reading's value goes in `readings`.
+- **Category 7.4 onset with a documented onset:** give `signed_difference_days` (clinical-methods §7.1); otherwise `null`.
+- **Unchanged field in a multi-version record:** `record_history` is `{"a": false, "b": null, "c": null, "explanation": "field unchanged across record versions"}`.
+- **Out-of-scope reasons:** one fixed string per reason in clinical-methods §5 (A29), the same strings the engine uses:
+
+  | Reason (§5) | Fixed string |
+  |---|---|
+  | Age under 18 at infusion | `age under 18` |
+  | A CAPD assessment in any note | `CAPD assessment` |
+  | A record maximum grade of 5 | `record Grade 5` |
+  | A documented death | `documented death` |
+  | Documented baseline developmental delay | `developmental delay` |

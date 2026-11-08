@@ -119,3 +119,24 @@ def test_an_out_of_scope_reference_is_not_a_reference_error(tmp_path):
     answer = {"out_of_scope": {"reason": "age under 18"}, "fields": {"onset": field, "max_grade": field}}
     (tmp_path / "intended" / "C1.json").write_text(json.dumps(answer))
     assert read_reference(tmp_path, "C1")["out_of_scope"] == "age under 18"
+
+
+def test_a_named_whole_folder_split_scores_every_case_in_the_folder(tmp_path):
+    import json
+    import shutil
+    from pathlib import Path
+    from resauce.evaluate import main
+    root = Path(__file__).resolve().parents[1]
+    ids = ["SYN-0001", "SYN-0003"]  # any two real cases: one folder, no splits.json
+    for case_id in ids:
+        shutil.copytree(root / "data/dev-v1/cases" / case_id, tmp_path / "data/cases" / case_id)
+    (tmp_path / "ref/intended").mkdir(parents=True)
+    for case_id in ids:
+        shutil.copy(root / "reference/dev-v1/intended" / f"{case_id}.json", tmp_path / "ref/intended")
+    out = tmp_path / "out"
+    assert main(["--split-name", "locked", "--data", str(tmp_path / "data"),
+                 "--reference", str(tmp_path / "ref"), "--out", str(out)]) == 0
+    result = json.loads((out / "locked.json").read_text(encoding="utf-8"))
+    assert result["split"] == "locked" and result["case_ids"] == ids
+    assert result["metrics"]["resauce"]["summary"]["cases"] == 2
+    assert "## Split: locked" in (out / "report-locked.md").read_text(encoding="utf-8")

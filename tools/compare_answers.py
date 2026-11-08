@@ -618,8 +618,11 @@ def main() -> int:
     out.append("")
     if NOTES.exists():
         out.append(
-            f"`{NOTES.relative_to(ROOT)}` exists, but this tool does not parse it. "
-            "Add the list (format gap / rule gap) by hand."
+            f"`{NOTES.relative_to(ROOT)}` is saved, but it lists **no unclear rules**: it only "
+            "reports that the original notes file (with the \"format gap\" / \"rule gap\" list) "
+            "was not found. No entry was made up. When the original blind-run notes are supplied, "
+            "list each unclear rule here, one line each, marked \"format gap\" (answer format) or "
+            "\"rule gap\" (clinical-methods)."
         )
     else:
         out.append(

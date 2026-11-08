@@ -1,6 +1,6 @@
 # ReSauce evaluation report
 
-**Reference answers: intended answers, not independently verified, not clinician-verified.** Results on synthetic data are not clinical validation.
+**Reference answers: intended answers, agreed by a blind re-derivation by a separate Claude session (same model family); not clinician-verified.** Results on synthetic data are not clinical validation.
 
 **Disclosure:** The held-out split is in-repo and not sealed: it has the same writer as the dev cases and sits in the same repository (evaluation-spec §1). It was not opened during pipeline work, but it is not an independent test.
 
@@ -65,12 +65,14 @@ Baseline A: n/a (method cannot produce review flags).
 
 **Evidence-quote validity** (references that pass `check_evidence_ref`, over every evidence reference in the method's outputs)
 
-- ReSauce: 1.00 (135/135)
+- ReSauce: 1.00 (137/137)
 - Baseline A: 1.00 (68/68)
 
-**Runtime** (seconds, summed over cases): extraction 0.097 (shared by both methods), ReSauce rules engine 0.004, Baseline A 0.000. Per method including extraction: ReSauce 0.101, Baseline A 0.098. Whole split 0.112 including loading and evidence checks.
+**Runtime** (seconds, summed over cases): extraction 0.173 (shared by both methods), ReSauce rules engine 0.005, Baseline A 0.001. Per method including extraction: ReSauce 0.178, Baseline A 0.173. Whole split 0.195 including loading and evidence checks.
 
 ## Split: held-out (in-repo, not sealed)
+
+**Seen: the pipeline changed after the first held-out run (commit 4ff6c5f).**
 
 - **ReSauce:** 52 cases; 49 in scope and 3 out of scope by the reference; 0 without a usable reference; **0 with an error**.
 - **Baseline A:** 52 cases; 49 in scope and 3 out of scope by the reference; 0 without a usable reference; **0 with an error**.
@@ -129,17 +131,17 @@ Baseline A: n/a (method cannot produce review flags).
 
 **Evidence-quote validity** (references that pass `check_evidence_ref`, over every evidence reference in the method's outputs)
 
-- ReSauce: 1.00 (391/391)
+- ReSauce: 1.00 (395/395)
 - Baseline A: 1.00 (147/147)
 
-**Runtime** (seconds, summed over cases): extraction 0.148 (shared by both methods), ReSauce rules engine 0.008, Baseline A 0.001. Per method including extraction: ReSauce 0.156, Baseline A 0.149. Whole split 0.181 including loading and evidence checks.
+**Runtime** (seconds, summed over cases): extraction 0.244 (shared by both methods), ReSauce rules engine 0.012, Baseline A 0.001. Per method including extraction: ReSauce 0.256, Baseline A 0.246. Whole split 0.307 including loading and evidence checks.
 
 ## Run metadata
 
-- Code commit: f1d1c79fc77468384046447ea5096e504900e302 (uncommitted changes in code or data: yes)
+- Code commit: c03e7a4339bfcabe11a062916adf9fdb4e9ef30e (uncommitted changes in code or data: yes)
 - Dataset: SYN-DS-DEV-V1 version 1.0.0
 - Reference-answer commit: 5059a9b0980cf474f31086be913a371322047e1f
-- Date: 2026-11-08T07:07:26-06:00
+- Date: 2026-11-08T11:28:45-06:00
 - Python 3.14.3 on macOS-26.6.2-arm64-arm-64bit-Mach-O
 - Splits in this report: dev, held_out
 - Baseline B (LLM): not run (deferred, evaluation-spec §5)
@@ -151,4 +153,4 @@ Baseline A: n/a (method cannot produce review flags).
 - Baseline B (LLM) is deferred until an API key is available, so it has no result here.
 - Rules that are not yet implemented return a "review: …" result, never a guess.
 - The user does not read the development cases; they are checked only by tools.check_dev and the reviewer's sampled reviews (evaluation-spec §6).
-- The extractor's phrase lists were built from the 20 dev cases and clinical-methods.md only. Misspelt finding words are missed without a warning.
+- The extractor's phrase lists were built from the 20 dev cases and clinical-methods.md only. A word of 6 or more letters one letter away from a list word is read as an uncertain "spelling variant" and listed for review; swapped letters and shorter words are missed without a warning.

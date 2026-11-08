@@ -5,6 +5,10 @@ Implements docs/evaluation-spec.md §1 (splits), §2 (reference answers),
 
     python -m resauce.evaluate [--splits dev held_out] [--data DIR]
                                [--reference DIR] [--out DIR]
+    python -m resauce.evaluate --split-name NAME --data DIR --reference DIR
+
+With --split-name, every case folder in --data is scored as one split called
+NAME (for example "locked"); splits.json is not read.
 
 This is evaluation code, not pipeline code: it is the only module in
 src/resauce that reads reference answers. The engine, the extractor and
@@ -48,7 +52,9 @@ METHODS = ("resauce", "baseline_a")
 METHOD_TITLES = {"resauce": "ReSauce", "baseline_a": "Baseline A"}
 ERROR_TEXT_LIMIT = 300
 
-LABEL = "intended answers, not independently verified, not clinician-verified"
+LABEL = ("intended answers, agreed by a blind re-derivation by a separate Claude session (same model family); "
+         "not clinician-verified")
+HELD_OUT_SEEN = "seen: the pipeline changed after the first held-out run (commit 4ff6c5f)"
 HELD_OUT_DISCLOSURE = (
     "The held-out split is in-repo and not sealed: it has the same writer as the dev cases and sits in the "
     "same repository (evaluation-spec §1). It was not opened during pipeline work, but it is not an "
@@ -62,8 +68,9 @@ LIMITATIONS = (
     "Rules that are not yet implemented return a \"review: …\" result, never a guess.",
     "The user does not read the development cases; they are checked only by tools.check_dev and the "
     "reviewer's sampled reviews (evaluation-spec §6).",
-    "The extractor's phrase lists were built from the 20 dev cases and clinical-methods.md only. Misspelt "
-    "finding words are missed without a warning.",
+    "The extractor's phrase lists were built from the 20 dev cases and clinical-methods.md only. A word of 6 "
+    "or more letters one letter away from a list word is read as an uncertain \"spelling variant\" and listed "
+    "for review; swapped letters and shorter words are missed without a warning.",
 )
 
 
@@ -348,6 +355,11 @@ def read_splits(data_dir: Path, reference_dir: Path) -> dict[str, list[str]]:
     return {"dev": sorted(listed), "held_out": [c for c in folders if c not in listed]}
 
 
+def read_folder_split(data_dir: Path) -> list[str]:
+    """Every case folder in <data>/cases, sorted: one named split (--split-name)."""
+    return sorted(p.name for p in (data_dir / "cases").iterdir() if p.is_dir())
+
+
 def run_split(name: str, case_ids: list[str], data_dir: Path, reference_dir: Path) -> dict:
     started = time.perf_counter()
     records = [run_case(case_id, data_dir, reference_dir) for case_id in case_ids]
@@ -386,7 +398,10 @@ def _git(*args: str) -> str | None:
 
 
 def run_metadata(data_dir: Path, reference_dir: Path) -> dict:
-    dataset = json.loads((data_dir / "dataset.json").read_text(encoding="utf-8"))
+    try:
+        dataset = json.loads((data_dir / "dataset.json").read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        dataset = {}
     dirty = _git("status", "--porcelain", "--", "src", "tests", "data", "reference", "tools", "pyproject.toml")
     return {
         "code_commit": _git("rev-parse", "HEAD") or "unknown (git not available)",
@@ -408,8 +423,15 @@ def _fmt(r: dict) -> str:
 
 def _split_report(split: dict) -> list[str]:
     name, metrics = split["split"], split["metrics"]
-    title = "dev" if name == "dev" else "held-out (in-repo, not sealed)"
+    if name == "dev":
+        title = "dev"
+    elif name == "held_out":
+        title = "held-out (in-repo, not sealed)"
+    else:
+        title = name
     lines = [f"## Split: {title}", ""]
+    if name == "held_out":
+        lines += [f"**{HELD_OUT_SEEN[0].upper()}{HELD_OUT_SEEN[1:]}.**", ""]
     for method in METHODS:
         s = metrics[method]["summary"]
         lines.append(f"- **{METHOD_TITLES[method]}:** {s['cases']} cases; {s['in_scope']} in scope and "
@@ -488,9 +510,10 @@ def _split_report(split: dict) -> list[str]:
 
 def build_report(splits: list[dict], metadata: dict) -> str:
     lines = ["# ReSauce evaluation report", "",
-             f"**Reference answers: {LABEL}.** Results on synthetic data are not clinical validation.", "",
-             f"**Disclosure:** {HELD_OUT_DISCLOSURE}", "",
-             "The splits are reported separately and never pooled. Scoring follows docs/evaluation-spec.md §3.",
+             f"**Reference answers: {LABEL}.** Results on synthetic data are not clinical validation.", ""]
+    if any(s["split"] == "held_out" for s in splits):
+        lines += [f"**Disclosure:** {HELD_OUT_DISCLOSURE}", ""]
+    lines += ["The splits are reported separately and never pooled. Scoring follows docs/evaluation-spec.md §3.",
              ""]
     for split in splits:
         lines += _split_report(split)
@@ -514,24 +537,33 @@ def main(argv: list[str]) -> int:
     parser.add_argument("--data", type=Path, default=ROOT / "data" / "dev-v1")
     parser.add_argument("--reference", type=Path, default=ROOT / "reference" / "dev-v1")
     parser.add_argument("--out", type=Path, default=ROOT / "results")
-    parser.add_argument("--splits", nargs="+", choices=SPLIT_NAMES, default=list(SPLIT_NAMES))
+    parser.add_argument("--splits", nargs="+", choices=SPLIT_NAMES, default=None)
+    parser.add_argument("--split-name", help="score every case in --data as one split with this name")
     args = parser.parse_args(argv)
+    if args.split_name and args.splits:
+        parser.error("--split-name and --splits cannot be used together")
+    if args.split_name and (args.split_name in SPLIT_NAMES or not re.fullmatch(r"[A-Za-z0-9_-]+", args.split_name)):
+        parser.error("--split-name must be letters, digits, _ or -, and not 'dev' or 'held_out'")
 
-    ids = read_splits(args.data, args.reference)
+    if args.split_name:
+        ids = {args.split_name: read_folder_split(args.data)}
+        names = [args.split_name]
+    else:
+        ids = read_splits(args.data, args.reference)
+        names = [n for n in SPLIT_NAMES if n in (args.splits or SPLIT_NAMES)]
     metadata = run_metadata(args.data, args.reference)
     args.out.mkdir(parents=True, exist_ok=True)
     results = []
-    for name in SPLIT_NAMES:
-        if name not in args.splits:
-            continue
+    for name in names:
         split = run_split(name, ids[name], args.data, args.reference)
         results.append(split)
         (args.out / f"{name}.json").write_text(
             json.dumps({"metadata": metadata, **split}, indent=1, ensure_ascii=False) + "\n", encoding="utf-8")
         errors = sum(len(split["metrics"][m]["errors"]) for m in METHODS)
         print(f"{name}: {len(ids[name])} cases run, {errors} method errors")
-    (args.out / "report.md").write_text(build_report(results, metadata), encoding="utf-8")
-    print(f"wrote {args.out}/report.md")
+    report = f"report-{args.split_name}.md" if args.split_name else "report.md"  # never overwrite report.md
+    (args.out / report).write_text(build_report(results, metadata), encoding="utf-8")
+    print(f"wrote {args.out}/{report}")
     return 0
 
 

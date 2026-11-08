@@ -18,7 +18,7 @@
 ## 2. Reference answers
 
 - Source: `reference/dev-v1/intended/<case_id>.json` (answer format `0.1-provisional`).
-- Label in every report: **"intended answers, not independently verified, not clinician-verified"**.
+- Label in every report: **"intended answers, agreed by a blind re-derivation by a separate Claude session (same model family); not clinician-verified"**.
 - When Step 5 produces adjudicated answers, those replace the intended answers. The change is logged and earlier results are kept.
 
 ## 3. Scoring (plan §8.3)

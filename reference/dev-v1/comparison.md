@@ -81,4 +81,4 @@ A grade or date is missing on one or both sides, or the same grade/date is writt
 
 ## 8. Unclear rules reported in the blind run notes
 
-**Not produced.** `reference/dev-v1/independent-run-notes.md` was not found when this report was generated, so no list of "unclear rules" could be made and none was invented. Each one is to be marked "format gap" (answer-format) or "rule gap" (clinical-methods) once the notes file is available.
+`reference/dev-v1/independent-run-notes.md` is saved, but it lists **no unclear rules**: it only reports that the original notes file (with the "format gap" / "rule gap" list) was not found. No entry was made up. When the original blind-run notes are supplied, list each unclear rule here, one line each, marked "format gap" (answer format) or "rule gap" (clinical-methods).
