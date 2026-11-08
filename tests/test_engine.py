@@ -131,3 +131,62 @@ def test_every_dev_case_runs_and_its_quotes_validate(case_id):
     for entry in _all_evidence(result):
         check_evidence_ref(case, EvidenceRef(entry["document_id"], entry["version"],
                                              entry["start"], entry["end"], entry["quote"]))
+
+
+def _notes(*lines):
+    """(text, documented_at, note_type) for neuro-check notes: (event datetime text, content)."""
+    return [(f"Neuro check {when}: {content}", documented, "nursing_note") for when, content, documented in lines]
+
+
+def test_resolution_between_findings_is_flagged_but_stays_one_episode():
+    # §6.5: ICE 6, then a formal Grade 0, then ICE 4 is one episode (onset Day +3, Grade 2) plus a flag.
+    notes = _notes(("2030-03-04 09:00", "ICE 6/10.", "2030-03-04T10:00"),
+                   ("2030-03-06 09:00", "ICE 10/10, alert.", "2030-03-06T10:00"),
+                   ("2030-03-09 09:00", "ICE 4/10.", "2030-03-09T10:00"))
+    result = make_case(notes, [("2030-03-20T09:00", True, "2030-03-04", 2)])
+    assert result["fields"]["onset"]["category"] == "7.7"
+    assert result["fields"]["max_grade"]["category"] == "7.7"
+    assert "recurrence" in [f["flag"] for f in result["other_flags"]]
+
+
+def test_recurrence_on_one_day_needs_the_times_to_show_the_order():
+    same_day = _notes(("2030-03-06 08:00", "ICE 7/10.", "2030-03-06T09:00"),
+                      ("2030-03-06 14:00", "ICE 10/10, alert.", "2030-03-06T15:00"),
+                      ("2030-03-06 20:00", "ICE 5/10.", "2030-03-06T21:00"))
+    record = [("2030-03-20T09:00", True, "2030-03-06", 2)]
+    assert "recurrence" in [f["flag"] for f in make_case(same_day, record)["other_flags"]]
+    # Same notes, no times in the text: the order is unknown, so no flag.
+    no_times = [(text.replace(" 08:00", "").replace(" 14:00", "").replace(" 20:00", ""), at, kind)
+                for text, at, kind in same_day]
+    assert "recurrence" not in [f["flag"] for f in make_case(no_times, record)["other_flags"]]
+
+
+def test_no_rule_in_clinical_methods_gives_review_not_a_guess():
+    # Table 6 lists posturing only as decerebrate or decorticate (Grade 4). Plain "posturing"
+    # could be either, so the grade is a review result, not a guess (§3.3).
+    result = make_case(_notes(("2030-03-06 09:00", "extensor posturing noted.", "2030-03-06T10:00")),
+                       [("2030-03-20T09:00", True, "2030-03-06", 4)])
+    assert result["fields"]["max_grade"]["category"] == "review: no rule (§3.3: posturing not named decerebrate or decorticate)"
+
+
+def test_spelling_variant_is_a_reading_and_not_graded_as_certain():
+    # ICE 5 is Grade 2. If "seizre" counted as a seizure the grade would be 3 (7.2); if not, 7.7.
+    result = make_case(_notes(("2030-03-06 09:00", "ICE 5/10. Seizre noted.", "2030-03-06T10:00")),
+                       [("2030-03-20T09:00", True, "2030-03-06", 2)])
+    assert result["fields"]["max_grade"]["category"].startswith("review: spelling variant")
+    assert result["fields"]["onset"]["category"] == "7.7"  # the onset is the same under both readings
+    assert any("spelling variant" in item["detail"] for item in result["review_items"])
+
+
+def test_choices_that_cannot_change_a_result_do_not_use_up_the_reading_limit():
+    # A Grade 3 seizure on Day +3, then 11 later ICE 8 scores (Grade 1), each next to
+    # lorazepam (2 readings each: 2^11 = 2048 > 1024). None can change the grade or onset,
+    # so the result is decided normally and not "review: ... readings".
+    seizure = ("Neuro check 2030-03-04 09:00: generalised seizure, stopped on its own.",
+               "2030-03-04T10:00", "nursing_note")
+    # The notes differ (the hours since lorazepam), so none is treated as copied forward (A31).
+    later = [(f"Neuro check 2030-03-{day:02d} 09:00: ICE 8/10, received lorazepam {day} h ago.",
+              f"2030-03-{day:02d}T10:00", "nursing_note") for day in range(6, 17)]
+    result = make_case([seizure, *later], [("2030-03-30T09:00", True, "2030-03-04", 3)])
+    assert result["fields"]["max_grade"]["category"] == "7.7"
+    assert result["fields"]["onset"]["category"] == "7.7"

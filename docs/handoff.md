@@ -12,6 +12,68 @@ Each entry covers:
 
 ---
 
+## 0. Project plan (user decision, 2026-11-08 07:00)
+
+This replaces the earlier plan of a 3 to 4 hour time box. No "§0 time box" existed in this file before (session 3 noted the same), so there was nothing to delete; this section is the plan from now on.
+
+1. Session 5 (Baseline A and evaluation runner): done.
+2. Session 4b: remaining engine rules and extractor gaps.
+3. Step 5a: blind answers for the 72 dev-v1 cases.
+4. Freeze the pipeline (tagged commit).
+5. Step 6: 153 locked cases in a separate private repo, written without access to ReSauce `src/`.
+6. Step 5b: blind answers for the locked set, plus adjudication.
+7. Baseline B, only if an API key is set up.
+8. Final evaluation, once, on the locked set.
+9. Session 6: viewer, README, demo script.
+10. Rubric extras: cited sources, an untested path-to-impact section, real user feedback recorded as given.
+
+**Held-out labelling:** the session 5 held-out run is the only one made before later pipeline changes. Any later held-out numbers are labelled "seen" (the pipeline has changed since the first run, and the cases are no longer unopened).
+
+---
+
+## 2026-11-08: Milestone 3 session 4b (remaining engine rules and extractor gaps)
+
+- **Status:** engine and extractor gaps from session 4 and 3 are closed or listed. `pytest`: 174 passed. Only the 20 dev cases and their intended answers were opened (a scratch script read `reference/dev-v1/splits.json`). `python -m resauce.evaluate` was **not** run; `results/` is unchanged. No case IDs in `src/`. The session 5 held-out run is still the only run made before these pipeline changes; later held-out numbers must be labelled "seen" (§0).
+- **Done, engine (`engine.py`):**
+  - Items with no rule in clinical-methods now return **"review: no rule (§3.3: …)"**, only when the choice would change the category (A23 logic unchanged): edema with no stated extent (options Grade 3 or 4), posturing not named decerebrate or decorticate, status epilepticus with no stated duration, a seizure duration range that spans 5 minutes, and motor findings other than hemiparesis, hemiplegia, paraparesis and paraplegia (weakness, focal weakness, drift, monoparesis, quadriparesis …).
+  - **Fix:** plain "posturing" used to be read as Grade 3 or 4. Table 6 lists posturing only at Grade 4 (decerebrate or decorticate), so its options are now "not counted" or Grade 4.
+  - **Spelling variants are readings:** a graded finding (consciousness, seizure, motor, ICP) read through a spelling variant has the options "not counted" or "graded as the list word". If that changes the category the result is "review: spelling variant (…)". Otherwise the shared category stands (A23). Variants never count as a confirmed qualifying finding for the unassessed-days flag. Every variant is listed in `review_items`.
+  - **§6.5 recurrence** is now compared by moment, not by calendar day: a formal Grade 0 between two findings of the same day is flagged when the times show the order; without times there is no flag. One episode per infusion within the window is unchanged.
+  - **§7.10:** all 13 flags already existed. None was missing, so "one new flag" is the same-day recurrence refinement above.
+  - **1024-reading limit:** kept as a backstop, but choices that provably cannot change a result (a later, lower-grade finding with a date after the fixed onset) no longer count towards it. Flags still use all choices.
+- **Done, extractor (`extract.py`, `phrases.py`):**
+  - "Day 5:" is read as Day +5 (colon required; "Day 5:30" and "day 5 of steroids" are not read).
+  - "1900"/"0730" are clock times at the start of a line, after an ISO date or Day +N (optional comma, "at"), or after "at". Not when followed by a unit (mg, mL, units …), joined to a date or another number, or equal to a year of the note, its documentation date or the infusion date.
+  - Spelling variants: a word of 6+ letters exactly one letter from a closed-list word (list words of 6+ letters, taken from the finder patterns; no list of misspellings). It counts only if putting the list word in its place makes a finder match, and only one list word does. The observation is always "uncertain" (also when negated, e.g. "no seizre"), with the note "spelling variant of <word>" and `status_without_variant` kept in `details`. "Generalised seizure" is not a variant because "seizure" already matches without a correction.
+- **Development check (not a result):** the engine matches the intended category on **40 of 40** fields of the 20 dev cases, the same as before session 4b. Expected to be optimistic (phrase lists and answers were built from these cases). Changes since the session 4 snapshot, one line each: (1) SYN-0027, SYN-0047: the listed readings are fewer, because later lower-grade choices are no longer enumerated (categories, values and evidence identical); (2) SYN-0027: one new review item, "'Infectious' read as a spelling variant of 'infections' (competing_cause); not used as evidence" (a **false variant**: a real word one letter from a list word; context kinds are never used by the engine); (3) SYN-0044: one new review item, "'headace' read as a spelling variant of 'headache'" (an excluded symptom, so no grade effect); (4) SYN-0044 had that typo missed silently before. Nothing else differs.
+- **Still "review: …" or not built, and why:**
+  - Everything under "no rule" above: clinical-methods gives no rule; nothing was invented.
+  - "review: unresolved event date (§6.1)": unchanged.
+  - **§6.4 / A13, A31 partial copy-forward:** not built. A31 describes a note that repeats an earlier note; a repeated line such as "ICE 10/10" cannot be told apart from a new assessment with the same result, and the methods give no way to do so. Only whole-note copies are detected. The copy check does not read "1900" as a time (small gap).
+  - **Reading limit:** still 1024 readings (after dropping inert choices).
+  - Not built at all (unchanged): CTCAE grading and Grade 5 (§8).
+  - Variants of competing-cause, attribution, barrier, hemorrhage and out-of-scope words are only listed, never used. So a misspelt sedative can hide a competing cause.
+- **Limits of the spelling rule:** swapped letters ("seziure") are two changes and are not matched (decided with the user). Words with optional parts or stems (`unarousable`, `hallucinat…`) are not covered. Misspellings of negation or hedge words are not found. The stored value of a variant is the list word (the quote is always the exact source text).
+- **[OPERATIONAL] choices made here (not in clinical-methods; for clinician and user review):** "Day 5:" without a sign; colon-less clock times and their context rule (ISO dates and Day +N only, so "03/06/2030 0730" is not read; "Day 5: dexamethasone" is read as study day +5); the spelling rule; same-day ordering for the recurrence flag by time; dropping inert choices from the readings.
+- **New clinician questions:**
+  - Should generic or focal weakness, monoparesis or quadriparesis map to Table 6 Grade 4? (still unanswered from session 4)
+  - Edema with no stated extent: Grade 3, Grade 4, or neither?
+  - Posturing not named decerebrate or decorticate: Grade 4, or not graded?
+  - Status epilepticus without a duration: does it mean the Grade 4 ">5 minutes" criterion?
+  - A seizure duration range that spans 5 minutes (for example "3 to 6 minutes"): which grade?
+  - Should a repeated assessment line in a later note (partial copy-forward) be treated as copied?
+  - Should a misspelt word ever count as a certain finding if the same note repeats it correctly spelt elsewhere?
+- **Docs to update later (not edited, outside this commit's scope):** `docs/evaluation-spec.md` §6 still says misspelt finding words are missed without a warning; that is no longer true.
+- **Next steps:** Step 5a (blind answers for the 72 dev-v1 cases), then freeze the pipeline (§0).
+- **How to verify:**
+  ```bash
+  .venv/bin/python -m pytest -p no:cacheprovider -q                 # expect 174 passed
+  .venv/bin/python -m resauce.extract data/dev-v1/cases/SYN-0044    # 'headace' is uncertain, note "spelling variant of headache"
+  .venv/bin/python -m resauce.engine data/dev-v1/cases/SYN-0044     # review_items lists the variant
+  ```
+
+---
+
 ## 2026-11-08: Evaluation re-run after scoring fix (pipeline unchanged)
 
 **Bug:** `reference_class()` in `src/resauce/evaluate.py` returned None for reference categories written with a reason, e.g. "7.5 (attribution)". Those fields were silently left out of the class counts and exact agreement. Fix: score by the leading code (full text kept in the per-case output); a reference category that is not 7.1 to 7.9 (in-scope cases) is now a reference error, listed in the report. A first version of the fix wrongly rejected "out of scope (…)" categories; fixed in a second commit. Two focused tests plus one for that case. Engine, extractor, phrases and Baseline A unchanged.

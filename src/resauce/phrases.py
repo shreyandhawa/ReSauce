@@ -8,13 +8,17 @@ recognised, and extract.py reports leftover neurological wording as an
 How the lists were built: from clinical-methods.md and the 20 development
 cases only (docs/evaluation-spec.md §1). They are provisional. The
 consciousness list in particular is [ASSUMPTION — EXPERT REVIEW] (A15): it
-must be approved by a clinician. Misspelt words are not matched.
+must be approved by a clinician. Misspelt words are matched only through
+the one-letter rule at the bottom of this file (VOCABULARY, one_letter_apart);
+no list of specific misspellings exists.
 
 Patterns are regular expressions, matched case-insensitively. Parts that
 must match capitals only (ICE, HA) are wrapped in (?-i:...).
 """
 
 from __future__ import annotations
+
+import re
 
 # ---------------------------------------------------------------------------
 # Sentence structure: negation, hedging, plan lines (no clinical meaning)
@@ -66,6 +70,11 @@ STUDY_DAY = (
     r"\b(?:D|Day|day|DAY)\s?(?:post infusion:\s*|:\s*)?([+\-−])\s?(\d{1,3})\b"
     r"|\b(?:D|Day|day)\s?(0)\b"
     r"|\bpost-infusion day:\s*(\d{1,3})\b"
+    # [OPERATIONAL] "Day 5:" without a sign is read as "Day +5" (no rule in
+    # §6.1). The colon is required, so "day 5 of steroids" and "Day 5:30" are
+    # not read. A line such as "Day 5: dexamethasone" (a drug day) is read as
+    # study day +5: a known limit.
+    r"|\b(?:Day|day|DAY)\s?(\d{1,3})(?=\s*:(?!\d))"
 )
 # A26 conversion table. D = the note's documentation date.
 # Each entry: (pattern, days before D for the range start, days before D for the end).
@@ -83,6 +92,26 @@ RELATIVE_OTHER = (
     r"\brecently\b|\ba few days\b|\bfor (?:a )?few days\b|\btoday\b|\btonight\b|"
     r"\bthis (?:evening|afternoon|shift)\b|\bearlier\b|\bsince waking\b"
 )
+# [OPERATIONAL] Clock times written without a colon, "1900" or "0730": HHMM from 0000 to
+# 2359 (no rule in §6.1). Not read when followed by a unit (a dose), when part of a date, or
+# when a digit, "/", ":" or "." joins it to another number. extract.py also
+# requires the context (start of a line, after a date or Day +N, or after
+# "at"); a bare "1900" elsewhere is not a time. A number equal to a year of
+# the note (its date, the infusion date or any date in it) is a year. Only
+# ISO dates (YYYY-MM-DD) and Day +N count as a date before the time.
+CLOCK_HHMM = (
+    r"(?<![\d/.:])([01]\d|2[0-3])([0-5]\d)(?!\d)(?![:/]\d)(?!\.\d)(?!-\d{2}(?!\d))"
+    r"(?!\s*(?:mg|mcg|µg|ug|g|kg|ml|l|cc|units?|iu|mmol|meq|mEq|%|x|times|min\w*|sec\w*|"
+    r"days?|cells)\b)"
+)
+# What may stand before a clock time: only spaces since the line start, or a
+# date or Day +N (with an optional comma and "at"), or "at".
+CLOCK_HHMM_CONTEXT = (
+    r"^\s*$"
+    r"|(?:\d{4}-\d{2}-\d{2}|\b(?:D|Day|day|DAY)\s?[+\-−]?\s?\d{1,3})\s*,?\s*(?:at\s+)?$"
+    r"|\bat\s+$"
+)
+
 # Lines near the top of a note that give the note's own date.
 HEADER_LABEL = (
     r"^\s*(?:date(?: of service| of exam)?|service date|date/time|time|visit date|"
@@ -348,3 +377,55 @@ NEURO_TRIGGER = (
     r"arous|awaken|unresponsive|paresis|plegia|weakness|\bwkns\b|unable to assess|"
     r"aphasi|letharg|drows|somnol|obtund|stupor"
 )
+
+
+# ---------------------------------------------------------------------------
+# Spelling variants: a word of 6 or more letters one letter away from a word
+# in the lists above. No list of specific misspellings exists; the check is
+# this rule only. "One letter away" is strict: one letter added, removed or
+# replaced (two letters swapped is two changes and is not matched).
+# ---------------------------------------------------------------------------
+
+MIN_VARIANT_LENGTH = 6
+
+# Every list above whose words the finders in extract.py look for.
+FINDER_PATTERNS = (
+    *(p for p, _ in CONSCIOUSNESS), *(p for p, _ in CONSCIOUSNESS_AMBIGUOUS),
+    CONSCIOUSNESS_UNMAPPED, CONSCIOUSNESS_AWAKE, SEIZURE, *(p for p, _ in EEG_FINDINGS),
+    MOTOR, EDEMA, *(p for p, _ in ICP_SIGNS), *(p for p, _ in TEXT_ONLY_ICP),
+    *(p for p, _ in EXCLUDED), HEMORRHAGE, DECONDITIONING, DECONDITIONING_SIGN,
+    *(p for p, _ in UNGRADEABLE), NOT_ASSESSABLE, *(p for p, _ in COMPETING_CAUSES),
+    ATTRIBUTION_CUE, ICANS_NAME, *(p for p, _ in ASSESSMENT_BARRIERS),
+    *(p for p, _ in OUT_OF_SCOPE_MENTIONS),
+)
+
+
+def _vocabulary() -> frozenset[str]:
+    """Words of MIN_VARIANT_LENGTH or more letters written out in the finder patterns.
+
+    A run of letters followed by "?" also gives the run without its last
+    letter ("seizures?" gives "seizures" and "seizure"). Runs broken by an
+    optional group or a stem ending in \\w* are taken as written, so a typo in
+    those words is not found (a known limit).
+    """
+    words: set[str] = set()
+    for pattern in FINDER_PATTERNS:
+        text = re.sub(r"\\[A-Za-z]", " ", pattern)
+        for run, optional in re.findall(r"([A-Za-z]+)(\??)", text):
+            words.add(run.lower())
+            if optional:
+                words.add(run[:-1].lower())
+    return frozenset(w for w in words if len(w) >= MIN_VARIANT_LENGTH)
+
+
+VOCABULARY = _vocabulary()
+
+
+def one_letter_apart(a: str, b: str) -> bool:
+    """True if a and b differ by exactly one letter added, removed or replaced."""
+    if a == b or abs(len(a) - len(b)) > 1:
+        return False
+    if len(a) == len(b):
+        return sum(x != y for x, y in zip(a, b)) == 1
+    short, long_ = sorted((a, b), key=len)
+    return any(long_[:i] + long_[i + 1:] == short for i in range(len(long_)))

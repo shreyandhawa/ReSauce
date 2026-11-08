@@ -34,6 +34,16 @@ How a document is read:
    An event time later than the documentation time is "unresolved".
 5. A clause that still contains a neurological word (phrases.NEURO_TRIGGER)
    that no rule used becomes an "unrecognised" observation.
+6. [OPERATIONAL] Spelling variants (a ReSauce choice; clinical-methods has no rule
+   about spelling): a word of 6 or more letters that is exactly one letter
+   away from a word of the closed lists (phrases.VOCABULARY) is tried in
+   its place. If the clause then matches a finder, the observation is made
+   from the original text, with status "uncertain" (never "present") and the
+   note "spelling variant of <word>"; details keep the status the finding
+   would have had ("status_without_variant"). This includes a negated
+   variant ("no seizre"): we cannot be sure the word means what the list
+   word means. There is no list of misspellings; swapped letters and typos
+   inside words with optional parts or stems are not found.
 
 Run "python -m resauce.extract <case folder>" to print a case's observations.
 """
@@ -44,6 +54,7 @@ import re
 import sys
 from dataclasses import dataclass, field
 from datetime import date, datetime, time, timedelta
+from functools import lru_cache
 
 from resauce import phrases as P
 from resauce.loader import check_evidence_ref, load_case
@@ -113,6 +124,9 @@ RELATIVE_TABLE = tuple((_rx(p), start, end) for p, start, end in P.RELATIVE_TABL
 DAYS_AGO = _rx(P.DAYS_AGO)
 RELATIVE_OTHER = _rx(P.RELATIVE_OTHER)
 HEADER_LABEL = _rx(P.HEADER_LABEL)
+CLOCK_HHMM = _rx(P.CLOCK_HHMM)
+CLOCK_HHMM_CONTEXT = _rx(P.CLOCK_HHMM_CONTEXT)
+WORD = re.compile(r"\b[A-Za-z]{%d,}\b" % P.MIN_VARIANT_LENGTH)
 
 ICE_WORD = _rx(P.ICE_WORD)
 ICE_ANCHOR = _rx(P.ICE_ANCHOR)
@@ -129,6 +143,74 @@ LABEL = _rx(P.FIELD_LABELS)
 
 SENTENCE_END = re.compile(r"(?<!\.\.)(?:(?<=[.!?])|(?<=[.!?][\"')]))\s+")  # not after "....." leaders
 CLAUSE_END = re.compile(r";|\||\s-\s|->")
+
+
+FINDERS = tuple(_rx(pattern) for pattern in P.FINDER_PATTERNS)
+
+
+@lru_cache(maxsize=None)
+def _near_words(word: str) -> tuple[str, ...]:
+    """Closed-list words exactly one letter away from a word (none if it is itself listed)."""
+    lower = word.lower()
+    if lower in P.VOCABULARY:
+        return ()
+    return tuple(sorted(w for w in P.VOCABULARY if P.one_letter_apart(lower, w)))
+
+
+@dataclass(frozen=True)
+class _Variant:
+    """One misspelt word tried as a closed-list word (module docstring, point 6)."""
+
+    typo: str  # the word as written
+    word: str  # the closed-list word it was replaced by
+    start: int  # where the replacement word sits in `corrected`
+    corrected: str  # the clause text with the word replaced
+
+    @property
+    def end(self) -> int:
+        return self.start + len(self.word)
+
+    def to_original(self, position: int, is_end: bool) -> int:
+        """Map an offset in the corrected clause text back to the clause as written."""
+        if position <= self.start:
+            return position
+        if position >= self.end:
+            return position + len(self.typo) - len(self.word)
+        return self.start + (len(self.typo) if is_end else 0)
+
+
+class _VariantMatch:
+    """A finder match found after correcting one word. It behaves like a regex
+    match, but its offsets point into the clause as written."""
+
+    def __init__(self, match: re.Match, variant: _Variant):
+        self._match, self._variant = match, variant
+        self.variant = (variant.typo, variant.word)
+
+    def group(self, index: int = 0):
+        return self._match.group(index)
+
+    def start(self) -> int:
+        return self._variant.to_original(self._match.start(), False)
+
+    def end(self) -> int:
+        return self._variant.to_original(self._match.end(), True)
+
+
+def _variants(text: str) -> list[_Variant]:
+    """Spelling variants in a clause. A word is kept only if exactly one
+    closed-list word, put in its place, makes some finder match there."""
+    found = []
+    for word in WORD.finditer(text):
+        usable = []
+        for candidate in _near_words(word.group(0)):
+            corrected = text[: word.start()] + candidate + text[word.end() :]
+            end = word.start() + len(candidate)
+            if any(m.start() < end and word.start() < m.end() for rx in FINDERS for m in rx.finditer(corrected)):
+                usable.append(_Variant(word.group(0), candidate, word.start(), corrected))
+        if len(usable) == 1:
+            found.append(usable[0])
+    return found
 
 
 # ---------------------------------------------------------------------------
@@ -208,6 +290,9 @@ class _Reader:
         self.text = document.text
         self.observations: list[Observation] = []
         self.mentions_ice = bool(ICE_WORD.search(self.text))
+        # Four-digit numbers equal to one of these years are years, not clock times.
+        self.years = ({case.infusion_date.year, document.documented_at.year}
+                      | {int(m.group(1)) for m in DATE.finditer(self.text)})
         self.header = self._find_header()
 
     # -- structure ---------------------------------------------------------
@@ -459,15 +544,30 @@ class _Reader:
         line = self.text[clause.line.start : clause.line.end]
         is_imaging = self.doc.note_type == "imaging_report"
 
+        variants = _variants(text)
+
         def matches(pattern):
-            for m in _rx(pattern).finditer(text):
+            compiled = _rx(pattern)
+            spans = []
+            for m in compiled.finditer(text):
+                spans.append((m.start(), m.end()))
                 yield m, _Span(base + m.start(), base + m.end())
+            for variant in variants:
+                for found in compiled.finditer(variant.corrected):
+                    if not (found.start() < variant.end and variant.start < found.end()):
+                        continue  # does not use the corrected word
+                    m = _VariantMatch(found, variant)
+                    if any(m.start() < end and start < m.end() for start, end in spans):
+                        continue  # the pattern already matched here without the correction
+                    yield m, _Span(base + m.start(), base + m.end())
 
         def finding(kind, value, m, span, details=None, negatable=True):
             if NOT_A_FINDING_AFTER.match(text[m.end():]):
                 clause.used.append(span)
                 return
             status, note = self._status(clause, span, negatable=negatable)
+            if hasattr(m, "variant"):
+                status, note, details = self._as_variant(status, note, details, m.variant)
             clause.used.append(span)
             self._add(kind, value, status, clause.span, clause, span, details=details, note=note)
 
@@ -568,13 +668,20 @@ class _Reader:
         for m, span in matches(P.ATTRIBUTION_CUE):
             clause.used.append(span)
             status = "uncertain" if clause.is_plan else "present"
+            details = {"cause_text": text[m.end():].strip(" .,:"), "author_role": self.doc.author_role}
+            note = None
+            if hasattr(m, "variant"):
+                status, note, details = self._as_variant(status, note, details, m.variant)
             self._add("attribution", m.group(0).lower(), status, clause.span, clause, span,
-                      details={"cause_text": text[m.end():].strip(" .,:"), "author_role": self.doc.author_role})
+                      details=details, note=note)
         if clause.is_assessment:
             for m, span in matches(P.ICANS_NAME):
                 clause.used.append(span)
-                self._add("attribution", "assessment names ICANS", "present", clause.span, clause, span,
-                          details={"author_role": self.doc.author_role})
+                status, note, details = "present", None, {"author_role": self.doc.author_role}
+                if hasattr(m, "variant"):
+                    status, note, details = self._as_variant(status, note, details, m.variant)
+                self._add("attribution", "assessment names ICANS", status, clause.span, clause, span,
+                          details=details, note=note)
                 break
 
         # Assessment barriers (A10) and out-of-scope triggers (§5, A29).
@@ -584,6 +691,15 @@ class _Reader:
         for pattern, value in P.OUT_OF_SCOPE_MENTIONS:
             for m, span in matches(pattern):
                 finding("out_of_scope_mention", value, m, span, details={"term": m.group(0)})
+
+    @staticmethod
+    def _as_variant(status: str, note: str | None, details: dict | None, variant: tuple[str, str]):
+        """A finding found through a spelling variant is never "present" (module docstring, point 6)."""
+        typo, word = variant
+        details = {**(details or {}), "spelling_variant_of": word, "written_as": typo,
+                   "status_without_variant": status}
+        cue = f"spelling variant of {word}"
+        return "uncertain", "; ".join(n for n in (note, cue) if n), details
 
     def _seizure_details(self, clause_text: str, sentence: str, line: str) -> dict:
         """Seizure facts. Duration, termination and repetition come from the
@@ -649,15 +765,24 @@ class _Reader:
                 sign = -1 if m.group(1) in "-−" else 1
                 days = sign * int(m.group(2))
             else:
-                days = int(m.group(3) or m.group(4))
+                days = int(m.group(3) or m.group(4) or m.group(5))
             found.append((self.case.infusion_date + timedelta(days=days),
                           _Span(span.start + m.start(), span.start + m.end())))
         return sorted(found, key=lambda item: item[1].start)
 
     def _times_in(self, span: _Span) -> list[tuple[time, _Span]]:
         text = self.text[span.start : span.end]
-        return [(time(int(m.group(1)), int(m.group(2))), _Span(span.start + m.start(), span.start + m.end()))
-                for m in TIME.finditer(text)]
+        found = [(time(int(m.group(1)), int(m.group(2))), _Span(span.start + m.start(), span.start + m.end()))
+                 for m in TIME.finditer(text)]
+        for m in CLOCK_HHMM.finditer(text):
+            # HHMM counts only at the start of a line, after a date or Day +N, or after "at".
+            position = span.start + m.start()
+            if int(m.group(1) + m.group(2)) in self.years:
+                continue  # "2030" in a note from 2030 is a year
+            line_start = self.text.rfind("\n", 0, position) + 1
+            if CLOCK_HHMM_CONTEXT.search(self.text[line_start:position]):
+                found.append((time(int(m.group(1)), int(m.group(2))), _Span(position, span.start + m.end())))
+        return sorted(found, key=lambda item: item[1].start)
 
     def _find_header(self) -> dict | None:
         """The note's own date: one date on the first line, or a labelled line near the top."""

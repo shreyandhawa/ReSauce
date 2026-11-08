@@ -116,3 +116,34 @@ def test_every_dev_case_quote_validates(case_id):
         check_evidence_ref(case, observation.evidence)
         if observation.time_evidence is not None:
             check_evidence_ref(case, observation.time_evidence)
+
+
+def test_day_without_a_sign_is_read_like_day_plus():
+    # "Day 5:" is the same as "Day +5": infusion 2030-03-01 gives 2030-03-06.
+    case = make_case("Day 5: ICE 6/10.")
+    ice = find(extract_case(case), "ice_total")[0]
+    assert (ice.event_date, ice.time_source) == (date(2030, 3, 6), "in_text")
+
+
+def test_clock_time_without_a_colon_is_a_time_but_a_dose_is_not():
+    late = "2030-03-06T21:00"
+    time_case = make_case("1900 ICE 6/10.", late)
+    assert find(extract_case(time_case), "ice_total")[0].event_time.strftime("%H:%M") == "19:00"
+    # "1900 mg" is a dose, even after a date; so is a number that is not a time.
+    dose_case = make_case("2030-03-06 1900 mg given. ICE 6/10.", late)
+    assert find(extract_case(dose_case), "ice_total")[0].event_time is None
+    year_case = make_case("2030 ICE 6/10.", late)  # 2030 is the year of this note
+    assert find(extract_case(year_case), "ice_total")[0].event_time is None
+
+
+def test_spelling_variant_is_uncertain_never_present():
+    case = make_case("Note 2030-03-06.\nSeizre noted.\nNo seizre today.\nGeneralised seizure on EEG.\n")
+    seizures = find(extract_case(case), "seizure")
+    by_quote = {s.evidence.quote: s for s in seizures}
+    variant = by_quote["Seizre noted."]
+    assert variant.status == "uncertain"
+    assert "spelling variant of seizure" in variant.note
+    assert variant.details["status_without_variant"] == "present"
+    assert by_quote["No seizre today."].status == "uncertain"  # never certain, negated or not
+    assert by_quote["No seizre today."].details["status_without_variant"] == "absent"
+    assert by_quote["Generalised seizure on EEG."].status == "present"  # no variant: "seizure" is spelt right

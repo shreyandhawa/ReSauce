@@ -18,13 +18,15 @@ How a case is evaluated:
    with no clinician statement, a consciousness phrase that fits two
    categories, an assessment barrier, conflicting assessments, ICE 0 with
    no consciousness information, a partial ICE, an unresolved event date,
-   a rule not implemented), it becomes a "choice" with several options.
+   a finding read through a spelling variant, a case clinical-methods has
+   no rule for), it becomes a "choice" with several options.
 4. Every combination of options is one reading. Each reading gives a
    maximum grade (A2), an onset (§6.2) and a category per field (§7.1-7.9).
 5. If all readings agree, that category is used (A23). If not, the choices
    that change the category decide the result: "review: ..." for an
-   unresolved date or an unimplemented rule, 7.4 for A6 and A33, otherwise
-   7.5 with its reason.
+   unresolved date, a spelling variant or a case with no rule in
+   clinical-methods ("review: no rule (§...)"), 7.4 for A6 and A33,
+   otherwise 7.5 with its reason.
 6. §7.6 is checked against the record history; §7.10 flags are added.
 
 [OPERATIONAL] engine choices that clinical-methods does not spell out are
@@ -62,7 +64,6 @@ ICP_GRADE = {  # Table 6
     "Cushing's triad": 4,
     "decerebrate or decorticate posturing": 4,
 }
-ICP_TYPE_NOT_STATED = ("cerebral edema (extent not stated)", "posturing (type not stated)")
 ICE_KINDS = ("ice_total", "ice_partial")
 ICE_ITEM_MAX = {name: maximum for name, _, maximum in P.ICE_ITEMS}
 
@@ -78,15 +79,27 @@ R_WORDING = ("consciousness wording", "§7.5, A15", "7.5")
 R_A33 = ("ICE 0 with no consciousness information", "§4.1, A33", "7.4")
 R_A6 = ("partially completed ICE", "§4.1, A6", "7.4")
 R_UNRESOLVED = ("unresolved event date", "§6.1", "review")
-R_ICP_TYPE = ("not implemented", "§3.3: edema extent or posturing type not stated", "review")
-R_STATUS_EPILEPTICUS = ("not implemented", "§3.3: status epilepticus without a stated duration", "review")
-R_SEIZURE_DURATION = ("not implemented", "§3.3: seizure duration range that spans 5 minutes", "review")
-R_MOTOR = ("not implemented", "§3.3: motor finding not named as hemiparesis or paraparesis", "review")
+# [OPERATIONAL] A ReSauce extraction choice; clinical-methods has no rule about spelling.
+R_SPELLING = ("spelling variant", "ReSauce extraction rule [OPERATIONAL], not in clinical-methods", "review")
+# Cases where clinical-methods gives no rule. The result is "review: no rule (§...)"
+# and the case goes on the clinician list; the engine never invents a rule.
+R_EDEMA_EXTENT = ("no rule", "§3.3: edema with no stated extent", "review")
+R_POSTURING = ("no rule", "§3.3: posturing not named decerebrate or decorticate", "review")
+R_STATUS_EPILEPTICUS = ("no rule", "§3.3: status epilepticus without a stated duration", "review")
+R_SEIZURE_DURATION = ("no rule", "§3.3: seizure duration range that spans 5 minutes", "review")
+R_MOTOR = ("no rule", "§3.3: motor finding not named as hemiparesis or paraparesis", "review")
+NO_APPROVED_GRADE = (R_A6, R_MOTOR, R_POSTURING, R_SPELLING)  # options that are not confirmed qualifying findings (A34)
+GRADED_KINDS = ("consciousness", "seizure", "motor_finding", "icp_sign")  # kinds a spelling variant can change
 
 
 def _top(grades) -> int:
     """Highest grade among options; None (not counted) counts as 0."""
     return max((g for g in grades if g is not None), default=0)
+
+
+def _is_variant(o: Observation) -> bool:
+    """A finding the extractor read through a spelling variant (it would otherwise be "present")."""
+    return o.status == "uncertain" and o.details.get("status_without_variant") == "present"
 
 
 def ice_grade(total: int) -> int:
@@ -212,8 +225,11 @@ class _Engine:
         self.barriers = [o for o in self.context if o.kind == "assessment_barrier"]
         self.hemorrhages = [o for o in self.context
                             if o.kind == "excluded_symptom" and o.value == "intracranial hemorrhage"]
+        self.variants = [o for o in self.sel.used + self.sel.undated
+                         if _is_variant(o) and o.kind in GRADED_KINDS]
         self.excluded_by_clinician: list[Observation] = []
-        self.fixed, self.choices = self._findings()
+        self.fixed, self.all_choices = self._findings()
+        self.choices = self._active_choices()
         self.grade0 = self._formal_grade0()
         self.not_assessable = [o for o in self.used if o.kind == "not_assessable"]
 
@@ -294,8 +310,11 @@ class _Engine:
                 return None
             if value in ICP_GRADE:
                 return [ICP_GRADE[value]], [], value
-            if value in ICP_TYPE_NOT_STATED:
-                return [3, 4], [R_ICP_TYPE], value
+            if value == "cerebral edema (extent not stated)":
+                return [3, 4], [R_EDEMA_EXTENT], value
+            if value == "posturing (type not stated)":
+                # Table 6 has posturing only at Grade 4, for decerebrate or decorticate.
+                return [None, 4], [R_POSTURING], value
         return None
 
     def _drowsy(self, o: Observation) -> bool:
@@ -330,7 +349,7 @@ class _Engine:
     def _findings(self):
         """Fixed findings, and choices for findings with several readings."""
         entries = []  # (observation, grade options, reasons, label)
-        for o in self.used + self.undated:
+        for o in self.used + self.undated + self.variants:
             base = self._base(o)
             if base is None:
                 continue
@@ -349,6 +368,10 @@ class _Engine:
                 if o.time_source == "unresolved":
                     grades.append(None)
                     reasons.append(R_UNRESOLVED)
+                if _is_variant(o):
+                    grades.append(None)
+                    reasons.append(R_SPELLING)
+                    label += " (spelling variant)"
             entries.append((o, list(dict.fromkeys(grades)), list(dict.fromkeys(reasons)), label))
 
         fixed, choices = [], []
@@ -378,6 +401,28 @@ class _Engine:
             where = o.event_date.isoformat() if o.event_date else "date unresolved"
             choices.append(Choice(f"{label} ({T.version_id(o)}, {where})", reasons, options, evidence))
         return fixed, choices
+
+    def _active_choices(self) -> list:
+        """Choices that can still change a result; the others are left out of the readings.
+
+        A choice is left out only when it provably changes nothing: some fixed
+        finding already gives the maximum grade, and every finding the choice
+        could add has a lower grade, an event date, and a day after the last
+        day of the onset the fixed findings give. Then the grade, the onset,
+        the evidence and every category are the same whatever the choice
+        decides (§6.2, A2). This keeps the number of readings small (the
+        MAX_READINGS limit). Flags still use all choices.
+        """
+        if not self.fixed:
+            return list(self.all_choices)
+        top = max(f.grade for f in self.fixed)
+        last_onset_day = T.onset_from([(*T.days(f.obs), f) for f in self.fixed])[1]
+
+        def inert(choice: Choice) -> bool:
+            return all(f.grade < top and f.obs.event_date is not None and T.days(f.obs)[0] > last_onset_day
+                       for _, findings in choice.options for f in findings)
+
+        return [c for c in self.all_choices if not inert(c)]
 
     @staticmethod
     def _conflicts(entries) -> list[list]:
@@ -562,10 +607,7 @@ class _Engine:
         evidence = [pair for o in outcomes for pair in o.evidence]
         if review:
             r = review[0]
-            if r is R_UNRESOLVED:
-                category = "review: unresolved event date (§6.1)"
-            else:
-                category = f"review: not implemented ({r[1]})"
+            category = f"review: {r[0]} ({r[1]})"
             value = {"undetermined": "; ".join(f"{_value_text(x['value'])} ({x['category']}) if {x['reading']}"
                                                for x in readings)}
         elif any(r[2] == "7.4" for r in reasons):
@@ -656,17 +698,20 @@ class _Engine:
 
     # -- §7.10 flags ----------------------------------------------------------
 
+    def possible_qualifying_observations(self) -> list[Observation]:
+        """Observations of every finding that could qualify (any reading) and has an event date."""
+        found = [f.obs for f in self.fixed]
+        for choice in self.all_choices:
+            if any(r in choice.reasons for r in NO_APPROVED_GRADE):
+                continue  # no total (A6), no approved mapping or a spelling variant: not a confirmed finding (A34)
+            for _, findings in choice.options:
+                found += [f.obs for f in findings if f.obs.event_date]
+        return found
+
     def possible_qualifying_days(self) -> set:
         days = set()
-        for f in self.fixed:
-            days.update(_each_day(f.obs))
-        for choice in self.choices:
-            if R_A6 in choice.reasons or R_MOTOR in choice.reasons:
-                continue  # no total (A6) or no approved mapping: not a qualifying finding (A34)
-            for _, findings in choice.options:
-                for f in findings:
-                    if f.obs.event_date:
-                        days.update(_each_day(f.obs))
+        for o in self.possible_qualifying_observations():
+            days.update(_each_day(o))
         return days
 
     def case_flags(self) -> dict:
@@ -727,14 +772,22 @@ class _Engine:
                 flags.append({"flag": "record date matches an excluded or sub-threshold symptom",
                               "field": "onset", "detail": "§7.1, A24",
                               "evidence": _evidence([(o, f"{o.kind}: {o.value}") for o in symptoms])})
-        qualifying_days = sorted(self.possible_qualifying_days())
+        # §6.5: a documented full resolution followed by recurrence is flagged.
+        # [OPERATIONAL] §6.5 does not say how to order events on one day: ReSauce
+        # compares moments, so a resolution between two findings of the same day
+        # counts when the times show the order. Without times the order is
+        # unknown, so there is no flag.
+        qualifying = self.possible_qualifying_observations()
         for day in sorted(self.grade0):
-            if any(d < day for d in qualifying_days) and any(d > day for d in qualifying_days):
-                flags.append({"flag": "recurrence", "field": None,
-                              "detail": f"formal Grade 0 assessment on Day +{study_day(self.case, day)} "
-                                        "between qualifying findings (§6.5).",
-                              "evidence": _evidence([(o, "documented full resolution") for o in self.grade0[day]])})
-                break
+            for resolution in self.grade0[day]:
+                before = any(T.latest_moment(q) < T.earliest_moment(resolution) for q in qualifying)
+                after = any(T.earliest_moment(q) > T.latest_moment(resolution) for q in qualifying)
+                if before and after:
+                    flags.append({"flag": "recurrence", "field": None,
+                                  "detail": f"formal Grade 0 assessment on Day +{study_day(self.case, day)} "
+                                            "between qualifying findings (§6.5).",
+                                  "evidence": _evidence([(resolution, "documented full resolution")])})
+                    return flags
         return flags
 
     def review_items(self) -> list:
@@ -751,6 +804,16 @@ class _Engine:
             items.append({"rule": "§6.4, A13, A31",
                           "detail": f"{copy.version_id} repeats {original.version_id} apart from dates and "
                                     "times; not used as new evidence", "evidence": []})
+        for o in self.sel.context + self.sel.outside_window:
+            word = o.details.get("spelling_variant_of")
+            if word is None:
+                continue
+            weighed = o in self.variants
+            items.append({"rule": "extraction",
+                          "detail": f"'{o.details['written_as']}' read as a spelling variant of '{word}' ({o.kind}); "
+                                    + ("weighed as a reading, never graded as certain" if weighed
+                                       else "not used as evidence"),
+                          "evidence": _evidence([(o, "spelling variant")])})
         for o in self.excluded_by_clinician:
             items.append({"rule": "§3.4, A9", "detail": f"{o.kind} attributed to another cause by a clinician; not graded",
                           "evidence": _evidence([(o, "finding attributed elsewhere")])})
