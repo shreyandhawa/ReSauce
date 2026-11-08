@@ -31,6 +31,36 @@ This replaces the earlier plan of a 3 to 4 hour time box. No "§0 time box" exis
 
 ---
 
+## 2026-11-08: Step 5a close-out and Step 4 (pipeline frozen)
+
+- **Status:** Step 5a is closed and the pipeline is frozen. Tag `pipeline-freeze-v1` is on commit `7c4a449` ("Step 4: pipeline freeze"); the frozen source and the evaluation are at `ec7519e`. `pytest`: 176 passed. `python -m resauce.evaluate` was run once (dev and held-out), 0 method errors.
+- **Done:**
+  - Saved the pasted blind-run report as `reference/dev-v1/independent-run-notes.md`, unedited. **It is not the original notes file**: it only says the original (with the "unclear rules" list) could not be found. So `comparison.md` §8 has **no format-gap or rule-gap lines** (none were made up), and **no rule gaps were added to the clinician items** (there are none to add). Needs the user: if the original notes file exists, send it and §8 and the clinician items get filled. `tools/compare_answers.py` now writes this §8 wording.
+  - Adjudication (decided by the user): no category disagreements (144 of 144; the 4 out-of-scope cases differ only in reason wording), no real value disagreements. The intended answers stay the reference, unedited.
+  - `reference/dev-v1/README.md`: new "Value conventions (from Step 5a)" section (grade 0 or undetermined, 7.5 and 7.4 fields, unchanged record history, five fixed out-of-scope strings: `age under 18`, `CAPD assessment`, `record Grade 5`, `documented death`, `developmental delay`, the strings the engine uses).
+  - Reference label changed in `docs/evaluation-spec.md` §2 and in `evaluate.py` to "intended answers, agreed by a blind re-derivation by a separate Claude session (same model family); not clinician-verified".
+  - `evaluate.py`: `--split-name NAME --data DIR --reference DIR` scores every case folder in DIR as one split called NAME (no `splits.json`). It writes `<out>/NAME.json` and `<out>/report-NAME.md` (so `report.md` is never overwritten). No scoring rule changed. The held-out section now says "seen: the pipeline changed after the first held-out run (commit 4ff6c5f)". One test added.
+  - Also corrected one sentence in the report's limitations (spelling variants are now handled since session 4b; see "Open" below). `docs/freeze.md` and `tests/test_freeze.py` (recomputes the SHA-256 of the seven frozen files) added.
+- **The freeze rule** (`docs/freeze.md`): frozen are `loader`, `models`, `extract`, `phrases`, `engine`, `timeline`, `baseline_a` (hashed) and the scoring rules of `evaluate.py` (protected by the rule, not hashed). Allowed after the freeze: new files (e.g. `baseline_b.py`) and `evaluate.py` changes that only add a method or a split. A change to a frozen file breaks the freeze and must be disclosed with every later result.
+- **Headline numbers, quoted from `results/report.md`** (synthetic data, intended answers not clinician-verified, not clinical validation; combined onset and grade fields):
+  - **Dev (20 cases), optimistic because the pipeline was built from these cases:** ReSauce precision 1.00 (10/10), recall 1.00 (10/10), exact agreement 1.00 (38/38). Baseline A precision 0.90 (9/10), recall 0.90 (9/10), exact agreement 0.87 (33/38).
+  - **Held-out (52 cases, in-repo, not sealed; seen: the pipeline changed after the first held-out run, commit 4ff6c5f):** ReSauce precision 0.84 (16/19), recall 0.80 (16/20), exact agreement 0.86 (84/98); 5 "review: …" results; 3 false alerts, 4 misses. Baseline A precision 0.61 (14/23), recall 0.70 (14/20), exact agreement 0.65 (64/98); 9 false alerts, 6 misses. Out of scope: 3 of 3 flagged with the matching reason.
+  - The score tables are the same as in the run before this entry; only the evidence counts, label and commit differ. Not yet run: Baseline B.
+- **Decisions & why:**
+  - One commit for A–B plus results, as asked. So the run metadata in `results/` says "uncommitted changes in code or data: yes" and names the previous commit (`c03e7a4`); the code was committed immediately after in `ec7519e`.
+  - The `--split-name` report goes to `report-NAME.md` so a locked run cannot overwrite the dev/held-out report.
+  - Out-of-scope strings follow the engine and the intended answers, not the longer wording of the independent answers.
+- **Next steps:** Step 6: write the 153 locked cases in a separate private repo, without access to ReSauce `src/` (§0). Then Step 5b (blind answers for them), Baseline B if an API key exists, and the final evaluation once on the locked set with `--split-name locked`.
+- **Open questions:** (1) Is the original `independent-run-notes.md` (unclear-rules list) available? (2) The sentence in `docs/evaluation-spec.md` §6 about misspelt words is still the old one (it is outdated since session 4b); `docs/` is not frozen, so it can be corrected. (3) The limitation lines "answers are not independently verified" in `evaluation-spec.md` §6 now partly conflict with the new label; the report text was left as is. (4) Clinician items from session 4b and the assumptions A19 to A34 are still unanswered.
+- **How to verify:**
+  ```bash
+  .venv/bin/python -m pytest -p no:cacheprovider -q    # expect 176 passed
+  git show pipeline-freeze-v1 --stat | head            # the tag exists
+  shasum -a 256 src/resauce/engine.py                  # compare with docs/freeze.md
+  ```
+
+---
+
 ## 2026-11-08: Step 5a (independent answers and comparison)
 
 - **Status:** 72 independent (blind) answers are in `reference/dev-v1/independent/` and compared with the intended answers by `tools/compare_answers.py`; the result is `reference/dev-v1/comparison.md`. Nothing in `src/` changed, no tests added (tool only), `pytest` and `python -m resauce.evaluate` not run. No answer file was changed. Nothing is adjudicated yet.
