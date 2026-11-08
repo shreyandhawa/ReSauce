@@ -23,6 +23,7 @@ from __future__ import annotations
 import argparse
 import json
 import platform
+import re
 import subprocess
 import sys
 import time
@@ -71,8 +72,18 @@ LIMITATIONS = (
 # ---------------------------------------------------------------------------
 
 
+_CODE = re.compile(r"^\s*(7\.[1-9])(?=$|[\s(])")
+
+
+def reference_code(category: str) -> str | None:
+    """Leading code of a reference category ("7.5 (attribution)" -> "7.5"), or None if not 7.1 to 7.9."""
+    match = _CODE.match(category)
+    return match.group(1) if match else None
+
+
 def reference_class(category: str) -> str | None:
     """"positive", "negative", "review", or None for a category outside 7.1 to 7.8."""
+    category = reference_code(category) or category
     if category in POSITIVE:
         return "positive"
     if category in NEGATIVE:
@@ -122,6 +133,7 @@ def _blank_counts() -> dict:
 
 
 def _score_field(counts: dict, reference_category: str, method_category: str) -> None:
+    reference_category = reference_code(reference_category) or reference_category
     ref, got = reference_class(reference_category), method_class(method_category)
     counts["fields"] += 1
     agrees = method_category == reference_category
@@ -279,8 +291,11 @@ def read_reference(reference_dir: Path, case_id: str) -> dict:
     """The parts of an intended answer that scoring needs."""
     answer = json.loads((reference_dir / "intended" / f"{case_id}.json").read_text(encoding="utf-8"))
     oos = answer["out_of_scope"]
-    return {"out_of_scope": oos["reason"] if oos else None,
-            "fields": {name: answer["fields"][name]["category"] for name in FIELDS}}
+    fields = {name: answer["fields"][name]["category"] for name in FIELDS}
+    for name, category in fields.items():
+        if reference_code(category) is None:  # never dropped silently: listed in reference_errors
+            raise ValueError(f"reference category for {name} is not 7.1 to 7.9: {category!r}")
+    return {"out_of_scope": oos["reason"] if oos else None, "fields": fields}
 
 
 def run_case(case_id: str, data_dir: Path, reference_dir: Path) -> dict:

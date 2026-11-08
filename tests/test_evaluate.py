@@ -87,3 +87,25 @@ def test_a_case_where_the_method_failed_counts_its_positive_fields_as_misses():
     assert counts["misses"] == 1 and counts["misses_from_errors"] == 1
     assert counts["fields"] == 2 and counts["agree_all"] == 0
     assert result["summary"]["errors"] == 1
+
+
+def test_a_reference_category_with_a_reason_is_scored_by_its_code():
+    result = combined(score((reference("7.5 (attribution)", "7.1 (late)"), output("7.5", "7.1"))))
+    counts = result["counts"]
+    assert counts["review"] == 1 and counts["detections"] == 1 and counts["unclassified"] == 0
+    assert result["exact_agreement_all_fields"]["n"] == 2
+
+
+def test_a_reference_category_outside_7_1_to_7_9_is_a_reference_error(tmp_path):
+    import json
+    from resauce.evaluate import read_reference
+    (tmp_path / "intended").mkdir()
+    answer = {"out_of_scope": None, "fields": {"onset": {"category": "7.5 (attribution)"},
+                                               "max_grade": {"category": "unclear"}}}
+    (tmp_path / "intended" / "C1.json").write_text(json.dumps(answer))
+    try:
+        read_reference(tmp_path, "C1")
+    except ValueError as exc:
+        assert "unclear" in str(exc)
+    else:
+        raise AssertionError("expected a reference error")
