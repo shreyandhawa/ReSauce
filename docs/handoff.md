@@ -31,6 +31,47 @@ This replaces the earlier plan of a 3 to 4 hour time box. No "§0 time box" exis
 
 ---
 
+## 2026-11-09: two sessions collided on one folder; untangled, separate folder for the feature branch, second reason for Baseline B's lead
+
+- **Status:** `main` is clean and pushed. `feature/verification-engine` now lives in its own folder, `/Users/shreyan/Projects/ReSauce-verify`; the main folder `ReSauce/` stays on `main`. Nothing was lost. `src/`, `tests/`, `data/` and `results/` are unchanged. `pytest`: 186 passed.
+- **What happened** (from `git reflog`, times CT):
+  - 08:42: session A committed the pipeline view `0e86f3d` on `main`.
+  - 08:46: session B (planning the verification engine; its clock showed UTC, 14:46) created `feature/verification-engine` and switched the shared folder to it.
+  - 08:49: session B committed its plan `14739a1`.
+  - 08:53: session A, still believing it was on `main`, committed the Results note onto the feature branch (`c73dc11`), then copied it to `main` (`a1fb712`) and pushed both.
+  - There was no third agent. `AGENTS.md` dates from 2026-11-08 13:01.
+  - `c73dc11` and `a1fb712` have the same patch-id, and a test merge (`git merge-tree`) of the two branches has no conflicts, `web/dist` included.
+- **Done:**
+  - `docs/evolution-review.md` committed on `feature/verification-engine` (`d5071e0`), next to the plan it reviews.
+  - The main folder switched back to `main`. `git worktree add ../ReSauce-verify feature/verification-engine` created the feature folder.
+  - **CLAUDE.md:** new "Parallel sessions" section: one branch per folder, never switch branches in the main folder, check `git status`, the branch and other sessions before git, one server and port per folder.
+  - **README** ("Reading Baseline B's result") and **Results page note:** a second, known reason, that ReSauce's phrase lists were built from the 20 dev cases (and the rules text) only, so wordings found only in the held-out cases can be missed. It states that how many misses this explains was not measured. Source: README Limitations and `results/report.md`. `web/dist/` rebuilt.
+  - **Why the user could not see the Baseline B note:** all four running servers (ports 8000–8003) started before the Baseline B results were committed at 08:30, and the app reads `results/*.json` once, at startup. Their `/api/summary` lists only `resauce` and `baseline_a`.
+- **Decisions & why** (user's choices):
+  - The duplicate Results commit stays on the feature branch. Removing it would need a force push; it merges cleanly.
+  - A separate folder per branch, instead of "one session at a time", because a shared folder is what caused the collision.
+  - The second reason added, worded as a documented limitation, not a measured cause.
+- **Checks made:**
+  - A fresh server (port 8009, scratch workspace, since deleted) lists `baseline_b` for dev and held_out.
+  - Headless Chrome at 1440 px shows the heading "Why the AI model scores higher than ReSauce." and the full note.
+- **Next steps:**
+  1. **User:** stop the stale servers (`kill 75585 45131 48871 49702`) and restart from the project folder with `.venv/bin/python -m app`. Then open http://localhost:8000/#/results and press Cmd+Shift+R.
+  2. **Task 2 (verification engine):** a new planning session inside `ReSauce-verify`.
+     - First merge `main` into the feature branch. If `web/dist` conflicts, rebuild it.
+     - Set up `.venv` and `web/node_modules` there. These are the same dependencies; ask before installing.
+     - Use its own port, for example 8010.
+     - Read `docs/evolution-handoff.md` together with `docs/evolution-review.md`.
+- **Open questions (for Task 2):**
+  - Design: the new brief asks for white with no blue, while `DESIGN.md` has a black stage with blue for selection.
+  - The handoff's §12: the form of the demo gate, the C2 window, whether the new view replaces Pipeline as home, and Parquet (`pyarrow` is a new dependency).
+  - The review's working agreement.
+  - Recommended base: `main`. `origin/v2-architecture` is a different feature (text clean-up), built on the old commit `a06a3ea`, and stays parked.
+- **How to verify:**
+  - `git worktree list` shows two folders.
+  - `curl -s http://127.0.0.1:8000/api/summary` lists `baseline_b` after the restart.
+
+---
+
 ## 2026-11-09: Results page explains why the AI model (Baseline B) scores higher
 
 - **Status:** the Results page and the README now say plainly why Baseline B (Claude Opus 5.5) scores above ReSauce. Results files, scoring and `src/` are unchanged.

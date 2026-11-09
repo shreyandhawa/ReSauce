@@ -37,6 +37,13 @@ The current milestone and status are in `docs/handoff.md`.
 - Never commit secrets (`.env` files, keys, tokens).
 - Do not add "Co-Authored-By" or any other AI attribution lines to commit messages or pull requests.
 
+## Parallel sessions
+A git branch belongs to the folder, not to the session: switching branches in a folder moves every session working there.
+- The main folder (`ReSauce/`) stays on `main`. Never switch branches in it.
+- A feature branch gets its own folder: `git worktree add ../ReSauce-<name> <branch>`. Work on that branch only inside that folder. `git worktree list` shows which folder holds which branch.
+- Before every git command, run `git status` and `git branch --show-current`, and check for other running sessions. Two sessions never run git in the same folder at the same time.
+- Each folder runs its own server on its own port; use a scratch workspace for tests (`python -m app --workspace workspace-test --port 80xx`) and delete it afterwards.
+
 ## Working with the user
 The user is a beginner. For every action, explain in plain language:
 - what you are doing,
