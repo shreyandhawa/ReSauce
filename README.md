@@ -154,6 +154,7 @@ Quoted from [`results/report.md`](results/report.md). Counts are fields (onset d
 
 **Reading Baseline B's result.** Baseline B matched the reference answers on every field in both splits, which is more than ReSauce on the held-out split. It most likely did better because the same AI model family (Claude) wrote these synthetic cases and their reference answers. **This is not evidence that the AI would do better on real records, or that it is clinically right.**
 - The cases and the reference answers were written by Claude sessions from the same rules text, and an earlier blind re-derivation by another Claude session also agreed on every category. A Claude model given the same rules is therefore expected to agree with them.
+- There is also a known difference in how the two were built: ReSauce's phrase lists for reading the documents were built from the 20 dev cases and the rules text only, so wordings that appear only in the held-out cases can be missed (see [Limitations](#limitations)). How many of its held-out misses this explains has not been measured.
 - What the comparison does show: on this synthetic set, a general AI model that follows the written rules reproduces the reference answers.
 - What it cannot show: whether either answer set is clinically correct. Deciding that needs cases and answers checked by clinicians.
 

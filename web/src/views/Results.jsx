@@ -53,7 +53,7 @@ export default function Results() {
         {withB && (
           <p className="caveat-ai">
             <strong>{bAhead ? 'Why the AI model scores higher than ReSauce.' : 'Reading the AI model’s scores.'}</strong>{' '}
-            Baseline B is {bModel ? <span className="mono">{bModel}</span> : 'an AI model'}, from the same AI model family (Claude) that wrote these synthetic cases and their reference answers, from the same rules text. That is most likely why it agrees with them so closely. Its scores show that it reproduces answers written the same way; they are not evidence that it would do better than ReSauce on real records, or that either is clinically right. A fair comparison needs cases and answers written and checked independently, by clinicians.
+            Baseline B is {bModel ? <span className="mono">{bModel}</span> : 'an AI model'}, from the same AI model family (Claude) that wrote these synthetic cases and their reference answers, from the same rules text. That is most likely why it agrees with them so closely. Its scores show that it reproduces answers written the same way; they are not evidence that it would do better than ReSauce on real records, or that either is clinically right. Separately, ReSauce’s phrase lists were built from the 20 dev cases only, so it can miss wordings that appear only in the held-out cases; how many of its misses this explains was not measured. A fair comparison needs cases and answers written and checked independently, by clinicians.
           </p>
         )}
       </header>
