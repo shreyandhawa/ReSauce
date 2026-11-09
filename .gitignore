@@ -24,3 +24,6 @@ node_modules/
 
 # The researcher workspace (cases, runs, audit log, exports); never committed.
 workspace/
+
+# Demo videos (large; kept locally, not in git).
+docs/demo/

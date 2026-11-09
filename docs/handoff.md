@@ -33,7 +33,7 @@ This replaces the earlier plan of a 3 to 4 hour time box. No "§0 time box" exis
 
 ## 2026-11-09: 40-second demo video of the frontend (import, network run, Results)
 
-- **Status:** `docs/demo/resauce-demo.mp4` is a 40.000-second, 1920×1080 H.264 video with no sound (54 MB). It is **not committed** (see open questions). `src/`, `app/`, `web/`, `data/`, `reference/` and `results/` are unchanged. No tests were run, because no code that decides answers changed.
+- **Status:** `docs/demo/resauce-demo.mp4` is a 40.000-second, 1920×1080 H.264 video with no sound (54 MB). It is **kept out of git** (user's choice): `docs/demo/` is in `.gitignore`, so the video exists only on this computer. `src/`, `app/`, `web/`, `data/`, `reference/` and `results/` are unchanged. No tests were run, because no code that decides answers changed.
 - **Done:**
   - Ran the app locally with `.venv/bin/python -m app --port 8004`. Port 8000 is still held by the stale servers on 8000–8003 from the previous entry. The 8004 server lists `resauce`, `baseline_a` and `baseline_b`.
   - Recorded the demo with macOS screen recording (`screencapture -v -V 46 -R …`) of a fresh Google Chrome window whose page area was exactly 1440×810 points. A Node script drove the window over the DevTools protocol, with no new packages. It ran against a scratch server (`--workspace workspace-demo --port 8005`), deleted afterwards.
@@ -53,7 +53,7 @@ This replaces the earlier plan of a 3 to 4 hour time box. No "§0 time box" exis
   - A take stops at any click or key press. The user chose a hands-off retake with screen recording over Chrome recording itself.
   - The recording scripts stayed in the session scratchpad, not in the repository, because they were not asked for. They are gone after this session.
 - **Next steps / open questions:**
-  - Whether to commit the 54 MB video (GitHub warns above 50 MB, and every clone would carry it), keep it out of git with `.gitignore`, or host it elsewhere.
+  - Decided: the video stays out of git, because at 54 MB it would be carried by every clone (GitHub warns above 50 MB). To share it, send the file or upload it somewhere else.
   - The stale servers on 8000–8003 are still running (`kill 75585 45131 48871 49702`).
 - **How to verify:** open `docs/demo/resauce-demo.mp4` in QuickTime. Window → Show Movie Inspector (Cmd+I) shows 00:40 and 1920×1080.
 
