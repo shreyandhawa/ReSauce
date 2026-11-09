@@ -1,0 +1,233 @@
+{
+ "case_id": "SYN-0066",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "thinking": "adaptive (always on for this model)",
+ "route": "Claude Code print mode",
+ "command": [
+  "claude",
+  "-p",
+  "--model",
+  "claude-opus-5-5",
+  "--effort",
+  "high",
+  "--system-prompt",
+  "<instructions: system_prompt.md>",
+  "--tools",
+  "",
+  "--json-schema",
+  "<answer_schema.json>",
+  "--output-format",
+  "json",
+  "--no-session-persistence",
+  "--strict-mcp-config",
+  "--setting-sources",
+  "project"
+ ],
+ "system_prompt_sha256": "0cda59baefac995b4e20a8dde5550077ed76c7f0f789f8c4661cf246f64e1596",
+ "answer_schema_sha256": "9dc6f412e8631752ce5bf4ce82b16ac3ce5d04d9dfb8709c8b459a7a11d2ad11",
+ "fallback_model": null,
+ "user_message_sha256": "db0ce153f63db043bfd32260737a829a6dde611c4b021369b595327c3f63ca76",
+ "requested_at": "2026-11-09T08:24:35-06:00",
+ "stop_reason": "tool_use",
+ "finished": true,
+ "answer_text": "{\"out_of_scope_reason\": \"in scope\", \"onset\": {\"category\": \"7.7\", \"documented_value\": \"2036-11-12\", \"explanation\": \"Formal Grade 0 assessments (ICE 10/10) were documented on Day 0 (2036-11-08) and Day +2 (2036-11-10). The earliest qualifying finding is ICE 8/10 at 08:40 on 2036-11-12 (Day +4). That meets the Grade 1 ICE criterion, and the note says no sedating medicines had been given. The recorded onset of 2036-11-12 falls on the same calendar day. The discharge summary also dates neurotoxicity from Day +4.\", \"evidence\": [{\"document_id\": \"SYN-0066-D03\", \"version\": 1, \"quote\": \"Morning ICE screen on 2036-11-12, done at 08:40 with the patient sitting up after breakfast.\"}, {\"document_id\": \"SYN-0066-D03\", \"version\": 1, \"quote\": \"so the total was 8 out of 10. No sedating medicines had been given.\"}, {\"document_id\": \"SYN-0066-D02\", \"version\": 1, \"quote\": \"At 21:00 the patient, reading a novel, scored 10/10 on ICE.\"}, {\"document_id\": \"SYN-0066-D08\", \"version\": 1, \"quote\": \"Neurotoxicity from Day +4 with an ICE low of 5/10, treated with dexamethasone.\"}]}, \"max_grade\": {\"category\": \"7.2\", \"documented_value\": \"3\", \"explanation\": \"The record gives a maximum of Grade 2. The documents support Grade 2 from ICE 5/10 on 2036-11-13. They also prove Grade 3: the EEG of 2036-11-15 (Day +7, inside the window) recorded a non-convulsive electrographic seizure that ended after IV levetiracetam, with return to baseline. That is 'non-convulsive seizures on EEG that resolve with intervention' (Table 6, Grade 3). The diffuse slowing is not a seizure. Levetiracetam is not a competing cause, and no clinician attributed the seizure to anything else. The EEG report was signed on 2036-11-18, after the record was made on 2036-11-17, but it is signed content and the current record was never updated. The record is lower by 1 grade.\", \"evidence\": [{\"document_id\": \"SYN-0066-D07\", \"version\": 1, \"quote\": \"Impression: one non-convulsive seizure of 3 minutes that ended after intravenous levetiracetam, with return to baseline; mild diffuse slowing.\"}, {\"document_id\": \"SYN-0066-D07\", \"version\": 1, \"quote\": \"Recorded 2036-11-15 from 09:40 to 11:10.\"}, {\"document_id\": \"SYN-0066-D04\", \"version\": 1, \"quote\": \"the ICE score of 5/10 at 10:20 shows clear worsening\"}, {\"document_id\": \"SYN-0066-D08\", \"version\": 1, \"quote\": \"The EEG of 2036-11-15 recorded a single non-convulsive seizure that stopped after levetiracetam\"}]}}",
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 3121,
+  "cache_read_input_tokens": 27340,
+  "output_tokens": 1467,
+  "output_tokens_details": {
+   "thinking_tokens": 358
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 3121,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 1467,
+    "cache_read_input_tokens": 27340,
+    "cache_creation_input_tokens": 3121,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 3121
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "models_reported": [
+  "claude-opus-5-5"
+ ],
+ "claude_code_cost_usd": 0.059784000000000004,
+ "duration_seconds": 13.724,
+ "cli_output": {
+  "duration_api_ms": 12790,
+  "stop_reason": "tool_use",
+  "session_id": "3298df40-477d-4299-b0ef-917048b99f54",
+  "total_cost_usd": 0.059784000000000004,
+  "usage": {
+   "input_tokens": 2,
+   "cache_creation_input_tokens": 3121,
+   "cache_read_input_tokens": 27340,
+   "output_tokens": 1467,
+   "output_tokens_details": {
+    "thinking_tokens": 358
+   },
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "service_tier": "standard",
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 3121,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "inference_geo": "global",
+   "iterations": [
+    {
+     "input_tokens": 2,
+     "output_tokens": 1467,
+     "cache_read_input_tokens": 27340,
+     "cache_creation_input_tokens": 3121,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 0,
+      "ephemeral_1h_input_tokens": 3121
+     },
+     "type": "message"
+    }
+   ],
+   "speed": "standard",
+   "fallback_credit": null
+  },
+  "modelUsage": {
+   "claude-opus-5-5": {
+    "inputTokens": 2,
+    "outputTokens": 1467,
+    "cacheReadInputTokens": 27340,
+    "cacheCreationInputTokens": 3121,
+    "webSearchRequests": 0,
+    "costUSD": 0.059784000000000004,
+    "contextWindow": 1000000,
+    "maxOutputTokens": 128000,
+    "thinkingTokens": 358,
+    "cacheCreationEphemeral5mInputTokens": 0,
+    "cacheCreationEphemeral1hInputTokens": 3121,
+    "canonicalModel": "claude-opus-5-5",
+    "provider": "firstParty",
+    "costBasis": "list"
+   }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+   "spawned": 0,
+   "requested": {
+    "background": 0,
+    "foreground": 0,
+    "unset": 0
+   },
+   "started_in_background": 0,
+   "max_depth": 0,
+   "spawned_by_subagents": 0,
+   "completed": 0,
+   "failed": 0,
+   "killed": {
+    "parent": 0,
+    "user": 0,
+    "system": 0
+   },
+   "refused": {
+    "depth_limit": 0,
+    "concurrency_limit": 0,
+    "budget": 0
+   },
+   "by_type": {}
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 2,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "{\"out_of_scope_reason\":\"in scope\",\"onset\":{\"category\":\"7.7\",\"documented_value\":\"2036-11-12\",\"explanation\":\"Formal Grade 0 assessments (ICE 10/10) were documented on Day 0 (2036-11-08) and Day +2 (2036-11-10). The earliest qualifying finding is ICE 8/10 at 08:40 on 2036-11-12 (Day +4). That meets the Grade 1 ICE criterion, and the note says no sedating medicines had been given. The recorded onset of 2036-11-12 falls on the same calendar day. The discharge summary also dates neurotoxicity from Day +4.\",\"evidence\":[{\"document_id\":\"SYN-0066-D03\",\"version\":1,\"quote\":\"Morning ICE screen on 2036-11-12, done at 08:40 with the patient sitting up after breakfast.\"},{\"document_id\":\"SYN-0066-D03\",\"version\":1,\"quote\":\"so the total was 8 out of 10. No sedating medicines had been given.\"},{\"document_id\":\"SYN-0066-D02\",\"version\":1,\"quote\":\"At 21:00 the patient, reading a novel, scored 10/10 on ICE.\"},{\"document_id\":\"SYN-0066-D08\",\"version\":1,\"quote\":\"Neurotoxicity from Day +4 with an ICE low of 5/10, treated with dexamethasone.\"}]},\"max_grade\":{\"category\":\"7.2\",\"documented_value\":\"3\",\"explanation\":\"The record gives a maximum of Grade 2. The documents support Grade 2 from ICE 5/10 on 2036-11-13. They also prove Grade 3: the EEG of 2036-11-15 (Day +7, inside the window) recorded a non-convulsive electrographic seizure that ended after IV levetiracetam, with return to baseline. That is 'non-convulsive seizures on EEG that resolve with intervention' (Table 6, Grade 3). The diffuse slowing is not a seizure. Levetiracetam is not a competing cause, and no clinician attributed the seizure to anything else. The EEG report was signed on 2036-11-18, after the record was made on 2036-11-17, but it is signed content and the current record was never updated. The record is lower by 1 grade.\",\"evidence\":[{\"document_id\":\"SYN-0066-D07\",\"version\":1,\"quote\":\"Impression: one non-convulsive seizure of 3 minutes that ended after intravenous levetiracetam, with return to baseline; mild diffuse slowing.\"},{\"document_id\":\"SYN-0066-D07\",\"version\":1,\"quote\":\"Recorded 2036-11-15 from 09:40 to 11:10.\"},{\"document_id\":\"SYN-0066-D04\",\"version\":1,\"quote\":\"the ICE score of 5/10 at 10:20 shows clear worsening\"},{\"document_id\":\"SYN-0066-D08\",\"version\":1,\"quote\":\"The EEG of 2036-11-15 recorded a single non-convulsive seizure that stopped after levetiracetam\"}]}}",
+  "structured_output": {
+   "out_of_scope_reason": "in scope",
+   "onset": {
+    "category": "7.7",
+    "documented_value": "2036-11-12",
+    "explanation": "Formal Grade 0 assessments (ICE 10/10) were documented on Day 0 (2036-11-08) and Day +2 (2036-11-10). The earliest qualifying finding is ICE 8/10 at 08:40 on 2036-11-12 (Day +4). That meets the Grade 1 ICE criterion, and the note says no sedating medicines had been given. The recorded onset of 2036-11-12 falls on the same calendar day. The discharge summary also dates neurotoxicity from Day +4.",
+    "evidence": [
+     {
+      "document_id": "SYN-0066-D03",
+      "version": 1,
+      "quote": "Morning ICE screen on 2036-11-12, done at 08:40 with the patient sitting up after breakfast."
+     },
+     {
+      "document_id": "SYN-0066-D03",
+      "version": 1,
+      "quote": "so the total was 8 out of 10. No sedating medicines had been given."
+     },
+     {
+      "document_id": "SYN-0066-D02",
+      "version": 1,
+      "quote": "At 21:00 the patient, reading a novel, scored 10/10 on ICE."
+     },
+     {
+      "document_id": "SYN-0066-D08",
+      "version": 1,
+      "quote": "Neurotoxicity from Day +4 with an ICE low of 5/10, treated with dexamethasone."
+     }
+    ]
+   },
+   "max_grade": {
+    "category": "7.2",
+    "documented_value": "3",
+    "explanation": "The record gives a maximum of Grade 2. The documents support Grade 2 from ICE 5/10 on 2036-11-13. They also prove Grade 3: the EEG of 2036-11-15 (Day +7, inside the window) recorded a non-convulsive electrographic seizure that ended after IV levetiracetam, with return to baseline. That is 'non-convulsive seizures on EEG that resolve with intervention' (Table 6, Grade 3). The diffuse slowing is not a seizure. Levetiracetam is not a competing cause, and no clinician attributed the seizure to anything else. The EEG report was signed on 2036-11-18, after the record was made on 2036-11-17, but it is signed content and the current record was never updated. The record is lower by 1 grade.",
+    "evidence": [
+     {
+      "document_id": "SYN-0066-D07",
+      "version": 1,
+      "quote": "Impression: one non-convulsive seizure of 3 minutes that ended after intravenous levetiracetam, with return to baseline; mild diffuse slowing."
+     },
+     {
+      "document_id": "SYN-0066-D07",
+      "version": 1,
+      "quote": "Recorded 2036-11-15 from 09:40 to 11:10."
+     },
+     {
+      "document_id": "SYN-0066-D04",
+      "version": 1,
+      "quote": "the ICE score of 5/10 at 10:20 shows clear worsening"
+     },
+     {
+      "document_id": "SYN-0066-D08",
+      "version": 1,
+      "quote": "The EEG of 2036-11-15 recorded a single non-convulsive seizure that stopped after levetiracetam"
+     }
+    ]
+   }
+  },
+  "ttft_ms": 5419,
+  "type": "result",
+  "duration_ms": 12988,
+  "uuid": "31dbd817-6760-42a6-a0e8-c37c11e8d16c",
+  "ttft_stream_ms": 2393,
+  "time_to_request_ms": 198,
+  "first_content_frame_ms": 2393,
+  "queued_turn_count": 0,
+  "result_index": 0,
+  "credential_expires_at": "2026-12-06T22:19:03.648Z"
+ }
+}

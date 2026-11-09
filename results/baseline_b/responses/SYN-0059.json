@@ -1,0 +1,213 @@
+{
+ "case_id": "SYN-0059",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "thinking": "adaptive (always on for this model)",
+ "route": "Claude Code print mode",
+ "command": [
+  "claude",
+  "-p",
+  "--model",
+  "claude-opus-5-5",
+  "--effort",
+  "high",
+  "--system-prompt",
+  "<instructions: system_prompt.md>",
+  "--tools",
+  "",
+  "--json-schema",
+  "<answer_schema.json>",
+  "--output-format",
+  "json",
+  "--no-session-persistence",
+  "--strict-mcp-config",
+  "--setting-sources",
+  "project"
+ ],
+ "system_prompt_sha256": "0cda59baefac995b4e20a8dde5550077ed76c7f0f789f8c4661cf246f64e1596",
+ "answer_schema_sha256": "9dc6f412e8631752ce5bf4ce82b16ac3ce5d04d9dfb8709c8b459a7a11d2ad11",
+ "fallback_model": null,
+ "user_message_sha256": "b6c61f8142bf90b34fadd61bba1653fa1a90b778cadaef57870d88162615845b",
+ "requested_at": "2026-11-09T08:24:11-06:00",
+ "stop_reason": "tool_use",
+ "finished": true,
+ "answer_text": "{\"out_of_scope_reason\": \"in scope\", \"onset\": {\"category\": \"7.7\", \"documented_value\": \"2034-12-09\", \"explanation\": \"Day +2 (2034-12-07) has a formal Grade 0 assessment (ICE 10/10, no focal deficit). The earliest qualifying finding is ICE 8/10 at 15:15 on 2034-12-09 (Grade 1), with no documented competing cause. The record onset of 2034-12-09 is the same calendar day, so the difference is 0 days. The onset was unchanged between record versions, so 7.6 does not apply.\", \"evidence\": [{\"document_id\": \"SYN-0059-D01\", \"version\": 1, \"quote\": \"Neuro: ICE 10/10 at 09:50\"}, {\"document_id\": \"SYN-0059-D02\", \"version\": 1, \"quote\": \"Neuro: ICE 8/10 at 15:15 (orientation 3/4, attention 0/1)\"}]}, \"max_grade\": {\"category\": \"7.6\", \"documented_value\": \"3\", \"explanation\": \"The addendum in SYN-0059-D03 v2 documents a witnessed generalised seizure at 03:10 on 2034-12-10. It lasted about 1 minute, stopped without treatment and the patient was back to baseline within 5 minutes. That is a rapidly resolving clinical seizure, which is Grade 3; it does not meet the Grade 4 criteria (over 5 minutes, or repeated seizures without return to baseline). The lowest ICE was 6/10 (Grade 2). No sedating medication is documented; tocilizumab and levetiracetam are not competing causes. The record changed from Grade 2 (v1) to Grade 3 (v2), and the current value agrees with the documents. The supporting addendum (documented_at 2034-12-13T12:00) came after v1 recorded_at (2034-12-12T09:30) and no later than v2 recorded_at (2034-12-14T10:00), so the change is a legitimate revision.\", \"evidence\": [{\"document_id\": \"SYN-0059-D03\", \"version\": 2, \"quote\": \"Addendum 13 Dec: night nurse reports a witnessed seizure at 03:10 on 10 Dec, generalised, lasting about 1 minute, stopped without treatment, back to baseline within 5 minutes.\"}, {\"document_id\": \"SYN-0059-D03\", \"version\": 2, \"quote\": \"Neuro: ICE 6/10 at 10:40 (orientation 2/4, naming 2/3, commands 1/1, writing 0/1, attention 1/1)\"}]}}",
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 2625,
+  "cache_read_input_tokens": 27340,
+  "output_tokens": 2207,
+  "output_tokens_details": {
+   "thinking_tokens": 486
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 2625,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 2207,
+    "cache_read_input_tokens": 27340,
+    "cache_creation_input_tokens": 2625,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 2625
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "models_reported": [
+  "claude-opus-5-5"
+ ],
+ "claude_code_cost_usd": 0.07061600000000001,
+ "duration_seconds": 19.619,
+ "cli_output": {
+  "duration_api_ms": 18868,
+  "stop_reason": "tool_use",
+  "session_id": "2627ff78-5226-4642-8a3c-c942567b89de",
+  "total_cost_usd": 0.07061600000000001,
+  "usage": {
+   "input_tokens": 2,
+   "cache_creation_input_tokens": 2625,
+   "cache_read_input_tokens": 27340,
+   "output_tokens": 2207,
+   "output_tokens_details": {
+    "thinking_tokens": 486
+   },
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "service_tier": "standard",
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 2625,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "inference_geo": "global",
+   "iterations": [
+    {
+     "input_tokens": 2,
+     "output_tokens": 2207,
+     "cache_read_input_tokens": 27340,
+     "cache_creation_input_tokens": 2625,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 0,
+      "ephemeral_1h_input_tokens": 2625
+     },
+     "type": "message"
+    }
+   ],
+   "speed": "standard",
+   "fallback_credit": null
+  },
+  "modelUsage": {
+   "claude-opus-5-5": {
+    "inputTokens": 2,
+    "outputTokens": 2207,
+    "cacheReadInputTokens": 27340,
+    "cacheCreationInputTokens": 2625,
+    "webSearchRequests": 0,
+    "costUSD": 0.07061600000000001,
+    "contextWindow": 1000000,
+    "maxOutputTokens": 128000,
+    "thinkingTokens": 486,
+    "cacheCreationEphemeral5mInputTokens": 0,
+    "cacheCreationEphemeral1hInputTokens": 2625,
+    "canonicalModel": "claude-opus-5-5",
+    "provider": "firstParty",
+    "costBasis": "list"
+   }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+   "spawned": 0,
+   "requested": {
+    "background": 0,
+    "foreground": 0,
+    "unset": 0
+   },
+   "started_in_background": 0,
+   "max_depth": 0,
+   "spawned_by_subagents": 0,
+   "completed": 0,
+   "failed": 0,
+   "killed": {
+    "parent": 0,
+    "user": 0,
+    "system": 0
+   },
+   "refused": {
+    "depth_limit": 0,
+    "concurrency_limit": 0,
+    "budget": 0
+   },
+   "by_type": {}
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 2,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "{\"out_of_scope_reason\":\"in scope\",\"onset\":{\"category\":\"7.7\",\"documented_value\":\"2034-12-09\",\"explanation\":\"Day +2 (2034-12-07) has a formal Grade 0 assessment (ICE 10/10, no focal deficit). The earliest qualifying finding is ICE 8/10 at 15:15 on 2034-12-09 (Grade 1), with no documented competing cause. The record onset of 2034-12-09 is the same calendar day, so the difference is 0 days. The onset was unchanged between record versions, so 7.6 does not apply.\",\"evidence\":[{\"document_id\":\"SYN-0059-D01\",\"version\":1,\"quote\":\"Neuro: ICE 10/10 at 09:50\"},{\"document_id\":\"SYN-0059-D02\",\"version\":1,\"quote\":\"Neuro: ICE 8/10 at 15:15 (orientation 3/4, attention 0/1)\"}]},\"max_grade\":{\"category\":\"7.6\",\"documented_value\":\"3\",\"explanation\":\"The addendum in SYN-0059-D03 v2 documents a witnessed generalised seizure at 03:10 on 2034-12-10. It lasted about 1 minute, stopped without treatment and the patient was back to baseline within 5 minutes. That is a rapidly resolving clinical seizure, which is Grade 3; it does not meet the Grade 4 criteria (over 5 minutes, or repeated seizures without return to baseline). The lowest ICE was 6/10 (Grade 2). No sedating medication is documented; tocilizumab and levetiracetam are not competing causes. The record changed from Grade 2 (v1) to Grade 3 (v2), and the current value agrees with the documents. The supporting addendum (documented_at 2034-12-13T12:00) came after v1 recorded_at (2034-12-12T09:30) and no later than v2 recorded_at (2034-12-14T10:00), so the change is a legitimate revision.\",\"evidence\":[{\"document_id\":\"SYN-0059-D03\",\"version\":2,\"quote\":\"Addendum 13 Dec: night nurse reports a witnessed seizure at 03:10 on 10 Dec, generalised, lasting about 1 minute, stopped without treatment, back to baseline within 5 minutes.\"},{\"document_id\":\"SYN-0059-D03\",\"version\":2,\"quote\":\"Neuro: ICE 6/10 at 10:40 (orientation 2/4, naming 2/3, commands 1/1, writing 0/1, attention 1/1)\"}]}}",
+  "structured_output": {
+   "out_of_scope_reason": "in scope",
+   "onset": {
+    "category": "7.7",
+    "documented_value": "2034-12-09",
+    "explanation": "Day +2 (2034-12-07) has a formal Grade 0 assessment (ICE 10/10, no focal deficit). The earliest qualifying finding is ICE 8/10 at 15:15 on 2034-12-09 (Grade 1), with no documented competing cause. The record onset of 2034-12-09 is the same calendar day, so the difference is 0 days. The onset was unchanged between record versions, so 7.6 does not apply.",
+    "evidence": [
+     {
+      "document_id": "SYN-0059-D01",
+      "version": 1,
+      "quote": "Neuro: ICE 10/10 at 09:50"
+     },
+     {
+      "document_id": "SYN-0059-D02",
+      "version": 1,
+      "quote": "Neuro: ICE 8/10 at 15:15 (orientation 3/4, attention 0/1)"
+     }
+    ]
+   },
+   "max_grade": {
+    "category": "7.6",
+    "documented_value": "3",
+    "explanation": "The addendum in SYN-0059-D03 v2 documents a witnessed generalised seizure at 03:10 on 2034-12-10. It lasted about 1 minute, stopped without treatment and the patient was back to baseline within 5 minutes. That is a rapidly resolving clinical seizure, which is Grade 3; it does not meet the Grade 4 criteria (over 5 minutes, or repeated seizures without return to baseline). The lowest ICE was 6/10 (Grade 2). No sedating medication is documented; tocilizumab and levetiracetam are not competing causes. The record changed from Grade 2 (v1) to Grade 3 (v2), and the current value agrees with the documents. The supporting addendum (documented_at 2034-12-13T12:00) came after v1 recorded_at (2034-12-12T09:30) and no later than v2 recorded_at (2034-12-14T10:00), so the change is a legitimate revision.",
+    "evidence": [
+     {
+      "document_id": "SYN-0059-D03",
+      "version": 2,
+      "quote": "Addendum 13 Dec: night nurse reports a witnessed seizure at 03:10 on 10 Dec, generalised, lasting about 1 minute, stopped without treatment, back to baseline within 5 minutes."
+     },
+     {
+      "document_id": "SYN-0059-D03",
+      "version": 2,
+      "quote": "Neuro: ICE 6/10 at 10:40 (orientation 2/4, naming 2/3, commands 1/1, writing 0/1, attention 1/1)"
+     }
+    ]
+   }
+  },
+  "ttft_ms": 6202,
+  "type": "result",
+  "duration_ms": 19146,
+  "uuid": "ced13091-4887-442f-b760-61a0ee43d0ed",
+  "ttft_stream_ms": 2332,
+  "time_to_request_ms": 277,
+  "first_content_frame_ms": 2332,
+  "queued_turn_count": 0,
+  "result_index": 0,
+  "credential_expires_at": "2026-12-06T22:19:03.648Z"
+ }
+}

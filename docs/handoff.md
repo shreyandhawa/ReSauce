@@ -31,6 +31,46 @@ This replaces the earlier plan of a 3 to 4 hour time box. No "§0 time box" exis
 
 ---
 
+## 2026-11-09: Baseline B (Claude Opus 5.5) specified, run once and scored
+
+- **Status:** Baseline B is measured on all 72 dev-v1 cases. It is shown on the Results page (no rebuild needed: the page reads results/*.json; one CSS fix is waiting for the other chat's final web/dist build) and in the README. ReSauce and Baseline A results are unchanged (metrics and per-case outputs identical to the previous committed run). `pytest`: 186 passed. Frozen files untouched.
+- **Done:**
+  - **Method first:** evaluation-spec v0.2 §5 and §6 were written and committed (c6aee00, c827f2e, 4fa9174) before any case was sent.
+    - Model `claude-opus-5-5`, effort high, adaptive thinking.
+    - Instructions: clinical-methods "How to read" through §9.
+    - Input: the case files as JSON. Output: a schema-constrained JSON answer with quotes.
+    - No examples, no tuning, one run. Scoring exactly per §3.
+    - Included in a report only when all 72 answers exist and their fingerprints match the run's instructions and the current case files.
+  - **`src/resauce/baseline_b.py`:**
+    - `check`: one tiny request with no case data.
+    - `run`: resumable, 4 at a time, the first case alone.
+    - Pure functions that turn a stored answer into a method output (quotes located by exact search in the named document version).
+  - **`evaluate.py`:** Baseline B added as a third method from stored answers (allowed by the freeze rule). It also gained `limitations()`, `baseline_b_check()` and `OUT_OF_SCOPE_METHODS`. Scoring functions are unchanged.
+  - **Display:** `app/api.py` and Results.jsx show three methods (with the model name read from the results metadata) and the Baseline B caveat. The About page says the app never calls the model.
+  - **Run:** 2026-11-09, one session, Claude Code 2.1.319, code commit 4fa9174. 72/72 answers: all finished, all answered by claude-opus-5-5 only, 2 turns each (answer + StructuredOutput tool), no tools, no permission denials, no sub-agents, no safety stops, no email addresses.
+- **Results** (results/report.md). Baseline B scored:
+  - dev: precision 1.00 (10/10), recall 1.00 (10/10), exact agreement 1.00 (38/38);
+  - held-out: precision 1.00 (20/20), recall 1.00 (20/20), exact agreement 1.00 (98/98);
+  - out of scope: 1/1 and 3/3, with matching reasons;
+  - evidence quotes: 156/156 and 330/331 (SYN-0060: an exact quote credited to D09 instead of D10);
+  - time: median 15 s per case (10–25 s). API-equivalent token cost $3.82, not billed (user's Claude plan).
+- **Decisions & why:**
+  - **Route: Claude Code print mode on the user's Max plan** (user's choice), not the Messages API. The `anthropic` library was approved but is not used or installed. `--tools ""` means the model cannot open files; the API key variables are removed so it can never bill a key.
+  - **No `/code-review` re-run after the route change:** the first review covered the design, and the new call path was tested end to end with a stand-in `claude` program (run, resume, failure stop, scoring). The check found the one real bug: Claude Code's structured answers end with stop reason `tool_use`, so "finished" now means `terminal_reason` is "completed".
+  - **The check found extra context Claude Code adds:** an Agent SDK preamble, the account email, an environment block with today's date, and the StructuredOutput tool. It is disclosed in spec §5. The email was removed from `results/baseline_b/check.json` before committing, and future checks remove emails automatically.
+  - **README framing:** Baseline B's perfect agreement is reported as measured. It is *not* presented as clinical correctness. The cases, the reference answers and the earlier blind re-derivation are all Claude-written from the same rules, so a Claude model is expected to match them. The user had expected "very similar to our pipeline"; the measured result is higher than ReSauce on held-out, and is reported as such.
+  - **Nested Claude Code is refused** ("will crash all active sessions"), so the user ran `check` and `run` in their own terminal. The terminal `claude` was 2.1.71, which is too old for Opus 5.5; the user ran `claude update` (2.1.319). That does not affect the VS Code chats, which run the extension's own 2.1.319 binary.
+  - **Another chat (resauce-aa) is redesigning the pipeline front end.** By agreement this session ran no `npm run build`, committed no web/dist, and staged only its own hunks of styles.css. resauce-aa will include the `.pair-pct.n-3` container-query fix (three figures overlapped at 1440 px) in its final build.
+- **Next steps:** (1) Clinician-checked cases or answers are the only way to tell "right" from "reads the rules like Claude"; this matters more now that Baseline B matches the reference perfectly. (2) Locked set as planned; Baseline B on it would need its own run folder (`--out`) and `evaluate --split-name locked --baseline-b <folder>/responses`.
+- **Open questions:** should a second Baseline B run (to measure its run-to-run variation) or a non-Claude model be added, given the same-family limitation? Licence still not chosen.
+- **How to verify:**
+  ```bash
+  .venv/bin/python -m pytest -p no:cacheprovider -q   # 186 passed
+  .venv/bin/python -m resauce.evaluate --out /tmp/check-eval   # same numbers as results/; never calls the model
+  ```
+
+---
+
 ## 2026-11-09: README rewrite with screenshots, broader subtitle
 
 - **Status:** README rewritten for a professional first impression, with seven screenshots. The home-page subtitle now presents ReSauce as a checker for clinical research records in general, with ICANS named as the current dataset. `src/`, `tests/`, `data/`, `reference/` and `results/` are unchanged. `pytest`: 176 passed. `npm run build` passes.

@@ -1,0 +1,218 @@
+{
+ "case_id": "SYN-0035",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "thinking": "adaptive (always on for this model)",
+ "route": "Claude Code print mode",
+ "command": [
+  "claude",
+  "-p",
+  "--model",
+  "claude-opus-5-5",
+  "--effort",
+  "high",
+  "--system-prompt",
+  "<instructions: system_prompt.md>",
+  "--tools",
+  "",
+  "--json-schema",
+  "<answer_schema.json>",
+  "--output-format",
+  "json",
+  "--no-session-persistence",
+  "--strict-mcp-config",
+  "--setting-sources",
+  "project"
+ ],
+ "system_prompt_sha256": "0cda59baefac995b4e20a8dde5550077ed76c7f0f789f8c4661cf246f64e1596",
+ "answer_schema_sha256": "9dc6f412e8631752ce5bf4ce82b16ac3ce5d04d9dfb8709c8b459a7a11d2ad11",
+ "fallback_model": null,
+ "user_message_sha256": "dc59508ba8637a3403742ab76fd422a6c7598bac9182d743972a36416279bb55",
+ "requested_at": "2026-11-09T08:22:27-06:00",
+ "stop_reason": "tool_use",
+ "finished": true,
+ "answer_text": "{\"out_of_scope_reason\": \"in scope\", \"onset\": {\"category\": \"7.8\", \"documented_value\": \"2033-11-16\", \"explanation\": \"The record reports ICANS (icans_reported true) but its onset date is empty, so this field is a missing recorded value (§7.8, A20). On 14 Nov (Day +3) the ICE score was 10/10, a formal Grade 0 assessment. The headache that day is excluded from grading, and tocilizumab and acetaminophen are not competing causes (A35). The first qualifying finding is ICE 8/10 at 15:00 on 16 Nov (Day +5), which is Grade 1. No competing cause is documented and the note is signed. So the onset the documents support is 2033-11-16.\", \"evidence\": [{\"document_id\": \"SYN-0035-D01\", \"version\": 1, \"quote\": \"ICE 10/10 at 10:00.\"}, {\"document_id\": \"SYN-0035-D02\", \"version\": 1, \"quote\": \"ICE 8/10 at 15:00 on 16 Nov (orientation 3/4, attention 0/1, rest complete).\"}]}, \"max_grade\": {\"category\": \"7.7\", \"documented_value\": \"2\", \"explanation\": \"The worst assessment is the neurology consult on 17 Nov (Day +6). Its ICE score is 5/10, and the item scores add up to 5, which is Grade 2. The patient awakens to voice, also Grade 2. No seizure or focal motor deficit is documented, and there are no imaging findings. The hand tremor is excluded from grading (§4.2, A11). Dexamethasone is ICANS treatment, not a competing cause (A35). There is no documented 'not assessable' period. The only unsigned document, D04, is a dietitian note with no neurological content and is not used. The highest grade the documents support is 2, which matches the record's Grade 2. The record has a single version, so there is no revision to assess.\", \"evidence\": [{\"document_id\": \"SYN-0035-D03\", \"version\": 1, \"quote\": \"ICE 5/10 at 11:10 (orientation 1/4, naming 2/3, commands 1/1, writing 0/1, attention 1/1).\"}, {\"document_id\": \"SYN-0035-D03\", \"version\": 1, \"quote\": \"Awakens to voice.\"}, {\"document_id\": \"SYN-0035-D02\", \"version\": 1, \"quote\": \"ICE 8/10 at 15:00 on 16 Nov (orientation 3/4, attention 0/1, rest complete).\"}]}}",
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 1634,
+  "cache_read_input_tokens": 27340,
+  "output_tokens": 1326,
+  "output_tokens_details": {
+   "thinking_tokens": 413
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 1634,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 1326,
+    "cache_read_input_tokens": 27340,
+    "cache_creation_input_tokens": 1634,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 1634
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "models_reported": [
+  "claude-opus-5-5"
+ ],
+ "claude_code_cost_usd": 0.045068,
+ "duration_seconds": 12.615,
+ "cli_output": {
+  "duration_api_ms": 11889,
+  "stop_reason": "tool_use",
+  "session_id": "69e4a511-ff29-4434-9535-19d300a96f16",
+  "total_cost_usd": 0.045068,
+  "usage": {
+   "input_tokens": 2,
+   "cache_creation_input_tokens": 1634,
+   "cache_read_input_tokens": 27340,
+   "output_tokens": 1326,
+   "output_tokens_details": {
+    "thinking_tokens": 413
+   },
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "service_tier": "standard",
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 1634,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "inference_geo": "global",
+   "iterations": [
+    {
+     "input_tokens": 2,
+     "output_tokens": 1326,
+     "cache_read_input_tokens": 27340,
+     "cache_creation_input_tokens": 1634,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 0,
+      "ephemeral_1h_input_tokens": 1634
+     },
+     "type": "message"
+    }
+   ],
+   "speed": "standard",
+   "fallback_credit": null
+  },
+  "modelUsage": {
+   "claude-opus-5-5": {
+    "inputTokens": 2,
+    "outputTokens": 1326,
+    "cacheReadInputTokens": 27340,
+    "cacheCreationInputTokens": 1634,
+    "webSearchRequests": 0,
+    "costUSD": 0.045068,
+    "contextWindow": 1000000,
+    "maxOutputTokens": 128000,
+    "thinkingTokens": 413,
+    "cacheCreationEphemeral5mInputTokens": 0,
+    "cacheCreationEphemeral1hInputTokens": 1634,
+    "canonicalModel": "claude-opus-5-5",
+    "provider": "firstParty",
+    "costBasis": "list"
+   }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+   "spawned": 0,
+   "requested": {
+    "background": 0,
+    "foreground": 0,
+    "unset": 0
+   },
+   "started_in_background": 0,
+   "max_depth": 0,
+   "spawned_by_subagents": 0,
+   "completed": 0,
+   "failed": 0,
+   "killed": {
+    "parent": 0,
+    "user": 0,
+    "system": 0
+   },
+   "refused": {
+    "depth_limit": 0,
+    "concurrency_limit": 0,
+    "budget": 0
+   },
+   "by_type": {}
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 2,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "{\"out_of_scope_reason\":\"in scope\",\"onset\":{\"category\":\"7.8\",\"documented_value\":\"2033-11-16\",\"explanation\":\"The record reports ICANS (icans_reported true) but its onset date is empty, so this field is a missing recorded value (§7.8, A20). On 14 Nov (Day +3) the ICE score was 10/10, a formal Grade 0 assessment. The headache that day is excluded from grading, and tocilizumab and acetaminophen are not competing causes (A35). The first qualifying finding is ICE 8/10 at 15:00 on 16 Nov (Day +5), which is Grade 1. No competing cause is documented and the note is signed. So the onset the documents support is 2033-11-16.\",\"evidence\":[{\"document_id\":\"SYN-0035-D01\",\"version\":1,\"quote\":\"ICE 10/10 at 10:00.\"},{\"document_id\":\"SYN-0035-D02\",\"version\":1,\"quote\":\"ICE 8/10 at 15:00 on 16 Nov (orientation 3/4, attention 0/1, rest complete).\"}]},\"max_grade\":{\"category\":\"7.7\",\"documented_value\":\"2\",\"explanation\":\"The worst assessment is the neurology consult on 17 Nov (Day +6). Its ICE score is 5/10, and the item scores add up to 5, which is Grade 2. The patient awakens to voice, also Grade 2. No seizure or focal motor deficit is documented, and there are no imaging findings. The hand tremor is excluded from grading (§4.2, A11). Dexamethasone is ICANS treatment, not a competing cause (A35). There is no documented 'not assessable' period. The only unsigned document, D04, is a dietitian note with no neurological content and is not used. The highest grade the documents support is 2, which matches the record's Grade 2. The record has a single version, so there is no revision to assess.\",\"evidence\":[{\"document_id\":\"SYN-0035-D03\",\"version\":1,\"quote\":\"ICE 5/10 at 11:10 (orientation 1/4, naming 2/3, commands 1/1, writing 0/1, attention 1/1).\"},{\"document_id\":\"SYN-0035-D03\",\"version\":1,\"quote\":\"Awakens to voice.\"},{\"document_id\":\"SYN-0035-D02\",\"version\":1,\"quote\":\"ICE 8/10 at 15:00 on 16 Nov (orientation 3/4, attention 0/1, rest complete).\"}]}}",
+  "structured_output": {
+   "out_of_scope_reason": "in scope",
+   "onset": {
+    "category": "7.8",
+    "documented_value": "2033-11-16",
+    "explanation": "The record reports ICANS (icans_reported true) but its onset date is empty, so this field is a missing recorded value (§7.8, A20). On 14 Nov (Day +3) the ICE score was 10/10, a formal Grade 0 assessment. The headache that day is excluded from grading, and tocilizumab and acetaminophen are not competing causes (A35). The first qualifying finding is ICE 8/10 at 15:00 on 16 Nov (Day +5), which is Grade 1. No competing cause is documented and the note is signed. So the onset the documents support is 2033-11-16.",
+    "evidence": [
+     {
+      "document_id": "SYN-0035-D01",
+      "version": 1,
+      "quote": "ICE 10/10 at 10:00."
+     },
+     {
+      "document_id": "SYN-0035-D02",
+      "version": 1,
+      "quote": "ICE 8/10 at 15:00 on 16 Nov (orientation 3/4, attention 0/1, rest complete)."
+     }
+    ]
+   },
+   "max_grade": {
+    "category": "7.7",
+    "documented_value": "2",
+    "explanation": "The worst assessment is the neurology consult on 17 Nov (Day +6). Its ICE score is 5/10, and the item scores add up to 5, which is Grade 2. The patient awakens to voice, also Grade 2. No seizure or focal motor deficit is documented, and there are no imaging findings. The hand tremor is excluded from grading (§4.2, A11). Dexamethasone is ICANS treatment, not a competing cause (A35). There is no documented 'not assessable' period. The only unsigned document, D04, is a dietitian note with no neurological content and is not used. The highest grade the documents support is 2, which matches the record's Grade 2. The record has a single version, so there is no revision to assess.",
+    "evidence": [
+     {
+      "document_id": "SYN-0035-D03",
+      "version": 1,
+      "quote": "ICE 5/10 at 11:10 (orientation 1/4, naming 2/3, commands 1/1, writing 0/1, attention 1/1)."
+     },
+     {
+      "document_id": "SYN-0035-D03",
+      "version": 1,
+      "quote": "Awakens to voice."
+     },
+     {
+      "document_id": "SYN-0035-D02",
+      "version": 1,
+      "quote": "ICE 8/10 at 15:00 on 16 Nov (orientation 3/4, attention 0/1, rest complete)."
+     }
+    ]
+   }
+  },
+  "ttft_ms": 5790,
+  "type": "result",
+  "duration_ms": 12044,
+  "uuid": "defc8cb7-e734-4f1b-a4c3-cd031066a56a",
+  "ttft_stream_ms": 2601,
+  "time_to_request_ms": 155,
+  "first_content_frame_ms": 2601,
+  "queued_turn_count": 0,
+  "result_index": 0,
+  "credential_expires_at": "2026-12-06T22:19:03.648Z"
+ }
+}

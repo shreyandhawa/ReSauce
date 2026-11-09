@@ -1,0 +1,233 @@
+{
+ "case_id": "SYN-0046",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "thinking": "adaptive (always on for this model)",
+ "route": "Claude Code print mode",
+ "command": [
+  "claude",
+  "-p",
+  "--model",
+  "claude-opus-5-5",
+  "--effort",
+  "high",
+  "--system-prompt",
+  "<instructions: system_prompt.md>",
+  "--tools",
+  "",
+  "--json-schema",
+  "<answer_schema.json>",
+  "--output-format",
+  "json",
+  "--no-session-persistence",
+  "--strict-mcp-config",
+  "--setting-sources",
+  "project"
+ ],
+ "system_prompt_sha256": "0cda59baefac995b4e20a8dde5550077ed76c7f0f789f8c4661cf246f64e1596",
+ "answer_schema_sha256": "9dc6f412e8631752ce5bf4ce82b16ac3ce5d04d9dfb8709c8b459a7a11d2ad11",
+ "fallback_model": null,
+ "user_message_sha256": "f87e2a76a514527ae62820a886a8ddc9c9849c6d04fea2a97d1dd8ba06a55374",
+ "requested_at": "2026-11-09T08:23:12-06:00",
+ "stop_reason": "tool_use",
+ "finished": true,
+ "answer_text": "{\"out_of_scope_reason\": \"in scope\", \"onset\": {\"category\": \"7.5\", \"documented_value\": \"2031-05-23 or 2031-05-24\", \"explanation\": \"Reason: attribution. On Day 3 (2031-05-21), ICE was 10/10, a formal Grade 0 assessment. The earliest finding that could count is ICE 8/10 at 08:50 on 2031-05-23 (Grade 1). The same note documents lorazepam 0.5 mg IV at 04:00 that day. Lorazepam is a benzodiazepine, which is on the closed list of competing causes (A35), and it was given in the same note and within the 24 hours before the finding (A30). No clinician states whether the low score was due to ICANS or the drug. Reading 1: if the ICE 8 counts, onset is 2031-05-23 and the record's 2031-05-24 is a mismatch (7.1, record 1 day later). Reading 2: if it does not count, the first qualifying finding is ICE 6/10 at 11:00 on 2031-05-24, which is 31 hours after the lorazepam and so not affected by it. Onset is then 2031-05-24, matching the record (7.7). The two readings give different categories, so the result is 7.5.\", \"evidence\": [{\"document_id\": \"SYN-0046-D01\", \"version\": 1, \"quote\": \"ICE 10/10 at 09:40.\"}, {\"document_id\": \"SYN-0046-D02\", \"version\": 1, \"quote\": \"ICE 8/10 at 08:50 (orientation 3/4, attention 0/1, rest complete).\"}, {\"document_id\": \"SYN-0046-D02\", \"version\": 1, \"quote\": \"Lorazepam 0.5 mg IV given at 04:00 for nausea.\"}, {\"document_id\": \"SYN-0046-D03\", \"version\": 1, \"quote\": \"24 May 11:00: ICE 6/10 (orientation 2/4, naming 2/3, commands 1/1, writing 1/1, attention 0/1).\"}]}, \"max_grade\": {\"category\": \"7.7\", \"documented_value\": \"2\", \"explanation\": \"The worst documented grade is 2. On 2031-05-24 the patient scored ICE 6/10 and ICE 5/10 (both Grade 2) and 'awakens to voice' (Grade 2). No document shows a seizure, focal motor deficit, edema, or consciousness at Grade 3 or worse. The hand tremor is excluded from grading. Dexamethasone is a treatment, not a competing cause. The lorazepam question affects only the Grade 1 finding on 2031-05-23, so it does not change the maximum. The record's Grade 2 matches the documents.\", \"evidence\": [{\"document_id\": \"SYN-0046-D03\", \"version\": 1, \"quote\": \"24 May 11:00: ICE 6/10 (orientation 2/4, naming 2/3, commands 1/1, writing 1/1, attention 0/1).\"}, {\"document_id\": \"SYN-0046-D04\", \"version\": 1, \"quote\": \"ICE 5/10 at 14:30 on 24 May (orientation 1/4, naming 2/3, commands 1/1, writing 0/1, attention 1/1).\"}, {\"document_id\": \"SYN-0046-D04\", \"version\": 1, \"quote\": \"Awakens to voice and stays awake while spoken to.\"}, {\"document_id\": \"SYN-0046-D04\", \"version\": 1, \"quote\": \"No focal motor deficit, no seizure activity.\"}]}}",
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 1875,
+  "cache_read_input_tokens": 27340,
+  "output_tokens": 2064,
+  "output_tokens_details": {
+   "thinking_tokens": 820
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 1875,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 2064,
+    "cache_read_input_tokens": 27340,
+    "cache_creation_input_tokens": 1875,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 1875
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "models_reported": [
+  "claude-opus-5-5"
+ ],
+ "claude_code_cost_usd": 0.061756,
+ "duration_seconds": 18.287,
+ "cli_output": {
+  "duration_api_ms": 17616,
+  "stop_reason": "tool_use",
+  "session_id": "6086bf74-f4e5-4344-930e-44807d01c2d8",
+  "total_cost_usd": 0.061756,
+  "usage": {
+   "input_tokens": 2,
+   "cache_creation_input_tokens": 1875,
+   "cache_read_input_tokens": 27340,
+   "output_tokens": 2064,
+   "output_tokens_details": {
+    "thinking_tokens": 820
+   },
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "service_tier": "standard",
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 1875,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "inference_geo": "global",
+   "iterations": [
+    {
+     "input_tokens": 2,
+     "output_tokens": 2064,
+     "cache_read_input_tokens": 27340,
+     "cache_creation_input_tokens": 1875,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 0,
+      "ephemeral_1h_input_tokens": 1875
+     },
+     "type": "message"
+    }
+   ],
+   "speed": "standard",
+   "fallback_credit": null
+  },
+  "modelUsage": {
+   "claude-opus-5-5": {
+    "inputTokens": 2,
+    "outputTokens": 2064,
+    "cacheReadInputTokens": 27340,
+    "cacheCreationInputTokens": 1875,
+    "webSearchRequests": 0,
+    "costUSD": 0.061756,
+    "contextWindow": 1000000,
+    "maxOutputTokens": 128000,
+    "thinkingTokens": 820,
+    "cacheCreationEphemeral5mInputTokens": 0,
+    "cacheCreationEphemeral1hInputTokens": 1875,
+    "canonicalModel": "claude-opus-5-5",
+    "provider": "firstParty",
+    "costBasis": "list"
+   }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+   "spawned": 0,
+   "requested": {
+    "background": 0,
+    "foreground": 0,
+    "unset": 0
+   },
+   "started_in_background": 0,
+   "max_depth": 0,
+   "spawned_by_subagents": 0,
+   "completed": 0,
+   "failed": 0,
+   "killed": {
+    "parent": 0,
+    "user": 0,
+    "system": 0
+   },
+   "refused": {
+    "depth_limit": 0,
+    "concurrency_limit": 0,
+    "budget": 0
+   },
+   "by_type": {}
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 2,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "{\"out_of_scope_reason\":\"in scope\",\"onset\":{\"category\":\"7.5\",\"documented_value\":\"2031-05-23 or 2031-05-24\",\"explanation\":\"Reason: attribution. On Day 3 (2031-05-21), ICE was 10/10, a formal Grade 0 assessment. The earliest finding that could count is ICE 8/10 at 08:50 on 2031-05-23 (Grade 1). The same note documents lorazepam 0.5 mg IV at 04:00 that day. Lorazepam is a benzodiazepine, which is on the closed list of competing causes (A35), and it was given in the same note and within the 24 hours before the finding (A30). No clinician states whether the low score was due to ICANS or the drug. Reading 1: if the ICE 8 counts, onset is 2031-05-23 and the record's 2031-05-24 is a mismatch (7.1, record 1 day later). Reading 2: if it does not count, the first qualifying finding is ICE 6/10 at 11:00 on 2031-05-24, which is 31 hours after the lorazepam and so not affected by it. Onset is then 2031-05-24, matching the record (7.7). The two readings give different categories, so the result is 7.5.\",\"evidence\":[{\"document_id\":\"SYN-0046-D01\",\"version\":1,\"quote\":\"ICE 10/10 at 09:40.\"},{\"document_id\":\"SYN-0046-D02\",\"version\":1,\"quote\":\"ICE 8/10 at 08:50 (orientation 3/4, attention 0/1, rest complete).\"},{\"document_id\":\"SYN-0046-D02\",\"version\":1,\"quote\":\"Lorazepam 0.5 mg IV given at 04:00 for nausea.\"},{\"document_id\":\"SYN-0046-D03\",\"version\":1,\"quote\":\"24 May 11:00: ICE 6/10 (orientation 2/4, naming 2/3, commands 1/1, writing 1/1, attention 0/1).\"}]},\"max_grade\":{\"category\":\"7.7\",\"documented_value\":\"2\",\"explanation\":\"The worst documented grade is 2. On 2031-05-24 the patient scored ICE 6/10 and ICE 5/10 (both Grade 2) and 'awakens to voice' (Grade 2). No document shows a seizure, focal motor deficit, edema, or consciousness at Grade 3 or worse. The hand tremor is excluded from grading. Dexamethasone is a treatment, not a competing cause. The lorazepam question affects only the Grade 1 finding on 2031-05-23, so it does not change the maximum. The record's Grade 2 matches the documents.\",\"evidence\":[{\"document_id\":\"SYN-0046-D03\",\"version\":1,\"quote\":\"24 May 11:00: ICE 6/10 (orientation 2/4, naming 2/3, commands 1/1, writing 1/1, attention 0/1).\"},{\"document_id\":\"SYN-0046-D04\",\"version\":1,\"quote\":\"ICE 5/10 at 14:30 on 24 May (orientation 1/4, naming 2/3, commands 1/1, writing 0/1, attention 1/1).\"},{\"document_id\":\"SYN-0046-D04\",\"version\":1,\"quote\":\"Awakens to voice and stays awake while spoken to.\"},{\"document_id\":\"SYN-0046-D04\",\"version\":1,\"quote\":\"No focal motor deficit, no seizure activity.\"}]}}",
+  "structured_output": {
+   "out_of_scope_reason": "in scope",
+   "onset": {
+    "category": "7.5",
+    "documented_value": "2031-05-23 or 2031-05-24",
+    "explanation": "Reason: attribution. On Day 3 (2031-05-21), ICE was 10/10, a formal Grade 0 assessment. The earliest finding that could count is ICE 8/10 at 08:50 on 2031-05-23 (Grade 1). The same note documents lorazepam 0.5 mg IV at 04:00 that day. Lorazepam is a benzodiazepine, which is on the closed list of competing causes (A35), and it was given in the same note and within the 24 hours before the finding (A30). No clinician states whether the low score was due to ICANS or the drug. Reading 1: if the ICE 8 counts, onset is 2031-05-23 and the record's 2031-05-24 is a mismatch (7.1, record 1 day later). Reading 2: if it does not count, the first qualifying finding is ICE 6/10 at 11:00 on 2031-05-24, which is 31 hours after the lorazepam and so not affected by it. Onset is then 2031-05-24, matching the record (7.7). The two readings give different categories, so the result is 7.5.",
+    "evidence": [
+     {
+      "document_id": "SYN-0046-D01",
+      "version": 1,
+      "quote": "ICE 10/10 at 09:40."
+     },
+     {
+      "document_id": "SYN-0046-D02",
+      "version": 1,
+      "quote": "ICE 8/10 at 08:50 (orientation 3/4, attention 0/1, rest complete)."
+     },
+     {
+      "document_id": "SYN-0046-D02",
+      "version": 1,
+      "quote": "Lorazepam 0.5 mg IV given at 04:00 for nausea."
+     },
+     {
+      "document_id": "SYN-0046-D03",
+      "version": 1,
+      "quote": "24 May 11:00: ICE 6/10 (orientation 2/4, naming 2/3, commands 1/1, writing 1/1, attention 0/1)."
+     }
+    ]
+   },
+   "max_grade": {
+    "category": "7.7",
+    "documented_value": "2",
+    "explanation": "The worst documented grade is 2. On 2031-05-24 the patient scored ICE 6/10 and ICE 5/10 (both Grade 2) and 'awakens to voice' (Grade 2). No document shows a seizure, focal motor deficit, edema, or consciousness at Grade 3 or worse. The hand tremor is excluded from grading. Dexamethasone is a treatment, not a competing cause. The lorazepam question affects only the Grade 1 finding on 2031-05-23, so it does not change the maximum. The record's Grade 2 matches the documents.",
+    "evidence": [
+     {
+      "document_id": "SYN-0046-D03",
+      "version": 1,
+      "quote": "24 May 11:00: ICE 6/10 (orientation 2/4, naming 2/3, commands 1/1, writing 1/1, attention 0/1)."
+     },
+     {
+      "document_id": "SYN-0046-D04",
+      "version": 1,
+      "quote": "ICE 5/10 at 14:30 on 24 May (orientation 1/4, naming 2/3, commands 1/1, writing 0/1, attention 1/1)."
+     },
+     {
+      "document_id": "SYN-0046-D04",
+      "version": 1,
+      "quote": "Awakens to voice and stays awake while spoken to."
+     },
+     {
+      "document_id": "SYN-0046-D04",
+      "version": 1,
+      "quote": "No focal motor deficit, no seizure activity."
+     }
+    ]
+   }
+  },
+  "ttft_ms": 8776,
+  "type": "result",
+  "duration_ms": 17802,
+  "uuid": "d8e05e6d-310a-4bc5-b7f2-f09f9b069e92",
+  "ttft_stream_ms": 1807,
+  "time_to_request_ms": 183,
+  "first_content_frame_ms": 1807,
+  "queued_turn_count": 0,
+  "result_index": 0,
+  "credential_expires_at": "2026-12-06T22:19:03.648Z"
+ }
+}

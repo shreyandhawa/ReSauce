@@ -1,16 +1,73 @@
 {
  "metadata": {
-  "code_commit": "c03e7a4339bfcabe11a062916adf9fdb4e9ef30e",
-  "uncommitted_changes_in_code_or_data": true,
+  "code_commit": "4fa9174fe72d47dd6941d4cff550336124ebc0a1",
+  "uncommitted_changes_in_code_or_data": false,
   "dataset_id": "SYN-DS-DEV-V1",
   "dataset_version": "1.0.0",
   "reference_answer_commit": "5059a9b0980cf474f31086be913a371322047e1f",
   "reference_label": "intended answers, agreed by a blind re-derivation by a separate Claude session (same model family); not clinician-verified",
-  "date": "2026-11-08T11:28:45-06:00",
+  "date": "2026-11-09T08:25:36-06:00",
   "python_version": "3.14.3",
-  "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O"
+  "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+  "baseline_b": {
+   "settings": {
+    "model": "claude-opus-5-5",
+    "effort": "high",
+    "thinking": "adaptive (always on for this model)",
+    "route": "Claude Code print mode on the user's Claude plan",
+    "command": [
+     "claude",
+     "-p",
+     "--model",
+     "claude-opus-5-5",
+     "--effort",
+     "high",
+     "--system-prompt",
+     "<instructions: system_prompt.md>",
+     "--tools",
+     "",
+     "--json-schema",
+     "<answer_schema.json>",
+     "--output-format",
+     "json",
+     "--no-session-persistence",
+     "--strict-mcp-config",
+     "--setting-sources",
+     "project"
+    ],
+    "system_prompt_sha256": "0cda59baefac995b4e20a8dde5550077ed76c7f0f789f8c4661cf246f64e1596",
+    "answer_schema_sha256": "9dc6f412e8631752ce5bf4ce82b16ac3ce5d04d9dfb8709c8b459a7a11d2ad11",
+    "fallback_model": null
+   },
+   "started_at": "2026-11-09T08:20:02-06:00",
+   "data": "data/dev-v1",
+   "dataset_id": "SYN-DS-DEV-V1",
+   "dataset_version": "1.0.0",
+   "prices_usd_per_million_tokens": {
+    "input": 4.0,
+    "output": 20.0,
+    "cache_write": 5.0,
+    "cache_read": 0.2
+   },
+   "prices_source": "Anthropic listed prices for claude-opus-5-5, claude-api reference cached 2026-10-06",
+   "disclosures": [],
+   "sessions": [
+    {
+     "started_at": "2026-11-09T08:20:02-06:00",
+     "code_commit": "4fa9174fe72d47dd6941d4cff550336124ebc0a1",
+     "claude_code_version": "2.1.319 (Claude Code)",
+     "workers": 4
+    }
+   ]
+  },
+  "baseline_b_note": ""
  },
  "split": "held_out",
+ "methods": [
+  "resauce",
+  "baseline_a",
+  "baseline_b"
+ ],
  "case_ids": [
   "SYN-0002",
   "SYN-0004",
@@ -329,10 +386,94 @@
      3
     ]
    },
+   "baseline_b": {
+    "output": {
+     "case_id": "SYN-0002",
+     "out_of_scope": null,
+     "fields": {
+      "onset": {
+       "category": "7.4",
+       "documented_value": "2032-10-29",
+       "explanation": "The record gives onset as 2032-10-28. The earliest qualifying finding is ICE 8/10 (Grade 1) at 07:55 on 2032-10-29, so the record date is earlier than the first documented finding. On 2032-10-28 the notes show only a new tremor, which is excluded from ICANS grading (§4.2, A11), and a partial ICE with no total, which is not a gradeable assessment (A6, A34). No formal Grade 0 assessment exists on the record's date to refute it, so the result is insufficient evidence (§7.1, A18). Extra flag: 'record date matches an excluded or sub-threshold symptom' (A24).",
+       "evidence": [
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0002-D03",
+         "version": 1,
+         "quote": "new fine tremor both hands at rest + w/ reaching - noticed by pt @ 14:00 when holding cup.",
+         "start": 19,
+         "end": 109
+        },
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0002-D03",
+         "version": 1,
+         "quote": "partial ICE @ 14:30: orient 4/4, naming 3/3; cmd/writing/attn not scored, no total.",
+         "start": 110,
+         "end": 193
+        },
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0002-D04",
+         "version": 1,
+         "quote": "ICE 07:55 = 8/10 (-hospital, -sentence).",
+         "start": 16,
+         "end": 56
+        },
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0002-D04",
+         "version": 1,
+         "quote": "No sedating meds 24 h.",
+         "start": 100,
+         "end": 122
+        }
+       ]
+      },
+      "max_grade": {
+       "category": "7.7",
+       "documented_value": "2",
+       "explanation": "The worst assessment is ICE 5/10 on 2032-10-30 (the items add up to 5), with the patient awake and talking. ICE 3–6 is Grade 2. No seizure, motor, raised-ICP or depressed-consciousness findings are documented, and no sedatives were given. Dexamethasone is not a competing cause (A35). The other assessments are ICE 8 (Grade 1) and ICE 9 (Grade 1). Tremor is excluded from grading. The documents support Grade 2, which matches the record's Grade 2.",
+       "evidence": [
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0002-D05",
+         "version": 1,
+         "quote": "Neuro: ICE 08:40 5/10 (O 1/4 · names 2/3 · fingers 1/1 · wrote 0/1 · tens 1/1); awake, talking. Str 5/5 x4. No sz.",
+         "start": 29,
+         "end": 143
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0002-D05",
+         "version": 1,
+         "quote": "No sedatives.",
+         "start": 166,
+         "end": 179
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0002-D06",
+         "version": 1,
+         "quote": "ICE @ 20:00 9/10.",
+         "start": 19,
+         "end": 36
+        }
+       ]
+      }
+     }
+    },
+    "evidence_valid": [
+     7,
+     7
+    ],
+    "cost_usd": 0.045481
+   },
    "runtime_seconds": {
-    "extract": 0.005231416784226894,
-    "resauce": 0.0002983333542943001,
-    "baseline_a": 2.320762723684311e-05
+    "extract": 0.004477624781429768,
+    "resauce": 0.00023079197853803635,
+    "baseline_a": 1.995917409658432e-05,
+    "baseline_b": 13.061
    }
   },
   {
@@ -617,10 +758,150 @@
      0
     ]
    },
+   "baseline_b": {
+    "output": {
+     "case_id": "SYN-0004",
+     "out_of_scope": null,
+     "fields": {
+      "onset": {
+       "category": "7.7",
+       "documented_value": "none",
+       "explanation": "The record reports no ICANS and has no onset. Within Day 0 to +28, every signed note documents ICE 10/10 with no domain finding, which makes each one a formal Grade 0 assessment. No qualifying finding and no documented 'not assessable' period exist. The mild headache on Day +3 is excluded from grading (§4.2). Under §7.9(b) the no-ICANS record is confirmed: 7.7.",
+       "evidence": [
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0004-D01",
+         "version": 1,
+         "quote": "ICE 10/10 at 17:20. Alert.",
+         "start": 15,
+         "end": 41
+        },
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0004-D02",
+         "version": 1,
+         "quote": "ICE 10/10 at 21:15. No sz.",
+         "start": 98,
+         "end": 124
+        },
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0004-D03",
+         "version": 1,
+         "quote": "ICE 10/10 at 10:00. Mild HA, acetaminophen. No focal def.",
+         "start": 43,
+         "end": 100
+        },
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0004-D04",
+         "version": 1,
+         "quote": "ICE 10/10 at 14:50. No tremor, no sz.",
+         "start": 24,
+         "end": 61
+        },
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0004-D05",
+         "version": 1,
+         "quote": "ICE 13 Sep 10:05 = 10/10. Alert, cooperative.",
+         "start": 0,
+         "end": 45
+        },
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0004-D06",
+         "version": 1,
+         "quote": "ICE 10/10 at 09:30. No focal def.",
+         "start": 35,
+         "end": 68
+        },
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0004-D07",
+         "version": 1,
+         "quote": "ICE 10/10 on each check incl 17 Sep 08:40.",
+         "start": 50,
+         "end": 92
+        }
+       ]
+      },
+      "max_grade": {
+       "category": "7.7",
+       "documented_value": "0",
+       "explanation": "The record reports no ICANS, which is compared as Grade 0. Every gradeable assessment in the window is a formal Grade 0 assessment (ICE 10/10, no seizure, no focal deficit). There is no qualifying finding. There is no documented 'not assessable' period: the patient was on pressors on Day +2, but ICE was still performed. The headache is an excluded symptom. Under §7.9(b) the result is 7.7, documented Grade 0.",
+       "evidence": [
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0004-D01",
+         "version": 1,
+         "quote": "ICE 10/10 at 17:20. Alert.",
+         "start": 15,
+         "end": 41
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0004-D02",
+         "version": 1,
+         "quote": "ICE 10/10 at 21:15. No sz.",
+         "start": 98,
+         "end": 124
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0004-D03",
+         "version": 1,
+         "quote": "ICE 10/10 at 10:00. Mild HA, acetaminophen. No focal def.",
+         "start": 43,
+         "end": 100
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0004-D04",
+         "version": 1,
+         "quote": "ICE 10/10 at 14:50. No tremor, no sz.",
+         "start": 24,
+         "end": 61
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0004-D05",
+         "version": 1,
+         "quote": "ICE 13 Sep 10:05 = 10/10. Alert, cooperative.",
+         "start": 0,
+         "end": 45
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0004-D06",
+         "version": 1,
+         "quote": "ICE 10/10 at 09:30. No focal def.",
+         "start": 35,
+         "end": 68
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0004-D07",
+         "version": 1,
+         "quote": "ICE 10/10 on each check incl 17 Sep 08:40.",
+         "start": 50,
+         "end": 92
+        }
+       ]
+      }
+     }
+    },
+    "evidence_valid": [
+     14,
+     14
+    ],
+    "cost_usd": 0.054226
+   },
    "runtime_seconds": {
-    "extract": 0.002497040666639805,
-    "resauce": 0.0001432918943464756,
-    "baseline_a": 8.58306884765625e-06
+    "extract": 0.002260874956846237,
+    "resauce": 0.00013575004413723946,
+    "baseline_a": 8.624978363513947e-06,
+    "baseline_b": 17.69
    }
   },
   {
@@ -847,10 +1128,110 @@
      3
     ]
    },
+   "baseline_b": {
+    "output": {
+     "case_id": "SYN-0005",
+     "out_of_scope": null,
+     "fields": {
+      "onset": {
+       "category": "7.7",
+       "documented_value": "2031-09-15",
+       "explanation": "On 2031-09-13 the ICE score was 10/10 with no other domain finding, which counts as a formal Grade 0 assessment. The first qualifying finding is ICE 9/10 at 20:45 on 2031-09-15 (Grade 1). The note says no sedatives were given, and nothing in it is attributed to another cause. The documented onset is therefore 2031-09-15, the same calendar day as the record's onset date. Difference: 0 days.",
+       "evidence": [
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0005-D01",
+         "version": 1,
+         "quote": "ICE 20:00 = 10/10.",
+         "start": 85,
+         "end": 103
+        },
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0005-D02",
+         "version": 1,
+         "quote": "ICE 9/10 at 20:45 (sentence not completed, writing item 0).",
+         "start": 16,
+         "end": 75
+        },
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0005-D02",
+         "version": 1,
+         "quote": "Awake, alert. No sedatives given.",
+         "start": 76,
+         "end": 109
+        }
+       ]
+      },
+      "max_grade": {
+       "category": "7.3",
+       "documented_value": "1",
+       "explanation": "The record gives a maximum of Grade 2. The current signed version of D03 (version 2, corrected entry) gives ICE 8/10, which is Grade 1. The ICE 5/10 (Grade 2) is only in the superseded version 1, which the amendment says was copied from the wrong flowsheet column. The record matches that superseded version but not the current one, so the case gets the 'superseded-version match' flag. No other domain finding is documented: the patient is awake and alert, with no focal deficit and no seizure, and the MRI is normal. The ICE 9/10 on 09-15 is also Grade 1. The highest grade the documents support is therefore Grade 1, which is below the recorded Grade 2. No 'not assessable' period is documented in the window, so the result stays 7.3 rather than 7.4.",
+       "evidence": [
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0005-D03",
+         "version": 2,
+         "quote": "ICE at 10:05: 8/10 (orient. 3, objects 3, cmd 1, sentence 0, tens 1).",
+         "start": 29,
+         "end": 98
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0005-D03",
+         "version": 2,
+         "quote": "Correction: ICE scores were entered from the wrong flowsheet column; values above are the ones obtained at 10:05.",
+         "start": 287,
+         "end": 400
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0005-D03",
+         "version": 1,
+         "quote": "ICE at 10:05: 5/10 (orient. 1, objects 2, cmd 1, sentence 0, tens 1).",
+         "start": 29,
+         "end": 98
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0005-D03",
+         "version": 2,
+         "quote": "Awake, alert, no focal deficit, no seizure activity. No sedating medication in 24 h.",
+         "start": 99,
+         "end": 183
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0005-D02",
+         "version": 1,
+         "quote": "ICE 9/10 at 20:45 (sentence not completed, writing item 0).",
+         "start": 16,
+         "end": 75
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0005-D04",
+         "version": 1,
+         "quote": "Impression: normal MRI brain.",
+         "start": 116,
+         "end": 145
+        }
+       ]
+      }
+     }
+    },
+    "evidence_valid": [
+     9,
+     9
+    ],
+    "cost_usd": 0.043421
+   },
    "runtime_seconds": {
-    "extract": 0.004679583013057709,
-    "resauce": 0.00020670797675848007,
-    "baseline_a": 2.00001522898674e-05
+    "extract": 0.003543875180184841,
+    "resauce": 0.000164874829351902,
+    "baseline_a": 1.6165897250175476e-05,
+    "baseline_b": 13.491
    }
   },
   {
@@ -981,10 +1362,94 @@
      0
     ]
    },
+   "baseline_b": {
+    "output": {
+     "case_id": "SYN-0007",
+     "out_of_scope": null,
+     "fields": {
+      "onset": {
+       "category": "7.4",
+       "documented_value": "none",
+       "explanation": "The record reports no ICANS. No signed note in the Day 0 to Day +28 window has a qualifying finding: there is no ICE score, no depressed consciousness, no seizure, no motor finding and no edema. Under §7.9(b), a 'no ICANS' record is confirmed (7.7) only if the window has at least one formal Grade 0 assessment, meaning ICE 10 with no domain findings. No ICE score was ever documented. The notes saying 'A&Ox4, non-focal' are narrative normal notes, and these do not establish Grade 0 (A17). So the result is insufficient evidence (7.4). The Day +5 'confused' entry is an ungradeable neurological symptom. It gets the case-level flag but does not decide the category (A21). Migraine history and 'no HA' do not count as findings. The unassessed-period flag applies, and every window day lacks a gradeable assessment.",
+       "evidence": [
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0007-D01",
+         "version": 1,
+         "quote": "Neuro: A&Ox4, non-focal.",
+         "start": 27,
+         "end": 51
+        },
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0007-D03",
+         "version": 1,
+         "quote": "Pt confused this AM per RN.",
+         "start": 19,
+         "end": 46
+        },
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0007-D04",
+         "version": 1,
+         "quote": "A&Ox4, non-focal.",
+         "start": 5,
+         "end": 22
+        },
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0007-D05",
+         "version": 1,
+         "quote": "Neuro exam non-focal at discharge.",
+         "start": 39,
+         "end": 73
+        }
+       ]
+      },
+      "max_grade": {
+       "category": "7.4",
+       "documented_value": "none",
+       "explanation": "The record reports no ICANS, which is compared as Grade 0. No qualifying finding exists, so 7.2 does not apply. No formal Grade 0 assessment exists either, because no ICE score is documented and narrative normal exams do not count (A17). Under §7.9(b), both fields are therefore 7.4. Day +5 'confused' is an ungradeable neurological symptom: it has no ICE score and no level of consciousness, so it gets the case-level flag. Fever on Day +3 was treated with tocilizumab and acetaminophen, which is CRS context only. The Day +3 note's 'A&O, MAE. No sz.' is not a formal ICE assessment.",
+       "evidence": [
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0007-D02",
+         "version": 1,
+         "quote": "A&O, MAE. No sz.",
+         "start": 67,
+         "end": 83
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0007-D03",
+         "version": 1,
+         "quote": "Pt confused this AM per RN. Reassess tomorrow. No sz, no focal def.",
+         "start": 19,
+         "end": 86
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0007-D04",
+         "version": 1,
+         "quote": "D+6. A&Ox4, non-focal.",
+         "start": 0,
+         "end": 22
+        }
+       ]
+      }
+     }
+    },
+    "evidence_valid": [
+     7,
+     7
+    ],
+    "cost_usd": 0.037186
+   },
    "runtime_seconds": {
-    "extract": 0.001847666222602129,
-    "resauce": 6.975000724196434e-05,
-    "baseline_a": 8.33394005894661e-06
+    "extract": 0.0017034169286489487,
+    "resauce": 6.16670586168766e-05,
+    "baseline_a": 7.042195647954941e-06,
+    "baseline_b": 11.63
    }
   },
   {
@@ -1255,10 +1720,94 @@
      2
     ]
    },
+   "baseline_b": {
+    "output": {
+     "case_id": "SYN-0009",
+     "out_of_scope": null,
+     "fields": {
+      "onset": {
+       "category": "7.7",
+       "documented_value": "2036-06-02",
+       "explanation": "The earliest qualifying finding is the signed ICE assessment on 02 Jun (Day +5) at 10:55: ICE 9/10, which meets the Grade 1 criterion. The earlier in-window assessments (ICE 10/10 on Day 0 and on 31 May) are formal Grade 0 assessments. The 25 May baseline is outside the observation window (Day -3), so it is not used. The 31 May headache is excluded from grading (§4.2) and does not count. The record onset of 2036-06-02 is the same calendar day as the documented onset.",
+       "evidence": [
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0009-D05",
+         "version": 1,
+         "quote": "ICE assessment on 02 Jun at 10:55: orientation 3/4 (could not give the date), naming 3/3, following commands 1/1, writing 1/1, attention 1/1. Total 9/10.",
+         "start": 0,
+         "end": 153
+        },
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0009-D04",
+         "version": 1,
+         "quote": "ICE 10/10 at 09:20 this morning.",
+         "start": 109,
+         "end": 141
+        },
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0009-D02",
+         "version": 1,
+         "quote": "Neurological screen before infusion: ICE 10/10 at 13:30, alert, no focal deficits.",
+         "start": 119,
+         "end": 201
+        }
+       ]
+      },
+      "max_grade": {
+       "category": "7.5",
+       "documented_value": "1 or 2 (ambiguous: Grade 2 if the 14:10 ICE 5/10 is accepted, Grade 1 if the 14:40 ICE 8/10 is accepted)",
+       "explanation": "Reason: conflicting assessments (§6.4, A23). On 04 Jun two signed assessments 30 minutes apart disagree. The nurse recorded ICE 5/10 at 14:10 (Grade 2) and the resident recorded ICE 8/10 at 14:40 (Grade 1). Every other assessment is ICE 8, 9 or 10, with no consciousness, seizure, motor or edema criterion met. If the ICE 5 reading is accepted, the maximum is Grade 2, which equals the record (7.7). If the ICE 8 reading is accepted, the maximum is Grade 1, so the record's Grade 2 is unsupported (7.3). The two readings lead to different categories, so the result is 7.5. No competing cause is documented: acetaminophen and tocilizumab are not competing causes.",
+       "evidence": [
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0009-D07",
+         "version": 1,
+         "quote": "Afternoon neurological check on 04 Jun at 14:10: ICE score 5/10 (orientation 2/4, naming 1/3, following commands 1/1, writing 0/1, attention 1/1).",
+         "start": 0,
+         "end": 146
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0009-D08",
+         "version": 1,
+         "quote": "On my examination at 14:40 the ICE score was 8/10 (orientation 3/4, attention 0/1, all other items complete).",
+         "start": 49,
+         "end": 158
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0009-D06",
+         "version": 1,
+         "quote": "ICE 8/10 at 09:05 (orientation 3/4, attention 0/1, remaining items complete).",
+         "start": 83,
+         "end": 160
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0009-D09",
+         "version": 1,
+         "quote": "Neurology consultation requested for fluctuating ICE scores on 04 Jun. At 10:15 today ICE 9/10 (attention 0/1).",
+         "start": 0,
+         "end": 111
+        }
+       ]
+      }
+     }
+    },
+    "evidence_valid": [
+     7,
+     7
+    ],
+    "cost_usd": 0.061276
+   },
    "runtime_seconds": {
-    "extract": 0.012250208295881748,
-    "resauce": 0.0005254172720015049,
-    "baseline_a": 2.187490463256836e-05
+    "extract": 0.010394374839961529,
+    "resauce": 0.0004977080971002579,
+    "baseline_a": 2.3624859750270844e-05,
+    "baseline_b": 16.358
    }
   },
   {
@@ -1484,10 +2033,86 @@
      2
     ]
    },
+   "baseline_b": {
+    "output": {
+     "case_id": "SYN-0011",
+     "out_of_scope": null,
+     "fields": {
+      "onset": {
+       "category": "7.7",
+       "documented_value": "2036-10-23",
+       "explanation": "The earliest qualifying finding is ICE 6/10 at 09:30 on 2036-10-23 (Day +4). An ICE score of 6 meets the Grade 2 criterion. On 2036-10-21 the patient scored ICE 10/10, a formal Grade 0 assessment, so there is no earlier qualifying finding. The recorded onset of 2036-10-23 is the same calendar day as the onset the documents support.",
+       "evidence": [
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0011-D01",
+         "version": 1,
+         "quote": "Neuro: ICE 10/10 at 09:55",
+         "start": 92,
+         "end": 117
+        },
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0011-D02",
+         "version": 1,
+         "quote": "Neuro: ICE 6/10 at 09:30 (orientation 2/4, naming 2/3, commands 1/1, writing 0/1, attention 1/1)",
+         "start": 67,
+         "end": 163
+        }
+       ]
+      },
+      "max_grade": {
+       "category": "7.2",
+       "documented_value": "2",
+       "explanation": "The record gives a maximum of Grade 1. On 2036-10-23 the patient scored ICE 6/10, which is Grade 2 under Table 6. That note documents no competing cause, so Grade 2 is proven. On 2036-10-26 the patient 'opens eyes only when the shoulder is gently shaken', which would be Grade 3 (awakens only to tactile stimulus). However, the same note records lorazepam given 4 hours earlier, a competing cause (A30, A35), and no clinician says what caused it. That gives two readings: Grade 3 if the finding is due to ICANS, Grade 2 if not (ICE 5/10 that day and ICE 6/10 on 10-23). Both readings are higher than the recorded Grade 1, so both lead to 7.2 and 7.5 does not apply (A23). The value reported is the lowest grade proven under every reading, Grade 2. Neither the tremor (an excluded symptom) nor the dexamethasone (a treatment, not a competing cause) affects the grade.",
+       "evidence": [
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0011-D02",
+         "version": 1,
+         "quote": "Neuro: ICE 6/10 at 09:30 (orientation 2/4, naming 2/3, commands 1/1, writing 0/1, attention 1/1)",
+         "start": 67,
+         "end": 163
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0011-D02",
+         "version": 1,
+         "quote": "Level: awake",
+         "start": 164,
+         "end": 176
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0011-D04",
+         "version": 1,
+         "quote": "Medication: lorazepam 1 mg PO at 12:30 before MRI (claustrophobia)",
+         "start": 36,
+         "end": 102
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0011-D04",
+         "version": 1,
+         "quote": "at 16:30 opens eyes only when the shoulder is gently shaken, then answers questions; ICE 5/10 at 16:45",
+         "start": 110,
+         "end": 212
+        }
+       ]
+      }
+     }
+    },
+    "evidence_valid": [
+     6,
+     6
+    ],
+    "cost_usd": 0.053931
+   },
    "runtime_seconds": {
-    "extract": 0.00560983270406723,
-    "resauce": 0.0002254582941532135,
-    "baseline_a": 1.9709113985300064e-05
+    "extract": 0.0048307497054338455,
+    "resauce": 0.00021462514996528625,
+    "baseline_a": 1.6916077584028244e-05,
+    "baseline_b": 16.155
    }
   },
   {
@@ -1610,10 +2235,40 @@
      3
     ]
    },
+   "baseline_b": {
+    "output": {
+     "case_id": "SYN-0012",
+     "out_of_scope": {
+      "reason": "CAPD assessment",
+      "source": "Baseline B answer",
+      "evidence": []
+     },
+     "fields": {
+      "onset": {
+       "category": "out of scope (CAPD assessment)",
+       "documented_value": "2033-09-03",
+       "explanation": "The case is out of scope because a CAPD assessment is documented (D03), so this field gets no §7 category. The value here is only a best reading. The earliest qualifying finding is ICE 8/10 (Grade 1) at 14:00 on 03 Sep. The ICE 10/10 on 31 Aug (D01) is a formal Grade 0 assessment. The record onset of 2033-09-03 matches the documents.",
+       "evidence": []
+      },
+      "max_grade": {
+       "category": "out of scope (CAPD assessment)",
+       "documented_value": "2",
+       "explanation": "The case is out of scope because a CAPD assessment is documented (D03), so this field gets no §7 category. The value here is only a best reading. The worst assessment is on 05 Sep: ICE 5/10 (Grade 2) and 'Awakens to voice' (Grade 2), with no focal motor deficit. No seizure or edema is documented. Dexamethasone is treatment for ICANS and is not a competing cause (A35). Tremor is excluded from grading. The documents support Grade 2, which equals the record.",
+       "evidence": []
+      }
+     }
+    },
+    "evidence_valid": [
+     0,
+     0
+    ],
+    "cost_usd": 0.035621
+   },
    "runtime_seconds": {
-    "extract": 0.0031603332608938217,
-    "resauce": 1.4374963939189911e-05,
-    "baseline_a": 2.0124949514865875e-05
+    "extract": 0.002888999879360199,
+    "resauce": 1.1458061635494232e-05,
+    "baseline_a": 1.787487417459488e-05,
+    "baseline_b": 11.491
    }
   },
   {
@@ -1815,10 +2470,102 @@
      0
     ]
    },
+   "baseline_b": {
+    "output": {
+     "case_id": "SYN-0014",
+     "out_of_scope": null,
+     "fields": {
+      "onset": {
+       "category": "7.4",
+       "documented_value": "none",
+       "explanation": "The record reports no ICANS. No signed note in Day 0–28 shows a qualifying Grade ≥1 finding. There are formal Grade 0 assessments: ICE 10/10 on Day +1 and on Day +7. But D03 documents a 'not assessable' period on 08–09 Jun (Days +8 and +9), when the patient was intubated and sedated. Under §7.9(b) (A21), that blocks 7.7, so both fields are insufficient evidence. 'Confused this PM' on Day +5 has no ICE score or consciousness level, so it is an ungradeable neurological symptom: it gets the case-level flag but is not a qualifying finding. D04 is unsigned and has no neurological content, so it is not used ('unsigned document' flag).",
+       "evidence": [
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0014-D01",
+         "version": 1,
+         "quote": "ICE d+1 01 Jun 20:00 = 10/10. Alert. Baseline.",
+         "start": 0,
+         "end": 46
+        },
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0014-D03",
+         "version": 1,
+         "quote": "ICE 10/10 on 07 Jun at 09:30 (before intubation).",
+         "start": 8,
+         "end": 57
+        },
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0014-D03",
+         "version": 1,
+         "quote": "ICE not done on 08 Jun and 09 Jun: intubated and sedated, unable to assess.",
+         "start": 144,
+         "end": 219
+        },
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0014-D02",
+         "version": 1,
+         "quote": "Pt confused this PM, MD aware.",
+         "start": 15,
+         "end": 45
+        }
+       ]
+      },
+      "max_grade": {
+       "category": "7.4",
+       "documented_value": "none",
+       "explanation": "The record reports no ICANS, so it is compared as Grade 0. The documents contain no qualifying finding, so no grade above 0 is proven. There are formal Grade 0 assessments (ICE 10/10 on Days +1 and +7). But the window also has a documented 'not assessable' period (Days +8 and +9, intubated and sedated), so under §7.9(b) (A21) 'no ICANS' cannot be confirmed. The result is insufficient evidence. The Day +5 'confused' entry is an ungradeable symptom (flagged) and gives no grade.",
+       "evidence": [
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0014-D01",
+         "version": 1,
+         "quote": "ICE d+1 01 Jun 20:00 = 10/10. Alert. Baseline.",
+         "start": 0,
+         "end": 46
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0014-D03",
+         "version": 1,
+         "quote": "ICE 10/10 on 07 Jun at 09:30 (before intubation).",
+         "start": 8,
+         "end": 57
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0014-D03",
+         "version": 1,
+         "quote": "ICE not done on 08 Jun and 09 Jun: intubated and sedated, unable to assess.",
+         "start": 144,
+         "end": 219
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0014-D02",
+         "version": 1,
+         "quote": "Pt confused this PM, MD aware.",
+         "start": 15,
+         "end": 45
+        }
+       ]
+      }
+     }
+    },
+    "evidence_valid": [
+     8,
+     8
+    ],
+    "cost_usd": 0.038811
+   },
    "runtime_seconds": {
-    "extract": 0.002730999607592821,
-    "resauce": 9.737489745020866e-05,
-    "baseline_a": 8.916947990655899e-06
+    "extract": 0.0017228331416845322,
+    "resauce": 8.066697046160698e-05,
+    "baseline_a": 6.875023245811462e-06,
+    "baseline_b": 11.864
    }
   },
   {
@@ -2030,10 +2777,78 @@
      4
     ]
    },
+   "baseline_b": {
+    "output": {
+     "case_id": "SYN-0015",
+     "out_of_scope": null,
+     "fields": {
+      "onset": {
+       "category": "7.1",
+       "documented_value": "2034-02-20",
+       "explanation": "Record reports no ICANS, so it is treated as having no onset (§7.9(a), A19); reported as 'record has no onset', with no signed difference. The earliest qualifying finding is ICE 7/10 (Grade 1) at 14:00 on 20 Feb 2034 (Day +4) in signed nursing note D02. No clinician gives another cause and no competing cause is documented. Day +2 had a formal Grade 0 assessment (ICE 10/10).",
+       "evidence": [
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0015-D02",
+         "version": 1,
+         "quote": "ICE 7/10 at 14:00 on 20 Feb (orient 2/4, attn 0/1, rest full).",
+         "start": 0,
+         "end": 62
+        },
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0015-D01",
+         "version": 1,
+         "quote": "ICE 10/10 at 09:30.",
+         "start": 54,
+         "end": 73
+        }
+       ]
+      },
+      "max_grade": {
+       "category": "7.2",
+       "documented_value": "2",
+       "explanation": "Record reports no ICANS, so it is compared as Grade 0 (§7.9(a), A19). Signed notes prove Grade 2: on 21 Feb, D03 records ICE 4/10 and 'Awakens to voice', both Grade 2; on 22 Feb, D04 records ICE 5/10, also Grade 2. No seizure, motor or edema findings are documented. Tremor is excluded from grading. Tocilizumab and dexamethasone are not competing causes (A35). The documents prove a higher grade than the record: a mismatch, with the record lower by 2.",
+       "evidence": [
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0015-D03",
+         "version": 1,
+         "quote": "ICE 4/10 at 09:15 on 21 Feb (orient 1/4, name 1/3, cmd 1/1, write 0/1, attn 1/1).",
+         "start": 8,
+         "end": 89
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0015-D03",
+         "version": 1,
+         "quote": "Awakens to voice, falls asleep when not stimulated.",
+         "start": 90,
+         "end": 141
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0015-D04",
+         "version": 1,
+         "quote": "ICE 5/10 at 11:00 (orient 2/4, name 1/3, cmd 1/1, write 0/1, attn 1/1).",
+         "start": 22,
+         "end": 93
+        }
+       ]
+      }
+     }
+    },
+    "evidence_valid": [
+     5,
+     5
+    ],
+    "cost_usd": 0.051296
+   },
    "runtime_seconds": {
-    "extract": 0.0018854998052120209,
-    "resauce": 0.00011724978685379028,
-    "baseline_a": 1.933285966515541e-05
+    "extract": 0.0018226667307317257,
+    "resauce": 0.0001365412026643753,
+    "baseline_a": 2.295803278684616e-05,
+    "baseline_b": 16.466
    }
   },
   {
@@ -2218,10 +3033,102 @@
      0
     ]
    },
+   "baseline_b": {
+    "output": {
+     "case_id": "SYN-0016",
+     "out_of_scope": null,
+     "fields": {
+      "onset": {
+       "category": "7.4",
+       "documented_value": "none",
+       "explanation": "No qualifying finding exists in the window: the only neurological symptoms ('confused' on 02-23, 'disoriented to time and agitated' on 02-25) have no ICE score or level of consciousness, so they cannot be graded, and the headache is excluded. Under §7.9(c), onset follows the second bullet of §7.1. The record's onset date 2035-02-23 has no gradeable assessment (no formal Grade 0) and only a sub-threshold symptom, so onset is insufficient evidence. Flag: record date matches an excluded or sub-threshold symptom.",
+       "evidence": [
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0016-D02",
+         "version": 1,
+         "quote": "Mental status: patient confused this afternoon",
+         "start": 67,
+         "end": 113
+        },
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0016-D04",
+         "version": 1,
+         "quote": "disoriented to time and agitated during the morning; mild headache 3/10, acetaminophen given",
+         "start": 61,
+         "end": 153
+        },
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0016-D01",
+         "version": 1,
+         "quote": "Neuro: ICE 10/10 at 09:50",
+         "start": 97,
+         "end": 122
+        }
+       ]
+      },
+      "max_grade": {
+       "category": "7.3",
+       "documented_value": "0",
+       "explanation": "The record gives Grade 2, but no signed in-window note documents any Grade >=1 criterion. All ICE totals are 10/10 (formal Grade 0 on 02-21, 02-24 and 02-26). The confusion and disorientation entries cannot be graded, and the headache is excluded. No note documents a 'not assessable' period, so A25 does not apply. Under §7.9(c) the grade is not supported (7.3).",
+       "evidence": [
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0016-D03",
+         "version": 1,
+         "quote": "TOTAL: 10/10",
+         "start": 113,
+         "end": 125
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0016-D05",
+         "version": 1,
+         "quote": "TOTAL: 10/10",
+         "start": 113,
+         "end": 125
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0016-D01",
+         "version": 1,
+         "quote": "Neuro: ICE 10/10 at 09:50",
+         "start": 97,
+         "end": 122
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0016-D02",
+         "version": 1,
+         "quote": "Mental status: patient confused this afternoon",
+         "start": 67,
+         "end": 113
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0016-D04",
+         "version": 1,
+         "quote": "disoriented to time and agitated during the morning",
+         "start": 61,
+         "end": 112
+        }
+       ]
+      }
+     }
+    },
+    "evidence_valid": [
+     8,
+     8
+    ],
+    "cost_usd": 0.066736
+   },
    "runtime_seconds": {
-    "extract": 0.004182500299066305,
-    "resauce": 0.00012779142707586288,
-    "baseline_a": 1.1125113815069199e-05
+    "extract": 0.0030519161373376846,
+    "resauce": 0.00011170795187354088,
+    "baseline_a": 9.709037840366364e-06,
+    "baseline_b": 22.9
    }
   },
   {
@@ -2380,10 +3287,86 @@
      2
     ]
    },
+   "baseline_b": {
+    "output": {
+     "case_id": "SYN-0018",
+     "out_of_scope": null,
+     "fields": {
+      "onset": {
+       "category": "7.7",
+       "documented_value": "2035-06-17",
+       "explanation": "ICE was 10/10 on Day 0, Day +1 and Day +2. The first qualifying finding is ICE 8/10 at 08:20 on 2035-06-17 (Grade 1). The record's onset, 2035-06-17, is the same calendar day.",
+       "evidence": [
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0018-D03",
+         "version": 1,
+         "quote": "ICE 09:40 10/10.",
+         "start": 57,
+         "end": 73
+        },
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0018-D04",
+         "version": 1,
+         "quote": "ICE 08:20 = 8/10 (-month, -sentence).",
+         "start": 12,
+         "end": 49
+        }
+       ]
+      },
+      "max_grade": {
+       "category": "7.5",
+       "documented_value": "2 or 3 (ambiguous; Grade 2 proven under every reading)",
+       "explanation": "Reason: consciousness wording. Grade 2 is certain from ICE 6/10 (Day +4) and ICE 5/10 (Day +5). On Day +5 the patient opened their eyes when their name was called loudly while the RN tapped their arm at the same moment. The note does not show whether voice alone would have woken them. Read as 'awakens to voice', it is Grade 2, which equals the record (7.7). Read as 'awakens only to tactile stimulus', it is Grade 3, which is higher than the record (7.2). The readings give different categories, so 7.5 applies. No sedatives or opioids were documented, and dexamethasone is not a competing cause (A35). No note documents a seizure, motor weakness or ICP/edema finding.",
+       "evidence": [
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0018-D05",
+         "version": 1,
+         "quote": "ICE 19:50 = 6/10.",
+         "start": 12,
+         "end": 29
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0018-D06",
+         "version": 1,
+         "quote": "Then eyes closed in chair at 13:40; opened eyes when name called loudly while RN tapped arm at same time; then attentive.",
+         "start": 54,
+         "end": 175
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0018-D06",
+         "version": 1,
+         "quote": "ICE 14:00 = 5/10. No sedatives, no opioids. No sz. Power full.",
+         "start": 176,
+         "end": 238
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0018-D08",
+         "version": 1,
+         "quote": "No papilledema. Nonfocal.",
+         "start": 52,
+         "end": 77
+        }
+       ]
+      }
+     }
+    },
+    "evidence_valid": [
+     6,
+     6
+    ],
+    "cost_usd": 0.061596
+   },
    "runtime_seconds": {
-    "extract": 0.004179541952908039,
-    "resauce": 0.00020904093980789185,
-    "baseline_a": 2.424977719783783e-05
+    "extract": 0.0038027092814445496,
+    "resauce": 0.00021629221737384796,
+    "baseline_a": 2.3374799638986588e-05,
+    "baseline_b": 19.457
    }
   },
   {
@@ -2564,10 +3547,94 @@
      3
     ]
    },
+   "baseline_b": {
+    "output": {
+     "case_id": "SYN-0019",
+     "out_of_scope": null,
+     "fields": {
+      "onset": {
+       "category": "7.7",
+       "documented_value": "2036-11-05",
+       "explanation": "Earliest qualifying finding is ICE 8/10 (Grade 1) in signed nursing note D02 dated 2036-11-05 (Day +4), no sedating meds. Prior assessment on 2036-11-03 was ICE 10/10 (formal Grade 0). Cultures drawn on Day +2 are not a documented infection and fall outside the 24 h window. Record onset 2036-11-05 matches (difference 0 days). No clock time for the D02 ICE; the note date is used (time-imprecise).",
+       "evidence": [
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0019-D02",
+         "version": 1,
+         "quote": "Day shift summery 2036-11-05.",
+         "start": 0,
+         "end": 29
+        },
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0019-D02",
+         "version": 1,
+         "quote": "ICE 8/10 - missed the month and could not write a sentence.",
+         "start": 30,
+         "end": 89
+        },
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0019-D02",
+         "version": 1,
+         "quote": "No sedating meds.",
+         "start": 116,
+         "end": 133
+        },
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0019-D01",
+         "version": 1,
+         "quote": "21:00 ICE 10/10, pt joking with nurse.",
+         "start": 116,
+         "end": 154
+        }
+       ]
+      },
+      "max_grade": {
+       "category": "7.7",
+       "documented_value": "2",
+       "explanation": "Worst assessment is ICE 6/10 on 2036-11-06 08:30 (Grade 2; item scores sum to 6), with patient awake, no focal deficit, no seizure, and no sedatives in 24 h. Dexamethasone is ICANS treatment, not a competing cause. No Grade 3+ finding is documented. Record max grade 2 equals the documented grade.",
+       "evidence": [
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0019-D03",
+         "version": 1,
+         "quote": "08:30 ICE 6/10 (2 of 4 orientation, 1 of 3 objects, did the command, wrote a sentence, counted back ok).",
+         "start": 26,
+         "end": 130
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0019-D03",
+         "version": 1,
+         "quote": "Awake. No focal deficit. No seizure. No sedatives given in 24 h.",
+         "start": 131,
+         "end": 195
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0019-D04",
+         "version": 1,
+         "quote": "worst ICE 6/10 on 2036-11-06",
+         "start": 73,
+         "end": 101
+        }
+       ]
+      }
+     }
+    },
+    "evidence_valid": [
+     7,
+     7
+    ],
+    "cost_usd": 0.050711
+   },
    "runtime_seconds": {
-    "extract": 0.0031963749788701534,
-    "resauce": 0.00011925026774406433,
-    "baseline_a": 1.824973151087761e-05
+    "extract": 0.002492208033800125,
+    "resauce": 0.00010337494313716888,
+    "baseline_a": 1.6625039279460907e-05,
+    "baseline_b": 16.371
    }
   },
   {
@@ -2793,10 +3860,78 @@
      2
     ]
    },
+   "baseline_b": {
+    "output": {
+     "case_id": "SYN-0020",
+     "out_of_scope": null,
+     "fields": {
+      "onset": {
+       "category": "7.7",
+       "documented_value": "2034-12-29",
+       "explanation": "Earliest qualifying finding is ICE 8/10 (Grade 1) at 21:30 on 29 Dec 2034, with no competing cause documented (tocilizumab and acetaminophen are not competing causes, and the patient was afebrile). The 28 Dec ICE was 10/10, and the headache that day is an excluded symptom. Record onset 2034-12-29 is the same calendar day.",
+       "evidence": [
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0020-D02",
+         "version": 1,
+         "quote": "ICE 8/10 at 21:30 (orient 3/4, attn 0/1, rest full).",
+         "start": 20,
+         "end": 72
+        },
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0020-D01",
+         "version": 1,
+         "quote": "ICE 10/10 at 09:10.",
+         "start": 94,
+         "end": 113
+        }
+       ]
+      },
+      "max_grade": {
+       "category": "7.7",
+       "documented_value": "1",
+       "explanation": "Worst assessments are ICE 8/10 on 29 Dec and 30 Dec (Grade 1). The patient was awake and cooperative with no drowsiness, seizure, focal deficit or edema documented. ICE was 10/10 on 01 Jan. The documented maximum of Grade 1 equals the record's Grade 1.",
+       "evidence": [
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0020-D02",
+         "version": 1,
+         "quote": "ICE 8/10 at 21:30 (orient 3/4, attn 0/1, rest full). Awake, coop.",
+         "start": 20,
+         "end": 85
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0020-D03",
+         "version": 1,
+         "quote": "I re-checked at 08:15 today: ICE 8/10 (orient 3/4, attn 0/1). Awake, no focal def.",
+         "start": 45,
+         "end": 127
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0020-D05",
+         "version": 2,
+         "quote": "Mild neurotoxicity: ICE 8/10 29 Dec-30 Dec, no treatment needed, ICE 10/10 01 Jan.",
+         "start": 52,
+         "end": 134
+        }
+       ]
+      }
+     }
+    },
+    "evidence_valid": [
+     5,
+     5
+    ],
+    "cost_usd": 0.051296
+   },
    "runtime_seconds": {
-    "extract": 0.0028857910074293613,
-    "resauce": 0.0002715000882744789,
-    "baseline_a": 1.8540769815444946e-05
+    "extract": 0.0025010001845657825,
+    "resauce": 0.00025733280926942825,
+    "baseline_a": 1.6416888684034348e-05,
+    "baseline_b": 16.764
    }
   },
   {
@@ -2987,10 +4122,86 @@
      3
     ]
    },
+   "baseline_b": {
+    "output": {
+     "case_id": "SYN-0022",
+     "out_of_scope": null,
+     "fields": {
+      "onset": {
+       "category": "7.7",
+       "documented_value": "2034-02-13",
+       "explanation": "The earliest qualifying finding is ICE 9/10 at 08:50 on 2034-02-13 (Day +4), which is Grade 1. The note rules out a competing cause: no sedating medicines were given in the past day. Earlier formal assessments on Days 0, +1 and +2 were all ICE 10/10. Fever, tocilizumab and acetaminophen do not count as competing causes under A35. The recorded onset is also 2034-02-13, so the difference is 0 days. The discharge summary's 'from Day +4' gives the same date.",
+       "evidence": [
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0022-D04",
+         "version": 1,
+         "quote": "the ICE at 08:50 was 9/10, losing only the written sentence. No sedating medicines in the past day.",
+         "start": 56,
+         "end": 155
+        },
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0022-D03",
+         "version": 1,
+         "quote": "ICE at 09:15: 10/10; no abnormal neurological signs.",
+         "start": 98,
+         "end": 150
+        },
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0022-D11",
+         "version": 1,
+         "quote": "Neurotoxicity from Day +4, treated with dexamethasone.",
+         "start": 115,
+         "end": 169
+        }
+       ]
+      },
+      "max_grade": {
+       "category": "7.2",
+       "documented_value": "3",
+       "explanation": "The current signed version of D06 (version 2, an addendum signed 2034-02-16) records a witnessed generalized tonic-clonic seizure on 2034-02-15. It lasted about 40 seconds, stopped without treatment and the patient returned to baseline. Under Table 6, a clinical seizure that resolves rapidly is Grade 3. The same day's ICE of 6/10 alone would be Grade 2. No sedating medicine was given during the admission. Levetiracetam was prophylaxis, so it is not a competing cause. The record says Grade 2, so the documents prove a grade one higher. This is a mismatch. Extra flag: superseded-version match. The record's Grade 2 fits D06 version 1, which had only the ICE 6/10 and no seizure, but not the current version 2.",
+       "evidence": [
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0022-D06",
+         "version": 2,
+         "quote": "Addendum: at 15:10 on 2034-02-15 I witnessed a generalized tonic-clonic seizure lasting about 40 seconds, which stopped without treatment; the patient was back to the pre-seizure state within 20 minutes, with no further events.",
+         "start": 456,
+         "end": 683
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0022-D06",
+         "version": 2,
+         "quote": "the ICE was 6/10, with errors in orientation (2 of 4), naming (2 of 3) and writing",
+         "start": 92,
+         "end": 174
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0022-D06",
+         "version": 2,
+         "quote": "no sedating medicine has been given during this admission",
+         "start": 218,
+         "end": 275
+        }
+       ]
+      }
+     }
+    },
+    "evidence_valid": [
+     6,
+     6
+    ],
+    "cost_usd": 0.051041
+   },
    "runtime_seconds": {
-    "extract": 0.011038917116820812,
-    "resauce": 0.0004521673545241356,
-    "baseline_a": 3.00002284348011e-05
+    "extract": 0.008166457992047071,
+    "resauce": 0.00042729219421744347,
+    "baseline_a": 2.6625115424394608e-05,
+    "baseline_b": 13.255
    }
   },
   {
@@ -3295,10 +4506,86 @@
      5
     ]
    },
+   "baseline_b": {
+    "output": {
+     "case_id": "SYN-0023",
+     "out_of_scope": null,
+     "fields": {
+      "onset": {
+       "category": "7.5",
+       "documented_value": "2031-01-29 or 2031-01-30 (two readings)",
+       "explanation": "Reason: conflicting assessments (§6.4, A23). On 29 Jan a nurse scored ICE 9/10 at 20:15, which is Grade 1. A resident scored ICE 10/10 at 20:50, 35 minutes later, which is a formal Grade 0 assessment. If the 9/10 counts, onset is 2031-01-29: the record's 2031-01-30 is then 1 day late, which is category 7.1. If the 10/10 counts, the first qualifying finding is ICE 8/10 at 10:00 on 30 Jan, so onset is 2031-01-30, which matches the record (7.7). The two readings give different categories, so the result is 7.5. The 27 Jan ICE 10/10 is Grade 0, and the CRS fever is not a competing cause.",
+       "evidence": [
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0023-D02",
+         "version": 1,
+         "quote": "Evening neurological check on 29 Jan at 20:15: ICE 9/10 (orientation 4/4, naming 3/3, commands 1/1, writing 1/1, attention 0/1).",
+         "start": 0,
+         "end": 128
+        },
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0023-D03",
+         "version": 1,
+         "quote": "On my examination at 20:50 on 29 Jan the ICE was 10/10 (all items complete including the counting task).",
+         "start": 48,
+         "end": 152
+        },
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0023-D04",
+         "version": 1,
+         "quote": "Morning check 30 Jan at 10:00: ICE 8/10 (orientation 3/4, attention 0/1, other items complete).",
+         "start": 0,
+         "end": 95
+        }
+       ]
+      },
+      "max_grade": {
+       "category": "7.7",
+       "documented_value": "1",
+       "explanation": "The lowest ICE score is 8/10, on 30 Jan and again on 31 Jan, which is Grade 1. No note reaches a higher grade: the patient is awake throughout, and there is no seizure, focal motor deficit or edema finding. Headache is excluded from grading, and acetaminophen is not a competing cause. The conflicting reading on 29 Jan only changes the onset, not the grade. The documents support Grade 1, which equals the recorded Grade 1.",
+       "evidence": [
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0023-D04",
+         "version": 1,
+         "quote": "ICE 8/10 (orientation 3/4, attention 0/1, other items complete). Awake.",
+         "start": 31,
+         "end": 102
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0023-D05",
+         "version": 1,
+         "quote": "ICE 8/10 at 09:30 on 31 Jan (orientation 3/4, attention 0/1). Awake, no focal deficit.",
+         "start": 21,
+         "end": 107
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0023-D06",
+         "version": 1,
+         "quote": "Awake, cranial nerves intact, no focal motor deficit, no tremor, no seizure activity. Impression: mild neurotoxicity, improving.",
+         "start": 63,
+         "end": 191
+        }
+       ]
+      }
+     }
+    },
+    "evidence_valid": [
+     6,
+     6
+    ],
+    "cost_usd": 0.049736
+   },
    "runtime_seconds": {
-    "extract": 0.004207334015518427,
-    "resauce": 0.000545124989002943,
-    "baseline_a": 5.8374833315610886e-05
+    "extract": 0.003758292179554701,
+    "resauce": 0.0001965831033885479,
+    "baseline_a": 2.0458828657865524e-05,
+    "baseline_b": 14.626
    }
   },
   {
@@ -3495,10 +4782,94 @@
      3
     ]
    },
+   "baseline_b": {
+    "output": {
+     "case_id": "SYN-0024",
+     "out_of_scope": null,
+     "fields": {
+      "onset": {
+       "category": "7.1",
+       "documented_value": "2034-12-10",
+       "explanation": "The record gives onset 2034-12-09. On that date a signed nursing note documents a formal Grade 0 assessment: ICE 10/10, with the patient awakening spontaneously and explicitly not drowsy, so the Grade 1 consciousness criterion does not apply (A3). The earliest qualifying finding is ICE 7/10 (Grade 1) on 2034-12-10, with no sedative given and no competing cause. The record date is earlier than the first finding and a formal Grade 0 assessment exists on it, so this is a mismatch with a signed difference of -1 day. The discharge summary also dates neurotoxicity from 2034-12-10.",
+       "evidence": [
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0024-D02",
+         "version": 1,
+         "quote": "Awakens spontaneously for 06:00 vitals and stays awake; not drowsy at any point this shift.",
+         "start": 22,
+         "end": 113
+        },
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0024-D02",
+         "version": 1,
+         "quote": "ICE 08:10 = 10/10 - all items right, handwriting neat.",
+         "start": 164,
+         "end": 218
+        },
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0024-D03",
+         "version": 1,
+         "quote": "ICE score 7/10 at 09:25.",
+         "start": 16,
+         "end": 40
+        },
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0024-D03",
+         "version": 1,
+         "quote": "No sedative given in last 24 h.",
+         "start": 123,
+         "end": 154
+        },
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0024-D06",
+         "version": 1,
+         "quote": "Neurotoxicity from 2034-12-10, worst ICE 6/10 on 2034-12-11",
+         "start": 57,
+         "end": 116
+        }
+       ]
+      },
+      "max_grade": {
+       "category": "7.7",
+       "documented_value": "2",
+       "explanation": "The worst assessment is ICE 6/10 on 2034-12-11, which is Grade 2. The patient was awake and conversing, with full strength, no seizure activity and no sedating medication, so no other domain contributes a higher grade. Apixaban is not a listed competing cause and dexamethasone is ICANS treatment. No note documents anything above Grade 2, so the documents match the recorded Grade 2. The record's max_grade did not change between versions, so 7.6 does not apply. The headache on 2034-12-13 is excluded from grading.",
+       "evidence": [
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0024-D04",
+         "version": 1,
+         "quote": "ICE 6/10 at 08:00 (orient 1 of 4, objects 3 of 3, follows command, no sentence, counts back correctly). Awake, convers. Strength full, no facial weakness, no seizure activity. No sedating medication given.",
+         "start": 41,
+         "end": 246
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0024-D05",
+         "version": 1,
+         "quote": "ICE at 19:40 was 9/10.",
+         "start": 20,
+         "end": 42
+        }
+       ]
+      }
+     }
+    },
+    "evidence_valid": [
+     7,
+     7
+    ],
+    "cost_usd": 0.060286
+   },
    "runtime_seconds": {
-    "extract": 0.005046875216066837,
-    "resauce": 0.00020304182544350624,
-    "baseline_a": 2.508377656340599e-05
+    "extract": 0.00414487486705184,
+    "resauce": 0.00014258315786719322,
+    "baseline_a": 1.77919864654541e-05,
+    "baseline_b": 19.554
    }
   },
   {
@@ -3733,10 +5104,102 @@
      4
     ]
    },
+   "baseline_b": {
+    "output": {
+     "case_id": "SYN-0025",
+     "out_of_scope": null,
+     "fields": {
+      "onset": {
+       "category": "7.4",
+       "documented_value": "2035-10-06",
+       "explanation": "Record onset 2035-10-04 is earlier than the earliest qualifying finding (ICE 8/10 on 2035-10-06, Grade 1). The only finding on 2035-10-04 is a headache, which is excluded from ICANS grading (§4.2). That day's neuro exam is narrative ('No focal deficit') with no ICE score, so there is no formal Grade 0 assessment or other gradeable assessment on the record's date (A17, A18). The record date therefore cannot be refuted, giving insufficient evidence. Flag: record date matches an excluded or sub-threshold symptom (A24).",
+       "evidence": [
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0025-D02",
+         "version": 1,
+         "quote": "Symptoms: headache, new onset, 4/10, frontal.",
+         "start": 86,
+         "end": 131
+        },
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0025-D02",
+         "version": 1,
+         "quote": "Neuro: headache as above. No focal deficit.",
+         "start": 160,
+         "end": 203
+        },
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0025-D04",
+         "version": 1,
+         "quote": "Neuro: ICE 8/10 at 09:20 (orientation 3/4, attention 0/1)",
+         "start": 65,
+         "end": 122
+        },
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0025-D03",
+         "version": 1,
+         "quote": "TOTAL: 10/10",
+         "start": 113,
+         "end": 125
+        }
+       ]
+      },
+      "max_grade": {
+       "category": "7.7",
+       "documented_value": "2",
+       "explanation": "The worst assessment is the 2035-10-07 neurology consult: ICE 6/10 (Grade 2) and 'awakens to voice' (Grade 2), with no seizure, motor or edema findings. Dexamethasone is ICANS treatment and is not a competing cause (A35). No documented 'not assessable' period. The documented maximum Grade 2 equals the record's Grade 2.",
+       "evidence": [
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0025-D05",
+         "version": 1,
+         "quote": "ICE: 6/10 at 11:30 (orientation 2/4, naming 2/3, commands 1/1, writing 0/1, attention 1/1)",
+         "start": 62,
+         "end": 152
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0025-D05",
+         "version": 1,
+         "quote": "Level of consciousness: awakens to voice",
+         "start": 153,
+         "end": 193
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0025-D05",
+         "version": 1,
+         "quote": "Seizure: none",
+         "start": 218,
+         "end": 231
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0025-D05",
+         "version": 1,
+         "quote": "Motor: no focal deficit",
+         "start": 194,
+         "end": 217
+        }
+       ]
+      }
+     }
+    },
+    "evidence_valid": [
+     8,
+     8
+    ],
+    "cost_usd": 0.054971
+   },
    "runtime_seconds": {
-    "extract": 0.005158166866749525,
-    "resauce": 0.00021137483417987823,
-    "baseline_a": 2.8292182832956314e-05
+    "extract": 0.003391750156879425,
+    "resauce": 0.0001566670835018158,
+    "baseline_a": 2.1791085600852966e-05,
+    "baseline_b": 17.404
    }
   },
   {
@@ -3962,10 +5425,86 @@
      3
     ]
    },
+   "baseline_b": {
+    "output": {
+     "case_id": "SYN-0028",
+     "out_of_scope": null,
+     "fields": {
+      "onset": {
+       "category": "7.4",
+       "documented_value": "2036-10-26",
+       "explanation": "The first qualifying finding is ICE 8/10 (Grade 1) on 2036-10-26. The record onset of 2036-10-25 is one day earlier. On 2036-10-25 the only entry is word-finding difficulty, a sub-threshold symptom with no ICE total or level of consciousness. That day has no gradeable assessment, so the notes cannot confirm or refute the record date (§7.1, A18). The ICE 10/10 on 2036-10-24 is a formal Grade 0 assessment, but it is on a different day from the record onset. Flag: record date matches an excluded or sub-threshold symptom.",
+       "evidence": [
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0028-D02",
+         "version": 1,
+         "quote": "Speech: word-finding difficulty noted during afternoon care",
+         "start": 67,
+         "end": 126
+        },
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0028-D03",
+         "version": 1,
+         "quote": "Neuro: ICE 8/10 at 09:10 (orientation 3/4, attention 0/1)",
+         "start": 66,
+         "end": 123
+        },
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0028-D01",
+         "version": 1,
+         "quote": "Neuro: ICE 10/10 at 09:50",
+         "start": 87,
+         "end": 112
+        }
+       ]
+      },
+      "max_grade": {
+       "category": "7.7",
+       "documented_value": "2",
+       "explanation": "The worst assessment, on 2036-10-27, shows ICE 6/10 (Grade 2) and 'awakens to voice' (Grade 2). No note documents a seizure, motor deficit, edema or ICE 0-2. Dexamethasone and tocilizumab are CRS/ICANS treatment, not competing causes (A35). No 'not assessable' period is documented. The documented grade of 2 equals the record's Grade 2.",
+       "evidence": [
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0028-D04",
+         "version": 1,
+         "quote": "ICE: 6/10 at 11:20 (orientation 2/4, naming 2/3, commands 1/1, writing 0/1, attention 1/1)",
+         "start": 66,
+         "end": 156
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0028-D04",
+         "version": 1,
+         "quote": "Level of consciousness: awakens to voice",
+         "start": 157,
+         "end": 197
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0028-D04",
+         "version": 1,
+         "quote": "Motor: no focal deficit",
+         "start": 198,
+         "end": 221
+        }
+       ]
+      }
+     }
+    },
+    "evidence_valid": [
+     6,
+     6
+    ],
+    "cost_usd": 0.052886
+   },
    "runtime_seconds": {
-    "extract": 0.0038613337092101574,
-    "resauce": 0.0003115003928542137,
-    "baseline_a": 4.3416861444711685e-05
+    "extract": 0.0025574583560228348,
+    "resauce": 0.00011483393609523773,
+    "baseline_a": 1.675030216574669e-05,
+    "baseline_b": 16.863
    }
   },
   {
@@ -4208,10 +5747,86 @@
      2
     ]
    },
+   "baseline_b": {
+    "output": {
+     "case_id": "SYN-0029",
+     "out_of_scope": null,
+     "fields": {
+      "onset": {
+       "category": "7.7",
+       "documented_value": "2033-12-18",
+       "explanation": "The earliest qualifying finding is ICE 8/10 (Grade 1) at 15:10 on 18 Dec 2033. It is not attributed to another cause, and no competing cause is documented in the 24 hours before it. On 16 Dec the patient had a formal ICE of 10/10. The record's onset date of 2033-12-18 falls on the same calendar day, so there is no discrepancy.",
+       "evidence": [
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0029-D01",
+         "version": 1,
+         "quote": "ICE 10/10 at 09:45.",
+         "start": 85,
+         "end": 104
+        },
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0029-D02",
+         "version": 1,
+         "quote": "ICE 8/10 at 15:10 on 18 Dec (orient 3/4, attn 0/1).",
+         "start": 11,
+         "end": 62
+        }
+       ]
+      },
+      "max_grade": {
+       "category": "7.3",
+       "documented_value": "2",
+       "explanation": "The record gives Grade 3. The highest grade the documents support is Grade 2 (ICE 5/10 on 19 Dec, with the patient awake). On 20 Dec the patient opened their eyes only to tactile stimulus, which would be Grade 3. The attending physician explicitly attributed this to the hydromorphone PCA and not to ICANS, so it does not count toward the grade. No seizure, motor deficit or edema is documented. Dexamethasone is ICANS treatment, so it is not a competing cause. No documented 'not assessable' period exists. The record's grade is therefore unsupported (7.3), not insufficient evidence.",
+       "evidence": [
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0029-D03",
+         "version": 1,
+         "quote": "ICE 5/10 at 10:10 on 19 Dec (orientation 1/4, naming 2/3, commands 1/1, writing 0/1, attention 1/1). Awake, no focal deficit, no seizure activity.",
+         "start": 12,
+         "end": 158
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0029-D04",
+         "version": 1,
+         "quote": "At 06:30 on 20 Dec the patient opens eyes only when the shoulder is gently shaken, then answers in short phrases.",
+         "start": 79,
+         "end": 192
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0029-D05",
+         "version": 1,
+         "quote": "The reduced arousal found at 06:30 is attributed to the hydromorphone PCA started on 19 Dec, not to ICANS.",
+         "start": 15,
+         "end": 121
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0029-D06",
+         "version": 1,
+         "quote": "orientation 3/4, naming 3/3, commands 1/1, writing 0/1, attention 0/1 = 7/10. Awake, cooperative.",
+         "start": 18,
+         "end": 115
+        }
+       ]
+      }
+     }
+    },
+    "evidence_valid": [
+     6,
+     6
+    ],
+    "cost_usd": 0.042966
+   },
    "runtime_seconds": {
-    "extract": 0.004753542132675648,
-    "resauce": 0.00037279119715094566,
-    "baseline_a": 4.079192876815796e-05
+    "extract": 0.0032453746534883976,
+    "resauce": 0.00019691605120897293,
+    "baseline_a": 1.933285966515541e-05,
+    "baseline_b": 12.59
    }
   },
   {
@@ -4416,10 +6031,86 @@
      4
     ]
    },
+   "baseline_b": {
+    "output": {
+     "case_id": "SYN-0030",
+     "out_of_scope": null,
+     "fields": {
+      "onset": {
+       "category": "7.7",
+       "documented_value": "2035-01-26",
+       "explanation": "The earliest qualifying finding is ICE 8/10, which is Grade 1. Its event time is 2035-01-26 at 23:30. The note was signed after midnight (2035-01-27 00:50), but onset uses event time, so the date is 2035-01-26. No competing cause is documented: no sedating medicines, and the patient was afebrile. The earlier ICE on 2035-01-24 was 10/10, which is a formal Grade 0. The record onset of 2035-01-26 is the same calendar day.",
+       "evidence": [
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0030-D02",
+         "version": 1,
+         "quote": "2035-01-26 at 23:30, ICE 8/10: wrong month, could not name the hospital, sentence incomplete; named objects and followed the command.",
+         "start": 75,
+         "end": 208
+        },
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0030-D02",
+         "version": 1,
+         "quote": "No sedating medicines given since admission. Afebrile.",
+         "start": 293,
+         "end": 347
+        },
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0030-D01",
+         "version": 1,
+         "quote": "ICE at 20:00: 10/10.",
+         "start": 105,
+         "end": 125
+        }
+       ]
+      },
+      "max_grade": {
+       "category": "7.7",
+       "documented_value": "2",
+       "explanation": "The worst assessment is ICE 5/10 on 2035-01-27, which is Grade 2. The patient was awake and conversing, with no focal deficit, no seizure and no sedating drugs. No note documents a seizure, motor finding, edema or depressed consciousness that would give a higher grade. The record's Grade 2 equals the documented maximum. There is a 'not assessable' day on 2035-01-30 (patient off the ward), but that only matters for an unsupported grade under 7.3, so it does not apply here; it goes in the unassessed-period flag.",
+       "evidence": [
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0030-D03",
+         "version": 1,
+         "quote": "Neuro: ICE 5/10 at 09:10 (1 of 4 orientation answers, 2 of 3 objects, command followed, no sentence, counted back); awake, conversing, no focal deficit, no seizure.",
+         "start": 25,
+         "end": 189
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0030-D03",
+         "version": 1,
+         "quote": "No sedating drugs in the last 24 hours.",
+         "start": 190,
+         "end": 229
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0030-D04",
+         "version": 1,
+         "quote": "No ICE possible on 2035-01-30: patient away from the ward from 07:30 to 19:00 for apheresis and restaging scans.",
+         "start": 20,
+         "end": 132
+        }
+       ]
+      }
+     }
+    },
+    "evidence_valid": [
+     6,
+     6
+    ],
+    "cost_usd": 0.038156
+   },
    "runtime_seconds": {
-    "extract": 0.005014332942664623,
-    "resauce": 0.00017970893532037735,
-    "baseline_a": 2.474989742040634e-05
+    "extract": 0.0031382921151816845,
+    "resauce": 0.00013524992391467094,
+    "baseline_a": 2.0042061805725098e-05,
+    "baseline_b": 10.974
    }
   },
   {
@@ -4550,10 +6241,40 @@
      4
     ]
    },
+   "baseline_b": {
+    "output": {
+     "case_id": "SYN-0031",
+     "out_of_scope": {
+      "reason": "documented death",
+      "source": "Baseline B answer",
+      "evidence": []
+     },
+     "fields": {
+      "onset": {
+       "category": "out of scope (documented death)",
+       "documented_value": "2032-12-21",
+       "explanation": "Case is out of scope (documented death, §5/A29); best reading given only. Formal Grade 0 assessment (ICE 10/10) on 2032-12-19; first qualifying finding is ICE 8/10 (Grade 1) at 15:00 on 2032-12-21, with no documented competing cause. This matches the record onset of 2032-12-21.",
+       "evidence": []
+      },
+      "max_grade": {
+       "category": "out of scope (documented death)",
+       "documented_value": "2",
+       "explanation": "Case is out of scope (documented death, §5/A29); best reading given only. Worst assessment is on 2032-12-22: ICE 6/10 (Grade 2) and awakens to voice (Grade 2), with no seizure, focal deficit or edema. Dexamethasone is ICANS treatment, so it is not a competing cause (A35). No higher-grade finding and no documented 'not assessable' period. This equals the record's Grade 2.",
+       "evidence": []
+      }
+     }
+    },
+    "evidence_valid": [
+     0,
+     0
+    ],
+    "cost_usd": 0.046346
+   },
    "runtime_seconds": {
-    "extract": 0.005544666666537523,
-    "resauce": 1.9791070371866226e-05,
-    "baseline_a": 5.0166621804237366e-05
+    "extract": 0.004240666050463915,
+    "resauce": 1.2415926903486252e-05,
+    "baseline_a": 2.2958964109420776e-05,
+    "baseline_b": 14.56
    }
   },
   {
@@ -4835,10 +6556,94 @@
      5
     ]
    },
+   "baseline_b": {
+    "output": {
+     "case_id": "SYN-0032",
+     "out_of_scope": null,
+     "fields": {
+      "onset": {
+       "category": "7.6",
+       "documented_value": "2034-08-01",
+       "explanation": "Earliest qualifying finding is ICE 8/10 (Grade 1) at 23:30 on 01 Aug (Day +4), documented in the signed addendum D04 v2. No competing cause applies: acetaminophen, tocilizumab and fever are excluded under A35. Earlier ICE scores were 10/10. Record v2 changed onset from 2034-08-02 to 2034-08-01, which matches. The supporting D04 v2 (documented 2034-08-05T15:00) falls after v1 recorded_at (2034-08-04T18:00) and no later than v2 recorded_at (2034-08-06T10:00), so this is a legitimate revision.",
+       "evidence": [
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0032-D04",
+         "version": 2,
+         "quote": "Addendum 05 Aug: RN flowsheet shows ICE 8/10 at 23:30 on 01 Aug (orient 3/4, attn 0/1), not seen when this note was written.",
+         "start": 139,
+         "end": 263
+        },
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0032-D02",
+         "version": 1,
+         "quote": "ICE 10/10 at 16:40.",
+         "start": 16,
+         "end": 35
+        },
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0032-D04",
+         "version": 1,
+         "quote": "ICE 8/10 at 10:30 on 02 Aug (orient 3/4, attn 0/1).",
+         "start": 26,
+         "end": 77
+        }
+       ]
+      },
+      "max_grade": {
+       "category": "7.7",
+       "documented_value": "2",
+       "explanation": "Worst assessment is 03 Aug: ICE 6/10 (Grade 2) and 'Awakens to voice' (Grade 2). There is no seizure, no focal motor deficit, no edema, and the EEG is normal. Tremor is excluded from grading and dexamethasone is not a competing cause. Record max grade 2 (unchanged across versions) equals the documented grade.",
+       "evidence": [
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0032-D05",
+         "version": 1,
+         "quote": "ICE 6/10 at 11:40 (orient 2/4, name 2/3, cmd 1/1, write 0/1, attn 1/1). Awakens to voice.",
+         "start": 22,
+         "end": 111
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0032-D05",
+         "version": 1,
+         "quote": "No sz, no focal motor def.",
+         "start": 125,
+         "end": 151
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0032-D06",
+         "version": 1,
+         "quote": "Impression: normal EEG.",
+         "start": 141,
+         "end": 164
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0032-D07",
+         "version": 1,
+         "quote": "ICE 7/10 at 13:40 on 04 Aug (orient 3/4, name 3/3, cmd 1/1, write 0/1, attn 0/1).",
+         "start": 0,
+         "end": 81
+        }
+       ]
+      }
+     }
+    },
+    "evidence_valid": [
+     7,
+     7
+    ],
+    "cost_usd": 0.063196
+   },
    "runtime_seconds": {
-    "extract": 0.005760041996836662,
-    "resauce": 0.00042066723108291626,
-    "baseline_a": 3.1750183552503586e-05
+    "extract": 0.004261333029717207,
+    "resauce": 0.00036191707476973534,
+    "baseline_a": 2.674991264939308e-05,
+    "baseline_b": 19.658
    }
   },
   {
@@ -5010,10 +6815,70 @@
      2
     ]
    },
+   "baseline_b": {
+    "output": {
+     "case_id": "SYN-0033",
+     "out_of_scope": null,
+     "fields": {
+      "onset": {
+       "category": "7.6",
+       "documented_value": "2032-05-01",
+       "explanation": "Earliest qualifying finding: late entry D08 documenting ICE 8/10 (Grade 1) at 2032-05-01 22:10, no sedating meds; event date used (in window, Day +4). Record onset revised from 2032-05-02 (v1) to 2032-05-01 (v2), matching the documents. Supporting document D08 v1 documented 2032-05-08T16:15, after v1 recorded_at (2032-05-06T10:00) and before v2 recorded_at (2032-05-11T14:30), so §7.6 condition (c) holds.",
+       "evidence": [
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0033-D08",
+         "version": 1,
+         "quote": "LATE ENTRY for 2032-05-01 22:10: ICE 8/10 (missed month + sentence) - pt awake, watching TV w/ family; covering MD informed at the time. No sedating meds that day.",
+         "start": 0,
+         "end": 163
+        },
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0033-D03",
+         "version": 1,
+         "quote": "ICE 2032-05-01 @ 08:20: 10/10.",
+         "start": 0,
+         "end": 30
+        },
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0033-D04",
+         "version": 1,
+         "quote": "ICE 2032-05-02 @ 09:05: 7/10 (-yr, -hospital, -sentence).",
+         "start": 0,
+         "end": 57
+        }
+       ]
+      },
+      "max_grade": {
+       "category": "7.7",
+       "documented_value": "2",
+       "explanation": "Highest per-assessment grade is Grade 2 from ICE 5/10 on 2032-05-03 (awake, no focal deficit, no seizure, no sedating meds; dexamethasone is not a competing cause). No higher-grade finding documented. Record max grade 2 (unchanged) matches.",
+       "evidence": [
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0033-D05",
+         "version": 1,
+         "quote": "ICE 11:00 = 5/10 (O1 N2 C1 W0 A1). Awake, talking. No focal deficit, no sz. No sedating meds.",
+         "start": 29,
+         "end": 122
+        }
+       ]
+      }
+     }
+    },
+    "evidence_valid": [
+     4,
+     4
+    ],
+    "cost_usd": 0.059206
+   },
    "runtime_seconds": {
-    "extract": 0.0056361248716712,
-    "resauce": 0.00031791720539331436,
-    "baseline_a": 3.9250124245882034e-05
+    "extract": 0.0037708329036831856,
+    "resauce": 0.00030404236167669296,
+    "baseline_a": 2.237502485513687e-05,
+    "baseline_b": 18.486
    }
   },
   {
@@ -5245,10 +7110,70 @@
      2
     ]
    },
+   "baseline_b": {
+    "output": {
+     "case_id": "SYN-0034",
+     "out_of_scope": null,
+     "fields": {
+      "onset": {
+       "category": "7.7",
+       "documented_value": "2035-06-02",
+       "explanation": "The first qualifying finding is ICE 7/10 (Grade 1) at 09:10 on 02 Jun 2035 (Day +5), documented in signed note D02. The tremor in the same note is excluded from ICANS grading and onset (A11). Tocilizumab is treatment for CRS, so it is not a competing cause (A35). The ICE 10/10 baseline in D01 is from Day -6, before the observation window, so it is not used. D04 repeats the D02 line word for word, so it is copied forward and not new evidence. The record onset of 2035-06-02 is the same calendar day as the documented onset.",
+       "evidence": [
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0034-D02",
+         "version": 1,
+         "quote": "ICE 7/10 at 09:10 on 02 Jun (lost 3: year, month, attention); alert; no seizures.",
+         "start": 71,
+         "end": 152
+        }
+       ]
+      },
+      "max_grade": {
+       "category": "7.7",
+       "documented_value": "1",
+       "explanation": "The worst documented assessment is ICE 7/10 with the patient alert and no seizures, which is Grade 1. No note documents a seizure, a motor finding, raised intracranial pressure or edema, or a depressed level of consciousness. Tremor is excluded from grading. D03 records ICE 10/10 on 05 Jun (Grade 0). The D05 line about ICE 7/10 on 09 Jun differs from D02 only in date and time, so under A31 it counts as copied forward. Even if it were read as a new observation, it would still be Grade 1. The documents support Grade 1, which equals the recorded maximum grade of 1.",
+       "evidence": [
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0034-D02",
+         "version": 1,
+         "quote": "ICE 7/10 at 09:10 on 02 Jun (lost 3: year, month, attention); alert; no seizures.",
+         "start": 71,
+         "end": 152
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0034-D03",
+         "version": 1,
+         "quote": "ICE 05 Jun 09:20 = 10/10. Alert. Back to baseline. No tremor.",
+         "start": 0,
+         "end": 61
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0034-D05",
+         "version": 1,
+         "quote": "ICE 7/10 at 09:25 on 09 Jun (lost 3: year, month, attention); alert; no seizures.",
+         "start": 51,
+         "end": 132
+        }
+       ]
+      }
+     }
+    },
+    "evidence_valid": [
+     4,
+     4
+    ],
+    "cost_usd": 0.041146
+   },
    "runtime_seconds": {
-    "extract": 0.0027425410225987434,
-    "resauce": 0.00022783270105719566,
-    "baseline_a": 2.266746014356613e-05
+    "extract": 0.002453249879181385,
+    "resauce": 0.00012583285570144653,
+    "baseline_a": 1.7249956727027893e-05,
+    "baseline_b": 13.583
    }
   },
   {
@@ -5452,10 +7377,78 @@
      3
     ]
    },
+   "baseline_b": {
+    "output": {
+     "case_id": "SYN-0035",
+     "out_of_scope": null,
+     "fields": {
+      "onset": {
+       "category": "7.8",
+       "documented_value": "2033-11-16",
+       "explanation": "The record reports ICANS (icans_reported true) but its onset date is empty, so this field is a missing recorded value (§7.8, A20). On 14 Nov (Day +3) the ICE score was 10/10, a formal Grade 0 assessment. The headache that day is excluded from grading, and tocilizumab and acetaminophen are not competing causes (A35). The first qualifying finding is ICE 8/10 at 15:00 on 16 Nov (Day +5), which is Grade 1. No competing cause is documented and the note is signed. So the onset the documents support is 2033-11-16.",
+       "evidence": [
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0035-D01",
+         "version": 1,
+         "quote": "ICE 10/10 at 10:00.",
+         "start": 69,
+         "end": 88
+        },
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0035-D02",
+         "version": 1,
+         "quote": "ICE 8/10 at 15:00 on 16 Nov (orientation 3/4, attention 0/1, rest complete).",
+         "start": 16,
+         "end": 92
+        }
+       ]
+      },
+      "max_grade": {
+       "category": "7.7",
+       "documented_value": "2",
+       "explanation": "The worst assessment is the neurology consult on 17 Nov (Day +6). Its ICE score is 5/10, and the item scores add up to 5, which is Grade 2. The patient awakens to voice, also Grade 2. No seizure or focal motor deficit is documented, and there are no imaging findings. The hand tremor is excluded from grading (§4.2, A11). Dexamethasone is ICANS treatment, not a competing cause (A35). There is no documented 'not assessable' period. The only unsigned document, D04, is a dietitian note with no neurological content and is not used. The highest grade the documents support is 2, which matches the record's Grade 2. The record has a single version, so there is no revision to assess.",
+       "evidence": [
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0035-D03",
+         "version": 1,
+         "quote": "ICE 5/10 at 11:10 (orientation 1/4, naming 2/3, commands 1/1, writing 0/1, attention 1/1).",
+         "start": 25,
+         "end": 115
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0035-D03",
+         "version": 1,
+         "quote": "Awakens to voice.",
+         "start": 116,
+         "end": 133
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0035-D02",
+         "version": 1,
+         "quote": "ICE 8/10 at 15:00 on 16 Nov (orientation 3/4, attention 0/1, rest complete).",
+         "start": 16,
+         "end": 92
+        }
+       ]
+      }
+     }
+    },
+    "evidence_valid": [
+     5,
+     5
+    ],
+    "cost_usd": 0.040166
+   },
    "runtime_seconds": {
-    "extract": 0.004901916719973087,
-    "resauce": 0.00015312526375055313,
-    "baseline_a": 2.095801755785942e-05
+    "extract": 0.0024674166925251484,
+    "resauce": 0.00011433381587266922,
+    "baseline_a": 1.787487417459488e-05,
+    "baseline_b": 12.615
    }
   },
   {
@@ -5688,10 +7681,86 @@
      4
     ]
    },
+   "baseline_b": {
+    "output": {
+     "case_id": "SYN-0036",
+     "out_of_scope": null,
+     "fields": {
+      "onset": {
+       "category": "7.4",
+       "documented_value": "2034-02-28",
+       "explanation": "The record gives onset 2034-02-26 (Day +3). The first qualifying finding in the documents is ICE 8/10 on 2034-02-28 (Day +5, Grade 1), so the record date is 2 days earlier than the documents support. The Day +3 note is a narrative normal neuro exam with no ICE score. Under A17 that does not establish Grade 0, so there is no gradeable assessment on the record's date that could refute it. The mild headache that day is an excluded symptom (§4.2, A11). Result: insufficient evidence (§7.1, A18). Extra flag: 'record date matches an excluded or sub-threshold symptom' (headache on 2034-02-26). The last ICE 10/10 before onset was on 2034-02-27, the day before the documented onset.",
+       "evidence": [
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0036-D03",
+         "version": 1,
+         "quote": "Neuro: alert and oriented x4, speech clear, cranial nerves intact, strength 5/5 in all limbs, no focal deficit.",
+         "start": 48,
+         "end": 159
+        },
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0036-D03",
+         "version": 1,
+         "quote": "Reports a mild headache 3/10, acetaminophen given.",
+         "start": 160,
+         "end": 210
+        },
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0036-D04",
+         "version": 1,
+         "quote": "Total 10/10.",
+         "start": 100,
+         "end": 112
+        },
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0036-D05",
+         "version": 1,
+         "quote": "ICE 8/10 at 09:30 (orientation 3/4, attention 0/1, remaining items complete).",
+         "start": 7,
+         "end": 84
+        }
+       ]
+      },
+      "max_grade": {
+       "category": "7.7",
+       "documented_value": "2",
+       "explanation": "The worst assessment is on 2034-03-01: ICE 5/10 (Grade 2) and 'awakens to voice' (Grade 2). No seizure, motor or edema finding is documented. Dexamethasone is ICANS treatment, so it is not a competing cause (A35). No sedating medication is documented. So the documents support Grade 2, which matches the record. Extra flags: D07 v2 is unsigned and differs only in weight (66.3 vs 66.8 kg), so v1 stays current ('unsigned later version'). The case-level unassessed-period flag is also added.",
+       "evidence": [
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0036-D06",
+         "version": 1,
+         "quote": "ICE 5/10 at 11:45 (orientation 1/4, naming 2/3, commands 1/1, writing 0/1, attention 1/1). Awakens to voice. No focal motor deficit, no seizures.",
+         "start": 25,
+         "end": 170
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0036-D08",
+         "version": 1,
+         "quote": "Neurotoxicity: ICE 8/10 on 28 Feb, lowest ICE 5/10 on 01 Mar, treated with dexamethasone and recovered.",
+         "start": 60,
+         "end": 163
+        }
+       ]
+      }
+     }
+    },
+    "evidence_valid": [
+     6,
+     6
+    ],
+    "cost_usd": 0.045546
+   },
    "runtime_seconds": {
-    "extract": 0.006709250155836344,
-    "resauce": 0.00022933399304747581,
-    "baseline_a": 2.9250048100948334e-05
+    "extract": 0.004744166973978281,
+    "resauce": 0.00018225004896521568,
+    "baseline_a": 2.0999927073717117e-05,
+    "baseline_b": 12.66
    }
   },
   {
@@ -5920,10 +7989,86 @@
      2
     ]
    },
+   "baseline_b": {
+    "output": {
+     "case_id": "SYN-0039",
+     "out_of_scope": null,
+     "fields": {
+      "onset": {
+       "category": "7.7",
+       "documented_value": "2034-01-03",
+       "explanation": "The first qualifying finding is ICE 8/10 at 09:40 on 2034-01-03 (Day +3), which meets the Grade 1 criterion. The ICE the evening before, 2034-01-02 at 21:00, was 10/10, a formal Grade 0 assessment. The recorded onset of 2034-01-03 is the same calendar day as the documented onset.",
+       "evidence": [
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0039-D02",
+         "version": 1,
+         "quote": "ICE at 21:00 was 10/10, with quick and accurate answers.",
+         "start": 253,
+         "end": 309
+        },
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0039-D03",
+         "version": 1,
+         "quote": "Total ICE 8/10 at 09:40.",
+         "start": 179,
+         "end": 203
+        }
+       ]
+      },
+      "max_grade": {
+       "category": "7.2",
+       "documented_value": "4",
+       "explanation": "On 2034-01-06 (Day +6, inside the window) the patient could not be roused. There was no response to a loud voice, to repeated shaking or to a firm sternal rub, and the ICE was 0/10 because the patient could not be woken to attempt it. Being unarousable or needing repeated tactile stimuli to arouse is Grade 4 in Table 6, and ICE 0 in an unarousable patient is also Grade 4. No competing cause is documented: no sedating drug was given during the admission, and glucose and sodium were normal. The documents therefore prove Grade 4, which is one grade higher than the recorded maximum of Grade 3.",
+       "evidence": [
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0039-D05",
+         "version": 1,
+         "quote": "At the 10:40 neuro check the patient could not be roused: no eye opening and no movement to a loud voice, to repeated shaking of both shoulders or to a firm sternal rub.",
+         "start": 140,
+         "end": 309
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0039-D05",
+         "version": 1,
+         "quote": "No sedative, opioid, antihistamine or antipsychotic has been given during this admission.",
+         "start": 469,
+         "end": 558
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0039-D06",
+         "version": 1,
+         "quote": "ICE 0/10 because the patient could not be woken to attempt it.",
+         "start": 165,
+         "end": 227
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0039-D06",
+         "version": 1,
+         "quote": "Glucose and sodium are normal.",
+         "start": 341,
+         "end": 371
+        }
+       ]
+      }
+     }
+    },
+    "evidence_valid": [
+     6,
+     6
+    ],
+    "cost_usd": 0.041466
+   },
    "runtime_seconds": {
-    "extract": 0.012752042151987553,
-    "resauce": 0.00028562499210238457,
-    "baseline_a": 2.0083971321582794e-05
+    "extract": 0.009611791931092739,
+    "resauce": 0.0003233333118259907,
+    "baseline_a": 2.1082814782857895e-05,
+    "baseline_b": 11.67
    }
   },
   {
@@ -6286,10 +8431,102 @@
      5
     ]
    },
+   "baseline_b": {
+    "output": {
+     "case_id": "SYN-0040",
+     "out_of_scope": null,
+     "fields": {
+      "onset": {
+       "category": "7.7",
+       "documented_value": "2036-06-22",
+       "explanation": "The first qualifying finding is ICE 8/10 (Grade 1) at 02:10 on 22 Jun (Day +5). It has no clinician attribution to another cause. Acetaminophen and tocilizumab were given on 19 Jun, but they are CRS treatment and are excluded as competing causes under A35. Formal Grade 0 assessments (ICE 10/10) were documented on 17, 20 and 21 Jun. The current record onset, 2036-06-22, falls on the same day, so this is a match. The onset changed from 2036-06-21 in v1 to 2036-06-22 in v2. For a 7.6 legitimate revision, a supporting document version must be dated after v1 was recorded (2036-06-29T09:00) and no later than v2 (2036-07-07T14:00). No document version is dated in that interval: the supporting notes D05, D06 and D09 all predate v1. Condition (c) fails, so the result is 7.7 with the extra flag 'revision without new documentation'.",
+       "evidence": [
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0040-D05",
+         "version": 1,
+         "quote": "ICE 8/10 at 02:10 on 22 Jun (orientation 3/4, naming 3/3, commands 1/1, writing 1/1, attention 0/1). Awake, cooperative.",
+         "start": 13,
+         "end": 133
+        },
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0040-D04",
+         "version": 1,
+         "quote": "Total 10/10. Alert, cooperative.",
+         "start": 100,
+         "end": 132
+        },
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0040-D03",
+         "version": 1,
+         "quote": "ICE 10/10 at 09:50.",
+         "start": 51,
+         "end": 70
+        },
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0040-D09",
+         "version": 1,
+         "quote": "Neurotoxicity: fluctuating ICE scores from 22 Jun, lowest ICE 5/10 on 23 Jun",
+         "start": 72,
+         "end": 148
+        }
+       ]
+      },
+      "max_grade": {
+       "category": "7.7",
+       "documented_value": "2",
+       "explanation": "The worst assessment is the neurology consult on 23 Jun. It records ICE 5/10 (Grade 2) and 'Awakens to voice' (Grade 2), with no seizure, no focal motor deficit and no edema findings. Tremor is excluded from ICANS grading. Dexamethasone is ICANS treatment, not a competing cause. All other assessments are ICE 8/10 (Grade 1) or 10/10. The documented maximum is therefore Grade 2. The record's maximum grade is 2 and did not change between versions, so there is no discrepancy.",
+       "evidence": [
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0040-D07",
+         "version": 1,
+         "quote": "ICE 5/10 at 11:00 on 23 Jun (orientation 1/4, naming 2/3, commands 1/1, writing 0/1, attention 1/1).",
+         "start": 38,
+         "end": 138
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0040-D07",
+         "version": 1,
+         "quote": "Awakens to voice, drifts back to sleep when not stimulated.",
+         "start": 139,
+         "end": 198
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0040-D07",
+         "version": 1,
+         "quote": "No seizure activity, no focal motor deficit.",
+         "start": 226,
+         "end": 270
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0040-D08",
+         "version": 2,
+         "quote": "ICE 8/10 at 10:10 (orientation 3/4, attention 0/1, remaining items full).",
+         "start": 0,
+         "end": 73
+        }
+       ]
+      }
+     }
+    },
+    "evidence_valid": [
+     8,
+     8
+    ],
+    "cost_usd": 0.052856
+   },
    "runtime_seconds": {
-    "extract": 0.006289874669164419,
-    "resauce": 0.00037516606971621513,
-    "baseline_a": 2.5250017642974854e-05
+    "extract": 0.004844999872148037,
+    "resauce": 0.0003672083839774132,
+    "baseline_a": 2.562534064054489e-05,
+    "baseline_b": 14.926
    }
   },
   {
@@ -6477,10 +8714,78 @@
      3
     ]
    },
+   "baseline_b": {
+    "output": {
+     "case_id": "SYN-0041",
+     "out_of_scope": null,
+     "fields": {
+      "onset": {
+       "category": "7.7",
+       "documented_value": "2034-07-14",
+       "explanation": "Earliest qualifying finding is ICE 8/10 (Grade 1) at 08:25 on 2034-07-14 (Day +3), with no sedating medication documented. The prior assessment on 2034-07-12 was ICE 10/10 (formal Grade 0). Record onset 2034-07-14 matches on the same calendar day. Onset value did not change between record versions, so 7.6 does not apply.",
+       "evidence": [
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0041-D02",
+         "version": 1,
+         "quote": "ICE 8/10 @ 08:25 - wrong month, no sentence. Awake, having breakfast. No sedating meds.",
+         "start": 16,
+         "end": 103
+        },
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0041-D01",
+         "version": 1,
+         "quote": "ICE 21:30 = 10/10.",
+         "start": 83,
+         "end": 101
+        }
+       ]
+      },
+      "max_grade": {
+       "category": "7.3",
+       "documented_value": "2",
+       "explanation": "Worst documented finding is ICE 5/10 on 2034-07-15 (Grade 2). The patient was always awake, with no focal deficit and no seizure activity; the EEG was normal with no seizures; no imaging documents edema. No Grade 3 criterion is documented, so the current record Grade 3 (v2, changed from Grade 2 at 'Data review' with no new documentation after v1) is not supported. No documented 'not assessable' period exists, so the category is 7.3 rather than 7.4. The headache is excluded from grading, and hydroxychloroquine is not a listed competing cause.",
+       "evidence": [
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0041-D03",
+         "version": 1,
+         "quote": "ICE at 10:15 5/10 (orientation one of four, two of three objects, command yes, sentence no, counting yes). Awake, talking with family. No focal deficit. No seizure activity. No sedating medication.",
+         "start": 26,
+         "end": 223
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0041-D04",
+         "version": 1,
+         "quote": "No slowing, no epileptiform discharges, no seizures. Impression: normal EEG.",
+         "start": 75,
+         "end": 151
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0041-D08",
+         "version": 1,
+         "quote": "Neurotoxicity Day +3 to +8, worst ICE 5/10 2034-07-15.",
+         "start": 50,
+         "end": 104
+        }
+       ]
+      }
+     }
+    },
+    "evidence_valid": [
+     5,
+     5
+    ],
+    "cost_usd": 0.056221
+   },
    "runtime_seconds": {
-    "extract": 0.0036790003068745136,
-    "resauce": 0.00018616719171404839,
-    "baseline_a": 2.3041851818561554e-05
+    "extract": 0.0031624999828636646,
+    "resauce": 0.00014637503772974014,
+    "baseline_a": 1.9459053874015808e-05,
+    "baseline_b": 17.586
    }
   },
   {
@@ -6731,10 +9036,86 @@
      3
     ]
    },
+   "baseline_b": {
+    "output": {
+     "case_id": "SYN-0042",
+     "out_of_scope": null,
+     "fields": {
+      "onset": {
+       "category": "7.1",
+       "documented_value": "2035-03-25",
+       "explanation": "Record onset 2035-03-23 (Day 4). A formal Grade 0 assessment exists on that date (ICE 10/10, alert); the only other finding that day is tremor, which is excluded from ICANS grading and onset (A11). The earliest qualifying finding is ICE 8/10 on 2035-03-25 (Grade 1). Record is earlier than the first documented finding and refuted by a formal Grade 0 assessment on its date, so this is a mismatch of -2 days (A24). Flag: record date matches an excluded or sub-threshold symptom (tremor).",
+       "evidence": [
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0042-D01",
+         "version": 1,
+         "quote": "ICE 10/10 at 09:50, alert.",
+         "start": 51,
+         "end": 77
+        },
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0042-D01",
+         "version": 1,
+         "quote": "Fine tremor of both hands noted at 09:50.",
+         "start": 78,
+         "end": 119
+        },
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0042-D02",
+         "version": 1,
+         "quote": "ICE 8/10 at 08:20 on 25 Mar (orientation 3/4, attention 0/1, rest complete).",
+         "start": 0,
+         "end": 76
+        }
+       ]
+      },
+      "max_grade": {
+       "category": "7.7",
+       "documented_value": "2",
+       "explanation": "Worst assessment is the 26 Mar neurology consult: ICE 5/10 (Grade 2) and awakens to voice (Grade 2), with no seizure, motor or raised-ICP/edema findings. No competing cause is documented (dexamethasone and tocilizumab are treatments and not competing causes, A35). Documented maximum Grade 2 equals the record's Grade 2.",
+       "evidence": [
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0042-D03",
+         "version": 1,
+         "quote": "ICE 5/10 at 12:40 (orientation 1/4, naming 2/3, commands 1/1, writing 0/1, attention 1/1).",
+         "start": 26,
+         "end": 116
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0042-D03",
+         "version": 1,
+         "quote": "Awakens to voice.",
+         "start": 117,
+         "end": 134
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0042-D03",
+         "version": 1,
+         "quote": "No focal motor deficit, no seizures.",
+         "start": 149,
+         "end": 185
+        }
+       ]
+      }
+     }
+    },
+    "evidence_valid": [
+     6,
+     6
+    ],
+    "cost_usd": 0.046681
+   },
    "runtime_seconds": {
-    "extract": 0.002836375031620264,
-    "resauce": 0.00012837490066885948,
-    "baseline_a": 1.950003206729889e-05
+    "extract": 0.0015434580855071545,
+    "resauce": 0.0001077498309314251,
+    "baseline_a": 1.6458798199892044e-05,
+    "baseline_b": 15.235
    }
   },
   {
@@ -6952,10 +9333,78 @@
      4
     ]
    },
+   "baseline_b": {
+    "output": {
+     "case_id": "SYN-0045",
+     "out_of_scope": null,
+     "fields": {
+      "onset": {
+       "category": "7.7",
+       "documented_value": "2035-03-27",
+       "explanation": "The earliest qualifying finding is ICE 8/10 (Grade 1) on 27 Mar at 20:20, with the total stated in the note. A formal Grade 0 assessment (ICE 10/10) on 25 Mar shows no ICANS earlier. Tocilizumab and fever are not competing causes (A35). This is the same calendar day as the record's onset of 2035-03-27. Flag: recurrence (full resolution on 30 Mar, recurrence on 04 Apr), still treated as one episode.",
+       "evidence": [
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0045-D01",
+         "version": 1,
+         "quote": "ICE 10/10 at 09:45, alert and oriented.",
+         "start": 123,
+         "end": 162
+        },
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0045-D02",
+         "version": 1,
+         "quote": "ICE score 8/10 at 20:20 on 27 Mar (orientation 3/4, attention 0/1, other items complete).",
+         "start": 15,
+         "end": 104
+        }
+       ]
+      },
+      "max_grade": {
+       "category": "7.7",
+       "documented_value": "2",
+       "explanation": "The worst assessment is on 05 Apr: ICE 5/10 (Grade 2) and 'awakens to voice' (Grade 2), with no sedating medication documented. Nothing documented reaches Grade 3: no seizure, no focal motor deficit, normal MRI with no edema. The tremor is excluded from grading. Dexamethasone and acetaminophen are not competing causes. The documented maximum, Grade 2, equals the record's Grade 2.",
+       "evidence": [
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0045-D07",
+         "version": 1,
+         "quote": "ICE 5/10 at 10:30 (orientation 1/4, naming 2/3, commands 1/1, writing 0/1, attention 1/1). Awakens to voice and then settles back to sleep.",
+         "start": 26,
+         "end": 165
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0045-D07",
+         "version": 1,
+         "quote": "No focal motor deficit and no seizure activity.",
+         "start": 166,
+         "end": 213
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0045-D05",
+         "version": 1,
+         "quote": "Impression: normal MRI of the brain.",
+         "start": 244,
+         "end": 280
+        }
+       ]
+      }
+     }
+    },
+    "evidence_valid": [
+     5,
+     5
+    ],
+    "cost_usd": 0.053136
+   },
    "runtime_seconds": {
-    "extract": 0.008133708033710718,
-    "resauce": 0.000296667218208313,
-    "baseline_a": 6.929086521267891e-05
+    "extract": 0.005537000019103289,
+    "resauce": 0.00019229203462600708,
+    "baseline_a": 2.2458378225564957e-05,
+    "baseline_b": 15.311
    }
   },
   {
@@ -7300,10 +9749,102 @@
      4
     ]
    },
+   "baseline_b": {
+    "output": {
+     "case_id": "SYN-0046",
+     "out_of_scope": null,
+     "fields": {
+      "onset": {
+       "category": "7.5",
+       "documented_value": "2031-05-23 or 2031-05-24",
+       "explanation": "Reason: attribution. On Day 3 (2031-05-21), ICE was 10/10, a formal Grade 0 assessment. The earliest finding that could count is ICE 8/10 at 08:50 on 2031-05-23 (Grade 1). The same note documents lorazepam 0.5 mg IV at 04:00 that day. Lorazepam is a benzodiazepine, which is on the closed list of competing causes (A35), and it was given in the same note and within the 24 hours before the finding (A30). No clinician states whether the low score was due to ICANS or the drug. Reading 1: if the ICE 8 counts, onset is 2031-05-23 and the record's 2031-05-24 is a mismatch (7.1, record 1 day later). Reading 2: if it does not count, the first qualifying finding is ICE 6/10 at 11:00 on 2031-05-24, which is 31 hours after the lorazepam and so not affected by it. Onset is then 2031-05-24, matching the record (7.7). The two readings give different categories, so the result is 7.5.",
+       "evidence": [
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0046-D01",
+         "version": 1,
+         "quote": "ICE 10/10 at 09:40.",
+         "start": 60,
+         "end": 79
+        },
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0046-D02",
+         "version": 1,
+         "quote": "ICE 8/10 at 08:50 (orientation 3/4, attention 0/1, rest complete).",
+         "start": 12,
+         "end": 78
+        },
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0046-D02",
+         "version": 1,
+         "quote": "Lorazepam 0.5 mg IV given at 04:00 for nausea.",
+         "start": 86,
+         "end": 132
+        },
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0046-D03",
+         "version": 1,
+         "quote": "24 May 11:00: ICE 6/10 (orientation 2/4, naming 2/3, commands 1/1, writing 1/1, attention 0/1).",
+         "start": 0,
+         "end": 95
+        }
+       ]
+      },
+      "max_grade": {
+       "category": "7.7",
+       "documented_value": "2",
+       "explanation": "The worst documented grade is 2. On 2031-05-24 the patient scored ICE 6/10 and ICE 5/10 (both Grade 2) and 'awakens to voice' (Grade 2). No document shows a seizure, focal motor deficit, edema, or consciousness at Grade 3 or worse. The hand tremor is excluded from grading. Dexamethasone is a treatment, not a competing cause. The lorazepam question affects only the Grade 1 finding on 2031-05-23, so it does not change the maximum. The record's Grade 2 matches the documents.",
+       "evidence": [
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0046-D03",
+         "version": 1,
+         "quote": "24 May 11:00: ICE 6/10 (orientation 2/4, naming 2/3, commands 1/1, writing 1/1, attention 0/1).",
+         "start": 0,
+         "end": 95
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0046-D04",
+         "version": 1,
+         "quote": "ICE 5/10 at 14:30 on 24 May (orientation 1/4, naming 2/3, commands 1/1, writing 0/1, attention 1/1).",
+         "start": 42,
+         "end": 142
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0046-D04",
+         "version": 1,
+         "quote": "Awakens to voice and stays awake while spoken to.",
+         "start": 143,
+         "end": 192
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0046-D04",
+         "version": 1,
+         "quote": "No focal motor deficit, no seizure activity.",
+         "start": 211,
+         "end": 255
+        }
+       ]
+      }
+     }
+    },
+    "evidence_valid": [
+     8,
+     8
+    ],
+    "cost_usd": 0.056131
+   },
    "runtime_seconds": {
-    "extract": 0.002372166607528925,
-    "resauce": 0.0002293330617249012,
-    "baseline_a": 2.4042092263698578e-05
+    "extract": 0.002313875127583742,
+    "resauce": 0.00017808331176638603,
+    "baseline_a": 1.904228702187538e-05,
+    "baseline_b": 18.287
    }
   },
   {
@@ -7453,10 +9994,110 @@
      0
     ]
    },
+   "baseline_b": {
+    "output": {
+     "case_id": "SYN-0048",
+     "out_of_scope": null,
+     "fields": {
+      "onset": {
+       "category": "7.1",
+       "documented_value": "none",
+       "explanation": "Record reports ICANS with onset 2035-06-12, but no qualifying finding exists in the Day 0-28 window: all ICE scores are 10/10 with the patient alert, and the only symptoms are excluded ones (headache on Day +3, tremor from Day +7). The record's onset date has a formal Grade 0 assessment (full ICE itemised 10/10, alert), so under §7.9(c) and §7.1 this is a mismatch reported as 'no documented onset', with no signed difference.",
+       "evidence": [
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0048-D06",
+         "version": 1,
+         "quote": "ICE 12 Jun 11:05: orient 4/4, name 3/3, cmd 1/1, write 1/1, attn 1/1 = 10/10. Alert, cooperative.",
+         "start": 0,
+         "end": 97
+        },
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0048-D08",
+         "version": 1,
+         "quote": "Fine tremor both hands today. ICE 10/10 at 15:00. Alert. No sz.",
+         "start": 0,
+         "end": 63
+        },
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0048-D10",
+         "version": 1,
+         "quote": "Mild tremor d7, no other neuro findings.",
+         "start": 36,
+         "end": 76
+        }
+       ]
+      },
+      "max_grade": {
+       "category": "7.3",
+       "documented_value": "0",
+       "explanation": "Record gives maximum Grade 2. The documents contain no Grade >=1 finding: every ICE score in the window is 10/10 with the patient alert. Headache and tremor are excluded from ICANS grading. No 'not assessable' period is documented, so A25 does not change the result to 7.4. Under §7.9(c) the grade is not supported (7.3); the documents support only Grade 0 assessments.",
+       "evidence": [
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0048-D04",
+         "version": 1,
+         "quote": "Mild HA 3/10, acetaminophen. ICE 10/10 at 09:40. No focal def.",
+         "start": 35,
+         "end": 97
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0048-D05",
+         "version": 1,
+         "quote": "ICE 11 Jun 10:55 = 10/10. Alert.",
+         "start": 0,
+         "end": 32
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0048-D06",
+         "version": 1,
+         "quote": "ICE 12 Jun 11:05: orient 4/4, name 3/3, cmd 1/1, write 1/1, attn 1/1 = 10/10. Alert, cooperative.",
+         "start": 0,
+         "end": 97
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0048-D08",
+         "version": 1,
+         "quote": "Fine tremor both hands today. ICE 10/10 at 15:00. Alert. No sz.",
+         "start": 0,
+         "end": 63
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0048-D09",
+         "version": 1,
+         "quote": "ICE 10/10 at 11:30 on 16 Jun. Alert, oriented. Mild postural tremor, no other abnormality. No sz, no focal def.",
+         "start": 26,
+         "end": 137
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0048-D10",
+         "version": 1,
+         "quote": "Mild tremor d7, no other neuro findings. ICE 10/10 on 19 Jun.",
+         "start": 36,
+         "end": 97
+        }
+       ]
+      }
+     }
+    },
+    "evidence_valid": [
+     9,
+     9
+    ],
+    "cost_usd": 0.062131
+   },
    "runtime_seconds": {
-    "extract": 0.0036497078835964203,
-    "resauce": 0.0003049592487514019,
-    "baseline_a": 1.5249941498041153e-05
+    "extract": 0.0031123748049139977,
+    "resauce": 0.00012633390724658966,
+    "baseline_a": 1.0082963854074478e-05,
+    "baseline_b": 19.274
    }
   },
   {
@@ -7578,10 +10219,40 @@
      4
     ]
    },
+   "baseline_b": {
+    "output": {
+     "case_id": "SYN-0049",
+     "out_of_scope": {
+      "reason": "record Grade 5",
+      "source": "Baseline B answer",
+      "evidence": []
+     },
+     "fields": {
+      "onset": {
+       "category": "out of scope (record Grade 5)",
+       "documented_value": "2032-07-24",
+       "explanation": "Out of scope because the record's maximum grade is 5 (§5, A29), so no category applies. This is the best reading only. The earliest qualifying finding is ICE 7/10 at 16:00 on 24 Jul (Day +6), which is Grade 1. On Day +3, ICE was 10/10 and the only symptom was headache, which is excluded from grading. The record's onset of 2032-07-24 is the same day.",
+       "evidence": []
+      },
+      "max_grade": {
+       "category": "out of scope (record Grade 5)",
+       "documented_value": "2",
+       "explanation": "Out of scope because the record's maximum grade is 5 (§5, A29), so no category applies. This is the best reading only. The worst documented assessment is on Day +7: ICE 5/10 and 'awakens to voice', both Grade 2. Tremor is excluded from grading. There is no seizure, motor or edema finding. No death is documented: the discharge summary says the patient is alive and well. No 'not assessable' period is documented. The record's Grade 5 is higher than the Grade 2 the notes support, so it is unsupported (7.3).",
+       "evidence": []
+      }
+     }
+    },
+    "evidence_valid": [
+     0,
+     0
+    ],
+    "cost_usd": 0.032611
+   },
    "runtime_seconds": {
-    "extract": 0.0022446252405643463,
-    "resauce": 9.874813258647919e-06,
-    "baseline_a": 2.3791566491127014e-05
+    "extract": 0.002045874949544668,
+    "resauce": 6.707850843667984e-06,
+    "baseline_a": 1.83754600584507e-05,
+    "baseline_b": 9.753
    }
   },
   {
@@ -7794,10 +10465,78 @@
      3
     ]
    },
+   "baseline_b": {
+    "output": {
+     "case_id": "SYN-0050",
+     "out_of_scope": null,
+     "fields": {
+      "onset": {
+       "category": "7.7",
+       "documented_value": "2032-08-25",
+       "explanation": "The earliest qualifying finding is ICE 7/10 (Grade 1) at 09:50 on 25 Aug 2032 (Day +5). The physician attributes it to ICANS. Fever is part of CRS and does not count as a competing cause (A35). The day before, 24 Aug, has a formal Grade 0 assessment (ICE 10/10, alert and oriented), so onset cannot be earlier. The record's onset of 2032-08-25 is the same calendar day, so there is no discrepancy.",
+       "evidence": [
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0050-D01",
+         "version": 1,
+         "quote": "ICE 10/10 at 13:30, alert and oriented.",
+         "start": 196,
+         "end": 235
+        },
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0050-D02",
+         "version": 1,
+         "quote": "At 09:50 on 25 Aug ICE 7/10 (orientation 2/4, naming 3/3, commands 1/1, writing 1/1, attention 0/1).",
+         "start": 79,
+         "end": 179
+        },
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0050-D02",
+         "version": 1,
+         "quote": "In my assessment the reduced ICE score is due to ICANS rather than the fever alone; cytokine release syndrome and ICANS are present together.",
+         "start": 206,
+         "end": 347
+        }
+       ]
+      },
+      "max_grade": {
+       "category": "7.7",
+       "documented_value": "2",
+       "explanation": "The worst assessment is the neurology consult on 27 Aug (Day +7). It records ICE 5/10 (Grade 2) and 'awakens to voice' (Grade 2). The neurologist attributes these findings to ICANS, not fever. No seizure, motor finding or edema finding is documented. Dexamethasone is ICANS treatment and does not count as a competing cause. The documents support Grade 2, which matches the record's Grade 2.",
+       "evidence": [
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0050-D03",
+         "version": 1,
+         "quote": "ICE 5/10 at 11:10 (orientation 1/4, naming 2/3, commands 1/1, writing 0/1, attention 1/1). Awakens to voice.",
+         "start": 34,
+         "end": 142
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0050-D03",
+         "version": 1,
+         "quote": "The findings are consistent with ICANS and are not explained by the fever. No seizures, no focal motor deficit.",
+         "start": 165,
+         "end": 276
+        }
+       ]
+      }
+     }
+    },
+    "evidence_valid": [
+     5,
+     5
+    ],
+    "cost_usd": 0.034371
+   },
    "runtime_seconds": {
-    "extract": 0.003777042031288147,
-    "resauce": 0.0001416672021150589,
-    "baseline_a": 1.9375234842300415e-05
+    "extract": 0.002980582881718874,
+    "resauce": 0.00010904157534241676,
+    "baseline_a": 1.591583713889122e-05,
+    "baseline_b": 10.089
    }
   },
   {
@@ -8176,10 +10915,86 @@
      2
     ]
    },
+   "baseline_b": {
+    "output": {
+     "case_id": "SYN-0051",
+     "out_of_scope": null,
+     "fields": {
+      "onset": {
+       "category": "7.7",
+       "documented_value": "2032-02-01",
+       "explanation": "Earliest qualifying finding is ICE 8/10 (Grade 1) at the 01 Feb 16:20 neuro check; ICE was 10/10 on 30 Jan. Record v2 onset 2032-02-01 matches. The onset changed from 2032-02-02 (v1), but no supporting document is dated after v1 recorded_at (2032-02-09T10:00), so 7.6 condition (c) fails. Result: 7.7 with flag 'revision without new documentation'. Tocilizumab and levetiracetam prophylaxis are not competing causes (A35).",
+       "evidence": [
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0051-D02",
+         "version": 1,
+         "quote": "Neuro check 01 Feb 16:20: ICE 8/10 (orientation 3/4, attention 0/1, the rest complete).",
+         "start": 0,
+         "end": 87
+        },
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0051-D01",
+         "version": 1,
+         "quote": "ICE 10/10 at 09:55.",
+         "start": 212,
+         "end": 231
+        },
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0051-D06",
+         "version": 1,
+         "quote": "ICE scores were 10/10 until 01 Feb, when the score fell to 8/10, and it was 7/10 on 02 Feb.",
+         "start": 562,
+         "end": 653
+        }
+       ]
+      },
+      "max_grade": {
+       "category": "7.2",
+       "documented_value": "3",
+       "explanation": "Discharge summary documents a witnessed generalised tonic-clonic seizure on 04 Feb (Day +7) that resolved by itself within about 90 seconds, with return to baseline: any clinical seizure that resolves rapidly is Grade 3 (Table 6). No competing cause is documented (levetiracetam prophylaxis is excluded by A35; blood cultures negative). Record max grade 1 is lower by 2. Grade did not change across record versions.",
+       "evidence": [
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0051-D06",
+         "version": 1,
+         "quote": "On 04 Feb at 14:20 she had one generalised tonic-clonic seizure lasting about 90 seconds, witnessed by the nurse; it stopped by itself without any medication and she was back to her baseline within 10 minutes.",
+         "start": 696,
+         "end": 905
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0051-D03",
+         "version": 1,
+         "quote": "ICE 7/10 at 09:10 on 02 Feb",
+         "start": 7,
+         "end": 34
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0051-D06",
+         "version": 1,
+         "quote": "Blood cultures remained negative.",
+         "start": 994,
+         "end": 1027
+        }
+       ]
+      }
+     }
+    },
+    "evidence_valid": [
+     6,
+     6
+    ],
+    "cost_usd": 0.071851
+   },
    "runtime_seconds": {
-    "extract": 0.007915167137980461,
-    "resauce": 0.0004514171741902828,
-    "baseline_a": 2.345908433198929e-05
+    "extract": 0.006691250018775463,
+    "resauce": 0.00029020896181464195,
+    "baseline_a": 1.7541926354169846e-05,
+    "baseline_b": 23.099
    }
   },
   {
@@ -8370,10 +11185,102 @@
      2
     ]
    },
+   "baseline_b": {
+    "output": {
+     "case_id": "SYN-0052",
+     "out_of_scope": null,
+     "fields": {
+      "onset": {
+       "category": "7.7",
+       "documented_value": "2033-03-02",
+       "explanation": "On 2033-02-28 (Day +1) there is a formal Grade 0 assessment (ICE 10/10, alert). The first qualifying finding is ICE 7/10 on 2033-03-02 (Day +3), which is Grade 1. The note says no sedatives were given in the previous 24 h, and no clinician attributes the score to another cause. The record onset of 2033-03-02 is the same calendar day, which is consistent with the discharge summary's 'ICANS D+3'.",
+       "evidence": [
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0052-D01",
+         "version": 1,
+         "quote": "ICE 20:15: 10/10. Alert.",
+         "start": 76,
+         "end": 100
+        },
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0052-D02",
+         "version": 1,
+         "quote": "ICE 10:15 = 7/10 (month wrong, no sentence, counted 100-90-80 then stopped)",
+         "start": 12,
+         "end": 87
+        },
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0052-D02",
+         "version": 1,
+         "quote": "No sedatives last 24 h.",
+         "start": 108,
+         "end": 131
+        },
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0052-D06",
+         "version": 2,
+         "quote": "ICANS D+3 to D+10; dexamethasone.",
+         "start": 59,
+         "end": 92
+        }
+       ]
+      },
+      "max_grade": {
+       "category": "7.4",
+       "documented_value": "3-4",
+       "explanation": "The worst finding is ICE 0/10 on 2033-03-04, and the note gives no level of consciousness. Under A33 that is the range Grade 3-4, so a recorded Grade 4 is insufficient evidence (7.4). No competing cause is documented: BP 146/84 is not severe hypertension, and dexamethasone is ICANS treatment (A35). No other Grade 4 finding is documented: the EEG was normal with no seizures, no motor or edema findings are recorded, and ICE was 6/10 with the patient awake on 2033-03-07.",
+       "evidence": [
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0052-D03",
+         "version": 1,
+         "quote": "ICE 0/10 at 09:50.",
+         "start": 15,
+         "end": 33
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0052-D03",
+         "version": 1,
+         "quote": "BP 146/84, HR 92, afebrile.",
+         "start": 34,
+         "end": 61
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0052-D04",
+         "version": 1,
+         "quote": "No epileptiform discharges. No seizures. Normal study.",
+         "start": 71,
+         "end": 125
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0052-D05",
+         "version": 1,
+         "quote": "ICE 09:30: 6/10. Awake, conversant. Power full.",
+         "start": 16,
+         "end": 63
+        }
+       ]
+      }
+     }
+    },
+    "evidence_valid": [
+     8,
+     8
+    ],
+    "cost_usd": 0.059956
+   },
    "runtime_seconds": {
-    "extract": 0.002779583912342787,
-    "resauce": 0.00026229163631796837,
-    "baseline_a": 2.075033262372017e-05
+    "extract": 0.0027102497406303883,
+    "resauce": 0.00023999996483325958,
+    "baseline_a": 1.61672942340374e-05,
+    "baseline_b": 19.071
    }
   },
   {
@@ -8643,10 +11550,94 @@
      4
     ]
    },
+   "baseline_b": {
+    "output": {
+     "case_id": "SYN-0053",
+     "out_of_scope": null,
+     "fields": {
+      "onset": {
+       "category": "7.1",
+       "documented_value": "2035-11-07",
+       "explanation": "Earliest qualifying finding is ICE 8/10 (Grade 1) at 21:10 on 2035-11-07 (Day +5), in a signed nursing note, not attributed to another cause (tocilizumab is not a competing cause per A35; tremor is excluded per A11). Record onset 2035-11-08 is 1 day later (signed difference +1 day). Onset did not change between record versions, so 7.6 does not apply.",
+       "evidence": [
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0053-D01",
+         "version": 1,
+         "quote": "ICE 8/10 at 21:10 (orient 3/4, attn 0/1, rest full)",
+         "start": 52,
+         "end": 103
+        },
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0053-D01",
+         "version": 1,
+         "quote": "Awake, cooperative.",
+         "start": 105,
+         "end": 124
+        },
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0053-D02",
+         "version": 1,
+         "quote": "Own exam 08:20: ICE 8/10 (orient 3/4, attn 0/1), awake, no focal def.",
+         "start": 45,
+         "end": 114
+        }
+       ]
+      },
+      "max_grade": {
+       "category": "7.7",
+       "documented_value": "1",
+       "explanation": "The worst documented assessments are ICE 8/10 on 07 Nov and 08 Nov (Grade 1), awake, no focal deficit, no seizure. EEG on 09 Nov was normal and ICE on 10 Nov was 10/10. Tremor is excluded from grading. The documents support Grade 1, which equals the recorded maximum grade of 1.",
+       "evidence": [
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0053-D01",
+         "version": 1,
+         "quote": "ICE 8/10 at 21:10 (orient 3/4, attn 0/1, rest full)",
+         "start": 52,
+         "end": 103
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0053-D02",
+         "version": 1,
+         "quote": "Own exam 08:20: ICE 8/10 (orient 3/4, attn 0/1), awake, no focal def.",
+         "start": 45,
+         "end": 114
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0053-D03",
+         "version": 1,
+         "quote": "Impression: normal EEG.",
+         "start": 172,
+         "end": 195
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0053-D04",
+         "version": 1,
+         "quote": "orient 4/4, name 3/3, cmd 1/1, write 1/1, attn 1/1 = 10/10",
+         "start": 18,
+         "end": 76
+        }
+       ]
+      }
+     }
+    },
+    "evidence_valid": [
+     7,
+     7
+    ],
+    "cost_usd": 0.048921
+   },
    "runtime_seconds": {
-    "extract": 0.002174417022615671,
-    "resauce": 0.00018800003454089165,
-    "baseline_a": 2.3000407963991165e-05
+    "extract": 0.001952792052179575,
+    "resauce": 0.00014087511226534843,
+    "baseline_a": 1.750001683831215e-05,
+    "baseline_b": 16.874
    }
   },
   {
@@ -8856,10 +11847,86 @@
      3
     ]
    },
+   "baseline_b": {
+    "output": {
+     "case_id": "SYN-0055",
+     "out_of_scope": null,
+     "fields": {
+      "onset": {
+       "category": "7.7",
+       "documented_value": "2032-09-25",
+       "explanation": "The earliest qualifying finding is on 2032-09-25 at 15:00. The note documents drowsiness with the patient waking on her own. Because drowsiness is documented, this meets the Grade 1 'awakens spontaneously' criterion (A3). The note excludes sedatives, and no clinician gives another cause. On 2032-09-23 the patient had a formal Grade 0 assessment (ICE 10/10, no domain findings). Fever and acetaminophen that day relate to CRS and are not competing causes (A35). The record onset of 2032-09-25 is the same calendar day as the documented onset.",
+       "evidence": [
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0055-D02",
+         "version": 1,
+         "quote": "On my review at 15:00: drowsy through the afternoon, dozing off between sentences, but awakens spontaneously each time without being spoken to or touched, and stays awake while engaged.",
+         "start": 126,
+         "end": 311
+        },
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0055-D02",
+         "version": 1,
+         "quote": "No sedatives, antihistamines or opioids given at any time this admission.",
+         "start": 333,
+         "end": 406
+        },
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0055-D01",
+         "version": 1,
+         "quote": "ICE 22:00 = 10/10.",
+         "start": 115,
+         "end": 133
+        }
+       ]
+      },
+      "max_grade": {
+       "category": "7.7",
+       "documented_value": "1",
+       "explanation": "The highest documented grade is Grade 1. On 2032-09-25 the consciousness domain gives Grade 1 (drowsy but waking on her own), even though ICE was 10/10. On 2032-09-26, ICE 9/10 is also Grade 1. No note documents ICE below 7, a lower level of consciousness, a seizure, motor weakness or cerebral edema. No period is documented as 'not assessable'. The record's maximum grade of 1 matches the documents.",
+       "evidence": [
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0055-D02",
+         "version": 1,
+         "quote": "drowsy through the afternoon, dozing off between sentences, but awakens spontaneously each time without being spoken to or touched",
+         "start": 149,
+         "end": 279
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0055-D03",
+         "version": 1,
+         "quote": "ICE 9/10 on 2032-09-26 at 09:30; resolved without steroids.",
+         "start": 188,
+         "end": 247
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0055-D02",
+         "version": 1,
+         "quote": "No focal weakness, no seizure activity.",
+         "start": 407,
+         "end": 446
+        }
+       ]
+      }
+     }
+    },
+    "evidence_valid": [
+     6,
+     6
+    ],
+    "cost_usd": 0.038936
+   },
    "runtime_seconds": {
-    "extract": 0.0036999997682869434,
-    "resauce": 0.00012404099106788635,
-    "baseline_a": 1.616682857275009e-05
+    "extract": 0.0034324172884225845,
+    "resauce": 0.00011904211714863777,
+    "baseline_a": 1.5292316675186157e-05,
+    "baseline_b": 11.781
    }
   },
   {
@@ -9083,10 +12150,86 @@
      3
     ]
    },
+   "baseline_b": {
+    "output": {
+     "case_id": "SYN-0057",
+     "out_of_scope": null,
+     "fields": {
+      "onset": {
+       "category": "7.7",
+       "documented_value": "2036-10-18",
+       "explanation": "The record's onset date (2036-10-18) is the same day as the first qualifying finding. On 18 Oct at 16:15 the ICE score was 8/10, which meets the Grade 1 criterion. No clinician attributes it to another cause, and no competing cause from the closed list applies. Tocilizumab and fever are not competing causes (A35). The earlier assessment on 16 Oct was a formal Grade 0 (ICE 10/10, alert).",
+       "evidence": [
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0057-D02",
+         "version": 1,
+         "quote": "Neuro check 18 Oct at 16:15: ICE 8/10 (orientation 3/4, attention 0/1, other items full). Awake, pleasant.",
+         "start": 0,
+         "end": 106
+        },
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0057-D01",
+         "version": 1,
+         "quote": "ICE 10/10 at 09:50, alert.",
+         "start": 70,
+         "end": 96
+        }
+       ]
+      },
+      "max_grade": {
+       "category": "7.8",
+       "documented_value": "2",
+       "explanation": "The record reports ICANS but leaves the maximum grade empty, so this is a missing recorded value (7.8). The documents support Grade 2: the lowest score was ICE 6/10 on 19 Oct, and the item scores add up to 6. The patient was awake. There was no seizure, no focal motor deficit and no edema, and the EEG was normal. The headache is excluded from grading, and acetaminophen is not a competing cause.",
+       "evidence": [
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0057-D03",
+         "version": 1,
+         "quote": "ICE 6/10 at 09:00 on 19 Oct (orientation 2/4, naming 2/3, commands 1/1, writing 0/1, attention 1/1). Awake.",
+         "start": 12,
+         "end": 119
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0057-D04",
+         "version": 1,
+         "quote": "Impression: normal EEG.",
+         "start": 166,
+         "end": 189
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0057-D05",
+         "version": 1,
+         "quote": "No focal motor deficit, no seizures.",
+         "start": 139,
+         "end": 175
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0057-D08",
+         "version": 1,
+         "quote": "Neurotoxicity: lowest ICE 6/10 on 19 Oct, recovered, ICE 10/10 on 25 Oct.",
+         "start": 57,
+         "end": 130
+        }
+       ]
+      }
+     }
+    },
+    "evidence_valid": [
+     6,
+     6
+    ],
+    "cost_usd": 0.039226
+   },
    "runtime_seconds": {
-    "extract": 0.0043752919882535934,
-    "resauce": 0.00019133416935801506,
-    "baseline_a": 2.1458137780427933e-05
+    "extract": 0.003662250004708767,
+    "resauce": 0.00014654221013188362,
+    "baseline_a": 1.837499439716339e-05,
+    "baseline_b": 10.03
    }
   },
   {
@@ -9275,10 +12418,94 @@
      2
     ]
    },
+   "baseline_b": {
+    "output": {
+     "case_id": "SYN-0058",
+     "out_of_scope": null,
+     "fields": {
+      "onset": {
+       "category": "7.7",
+       "documented_value": "2034-05-26",
+       "explanation": "The first qualifying finding is ICE 8/10 at 09:05 on 2034-05-26 (Grade 1). The note documents no sedating medication. Before that, ICE was 10/10 on 2034-05-24 (formal Grade 0). The record onset of 2034-05-26 is the same calendar day, so the difference is 0 days. The onset did not change between record versions.",
+       "evidence": [
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0058-D01",
+         "version": 1,
+         "quote": "ICE @ 22:10: 10/10.",
+         "start": 97,
+         "end": 116
+        },
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0058-D02",
+         "version": 1,
+         "quote": "ICE @ 09:05: 8/10 (yr + hospital wrong).",
+         "start": 16,
+         "end": 56
+        },
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0058-D02",
+         "version": 1,
+         "quote": "No sedating meds since adm.",
+         "start": 80,
+         "end": 107
+        },
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0058-D07",
+         "version": 1,
+         "quote": "ICANS D+3-D+5, single-dose dex.",
+         "start": 50,
+         "end": 81
+        }
+       ]
+      },
+      "max_grade": {
+       "category": "7.7",
+       "documented_value": "2",
+       "explanation": "The worst assessment is ICE 6/10 on 2034-05-27 (Grade 2). The writing item was not attempted, but the examiner states the total (A6), and the item scores add up to 6. The patient was awake and attentive, with no focal deficits and no seizure, so nothing reaches Grade 3. Dexamethasone and tocilizumab are treatments, not competing causes (A35). This matches the record's Grade 2. The 2034-05-30 'not assessable' day does not change the result because the record grade is supported. The grade did not change between record versions.",
+       "evidence": [
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0058-D03",
+         "version": 1,
+         "quote": "ICE total 6/10 as stated by examiner (writing item not attempted - pt declined, scored 0)",
+         "start": 83,
+         "end": 172
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0058-D03",
+         "version": 1,
+         "quote": "Awake, attentive. No focal deficits. No sz.",
+         "start": 174,
+         "end": 217
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0058-D05",
+         "version": 1,
+         "quote": "unable to perform checks today",
+         "start": 110,
+         "end": 140
+        }
+       ]
+      }
+     }
+    },
+    "evidence_valid": [
+     7,
+     7
+    ],
+    "cost_usd": 0.061791
+   },
    "runtime_seconds": {
-    "extract": 0.004000707995146513,
-    "resauce": 0.00014508282765746117,
-    "baseline_a": 1.6625039279460907e-05
+    "extract": 0.003328458871692419,
+    "resauce": 0.00012308312579989433,
+    "baseline_a": 1.88327394425869e-05,
+    "baseline_b": 20.463
    }
   },
   {
@@ -9483,10 +12710,70 @@
      3
     ]
    },
+   "baseline_b": {
+    "output": {
+     "case_id": "SYN-0059",
+     "out_of_scope": null,
+     "fields": {
+      "onset": {
+       "category": "7.7",
+       "documented_value": "2034-12-09",
+       "explanation": "Day +2 (2034-12-07) has a formal Grade 0 assessment (ICE 10/10, no focal deficit). The earliest qualifying finding is ICE 8/10 at 15:15 on 2034-12-09 (Grade 1), with no documented competing cause. The record onset of 2034-12-09 is the same calendar day, so the difference is 0 days. The onset was unchanged between record versions, so 7.6 does not apply.",
+       "evidence": [
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0059-D01",
+         "version": 1,
+         "quote": "Neuro: ICE 10/10 at 09:50",
+         "start": 75,
+         "end": 100
+        },
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0059-D02",
+         "version": 1,
+         "quote": "Neuro: ICE 8/10 at 15:15 (orientation 3/4, attention 0/1)",
+         "start": 67,
+         "end": 124
+        }
+       ]
+      },
+      "max_grade": {
+       "category": "7.6",
+       "documented_value": "3",
+       "explanation": "The addendum in SYN-0059-D03 v2 documents a witnessed generalised seizure at 03:10 on 2034-12-10. It lasted about 1 minute, stopped without treatment and the patient was back to baseline within 5 minutes. That is a rapidly resolving clinical seizure, which is Grade 3; it does not meet the Grade 4 criteria (over 5 minutes, or repeated seizures without return to baseline). The lowest ICE was 6/10 (Grade 2). No sedating medication is documented; tocilizumab and levetiracetam are not competing causes. The record changed from Grade 2 (v1) to Grade 3 (v2), and the current value agrees with the documents. The supporting addendum (documented_at 2034-12-13T12:00) came after v1 recorded_at (2034-12-12T09:30) and no later than v2 recorded_at (2034-12-14T10:00), so the change is a legitimate revision.",
+       "evidence": [
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0059-D03",
+         "version": 2,
+         "quote": "Addendum 13 Dec: night nurse reports a witnessed seizure at 03:10 on 10 Dec, generalised, lasting about 1 minute, stopped without treatment, back to baseline within 5 minutes.",
+         "start": 239,
+         "end": 414
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0059-D03",
+         "version": 2,
+         "quote": "Neuro: ICE 6/10 at 10:40 (orientation 2/4, naming 2/3, commands 1/1, writing 0/1, attention 1/1)",
+         "start": 51,
+         "end": 147
+        }
+       ]
+      }
+     }
+    },
+    "evidence_valid": [
+     4,
+     4
+    ],
+    "cost_usd": 0.062741
+   },
    "runtime_seconds": {
-    "extract": 0.004069874994456768,
-    "resauce": 0.0002332921139895916,
-    "baseline_a": 2.083275467157364e-05
+    "extract": 0.00391362514346838,
+    "resauce": 0.00021870899945497513,
+    "baseline_a": 1.929188147187233e-05,
+    "baseline_b": 19.619
    }
   },
   {
@@ -9717,10 +13004,102 @@
      3
     ]
    },
+   "baseline_b": {
+    "output": {
+     "case_id": "SYN-0060",
+     "out_of_scope": null,
+     "fields": {
+      "onset": {
+       "category": "7.7",
+       "documented_value": "2035-08-19 to 2035-08-20",
+       "explanation": "The earliest qualifying finding is in the attending note signed 2035-08-20 (D05): 'overnight' the ICE score fell to 7/10, which is Grade 1. A §6.1 relative-time phrase gives the date range D-1 to D, so 2035-08-19 to 2035-08-20. The note says no sedatives or opioids were given since 2035-08-16, so there is no competing cause. The earliest finding with an exact date is the ICE 6/10 on 2035-08-22. That is later than the start of the range, so the onset is 2035-08-19 to 2035-08-20 (§6.2, A26). The ICE 10/10 at 08:10 on 2035-08-19 (D04) comes before the overnight period and does not rule it out. The recorded onset, 2035-08-19, falls inside the range, so there is no discrepancy (§7.1, §7.7). The discharge summary agrees ('Neurotoxicity Day +5 to +10'). The onset was the same in both record versions, so 7.6 does not apply. Flags: relative time; time-imprecise (exact time not recorded); unassessed period (case-level).",
+       "evidence": [
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0060-D05",
+         "version": 1,
+         "quote": "Per night-shift handover, overnight the ICE dropped to 7/10 (missed the hospital name and the written sentence, then the year); exact time not recorded.",
+         "start": 27,
+         "end": 179
+        },
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0060-D05",
+         "version": 1,
+         "quote": "No sedatives or opioids given since 2035-08-16.",
+         "start": 254,
+         "end": 301
+        },
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0060-D04",
+         "version": 1,
+         "quote": "ICE 2035-08-19 at 08:10: 10/10. Awake, cheerful.",
+         "start": 0,
+         "end": 48
+        },
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0060-D09",
+         "version": 1,
+         "quote": "Neurotoxicity Day +5 to +10, worst ICE 6/10 on 2035-08-22; dexamethasone.",
+         "start": -1,
+         "end": -1
+        }
+       ]
+      },
+      "max_grade": {
+       "category": "7.7",
+       "documented_value": "2",
+       "explanation": "The worst assessment is ICE 6/10 on 2035-08-22 at 10:30 (D06). The item scores add up to the stated total. The patient was awake, with no sedating medication, so this is Grade 2. The other findings are lower: ICE 7/10 overnight 08-19 to 08-20 (Grade 1) and ICE 8/10 on 08-23 (Grade 1). The hand tremor on 08-25 is excluded from grading. No seizure, motor, oedema or consciousness finding reaches Grade 3. Dexamethasone and levetiracetam are not competing causes (A35), and there is no documented 'not assessable' period. The current record (v2) says Grade 2, which matches. The grade was changed from 3 (v1, recorded 2035-09-04) to 2 (v2, recorded 2035-09-08). However, every supporting document was written by 2035-08-29, before v1 was recorded, so condition (c) of §7.6 is not met. The result is 7.7 with the flag 'revision without new documentation'.",
+       "evidence": [
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0060-D06",
+         "version": 1,
+         "quote": "ICE 6/10 at 10:30 (orientation 2 right, 2 objects named, command done, no sentence, tens correct). Awake in chair after breakfast. No sedating medication.",
+         "start": 16,
+         "end": 170
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0060-D07",
+         "version": 1,
+         "quote": "ICE 08:50: 8/10. Awake, full strength, no seizure activity.",
+         "start": 27,
+         "end": 86
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0060-D05",
+         "version": 1,
+         "quote": "overnight the ICE dropped to 7/10",
+         "start": 53,
+         "end": 86
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0060-D08",
+         "version": 1,
+         "quote": "Slight tremor of the right hand when writing; doctor aware.",
+         "start": 38,
+         "end": 97
+        }
+       ]
+      }
+     }
+    },
+    "evidence_valid": [
+     7,
+     8
+    ],
+    "cost_usd": 0.067656
+   },
    "runtime_seconds": {
-    "extract": 0.005140583962202072,
-    "resauce": 0.00020908378064632416,
-    "baseline_a": 2.1167099475860596e-05
+    "extract": 0.004423040896654129,
+    "resauce": 0.0001910841092467308,
+    "baseline_a": 2.5334302335977554e-05,
+    "baseline_b": 20.923
    }
   },
   {
@@ -9926,10 +13305,102 @@
      2
     ]
    },
+   "baseline_b": {
+    "output": {
+     "case_id": "SYN-0061",
+     "out_of_scope": null,
+     "fields": {
+      "onset": {
+       "category": "7.7",
+       "documented_value": "2031-05-01",
+       "explanation": "The earliest qualifying finding is the signed nurse ICE screen on 2031-05-01 at 18:45 (Day +4). The ICE total is 7/10, which is Grade 1. The note records no sedating drugs, and no competing cause is documented. The current record (v2) gives onset 2031-05-01, the same calendar day, so there is no discrepancy. The onset changed from 2031-05-02 in v1 to 2031-05-01 in v2. This is not a legitimate revision (7.6) because condition (c) fails: no supporting document version was written between v1 (recorded 2031-05-11T10:00) and v2 (recorded 2031-05-15T16:45). The supporting note was documented on 2031-05-01. The category is therefore 7.7, with the flag 'revision without new documentation'.",
+       "evidence": [
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0061-D01",
+         "version": 1,
+         "quote": "The patient was sitting up watching television when approached at 18:45.",
+         "start": 58,
+         "end": 130
+        },
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0061-D01",
+         "version": 1,
+         "quote": "so the ICE screen totalled 7 of 10",
+         "start": 368,
+         "end": 402
+        },
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0061-D01",
+         "version": 1,
+         "quote": "No benzodiazepines, opioids or other sedating drugs appear on the administration record for the last day.",
+         "start": 404,
+         "end": 509
+        }
+       ]
+      },
+      "max_grade": {
+       "category": "7.7",
+       "documented_value": "3",
+       "explanation": "On 2031-05-02 at 13:30 the patient scored ICE 0/10 while documented as awake, with global aphasia. Under Table 6 footnote ^ this is Grade 3: the patient was awake, so it is not Grade 4. The physician attributes it to neurotoxicity, and no sedation was given. There is no seizure (the EEG was normal), no motor deficit (full power) and no finding of raised ICP or edema, so nothing supports Grade 4. The documented maximum is Grade 3. The record also says Grade 3 and did not change between versions, so there is no discrepancy.",
+       "evidence": [
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0061-D02",
+         "version": 1,
+         "quote": "the patient was awake, eyes open, tracking people around the room and reaching for the water cup unprompted, yet produces no words, cannot name a single object and follows no spoken or written command",
+         "start": 255,
+         "end": 455
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0061-D02",
+         "version": 1,
+         "quote": "Scored ICE 0/10 at 13:30",
+         "start": 457,
+         "end": 481
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0061-D02",
+         "version": 1,
+         "quote": "Interpretation: global aphasia in an awake patient after CAR-T cell therapy, which I regard as neurotoxicity.",
+         "start": 769,
+         "end": 878
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0061-D02",
+         "version": 1,
+         "quote": "nothing sedating has been given since admission",
+         "start": 719,
+         "end": 766
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0061-D03",
+         "version": 1,
+         "quote": "no epileptiform activity and no electrographic seizure",
+         "start": 232,
+         "end": 286
+        }
+       ]
+      }
+     }
+    },
+    "evidence_valid": [
+     8,
+     8
+    ],
+    "cost_usd": 0.046101
+   },
    "runtime_seconds": {
-    "extract": 0.00775737501680851,
-    "resauce": 0.0001566670835018158,
-    "baseline_a": 1.6625039279460907e-05
+    "extract": 0.006709500215947628,
+    "resauce": 0.00012037483975291252,
+    "baseline_a": 1.3167038559913635e-05,
+    "baseline_b": 13.789
    }
   },
   {
@@ -10148,10 +13619,86 @@
      3
     ]
    },
+   "baseline_b": {
+    "output": {
+     "case_id": "SYN-0062",
+     "out_of_scope": null,
+     "fields": {
+      "onset": {
+       "category": "7.7",
+       "documented_value": "2034-01-29",
+       "explanation": "Formal Grade 0 assessment (ICE 10/10, non-focal exam) on Day +2 (27 Jan). The earliest qualifying finding is ICE 8/10 (Grade 1) at 14:00 on 29 Jan, in a signed note, with no competing cause (tocilizumab is CRS treatment, not a competing cause under A35). The record onset 2034-01-29 is the same calendar day.",
+       "evidence": [
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0062-D01",
+         "version": 1,
+         "quote": "ICE 10/10 at 09:30. Non-focal exam.",
+         "start": 64,
+         "end": 99
+        },
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0062-D02",
+         "version": 1,
+         "quote": "ICE 8/10 at 14:00 on 29 Jan (orientation 3/4, attention 0/1, rest complete)",
+         "start": 11,
+         "end": 86
+        }
+       ]
+      },
+      "max_grade": {
+       "category": "7.2",
+       "documented_value": "3",
+       "explanation": "ICE 0/10 at 09:45 on 31 Jan (Day +6) is documented in signed notes with no level-of-consciousness information, giving a grade range of 3–4 (A33). The documents therefore prove at least Grade 3. No competing cause is documented: dexamethasone was given afterwards and is excluded as a cause under A35, and no sedation is documented. The record maximum is Grade 2, so this is a mismatch with the record lower by at least 1. The other assessments are ICE 5 and ICE 6 (Grade 2) and ICE 8 (Grade 1). The tremor is excluded from grading.",
+       "evidence": [
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0062-D04",
+         "version": 1,
+         "quote": "Neuro chek 31 Jan at 09:45: ICE 0/10.",
+         "start": 0,
+         "end": 37
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0062-D05",
+         "version": 1,
+         "quote": "Called about ICE 0/10 at 09:45 on 31 Jan. Dexamethasone 10 mg IV given at 10:15.",
+         "start": 0,
+         "end": 80
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0062-D03",
+         "version": 1,
+         "quote": "ICE 5/10 at 09:20 (orientation 1/4, naming 2/3, commands 1/1, writing 0/1, attention 1/1)",
+         "start": 7,
+         "end": 96
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0062-D06",
+         "version": 1,
+         "quote": "ICE 6/10 at 11:00 (orientation 2/4, naming 2/3, commands 1/1, writing 0/1, attention 1/1)",
+         "start": 26,
+         "end": 115
+        }
+       ]
+      }
+     }
+    },
+    "evidence_valid": [
+     6,
+     6
+    ],
+    "cost_usd": 0.058251
+   },
    "runtime_seconds": {
-    "extract": 0.0025123748928308487,
-    "resauce": 0.0006711669266223907,
-    "baseline_a": 5.079200491309166e-05
+    "extract": 0.0023542908020317554,
+    "resauce": 0.0001870407722890377,
+    "baseline_a": 1.9208062440156937e-05,
+    "baseline_b": 19.173
    }
   },
   {
@@ -10524,10 +14071,142 @@
      2
     ]
    },
+   "baseline_b": {
+    "output": {
+     "case_id": "SYN-0063",
+     "out_of_scope": null,
+     "fields": {
+      "onset": {
+       "category": "7.5",
+       "documented_value": "2033-01-25 if the ICE 6/10 is attributed to ICANS; none if it is attributed to hypoglycaemia",
+       "explanation": "The record (v2) reports no ICANS. The only possible qualifying finding is ICE 6/10 on 2033-01-25 at 10:00 (Day +6), which would be Grade 2. The same note documents hypoglycaemia (BG 2.8 mmol/L at 09:40), 20 minutes before the ICE. Hypoglycaemia is on the closed list of competing causes (A35) and falls inside the A30 timing window. No clinician says what caused the low score: the D03 note says only 'MD informed', and the discharge summary just mentions the hypoglycaemia episode. If the finding is ICANS, §7.9(a) gives onset 7.1 'record has no onset', with documented onset 2033-01-25. If it is not ICANS, there is no qualifying finding. Formal Grade 0 assessments exist (ICE 10/10 on Jan 22, 24, 26, 28 and 31), and there is no documented 'not assessable' period. So §7.9(b) gives 7.7. The two readings lead to different categories, so the result is 7.5 Ambiguous evidence, reason attribution.",
+       "evidence": [
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0063-D03",
+         "version": 1,
+         "quote": "BG 2.8 mmol/L at 09:40 (hypoglycaemia), IV dextrose 09:50, recheck 10:30 BG 5.1.",
+         "start": 0,
+         "end": 80
+        },
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0063-D03",
+         "version": 1,
+         "quote": "ICE 6/10 at 10:00 (orient 2/4, name 2/3, cmd 1/1, write 0/1, attn 1/1). Awake. MD informed.",
+         "start": 81,
+         "end": 172
+        },
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0063-D06",
+         "version": 1,
+         "quote": "One episode of hypoglycaemia 25 Jan, treated.",
+         "start": 33,
+         "end": 78
+        },
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0063-D01",
+         "version": 1,
+         "quote": "ICE 22 Jan 10:00 = 10/10. Alert.",
+         "start": 0,
+         "end": 32
+        },
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0063-D02",
+         "version": 1,
+         "quote": "ICE 10/10 at 09:50. No focal def. No sz.",
+         "start": 42,
+         "end": 82
+        },
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0063-D04",
+         "version": 1,
+         "quote": "ICE 10/10 at 09:00.",
+         "start": 8,
+         "end": 27
+        },
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0063-D05",
+         "version": 1,
+         "quote": "ICE 28 Jan 10:05 = 10/10. Alert, coop.",
+         "start": 0,
+         "end": 38
+        },
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0063-D06",
+         "version": 1,
+         "quote": "ICE 10/10 31 Jan.",
+         "start": 79,
+         "end": 96
+        }
+       ]
+      },
+      "max_grade": {
+       "category": "7.5",
+       "documented_value": "Grade 2 if the ICE 6/10 is attributed to ICANS; Grade 0 if it is attributed to hypoglycaemia",
+       "explanation": "The record reports no ICANS, which is compared as Grade 0 (A19). ICE 6/10 on Jan 25 has a stated total and every item scored (sum 6), so it meets the Grade 2 criterion (ICE 3–6). The patient was 'Awake', so no consciousness criterion is met. The same note documents hypoglycaemia (BG 2.8 at 09:40) just before the assessment. Hypoglycaemia is a listed competing cause (A35, A30), and no clinician attributes the low score either way. If the score is ICANS, the documents prove Grade 2, which is higher than the record: 7.2. If it is not ICANS, there is no qualifying finding. The window contains formal Grade 0 assessments (several ICE 10/10) and no documented 'not assessable' period, so §7.9(b) gives 7.7. The readings give different categories, so the result is 7.5, reason attribution.",
+       "evidence": [
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0063-D03",
+         "version": 1,
+         "quote": "BG 2.8 mmol/L at 09:40 (hypoglycaemia), IV dextrose 09:50, recheck 10:30 BG 5.1.",
+         "start": 0,
+         "end": 80
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0063-D03",
+         "version": 1,
+         "quote": "ICE 6/10 at 10:00 (orient 2/4, name 2/3, cmd 1/1, write 0/1, attn 1/1). Awake. MD informed.",
+         "start": 81,
+         "end": 172
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0063-D06",
+         "version": 1,
+         "quote": "One episode of hypoglycaemia 25 Jan, treated.",
+         "start": 33,
+         "end": 78
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0063-D02",
+         "version": 1,
+         "quote": "ICE 10/10 at 09:50. No focal def. No sz.",
+         "start": 42,
+         "end": 82
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0063-D04",
+         "version": 1,
+         "quote": "ICE 10/10 at 09:00.",
+         "start": 8,
+         "end": 27
+        }
+       ]
+      }
+     }
+    },
+    "evidence_valid": [
+     13,
+     13
+    ],
+    "cost_usd": 0.059436
+   },
    "runtime_seconds": {
-    "extract": 0.0018496252596378326,
-    "resauce": 0.00017866725102066994,
-    "baseline_a": 1.570815220475197e-05
+    "extract": 0.0017899577505886555,
+    "resauce": 0.0001571248285472393,
+    "baseline_a": 1.3666227459907532e-05,
+    "baseline_b": 19.185
    }
   },
   {
@@ -10768,10 +14447,86 @@
      3
     ]
    },
+   "baseline_b": {
+    "output": {
+     "case_id": "SYN-0064",
+     "out_of_scope": null,
+     "fields": {
+      "onset": {
+       "category": "7.7",
+       "documented_value": "2035-09-07",
+       "explanation": "The earliest qualifying finding is ICE 8/10 at 14:05 on 07 Sep (Day +4), which is Grade 1. Two days earlier, on Day +2, there was a formal Grade 0 assessment (ICE 10/10). The recorded onset of 2035-09-07 is the same calendar day. Tocilizumab is CRS treatment, so it is not a competing cause (A35).",
+       "evidence": [
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0064-D01",
+         "version": 1,
+         "quote": "ICE 10/10 at 09:45.",
+         "start": 50,
+         "end": 69
+        },
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0064-D02",
+         "version": 1,
+         "quote": "ICE 8/10 at 14:05 on 07 Sep (orient 3/4, attn 0/1, rest full).",
+         "start": 0,
+         "end": 62
+        }
+       ]
+      },
+      "max_grade": {
+       "category": "7.7",
+       "documented_value": "1",
+       "explanation": "The signed ICE scores are 8/10 (07 Sep), 7/10 (08 Sep) and 9/10 (11 Sep). All are Grade 1. No signed note documents depressed consciousness, seizures, motor findings or edema. The neurology consult (D04) gives ICE 4/10 and 'awakens to voice', which would be Grade 2, but it has no signed version. Under A27 it is not used and gets the 'unsigned document' flag. Its fine tremor is excluded from grading in any case. The documented maximum is therefore Grade 1, which matches the record.",
+       "evidence": [
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0064-D02",
+         "version": 1,
+         "quote": "ICE 8/10 at 14:05 on 07 Sep (orient 3/4, attn 0/1, rest full). Awake, coop.",
+         "start": 0,
+         "end": 75
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0064-D03",
+         "version": 1,
+         "quote": "ICE 7/10 at 09:20 (orient 2/4, name 3/3, cmd 1/1, write 1/1, attn 0/1). Awake. No focal def. No sz.",
+         "start": 8,
+         "end": 107
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0064-D05",
+         "version": 1,
+         "quote": "orient 4/4, name 3/3, cmd 1/1, write 1/1, attn 0/1 = 9/10. Awake.",
+         "start": 18,
+         "end": 83
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0064-D06",
+         "version": 1,
+         "quote": "Mild neurotox d4-d5 (ICE 7-8/10), no Rx needed",
+         "start": 30,
+         "end": 76
+        }
+       ]
+      }
+     }
+    },
+    "evidence_valid": [
+     6,
+     6
+    ],
+    "cost_usd": 0.039776
+   },
    "runtime_seconds": {
-    "extract": 0.0022798338904976845,
-    "resauce": 0.00013475026935338974,
-    "baseline_a": 2.0415987819433212e-05
+    "extract": 0.0022316668182611465,
+    "resauce": 0.00011241715401411057,
+    "baseline_a": 2.0916573703289032e-05,
+    "baseline_b": 11.974
    }
   },
   {
@@ -11072,10 +14827,102 @@
      6
     ]
    },
+   "baseline_b": {
+    "output": {
+     "case_id": "SYN-0066",
+     "out_of_scope": null,
+     "fields": {
+      "onset": {
+       "category": "7.7",
+       "documented_value": "2036-11-12",
+       "explanation": "Formal Grade 0 assessments (ICE 10/10) were documented on Day 0 (2036-11-08) and Day +2 (2036-11-10). The earliest qualifying finding is ICE 8/10 at 08:40 on 2036-11-12 (Day +4). That meets the Grade 1 ICE criterion, and the note says no sedating medicines had been given. The recorded onset of 2036-11-12 falls on the same calendar day. The discharge summary also dates neurotoxicity from Day +4.",
+       "evidence": [
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0066-D03",
+         "version": 1,
+         "quote": "Morning ICE screen on 2036-11-12, done at 08:40 with the patient sitting up after breakfast.",
+         "start": 0,
+         "end": 92
+        },
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0066-D03",
+         "version": 1,
+         "quote": "so the total was 8 out of 10. No sedating medicines had been given.",
+         "start": 269,
+         "end": 336
+        },
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0066-D02",
+         "version": 1,
+         "quote": "At 21:00 the patient, reading a novel, scored 10/10 on ICE.",
+         "start": 222,
+         "end": 281
+        },
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0066-D08",
+         "version": 1,
+         "quote": "Neurotoxicity from Day +4 with an ICE low of 5/10, treated with dexamethasone.",
+         "start": 94,
+         "end": 172
+        }
+       ]
+      },
+      "max_grade": {
+       "category": "7.2",
+       "documented_value": "3",
+       "explanation": "The record gives a maximum of Grade 2. The documents support Grade 2 from ICE 5/10 on 2036-11-13. They also prove Grade 3: the EEG of 2036-11-15 (Day +7, inside the window) recorded a non-convulsive electrographic seizure that ended after IV levetiracetam, with return to baseline. That is 'non-convulsive seizures on EEG that resolve with intervention' (Table 6, Grade 3). The diffuse slowing is not a seizure. Levetiracetam is not a competing cause, and no clinician attributed the seizure to anything else. The EEG report was signed on 2036-11-18, after the record was made on 2036-11-17, but it is signed content and the current record was never updated. The record is lower by 1 grade.",
+       "evidence": [
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0066-D07",
+         "version": 1,
+         "quote": "Impression: one non-convulsive seizure of 3 minutes that ended after intravenous levetiracetam, with return to baseline; mild diffuse slowing.",
+         "start": 502,
+         "end": 644
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0066-D07",
+         "version": 1,
+         "quote": "Recorded 2036-11-15 from 09:40 to 11:10.",
+         "start": 42,
+         "end": 82
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0066-D04",
+         "version": 1,
+         "quote": "the ICE score of 5/10 at 10:20 shows clear worsening",
+         "start": 68,
+         "end": 120
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0066-D08",
+         "version": 1,
+         "quote": "The EEG of 2036-11-15 recorded a single non-convulsive seizure that stopped after levetiracetam",
+         "start": 173,
+         "end": 268
+        }
+       ]
+      }
+     }
+    },
+    "evidence_valid": [
+     8,
+     8
+    ],
+    "cost_usd": 0.050421
+   },
    "runtime_seconds": {
-    "extract": 0.010501916985958815,
-    "resauce": 0.0002682502381503582,
-    "baseline_a": 3.091664984822273e-05
+    "extract": 0.008965916000306606,
+    "resauce": 0.00020762532949447632,
+    "baseline_a": 2.6124995201826096e-05,
+    "baseline_b": 13.724
    }
   },
   {
@@ -11338,10 +15185,86 @@
      4
     ]
    },
+   "baseline_b": {
+    "output": {
+     "case_id": "SYN-0068",
+     "out_of_scope": null,
+     "fields": {
+      "onset": {
+       "category": "7.1",
+       "documented_value": "2036-07-12",
+       "explanation": "The earliest qualifying finding is ICE 8/10 at 09:50 on 2036-07-12 (Day +4), which is Grade 1. No clinician links it to another cause. Tocilizumab, acetaminophen and CRS are not competing causes (A35). The ICE 10/10 on 15 Jul is a full resolution. The findings from 19 Jul are a recurrence, which is flagged but stays in the same episode (§6.5, A5). The record onset of 2036-07-19 is therefore 7 days later than the documented onset: a mismatch with signed difference +7 days. Extra flag: recurrence.",
+       "evidence": [
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0068-D01",
+         "version": 1,
+         "quote": "ICE 8/10 at 09:50 (orientation 3/4, attention 0/1).",
+         "start": 68,
+         "end": 119
+        },
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0068-D02",
+         "version": 1,
+         "quote": "Total 10/10. Alert and cooperative. Back to baseline.",
+         "start": 103,
+         "end": 156
+        },
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0068-D04",
+         "version": 1,
+         "quote": "At 20:30 patient scored ICE 5/10",
+         "start": 21,
+         "end": 53
+        },
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0068-D05",
+         "version": 1,
+         "quote": "Reviewed for second episode of reduced ICE scores after a documented recovery on 15 Jul.",
+         "start": 23,
+         "end": 111
+        }
+       ]
+      },
+      "max_grade": {
+       "category": "7.7",
+       "documented_value": "2",
+       "explanation": "The worst assessment is on 19 Jul: ICE 5/10 (Grade 2) and 'opens eyes to voice', which matches 'awakens to voice' (Grade 2). On 21 Jul, ICE 6/10 is also Grade 2. No seizure, motor or raised-ICP findings are documented. Tremor and headache are excluded from grading, and dexamethasone is not a competing cause. The documented maximum is Grade 2, the same as the record. Extra flag: D03 v2 is an unsigned later version that changes only the weight (71.4 to 71.9 kg) and has no effect on the grade.",
+       "evidence": [
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0068-D04",
+         "version": 1,
+         "quote": "At 20:30 patient scored ICE 5/10 (orientation 1/4, naming 2/3, commands 1/1, writing 0/1, attention 1/1). Opens eyes to voice, then drifts off.",
+         "start": 21,
+         "end": 164
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0068-D05",
+         "version": 1,
+         "quote": "ICE 6/10 at 11:00. Awake, follows commands. No focal motor deficit, no seizure activity.",
+         "start": 112,
+         "end": 200
+        }
+       ]
+      }
+     }
+    },
+    "evidence_valid": [
+     6,
+     6
+    ],
+    "cost_usd": 0.041211
+   },
    "runtime_seconds": {
-    "extract": 0.003313791938126087,
-    "resauce": 0.00015787500888109207,
-    "baseline_a": 1.9249971956014633e-05
+    "extract": 0.0032193330116569996,
+    "resauce": 0.00014737481251358986,
+    "baseline_a": 1.895800232887268e-05,
+    "baseline_b": 11.729
    }
   },
   {
@@ -11756,10 +15679,102 @@
      2
     ]
    },
+   "baseline_b": {
+    "output": {
+     "case_id": "SYN-0069",
+     "out_of_scope": null,
+     "fields": {
+      "onset": {
+       "category": "7.7",
+       "documented_value": "2034-04-28",
+       "explanation": "The first qualifying finding is on Day +3, 2034-04-28: ICE 8/10 (Grade 1), taken with an interpreter, in a patient who was awake and had no sedating medicines. The evening before (2034-04-27), a formal ICE with an interpreter scored 10/10. The current record (v2) gives onset 2034-04-28, the same calendar day, so there is no discrepancy. The onset changed from 2034-04-29 in v1 to 2034-04-28 in v2, but this is not a legitimate revision (7.6). Condition (c) of §7.6 fails: no supporting document was written between v1 (recorded 2034-05-11T10:20) and v2 (recorded 2034-05-16T14:10). The supporting note D03 was written on 2034-04-28. So the category is 7.7 with the extra flag 'revision without new documentation'.",
+       "evidence": [
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0069-D02",
+         "version": 1,
+         "quote": "ICE at 20:30 through the video interpreter: 10/10.",
+         "start": 100,
+         "end": 150
+        },
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0069-D03",
+         "version": 1,
+         "quote": "ICE with telephone interpreter at 08:45: 8/10 (wrong month, unable to finish the sentence).",
+         "start": 16,
+         "end": 107
+        },
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0069-D03",
+         "version": 1,
+         "quote": "Awake and smiling, sitting in chair. No sedating medicines in the last day.",
+         "start": 108,
+         "end": 183
+        }
+       ]
+      },
+      "max_grade": {
+       "category": "7.5",
+       "documented_value": "1 or 2 (ambiguous; reason: assessment barrier)",
+       "explanation": "The record's maximum grade is 1. The ICE scores taken with an interpreter support Grade 1: ICE 8/10 on 2034-04-28 and ICE 9/10 on 2034-05-01. There are no findings on consciousness, seizures, motor function or edema, and the MRI was normal. On 2034-04-29 the ICE was 4/10, which would be Grade 2. But that test was given in English without an interpreter, and the notes document a language barrier (primary language Portuguese, limited English). Under A10, this low score is ambiguous. Counting it gives Grade 2, which is higher than the record (7.2). Not counting it gives Grade 1, which matches the record (7.7). The two readings lead to different categories, so the result is 7.5, ambiguous evidence, with the reason 'assessment barrier'.",
+       "evidence": [
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0069-D01",
+         "version": 1,
+         "quote": "Primary language Portuguese; limited English.",
+         "start": 26,
+         "end": 71
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0069-D04",
+         "version": 1,
+         "quote": "ICE 4/10 at 14:20; language barrier: interpreter line not reached after two attempts, ICE given in English, which the patient speaks only a little.",
+         "start": 16,
+         "end": 163
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0069-D03",
+         "version": 1,
+         "quote": "ICE with telephone interpreter at 08:45: 8/10 (wrong month, unable to finish the sentence).",
+         "start": 16,
+         "end": 107
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0069-D06",
+         "version": 1,
+         "quote": "Examined at 10:00 with an in-person interpreter: ICE 9/10 (sentence incomplete).",
+         "start": 26,
+         "end": 106
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0069-D05",
+         "version": 1,
+         "quote": "Impression: no acute intracranial abnormality.",
+         "start": 152,
+         "end": 198
+        }
+       ]
+      }
+     }
+    },
+    "evidence_valid": [
+     8,
+     8
+    ],
+    "cost_usd": 0.061026
+   },
    "runtime_seconds": {
-    "extract": 0.006701333913952112,
-    "resauce": 0.0003104577772319317,
-    "baseline_a": 1.9333790987730026e-05
+    "extract": 0.005766291171312332,
+    "resauce": 0.0002782503142952919,
+    "baseline_a": 1.833401620388031e-05,
+    "baseline_b": 19.011
    }
   },
   {
@@ -11956,10 +15971,86 @@
      3
     ]
    },
+   "baseline_b": {
+    "output": {
+     "case_id": "SYN-0071",
+     "out_of_scope": null,
+     "fields": {
+      "onset": {
+       "category": "7.7",
+       "documented_value": "2031-11-23",
+       "explanation": "The earliest qualifying finding is ICE 8/10 at 08:40 on 2031-11-23 (Day +4), which meets the Grade 1 ICE criterion (7-9). Acetaminophen is a treatment for CRS or ICANS and does not count as a competing cause (A35). The note also documents a headache, which is excluded from grading (§4.2) and does not affect onset. The documented onset falls on the record's onset date, 2031-11-23.",
+       "evidence": [
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0071-D01",
+         "version": 1,
+         "quote": "NEURO: ICE 8/10 @0840 (ORIENT 3/4 NAME 3/3 CMD 1/1 WRT 1/1 ATTN 0/1)",
+         "start": 58,
+         "end": 126
+        },
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0071-D01",
+         "version": 1,
+         "quote": "HA: mild 3/10, acetaminophen PRN given",
+         "start": 147,
+         "end": 185
+        }
+       ]
+      },
+      "max_grade": {
+       "category": "7.7",
+       "documented_value": "2",
+       "explanation": "On 2031-11-24 (Day +5) the patient had ICE 5/10 (Grade 2) and 'awakens to voice' (Grade 2). No sedating medication or other competing cause is documented; dexamethasone was ordered after the assessment and is not a competing cause anyway. The 2031-11-25 EEG was normal, with no seizures. On 2031-11-28 the current version of D04 (v2, whose only change is a corrected vital sign) shows ICE 10/10 and alert. No Grade 3 or 4 finding is documented. The documented maximum is Grade 2, the same as the record.",
+       "evidence": [
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0071-D02",
+         "version": 1,
+         "quote": "NEURO: ICE 5/10 @0820 (ORIENT 1/4 NAME 2/3 CMD 1/1 WRT 0/1 ATTN 1/1)",
+         "start": 58,
+         "end": 126
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0071-D02",
+         "version": 1,
+         "quote": "LOC: awakens to voice",
+         "start": 127,
+         "end": 148
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0071-D03",
+         "version": 1,
+         "quote": "IMPRESSION: normal EEG",
+         "start": 134,
+         "end": 156
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0071-D04",
+         "version": 2,
+         "quote": "NEURO: ICE 10/10 @0900",
+         "start": 49,
+         "end": 71
+        }
+       ]
+      }
+     }
+    },
+    "evidence_valid": [
+     6,
+     6
+    ],
+    "cost_usd": 0.039616
+   },
    "runtime_seconds": {
-    "extract": 0.0026486250571906567,
-    "resauce": 0.00018908409401774406,
-    "baseline_a": 4.079192876815796e-05
+    "extract": 0.002510624937713146,
+    "resauce": 0.00015120767056941986,
+    "baseline_a": 1.7666257917881012e-05,
+    "baseline_b": 11.772
    }
   },
   {
@@ -12186,10 +16277,86 @@
      4
     ]
    },
+   "baseline_b": {
+    "output": {
+     "case_id": "SYN-0072",
+     "out_of_scope": null,
+     "fields": {
+      "onset": {
+       "category": "7.4",
+       "documented_value": "2031-06-20",
+       "explanation": "Record onset 2031-06-17 (Day +3) is earlier than the first qualifying finding, ICE 8/10 on 2031-06-20 (Day +6, Grade 1). There is no note and no gradeable assessment on 2031-06-17, so no formal Grade 0 assessment refutes the record date. Under §7.1 this is insufficient evidence, not a mismatch. The Day 0 ICE 10/10 is on a different date. The Day +1 fever, acetaminophen and tocilizumab are not competing causes (A35).",
+       "evidence": [
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0072-D03",
+         "version": 1,
+         "quote": "D+6. Afebrile since d2. ICE 8/10 at 09:40 (orient 3/4, attn 0/1).",
+         "start": 0,
+         "end": 65
+        },
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0072-D06",
+         "version": 2,
+         "quote": "Mild neurotoxicity d6-d7 (ICE 8-9/10), resolved, ICE 10/10 24 Jun.",
+         "start": 36,
+         "end": 102
+        },
+        {
+         "role": "Baseline B evidence for onset",
+         "document_id": "SYN-0072-D01",
+         "version": 1,
+         "quote": "ICE 10/10 at 16:50.",
+         "start": 25,
+         "end": 44
+        }
+       ]
+      },
+      "max_grade": {
+       "category": "7.7",
+       "documented_value": "1",
+       "explanation": "The highest documented assessments are ICE 8/10 (Day +6) and ICE 9/10 (Day +7). Both are Grade 1, with the patient awake. No seizure, motor finding, edema or depressed consciousness is documented. This matches the record's Grade 1.",
+       "evidence": [
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0072-D03",
+         "version": 1,
+         "quote": "ICE 8/10 at 09:40 (orient 3/4, attn 0/1). Awake, coop. No focal def. No sz.",
+         "start": 24,
+         "end": 99
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0072-D04",
+         "version": 1,
+         "quote": "attn 0/1 = 9/10. Awake.",
+         "start": 60,
+         "end": 83
+        },
+        {
+         "role": "Baseline B evidence for max_grade",
+         "document_id": "SYN-0072-D05",
+         "version": 1,
+         "quote": "ICE 24 Jun 09:15 = 10/10. Alert.",
+         "start": 0,
+         "end": 32
+        }
+       ]
+      }
+     }
+    },
+    "evidence_valid": [
+     6,
+     6
+    ],
+    "cost_usd": 0.051071
+   },
    "runtime_seconds": {
-    "extract": 0.002183707896620035,
-    "resauce": 0.00021391594782471657,
-    "baseline_a": 2.2166874259710312e-05
+    "extract": 0.0025203749537467957,
+    "resauce": 0.0001943749375641346,
+    "baseline_a": 2.10409052670002e-05,
+    "baseline_b": 15.494
    }
   }
  ],
@@ -12660,13 +16827,253 @@
     "value": 1.0
    },
    "errors": []
+  },
+  "baseline_b": {
+   "summary": {
+    "cases": 52,
+    "in_scope": 49,
+    "out_of_scope": 3,
+    "without_reference": 0,
+    "errors": 0,
+    "error_ids": []
+   },
+   "fields": {
+    "onset": {
+     "counts": {
+      "fields": 49,
+      "positive": 7,
+      "negative": 31,
+      "review": 11,
+      "unclassified": 0,
+      "detections": 7,
+      "misses": 0,
+      "false_alerts": 0,
+      "alerts_on_review_fields": 0,
+      "review_results": 0,
+      "misses_with_review_flag": 0,
+      "misses_with_review_result": 0,
+      "misses_from_errors": 0,
+      "misses_from_out_of_scope": 0,
+      "misses_with_no_alert": 0,
+      "agree_all": 49,
+      "agree_positive": 7,
+      "ref_7.1": 6,
+      "ref_7.1_flagged_7.4": 0,
+      "ref_7.1_flagged_7.5": 0,
+      "ref_7.2": 0,
+      "ref_7.2_flagged_7.4": 0,
+      "ref_7.2_flagged_7.5": 0,
+      "ref_7.3": 0,
+      "ref_7.3_flagged_7.4": 0,
+      "ref_7.3_flagged_7.5": 0,
+      "ref_7.4": 8,
+      "ref_7.4_flagged_7.4": 8,
+      "ref_7.4_flagged_7.5": 0,
+      "ref_7.5": 3,
+      "ref_7.5_flagged_7.4": 0,
+      "ref_7.5_flagged_7.5": 3,
+      "ref_7.6": 2,
+      "ref_7.6_flagged_7.4": 0,
+      "ref_7.6_flagged_7.5": 0,
+      "ref_7.7": 29,
+      "ref_7.7_flagged_7.4": 0,
+      "ref_7.7_flagged_7.5": 0,
+      "ref_7.8": 1,
+      "ref_7.8_flagged_7.4": 0,
+      "ref_7.8_flagged_7.5": 0
+     },
+     "precision": {
+      "n": 7,
+      "d": 7,
+      "value": 1.0
+     },
+     "recall": {
+      "n": 7,
+      "d": 7,
+      "value": 1.0
+     },
+     "f1": {
+      "n": 14,
+      "d": 14,
+      "value": 1.0
+     },
+     "exact_agreement_all_fields": {
+      "n": 49,
+      "d": 49,
+      "value": 1.0
+     },
+     "exact_agreement_positive_fields": {
+      "n": 7,
+      "d": 7,
+      "value": 1.0
+     }
+    },
+    "max_grade": {
+     "counts": {
+      "fields": 49,
+      "positive": 13,
+      "negative": 29,
+      "review": 7,
+      "unclassified": 0,
+      "detections": 13,
+      "misses": 0,
+      "false_alerts": 0,
+      "alerts_on_review_fields": 0,
+      "review_results": 0,
+      "misses_with_review_flag": 0,
+      "misses_with_review_result": 0,
+      "misses_from_errors": 0,
+      "misses_from_out_of_scope": 0,
+      "misses_with_no_alert": 0,
+      "agree_all": 49,
+      "agree_positive": 13,
+      "ref_7.1": 0,
+      "ref_7.1_flagged_7.4": 0,
+      "ref_7.1_flagged_7.5": 0,
+      "ref_7.2": 7,
+      "ref_7.2_flagged_7.4": 0,
+      "ref_7.2_flagged_7.5": 0,
+      "ref_7.3": 5,
+      "ref_7.3_flagged_7.4": 0,
+      "ref_7.3_flagged_7.5": 0,
+      "ref_7.4": 3,
+      "ref_7.4_flagged_7.4": 3,
+      "ref_7.4_flagged_7.5": 0,
+      "ref_7.5": 4,
+      "ref_7.5_flagged_7.4": 0,
+      "ref_7.5_flagged_7.5": 4,
+      "ref_7.6": 1,
+      "ref_7.6_flagged_7.4": 0,
+      "ref_7.6_flagged_7.5": 0,
+      "ref_7.7": 28,
+      "ref_7.7_flagged_7.4": 0,
+      "ref_7.7_flagged_7.5": 0,
+      "ref_7.8": 1,
+      "ref_7.8_flagged_7.4": 0,
+      "ref_7.8_flagged_7.5": 0
+     },
+     "precision": {
+      "n": 13,
+      "d": 13,
+      "value": 1.0
+     },
+     "recall": {
+      "n": 13,
+      "d": 13,
+      "value": 1.0
+     },
+     "f1": {
+      "n": 26,
+      "d": 26,
+      "value": 1.0
+     },
+     "exact_agreement_all_fields": {
+      "n": 49,
+      "d": 49,
+      "value": 1.0
+     },
+     "exact_agreement_positive_fields": {
+      "n": 13,
+      "d": 13,
+      "value": 1.0
+     }
+    },
+    "combined": {
+     "counts": {
+      "fields": 98,
+      "positive": 20,
+      "negative": 60,
+      "review": 18,
+      "unclassified": 0,
+      "detections": 20,
+      "misses": 0,
+      "false_alerts": 0,
+      "alerts_on_review_fields": 0,
+      "review_results": 0,
+      "misses_with_review_flag": 0,
+      "misses_with_review_result": 0,
+      "misses_from_errors": 0,
+      "misses_from_out_of_scope": 0,
+      "misses_with_no_alert": 0,
+      "agree_all": 98,
+      "agree_positive": 20,
+      "ref_7.1": 6,
+      "ref_7.1_flagged_7.4": 0,
+      "ref_7.1_flagged_7.5": 0,
+      "ref_7.2": 7,
+      "ref_7.2_flagged_7.4": 0,
+      "ref_7.2_flagged_7.5": 0,
+      "ref_7.3": 5,
+      "ref_7.3_flagged_7.4": 0,
+      "ref_7.3_flagged_7.5": 0,
+      "ref_7.4": 11,
+      "ref_7.4_flagged_7.4": 11,
+      "ref_7.4_flagged_7.5": 0,
+      "ref_7.5": 7,
+      "ref_7.5_flagged_7.4": 0,
+      "ref_7.5_flagged_7.5": 7,
+      "ref_7.6": 3,
+      "ref_7.6_flagged_7.4": 0,
+      "ref_7.6_flagged_7.5": 0,
+      "ref_7.7": 57,
+      "ref_7.7_flagged_7.4": 0,
+      "ref_7.7_flagged_7.5": 0,
+      "ref_7.8": 2,
+      "ref_7.8_flagged_7.4": 0,
+      "ref_7.8_flagged_7.5": 0
+     },
+     "precision": {
+      "n": 20,
+      "d": 20,
+      "value": 1.0
+     },
+     "recall": {
+      "n": 20,
+      "d": 20,
+      "value": 1.0
+     },
+     "f1": {
+      "n": 40,
+      "d": 40,
+      "value": 1.0
+     },
+     "exact_agreement_all_fields": {
+      "n": 98,
+      "d": 98,
+      "value": 1.0
+     },
+     "exact_agreement_positive_fields": {
+      "n": 20,
+      "d": 20,
+      "value": 1.0
+     }
+    }
+   },
+   "out_of_scope": {
+    "reference_cases": 3,
+    "flagged": 3,
+    "reason_matches": 3,
+    "flagged_other_reason": 0,
+    "not_flagged": 0,
+    "errors": 0,
+    "in_scope_wrongly_flagged": 0,
+    "wrongly_flagged_ids": []
+   },
+   "evidence_validity": {
+    "n": 330,
+    "d": 331,
+    "value": 0.9969788519637462
+   },
+   "errors": [],
+   "cost_usd": 2.6308
   }
  },
  "runtime_seconds": {
-  "extract": 0.24435058562085032,
-  "resauce": 0.012113130185753107,
-  "baseline_a": 0.001306086778640747,
-  "wall_clock": 0.3065694156102836
+  "extract": 0.19716791296377778,
+  "resauce": 0.00927616935223341,
+  "baseline_a": 0.000963086262345314,
+  "baseline_b": 810.368,
+  "wall_clock": 0.2944574998691678
  },
  "reference_errors": []
 }

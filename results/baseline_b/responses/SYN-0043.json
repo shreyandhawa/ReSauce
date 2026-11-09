@@ -1,0 +1,223 @@
+{
+ "case_id": "SYN-0043",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "thinking": "adaptive (always on for this model)",
+ "route": "Claude Code print mode",
+ "command": [
+  "claude",
+  "-p",
+  "--model",
+  "claude-opus-5-5",
+  "--effort",
+  "high",
+  "--system-prompt",
+  "<instructions: system_prompt.md>",
+  "--tools",
+  "",
+  "--json-schema",
+  "<answer_schema.json>",
+  "--output-format",
+  "json",
+  "--no-session-persistence",
+  "--strict-mcp-config",
+  "--setting-sources",
+  "project"
+ ],
+ "system_prompt_sha256": "0cda59baefac995b4e20a8dde5550077ed76c7f0f789f8c4661cf246f64e1596",
+ "answer_schema_sha256": "9dc6f412e8631752ce5bf4ce82b16ac3ce5d04d9dfb8709c8b459a7a11d2ad11",
+ "fallback_model": null,
+ "user_message_sha256": "6f993093231858027264a5d60a88ca48099e59de154a1e19083781226afa4b94",
+ "requested_at": "2026-11-09T08:22:57-06:00",
+ "stop_reason": "tool_use",
+ "finished": true,
+ "answer_text": "{\"out_of_scope_reason\": \"in scope\", \"onset\": {\"category\": \"7.1\", \"documented_value\": \"2031-07-21\", \"explanation\": \"The first qualifying finding is ICE 7/10, which is Grade 1. It has an exact event time of 2031-07-21 23:20 (Day +5), written in the nursing note that was entered after midnight on 2031-07-22. Onset is based on event time, not on when the note was written, so the documents support 2031-07-21. The record gives 2031-07-22, which is 1 day later (signed difference +1 day). The tolerance is 0 days, so this is an onset mismatch. No competing cause on the closed list (A35) is documented. Fever from CRS, tocilizumab and levetiracetam prophylaxis do not count as competing causes. Earlier on the same evening, at 20:00, the patient scored ICE 10/10.\", \"evidence\": [{\"document_id\": \"SYN-0043-D02\", \"version\": 1, \"quote\": \"2031-07-21 23:20 ICE 7/10 - missed yr + hospital, unable to write sentence; named 3/3, followed cmd, counted back OK.\"}, {\"document_id\": \"SYN-0043-D02\", \"version\": 1, \"quote\": \"RN note, eve shift 2031-07-21 (entered after midnight)\"}, {\"document_id\": \"SYN-0043-D02\", \"version\": 1, \"quote\": \"20:00 ICE 10/10, A&Ox4.\"}]}, \"max_grade\": {\"category\": \"7.7\", \"documented_value\": \"2\", \"explanation\": \"The worst assessment is ICE 6/10 on Day +6 (2031-07-22 08:10), which is Grade 2. In that note the patient is awake and alert, with no focal deficits, no seizure and no sedating medication in the past 24 hours. The EEG on 2031-07-23 is normal with no electrographic seizures. No Grade 3 or Grade 4 finding is documented, and there is no documented 'not assessable' period. The documented maximum grade (2) equals the record (2), so there is no discrepancy.\", \"evidence\": [{\"document_id\": \"SYN-0043-D03\", \"version\": 1, \"quote\": \"Neuro exam @ 08:10: ICE 6/10 (orientation 1/4, naming 3/3, cmds 1/1, writing 0/1, attn 1/1). Awake, alert, conversant.\"}, {\"document_id\": \"SYN-0043-D03\", \"version\": 1, \"quote\": \"No sedating meds in past 24 h.\"}, {\"document_id\": \"SYN-0043-D04\", \"version\": 1, \"quote\": \"No focal or generalized slowing. No epileptiform discharges. No electrographic seizures.\"}]}}",
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 2089,
+  "cache_read_input_tokens": 27340,
+  "output_tokens": 1466,
+  "output_tokens_details": {
+   "thinking_tokens": 489
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 2089,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 1466,
+    "cache_read_input_tokens": 27340,
+    "cache_creation_input_tokens": 2089,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 2089
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "models_reported": [
+  "claude-opus-5-5"
+ ],
+ "claude_code_cost_usd": 0.05150800000000001,
+ "duration_seconds": 14.68,
+ "cli_output": {
+  "duration_api_ms": 13980,
+  "stop_reason": "tool_use",
+  "session_id": "7f22e98d-4add-4086-853f-a299a6a585b5",
+  "total_cost_usd": 0.05150800000000001,
+  "usage": {
+   "input_tokens": 2,
+   "cache_creation_input_tokens": 2089,
+   "cache_read_input_tokens": 27340,
+   "output_tokens": 1466,
+   "output_tokens_details": {
+    "thinking_tokens": 489
+   },
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "service_tier": "standard",
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 2089,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "inference_geo": "global",
+   "iterations": [
+    {
+     "input_tokens": 2,
+     "output_tokens": 1466,
+     "cache_read_input_tokens": 27340,
+     "cache_creation_input_tokens": 2089,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 0,
+      "ephemeral_1h_input_tokens": 2089
+     },
+     "type": "message"
+    }
+   ],
+   "speed": "standard",
+   "fallback_credit": null
+  },
+  "modelUsage": {
+   "claude-opus-5-5": {
+    "inputTokens": 2,
+    "outputTokens": 1466,
+    "cacheReadInputTokens": 27340,
+    "cacheCreationInputTokens": 2089,
+    "webSearchRequests": 0,
+    "costUSD": 0.05150800000000001,
+    "contextWindow": 1000000,
+    "maxOutputTokens": 128000,
+    "thinkingTokens": 489,
+    "cacheCreationEphemeral5mInputTokens": 0,
+    "cacheCreationEphemeral1hInputTokens": 2089,
+    "canonicalModel": "claude-opus-5-5",
+    "provider": "firstParty",
+    "costBasis": "list"
+   }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+   "spawned": 0,
+   "requested": {
+    "background": 0,
+    "foreground": 0,
+    "unset": 0
+   },
+   "started_in_background": 0,
+   "max_depth": 0,
+   "spawned_by_subagents": 0,
+   "completed": 0,
+   "failed": 0,
+   "killed": {
+    "parent": 0,
+    "user": 0,
+    "system": 0
+   },
+   "refused": {
+    "depth_limit": 0,
+    "concurrency_limit": 0,
+    "budget": 0
+   },
+   "by_type": {}
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 2,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "{\"out_of_scope_reason\":\"in scope\",\"onset\":{\"category\":\"7.1\",\"documented_value\":\"2031-07-21\",\"explanation\":\"The first qualifying finding is ICE 7/10, which is Grade 1. It has an exact event time of 2031-07-21 23:20 (Day +5), written in the nursing note that was entered after midnight on 2031-07-22. Onset is based on event time, not on when the note was written, so the documents support 2031-07-21. The record gives 2031-07-22, which is 1 day later (signed difference +1 day). The tolerance is 0 days, so this is an onset mismatch. No competing cause on the closed list (A35) is documented. Fever from CRS, tocilizumab and levetiracetam prophylaxis do not count as competing causes. Earlier on the same evening, at 20:00, the patient scored ICE 10/10.\",\"evidence\":[{\"document_id\":\"SYN-0043-D02\",\"version\":1,\"quote\":\"2031-07-21 23:20 ICE 7/10 - missed yr + hospital, unable to write sentence; named 3/3, followed cmd, counted back OK.\"},{\"document_id\":\"SYN-0043-D02\",\"version\":1,\"quote\":\"RN note, eve shift 2031-07-21 (entered after midnight)\"},{\"document_id\":\"SYN-0043-D02\",\"version\":1,\"quote\":\"20:00 ICE 10/10, A&Ox4.\"}]},\"max_grade\":{\"category\":\"7.7\",\"documented_value\":\"2\",\"explanation\":\"The worst assessment is ICE 6/10 on Day +6 (2031-07-22 08:10), which is Grade 2. In that note the patient is awake and alert, with no focal deficits, no seizure and no sedating medication in the past 24 hours. The EEG on 2031-07-23 is normal with no electrographic seizures. No Grade 3 or Grade 4 finding is documented, and there is no documented 'not assessable' period. The documented maximum grade (2) equals the record (2), so there is no discrepancy.\",\"evidence\":[{\"document_id\":\"SYN-0043-D03\",\"version\":1,\"quote\":\"Neuro exam @ 08:10: ICE 6/10 (orientation 1/4, naming 3/3, cmds 1/1, writing 0/1, attn 1/1). Awake, alert, conversant.\"},{\"document_id\":\"SYN-0043-D03\",\"version\":1,\"quote\":\"No sedating meds in past 24 h.\"},{\"document_id\":\"SYN-0043-D04\",\"version\":1,\"quote\":\"No focal or generalized slowing. No epileptiform discharges. No electrographic seizures.\"}]}}",
+  "structured_output": {
+   "out_of_scope_reason": "in scope",
+   "onset": {
+    "category": "7.1",
+    "documented_value": "2031-07-21",
+    "explanation": "The first qualifying finding is ICE 7/10, which is Grade 1. It has an exact event time of 2031-07-21 23:20 (Day +5), written in the nursing note that was entered after midnight on 2031-07-22. Onset is based on event time, not on when the note was written, so the documents support 2031-07-21. The record gives 2031-07-22, which is 1 day later (signed difference +1 day). The tolerance is 0 days, so this is an onset mismatch. No competing cause on the closed list (A35) is documented. Fever from CRS, tocilizumab and levetiracetam prophylaxis do not count as competing causes. Earlier on the same evening, at 20:00, the patient scored ICE 10/10.",
+    "evidence": [
+     {
+      "document_id": "SYN-0043-D02",
+      "version": 1,
+      "quote": "2031-07-21 23:20 ICE 7/10 - missed yr + hospital, unable to write sentence; named 3/3, followed cmd, counted back OK."
+     },
+     {
+      "document_id": "SYN-0043-D02",
+      "version": 1,
+      "quote": "RN note, eve shift 2031-07-21 (entered after midnight)"
+     },
+     {
+      "document_id": "SYN-0043-D02",
+      "version": 1,
+      "quote": "20:00 ICE 10/10, A&Ox4."
+     }
+    ]
+   },
+   "max_grade": {
+    "category": "7.7",
+    "documented_value": "2",
+    "explanation": "The worst assessment is ICE 6/10 on Day +6 (2031-07-22 08:10), which is Grade 2. In that note the patient is awake and alert, with no focal deficits, no seizure and no sedating medication in the past 24 hours. The EEG on 2031-07-23 is normal with no electrographic seizures. No Grade 3 or Grade 4 finding is documented, and there is no documented 'not assessable' period. The documented maximum grade (2) equals the record (2), so there is no discrepancy.",
+    "evidence": [
+     {
+      "document_id": "SYN-0043-D03",
+      "version": 1,
+      "quote": "Neuro exam @ 08:10: ICE 6/10 (orientation 1/4, naming 3/3, cmds 1/1, writing 0/1, attn 1/1). Awake, alert, conversant."
+     },
+     {
+      "document_id": "SYN-0043-D03",
+      "version": 1,
+      "quote": "No sedating meds in past 24 h."
+     },
+     {
+      "document_id": "SYN-0043-D04",
+      "version": 1,
+      "quote": "No focal or generalized slowing. No epileptiform discharges. No electrographic seizures."
+     }
+    ]
+   }
+  },
+  "ttft_ms": 6835,
+  "type": "result",
+  "duration_ms": 14156,
+  "uuid": "1312fd90-5dd7-4b3c-95fa-ff7b10a591a1",
+  "ttft_stream_ms": 2947,
+  "time_to_request_ms": 173,
+  "first_content_frame_ms": 2947,
+  "queued_turn_count": 0,
+  "result_index": 0,
+  "credential_expires_at": "2026-12-06T22:19:03.648Z"
+ }
+}

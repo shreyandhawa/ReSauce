@@ -1,0 +1,223 @@
+{
+ "case_id": "SYN-0018",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "thinking": "adaptive (always on for this model)",
+ "route": "Claude Code print mode",
+ "command": [
+  "claude",
+  "-p",
+  "--model",
+  "claude-opus-5-5",
+  "--effort",
+  "high",
+  "--system-prompt",
+  "<instructions: system_prompt.md>",
+  "--tools",
+  "",
+  "--json-schema",
+  "<answer_schema.json>",
+  "--output-format",
+  "json",
+  "--no-session-persistence",
+  "--strict-mcp-config",
+  "--setting-sources",
+  "project"
+ ],
+ "system_prompt_sha256": "0cda59baefac995b4e20a8dde5550077ed76c7f0f789f8c4661cf246f64e1596",
+ "answer_schema_sha256": "9dc6f412e8631752ce5bf4ce82b16ac3ce5d04d9dfb8709c8b459a7a11d2ad11",
+ "fallback_model": null,
+ "user_message_sha256": "3d93c6feb4b06f116a159fa31330750f3eebb11953d631bbbcf73b37207c7622",
+ "requested_at": "2026-11-09T08:21:21-06:00",
+ "stop_reason": "tool_use",
+ "finished": true,
+ "answer_text": "{\"out_of_scope_reason\": \"in scope\", \"onset\": {\"category\": \"7.7\", \"documented_value\": \"2035-06-17\", \"explanation\": \"ICE was 10/10 on Day 0, Day +1 and Day +2. The first qualifying finding is ICE 8/10 at 08:20 on 2035-06-17 (Grade 1). The record's onset, 2035-06-17, is the same calendar day.\", \"evidence\": [{\"document_id\": \"SYN-0018-D03\", \"version\": 1, \"quote\": \"ICE 09:40 10/10.\"}, {\"document_id\": \"SYN-0018-D04\", \"version\": 1, \"quote\": \"ICE 08:20 = 8/10 (-month, -sentence).\"}]}, \"max_grade\": {\"category\": \"7.5\", \"documented_value\": \"2 or 3 (ambiguous; Grade 2 proven under every reading)\", \"explanation\": \"Reason: consciousness wording. Grade 2 is certain from ICE 6/10 (Day +4) and ICE 5/10 (Day +5). On Day +5 the patient opened their eyes when their name was called loudly while the RN tapped their arm at the same moment. The note does not show whether voice alone would have woken them. Read as 'awakens to voice', it is Grade 2, which equals the record (7.7). Read as 'awakens only to tactile stimulus', it is Grade 3, which is higher than the record (7.2). The readings give different categories, so 7.5 applies. No sedatives or opioids were documented, and dexamethasone is not a competing cause (A35). No note documents a seizure, motor weakness or ICP/edema finding.\", \"evidence\": [{\"document_id\": \"SYN-0018-D05\", \"version\": 1, \"quote\": \"ICE 19:50 = 6/10.\"}, {\"document_id\": \"SYN-0018-D06\", \"version\": 1, \"quote\": \"Then eyes closed in chair at 13:40; opened eyes when name called loudly while RN tapped arm at same time; then attentive.\"}, {\"document_id\": \"SYN-0018-D06\", \"version\": 1, \"quote\": \"ICE 14:00 = 5/10. No sedatives, no opioids. No sz. Power full.\"}, {\"document_id\": \"SYN-0018-D08\", \"version\": 1, \"quote\": \"No papilledema. Nonfocal.\"}]}}",
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 2632,
+  "cache_read_input_tokens": 27340,
+  "output_tokens": 2148,
+  "output_tokens_details": {
+   "thinking_tokens": 436
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 2632,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 2148,
+    "cache_read_input_tokens": 27340,
+    "cache_creation_input_tokens": 2632,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 2632
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "models_reported": [
+  "claude-opus-5-5"
+ ],
+ "claude_code_cost_usd": 0.069492,
+ "duration_seconds": 19.457,
+ "cli_output": {
+  "duration_api_ms": 18682,
+  "stop_reason": "tool_use",
+  "session_id": "11db051f-db32-493c-91aa-51392aef53f6",
+  "total_cost_usd": 0.069492,
+  "usage": {
+   "input_tokens": 2,
+   "cache_creation_input_tokens": 2632,
+   "cache_read_input_tokens": 27340,
+   "output_tokens": 2148,
+   "output_tokens_details": {
+    "thinking_tokens": 436
+   },
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "service_tier": "standard",
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 2632,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "inference_geo": "global",
+   "iterations": [
+    {
+     "input_tokens": 2,
+     "output_tokens": 2148,
+     "cache_read_input_tokens": 27340,
+     "cache_creation_input_tokens": 2632,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 0,
+      "ephemeral_1h_input_tokens": 2632
+     },
+     "type": "message"
+    }
+   ],
+   "speed": "standard",
+   "fallback_credit": null
+  },
+  "modelUsage": {
+   "claude-opus-5-5": {
+    "inputTokens": 2,
+    "outputTokens": 2148,
+    "cacheReadInputTokens": 27340,
+    "cacheCreationInputTokens": 2632,
+    "webSearchRequests": 0,
+    "costUSD": 0.069492,
+    "contextWindow": 1000000,
+    "maxOutputTokens": 128000,
+    "thinkingTokens": 436,
+    "cacheCreationEphemeral5mInputTokens": 0,
+    "cacheCreationEphemeral1hInputTokens": 2632,
+    "canonicalModel": "claude-opus-5-5",
+    "provider": "firstParty",
+    "costBasis": "list"
+   }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+   "spawned": 0,
+   "requested": {
+    "background": 0,
+    "foreground": 0,
+    "unset": 0
+   },
+   "started_in_background": 0,
+   "max_depth": 0,
+   "spawned_by_subagents": 0,
+   "completed": 0,
+   "failed": 0,
+   "killed": {
+    "parent": 0,
+    "user": 0,
+    "system": 0
+   },
+   "refused": {
+    "depth_limit": 0,
+    "concurrency_limit": 0,
+    "budget": 0
+   },
+   "by_type": {}
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 2,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "{\"out_of_scope_reason\":\"in scope\",\"onset\":{\"category\":\"7.7\",\"documented_value\":\"2035-06-17\",\"explanation\":\"ICE was 10/10 on Day 0, Day +1 and Day +2. The first qualifying finding is ICE 8/10 at 08:20 on 2035-06-17 (Grade 1). The record's onset, 2035-06-17, is the same calendar day.\",\"evidence\":[{\"document_id\":\"SYN-0018-D03\",\"version\":1,\"quote\":\"ICE 09:40 10/10.\"},{\"document_id\":\"SYN-0018-D04\",\"version\":1,\"quote\":\"ICE 08:20 = 8/10 (-month, -sentence).\"}]},\"max_grade\":{\"category\":\"7.5\",\"documented_value\":\"2 or 3 (ambiguous; Grade 2 proven under every reading)\",\"explanation\":\"Reason: consciousness wording. Grade 2 is certain from ICE 6/10 (Day +4) and ICE 5/10 (Day +5). On Day +5 the patient opened their eyes when their name was called loudly while the RN tapped their arm at the same moment. The note does not show whether voice alone would have woken them. Read as 'awakens to voice', it is Grade 2, which equals the record (7.7). Read as 'awakens only to tactile stimulus', it is Grade 3, which is higher than the record (7.2). The readings give different categories, so 7.5 applies. No sedatives or opioids were documented, and dexamethasone is not a competing cause (A35). No note documents a seizure, motor weakness or ICP/edema finding.\",\"evidence\":[{\"document_id\":\"SYN-0018-D05\",\"version\":1,\"quote\":\"ICE 19:50 = 6/10.\"},{\"document_id\":\"SYN-0018-D06\",\"version\":1,\"quote\":\"Then eyes closed in chair at 13:40; opened eyes when name called loudly while RN tapped arm at same time; then attentive.\"},{\"document_id\":\"SYN-0018-D06\",\"version\":1,\"quote\":\"ICE 14:00 = 5/10. No sedatives, no opioids. No sz. Power full.\"},{\"document_id\":\"SYN-0018-D08\",\"version\":1,\"quote\":\"No papilledema. Nonfocal.\"}]}}",
+  "structured_output": {
+   "out_of_scope_reason": "in scope",
+   "onset": {
+    "category": "7.7",
+    "documented_value": "2035-06-17",
+    "explanation": "ICE was 10/10 on Day 0, Day +1 and Day +2. The first qualifying finding is ICE 8/10 at 08:20 on 2035-06-17 (Grade 1). The record's onset, 2035-06-17, is the same calendar day.",
+    "evidence": [
+     {
+      "document_id": "SYN-0018-D03",
+      "version": 1,
+      "quote": "ICE 09:40 10/10."
+     },
+     {
+      "document_id": "SYN-0018-D04",
+      "version": 1,
+      "quote": "ICE 08:20 = 8/10 (-month, -sentence)."
+     }
+    ]
+   },
+   "max_grade": {
+    "category": "7.5",
+    "documented_value": "2 or 3 (ambiguous; Grade 2 proven under every reading)",
+    "explanation": "Reason: consciousness wording. Grade 2 is certain from ICE 6/10 (Day +4) and ICE 5/10 (Day +5). On Day +5 the patient opened their eyes when their name was called loudly while the RN tapped their arm at the same moment. The note does not show whether voice alone would have woken them. Read as 'awakens to voice', it is Grade 2, which equals the record (7.7). Read as 'awakens only to tactile stimulus', it is Grade 3, which is higher than the record (7.2). The readings give different categories, so 7.5 applies. No sedatives or opioids were documented, and dexamethasone is not a competing cause (A35). No note documents a seizure, motor weakness or ICP/edema finding.",
+    "evidence": [
+     {
+      "document_id": "SYN-0018-D05",
+      "version": 1,
+      "quote": "ICE 19:50 = 6/10."
+     },
+     {
+      "document_id": "SYN-0018-D06",
+      "version": 1,
+      "quote": "Then eyes closed in chair at 13:40; opened eyes when name called loudly while RN tapped arm at same time; then attentive."
+     },
+     {
+      "document_id": "SYN-0018-D06",
+      "version": 1,
+      "quote": "ICE 14:00 = 5/10. No sedatives, no opioids. No sz. Power full."
+     },
+     {
+      "document_id": "SYN-0018-D08",
+      "version": 1,
+      "quote": "No papilledema. Nonfocal."
+     }
+    ]
+   }
+  },
+  "ttft_ms": 5560,
+  "type": "result",
+  "duration_ms": 18801,
+  "uuid": "419e0b26-b505-4d84-aa29-19af0978be68",
+  "ttft_stream_ms": 1888,
+  "time_to_request_ms": 116,
+  "first_content_frame_ms": 1888,
+  "queued_turn_count": 0,
+  "result_index": 0,
+  "credential_expires_at": "2026-12-06T22:19:03.648Z"
+ }
+}

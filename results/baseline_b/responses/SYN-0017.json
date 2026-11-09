@@ -1,0 +1,238 @@
+{
+ "case_id": "SYN-0017",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "thinking": "adaptive (always on for this model)",
+ "route": "Claude Code print mode",
+ "command": [
+  "claude",
+  "-p",
+  "--model",
+  "claude-opus-5-5",
+  "--effort",
+  "high",
+  "--system-prompt",
+  "<instructions: system_prompt.md>",
+  "--tools",
+  "",
+  "--json-schema",
+  "<answer_schema.json>",
+  "--output-format",
+  "json",
+  "--no-session-persistence",
+  "--strict-mcp-config",
+  "--setting-sources",
+  "project"
+ ],
+ "system_prompt_sha256": "0cda59baefac995b4e20a8dde5550077ed76c7f0f789f8c4661cf246f64e1596",
+ "answer_schema_sha256": "9dc6f412e8631752ce5bf4ce82b16ac3ce5d04d9dfb8709c8b459a7a11d2ad11",
+ "fallback_model": null,
+ "user_message_sha256": "e907defd5cc6ab27203273ed7e4a9c84bf4825684dabd696ad702713f40f5a06",
+ "requested_at": "2026-11-09T08:21:19-06:00",
+ "stop_reason": "tool_use",
+ "finished": true,
+ "answer_text": "{\"out_of_scope_reason\": \"in scope\", \"onset\": {\"category\": \"7.7\", \"documented_value\": \"2036-07-03\", \"explanation\": \"Formal Grade 0 assessments (ICE 10/10, alert) on 2036-06-30 and 2036-07-01. The earliest qualifying finding is ICE 8/10 (Grade 1) on 2036-07-03 at 07:55, with no sedating medication and no competing cause. This is the same calendar day as the record onset 2036-07-03.\", \"evidence\": [{\"document_id\": \"SYN-0017-D03\", \"version\": 1, \"quote\": \"Date: 2036-07-03    Time of assessment: 07:55\"}, {\"document_id\": \"SYN-0017-D03\", \"version\": 1, \"quote\": \"ICE TOTAL: 8/10\"}, {\"document_id\": \"SYN-0017-D03\", \"version\": 1, \"quote\": \"Sedating medications in previous 24 h: none\"}, {\"document_id\": \"SYN-0017-D02\", \"version\": 1, \"quote\": \"NEURO: ICE 10/10 at 08:00. Alert and oriented. No focal deficits. No tremor.\"}]}, \"max_grade\": {\"category\": \"7.2\", \"documented_value\": \"3\", \"explanation\": \"On 2036-07-04 at 14:40 the nurse ICE form documents 'awakens only to tactile stimulus' (Table 6 Grade 3 consciousness) with ICE 8/10. No sedating medication in the prior 24 h and no other competing cause; dexamethasone and levetiracetam prophylaxis are excluded as competing causes under A35. By the most-severe-domain rule this assessment is Grade 3. CT head shows no edema, strength is 5/5 and no seizure is recorded, so nothing supports Grade 4. The record gives Grade 1, which is 2 grades lower than the documents prove.\", \"evidence\": [{\"document_id\": \"SYN-0017-D06\", \"version\": 1, \"quote\": \"Level of consciousness: awakens only to tactile stimulus (does not open eyes to voice; opened eyes after a touch on the shoulder)\"}, {\"document_id\": \"SYN-0017-D06\", \"version\": 1, \"quote\": \"ICE TOTAL: 8/10\"}, {\"document_id\": \"SYN-0017-D06\", \"version\": 1, \"quote\": \"Sedating medications in previous 24 h: none\"}, {\"document_id\": \"SYN-0017-D05\", \"version\": 1, \"quote\": \"No evidence of cerebral edema.\"}, {\"document_id\": \"SYN-0017-D04\", \"version\": 1, \"quote\": \"Strength 5/5 in all four extremities. No seizure activity. No sedating medications given.\"}]}}",
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 3726,
+  "cache_read_input_tokens": 27340,
+  "output_tokens": 1975,
+  "output_tokens_details": {
+   "thinking_tokens": 290
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 3726,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 1975,
+    "cache_read_input_tokens": 27340,
+    "cache_creation_input_tokens": 3726,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 3726
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "models_reported": [
+  "claude-opus-5-5"
+ ],
+ "claude_code_cost_usd": 0.07478400000000002,
+ "duration_seconds": 18.252,
+ "cli_output": {
+  "duration_api_ms": 17606,
+  "stop_reason": "tool_use",
+  "session_id": "5b4424bc-8455-44ad-b70a-79610be45995",
+  "total_cost_usd": 0.07478400000000002,
+  "usage": {
+   "input_tokens": 2,
+   "cache_creation_input_tokens": 3726,
+   "cache_read_input_tokens": 27340,
+   "output_tokens": 1975,
+   "output_tokens_details": {
+    "thinking_tokens": 290
+   },
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "service_tier": "standard",
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 3726,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "inference_geo": "global",
+   "iterations": [
+    {
+     "input_tokens": 2,
+     "output_tokens": 1975,
+     "cache_read_input_tokens": 27340,
+     "cache_creation_input_tokens": 3726,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 0,
+      "ephemeral_1h_input_tokens": 3726
+     },
+     "type": "message"
+    }
+   ],
+   "speed": "standard",
+   "fallback_credit": null
+  },
+  "modelUsage": {
+   "claude-opus-5-5": {
+    "inputTokens": 2,
+    "outputTokens": 1975,
+    "cacheReadInputTokens": 27340,
+    "cacheCreationInputTokens": 3726,
+    "webSearchRequests": 0,
+    "costUSD": 0.07478400000000002,
+    "contextWindow": 1000000,
+    "maxOutputTokens": 128000,
+    "thinkingTokens": 290,
+    "cacheCreationEphemeral5mInputTokens": 0,
+    "cacheCreationEphemeral1hInputTokens": 3726,
+    "canonicalModel": "claude-opus-5-5",
+    "provider": "firstParty",
+    "costBasis": "list"
+   }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+   "spawned": 0,
+   "requested": {
+    "background": 0,
+    "foreground": 0,
+    "unset": 0
+   },
+   "started_in_background": 0,
+   "max_depth": 0,
+   "spawned_by_subagents": 0,
+   "completed": 0,
+   "failed": 0,
+   "killed": {
+    "parent": 0,
+    "user": 0,
+    "system": 0
+   },
+   "refused": {
+    "depth_limit": 0,
+    "concurrency_limit": 0,
+    "budget": 0
+   },
+   "by_type": {}
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 2,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "{\"out_of_scope_reason\":\"in scope\",\"onset\":{\"category\":\"7.7\",\"documented_value\":\"2036-07-03\",\"explanation\":\"Formal Grade 0 assessments (ICE 10/10, alert) on 2036-06-30 and 2036-07-01. The earliest qualifying finding is ICE 8/10 (Grade 1) on 2036-07-03 at 07:55, with no sedating medication and no competing cause. This is the same calendar day as the record onset 2036-07-03.\",\"evidence\":[{\"document_id\":\"SYN-0017-D03\",\"version\":1,\"quote\":\"Date: 2036-07-03    Time of assessment: 07:55\"},{\"document_id\":\"SYN-0017-D03\",\"version\":1,\"quote\":\"ICE TOTAL: 8/10\"},{\"document_id\":\"SYN-0017-D03\",\"version\":1,\"quote\":\"Sedating medications in previous 24 h: none\"},{\"document_id\":\"SYN-0017-D02\",\"version\":1,\"quote\":\"NEURO: ICE 10/10 at 08:00. Alert and oriented. No focal deficits. No tremor.\"}]},\"max_grade\":{\"category\":\"7.2\",\"documented_value\":\"3\",\"explanation\":\"On 2036-07-04 at 14:40 the nurse ICE form documents 'awakens only to tactile stimulus' (Table 6 Grade 3 consciousness) with ICE 8/10. No sedating medication in the prior 24 h and no other competing cause; dexamethasone and levetiracetam prophylaxis are excluded as competing causes under A35. By the most-severe-domain rule this assessment is Grade 3. CT head shows no edema, strength is 5/5 and no seizure is recorded, so nothing supports Grade 4. The record gives Grade 1, which is 2 grades lower than the documents prove.\",\"evidence\":[{\"document_id\":\"SYN-0017-D06\",\"version\":1,\"quote\":\"Level of consciousness: awakens only to tactile stimulus (does not open eyes to voice; opened eyes after a touch on the shoulder)\"},{\"document_id\":\"SYN-0017-D06\",\"version\":1,\"quote\":\"ICE TOTAL: 8/10\"},{\"document_id\":\"SYN-0017-D06\",\"version\":1,\"quote\":\"Sedating medications in previous 24 h: none\"},{\"document_id\":\"SYN-0017-D05\",\"version\":1,\"quote\":\"No evidence of cerebral edema.\"},{\"document_id\":\"SYN-0017-D04\",\"version\":1,\"quote\":\"Strength 5/5 in all four extremities. No seizure activity. No sedating medications given.\"}]}}",
+  "structured_output": {
+   "out_of_scope_reason": "in scope",
+   "onset": {
+    "category": "7.7",
+    "documented_value": "2036-07-03",
+    "explanation": "Formal Grade 0 assessments (ICE 10/10, alert) on 2036-06-30 and 2036-07-01. The earliest qualifying finding is ICE 8/10 (Grade 1) on 2036-07-03 at 07:55, with no sedating medication and no competing cause. This is the same calendar day as the record onset 2036-07-03.",
+    "evidence": [
+     {
+      "document_id": "SYN-0017-D03",
+      "version": 1,
+      "quote": "Date: 2036-07-03    Time of assessment: 07:55"
+     },
+     {
+      "document_id": "SYN-0017-D03",
+      "version": 1,
+      "quote": "ICE TOTAL: 8/10"
+     },
+     {
+      "document_id": "SYN-0017-D03",
+      "version": 1,
+      "quote": "Sedating medications in previous 24 h: none"
+     },
+     {
+      "document_id": "SYN-0017-D02",
+      "version": 1,
+      "quote": "NEURO: ICE 10/10 at 08:00. Alert and oriented. No focal deficits. No tremor."
+     }
+    ]
+   },
+   "max_grade": {
+    "category": "7.2",
+    "documented_value": "3",
+    "explanation": "On 2036-07-04 at 14:40 the nurse ICE form documents 'awakens only to tactile stimulus' (Table 6 Grade 3 consciousness) with ICE 8/10. No sedating medication in the prior 24 h and no other competing cause; dexamethasone and levetiracetam prophylaxis are excluded as competing causes under A35. By the most-severe-domain rule this assessment is Grade 3. CT head shows no edema, strength is 5/5 and no seizure is recorded, so nothing supports Grade 4. The record gives Grade 1, which is 2 grades lower than the documents prove.",
+    "evidence": [
+     {
+      "document_id": "SYN-0017-D06",
+      "version": 1,
+      "quote": "Level of consciousness: awakens only to tactile stimulus (does not open eyes to voice; opened eyes after a touch on the shoulder)"
+     },
+     {
+      "document_id": "SYN-0017-D06",
+      "version": 1,
+      "quote": "ICE TOTAL: 8/10"
+     },
+     {
+      "document_id": "SYN-0017-D06",
+      "version": 1,
+      "quote": "Sedating medications in previous 24 h: none"
+     },
+     {
+      "document_id": "SYN-0017-D05",
+      "version": 1,
+      "quote": "No evidence of cerebral edema."
+     },
+     {
+      "document_id": "SYN-0017-D04",
+      "version": 1,
+      "quote": "Strength 5/5 in all four extremities. No seizure activity. No sedating medications given."
+     }
+    ]
+   }
+  },
+  "ttft_ms": 4625,
+  "type": "result",
+  "duration_ms": 17757,
+  "uuid": "f88710e9-d580-44ec-89ec-656c01a9329d",
+  "ttft_stream_ms": 1859,
+  "time_to_request_ms": 151,
+  "first_content_frame_ms": 1859,
+  "queued_turn_count": 0,
+  "result_index": 0,
+  "credential_expires_at": "2026-12-06T22:19:03.648Z"
+ }
+}

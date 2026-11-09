@@ -1,0 +1,223 @@
+{
+ "case_id": "SYN-0036",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "thinking": "adaptive (always on for this model)",
+ "route": "Claude Code print mode",
+ "command": [
+  "claude",
+  "-p",
+  "--model",
+  "claude-opus-5-5",
+  "--effort",
+  "high",
+  "--system-prompt",
+  "<instructions: system_prompt.md>",
+  "--tools",
+  "",
+  "--json-schema",
+  "<answer_schema.json>",
+  "--output-format",
+  "json",
+  "--no-session-persistence",
+  "--strict-mcp-config",
+  "--setting-sources",
+  "project"
+ ],
+ "system_prompt_sha256": "0cda59baefac995b4e20a8dde5550077ed76c7f0f789f8c4661cf246f64e1596",
+ "answer_schema_sha256": "9dc6f412e8631752ce5bf4ce82b16ac3ce5d04d9dfb8709c8b459a7a11d2ad11",
+ "fallback_model": null,
+ "user_message_sha256": "efd3a3778cefbfb6227c7a4426251be4b7503ba236036afada8ed4dd553dcff2",
+ "requested_at": "2026-11-09T08:22:36-06:00",
+ "stop_reason": "tool_use",
+ "finished": true,
+ "answer_text": "{\"out_of_scope_reason\": \"in scope\", \"onset\": {\"category\": \"7.4\", \"documented_value\": \"2034-02-28\", \"explanation\": \"The record gives onset 2034-02-26 (Day +3). The first qualifying finding in the documents is ICE 8/10 on 2034-02-28 (Day +5, Grade 1), so the record date is 2 days earlier than the documents support. The Day +3 note is a narrative normal neuro exam with no ICE score. Under A17 that does not establish Grade 0, so there is no gradeable assessment on the record's date that could refute it. The mild headache that day is an excluded symptom (§4.2, A11). Result: insufficient evidence (§7.1, A18). Extra flag: 'record date matches an excluded or sub-threshold symptom' (headache on 2034-02-26). The last ICE 10/10 before onset was on 2034-02-27, the day before the documented onset.\", \"evidence\": [{\"document_id\": \"SYN-0036-D03\", \"version\": 1, \"quote\": \"Neuro: alert and oriented x4, speech clear, cranial nerves intact, strength 5/5 in all limbs, no focal deficit.\"}, {\"document_id\": \"SYN-0036-D03\", \"version\": 1, \"quote\": \"Reports a mild headache 3/10, acetaminophen given.\"}, {\"document_id\": \"SYN-0036-D04\", \"version\": 1, \"quote\": \"Total 10/10.\"}, {\"document_id\": \"SYN-0036-D05\", \"version\": 1, \"quote\": \"ICE 8/10 at 09:30 (orientation 3/4, attention 0/1, remaining items complete).\"}]}, \"max_grade\": {\"category\": \"7.7\", \"documented_value\": \"2\", \"explanation\": \"The worst assessment is on 2034-03-01: ICE 5/10 (Grade 2) and 'awakens to voice' (Grade 2). No seizure, motor or edema finding is documented. Dexamethasone is ICANS treatment, so it is not a competing cause (A35). No sedating medication is documented. So the documents support Grade 2, which matches the record. Extra flags: D07 v2 is unsigned and differs only in weight (66.3 vs 66.8 kg), so v1 stays current ('unsigned later version'). The case-level unassessed-period flag is also added.\", \"evidence\": [{\"document_id\": \"SYN-0036-D06\", \"version\": 1, \"quote\": \"ICE 5/10 at 11:45 (orientation 1/4, naming 2/3, commands 1/1, writing 0/1, attention 1/1). Awakens to voice. No focal motor deficit, no seizures.\"}, {\"document_id\": \"SYN-0036-D08\", \"version\": 1, \"quote\": \"Neurotoxicity: ICE 8/10 on 28 Feb, lowest ICE 5/10 on 01 Mar, treated with dexamethasone and recovered.\"}]}}",
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 2654,
+  "cache_read_input_tokens": 27340,
+  "output_tokens": 1340,
+  "output_tokens_details": {
+   "thinking_tokens": 312
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 2654,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 1340,
+    "cache_read_input_tokens": 27340,
+    "cache_creation_input_tokens": 2654,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 2654
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "models_reported": [
+  "claude-opus-5-5"
+ ],
+ "claude_code_cost_usd": 0.053508,
+ "duration_seconds": 12.66,
+ "cli_output": {
+  "duration_api_ms": 11865,
+  "stop_reason": "tool_use",
+  "session_id": "b5908c68-5633-480c-949f-6e95d83606b5",
+  "total_cost_usd": 0.053508,
+  "usage": {
+   "input_tokens": 2,
+   "cache_creation_input_tokens": 2654,
+   "cache_read_input_tokens": 27340,
+   "output_tokens": 1340,
+   "output_tokens_details": {
+    "thinking_tokens": 312
+   },
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "service_tier": "standard",
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 2654,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "inference_geo": "global",
+   "iterations": [
+    {
+     "input_tokens": 2,
+     "output_tokens": 1340,
+     "cache_read_input_tokens": 27340,
+     "cache_creation_input_tokens": 2654,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 0,
+      "ephemeral_1h_input_tokens": 2654
+     },
+     "type": "message"
+    }
+   ],
+   "speed": "standard",
+   "fallback_credit": null
+  },
+  "modelUsage": {
+   "claude-opus-5-5": {
+    "inputTokens": 2,
+    "outputTokens": 1340,
+    "cacheReadInputTokens": 27340,
+    "cacheCreationInputTokens": 2654,
+    "webSearchRequests": 0,
+    "costUSD": 0.053508,
+    "contextWindow": 1000000,
+    "maxOutputTokens": 128000,
+    "thinkingTokens": 312,
+    "cacheCreationEphemeral5mInputTokens": 0,
+    "cacheCreationEphemeral1hInputTokens": 2654,
+    "canonicalModel": "claude-opus-5-5",
+    "provider": "firstParty",
+    "costBasis": "list"
+   }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+   "spawned": 0,
+   "requested": {
+    "background": 0,
+    "foreground": 0,
+    "unset": 0
+   },
+   "started_in_background": 0,
+   "max_depth": 0,
+   "spawned_by_subagents": 0,
+   "completed": 0,
+   "failed": 0,
+   "killed": {
+    "parent": 0,
+    "user": 0,
+    "system": 0
+   },
+   "refused": {
+    "depth_limit": 0,
+    "concurrency_limit": 0,
+    "budget": 0
+   },
+   "by_type": {}
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 2,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "{\"out_of_scope_reason\":\"in scope\",\"onset\":{\"category\":\"7.4\",\"documented_value\":\"2034-02-28\",\"explanation\":\"The record gives onset 2034-02-26 (Day +3). The first qualifying finding in the documents is ICE 8/10 on 2034-02-28 (Day +5, Grade 1), so the record date is 2 days earlier than the documents support. The Day +3 note is a narrative normal neuro exam with no ICE score. Under A17 that does not establish Grade 0, so there is no gradeable assessment on the record's date that could refute it. The mild headache that day is an excluded symptom (§4.2, A11). Result: insufficient evidence (§7.1, A18). Extra flag: 'record date matches an excluded or sub-threshold symptom' (headache on 2034-02-26). The last ICE 10/10 before onset was on 2034-02-27, the day before the documented onset.\",\"evidence\":[{\"document_id\":\"SYN-0036-D03\",\"version\":1,\"quote\":\"Neuro: alert and oriented x4, speech clear, cranial nerves intact, strength 5/5 in all limbs, no focal deficit.\"},{\"document_id\":\"SYN-0036-D03\",\"version\":1,\"quote\":\"Reports a mild headache 3/10, acetaminophen given.\"},{\"document_id\":\"SYN-0036-D04\",\"version\":1,\"quote\":\"Total 10/10.\"},{\"document_id\":\"SYN-0036-D05\",\"version\":1,\"quote\":\"ICE 8/10 at 09:30 (orientation 3/4, attention 0/1, remaining items complete).\"}]},\"max_grade\":{\"category\":\"7.7\",\"documented_value\":\"2\",\"explanation\":\"The worst assessment is on 2034-03-01: ICE 5/10 (Grade 2) and 'awakens to voice' (Grade 2). No seizure, motor or edema finding is documented. Dexamethasone is ICANS treatment, so it is not a competing cause (A35). No sedating medication is documented. So the documents support Grade 2, which matches the record. Extra flags: D07 v2 is unsigned and differs only in weight (66.3 vs 66.8 kg), so v1 stays current ('unsigned later version'). The case-level unassessed-period flag is also added.\",\"evidence\":[{\"document_id\":\"SYN-0036-D06\",\"version\":1,\"quote\":\"ICE 5/10 at 11:45 (orientation 1/4, naming 2/3, commands 1/1, writing 0/1, attention 1/1). Awakens to voice. No focal motor deficit, no seizures.\"},{\"document_id\":\"SYN-0036-D08\",\"version\":1,\"quote\":\"Neurotoxicity: ICE 8/10 on 28 Feb, lowest ICE 5/10 on 01 Mar, treated with dexamethasone and recovered.\"}]}}",
+  "structured_output": {
+   "out_of_scope_reason": "in scope",
+   "onset": {
+    "category": "7.4",
+    "documented_value": "2034-02-28",
+    "explanation": "The record gives onset 2034-02-26 (Day +3). The first qualifying finding in the documents is ICE 8/10 on 2034-02-28 (Day +5, Grade 1), so the record date is 2 days earlier than the documents support. The Day +3 note is a narrative normal neuro exam with no ICE score. Under A17 that does not establish Grade 0, so there is no gradeable assessment on the record's date that could refute it. The mild headache that day is an excluded symptom (§4.2, A11). Result: insufficient evidence (§7.1, A18). Extra flag: 'record date matches an excluded or sub-threshold symptom' (headache on 2034-02-26). The last ICE 10/10 before onset was on 2034-02-27, the day before the documented onset.",
+    "evidence": [
+     {
+      "document_id": "SYN-0036-D03",
+      "version": 1,
+      "quote": "Neuro: alert and oriented x4, speech clear, cranial nerves intact, strength 5/5 in all limbs, no focal deficit."
+     },
+     {
+      "document_id": "SYN-0036-D03",
+      "version": 1,
+      "quote": "Reports a mild headache 3/10, acetaminophen given."
+     },
+     {
+      "document_id": "SYN-0036-D04",
+      "version": 1,
+      "quote": "Total 10/10."
+     },
+     {
+      "document_id": "SYN-0036-D05",
+      "version": 1,
+      "quote": "ICE 8/10 at 09:30 (orientation 3/4, attention 0/1, remaining items complete)."
+     }
+    ]
+   },
+   "max_grade": {
+    "category": "7.7",
+    "documented_value": "2",
+    "explanation": "The worst assessment is on 2034-03-01: ICE 5/10 (Grade 2) and 'awakens to voice' (Grade 2). No seizure, motor or edema finding is documented. Dexamethasone is ICANS treatment, so it is not a competing cause (A35). No sedating medication is documented. So the documents support Grade 2, which matches the record. Extra flags: D07 v2 is unsigned and differs only in weight (66.3 vs 66.8 kg), so v1 stays current ('unsigned later version'). The case-level unassessed-period flag is also added.",
+    "evidence": [
+     {
+      "document_id": "SYN-0036-D06",
+      "version": 1,
+      "quote": "ICE 5/10 at 11:45 (orientation 1/4, naming 2/3, commands 1/1, writing 0/1, attention 1/1). Awakens to voice. No focal motor deficit, no seizures."
+     },
+     {
+      "document_id": "SYN-0036-D08",
+      "version": 1,
+      "quote": "Neurotoxicity: ICE 8/10 on 28 Feb, lowest ICE 5/10 on 01 Mar, treated with dexamethasone and recovered."
+     }
+    ]
+   }
+  },
+  "ttft_ms": 4608,
+  "type": "result",
+  "duration_ms": 12058,
+  "uuid": "d7aa2f19-4ac4-4174-92c9-aa5fa0216e67",
+  "ttft_stream_ms": 1834,
+  "time_to_request_ms": 192,
+  "first_content_frame_ms": 1834,
+  "queued_turn_count": 0,
+  "result_index": 0,
+  "credential_expires_at": "2026-12-06T22:19:03.648Z"
+ }
+}

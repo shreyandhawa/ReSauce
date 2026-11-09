@@ -1,0 +1,228 @@
+{
+ "case_id": "SYN-0024",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "thinking": "adaptive (always on for this model)",
+ "route": "Claude Code print mode",
+ "command": [
+  "claude",
+  "-p",
+  "--model",
+  "claude-opus-5-5",
+  "--effort",
+  "high",
+  "--system-prompt",
+  "<instructions: system_prompt.md>",
+  "--tools",
+  "",
+  "--json-schema",
+  "<answer_schema.json>",
+  "--output-format",
+  "json",
+  "--no-session-persistence",
+  "--strict-mcp-config",
+  "--setting-sources",
+  "project"
+ ],
+ "system_prompt_sha256": "0cda59baefac995b4e20a8dde5550077ed76c7f0f789f8c4661cf246f64e1596",
+ "answer_schema_sha256": "9dc6f412e8631752ce5bf4ce82b16ac3ce5d04d9dfb8709c8b459a7a11d2ad11",
+ "fallback_model": null,
+ "user_message_sha256": "808f6879a2a0f5f1f176c1f37cf3ad35fe297dfcf0f0683d43df97f24cf14b98",
+ "requested_at": "2026-11-09T08:21:54-06:00",
+ "stop_reason": "tool_use",
+ "finished": true,
+ "answer_text": "{\"out_of_scope_reason\": \"in scope\", \"onset\": {\"category\": \"7.1\", \"documented_value\": \"2034-12-10\", \"explanation\": \"The record gives onset 2034-12-09. On that date a signed nursing note documents a formal Grade 0 assessment: ICE 10/10, with the patient awakening spontaneously and explicitly not drowsy, so the Grade 1 consciousness criterion does not apply (A3). The earliest qualifying finding is ICE 7/10 (Grade 1) on 2034-12-10, with no sedative given and no competing cause. The record date is earlier than the first finding and a formal Grade 0 assessment exists on it, so this is a mismatch with a signed difference of -1 day. The discharge summary also dates neurotoxicity from 2034-12-10.\", \"evidence\": [{\"document_id\": \"SYN-0024-D02\", \"version\": 1, \"quote\": \"Awakens spontaneously for 06:00 vitals and stays awake; not drowsy at any point this shift.\"}, {\"document_id\": \"SYN-0024-D02\", \"version\": 1, \"quote\": \"ICE 08:10 = 10/10 - all items right, handwriting neat.\"}, {\"document_id\": \"SYN-0024-D03\", \"version\": 1, \"quote\": \"ICE score 7/10 at 09:25.\"}, {\"document_id\": \"SYN-0024-D03\", \"version\": 1, \"quote\": \"No sedative given in last 24 h.\"}, {\"document_id\": \"SYN-0024-D06\", \"version\": 1, \"quote\": \"Neurotoxicity from 2034-12-10, worst ICE 6/10 on 2034-12-11\"}]}, \"max_grade\": {\"category\": \"7.7\", \"documented_value\": \"2\", \"explanation\": \"The worst assessment is ICE 6/10 on 2034-12-11, which is Grade 2. The patient was awake and conversing, with full strength, no seizure activity and no sedating medication, so no other domain contributes a higher grade. Apixaban is not a listed competing cause and dexamethasone is ICANS treatment. No note documents anything above Grade 2, so the documents match the recorded Grade 2. The record's max_grade did not change between versions, so 7.6 does not apply. The headache on 2034-12-13 is excluded from grading.\", \"evidence\": [{\"document_id\": \"SYN-0024-D04\", \"version\": 1, \"quote\": \"ICE 6/10 at 08:00 (orient 1 of 4, objects 3 of 3, follows command, no sentence, counts back correctly). Awake, convers. Strength full, no facial weakness, no seizure activity. No sedating medication given.\"}, {\"document_id\": \"SYN-0024-D05\", \"version\": 1, \"quote\": \"ICE at 19:40 was 9/10.\"}]}}",
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 2198,
+  "cache_read_input_tokens": 27340,
+  "output_tokens": 2191,
+  "output_tokens_details": {
+   "thinking_tokens": 362
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 2198,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 2191,
+    "cache_read_input_tokens": 27340,
+    "cache_creation_input_tokens": 2198,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 2198
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "models_reported": [
+  "claude-opus-5-5"
+ ],
+ "claude_code_cost_usd": 0.06688,
+ "duration_seconds": 19.554,
+ "cli_output": {
+  "duration_api_ms": 18745,
+  "stop_reason": "tool_use",
+  "session_id": "f6468e38-8151-43b9-b5e1-aa4b725c831c",
+  "total_cost_usd": 0.06688,
+  "usage": {
+   "input_tokens": 2,
+   "cache_creation_input_tokens": 2198,
+   "cache_read_input_tokens": 27340,
+   "output_tokens": 2191,
+   "output_tokens_details": {
+    "thinking_tokens": 362
+   },
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "service_tier": "standard",
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 2198,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "inference_geo": "global",
+   "iterations": [
+    {
+     "input_tokens": 2,
+     "output_tokens": 2191,
+     "cache_read_input_tokens": 27340,
+     "cache_creation_input_tokens": 2198,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 0,
+      "ephemeral_1h_input_tokens": 2198
+     },
+     "type": "message"
+    }
+   ],
+   "speed": "standard",
+   "fallback_credit": null
+  },
+  "modelUsage": {
+   "claude-opus-5-5": {
+    "inputTokens": 2,
+    "outputTokens": 2191,
+    "cacheReadInputTokens": 27340,
+    "cacheCreationInputTokens": 2198,
+    "webSearchRequests": 0,
+    "costUSD": 0.06688,
+    "contextWindow": 1000000,
+    "maxOutputTokens": 128000,
+    "thinkingTokens": 362,
+    "cacheCreationEphemeral5mInputTokens": 0,
+    "cacheCreationEphemeral1hInputTokens": 2198,
+    "canonicalModel": "claude-opus-5-5",
+    "provider": "firstParty",
+    "costBasis": "list"
+   }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+   "spawned": 0,
+   "requested": {
+    "background": 0,
+    "foreground": 0,
+    "unset": 0
+   },
+   "started_in_background": 0,
+   "max_depth": 0,
+   "spawned_by_subagents": 0,
+   "completed": 0,
+   "failed": 0,
+   "killed": {
+    "parent": 0,
+    "user": 0,
+    "system": 0
+   },
+   "refused": {
+    "depth_limit": 0,
+    "concurrency_limit": 0,
+    "budget": 0
+   },
+   "by_type": {}
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 2,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "{\"out_of_scope_reason\":\"in scope\",\"onset\":{\"category\":\"7.1\",\"documented_value\":\"2034-12-10\",\"explanation\":\"The record gives onset 2034-12-09. On that date a signed nursing note documents a formal Grade 0 assessment: ICE 10/10, with the patient awakening spontaneously and explicitly not drowsy, so the Grade 1 consciousness criterion does not apply (A3). The earliest qualifying finding is ICE 7/10 (Grade 1) on 2034-12-10, with no sedative given and no competing cause. The record date is earlier than the first finding and a formal Grade 0 assessment exists on it, so this is a mismatch with a signed difference of -1 day. The discharge summary also dates neurotoxicity from 2034-12-10.\",\"evidence\":[{\"document_id\":\"SYN-0024-D02\",\"version\":1,\"quote\":\"Awakens spontaneously for 06:00 vitals and stays awake; not drowsy at any point this shift.\"},{\"document_id\":\"SYN-0024-D02\",\"version\":1,\"quote\":\"ICE 08:10 = 10/10 - all items right, handwriting neat.\"},{\"document_id\":\"SYN-0024-D03\",\"version\":1,\"quote\":\"ICE score 7/10 at 09:25.\"},{\"document_id\":\"SYN-0024-D03\",\"version\":1,\"quote\":\"No sedative given in last 24 h.\"},{\"document_id\":\"SYN-0024-D06\",\"version\":1,\"quote\":\"Neurotoxicity from 2034-12-10, worst ICE 6/10 on 2034-12-11\"}]},\"max_grade\":{\"category\":\"7.7\",\"documented_value\":\"2\",\"explanation\":\"The worst assessment is ICE 6/10 on 2034-12-11, which is Grade 2. The patient was awake and conversing, with full strength, no seizure activity and no sedating medication, so no other domain contributes a higher grade. Apixaban is not a listed competing cause and dexamethasone is ICANS treatment. No note documents anything above Grade 2, so the documents match the recorded Grade 2. The record's max_grade did not change between versions, so 7.6 does not apply. The headache on 2034-12-13 is excluded from grading.\",\"evidence\":[{\"document_id\":\"SYN-0024-D04\",\"version\":1,\"quote\":\"ICE 6/10 at 08:00 (orient 1 of 4, objects 3 of 3, follows command, no sentence, counts back correctly). Awake, convers. Strength full, no facial weakness, no seizure activity. No sedating medication given.\"},{\"document_id\":\"SYN-0024-D05\",\"version\":1,\"quote\":\"ICE at 19:40 was 9/10.\"}]}}",
+  "structured_output": {
+   "out_of_scope_reason": "in scope",
+   "onset": {
+    "category": "7.1",
+    "documented_value": "2034-12-10",
+    "explanation": "The record gives onset 2034-12-09. On that date a signed nursing note documents a formal Grade 0 assessment: ICE 10/10, with the patient awakening spontaneously and explicitly not drowsy, so the Grade 1 consciousness criterion does not apply (A3). The earliest qualifying finding is ICE 7/10 (Grade 1) on 2034-12-10, with no sedative given and no competing cause. The record date is earlier than the first finding and a formal Grade 0 assessment exists on it, so this is a mismatch with a signed difference of -1 day. The discharge summary also dates neurotoxicity from 2034-12-10.",
+    "evidence": [
+     {
+      "document_id": "SYN-0024-D02",
+      "version": 1,
+      "quote": "Awakens spontaneously for 06:00 vitals and stays awake; not drowsy at any point this shift."
+     },
+     {
+      "document_id": "SYN-0024-D02",
+      "version": 1,
+      "quote": "ICE 08:10 = 10/10 - all items right, handwriting neat."
+     },
+     {
+      "document_id": "SYN-0024-D03",
+      "version": 1,
+      "quote": "ICE score 7/10 at 09:25."
+     },
+     {
+      "document_id": "SYN-0024-D03",
+      "version": 1,
+      "quote": "No sedative given in last 24 h."
+     },
+     {
+      "document_id": "SYN-0024-D06",
+      "version": 1,
+      "quote": "Neurotoxicity from 2034-12-10, worst ICE 6/10 on 2034-12-11"
+     }
+    ]
+   },
+   "max_grade": {
+    "category": "7.7",
+    "documented_value": "2",
+    "explanation": "The worst assessment is ICE 6/10 on 2034-12-11, which is Grade 2. The patient was awake and conversing, with full strength, no seizure activity and no sedating medication, so no other domain contributes a higher grade. Apixaban is not a listed competing cause and dexamethasone is ICANS treatment. No note documents anything above Grade 2, so the documents match the recorded Grade 2. The record's max_grade did not change between versions, so 7.6 does not apply. The headache on 2034-12-13 is excluded from grading.",
+    "evidence": [
+     {
+      "document_id": "SYN-0024-D04",
+      "version": 1,
+      "quote": "ICE 6/10 at 08:00 (orient 1 of 4, objects 3 of 3, follows command, no sentence, counts back correctly). Awake, convers. Strength full, no facial weakness, no seizure activity. No sedating medication given."
+     },
+     {
+      "document_id": "SYN-0024-D05",
+      "version": 1,
+      "quote": "ICE at 19:40 was 9/10."
+     }
+    ]
+   }
+  },
+  "ttft_ms": 4800,
+  "type": "result",
+  "duration_ms": 18900,
+  "uuid": "5c419e7c-a0ef-495d-bd4d-51a9778fb4ff",
+  "ttft_stream_ms": 1779,
+  "time_to_request_ms": 154,
+  "first_content_frame_ms": 1779,
+  "queued_turn_count": 0,
+  "result_index": 0,
+  "credential_expires_at": "2026-12-06T22:19:03.648Z"
+ }
+}

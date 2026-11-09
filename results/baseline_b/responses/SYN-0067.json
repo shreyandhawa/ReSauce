@@ -1,0 +1,228 @@
+{
+ "case_id": "SYN-0067",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "thinking": "adaptive (always on for this model)",
+ "route": "Claude Code print mode",
+ "command": [
+  "claude",
+  "-p",
+  "--model",
+  "claude-opus-5-5",
+  "--effort",
+  "high",
+  "--system-prompt",
+  "<instructions: system_prompt.md>",
+  "--tools",
+  "",
+  "--json-schema",
+  "<answer_schema.json>",
+  "--output-format",
+  "json",
+  "--no-session-persistence",
+  "--strict-mcp-config",
+  "--setting-sources",
+  "project"
+ ],
+ "system_prompt_sha256": "0cda59baefac995b4e20a8dde5550077ed76c7f0f789f8c4661cf246f64e1596",
+ "answer_schema_sha256": "9dc6f412e8631752ce5bf4ce82b16ac3ce5d04d9dfb8709c8b459a7a11d2ad11",
+ "fallback_model": null,
+ "user_message_sha256": "e834de0ca9006f374183bf557818fd9dbdf0bc9f0c36953c2a77a6cf692a0e36",
+ "requested_at": "2026-11-09T08:24:46-06:00",
+ "stop_reason": "tool_use",
+ "finished": true,
+ "answer_text": "{\"out_of_scope_reason\": \"in scope\", \"onset\": {\"category\": \"7.7\", \"documented_value\": \"2032-09-27\", \"explanation\": \"Earliest qualifying finding is the signed ICE 8/10 (Grade 1) on 2032-09-27 08:20. A formal Grade 0 assessment (ICE 10/10, alert) on 2032-09-25 comes before it. The record onset 2032-09-27 is the same calendar day. The fine tremor on 2032-10-02 is excluded from onset.\", \"evidence\": [{\"document_id\": \"SYN-0067-D02\", \"version\": 1, \"quote\": \"21:00 ICE 10/10. Alert. No tremor.\"}, {\"document_id\": \"SYN-0067-D03\", \"version\": 1, \"quote\": \"ICE 2032-09-27 08:20\"}, {\"document_id\": \"SYN-0067-D03\", \"version\": 1, \"quote\": \"Total 8/10\"}]}, \"max_grade\": {\"category\": \"7.7\", \"documented_value\": \"2\", \"explanation\": \"Highest signed finding: ICE 6/10 on 2032-09-28 with the patient awake and alert, no focal deficits, no seizure and no sedating meds, which is Grade 2. The MRI is normal. The 'awakens only to tactile stimulus' addendum (Grade 3) is in unsigned D04 v2 and is not used (A27); flag 'unsigned later version'. Dexamethasone is treatment, not a competing cause (A35). Tremor is excluded. The documents support Grade 2, which matches the record.\", \"evidence\": [{\"document_id\": \"SYN-0067-D04\", \"version\": 1, \"quote\": \"07:50 ICE 6/10 (orient 2/4, naming 2/3, cmds 1/1, writing 0/1, attn 1/1). Awake, alert. No focal deficits. No seizure.\"}, {\"document_id\": \"SYN-0067-D04\", \"version\": 1, \"quote\": \"No sedating meds.\"}, {\"document_id\": \"SYN-0067-D05\", \"version\": 1, \"quote\": \"Impression: normal MRI brain.\"}, {\"document_id\": \"SYN-0067-D04\", \"version\": 2, \"quote\": \"ADDENDUM 17:55: re-examined 16:40. Awakens only to tactile stimulus. ICE 6/10 once awake. No sedating meds today.\"}]}}",
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 2348,
+  "cache_read_input_tokens": 27340,
+  "output_tokens": 2437,
+  "output_tokens_details": {
+   "thinking_tokens": 705
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 2348,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 2437,
+    "cache_read_input_tokens": 27340,
+    "cache_creation_input_tokens": 2348,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 2348
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "models_reported": [
+  "claude-opus-5-5"
+ ],
+ "claude_code_cost_usd": 0.073,
+ "duration_seconds": 22.129,
+ "cli_output": {
+  "duration_api_ms": 21458,
+  "stop_reason": "tool_use",
+  "session_id": "2c9c0fb2-9adc-4d3e-9096-d4f08b258d64",
+  "total_cost_usd": 0.073,
+  "usage": {
+   "input_tokens": 2,
+   "cache_creation_input_tokens": 2348,
+   "cache_read_input_tokens": 27340,
+   "output_tokens": 2437,
+   "output_tokens_details": {
+    "thinking_tokens": 705
+   },
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "service_tier": "standard",
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 2348,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "inference_geo": "global",
+   "iterations": [
+    {
+     "input_tokens": 2,
+     "output_tokens": 2437,
+     "cache_read_input_tokens": 27340,
+     "cache_creation_input_tokens": 2348,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 0,
+      "ephemeral_1h_input_tokens": 2348
+     },
+     "type": "message"
+    }
+   ],
+   "speed": "standard",
+   "fallback_credit": null
+  },
+  "modelUsage": {
+   "claude-opus-5-5": {
+    "inputTokens": 2,
+    "outputTokens": 2437,
+    "cacheReadInputTokens": 27340,
+    "cacheCreationInputTokens": 2348,
+    "webSearchRequests": 0,
+    "costUSD": 0.073,
+    "contextWindow": 1000000,
+    "maxOutputTokens": 128000,
+    "thinkingTokens": 705,
+    "cacheCreationEphemeral5mInputTokens": 0,
+    "cacheCreationEphemeral1hInputTokens": 2348,
+    "canonicalModel": "claude-opus-5-5",
+    "provider": "firstParty",
+    "costBasis": "list"
+   }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+   "spawned": 0,
+   "requested": {
+    "background": 0,
+    "foreground": 0,
+    "unset": 0
+   },
+   "started_in_background": 0,
+   "max_depth": 0,
+   "spawned_by_subagents": 0,
+   "completed": 0,
+   "failed": 0,
+   "killed": {
+    "parent": 0,
+    "user": 0,
+    "system": 0
+   },
+   "refused": {
+    "depth_limit": 0,
+    "concurrency_limit": 0,
+    "budget": 0
+   },
+   "by_type": {}
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 2,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "{\"out_of_scope_reason\":\"in scope\",\"onset\":{\"category\":\"7.7\",\"documented_value\":\"2032-09-27\",\"explanation\":\"Earliest qualifying finding is the signed ICE 8/10 (Grade 1) on 2032-09-27 08:20. A formal Grade 0 assessment (ICE 10/10, alert) on 2032-09-25 comes before it. The record onset 2032-09-27 is the same calendar day. The fine tremor on 2032-10-02 is excluded from onset.\",\"evidence\":[{\"document_id\":\"SYN-0067-D02\",\"version\":1,\"quote\":\"21:00 ICE 10/10. Alert. No tremor.\"},{\"document_id\":\"SYN-0067-D03\",\"version\":1,\"quote\":\"ICE 2032-09-27 08:20\"},{\"document_id\":\"SYN-0067-D03\",\"version\":1,\"quote\":\"Total 8/10\"}]},\"max_grade\":{\"category\":\"7.7\",\"documented_value\":\"2\",\"explanation\":\"Highest signed finding: ICE 6/10 on 2032-09-28 with the patient awake and alert, no focal deficits, no seizure and no sedating meds, which is Grade 2. The MRI is normal. The 'awakens only to tactile stimulus' addendum (Grade 3) is in unsigned D04 v2 and is not used (A27); flag 'unsigned later version'. Dexamethasone is treatment, not a competing cause (A35). Tremor is excluded. The documents support Grade 2, which matches the record.\",\"evidence\":[{\"document_id\":\"SYN-0067-D04\",\"version\":1,\"quote\":\"07:50 ICE 6/10 (orient 2/4, naming 2/3, cmds 1/1, writing 0/1, attn 1/1). Awake, alert. No focal deficits. No seizure.\"},{\"document_id\":\"SYN-0067-D04\",\"version\":1,\"quote\":\"No sedating meds.\"},{\"document_id\":\"SYN-0067-D05\",\"version\":1,\"quote\":\"Impression: normal MRI brain.\"},{\"document_id\":\"SYN-0067-D04\",\"version\":2,\"quote\":\"ADDENDUM 17:55: re-examined 16:40. Awakens only to tactile stimulus. ICE 6/10 once awake. No sedating meds today.\"}]}}",
+  "structured_output": {
+   "out_of_scope_reason": "in scope",
+   "onset": {
+    "category": "7.7",
+    "documented_value": "2032-09-27",
+    "explanation": "Earliest qualifying finding is the signed ICE 8/10 (Grade 1) on 2032-09-27 08:20. A formal Grade 0 assessment (ICE 10/10, alert) on 2032-09-25 comes before it. The record onset 2032-09-27 is the same calendar day. The fine tremor on 2032-10-02 is excluded from onset.",
+    "evidence": [
+     {
+      "document_id": "SYN-0067-D02",
+      "version": 1,
+      "quote": "21:00 ICE 10/10. Alert. No tremor."
+     },
+     {
+      "document_id": "SYN-0067-D03",
+      "version": 1,
+      "quote": "ICE 2032-09-27 08:20"
+     },
+     {
+      "document_id": "SYN-0067-D03",
+      "version": 1,
+      "quote": "Total 8/10"
+     }
+    ]
+   },
+   "max_grade": {
+    "category": "7.7",
+    "documented_value": "2",
+    "explanation": "Highest signed finding: ICE 6/10 on 2032-09-28 with the patient awake and alert, no focal deficits, no seizure and no sedating meds, which is Grade 2. The MRI is normal. The 'awakens only to tactile stimulus' addendum (Grade 3) is in unsigned D04 v2 and is not used (A27); flag 'unsigned later version'. Dexamethasone is treatment, not a competing cause (A35). Tremor is excluded. The documents support Grade 2, which matches the record.",
+    "evidence": [
+     {
+      "document_id": "SYN-0067-D04",
+      "version": 1,
+      "quote": "07:50 ICE 6/10 (orient 2/4, naming 2/3, cmds 1/1, writing 0/1, attn 1/1). Awake, alert. No focal deficits. No seizure."
+     },
+     {
+      "document_id": "SYN-0067-D04",
+      "version": 1,
+      "quote": "No sedating meds."
+     },
+     {
+      "document_id": "SYN-0067-D05",
+      "version": 1,
+      "quote": "Impression: normal MRI brain."
+     },
+     {
+      "document_id": "SYN-0067-D04",
+      "version": 2,
+      "quote": "ADDENDUM 17:55: re-examined 16:40. Awakens only to tactile stimulus. ICE 6/10 once awake. No sedating meds today."
+     }
+    ]
+   }
+  },
+  "ttft_ms": 8552,
+  "type": "result",
+  "duration_ms": 21615,
+  "uuid": "6d23a0e1-6766-487a-83e0-edb397a5dfd9",
+  "ttft_stream_ms": 1931,
+  "time_to_request_ms": 155,
+  "first_content_frame_ms": 1931,
+  "queued_turn_count": 0,
+  "result_index": 0,
+  "credential_expires_at": "2026-12-06T22:19:03.648Z"
+ }
+}

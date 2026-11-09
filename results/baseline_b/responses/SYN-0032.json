@@ -1,0 +1,228 @@
+{
+ "case_id": "SYN-0032",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "thinking": "adaptive (always on for this model)",
+ "route": "Claude Code print mode",
+ "command": [
+  "claude",
+  "-p",
+  "--model",
+  "claude-opus-5-5",
+  "--effort",
+  "high",
+  "--system-prompt",
+  "<instructions: system_prompt.md>",
+  "--tools",
+  "",
+  "--json-schema",
+  "<answer_schema.json>",
+  "--output-format",
+  "json",
+  "--no-session-persistence",
+  "--strict-mcp-config",
+  "--setting-sources",
+  "project"
+ ],
+ "system_prompt_sha256": "0cda59baefac995b4e20a8dde5550077ed76c7f0f789f8c4661cf246f64e1596",
+ "answer_schema_sha256": "9dc6f412e8631752ce5bf4ce82b16ac3ce5d04d9dfb8709c8b459a7a11d2ad11",
+ "fallback_model": null,
+ "user_message_sha256": "8b4fac1b0afda10dff8293a0ac76db1c44086901e73271f46cb33709f0c55816",
+ "requested_at": "2026-11-09T08:22:26-06:00",
+ "stop_reason": "tool_use",
+ "finished": true,
+ "answer_text": "{\"out_of_scope_reason\": \"in scope\", \"onset\": {\"category\": \"7.6\", \"documented_value\": \"2034-08-01\", \"explanation\": \"Earliest qualifying finding is ICE 8/10 (Grade 1) at 23:30 on 01 Aug (Day +4), documented in the signed addendum D04 v2. No competing cause applies: acetaminophen, tocilizumab and fever are excluded under A35. Earlier ICE scores were 10/10. Record v2 changed onset from 2034-08-02 to 2034-08-01, which matches. The supporting D04 v2 (documented 2034-08-05T15:00) falls after v1 recorded_at (2034-08-04T18:00) and no later than v2 recorded_at (2034-08-06T10:00), so this is a legitimate revision.\", \"evidence\": [{\"document_id\": \"SYN-0032-D04\", \"version\": 2, \"quote\": \"Addendum 05 Aug: RN flowsheet shows ICE 8/10 at 23:30 on 01 Aug (orient 3/4, attn 0/1), not seen when this note was written.\"}, {\"document_id\": \"SYN-0032-D02\", \"version\": 1, \"quote\": \"ICE 10/10 at 16:40.\"}, {\"document_id\": \"SYN-0032-D04\", \"version\": 1, \"quote\": \"ICE 8/10 at 10:30 on 02 Aug (orient 3/4, attn 0/1).\"}]}, \"max_grade\": {\"category\": \"7.7\", \"documented_value\": \"2\", \"explanation\": \"Worst assessment is 03 Aug: ICE 6/10 (Grade 2) and 'Awakens to voice' (Grade 2). There is no seizure, no focal motor deficit, no edema, and the EEG is normal. Tremor is excluded from grading and dexamethasone is not a competing cause. Record max grade 2 (unchanged across versions) equals the documented grade.\", \"evidence\": [{\"document_id\": \"SYN-0032-D05\", \"version\": 1, \"quote\": \"ICE 6/10 at 11:40 (orient 2/4, name 2/3, cmd 1/1, write 0/1, attn 1/1). Awakens to voice.\"}, {\"document_id\": \"SYN-0032-D05\", \"version\": 1, \"quote\": \"No sz, no focal motor def.\"}, {\"document_id\": \"SYN-0032-D06\", \"version\": 1, \"quote\": \"Impression: normal EEG.\"}, {\"document_id\": \"SYN-0032-D07\", \"version\": 1, \"quote\": \"ICE 7/10 at 13:40 on 04 Aug (orient 3/4, name 3/3, cmd 1/1, write 0/1, attn 0/1).\"}]}}",
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 2836,
+  "cache_read_input_tokens": 27340,
+  "output_tokens": 2177,
+  "output_tokens_details": {
+   "thinking_tokens": 447
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 2836,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 2177,
+    "cache_read_input_tokens": 27340,
+    "cache_creation_input_tokens": 2836,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 2836
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "models_reported": [
+  "claude-opus-5-5"
+ ],
+ "claude_code_cost_usd": 0.071704,
+ "duration_seconds": 19.658,
+ "cli_output": {
+  "duration_api_ms": 19000,
+  "stop_reason": "tool_use",
+  "session_id": "86eca976-0be2-40b3-8ec9-ecf83883f6b0",
+  "total_cost_usd": 0.071704,
+  "usage": {
+   "input_tokens": 2,
+   "cache_creation_input_tokens": 2836,
+   "cache_read_input_tokens": 27340,
+   "output_tokens": 2177,
+   "output_tokens_details": {
+    "thinking_tokens": 447
+   },
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "service_tier": "standard",
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 2836,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "inference_geo": "global",
+   "iterations": [
+    {
+     "input_tokens": 2,
+     "output_tokens": 2177,
+     "cache_read_input_tokens": 27340,
+     "cache_creation_input_tokens": 2836,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 0,
+      "ephemeral_1h_input_tokens": 2836
+     },
+     "type": "message"
+    }
+   ],
+   "speed": "standard",
+   "fallback_credit": null
+  },
+  "modelUsage": {
+   "claude-opus-5-5": {
+    "inputTokens": 2,
+    "outputTokens": 2177,
+    "cacheReadInputTokens": 27340,
+    "cacheCreationInputTokens": 2836,
+    "webSearchRequests": 0,
+    "costUSD": 0.071704,
+    "contextWindow": 1000000,
+    "maxOutputTokens": 128000,
+    "thinkingTokens": 447,
+    "cacheCreationEphemeral5mInputTokens": 0,
+    "cacheCreationEphemeral1hInputTokens": 2836,
+    "canonicalModel": "claude-opus-5-5",
+    "provider": "firstParty",
+    "costBasis": "list"
+   }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+   "spawned": 0,
+   "requested": {
+    "background": 0,
+    "foreground": 0,
+    "unset": 0
+   },
+   "started_in_background": 0,
+   "max_depth": 0,
+   "spawned_by_subagents": 0,
+   "completed": 0,
+   "failed": 0,
+   "killed": {
+    "parent": 0,
+    "user": 0,
+    "system": 0
+   },
+   "refused": {
+    "depth_limit": 0,
+    "concurrency_limit": 0,
+    "budget": 0
+   },
+   "by_type": {}
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 2,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "{\"out_of_scope_reason\":\"in scope\",\"onset\":{\"category\":\"7.6\",\"documented_value\":\"2034-08-01\",\"explanation\":\"Earliest qualifying finding is ICE 8/10 (Grade 1) at 23:30 on 01 Aug (Day +4), documented in the signed addendum D04 v2. No competing cause applies: acetaminophen, tocilizumab and fever are excluded under A35. Earlier ICE scores were 10/10. Record v2 changed onset from 2034-08-02 to 2034-08-01, which matches. The supporting D04 v2 (documented 2034-08-05T15:00) falls after v1 recorded_at (2034-08-04T18:00) and no later than v2 recorded_at (2034-08-06T10:00), so this is a legitimate revision.\",\"evidence\":[{\"document_id\":\"SYN-0032-D04\",\"version\":2,\"quote\":\"Addendum 05 Aug: RN flowsheet shows ICE 8/10 at 23:30 on 01 Aug (orient 3/4, attn 0/1), not seen when this note was written.\"},{\"document_id\":\"SYN-0032-D02\",\"version\":1,\"quote\":\"ICE 10/10 at 16:40.\"},{\"document_id\":\"SYN-0032-D04\",\"version\":1,\"quote\":\"ICE 8/10 at 10:30 on 02 Aug (orient 3/4, attn 0/1).\"}]},\"max_grade\":{\"category\":\"7.7\",\"documented_value\":\"2\",\"explanation\":\"Worst assessment is 03 Aug: ICE 6/10 (Grade 2) and 'Awakens to voice' (Grade 2). There is no seizure, no focal motor deficit, no edema, and the EEG is normal. Tremor is excluded from grading and dexamethasone is not a competing cause. Record max grade 2 (unchanged across versions) equals the documented grade.\",\"evidence\":[{\"document_id\":\"SYN-0032-D05\",\"version\":1,\"quote\":\"ICE 6/10 at 11:40 (orient 2/4, name 2/3, cmd 1/1, write 0/1, attn 1/1). Awakens to voice.\"},{\"document_id\":\"SYN-0032-D05\",\"version\":1,\"quote\":\"No sz, no focal motor def.\"},{\"document_id\":\"SYN-0032-D06\",\"version\":1,\"quote\":\"Impression: normal EEG.\"},{\"document_id\":\"SYN-0032-D07\",\"version\":1,\"quote\":\"ICE 7/10 at 13:40 on 04 Aug (orient 3/4, name 3/3, cmd 1/1, write 0/1, attn 0/1).\"}]}}",
+  "structured_output": {
+   "out_of_scope_reason": "in scope",
+   "onset": {
+    "category": "7.6",
+    "documented_value": "2034-08-01",
+    "explanation": "Earliest qualifying finding is ICE 8/10 (Grade 1) at 23:30 on 01 Aug (Day +4), documented in the signed addendum D04 v2. No competing cause applies: acetaminophen, tocilizumab and fever are excluded under A35. Earlier ICE scores were 10/10. Record v2 changed onset from 2034-08-02 to 2034-08-01, which matches. The supporting D04 v2 (documented 2034-08-05T15:00) falls after v1 recorded_at (2034-08-04T18:00) and no later than v2 recorded_at (2034-08-06T10:00), so this is a legitimate revision.",
+    "evidence": [
+     {
+      "document_id": "SYN-0032-D04",
+      "version": 2,
+      "quote": "Addendum 05 Aug: RN flowsheet shows ICE 8/10 at 23:30 on 01 Aug (orient 3/4, attn 0/1), not seen when this note was written."
+     },
+     {
+      "document_id": "SYN-0032-D02",
+      "version": 1,
+      "quote": "ICE 10/10 at 16:40."
+     },
+     {
+      "document_id": "SYN-0032-D04",
+      "version": 1,
+      "quote": "ICE 8/10 at 10:30 on 02 Aug (orient 3/4, attn 0/1)."
+     }
+    ]
+   },
+   "max_grade": {
+    "category": "7.7",
+    "documented_value": "2",
+    "explanation": "Worst assessment is 03 Aug: ICE 6/10 (Grade 2) and 'Awakens to voice' (Grade 2). There is no seizure, no focal motor deficit, no edema, and the EEG is normal. Tremor is excluded from grading and dexamethasone is not a competing cause. Record max grade 2 (unchanged across versions) equals the documented grade.",
+    "evidence": [
+     {
+      "document_id": "SYN-0032-D05",
+      "version": 1,
+      "quote": "ICE 6/10 at 11:40 (orient 2/4, name 2/3, cmd 1/1, write 0/1, attn 1/1). Awakens to voice."
+     },
+     {
+      "document_id": "SYN-0032-D05",
+      "version": 1,
+      "quote": "No sz, no focal motor def."
+     },
+     {
+      "document_id": "SYN-0032-D06",
+      "version": 1,
+      "quote": "Impression: normal EEG."
+     },
+     {
+      "document_id": "SYN-0032-D07",
+      "version": 1,
+      "quote": "ICE 7/10 at 13:40 on 04 Aug (orient 3/4, name 3/3, cmd 1/1, write 0/1, attn 0/1)."
+     }
+    ]
+   }
+  },
+  "ttft_ms": 5714,
+  "type": "result",
+  "duration_ms": 19155,
+  "uuid": "b8ef8b77-d4b8-4006-8274-1d922cab97a0",
+  "ttft_stream_ms": 1839,
+  "time_to_request_ms": 154,
+  "first_content_frame_ms": 1839,
+  "queued_turn_count": 0,
+  "result_index": 0,
+  "credential_expires_at": "2026-12-06T22:19:03.648Z"
+ }
+}

@@ -1,0 +1,223 @@
+{
+ "case_id": "SYN-0031",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "thinking": "adaptive (always on for this model)",
+ "route": "Claude Code print mode",
+ "command": [
+  "claude",
+  "-p",
+  "--model",
+  "claude-opus-5-5",
+  "--effort",
+  "high",
+  "--system-prompt",
+  "<instructions: system_prompt.md>",
+  "--tools",
+  "",
+  "--json-schema",
+  "<answer_schema.json>",
+  "--output-format",
+  "json",
+  "--no-session-persistence",
+  "--strict-mcp-config",
+  "--setting-sources",
+  "project"
+ ],
+ "system_prompt_sha256": "0cda59baefac995b4e20a8dde5550077ed76c7f0f789f8c4661cf246f64e1596",
+ "answer_schema_sha256": "9dc6f412e8631752ce5bf4ce82b16ac3ce5d04d9dfb8709c8b459a7a11d2ad11",
+ "fallback_model": null,
+ "user_message_sha256": "9c0b114a60c72b025e20d701e5af2507d0e10d9902e203d14dc77388512fcfeb",
+ "requested_at": "2026-11-09T08:22:14-06:00",
+ "stop_reason": "tool_use",
+ "finished": true,
+ "answer_text": "{\"out_of_scope_reason\": \"documented death\", \"onset\": {\"category\": \"7.7\", \"documented_value\": \"2032-12-21\", \"explanation\": \"Case is out of scope (documented death, §5/A29); best reading given only. Formal Grade 0 assessment (ICE 10/10) on 2032-12-19; first qualifying finding is ICE 8/10 (Grade 1) at 15:00 on 2032-12-21, with no documented competing cause. This matches the record onset of 2032-12-21.\", \"evidence\": [{\"document_id\": \"SYN-0031-D06\", \"version\": 1, \"quote\": \"The patient died at 05:10 on 02 Jan in the intensive care unit with family present.\"}, {\"document_id\": \"SYN-0031-D01\", \"version\": 1, \"quote\": \"ICE 10/10 at 09:45.\"}, {\"document_id\": \"SYN-0031-D02\", \"version\": 1, \"quote\": \"ICE 8/10 at 15:00 on 21 Dec (orientation 3/4, attention 0/1, rest complete).\"}]}, \"max_grade\": {\"category\": \"7.7\", \"documented_value\": \"2\", \"explanation\": \"Case is out of scope (documented death, §5/A29); best reading given only. Worst assessment is on 2032-12-22: ICE 6/10 (Grade 2) and awakens to voice (Grade 2), with no seizure, focal deficit or edema. Dexamethasone is ICANS treatment, so it is not a competing cause (A35). No higher-grade finding and no documented 'not assessable' period. This equals the record's Grade 2.\", \"evidence\": [{\"document_id\": \"SYN-0031-D06\", \"version\": 1, \"quote\": \"The patient died at 05:10 on 02 Jan in the intensive care unit with family present.\"}, {\"document_id\": \"SYN-0031-D03\", \"version\": 1, \"quote\": \"ICE 6/10 at 10:10 on 22 Dec (orientation 2/4, naming 2/3, commands 1/1, writing 1/1, attention 0/1).\"}, {\"document_id\": \"SYN-0031-D03\", \"version\": 1, \"quote\": \"Awakens to voice. No focal deficit, no seizures.\"}]}}",
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 2078,
+  "cache_read_input_tokens": 27340,
+  "output_tokens": 1524,
+  "output_tokens_details": {
+   "thinking_tokens": 161
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 2078,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 1524,
+    "cache_read_input_tokens": 27340,
+    "cache_creation_input_tokens": 2078,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 2078
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "models_reported": [
+  "claude-opus-5-5"
+ ],
+ "claude_code_cost_usd": 0.05258,
+ "duration_seconds": 14.56,
+ "cli_output": {
+  "duration_api_ms": 13782,
+  "stop_reason": "tool_use",
+  "session_id": "00f73f6a-9ef9-4a19-9482-13501b02dc55",
+  "total_cost_usd": 0.05258,
+  "usage": {
+   "input_tokens": 2,
+   "cache_creation_input_tokens": 2078,
+   "cache_read_input_tokens": 27340,
+   "output_tokens": 1524,
+   "output_tokens_details": {
+    "thinking_tokens": 161
+   },
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "service_tier": "standard",
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 2078,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "inference_geo": "global",
+   "iterations": [
+    {
+     "input_tokens": 2,
+     "output_tokens": 1524,
+     "cache_read_input_tokens": 27340,
+     "cache_creation_input_tokens": 2078,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 0,
+      "ephemeral_1h_input_tokens": 2078
+     },
+     "type": "message"
+    }
+   ],
+   "speed": "standard",
+   "fallback_credit": null
+  },
+  "modelUsage": {
+   "claude-opus-5-5": {
+    "inputTokens": 2,
+    "outputTokens": 1524,
+    "cacheReadInputTokens": 27340,
+    "cacheCreationInputTokens": 2078,
+    "webSearchRequests": 0,
+    "costUSD": 0.05258,
+    "contextWindow": 1000000,
+    "maxOutputTokens": 128000,
+    "thinkingTokens": 161,
+    "cacheCreationEphemeral5mInputTokens": 0,
+    "cacheCreationEphemeral1hInputTokens": 2078,
+    "canonicalModel": "claude-opus-5-5",
+    "provider": "firstParty",
+    "costBasis": "list"
+   }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+   "spawned": 0,
+   "requested": {
+    "background": 0,
+    "foreground": 0,
+    "unset": 0
+   },
+   "started_in_background": 0,
+   "max_depth": 0,
+   "spawned_by_subagents": 0,
+   "completed": 0,
+   "failed": 0,
+   "killed": {
+    "parent": 0,
+    "user": 0,
+    "system": 0
+   },
+   "refused": {
+    "depth_limit": 0,
+    "concurrency_limit": 0,
+    "budget": 0
+   },
+   "by_type": {}
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 2,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "{\"out_of_scope_reason\":\"documented death\",\"onset\":{\"category\":\"7.7\",\"documented_value\":\"2032-12-21\",\"explanation\":\"Case is out of scope (documented death, §5/A29); best reading given only. Formal Grade 0 assessment (ICE 10/10) on 2032-12-19; first qualifying finding is ICE 8/10 (Grade 1) at 15:00 on 2032-12-21, with no documented competing cause. This matches the record onset of 2032-12-21.\",\"evidence\":[{\"document_id\":\"SYN-0031-D06\",\"version\":1,\"quote\":\"The patient died at 05:10 on 02 Jan in the intensive care unit with family present.\"},{\"document_id\":\"SYN-0031-D01\",\"version\":1,\"quote\":\"ICE 10/10 at 09:45.\"},{\"document_id\":\"SYN-0031-D02\",\"version\":1,\"quote\":\"ICE 8/10 at 15:00 on 21 Dec (orientation 3/4, attention 0/1, rest complete).\"}]},\"max_grade\":{\"category\":\"7.7\",\"documented_value\":\"2\",\"explanation\":\"Case is out of scope (documented death, §5/A29); best reading given only. Worst assessment is on 2032-12-22: ICE 6/10 (Grade 2) and awakens to voice (Grade 2), with no seizure, focal deficit or edema. Dexamethasone is ICANS treatment, so it is not a competing cause (A35). No higher-grade finding and no documented 'not assessable' period. This equals the record's Grade 2.\",\"evidence\":[{\"document_id\":\"SYN-0031-D06\",\"version\":1,\"quote\":\"The patient died at 05:10 on 02 Jan in the intensive care unit with family present.\"},{\"document_id\":\"SYN-0031-D03\",\"version\":1,\"quote\":\"ICE 6/10 at 10:10 on 22 Dec (orientation 2/4, naming 2/3, commands 1/1, writing 1/1, attention 0/1).\"},{\"document_id\":\"SYN-0031-D03\",\"version\":1,\"quote\":\"Awakens to voice. No focal deficit, no seizures.\"}]}}",
+  "structured_output": {
+   "out_of_scope_reason": "documented death",
+   "onset": {
+    "category": "7.7",
+    "documented_value": "2032-12-21",
+    "explanation": "Case is out of scope (documented death, §5/A29); best reading given only. Formal Grade 0 assessment (ICE 10/10) on 2032-12-19; first qualifying finding is ICE 8/10 (Grade 1) at 15:00 on 2032-12-21, with no documented competing cause. This matches the record onset of 2032-12-21.",
+    "evidence": [
+     {
+      "document_id": "SYN-0031-D06",
+      "version": 1,
+      "quote": "The patient died at 05:10 on 02 Jan in the intensive care unit with family present."
+     },
+     {
+      "document_id": "SYN-0031-D01",
+      "version": 1,
+      "quote": "ICE 10/10 at 09:45."
+     },
+     {
+      "document_id": "SYN-0031-D02",
+      "version": 1,
+      "quote": "ICE 8/10 at 15:00 on 21 Dec (orientation 3/4, attention 0/1, rest complete)."
+     }
+    ]
+   },
+   "max_grade": {
+    "category": "7.7",
+    "documented_value": "2",
+    "explanation": "Case is out of scope (documented death, §5/A29); best reading given only. Worst assessment is on 2032-12-22: ICE 6/10 (Grade 2) and awakens to voice (Grade 2), with no seizure, focal deficit or edema. Dexamethasone is ICANS treatment, so it is not a competing cause (A35). No higher-grade finding and no documented 'not assessable' period. This equals the record's Grade 2.",
+    "evidence": [
+     {
+      "document_id": "SYN-0031-D06",
+      "version": 1,
+      "quote": "The patient died at 05:10 on 02 Jan in the intensive care unit with family present."
+     },
+     {
+      "document_id": "SYN-0031-D03",
+      "version": 1,
+      "quote": "ICE 6/10 at 10:10 on 22 Dec (orientation 2/4, naming 2/3, commands 1/1, writing 1/1, attention 0/1)."
+     },
+     {
+      "document_id": "SYN-0031-D03",
+      "version": 1,
+      "quote": "Awakens to voice. No focal deficit, no seizures."
+     }
+    ]
+   }
+  },
+  "ttft_ms": 3012,
+  "type": "result",
+  "duration_ms": 13913,
+  "uuid": "33869565-5b09-4336-ae72-18e651fb1ac4",
+  "ttft_stream_ms": 1632,
+  "time_to_request_ms": 130,
+  "first_content_frame_ms": 1632,
+  "queued_turn_count": 0,
+  "result_index": 0,
+  "credential_expires_at": "2026-12-06T22:19:03.648Z"
+ }
+}

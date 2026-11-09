@@ -1,0 +1,243 @@
+{
+ "case_id": "SYN-0038",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "thinking": "adaptive (always on for this model)",
+ "route": "Claude Code print mode",
+ "command": [
+  "claude",
+  "-p",
+  "--model",
+  "claude-opus-5-5",
+  "--effort",
+  "high",
+  "--system-prompt",
+  "<instructions: system_prompt.md>",
+  "--tools",
+  "",
+  "--json-schema",
+  "<answer_schema.json>",
+  "--output-format",
+  "json",
+  "--no-session-persistence",
+  "--strict-mcp-config",
+  "--setting-sources",
+  "project"
+ ],
+ "system_prompt_sha256": "0cda59baefac995b4e20a8dde5550077ed76c7f0f789f8c4661cf246f64e1596",
+ "answer_schema_sha256": "9dc6f412e8631752ce5bf4ce82b16ac3ce5d04d9dfb8709c8b459a7a11d2ad11",
+ "fallback_model": null,
+ "user_message_sha256": "e0807eeaf2eb1d85d43ab490a1ae1aa67a590b33946a8581d0714d9c312c91e1",
+ "requested_at": "2026-11-09T08:22:42-06:00",
+ "stop_reason": "tool_use",
+ "finished": true,
+ "answer_text": "{\"out_of_scope_reason\": \"in scope\", \"onset\": {\"category\": \"7.7\", \"documented_value\": \"none\", \"explanation\": \"Record reports no ICANS. Under §7.9(b) the window contains formal Grade 0 assessments (ICE 10/10 with no domain findings on 2035-03-10, 03-12, 03-14, 03-19), no qualifying finding, and no documented 'not assessable' period. The Day +4 word-finding difficulty has no ICE score or consciousness level, so it is an ungradeable symptom and does not block 7.7 (it gets the case-level flag). Headache and tremor are excluded symptoms. There is no documented onset, which agrees with the record.\", \"evidence\": [{\"document_id\": \"SYN-0038-D01\", \"version\": 1, \"quote\": \"20:30 ICE 10/10, alert, conversant.\"}, {\"document_id\": \"SYN-0038-D02\", \"version\": 1, \"quote\": \"Neuro at 08:15: ICE 10/10, alert, fully oriented, fluent speech, no focal deficits, no tremor.\"}, {\"document_id\": \"SYN-0038-D03\", \"version\": 1, \"quote\": \"At 21:40 pt reported word-finding difficulty while messaging family on phone, says the right word \\\"takes a second to come.\\\"\"}, {\"document_id\": \"SYN-0038-D04\", \"version\": 1, \"quote\": \"ICE total 10/10\\nAlert, conversant, fluent speech. No tremor. No focal deficits.\"}, {\"document_id\": \"SYN-0038-D06\", \"version\": 1, \"quote\": \"Discharge ICE on 2035-03-19 at 09:00: 10/10.\"}]}, \"max_grade\": {\"category\": \"7.7\", \"documented_value\": \"0\", \"explanation\": \"Record reports no ICANS, compared as Grade 0. The documents contain no Grade ≥1 finding: every ICE score is 10/10 with no consciousness, seizure, motor or edema findings, and the MRI is normal. The word-finding difficulty is ungradeable. Headache (Day +3) and fine hand tremor (Day +9) are excluded from ICANS grading. There are formal Grade 0 assessments and no 'not assessable' period, so §7.9(b) gives 7.7.\", \"evidence\": [{\"document_id\": \"SYN-0038-D04\", \"version\": 1, \"quote\": \"ICE total 10/10\\nAlert, conversant, fluent speech. No tremor. No focal deficits.\"}, {\"document_id\": \"SYN-0038-D05\", \"version\": 1, \"quote\": \"No cerebral edema.\"}, {\"document_id\": \"SYN-0038-D02\", \"version\": 1, \"quote\": \"Reports a mild frontal headache this morning, relieved by acetaminophen.\"}, {\"document_id\": \"SYN-0038-D06\", \"version\": 1, \"quote\": \"Fine bilateral hand tremor noted on 2035-03-18, not treated.\"}, {\"document_id\": \"SYN-0038-D06\", \"version\": 1, \"quote\": \"Discharge ICE on 2035-03-19 at 09:00: 10/10.\"}]}}",
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 2566,
+  "cache_read_input_tokens": 27340,
+  "output_tokens": 1877,
+  "output_tokens_details": {
+   "thinking_tokens": 295
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 2566,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 1877,
+    "cache_read_input_tokens": 27340,
+    "cache_creation_input_tokens": 2566,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 2566
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "models_reported": [
+  "claude-opus-5-5"
+ ],
+ "claude_code_cost_usd": 0.063544,
+ "duration_seconds": 16.081,
+ "cli_output": {
+  "duration_api_ms": 15465,
+  "stop_reason": "tool_use",
+  "session_id": "e1430914-ee38-4560-9b89-418f6fc57317",
+  "total_cost_usd": 0.063544,
+  "usage": {
+   "input_tokens": 2,
+   "cache_creation_input_tokens": 2566,
+   "cache_read_input_tokens": 27340,
+   "output_tokens": 1877,
+   "output_tokens_details": {
+    "thinking_tokens": 295
+   },
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "service_tier": "standard",
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 2566,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "inference_geo": "global",
+   "iterations": [
+    {
+     "input_tokens": 2,
+     "output_tokens": 1877,
+     "cache_read_input_tokens": 27340,
+     "cache_creation_input_tokens": 2566,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 0,
+      "ephemeral_1h_input_tokens": 2566
+     },
+     "type": "message"
+    }
+   ],
+   "speed": "standard",
+   "fallback_credit": null
+  },
+  "modelUsage": {
+   "claude-opus-5-5": {
+    "inputTokens": 2,
+    "outputTokens": 1877,
+    "cacheReadInputTokens": 27340,
+    "cacheCreationInputTokens": 2566,
+    "webSearchRequests": 0,
+    "costUSD": 0.063544,
+    "contextWindow": 1000000,
+    "maxOutputTokens": 128000,
+    "thinkingTokens": 295,
+    "cacheCreationEphemeral5mInputTokens": 0,
+    "cacheCreationEphemeral1hInputTokens": 2566,
+    "canonicalModel": "claude-opus-5-5",
+    "provider": "firstParty",
+    "costBasis": "list"
+   }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+   "spawned": 0,
+   "requested": {
+    "background": 0,
+    "foreground": 0,
+    "unset": 0
+   },
+   "started_in_background": 0,
+   "max_depth": 0,
+   "spawned_by_subagents": 0,
+   "completed": 0,
+   "failed": 0,
+   "killed": {
+    "parent": 0,
+    "user": 0,
+    "system": 0
+   },
+   "refused": {
+    "depth_limit": 0,
+    "concurrency_limit": 0,
+    "budget": 0
+   },
+   "by_type": {}
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 2,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "{\"out_of_scope_reason\":\"in scope\",\"onset\":{\"category\":\"7.7\",\"documented_value\":\"none\",\"explanation\":\"Record reports no ICANS. Under §7.9(b) the window contains formal Grade 0 assessments (ICE 10/10 with no domain findings on 2035-03-10, 03-12, 03-14, 03-19), no qualifying finding, and no documented 'not assessable' period. The Day +4 word-finding difficulty has no ICE score or consciousness level, so it is an ungradeable symptom and does not block 7.7 (it gets the case-level flag). Headache and tremor are excluded symptoms. There is no documented onset, which agrees with the record.\",\"evidence\":[{\"document_id\":\"SYN-0038-D01\",\"version\":1,\"quote\":\"20:30 ICE 10/10, alert, conversant.\"},{\"document_id\":\"SYN-0038-D02\",\"version\":1,\"quote\":\"Neuro at 08:15: ICE 10/10, alert, fully oriented, fluent speech, no focal deficits, no tremor.\"},{\"document_id\":\"SYN-0038-D03\",\"version\":1,\"quote\":\"At 21:40 pt reported word-finding difficulty while messaging family on phone, says the right word \\\"takes a second to come.\\\"\"},{\"document_id\":\"SYN-0038-D04\",\"version\":1,\"quote\":\"ICE total 10/10\\nAlert, conversant, fluent speech. No tremor. No focal deficits.\"},{\"document_id\":\"SYN-0038-D06\",\"version\":1,\"quote\":\"Discharge ICE on 2035-03-19 at 09:00: 10/10.\"}]},\"max_grade\":{\"category\":\"7.7\",\"documented_value\":\"0\",\"explanation\":\"Record reports no ICANS, compared as Grade 0. The documents contain no Grade ≥1 finding: every ICE score is 10/10 with no consciousness, seizure, motor or edema findings, and the MRI is normal. The word-finding difficulty is ungradeable. Headache (Day +3) and fine hand tremor (Day +9) are excluded from ICANS grading. There are formal Grade 0 assessments and no 'not assessable' period, so §7.9(b) gives 7.7.\",\"evidence\":[{\"document_id\":\"SYN-0038-D04\",\"version\":1,\"quote\":\"ICE total 10/10\\nAlert, conversant, fluent speech. No tremor. No focal deficits.\"},{\"document_id\":\"SYN-0038-D05\",\"version\":1,\"quote\":\"No cerebral edema.\"},{\"document_id\":\"SYN-0038-D02\",\"version\":1,\"quote\":\"Reports a mild frontal headache this morning, relieved by acetaminophen.\"},{\"document_id\":\"SYN-0038-D06\",\"version\":1,\"quote\":\"Fine bilateral hand tremor noted on 2035-03-18, not treated.\"},{\"document_id\":\"SYN-0038-D06\",\"version\":1,\"quote\":\"Discharge ICE on 2035-03-19 at 09:00: 10/10.\"}]}}",
+  "structured_output": {
+   "out_of_scope_reason": "in scope",
+   "onset": {
+    "category": "7.7",
+    "documented_value": "none",
+    "explanation": "Record reports no ICANS. Under §7.9(b) the window contains formal Grade 0 assessments (ICE 10/10 with no domain findings on 2035-03-10, 03-12, 03-14, 03-19), no qualifying finding, and no documented 'not assessable' period. The Day +4 word-finding difficulty has no ICE score or consciousness level, so it is an ungradeable symptom and does not block 7.7 (it gets the case-level flag). Headache and tremor are excluded symptoms. There is no documented onset, which agrees with the record.",
+    "evidence": [
+     {
+      "document_id": "SYN-0038-D01",
+      "version": 1,
+      "quote": "20:30 ICE 10/10, alert, conversant."
+     },
+     {
+      "document_id": "SYN-0038-D02",
+      "version": 1,
+      "quote": "Neuro at 08:15: ICE 10/10, alert, fully oriented, fluent speech, no focal deficits, no tremor."
+     },
+     {
+      "document_id": "SYN-0038-D03",
+      "version": 1,
+      "quote": "At 21:40 pt reported word-finding difficulty while messaging family on phone, says the right word \"takes a second to come.\""
+     },
+     {
+      "document_id": "SYN-0038-D04",
+      "version": 1,
+      "quote": "ICE total 10/10\nAlert, conversant, fluent speech. No tremor. No focal deficits."
+     },
+     {
+      "document_id": "SYN-0038-D06",
+      "version": 1,
+      "quote": "Discharge ICE on 2035-03-19 at 09:00: 10/10."
+     }
+    ]
+   },
+   "max_grade": {
+    "category": "7.7",
+    "documented_value": "0",
+    "explanation": "Record reports no ICANS, compared as Grade 0. The documents contain no Grade ≥1 finding: every ICE score is 10/10 with no consciousness, seizure, motor or edema findings, and the MRI is normal. The word-finding difficulty is ungradeable. Headache (Day +3) and fine hand tremor (Day +9) are excluded from ICANS grading. There are formal Grade 0 assessments and no 'not assessable' period, so §7.9(b) gives 7.7.",
+    "evidence": [
+     {
+      "document_id": "SYN-0038-D04",
+      "version": 1,
+      "quote": "ICE total 10/10\nAlert, conversant, fluent speech. No tremor. No focal deficits."
+     },
+     {
+      "document_id": "SYN-0038-D05",
+      "version": 1,
+      "quote": "No cerebral edema."
+     },
+     {
+      "document_id": "SYN-0038-D02",
+      "version": 1,
+      "quote": "Reports a mild frontal headache this morning, relieved by acetaminophen."
+     },
+     {
+      "document_id": "SYN-0038-D06",
+      "version": 1,
+      "quote": "Fine bilateral hand tremor noted on 2035-03-18, not treated."
+     },
+     {
+      "document_id": "SYN-0038-D06",
+      "version": 1,
+      "quote": "Discharge ICE on 2035-03-19 at 09:00: 10/10."
+     }
+    ]
+   }
+  },
+  "ttft_ms": 4192,
+  "type": "result",
+  "duration_ms": 15646,
+  "uuid": "356888cb-303e-4d39-90ad-5f3cd1b69cda",
+  "ttft_stream_ms": 1823,
+  "time_to_request_ms": 178,
+  "first_content_frame_ms": 1824,
+  "queued_turn_count": 0,
+  "result_index": 0,
+  "credential_expires_at": "2026-12-06T22:19:03.648Z"
+ }
+}

@@ -1,0 +1,233 @@
+{
+ "case_id": "SYN-0040",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "thinking": "adaptive (always on for this model)",
+ "route": "Claude Code print mode",
+ "command": [
+  "claude",
+  "-p",
+  "--model",
+  "claude-opus-5-5",
+  "--effort",
+  "high",
+  "--system-prompt",
+  "<instructions: system_prompt.md>",
+  "--tools",
+  "",
+  "--json-schema",
+  "<answer_schema.json>",
+  "--output-format",
+  "json",
+  "--no-session-persistence",
+  "--strict-mcp-config",
+  "--setting-sources",
+  "project"
+ ],
+ "system_prompt_sha256": "0cda59baefac995b4e20a8dde5550077ed76c7f0f789f8c4661cf246f64e1596",
+ "answer_schema_sha256": "9dc6f412e8631752ce5bf4ce82b16ac3ce5d04d9dfb8709c8b459a7a11d2ad11",
+ "fallback_model": null,
+ "user_message_sha256": "e54e90ebc530b85968b81cb74f8a31621c8b44abf68fbeb4dfb802a897674d73",
+ "requested_at": "2026-11-09T08:22:51-06:00",
+ "stop_reason": "tool_use",
+ "finished": true,
+ "answer_text": "{\"out_of_scope_reason\": \"in scope\", \"onset\": {\"category\": \"7.7\", \"documented_value\": \"2036-06-22\", \"explanation\": \"The first qualifying finding is ICE 8/10 (Grade 1) at 02:10 on 22 Jun (Day +5). It has no clinician attribution to another cause. Acetaminophen and tocilizumab were given on 19 Jun, but they are CRS treatment and are excluded as competing causes under A35. Formal Grade 0 assessments (ICE 10/10) were documented on 17, 20 and 21 Jun. The current record onset, 2036-06-22, falls on the same day, so this is a match. The onset changed from 2036-06-21 in v1 to 2036-06-22 in v2. For a 7.6 legitimate revision, a supporting document version must be dated after v1 was recorded (2036-06-29T09:00) and no later than v2 (2036-07-07T14:00). No document version is dated in that interval: the supporting notes D05, D06 and D09 all predate v1. Condition (c) fails, so the result is 7.7 with the extra flag 'revision without new documentation'.\", \"evidence\": [{\"document_id\": \"SYN-0040-D05\", \"version\": 1, \"quote\": \"ICE 8/10 at 02:10 on 22 Jun (orientation 3/4, naming 3/3, commands 1/1, writing 1/1, attention 0/1). Awake, cooperative.\"}, {\"document_id\": \"SYN-0040-D04\", \"version\": 1, \"quote\": \"Total 10/10. Alert, cooperative.\"}, {\"document_id\": \"SYN-0040-D03\", \"version\": 1, \"quote\": \"ICE 10/10 at 09:50.\"}, {\"document_id\": \"SYN-0040-D09\", \"version\": 1, \"quote\": \"Neurotoxicity: fluctuating ICE scores from 22 Jun, lowest ICE 5/10 on 23 Jun\"}]}, \"max_grade\": {\"category\": \"7.7\", \"documented_value\": \"2\", \"explanation\": \"The worst assessment is the neurology consult on 23 Jun. It records ICE 5/10 (Grade 2) and 'Awakens to voice' (Grade 2), with no seizure, no focal motor deficit and no edema findings. Tremor is excluded from ICANS grading. Dexamethasone is ICANS treatment, not a competing cause. All other assessments are ICE 8/10 (Grade 1) or 10/10. The documented maximum is therefore Grade 2. The record's maximum grade is 2 and did not change between versions, so there is no discrepancy.\", \"evidence\": [{\"document_id\": \"SYN-0040-D07\", \"version\": 1, \"quote\": \"ICE 5/10 at 11:00 on 23 Jun (orientation 1/4, naming 2/3, commands 1/1, writing 0/1, attention 1/1).\"}, {\"document_id\": \"SYN-0040-D07\", \"version\": 1, \"quote\": \"Awakens to voice, drifts back to sleep when not stimulated.\"}, {\"document_id\": \"SYN-0040-D07\", \"version\": 1, \"quote\": \"No seizure activity, no focal motor deficit.\"}, {\"document_id\": \"SYN-0040-D08\", \"version\": 2, \"quote\": \"ICE 8/10 at 10:10 (orientation 3/4, attention 0/1, remaining items full).\"}]}}",
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 2976,
+  "cache_read_input_tokens": 27340,
+  "output_tokens": 1625,
+  "output_tokens_details": {
+   "thinking_tokens": 411
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 2976,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 1625,
+    "cache_read_input_tokens": 27340,
+    "cache_creation_input_tokens": 2976,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 2976
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "models_reported": [
+  "claude-opus-5-5"
+ ],
+ "claude_code_cost_usd": 0.061784000000000006,
+ "duration_seconds": 14.926,
+ "cli_output": {
+  "duration_api_ms": 14071,
+  "stop_reason": "tool_use",
+  "session_id": "070dd581-dba1-4c1a-815c-8c2726eb0675",
+  "total_cost_usd": 0.061784000000000006,
+  "usage": {
+   "input_tokens": 2,
+   "cache_creation_input_tokens": 2976,
+   "cache_read_input_tokens": 27340,
+   "output_tokens": 1625,
+   "output_tokens_details": {
+    "thinking_tokens": 411
+   },
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "service_tier": "standard",
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 2976,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "inference_geo": "global",
+   "iterations": [
+    {
+     "input_tokens": 2,
+     "output_tokens": 1625,
+     "cache_read_input_tokens": 27340,
+     "cache_creation_input_tokens": 2976,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 0,
+      "ephemeral_1h_input_tokens": 2976
+     },
+     "type": "message"
+    }
+   ],
+   "speed": "standard",
+   "fallback_credit": null
+  },
+  "modelUsage": {
+   "claude-opus-5-5": {
+    "inputTokens": 2,
+    "outputTokens": 1625,
+    "cacheReadInputTokens": 27340,
+    "cacheCreationInputTokens": 2976,
+    "webSearchRequests": 0,
+    "costUSD": 0.061784000000000006,
+    "contextWindow": 1000000,
+    "maxOutputTokens": 128000,
+    "thinkingTokens": 411,
+    "cacheCreationEphemeral5mInputTokens": 0,
+    "cacheCreationEphemeral1hInputTokens": 2976,
+    "canonicalModel": "claude-opus-5-5",
+    "provider": "firstParty",
+    "costBasis": "list"
+   }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+   "spawned": 0,
+   "requested": {
+    "background": 0,
+    "foreground": 0,
+    "unset": 0
+   },
+   "started_in_background": 0,
+   "max_depth": 0,
+   "spawned_by_subagents": 0,
+   "completed": 0,
+   "failed": 0,
+   "killed": {
+    "parent": 0,
+    "user": 0,
+    "system": 0
+   },
+   "refused": {
+    "depth_limit": 0,
+    "concurrency_limit": 0,
+    "budget": 0
+   },
+   "by_type": {}
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 2,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "{\"out_of_scope_reason\":\"in scope\",\"onset\":{\"category\":\"7.7\",\"documented_value\":\"2036-06-22\",\"explanation\":\"The first qualifying finding is ICE 8/10 (Grade 1) at 02:10 on 22 Jun (Day +5). It has no clinician attribution to another cause. Acetaminophen and tocilizumab were given on 19 Jun, but they are CRS treatment and are excluded as competing causes under A35. Formal Grade 0 assessments (ICE 10/10) were documented on 17, 20 and 21 Jun. The current record onset, 2036-06-22, falls on the same day, so this is a match. The onset changed from 2036-06-21 in v1 to 2036-06-22 in v2. For a 7.6 legitimate revision, a supporting document version must be dated after v1 was recorded (2036-06-29T09:00) and no later than v2 (2036-07-07T14:00). No document version is dated in that interval: the supporting notes D05, D06 and D09 all predate v1. Condition (c) fails, so the result is 7.7 with the extra flag 'revision without new documentation'.\",\"evidence\":[{\"document_id\":\"SYN-0040-D05\",\"version\":1,\"quote\":\"ICE 8/10 at 02:10 on 22 Jun (orientation 3/4, naming 3/3, commands 1/1, writing 1/1, attention 0/1). Awake, cooperative.\"},{\"document_id\":\"SYN-0040-D04\",\"version\":1,\"quote\":\"Total 10/10. Alert, cooperative.\"},{\"document_id\":\"SYN-0040-D03\",\"version\":1,\"quote\":\"ICE 10/10 at 09:50.\"},{\"document_id\":\"SYN-0040-D09\",\"version\":1,\"quote\":\"Neurotoxicity: fluctuating ICE scores from 22 Jun, lowest ICE 5/10 on 23 Jun\"}]},\"max_grade\":{\"category\":\"7.7\",\"documented_value\":\"2\",\"explanation\":\"The worst assessment is the neurology consult on 23 Jun. It records ICE 5/10 (Grade 2) and 'Awakens to voice' (Grade 2), with no seizure, no focal motor deficit and no edema findings. Tremor is excluded from ICANS grading. Dexamethasone is ICANS treatment, not a competing cause. All other assessments are ICE 8/10 (Grade 1) or 10/10. The documented maximum is therefore Grade 2. The record's maximum grade is 2 and did not change between versions, so there is no discrepancy.\",\"evidence\":[{\"document_id\":\"SYN-0040-D07\",\"version\":1,\"quote\":\"ICE 5/10 at 11:00 on 23 Jun (orientation 1/4, naming 2/3, commands 1/1, writing 0/1, attention 1/1).\"},{\"document_id\":\"SYN-0040-D07\",\"version\":1,\"quote\":\"Awakens to voice, drifts back to sleep when not stimulated.\"},{\"document_id\":\"SYN-0040-D07\",\"version\":1,\"quote\":\"No seizure activity, no focal motor deficit.\"},{\"document_id\":\"SYN-0040-D08\",\"version\":2,\"quote\":\"ICE 8/10 at 10:10 (orientation 3/4, attention 0/1, remaining items full).\"}]}}",
+  "structured_output": {
+   "out_of_scope_reason": "in scope",
+   "onset": {
+    "category": "7.7",
+    "documented_value": "2036-06-22",
+    "explanation": "The first qualifying finding is ICE 8/10 (Grade 1) at 02:10 on 22 Jun (Day +5). It has no clinician attribution to another cause. Acetaminophen and tocilizumab were given on 19 Jun, but they are CRS treatment and are excluded as competing causes under A35. Formal Grade 0 assessments (ICE 10/10) were documented on 17, 20 and 21 Jun. The current record onset, 2036-06-22, falls on the same day, so this is a match. The onset changed from 2036-06-21 in v1 to 2036-06-22 in v2. For a 7.6 legitimate revision, a supporting document version must be dated after v1 was recorded (2036-06-29T09:00) and no later than v2 (2036-07-07T14:00). No document version is dated in that interval: the supporting notes D05, D06 and D09 all predate v1. Condition (c) fails, so the result is 7.7 with the extra flag 'revision without new documentation'.",
+    "evidence": [
+     {
+      "document_id": "SYN-0040-D05",
+      "version": 1,
+      "quote": "ICE 8/10 at 02:10 on 22 Jun (orientation 3/4, naming 3/3, commands 1/1, writing 1/1, attention 0/1). Awake, cooperative."
+     },
+     {
+      "document_id": "SYN-0040-D04",
+      "version": 1,
+      "quote": "Total 10/10. Alert, cooperative."
+     },
+     {
+      "document_id": "SYN-0040-D03",
+      "version": 1,
+      "quote": "ICE 10/10 at 09:50."
+     },
+     {
+      "document_id": "SYN-0040-D09",
+      "version": 1,
+      "quote": "Neurotoxicity: fluctuating ICE scores from 22 Jun, lowest ICE 5/10 on 23 Jun"
+     }
+    ]
+   },
+   "max_grade": {
+    "category": "7.7",
+    "documented_value": "2",
+    "explanation": "The worst assessment is the neurology consult on 23 Jun. It records ICE 5/10 (Grade 2) and 'Awakens to voice' (Grade 2), with no seizure, no focal motor deficit and no edema findings. Tremor is excluded from ICANS grading. Dexamethasone is ICANS treatment, not a competing cause. All other assessments are ICE 8/10 (Grade 1) or 10/10. The documented maximum is therefore Grade 2. The record's maximum grade is 2 and did not change between versions, so there is no discrepancy.",
+    "evidence": [
+     {
+      "document_id": "SYN-0040-D07",
+      "version": 1,
+      "quote": "ICE 5/10 at 11:00 on 23 Jun (orientation 1/4, naming 2/3, commands 1/1, writing 0/1, attention 1/1)."
+     },
+     {
+      "document_id": "SYN-0040-D07",
+      "version": 1,
+      "quote": "Awakens to voice, drifts back to sleep when not stimulated."
+     },
+     {
+      "document_id": "SYN-0040-D07",
+      "version": 1,
+      "quote": "No seizure activity, no focal motor deficit."
+     },
+     {
+      "document_id": "SYN-0040-D08",
+      "version": 2,
+      "quote": "ICE 8/10 at 10:10 (orientation 3/4, attention 0/1, remaining items full)."
+     }
+    ]
+   }
+  },
+  "ttft_ms": 5609,
+  "type": "result",
+  "duration_ms": 14263,
+  "uuid": "3424f17a-11f1-4af7-9151-2e2d74d2d987",
+  "ttft_stream_ms": 1994,
+  "time_to_request_ms": 192,
+  "first_content_frame_ms": 1994,
+  "queued_turn_count": 0,
+  "result_index": 0,
+  "credential_expires_at": "2026-12-06T22:19:03.648Z"
+ }
+}

@@ -1,0 +1,223 @@
+{
+ "case_id": "SYN-0029",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "thinking": "adaptive (always on for this model)",
+ "route": "Claude Code print mode",
+ "command": [
+  "claude",
+  "-p",
+  "--model",
+  "claude-opus-5-5",
+  "--effort",
+  "high",
+  "--system-prompt",
+  "<instructions: system_prompt.md>",
+  "--tools",
+  "",
+  "--json-schema",
+  "<answer_schema.json>",
+  "--output-format",
+  "json",
+  "--no-session-persistence",
+  "--strict-mcp-config",
+  "--setting-sources",
+  "project"
+ ],
+ "system_prompt_sha256": "0cda59baefac995b4e20a8dde5550077ed76c7f0f789f8c4661cf246f64e1596",
+ "answer_schema_sha256": "9dc6f412e8631752ce5bf4ce82b16ac3ce5d04d9dfb8709c8b459a7a11d2ad11",
+ "fallback_model": null,
+ "user_message_sha256": "0685552496ad0220c1015428d1d8b12ce84539471a0891500cd66eb558c30590",
+ "requested_at": "2026-11-09T08:22:06-06:00",
+ "stop_reason": "tool_use",
+ "finished": true,
+ "answer_text": "{\"out_of_scope_reason\": \"in scope\", \"onset\": {\"category\": \"7.7\", \"documented_value\": \"2033-12-18\", \"explanation\": \"The earliest qualifying finding is ICE 8/10 (Grade 1) at 15:10 on 18 Dec 2033. It is not attributed to another cause, and no competing cause is documented in the 24 hours before it. On 16 Dec the patient had a formal ICE of 10/10. The record's onset date of 2033-12-18 falls on the same calendar day, so there is no discrepancy.\", \"evidence\": [{\"document_id\": \"SYN-0029-D01\", \"version\": 1, \"quote\": \"ICE 10/10 at 09:45.\"}, {\"document_id\": \"SYN-0029-D02\", \"version\": 1, \"quote\": \"ICE 8/10 at 15:10 on 18 Dec (orient 3/4, attn 0/1).\"}]}, \"max_grade\": {\"category\": \"7.3\", \"documented_value\": \"2\", \"explanation\": \"The record gives Grade 3. The highest grade the documents support is Grade 2 (ICE 5/10 on 19 Dec, with the patient awake). On 20 Dec the patient opened their eyes only to tactile stimulus, which would be Grade 3. The attending physician explicitly attributed this to the hydromorphone PCA and not to ICANS, so it does not count toward the grade. No seizure, motor deficit or edema is documented. Dexamethasone is ICANS treatment, so it is not a competing cause. No documented 'not assessable' period exists. The record's grade is therefore unsupported (7.3), not insufficient evidence.\", \"evidence\": [{\"document_id\": \"SYN-0029-D03\", \"version\": 1, \"quote\": \"ICE 5/10 at 10:10 on 19 Dec (orientation 1/4, naming 2/3, commands 1/1, writing 0/1, attention 1/1). Awake, no focal deficit, no seizure activity.\"}, {\"document_id\": \"SYN-0029-D04\", \"version\": 1, \"quote\": \"At 06:30 on 20 Dec the patient opens eyes only when the shoulder is gently shaken, then answers in short phrases.\"}, {\"document_id\": \"SYN-0029-D05\", \"version\": 1, \"quote\": \"The reduced arousal found at 06:30 is attributed to the hydromorphone PCA started on 19 Dec, not to ICANS.\"}, {\"document_id\": \"SYN-0029-D06\", \"version\": 1, \"quote\": \"orientation 3/4, naming 3/3, commands 1/1, writing 0/1, attention 0/1 = 7/10. Awake, cooperative.\"}]}}",
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 2058,
+  "cache_read_input_tokens": 27340,
+  "output_tokens": 1360,
+  "output_tokens_details": {
+   "thinking_tokens": 395
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 2058,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 1360,
+    "cache_read_input_tokens": 27340,
+    "cache_creation_input_tokens": 2058,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 2058
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "models_reported": [
+  "claude-opus-5-5"
+ ],
+ "claude_code_cost_usd": 0.04914,
+ "duration_seconds": 12.59,
+ "cli_output": {
+  "duration_api_ms": 11801,
+  "stop_reason": "tool_use",
+  "session_id": "2d20ea94-ceec-4c2f-a354-946084651113",
+  "total_cost_usd": 0.04914,
+  "usage": {
+   "input_tokens": 2,
+   "cache_creation_input_tokens": 2058,
+   "cache_read_input_tokens": 27340,
+   "output_tokens": 1360,
+   "output_tokens_details": {
+    "thinking_tokens": 395
+   },
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "service_tier": "standard",
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 2058,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "inference_geo": "global",
+   "iterations": [
+    {
+     "input_tokens": 2,
+     "output_tokens": 1360,
+     "cache_read_input_tokens": 27340,
+     "cache_creation_input_tokens": 2058,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 0,
+      "ephemeral_1h_input_tokens": 2058
+     },
+     "type": "message"
+    }
+   ],
+   "speed": "standard",
+   "fallback_credit": null
+  },
+  "modelUsage": {
+   "claude-opus-5-5": {
+    "inputTokens": 2,
+    "outputTokens": 1360,
+    "cacheReadInputTokens": 27340,
+    "cacheCreationInputTokens": 2058,
+    "webSearchRequests": 0,
+    "costUSD": 0.04914,
+    "contextWindow": 1000000,
+    "maxOutputTokens": 128000,
+    "thinkingTokens": 395,
+    "cacheCreationEphemeral5mInputTokens": 0,
+    "cacheCreationEphemeral1hInputTokens": 2058,
+    "canonicalModel": "claude-opus-5-5",
+    "provider": "firstParty",
+    "costBasis": "list"
+   }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+   "spawned": 0,
+   "requested": {
+    "background": 0,
+    "foreground": 0,
+    "unset": 0
+   },
+   "started_in_background": 0,
+   "max_depth": 0,
+   "spawned_by_subagents": 0,
+   "completed": 0,
+   "failed": 0,
+   "killed": {
+    "parent": 0,
+    "user": 0,
+    "system": 0
+   },
+   "refused": {
+    "depth_limit": 0,
+    "concurrency_limit": 0,
+    "budget": 0
+   },
+   "by_type": {}
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 2,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "{\"out_of_scope_reason\":\"in scope\",\"onset\":{\"category\":\"7.7\",\"documented_value\":\"2033-12-18\",\"explanation\":\"The earliest qualifying finding is ICE 8/10 (Grade 1) at 15:10 on 18 Dec 2033. It is not attributed to another cause, and no competing cause is documented in the 24 hours before it. On 16 Dec the patient had a formal ICE of 10/10. The record's onset date of 2033-12-18 falls on the same calendar day, so there is no discrepancy.\",\"evidence\":[{\"document_id\":\"SYN-0029-D01\",\"version\":1,\"quote\":\"ICE 10/10 at 09:45.\"},{\"document_id\":\"SYN-0029-D02\",\"version\":1,\"quote\":\"ICE 8/10 at 15:10 on 18 Dec (orient 3/4, attn 0/1).\"}]},\"max_grade\":{\"category\":\"7.3\",\"documented_value\":\"2\",\"explanation\":\"The record gives Grade 3. The highest grade the documents support is Grade 2 (ICE 5/10 on 19 Dec, with the patient awake). On 20 Dec the patient opened their eyes only to tactile stimulus, which would be Grade 3. The attending physician explicitly attributed this to the hydromorphone PCA and not to ICANS, so it does not count toward the grade. No seizure, motor deficit or edema is documented. Dexamethasone is ICANS treatment, so it is not a competing cause. No documented 'not assessable' period exists. The record's grade is therefore unsupported (7.3), not insufficient evidence.\",\"evidence\":[{\"document_id\":\"SYN-0029-D03\",\"version\":1,\"quote\":\"ICE 5/10 at 10:10 on 19 Dec (orientation 1/4, naming 2/3, commands 1/1, writing 0/1, attention 1/1). Awake, no focal deficit, no seizure activity.\"},{\"document_id\":\"SYN-0029-D04\",\"version\":1,\"quote\":\"At 06:30 on 20 Dec the patient opens eyes only when the shoulder is gently shaken, then answers in short phrases.\"},{\"document_id\":\"SYN-0029-D05\",\"version\":1,\"quote\":\"The reduced arousal found at 06:30 is attributed to the hydromorphone PCA started on 19 Dec, not to ICANS.\"},{\"document_id\":\"SYN-0029-D06\",\"version\":1,\"quote\":\"orientation 3/4, naming 3/3, commands 1/1, writing 0/1, attention 0/1 = 7/10. Awake, cooperative.\"}]}}",
+  "structured_output": {
+   "out_of_scope_reason": "in scope",
+   "onset": {
+    "category": "7.7",
+    "documented_value": "2033-12-18",
+    "explanation": "The earliest qualifying finding is ICE 8/10 (Grade 1) at 15:10 on 18 Dec 2033. It is not attributed to another cause, and no competing cause is documented in the 24 hours before it. On 16 Dec the patient had a formal ICE of 10/10. The record's onset date of 2033-12-18 falls on the same calendar day, so there is no discrepancy.",
+    "evidence": [
+     {
+      "document_id": "SYN-0029-D01",
+      "version": 1,
+      "quote": "ICE 10/10 at 09:45."
+     },
+     {
+      "document_id": "SYN-0029-D02",
+      "version": 1,
+      "quote": "ICE 8/10 at 15:10 on 18 Dec (orient 3/4, attn 0/1)."
+     }
+    ]
+   },
+   "max_grade": {
+    "category": "7.3",
+    "documented_value": "2",
+    "explanation": "The record gives Grade 3. The highest grade the documents support is Grade 2 (ICE 5/10 on 19 Dec, with the patient awake). On 20 Dec the patient opened their eyes only to tactile stimulus, which would be Grade 3. The attending physician explicitly attributed this to the hydromorphone PCA and not to ICANS, so it does not count toward the grade. No seizure, motor deficit or edema is documented. Dexamethasone is ICANS treatment, so it is not a competing cause. No documented 'not assessable' period exists. The record's grade is therefore unsupported (7.3), not insufficient evidence.",
+    "evidence": [
+     {
+      "document_id": "SYN-0029-D03",
+      "version": 1,
+      "quote": "ICE 5/10 at 10:10 on 19 Dec (orientation 1/4, naming 2/3, commands 1/1, writing 0/1, attention 1/1). Awake, no focal deficit, no seizure activity."
+     },
+     {
+      "document_id": "SYN-0029-D04",
+      "version": 1,
+      "quote": "At 06:30 on 20 Dec the patient opens eyes only when the shoulder is gently shaken, then answers in short phrases."
+     },
+     {
+      "document_id": "SYN-0029-D05",
+      "version": 1,
+      "quote": "The reduced arousal found at 06:30 is attributed to the hydromorphone PCA started on 19 Dec, not to ICANS."
+     },
+     {
+      "document_id": "SYN-0029-D06",
+      "version": 1,
+      "quote": "orientation 3/4, naming 3/3, commands 1/1, writing 0/1, attention 0/1 = 7/10. Awake, cooperative."
+     }
+    ]
+   }
+  },
+  "ttft_ms": 5255,
+  "type": "result",
+  "duration_ms": 11955,
+  "uuid": "aa8d5726-950b-4829-a241-d8f6a2bc044b",
+  "ttft_stream_ms": 1781,
+  "time_to_request_ms": 153,
+  "first_content_frame_ms": 1781,
+  "queued_turn_count": 0,
+  "result_index": 0,
+  "credential_expires_at": "2026-12-06T22:19:03.648Z"
+ }
+}

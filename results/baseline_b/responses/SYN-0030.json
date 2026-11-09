@@ -1,0 +1,223 @@
+{
+ "case_id": "SYN-0030",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "thinking": "adaptive (always on for this model)",
+ "route": "Claude Code print mode",
+ "command": [
+  "claude",
+  "-p",
+  "--model",
+  "claude-opus-5-5",
+  "--effort",
+  "high",
+  "--system-prompt",
+  "<instructions: system_prompt.md>",
+  "--tools",
+  "",
+  "--json-schema",
+  "<answer_schema.json>",
+  "--output-format",
+  "json",
+  "--no-session-persistence",
+  "--strict-mcp-config",
+  "--setting-sources",
+  "project"
+ ],
+ "system_prompt_sha256": "0cda59baefac995b4e20a8dde5550077ed76c7f0f789f8c4661cf246f64e1596",
+ "answer_schema_sha256": "9dc6f412e8631752ce5bf4ce82b16ac3ce5d04d9dfb8709c8b459a7a11d2ad11",
+ "fallback_model": null,
+ "user_message_sha256": "22f3dec4a62a872ae16c02a36577088d339aa872ed436d055c6757a566a43bf7",
+ "requested_at": "2026-11-09T08:22:07-06:00",
+ "stop_reason": "tool_use",
+ "finished": true,
+ "answer_text": "{\"out_of_scope_reason\": \"in scope\", \"onset\": {\"category\": \"7.7\", \"documented_value\": \"2035-01-26\", \"explanation\": \"The earliest qualifying finding is ICE 8/10, which is Grade 1. Its event time is 2035-01-26 at 23:30. The note was signed after midnight (2035-01-27 00:50), but onset uses event time, so the date is 2035-01-26. No competing cause is documented: no sedating medicines, and the patient was afebrile. The earlier ICE on 2035-01-24 was 10/10, which is a formal Grade 0. The record onset of 2035-01-26 is the same calendar day.\", \"evidence\": [{\"document_id\": \"SYN-0030-D02\", \"version\": 1, \"quote\": \"2035-01-26 at 23:30, ICE 8/10: wrong month, could not name the hospital, sentence incomplete; named objects and followed the command.\"}, {\"document_id\": \"SYN-0030-D02\", \"version\": 1, \"quote\": \"No sedating medicines given since admission. Afebrile.\"}, {\"document_id\": \"SYN-0030-D01\", \"version\": 1, \"quote\": \"ICE at 20:00: 10/10.\"}]}, \"max_grade\": {\"category\": \"7.7\", \"documented_value\": \"2\", \"explanation\": \"The worst assessment is ICE 5/10 on 2035-01-27, which is Grade 2. The patient was awake and conversing, with no focal deficit, no seizure and no sedating drugs. No note documents a seizure, motor finding, edema or depressed consciousness that would give a higher grade. The record's Grade 2 equals the documented maximum. There is a 'not assessable' day on 2035-01-30 (patient off the ward), but that only matters for an unsupported grade under 7.3, so it does not apply here; it goes in the unassessed-period flag.\", \"evidence\": [{\"document_id\": \"SYN-0030-D03\", \"version\": 1, \"quote\": \"Neuro: ICE 5/10 at 09:10 (1 of 4 orientation answers, 2 of 3 objects, command followed, no sentence, counted back); awake, conversing, no focal deficit, no seizure.\"}, {\"document_id\": \"SYN-0030-D03\", \"version\": 1, \"quote\": \"No sedating drugs in the last 24 hours.\"}, {\"document_id\": \"SYN-0030-D04\", \"version\": 1, \"quote\": \"No ICE possible on 2035-01-30: patient away from the ward from 07:30 to 19:00 for apheresis and restaging scans.\"}]}}",
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 1980,
+  "cache_read_input_tokens": 27340,
+  "output_tokens": 1139,
+  "output_tokens_details": {
+   "thinking_tokens": 213
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 1980,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 1139,
+    "cache_read_input_tokens": 27340,
+    "cache_creation_input_tokens": 1980,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 1980
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "models_reported": [
+  "claude-opus-5-5"
+ ],
+ "claude_code_cost_usd": 0.044096,
+ "duration_seconds": 10.974,
+ "cli_output": {
+  "duration_api_ms": 10210,
+  "stop_reason": "tool_use",
+  "session_id": "6ac64809-6ad0-49b5-b118-8e99f70bf3ee",
+  "total_cost_usd": 0.044096,
+  "usage": {
+   "input_tokens": 2,
+   "cache_creation_input_tokens": 1980,
+   "cache_read_input_tokens": 27340,
+   "output_tokens": 1139,
+   "output_tokens_details": {
+    "thinking_tokens": 213
+   },
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "service_tier": "standard",
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 1980,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "inference_geo": "global",
+   "iterations": [
+    {
+     "input_tokens": 2,
+     "output_tokens": 1139,
+     "cache_read_input_tokens": 27340,
+     "cache_creation_input_tokens": 1980,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 0,
+      "ephemeral_1h_input_tokens": 1980
+     },
+     "type": "message"
+    }
+   ],
+   "speed": "standard",
+   "fallback_credit": null
+  },
+  "modelUsage": {
+   "claude-opus-5-5": {
+    "inputTokens": 2,
+    "outputTokens": 1139,
+    "cacheReadInputTokens": 27340,
+    "cacheCreationInputTokens": 1980,
+    "webSearchRequests": 0,
+    "costUSD": 0.044096,
+    "contextWindow": 1000000,
+    "maxOutputTokens": 128000,
+    "thinkingTokens": 213,
+    "cacheCreationEphemeral5mInputTokens": 0,
+    "cacheCreationEphemeral1hInputTokens": 1980,
+    "canonicalModel": "claude-opus-5-5",
+    "provider": "firstParty",
+    "costBasis": "list"
+   }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+   "spawned": 0,
+   "requested": {
+    "background": 0,
+    "foreground": 0,
+    "unset": 0
+   },
+   "started_in_background": 0,
+   "max_depth": 0,
+   "spawned_by_subagents": 0,
+   "completed": 0,
+   "failed": 0,
+   "killed": {
+    "parent": 0,
+    "user": 0,
+    "system": 0
+   },
+   "refused": {
+    "depth_limit": 0,
+    "concurrency_limit": 0,
+    "budget": 0
+   },
+   "by_type": {}
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 2,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "{\"out_of_scope_reason\":\"in scope\",\"onset\":{\"category\":\"7.7\",\"documented_value\":\"2035-01-26\",\"explanation\":\"The earliest qualifying finding is ICE 8/10, which is Grade 1. Its event time is 2035-01-26 at 23:30. The note was signed after midnight (2035-01-27 00:50), but onset uses event time, so the date is 2035-01-26. No competing cause is documented: no sedating medicines, and the patient was afebrile. The earlier ICE on 2035-01-24 was 10/10, which is a formal Grade 0. The record onset of 2035-01-26 is the same calendar day.\",\"evidence\":[{\"document_id\":\"SYN-0030-D02\",\"version\":1,\"quote\":\"2035-01-26 at 23:30, ICE 8/10: wrong month, could not name the hospital, sentence incomplete; named objects and followed the command.\"},{\"document_id\":\"SYN-0030-D02\",\"version\":1,\"quote\":\"No sedating medicines given since admission. Afebrile.\"},{\"document_id\":\"SYN-0030-D01\",\"version\":1,\"quote\":\"ICE at 20:00: 10/10.\"}]},\"max_grade\":{\"category\":\"7.7\",\"documented_value\":\"2\",\"explanation\":\"The worst assessment is ICE 5/10 on 2035-01-27, which is Grade 2. The patient was awake and conversing, with no focal deficit, no seizure and no sedating drugs. No note documents a seizure, motor finding, edema or depressed consciousness that would give a higher grade. The record's Grade 2 equals the documented maximum. There is a 'not assessable' day on 2035-01-30 (patient off the ward), but that only matters for an unsupported grade under 7.3, so it does not apply here; it goes in the unassessed-period flag.\",\"evidence\":[{\"document_id\":\"SYN-0030-D03\",\"version\":1,\"quote\":\"Neuro: ICE 5/10 at 09:10 (1 of 4 orientation answers, 2 of 3 objects, command followed, no sentence, counted back); awake, conversing, no focal deficit, no seizure.\"},{\"document_id\":\"SYN-0030-D03\",\"version\":1,\"quote\":\"No sedating drugs in the last 24 hours.\"},{\"document_id\":\"SYN-0030-D04\",\"version\":1,\"quote\":\"No ICE possible on 2035-01-30: patient away from the ward from 07:30 to 19:00 for apheresis and restaging scans.\"}]}}",
+  "structured_output": {
+   "out_of_scope_reason": "in scope",
+   "onset": {
+    "category": "7.7",
+    "documented_value": "2035-01-26",
+    "explanation": "The earliest qualifying finding is ICE 8/10, which is Grade 1. Its event time is 2035-01-26 at 23:30. The note was signed after midnight (2035-01-27 00:50), but onset uses event time, so the date is 2035-01-26. No competing cause is documented: no sedating medicines, and the patient was afebrile. The earlier ICE on 2035-01-24 was 10/10, which is a formal Grade 0. The record onset of 2035-01-26 is the same calendar day.",
+    "evidence": [
+     {
+      "document_id": "SYN-0030-D02",
+      "version": 1,
+      "quote": "2035-01-26 at 23:30, ICE 8/10: wrong month, could not name the hospital, sentence incomplete; named objects and followed the command."
+     },
+     {
+      "document_id": "SYN-0030-D02",
+      "version": 1,
+      "quote": "No sedating medicines given since admission. Afebrile."
+     },
+     {
+      "document_id": "SYN-0030-D01",
+      "version": 1,
+      "quote": "ICE at 20:00: 10/10."
+     }
+    ]
+   },
+   "max_grade": {
+    "category": "7.7",
+    "documented_value": "2",
+    "explanation": "The worst assessment is ICE 5/10 on 2035-01-27, which is Grade 2. The patient was awake and conversing, with no focal deficit, no seizure and no sedating drugs. No note documents a seizure, motor finding, edema or depressed consciousness that would give a higher grade. The record's Grade 2 equals the documented maximum. There is a 'not assessable' day on 2035-01-30 (patient off the ward), but that only matters for an unsupported grade under 7.3, so it does not apply here; it goes in the unassessed-period flag.",
+    "evidence": [
+     {
+      "document_id": "SYN-0030-D03",
+      "version": 1,
+      "quote": "Neuro: ICE 5/10 at 09:10 (1 of 4 orientation answers, 2 of 3 objects, command followed, no sentence, counted back); awake, conversing, no focal deficit, no seizure."
+     },
+     {
+      "document_id": "SYN-0030-D03",
+      "version": 1,
+      "quote": "No sedating drugs in the last 24 hours."
+     },
+     {
+      "document_id": "SYN-0030-D04",
+      "version": 1,
+      "quote": "No ICE possible on 2035-01-30: patient away from the ward from 07:30 to 19:00 for apheresis and restaging scans."
+     }
+    ]
+   }
+  },
+  "ttft_ms": 3912,
+  "type": "result",
+  "duration_ms": 10366,
+  "uuid": "929727cd-7ab1-48a1-ad8d-58e25198c50b",
+  "ttft_stream_ms": 1893,
+  "time_to_request_ms": 155,
+  "first_content_frame_ms": 1893,
+  "queued_turn_count": 0,
+  "result_index": 0,
+  "credential_expires_at": "2026-12-06T22:19:03.648Z"
+ }
+}

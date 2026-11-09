@@ -1,0 +1,233 @@
+{
+ "case_id": "SYN-0008",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "thinking": "adaptive (always on for this model)",
+ "route": "Claude Code print mode",
+ "command": [
+  "claude",
+  "-p",
+  "--model",
+  "claude-opus-5-5",
+  "--effort",
+  "high",
+  "--system-prompt",
+  "<instructions: system_prompt.md>",
+  "--tools",
+  "",
+  "--json-schema",
+  "<answer_schema.json>",
+  "--output-format",
+  "json",
+  "--no-session-persistence",
+  "--strict-mcp-config",
+  "--setting-sources",
+  "project"
+ ],
+ "system_prompt_sha256": "0cda59baefac995b4e20a8dde5550077ed76c7f0f789f8c4661cf246f64e1596",
+ "answer_schema_sha256": "9dc6f412e8631752ce5bf4ce82b16ac3ce5d04d9dfb8709c8b459a7a11d2ad11",
+ "fallback_model": null,
+ "user_message_sha256": "1b9f1b43a97b681170155e1cd365ed6d026e05029b503ceb0f167db1f4f45ff3",
+ "requested_at": "2026-11-09T08:20:42-06:00",
+ "stop_reason": "tool_use",
+ "finished": true,
+ "answer_text": "{\"out_of_scope_reason\": \"in scope\", \"onset\": {\"category\": \"7.1\", \"documented_value\": \"2036-10-03\", \"explanation\": \"The earliest qualifying finding is ICE 8/10 at 07:30 on 2036-10-03 (Day +3). That is Grade 1, and no clinician attributes it to another cause. Tocilizumab treats CRS, so under A35 it is not a competing cause. The record gives onset 2036-10-05, the date of the ICE 5/10 finding. That is 2 calendar days after the documented onset (signed difference +2 days), so with zero tolerance this is a mismatch.\", \"evidence\": [{\"document_id\": \"SYN-0008-D01\", \"version\": 1, \"quote\": \"Assessment date/time ........ 2036-10-03 07:30\"}, {\"document_id\": \"SYN-0008-D01\", \"version\": 1, \"quote\": \"ICE SCORE ................... 8\"}, {\"document_id\": \"SYN-0008-D01\", \"version\": 1, \"quote\": \"fever resolved after tocilizumab on 2036-10-01; provider informed of ICE change\"}, {\"document_id\": \"SYN-0008-D02\", \"version\": 1, \"quote\": \"Neuro screen (08:00): ICE 5/10 | arousal: awake | focal deficits: none | seizure: none\"}]}, \"max_grade\": {\"category\": \"7.7\", \"documented_value\": \"2\", \"explanation\": \"The worst documented assessment is ICE 5/10 on 2036-10-05, which is Grade 2. On that day the patient was awake, with no focal deficits and no seizure, and the note says no sedating drugs were given. Dexamethasone is treatment, not a competing cause, and the chronic kidney disease was at baseline creatinine. No Grade 3 or higher finding is documented. ICE was 10/10 on Day +8. The Day +35 note (ICE 10, tremor) is outside the observation window, and tremor is excluded from grading anyway. The recorded Grade 2 matches the documents.\", \"evidence\": [{\"document_id\": \"SYN-0008-D02\", \"version\": 1, \"quote\": \"Neuro screen (08:00): ICE 5/10 | arousal: awake | focal deficits: none | seizure: none\"}, {\"document_id\": \"SYN-0008-D02\", \"version\": 1, \"quote\": \"dexamethasone 10 mg IV q6h started today; no sedating drugs administered\"}, {\"document_id\": \"SYN-0008-D02\", \"version\": 1, \"quote\": \"Assessment: ICANS; CRS resolved\"}, {\"document_id\": \"SYN-0008-D03\", \"version\": 1, \"quote\": \"Discharge neuro screen: ICE 10/10 at 09:00 on 2036-10-08\"}]}}",
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 2133,
+  "cache_read_input_tokens": 27340,
+  "output_tokens": 1262,
+  "output_tokens_details": {
+   "thinking_tokens": 263
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 2133,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 1262,
+    "cache_read_input_tokens": 27340,
+    "cache_creation_input_tokens": 2133,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 2133
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "models_reported": [
+  "claude-opus-5-5"
+ ],
+ "claude_code_cost_usd": 0.04778,
+ "duration_seconds": 11.339,
+ "cli_output": {
+  "duration_api_ms": 10599,
+  "stop_reason": "tool_use",
+  "session_id": "aee8f60e-fc75-4134-96ba-4f737572a426",
+  "total_cost_usd": 0.04778,
+  "usage": {
+   "input_tokens": 2,
+   "cache_creation_input_tokens": 2133,
+   "cache_read_input_tokens": 27340,
+   "output_tokens": 1262,
+   "output_tokens_details": {
+    "thinking_tokens": 263
+   },
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "service_tier": "standard",
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 2133,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "inference_geo": "global",
+   "iterations": [
+    {
+     "input_tokens": 2,
+     "output_tokens": 1262,
+     "cache_read_input_tokens": 27340,
+     "cache_creation_input_tokens": 2133,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 0,
+      "ephemeral_1h_input_tokens": 2133
+     },
+     "type": "message"
+    }
+   ],
+   "speed": "standard",
+   "fallback_credit": null
+  },
+  "modelUsage": {
+   "claude-opus-5-5": {
+    "inputTokens": 2,
+    "outputTokens": 1262,
+    "cacheReadInputTokens": 27340,
+    "cacheCreationInputTokens": 2133,
+    "webSearchRequests": 0,
+    "costUSD": 0.04778,
+    "contextWindow": 1000000,
+    "maxOutputTokens": 128000,
+    "thinkingTokens": 263,
+    "cacheCreationEphemeral5mInputTokens": 0,
+    "cacheCreationEphemeral1hInputTokens": 2133,
+    "canonicalModel": "claude-opus-5-5",
+    "provider": "firstParty",
+    "costBasis": "list"
+   }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+   "spawned": 0,
+   "requested": {
+    "background": 0,
+    "foreground": 0,
+    "unset": 0
+   },
+   "started_in_background": 0,
+   "max_depth": 0,
+   "spawned_by_subagents": 0,
+   "completed": 0,
+   "failed": 0,
+   "killed": {
+    "parent": 0,
+    "user": 0,
+    "system": 0
+   },
+   "refused": {
+    "depth_limit": 0,
+    "concurrency_limit": 0,
+    "budget": 0
+   },
+   "by_type": {}
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 2,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "{\"out_of_scope_reason\":\"in scope\",\"onset\":{\"category\":\"7.1\",\"documented_value\":\"2036-10-03\",\"explanation\":\"The earliest qualifying finding is ICE 8/10 at 07:30 on 2036-10-03 (Day +3). That is Grade 1, and no clinician attributes it to another cause. Tocilizumab treats CRS, so under A35 it is not a competing cause. The record gives onset 2036-10-05, the date of the ICE 5/10 finding. That is 2 calendar days after the documented onset (signed difference +2 days), so with zero tolerance this is a mismatch.\",\"evidence\":[{\"document_id\":\"SYN-0008-D01\",\"version\":1,\"quote\":\"Assessment date/time ........ 2036-10-03 07:30\"},{\"document_id\":\"SYN-0008-D01\",\"version\":1,\"quote\":\"ICE SCORE ................... 8\"},{\"document_id\":\"SYN-0008-D01\",\"version\":1,\"quote\":\"fever resolved after tocilizumab on 2036-10-01; provider informed of ICE change\"},{\"document_id\":\"SYN-0008-D02\",\"version\":1,\"quote\":\"Neuro screen (08:00): ICE 5/10 | arousal: awake | focal deficits: none | seizure: none\"}]},\"max_grade\":{\"category\":\"7.7\",\"documented_value\":\"2\",\"explanation\":\"The worst documented assessment is ICE 5/10 on 2036-10-05, which is Grade 2. On that day the patient was awake, with no focal deficits and no seizure, and the note says no sedating drugs were given. Dexamethasone is treatment, not a competing cause, and the chronic kidney disease was at baseline creatinine. No Grade 3 or higher finding is documented. ICE was 10/10 on Day +8. The Day +35 note (ICE 10, tremor) is outside the observation window, and tremor is excluded from grading anyway. The recorded Grade 2 matches the documents.\",\"evidence\":[{\"document_id\":\"SYN-0008-D02\",\"version\":1,\"quote\":\"Neuro screen (08:00): ICE 5/10 | arousal: awake | focal deficits: none | seizure: none\"},{\"document_id\":\"SYN-0008-D02\",\"version\":1,\"quote\":\"dexamethasone 10 mg IV q6h started today; no sedating drugs administered\"},{\"document_id\":\"SYN-0008-D02\",\"version\":1,\"quote\":\"Assessment: ICANS; CRS resolved\"},{\"document_id\":\"SYN-0008-D03\",\"version\":1,\"quote\":\"Discharge neuro screen: ICE 10/10 at 09:00 on 2036-10-08\"}]}}",
+  "structured_output": {
+   "out_of_scope_reason": "in scope",
+   "onset": {
+    "category": "7.1",
+    "documented_value": "2036-10-03",
+    "explanation": "The earliest qualifying finding is ICE 8/10 at 07:30 on 2036-10-03 (Day +3). That is Grade 1, and no clinician attributes it to another cause. Tocilizumab treats CRS, so under A35 it is not a competing cause. The record gives onset 2036-10-05, the date of the ICE 5/10 finding. That is 2 calendar days after the documented onset (signed difference +2 days), so with zero tolerance this is a mismatch.",
+    "evidence": [
+     {
+      "document_id": "SYN-0008-D01",
+      "version": 1,
+      "quote": "Assessment date/time ........ 2036-10-03 07:30"
+     },
+     {
+      "document_id": "SYN-0008-D01",
+      "version": 1,
+      "quote": "ICE SCORE ................... 8"
+     },
+     {
+      "document_id": "SYN-0008-D01",
+      "version": 1,
+      "quote": "fever resolved after tocilizumab on 2036-10-01; provider informed of ICE change"
+     },
+     {
+      "document_id": "SYN-0008-D02",
+      "version": 1,
+      "quote": "Neuro screen (08:00): ICE 5/10 | arousal: awake | focal deficits: none | seizure: none"
+     }
+    ]
+   },
+   "max_grade": {
+    "category": "7.7",
+    "documented_value": "2",
+    "explanation": "The worst documented assessment is ICE 5/10 on 2036-10-05, which is Grade 2. On that day the patient was awake, with no focal deficits and no seizure, and the note says no sedating drugs were given. Dexamethasone is treatment, not a competing cause, and the chronic kidney disease was at baseline creatinine. No Grade 3 or higher finding is documented. ICE was 10/10 on Day +8. The Day +35 note (ICE 10, tremor) is outside the observation window, and tremor is excluded from grading anyway. The recorded Grade 2 matches the documents.",
+    "evidence": [
+     {
+      "document_id": "SYN-0008-D02",
+      "version": 1,
+      "quote": "Neuro screen (08:00): ICE 5/10 | arousal: awake | focal deficits: none | seizure: none"
+     },
+     {
+      "document_id": "SYN-0008-D02",
+      "version": 1,
+      "quote": "dexamethasone 10 mg IV q6h started today; no sedating drugs administered"
+     },
+     {
+      "document_id": "SYN-0008-D02",
+      "version": 1,
+      "quote": "Assessment: ICANS; CRS resolved"
+     },
+     {
+      "document_id": "SYN-0008-D03",
+      "version": 1,
+      "quote": "Discharge neuro screen: ICE 10/10 at 09:00 on 2036-10-08"
+     }
+    ]
+   }
+  },
+  "ttft_ms": 4070,
+  "type": "result",
+  "duration_ms": 10746,
+  "uuid": "0931c192-c23a-4cc0-becb-94c02c142c9a",
+  "ttft_stream_ms": 1897,
+  "time_to_request_ms": 146,
+  "first_content_frame_ms": 1897,
+  "queued_turn_count": 0,
+  "result_index": 0,
+  "credential_expires_at": "2026-12-06T22:19:03.648Z"
+ }
+}

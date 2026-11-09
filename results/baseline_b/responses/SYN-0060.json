@@ -1,0 +1,233 @@
+{
+ "case_id": "SYN-0060",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "thinking": "adaptive (always on for this model)",
+ "route": "Claude Code print mode",
+ "command": [
+  "claude",
+  "-p",
+  "--model",
+  "claude-opus-5-5",
+  "--effort",
+  "high",
+  "--system-prompt",
+  "<instructions: system_prompt.md>",
+  "--tools",
+  "",
+  "--json-schema",
+  "<answer_schema.json>",
+  "--output-format",
+  "json",
+  "--no-session-persistence",
+  "--strict-mcp-config",
+  "--setting-sources",
+  "project"
+ ],
+ "system_prompt_sha256": "0cda59baefac995b4e20a8dde5550077ed76c7f0f789f8c4661cf246f64e1596",
+ "answer_schema_sha256": "9dc6f412e8631752ce5bf4ce82b16ac3ce5d04d9dfb8709c8b459a7a11d2ad11",
+ "fallback_model": null,
+ "user_message_sha256": "c40ab47913538633e254471757b453b4680dba07bd85b7520bdcc2cbd1441bf5",
+ "requested_at": "2026-11-09T08:24:12-06:00",
+ "stop_reason": "tool_use",
+ "finished": true,
+ "answer_text": "{\"out_of_scope_reason\": \"in scope\", \"onset\": {\"category\": \"7.7\", \"documented_value\": \"2035-08-19 to 2035-08-20\", \"explanation\": \"The earliest qualifying finding is in the attending note signed 2035-08-20 (D05): 'overnight' the ICE score fell to 7/10, which is Grade 1. A §6.1 relative-time phrase gives the date range D-1 to D, so 2035-08-19 to 2035-08-20. The note says no sedatives or opioids were given since 2035-08-16, so there is no competing cause. The earliest finding with an exact date is the ICE 6/10 on 2035-08-22. That is later than the start of the range, so the onset is 2035-08-19 to 2035-08-20 (§6.2, A26). The ICE 10/10 at 08:10 on 2035-08-19 (D04) comes before the overnight period and does not rule it out. The recorded onset, 2035-08-19, falls inside the range, so there is no discrepancy (§7.1, §7.7). The discharge summary agrees ('Neurotoxicity Day +5 to +10'). The onset was the same in both record versions, so 7.6 does not apply. Flags: relative time; time-imprecise (exact time not recorded); unassessed period (case-level).\", \"evidence\": [{\"document_id\": \"SYN-0060-D05\", \"version\": 1, \"quote\": \"Per night-shift handover, overnight the ICE dropped to 7/10 (missed the hospital name and the written sentence, then the year); exact time not recorded.\"}, {\"document_id\": \"SYN-0060-D05\", \"version\": 1, \"quote\": \"No sedatives or opioids given since 2035-08-16.\"}, {\"document_id\": \"SYN-0060-D04\", \"version\": 1, \"quote\": \"ICE 2035-08-19 at 08:10: 10/10. Awake, cheerful.\"}, {\"document_id\": \"SYN-0060-D09\", \"version\": 1, \"quote\": \"Neurotoxicity Day +5 to +10, worst ICE 6/10 on 2035-08-22; dexamethasone.\"}]}, \"max_grade\": {\"category\": \"7.7\", \"documented_value\": \"2\", \"explanation\": \"The worst assessment is ICE 6/10 on 2035-08-22 at 10:30 (D06). The item scores add up to the stated total. The patient was awake, with no sedating medication, so this is Grade 2. The other findings are lower: ICE 7/10 overnight 08-19 to 08-20 (Grade 1) and ICE 8/10 on 08-23 (Grade 1). The hand tremor on 08-25 is excluded from grading. No seizure, motor, oedema or consciousness finding reaches Grade 3. Dexamethasone and levetiracetam are not competing causes (A35), and there is no documented 'not assessable' period. The current record (v2) says Grade 2, which matches. The grade was changed from 3 (v1, recorded 2035-09-04) to 2 (v2, recorded 2035-09-08). However, every supporting document was written by 2035-08-29, before v1 was recorded, so condition (c) of §7.6 is not met. The result is 7.7 with the flag 'revision without new documentation'.\", \"evidence\": [{\"document_id\": \"SYN-0060-D06\", \"version\": 1, \"quote\": \"ICE 6/10 at 10:30 (orientation 2 right, 2 objects named, command done, no sentence, tens correct). Awake in chair after breakfast. No sedating medication.\"}, {\"document_id\": \"SYN-0060-D07\", \"version\": 1, \"quote\": \"ICE 08:50: 8/10. Awake, full strength, no seizure activity.\"}, {\"document_id\": \"SYN-0060-D05\", \"version\": 1, \"quote\": \"overnight the ICE dropped to 7/10\"}, {\"document_id\": \"SYN-0060-D08\", \"version\": 1, \"quote\": \"Slight tremor of the right hand when writing; doctor aware.\"}]}}",
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 2776,
+  "cache_read_input_tokens": 27340,
+  "output_tokens": 2415,
+  "output_tokens_details": {
+   "thinking_tokens": 1002
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 2776,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 2415,
+    "cache_read_input_tokens": 27340,
+    "cache_creation_input_tokens": 2776,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 2776
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "models_reported": [
+  "claude-opus-5-5"
+ ],
+ "claude_code_cost_usd": 0.075984,
+ "duration_seconds": 20.923,
+ "cli_output": {
+  "duration_api_ms": 20310,
+  "stop_reason": "tool_use",
+  "session_id": "3b5fc534-7dbf-42b4-a8be-46d06f3fb3ff",
+  "total_cost_usd": 0.075984,
+  "usage": {
+   "input_tokens": 2,
+   "cache_creation_input_tokens": 2776,
+   "cache_read_input_tokens": 27340,
+   "output_tokens": 2415,
+   "output_tokens_details": {
+    "thinking_tokens": 1002
+   },
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "service_tier": "standard",
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 2776,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "inference_geo": "global",
+   "iterations": [
+    {
+     "input_tokens": 2,
+     "output_tokens": 2415,
+     "cache_read_input_tokens": 27340,
+     "cache_creation_input_tokens": 2776,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 0,
+      "ephemeral_1h_input_tokens": 2776
+     },
+     "type": "message"
+    }
+   ],
+   "speed": "standard",
+   "fallback_credit": null
+  },
+  "modelUsage": {
+   "claude-opus-5-5": {
+    "inputTokens": 2,
+    "outputTokens": 2415,
+    "cacheReadInputTokens": 27340,
+    "cacheCreationInputTokens": 2776,
+    "webSearchRequests": 0,
+    "costUSD": 0.075984,
+    "contextWindow": 1000000,
+    "maxOutputTokens": 128000,
+    "thinkingTokens": 1002,
+    "cacheCreationEphemeral5mInputTokens": 0,
+    "cacheCreationEphemeral1hInputTokens": 2776,
+    "canonicalModel": "claude-opus-5-5",
+    "provider": "firstParty",
+    "costBasis": "list"
+   }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+   "spawned": 0,
+   "requested": {
+    "background": 0,
+    "foreground": 0,
+    "unset": 0
+   },
+   "started_in_background": 0,
+   "max_depth": 0,
+   "spawned_by_subagents": 0,
+   "completed": 0,
+   "failed": 0,
+   "killed": {
+    "parent": 0,
+    "user": 0,
+    "system": 0
+   },
+   "refused": {
+    "depth_limit": 0,
+    "concurrency_limit": 0,
+    "budget": 0
+   },
+   "by_type": {}
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 2,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "{\"out_of_scope_reason\":\"in scope\",\"onset\":{\"category\":\"7.7\",\"documented_value\":\"2035-08-19 to 2035-08-20\",\"explanation\":\"The earliest qualifying finding is in the attending note signed 2035-08-20 (D05): 'overnight' the ICE score fell to 7/10, which is Grade 1. A §6.1 relative-time phrase gives the date range D-1 to D, so 2035-08-19 to 2035-08-20. The note says no sedatives or opioids were given since 2035-08-16, so there is no competing cause. The earliest finding with an exact date is the ICE 6/10 on 2035-08-22. That is later than the start of the range, so the onset is 2035-08-19 to 2035-08-20 (§6.2, A26). The ICE 10/10 at 08:10 on 2035-08-19 (D04) comes before the overnight period and does not rule it out. The recorded onset, 2035-08-19, falls inside the range, so there is no discrepancy (§7.1, §7.7). The discharge summary agrees ('Neurotoxicity Day +5 to +10'). The onset was the same in both record versions, so 7.6 does not apply. Flags: relative time; time-imprecise (exact time not recorded); unassessed period (case-level).\",\"evidence\":[{\"document_id\":\"SYN-0060-D05\",\"version\":1,\"quote\":\"Per night-shift handover, overnight the ICE dropped to 7/10 (missed the hospital name and the written sentence, then the year); exact time not recorded.\"},{\"document_id\":\"SYN-0060-D05\",\"version\":1,\"quote\":\"No sedatives or opioids given since 2035-08-16.\"},{\"document_id\":\"SYN-0060-D04\",\"version\":1,\"quote\":\"ICE 2035-08-19 at 08:10: 10/10. Awake, cheerful.\"},{\"document_id\":\"SYN-0060-D09\",\"version\":1,\"quote\":\"Neurotoxicity Day +5 to +10, worst ICE 6/10 on 2035-08-22; dexamethasone.\"}]},\"max_grade\":{\"category\":\"7.7\",\"documented_value\":\"2\",\"explanation\":\"The worst assessment is ICE 6/10 on 2035-08-22 at 10:30 (D06). The item scores add up to the stated total. The patient was awake, with no sedating medication, so this is Grade 2. The other findings are lower: ICE 7/10 overnight 08-19 to 08-20 (Grade 1) and ICE 8/10 on 08-23 (Grade 1). The hand tremor on 08-25 is excluded from grading. No seizure, motor, oedema or consciousness finding reaches Grade 3. Dexamethasone and levetiracetam are not competing causes (A35), and there is no documented 'not assessable' period. The current record (v2) says Grade 2, which matches. The grade was changed from 3 (v1, recorded 2035-09-04) to 2 (v2, recorded 2035-09-08). However, every supporting document was written by 2035-08-29, before v1 was recorded, so condition (c) of §7.6 is not met. The result is 7.7 with the flag 'revision without new documentation'.\",\"evidence\":[{\"document_id\":\"SYN-0060-D06\",\"version\":1,\"quote\":\"ICE 6/10 at 10:30 (orientation 2 right, 2 objects named, command done, no sentence, tens correct). Awake in chair after breakfast. No sedating medication.\"},{\"document_id\":\"SYN-0060-D07\",\"version\":1,\"quote\":\"ICE 08:50: 8/10. Awake, full strength, no seizure activity.\"},{\"document_id\":\"SYN-0060-D05\",\"version\":1,\"quote\":\"overnight the ICE dropped to 7/10\"},{\"document_id\":\"SYN-0060-D08\",\"version\":1,\"quote\":\"Slight tremor of the right hand when writing; doctor aware.\"}]}}",
+  "structured_output": {
+   "out_of_scope_reason": "in scope",
+   "onset": {
+    "category": "7.7",
+    "documented_value": "2035-08-19 to 2035-08-20",
+    "explanation": "The earliest qualifying finding is in the attending note signed 2035-08-20 (D05): 'overnight' the ICE score fell to 7/10, which is Grade 1. A §6.1 relative-time phrase gives the date range D-1 to D, so 2035-08-19 to 2035-08-20. The note says no sedatives or opioids were given since 2035-08-16, so there is no competing cause. The earliest finding with an exact date is the ICE 6/10 on 2035-08-22. That is later than the start of the range, so the onset is 2035-08-19 to 2035-08-20 (§6.2, A26). The ICE 10/10 at 08:10 on 2035-08-19 (D04) comes before the overnight period and does not rule it out. The recorded onset, 2035-08-19, falls inside the range, so there is no discrepancy (§7.1, §7.7). The discharge summary agrees ('Neurotoxicity Day +5 to +10'). The onset was the same in both record versions, so 7.6 does not apply. Flags: relative time; time-imprecise (exact time not recorded); unassessed period (case-level).",
+    "evidence": [
+     {
+      "document_id": "SYN-0060-D05",
+      "version": 1,
+      "quote": "Per night-shift handover, overnight the ICE dropped to 7/10 (missed the hospital name and the written sentence, then the year); exact time not recorded."
+     },
+     {
+      "document_id": "SYN-0060-D05",
+      "version": 1,
+      "quote": "No sedatives or opioids given since 2035-08-16."
+     },
+     {
+      "document_id": "SYN-0060-D04",
+      "version": 1,
+      "quote": "ICE 2035-08-19 at 08:10: 10/10. Awake, cheerful."
+     },
+     {
+      "document_id": "SYN-0060-D09",
+      "version": 1,
+      "quote": "Neurotoxicity Day +5 to +10, worst ICE 6/10 on 2035-08-22; dexamethasone."
+     }
+    ]
+   },
+   "max_grade": {
+    "category": "7.7",
+    "documented_value": "2",
+    "explanation": "The worst assessment is ICE 6/10 on 2035-08-22 at 10:30 (D06). The item scores add up to the stated total. The patient was awake, with no sedating medication, so this is Grade 2. The other findings are lower: ICE 7/10 overnight 08-19 to 08-20 (Grade 1) and ICE 8/10 on 08-23 (Grade 1). The hand tremor on 08-25 is excluded from grading. No seizure, motor, oedema or consciousness finding reaches Grade 3. Dexamethasone and levetiracetam are not competing causes (A35), and there is no documented 'not assessable' period. The current record (v2) says Grade 2, which matches. The grade was changed from 3 (v1, recorded 2035-09-04) to 2 (v2, recorded 2035-09-08). However, every supporting document was written by 2035-08-29, before v1 was recorded, so condition (c) of §7.6 is not met. The result is 7.7 with the flag 'revision without new documentation'.",
+    "evidence": [
+     {
+      "document_id": "SYN-0060-D06",
+      "version": 1,
+      "quote": "ICE 6/10 at 10:30 (orientation 2 right, 2 objects named, command done, no sentence, tens correct). Awake in chair after breakfast. No sedating medication."
+     },
+     {
+      "document_id": "SYN-0060-D07",
+      "version": 1,
+      "quote": "ICE 08:50: 8/10. Awake, full strength, no seizure activity."
+     },
+     {
+      "document_id": "SYN-0060-D05",
+      "version": 1,
+      "quote": "overnight the ICE dropped to 7/10"
+     },
+     {
+      "document_id": "SYN-0060-D08",
+      "version": 1,
+      "quote": "Slight tremor of the right hand when writing; doctor aware."
+     }
+    ]
+   }
+  },
+  "ttft_ms": 10100,
+  "type": "result",
+  "duration_ms": 20462,
+  "uuid": "cfccd2d1-197e-4822-83d1-cbb82cfc8123",
+  "ttft_stream_ms": 1808,
+  "time_to_request_ms": 150,
+  "first_content_frame_ms": 1808,
+  "queued_turn_count": 0,
+  "result_index": 0,
+  "credential_expires_at": "2026-12-06T22:19:03.648Z"
+ }
+}

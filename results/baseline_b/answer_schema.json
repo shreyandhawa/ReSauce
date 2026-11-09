@@ -1,0 +1,129 @@
+{
+ "type": "object",
+ "properties": {
+  "out_of_scope_reason": {
+   "type": "string",
+   "enum": [
+    "in scope",
+    "age under 18",
+    "CAPD assessment",
+    "record Grade 5",
+    "documented death",
+    "developmental delay"
+   ]
+  },
+  "onset": {
+   "type": "object",
+   "properties": {
+    "category": {
+     "type": "string",
+     "enum": [
+      "7.1",
+      "7.4",
+      "7.5",
+      "7.6",
+      "7.7",
+      "7.8"
+     ]
+    },
+    "documented_value": {
+     "type": "string",
+     "description": "The ICANS onset date the documents support (YYYY-MM-DD), or none"
+    },
+    "explanation": {
+     "type": "string"
+    },
+    "evidence": {
+     "type": "array",
+     "items": {
+      "type": "object",
+      "properties": {
+       "document_id": {
+        "type": "string"
+       },
+       "version": {
+        "type": "integer"
+       },
+       "quote": {
+        "type": "string"
+       }
+      },
+      "required": [
+       "document_id",
+       "version",
+       "quote"
+      ],
+      "additionalProperties": false
+     }
+    }
+   },
+   "required": [
+    "category",
+    "documented_value",
+    "explanation",
+    "evidence"
+   ],
+   "additionalProperties": false
+  },
+  "max_grade": {
+   "type": "object",
+   "properties": {
+    "category": {
+     "type": "string",
+     "enum": [
+      "7.2",
+      "7.3",
+      "7.4",
+      "7.5",
+      "7.6",
+      "7.7",
+      "7.8"
+     ]
+    },
+    "documented_value": {
+     "type": "string",
+     "description": "The maximum ICANS grade the documents support (0 to 4), or none"
+    },
+    "explanation": {
+     "type": "string"
+    },
+    "evidence": {
+     "type": "array",
+     "items": {
+      "type": "object",
+      "properties": {
+       "document_id": {
+        "type": "string"
+       },
+       "version": {
+        "type": "integer"
+       },
+       "quote": {
+        "type": "string"
+       }
+      },
+      "required": [
+       "document_id",
+       "version",
+       "quote"
+      ],
+      "additionalProperties": false
+     }
+    }
+   },
+   "required": [
+    "category",
+    "documented_value",
+    "explanation",
+    "evidence"
+   ],
+   "additionalProperties": false
+  }
+ },
+ "required": [
+  "out_of_scope_reason",
+  "onset",
+  "max_grade"
+ ],
+ "additionalProperties": false
+}

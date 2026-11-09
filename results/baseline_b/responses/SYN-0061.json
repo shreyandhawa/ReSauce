@@ -1,0 +1,233 @@
+{
+ "case_id": "SYN-0061",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "thinking": "adaptive (always on for this model)",
+ "route": "Claude Code print mode",
+ "command": [
+  "claude",
+  "-p",
+  "--model",
+  "claude-opus-5-5",
+  "--effort",
+  "high",
+  "--system-prompt",
+  "<instructions: system_prompt.md>",
+  "--tools",
+  "",
+  "--json-schema",
+  "<answer_schema.json>",
+  "--output-format",
+  "json",
+  "--no-session-persistence",
+  "--strict-mcp-config",
+  "--setting-sources",
+  "project"
+ ],
+ "system_prompt_sha256": "0cda59baefac995b4e20a8dde5550077ed76c7f0f789f8c4661cf246f64e1596",
+ "answer_schema_sha256": "9dc6f412e8631752ce5bf4ce82b16ac3ce5d04d9dfb8709c8b459a7a11d2ad11",
+ "fallback_model": null,
+ "user_message_sha256": "c9e53d6eb5ab654b2d13d2af2ecbdd8c1459054a33446d3fc72a5047ea29d5a2",
+ "requested_at": "2026-11-09T08:24:14-06:00",
+ "stop_reason": "tool_use",
+ "finished": true,
+ "answer_text": "{\"out_of_scope_reason\": \"in scope\", \"onset\": {\"category\": \"7.7\", \"documented_value\": \"2031-05-01\", \"explanation\": \"The earliest qualifying finding is the signed nurse ICE screen on 2031-05-01 at 18:45 (Day +4). The ICE total is 7/10, which is Grade 1. The note records no sedating drugs, and no competing cause is documented. The current record (v2) gives onset 2031-05-01, the same calendar day, so there is no discrepancy. The onset changed from 2031-05-02 in v1 to 2031-05-01 in v2. This is not a legitimate revision (7.6) because condition (c) fails: no supporting document version was written between v1 (recorded 2031-05-11T10:00) and v2 (recorded 2031-05-15T16:45). The supporting note was documented on 2031-05-01. The category is therefore 7.7, with the flag 'revision without new documentation'.\", \"evidence\": [{\"document_id\": \"SYN-0061-D01\", \"version\": 1, \"quote\": \"The patient was sitting up watching television when approached at 18:45.\"}, {\"document_id\": \"SYN-0061-D01\", \"version\": 1, \"quote\": \"so the ICE screen totalled 7 of 10\"}, {\"document_id\": \"SYN-0061-D01\", \"version\": 1, \"quote\": \"No benzodiazepines, opioids or other sedating drugs appear on the administration record for the last day.\"}]}, \"max_grade\": {\"category\": \"7.7\", \"documented_value\": \"3\", \"explanation\": \"On 2031-05-02 at 13:30 the patient scored ICE 0/10 while documented as awake, with global aphasia. Under Table 6 footnote ^ this is Grade 3: the patient was awake, so it is not Grade 4. The physician attributes it to neurotoxicity, and no sedation was given. There is no seizure (the EEG was normal), no motor deficit (full power) and no finding of raised ICP or edema, so nothing supports Grade 4. The documented maximum is Grade 3. The record also says Grade 3 and did not change between versions, so there is no discrepancy.\", \"evidence\": [{\"document_id\": \"SYN-0061-D02\", \"version\": 1, \"quote\": \"the patient was awake, eyes open, tracking people around the room and reaching for the water cup unprompted, yet produces no words, cannot name a single object and follows no spoken or written command\"}, {\"document_id\": \"SYN-0061-D02\", \"version\": 1, \"quote\": \"Scored ICE 0/10 at 13:30\"}, {\"document_id\": \"SYN-0061-D02\", \"version\": 1, \"quote\": \"Interpretation: global aphasia in an awake patient after CAR-T cell therapy, which I regard as neurotoxicity.\"}, {\"document_id\": \"SYN-0061-D02\", \"version\": 1, \"quote\": \"nothing sedating has been given since admission\"}, {\"document_id\": \"SYN-0061-D03\", \"version\": 1, \"quote\": \"no epileptiform activity and no electrographic seizure\"}]}}",
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 2153,
+  "cache_read_input_tokens": 27340,
+  "output_tokens": 1493,
+  "output_tokens_details": {
+   "thinking_tokens": 400
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 2153,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 1493,
+    "cache_read_input_tokens": 27340,
+    "cache_creation_input_tokens": 2153,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 2153
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "models_reported": [
+  "claude-opus-5-5"
+ ],
+ "claude_code_cost_usd": 0.052559999999999996,
+ "duration_seconds": 13.789,
+ "cli_output": {
+  "duration_api_ms": 12995,
+  "stop_reason": "tool_use",
+  "session_id": "eeadefc2-80b0-4310-90fe-a4be0af173a7",
+  "total_cost_usd": 0.052559999999999996,
+  "usage": {
+   "input_tokens": 2,
+   "cache_creation_input_tokens": 2153,
+   "cache_read_input_tokens": 27340,
+   "output_tokens": 1493,
+   "output_tokens_details": {
+    "thinking_tokens": 400
+   },
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "service_tier": "standard",
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 2153,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "inference_geo": "global",
+   "iterations": [
+    {
+     "input_tokens": 2,
+     "output_tokens": 1493,
+     "cache_read_input_tokens": 27340,
+     "cache_creation_input_tokens": 2153,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 0,
+      "ephemeral_1h_input_tokens": 2153
+     },
+     "type": "message"
+    }
+   ],
+   "speed": "standard",
+   "fallback_credit": null
+  },
+  "modelUsage": {
+   "claude-opus-5-5": {
+    "inputTokens": 2,
+    "outputTokens": 1493,
+    "cacheReadInputTokens": 27340,
+    "cacheCreationInputTokens": 2153,
+    "webSearchRequests": 0,
+    "costUSD": 0.052559999999999996,
+    "contextWindow": 1000000,
+    "maxOutputTokens": 128000,
+    "thinkingTokens": 400,
+    "cacheCreationEphemeral5mInputTokens": 0,
+    "cacheCreationEphemeral1hInputTokens": 2153,
+    "canonicalModel": "claude-opus-5-5",
+    "provider": "firstParty",
+    "costBasis": "list"
+   }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+   "spawned": 0,
+   "requested": {
+    "background": 0,
+    "foreground": 0,
+    "unset": 0
+   },
+   "started_in_background": 0,
+   "max_depth": 0,
+   "spawned_by_subagents": 0,
+   "completed": 0,
+   "failed": 0,
+   "killed": {
+    "parent": 0,
+    "user": 0,
+    "system": 0
+   },
+   "refused": {
+    "depth_limit": 0,
+    "concurrency_limit": 0,
+    "budget": 0
+   },
+   "by_type": {}
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 2,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "{\"out_of_scope_reason\":\"in scope\",\"onset\":{\"category\":\"7.7\",\"documented_value\":\"2031-05-01\",\"explanation\":\"The earliest qualifying finding is the signed nurse ICE screen on 2031-05-01 at 18:45 (Day +4). The ICE total is 7/10, which is Grade 1. The note records no sedating drugs, and no competing cause is documented. The current record (v2) gives onset 2031-05-01, the same calendar day, so there is no discrepancy. The onset changed from 2031-05-02 in v1 to 2031-05-01 in v2. This is not a legitimate revision (7.6) because condition (c) fails: no supporting document version was written between v1 (recorded 2031-05-11T10:00) and v2 (recorded 2031-05-15T16:45). The supporting note was documented on 2031-05-01. The category is therefore 7.7, with the flag 'revision without new documentation'.\",\"evidence\":[{\"document_id\":\"SYN-0061-D01\",\"version\":1,\"quote\":\"The patient was sitting up watching television when approached at 18:45.\"},{\"document_id\":\"SYN-0061-D01\",\"version\":1,\"quote\":\"so the ICE screen totalled 7 of 10\"},{\"document_id\":\"SYN-0061-D01\",\"version\":1,\"quote\":\"No benzodiazepines, opioids or other sedating drugs appear on the administration record for the last day.\"}]},\"max_grade\":{\"category\":\"7.7\",\"documented_value\":\"3\",\"explanation\":\"On 2031-05-02 at 13:30 the patient scored ICE 0/10 while documented as awake, with global aphasia. Under Table 6 footnote ^ this is Grade 3: the patient was awake, so it is not Grade 4. The physician attributes it to neurotoxicity, and no sedation was given. There is no seizure (the EEG was normal), no motor deficit (full power) and no finding of raised ICP or edema, so nothing supports Grade 4. The documented maximum is Grade 3. The record also says Grade 3 and did not change between versions, so there is no discrepancy.\",\"evidence\":[{\"document_id\":\"SYN-0061-D02\",\"version\":1,\"quote\":\"the patient was awake, eyes open, tracking people around the room and reaching for the water cup unprompted, yet produces no words, cannot name a single object and follows no spoken or written command\"},{\"document_id\":\"SYN-0061-D02\",\"version\":1,\"quote\":\"Scored ICE 0/10 at 13:30\"},{\"document_id\":\"SYN-0061-D02\",\"version\":1,\"quote\":\"Interpretation: global aphasia in an awake patient after CAR-T cell therapy, which I regard as neurotoxicity.\"},{\"document_id\":\"SYN-0061-D02\",\"version\":1,\"quote\":\"nothing sedating has been given since admission\"},{\"document_id\":\"SYN-0061-D03\",\"version\":1,\"quote\":\"no epileptiform activity and no electrographic seizure\"}]}}",
+  "structured_output": {
+   "out_of_scope_reason": "in scope",
+   "onset": {
+    "category": "7.7",
+    "documented_value": "2031-05-01",
+    "explanation": "The earliest qualifying finding is the signed nurse ICE screen on 2031-05-01 at 18:45 (Day +4). The ICE total is 7/10, which is Grade 1. The note records no sedating drugs, and no competing cause is documented. The current record (v2) gives onset 2031-05-01, the same calendar day, so there is no discrepancy. The onset changed from 2031-05-02 in v1 to 2031-05-01 in v2. This is not a legitimate revision (7.6) because condition (c) fails: no supporting document version was written between v1 (recorded 2031-05-11T10:00) and v2 (recorded 2031-05-15T16:45). The supporting note was documented on 2031-05-01. The category is therefore 7.7, with the flag 'revision without new documentation'.",
+    "evidence": [
+     {
+      "document_id": "SYN-0061-D01",
+      "version": 1,
+      "quote": "The patient was sitting up watching television when approached at 18:45."
+     },
+     {
+      "document_id": "SYN-0061-D01",
+      "version": 1,
+      "quote": "so the ICE screen totalled 7 of 10"
+     },
+     {
+      "document_id": "SYN-0061-D01",
+      "version": 1,
+      "quote": "No benzodiazepines, opioids or other sedating drugs appear on the administration record for the last day."
+     }
+    ]
+   },
+   "max_grade": {
+    "category": "7.7",
+    "documented_value": "3",
+    "explanation": "On 2031-05-02 at 13:30 the patient scored ICE 0/10 while documented as awake, with global aphasia. Under Table 6 footnote ^ this is Grade 3: the patient was awake, so it is not Grade 4. The physician attributes it to neurotoxicity, and no sedation was given. There is no seizure (the EEG was normal), no motor deficit (full power) and no finding of raised ICP or edema, so nothing supports Grade 4. The documented maximum is Grade 3. The record also says Grade 3 and did not change between versions, so there is no discrepancy.",
+    "evidence": [
+     {
+      "document_id": "SYN-0061-D02",
+      "version": 1,
+      "quote": "the patient was awake, eyes open, tracking people around the room and reaching for the water cup unprompted, yet produces no words, cannot name a single object and follows no spoken or written command"
+     },
+     {
+      "document_id": "SYN-0061-D02",
+      "version": 1,
+      "quote": "Scored ICE 0/10 at 13:30"
+     },
+     {
+      "document_id": "SYN-0061-D02",
+      "version": 1,
+      "quote": "Interpretation: global aphasia in an awake patient after CAR-T cell therapy, which I regard as neurotoxicity."
+     },
+     {
+      "document_id": "SYN-0061-D02",
+      "version": 1,
+      "quote": "nothing sedating has been given since admission"
+     },
+     {
+      "document_id": "SYN-0061-D03",
+      "version": 1,
+      "quote": "no epileptiform activity and no electrographic seizure"
+     }
+    ]
+   }
+  },
+  "ttft_ms": 5123,
+  "type": "result",
+  "duration_ms": 13178,
+  "uuid": "5345d15d-d425-4611-b8af-b01d90072e5c",
+  "ttft_stream_ms": 1849,
+  "time_to_request_ms": 182,
+  "first_content_frame_ms": 1849,
+  "queued_turn_count": 0,
+  "result_index": 0,
+  "credential_expires_at": "2026-12-06T22:19:03.648Z"
+ }
+}

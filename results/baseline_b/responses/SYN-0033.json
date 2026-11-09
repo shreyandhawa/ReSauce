@@ -1,0 +1,213 @@
+{
+ "case_id": "SYN-0033",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "thinking": "adaptive (always on for this model)",
+ "route": "Claude Code print mode",
+ "command": [
+  "claude",
+  "-p",
+  "--model",
+  "claude-opus-5-5",
+  "--effort",
+  "high",
+  "--system-prompt",
+  "<instructions: system_prompt.md>",
+  "--tools",
+  "",
+  "--json-schema",
+  "<answer_schema.json>",
+  "--output-format",
+  "json",
+  "--no-session-persistence",
+  "--strict-mcp-config",
+  "--setting-sources",
+  "project"
+ ],
+ "system_prompt_sha256": "0cda59baefac995b4e20a8dde5550077ed76c7f0f789f8c4661cf246f64e1596",
+ "answer_schema_sha256": "9dc6f412e8631752ce5bf4ce82b16ac3ce5d04d9dfb8709c8b459a7a11d2ad11",
+ "fallback_model": null,
+ "user_message_sha256": "6015e460dd28cedf9e68ac30d75c4775f66744cf80d15eb09b1157139c7c05bc",
+ "requested_at": "2026-11-09T08:22:26-06:00",
+ "stop_reason": "tool_use",
+ "finished": true,
+ "answer_text": "{\"out_of_scope_reason\": \"in scope\", \"onset\": {\"category\": \"7.6\", \"documented_value\": \"2032-05-01\", \"explanation\": \"Earliest qualifying finding: late entry D08 documenting ICE 8/10 (Grade 1) at 2032-05-01 22:10, no sedating meds; event date used (in window, Day +4). Record onset revised from 2032-05-02 (v1) to 2032-05-01 (v2), matching the documents. Supporting document D08 v1 documented 2032-05-08T16:15, after v1 recorded_at (2032-05-06T10:00) and before v2 recorded_at (2032-05-11T14:30), so §7.6 condition (c) holds.\", \"evidence\": [{\"document_id\": \"SYN-0033-D08\", \"version\": 1, \"quote\": \"LATE ENTRY for 2032-05-01 22:10: ICE 8/10 (missed month + sentence) - pt awake, watching TV w/ family; covering MD informed at the time. No sedating meds that day.\"}, {\"document_id\": \"SYN-0033-D03\", \"version\": 1, \"quote\": \"ICE 2032-05-01 @ 08:20: 10/10.\"}, {\"document_id\": \"SYN-0033-D04\", \"version\": 1, \"quote\": \"ICE 2032-05-02 @ 09:05: 7/10 (-yr, -hospital, -sentence).\"}]}, \"max_grade\": {\"category\": \"7.7\", \"documented_value\": \"2\", \"explanation\": \"Highest per-assessment grade is Grade 2 from ICE 5/10 on 2032-05-03 (awake, no focal deficit, no seizure, no sedating meds; dexamethasone is not a competing cause). No higher-grade finding documented. Record max grade 2 (unchanged) matches.\", \"evidence\": [{\"document_id\": \"SYN-0033-D05\", \"version\": 1, \"quote\": \"ICE 11:00 = 5/10 (O1 N2 C1 W0 A1). Awake, talking. No focal deficit, no sz. No sedating meds.\"}]}}",
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 2582,
+  "cache_read_input_tokens": 27340,
+  "output_tokens": 2041,
+  "output_tokens_details": {
+   "thinking_tokens": 509
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 2582,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 2041,
+    "cache_read_input_tokens": 27340,
+    "cache_creation_input_tokens": 2582,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 2582
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "models_reported": [
+  "claude-opus-5-5"
+ ],
+ "claude_code_cost_usd": 0.066952,
+ "duration_seconds": 18.486,
+ "cli_output": {
+  "duration_api_ms": 17745,
+  "stop_reason": "tool_use",
+  "session_id": "38337fa2-a18c-44b9-8cd8-1014bcf4eb0b",
+  "total_cost_usd": 0.066952,
+  "usage": {
+   "input_tokens": 2,
+   "cache_creation_input_tokens": 2582,
+   "cache_read_input_tokens": 27340,
+   "output_tokens": 2041,
+   "output_tokens_details": {
+    "thinking_tokens": 509
+   },
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "service_tier": "standard",
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 2582,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "inference_geo": "global",
+   "iterations": [
+    {
+     "input_tokens": 2,
+     "output_tokens": 2041,
+     "cache_read_input_tokens": 27340,
+     "cache_creation_input_tokens": 2582,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 0,
+      "ephemeral_1h_input_tokens": 2582
+     },
+     "type": "message"
+    }
+   ],
+   "speed": "standard",
+   "fallback_credit": null
+  },
+  "modelUsage": {
+   "claude-opus-5-5": {
+    "inputTokens": 2,
+    "outputTokens": 2041,
+    "cacheReadInputTokens": 27340,
+    "cacheCreationInputTokens": 2582,
+    "webSearchRequests": 0,
+    "costUSD": 0.066952,
+    "contextWindow": 1000000,
+    "maxOutputTokens": 128000,
+    "thinkingTokens": 509,
+    "cacheCreationEphemeral5mInputTokens": 0,
+    "cacheCreationEphemeral1hInputTokens": 2582,
+    "canonicalModel": "claude-opus-5-5",
+    "provider": "firstParty",
+    "costBasis": "list"
+   }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+   "spawned": 0,
+   "requested": {
+    "background": 0,
+    "foreground": 0,
+    "unset": 0
+   },
+   "started_in_background": 0,
+   "max_depth": 0,
+   "spawned_by_subagents": 0,
+   "completed": 0,
+   "failed": 0,
+   "killed": {
+    "parent": 0,
+    "user": 0,
+    "system": 0
+   },
+   "refused": {
+    "depth_limit": 0,
+    "concurrency_limit": 0,
+    "budget": 0
+   },
+   "by_type": {}
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 2,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "{\"out_of_scope_reason\":\"in scope\",\"onset\":{\"category\":\"7.6\",\"documented_value\":\"2032-05-01\",\"explanation\":\"Earliest qualifying finding: late entry D08 documenting ICE 8/10 (Grade 1) at 2032-05-01 22:10, no sedating meds; event date used (in window, Day +4). Record onset revised from 2032-05-02 (v1) to 2032-05-01 (v2), matching the documents. Supporting document D08 v1 documented 2032-05-08T16:15, after v1 recorded_at (2032-05-06T10:00) and before v2 recorded_at (2032-05-11T14:30), so §7.6 condition (c) holds.\",\"evidence\":[{\"document_id\":\"SYN-0033-D08\",\"version\":1,\"quote\":\"LATE ENTRY for 2032-05-01 22:10: ICE 8/10 (missed month + sentence) - pt awake, watching TV w/ family; covering MD informed at the time. No sedating meds that day.\"},{\"document_id\":\"SYN-0033-D03\",\"version\":1,\"quote\":\"ICE 2032-05-01 @ 08:20: 10/10.\"},{\"document_id\":\"SYN-0033-D04\",\"version\":1,\"quote\":\"ICE 2032-05-02 @ 09:05: 7/10 (-yr, -hospital, -sentence).\"}]},\"max_grade\":{\"category\":\"7.7\",\"documented_value\":\"2\",\"explanation\":\"Highest per-assessment grade is Grade 2 from ICE 5/10 on 2032-05-03 (awake, no focal deficit, no seizure, no sedating meds; dexamethasone is not a competing cause). No higher-grade finding documented. Record max grade 2 (unchanged) matches.\",\"evidence\":[{\"document_id\":\"SYN-0033-D05\",\"version\":1,\"quote\":\"ICE 11:00 = 5/10 (O1 N2 C1 W0 A1). Awake, talking. No focal deficit, no sz. No sedating meds.\"}]}}",
+  "structured_output": {
+   "out_of_scope_reason": "in scope",
+   "onset": {
+    "category": "7.6",
+    "documented_value": "2032-05-01",
+    "explanation": "Earliest qualifying finding: late entry D08 documenting ICE 8/10 (Grade 1) at 2032-05-01 22:10, no sedating meds; event date used (in window, Day +4). Record onset revised from 2032-05-02 (v1) to 2032-05-01 (v2), matching the documents. Supporting document D08 v1 documented 2032-05-08T16:15, after v1 recorded_at (2032-05-06T10:00) and before v2 recorded_at (2032-05-11T14:30), so §7.6 condition (c) holds.",
+    "evidence": [
+     {
+      "document_id": "SYN-0033-D08",
+      "version": 1,
+      "quote": "LATE ENTRY for 2032-05-01 22:10: ICE 8/10 (missed month + sentence) - pt awake, watching TV w/ family; covering MD informed at the time. No sedating meds that day."
+     },
+     {
+      "document_id": "SYN-0033-D03",
+      "version": 1,
+      "quote": "ICE 2032-05-01 @ 08:20: 10/10."
+     },
+     {
+      "document_id": "SYN-0033-D04",
+      "version": 1,
+      "quote": "ICE 2032-05-02 @ 09:05: 7/10 (-yr, -hospital, -sentence)."
+     }
+    ]
+   },
+   "max_grade": {
+    "category": "7.7",
+    "documented_value": "2",
+    "explanation": "Highest per-assessment grade is Grade 2 from ICE 5/10 on 2032-05-03 (awake, no focal deficit, no seizure, no sedating meds; dexamethasone is not a competing cause). No higher-grade finding documented. Record max grade 2 (unchanged) matches.",
+    "evidence": [
+     {
+      "document_id": "SYN-0033-D05",
+      "version": 1,
+      "quote": "ICE 11:00 = 5/10 (O1 N2 C1 W0 A1). Awake, talking. No focal deficit, no sz. No sedating meds."
+     }
+    ]
+   }
+  },
+  "ttft_ms": 6194,
+  "type": "result",
+  "duration_ms": 17892,
+  "uuid": "2e1c8b4d-e392-4f36-822f-679fa3add43f",
+  "ttft_stream_ms": 1824,
+  "time_to_request_ms": 145,
+  "first_content_frame_ms": 1824,
+  "queued_turn_count": 0,
+  "result_index": 0,
+  "credential_expires_at": "2026-12-06T22:19:03.648Z"
+ }
+}

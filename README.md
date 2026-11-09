@@ -46,7 +46,7 @@ ReSauce does that check with computer code. It reads the clinical documents behi
 | **Two kinds of time** | The time an event happened is kept apart from the time it was written down, so a note written on Day 5 about Day 3 is dated Day 3. |
 | **Uncertainty is shown** | If the rules cannot decide, the result is "needs human review", never a guess. Missing evidence is not treated as absent evidence. |
 | **Fixed, written rules** | The pipeline uses deterministic rules (no machine learning). Each rule is written out in [`docs/clinical-methods.md`](docs/clinical-methods.md). |
-| **Measured against a simpler method** | Results are compared with Baseline A, a careful conventional check, scored on the same cases in the same way. |
+| **Measured against other methods** | Results are compared with Baseline A, a careful conventional check, and Baseline B, an AI model given the same written rules. All three are scored on the same cases in the same way. |
 | **Local and reproducible** | The app runs only on your own computer and makes no network calls. Each run records the pipeline version and file fingerprints, and every review decision goes into an append-only audit log. |
 
 ---
@@ -76,11 +76,11 @@ Open findings are listed most serious first. For each one the reviewer confirms,
 <table>
   <tr>
     <td width="50%"><img src="docs/images/audit-trail.png" alt="Audit trail: every verification run with its time, case, result and the frozen pipeline version."></td>
-    <td width="50%"><img src="docs/images/results.png" alt="Results page: precision, recall and exact agreement for ReSauce beside Baseline A on the dev split."></td>
+    <td width="50%"><img src="docs/images/results.png" alt="Results page: precision, recall and exact agreement for ReSauce, Baseline A and Baseline B on the dev and held-out splits."></td>
   </tr>
   <tr>
     <td>Every run and decision is logged with its time, reviewer and pipeline version. Reports and a CSV can be exported.</td>
-    <td>Headline results of the stored evaluation, ReSauce beside Baseline A, with their caveats.</td>
+    <td>Headline results of the stored evaluation: ReSauce beside Baseline A and Baseline B, with their caveats.</td>
   </tr>
 </table>
 
@@ -137,18 +137,39 @@ Quoted from [`results/report.md`](results/report.md). Counts are fields (onset d
 |---|---|---|---|---|---|---|
 | ReSauce | 1.00 (10/10) | 1.00 (10/10) | 1.00 (20/20) | 1.00 (38/38) | 0 | 0 |
 | Baseline A | 0.90 (9/10) | 0.90 (9/10) | 0.90 (18/20) | 0.87 (33/38) | 1 | 1 |
+| Baseline B | 1.00 (10/10) | 1.00 (10/10) | 1.00 (20/20) | 1.00 (38/38) | 0 | 0 |
 
-**Held-out split (52 cases).** In the repository, not sealed, and "seen": the pipeline changed after the first held-out run (commit `4ff6c5f`). It has the same writer as the dev cases, so it is not an independent test.
+**Held-out split (52 cases).** In the repository, not sealed, and "seen" by ReSauce: the pipeline changed after the first held-out run (commit `4ff6c5f`). It has the same writer as the dev cases, so it is not an independent test. It is new to Baseline B.
 
 | Method | Precision | Recall | F1 | Exact agreement | Misses | False alerts | "review: …" results |
 |---|---|---|---|---|---|---|---|
 | ReSauce | 0.84 (16/19) | 0.80 (16/20) | 0.82 (32/39) | 0.86 (84/98) | 4 | 3 | 5 |
 | Baseline A | 0.61 (14/23) | 0.70 (14/20) | 0.65 (28/43) | 0.65 (64/98) | 6 | 9 | 0 |
+| Baseline B | 1.00 (20/20) | 1.00 (20/20) | 1.00 (40/40) | 1.00 (98/98) | 0 | 0 | 0 |
 
-- **Out of scope** (ReSauce only; Baseline A cannot flag it): dev 1 of 1 and held-out 3 of 3 flagged, each with the reference's reason.
-- **Evidence-quote validity:** 1.00 for both methods on both splits (every quoted reference matches its source text).
-- **Baseline A** uses the same extraction but dates each finding by when it was written, uses only the latest document versions, and has no observation window or record history ([`docs/evaluation-spec.md`](docs/evaluation-spec.md) §4).
-- **Not yet done:** Baseline B (a language model) has not been run. The locked test set has not been evaluated, so no locked-set numbers exist.
+**The three methods:**
+- **ReSauce:** the frozen rule-based pipeline.
+- **Baseline A:** a conventional check on the same extraction. It dates each finding by when it was written, uses only the latest document versions, and has no observation window or record history ([`docs/evaluation-spec.md`](docs/evaluation-spec.md) §4).
+- **Baseline B:** an AI model, Claude Opus 5.5 (effort `high`). It was given the same written rules (`docs/clinical-methods.md` §1–§9) and each case's files, and answered once per case in a fixed JSON format with quoted evidence. It ran through Claude Code with every tool switched off, so it could not open any file. The method was written down and committed before any case was sent ([`docs/evaluation-spec.md`](docs/evaluation-spec.md) §5).
+
+**Reading Baseline B's result.** Baseline B matched the reference answers on every field in both splits, which is more than ReSauce on the held-out split. **This is not evidence that the AI is clinically right.**
+- The cases and the reference answers were written by Claude sessions from the same rules text, and an earlier blind re-derivation by another Claude session also agreed on every category. A Claude model given the same rules is therefore expected to agree with them.
+- What the comparison does show: on this synthetic set, a general AI model that follows the written rules reproduces the reference answers.
+- What it cannot show: whether either answer set is clinically correct. Deciding that needs cases and answers checked by clinicians.
+
+**Practical differences, as measured:**
+
+| | ReSauce | Baseline B |
+|---|---|---|
+| Time | 0.182 s for all 20 dev cases, including extraction | median 15 s per case (range 10–25 s) |
+| Repeatability | Deterministic: the same input always gives the same output | Not deterministic: one run, and a second could differ |
+| Where it runs | Offline, on your computer | Needs an outside AI service |
+| Cost | None | Run on the user's Claude plan, not billed per token. The same tokens would cost about $3.82 on Anthropic's API at listed prices. |
+
+**Also measured:**
+- **Out of scope:** ReSauce and Baseline B each flagged dev 1 of 1 and held-out 3 of 3, each with the reference's reason. Baseline A cannot flag out-of-scope cases.
+- **Evidence-quote validity:** ReSauce and Baseline A 1.00 on both splits. Baseline B 156 of 156 (dev) and 330 of 331 (held-out). The one failure in SYN-0060 is a quote copied exactly but credited to the wrong document (D09 instead of D10).
+- **Not yet done:** the locked test set has not been evaluated, so no locked-set numbers exist.
 
 ---
 
@@ -221,11 +242,20 @@ npm run dev        # optional: live-reloading page at http://localhost:5173 (kee
 
 ```bash
 pytest                          # run the test suite
-python -m resauce.evaluate      # score ReSauce and Baseline A on the dev and held-out splits
+python -m resauce.evaluate      # score all three methods on the dev and held-out splits
 ```
 
 > [!WARNING]
 > `python -m resauce.evaluate` **overwrites** `results/report.md`, `results/dev.json` and `results/held_out.json`. Run it only when you intend a new, recorded run.
+
+Scoring never calls the AI model. It reads Baseline B's stored answers in `results/baseline_b/`, and includes Baseline B only when all 72 answers are present and match the current instructions and case files.
+
+**Collecting Baseline B's answers again** is not needed to reproduce the results, and makes a new, separate run. It needs a recent Claude Code (2.1.280 or newer) logged in to a Claude plan, and it must run in your own terminal, not inside a Claude Code session:
+
+```bash
+python -m resauce.baseline_b check                                # one tiny test request, no case data
+python -m resauce.baseline_b run --out results/baseline_b-run2    # one request per case; resumable
+```
 
 ## Reproducibility
 
@@ -246,7 +276,8 @@ python -m resauce.evaluate      # score ReSauce and Baseline A on the dev and he
 - Rules that are not built return "review: …" (needs human review), never a guess.
 - Each case holds 3 to 12 documents, so most days in the window have no documented assessment, and the "unassessed period" lists are long by design.
 - Only ICANS onset date and maximum grade are covered. Other conditions and fields would need new written rules and new synthetic data.
-- Baseline B is not run. The locked set is not evaluated.
+- Baseline B is the same model family (Claude) that wrote the cases and the reference answers, so its agreement with them may be inflated. Its answers come from one run and are not deterministic.
+- The locked set is not evaluated.
 
 The full list, with sources, is on the app's **About** page and in [`docs/evaluation-spec.md`](docs/evaluation-spec.md) §6.
 
@@ -255,12 +286,12 @@ The full list, with sources, is on the app's **About** page and in [`docs/evalua
 ## Project layout
 
 ```
-src/resauce/     the pipeline (frozen): loader, extraction, timeline, rules engine, Baseline A, evaluation
+src/resauce/     the pipeline (frozen): loader, extraction, timeline, rules engine, Baseline A; Baseline B and the evaluation runner (not frozen)
 app/             the workstation's local server (Python standard library only); it calls src/, never the reverse
 web/             the workstation's web page (Vite + React); web/dist/ is the built page
 data/dev-v1/     72 synthetic cases
 reference/       reference answers and splits
-results/         evaluation results (report.md, dev.json, held_out.json)
+results/         evaluation results (report.md, dev.json, held_out.json) and Baseline B's stored answers (baseline_b/)
 docs/            clinical methods, data format, evaluation spec, freeze record, handoff log, images
 tests/           automated tests
 workspace/       your workspace (created on first start; git-ignored)

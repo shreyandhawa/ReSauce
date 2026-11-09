@@ -1,0 +1,213 @@
+{
+ "case_id": "SYN-0034",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "thinking": "adaptive (always on for this model)",
+ "route": "Claude Code print mode",
+ "command": [
+  "claude",
+  "-p",
+  "--model",
+  "claude-opus-5-5",
+  "--effort",
+  "high",
+  "--system-prompt",
+  "<instructions: system_prompt.md>",
+  "--tools",
+  "",
+  "--json-schema",
+  "<answer_schema.json>",
+  "--output-format",
+  "json",
+  "--no-session-persistence",
+  "--strict-mcp-config",
+  "--setting-sources",
+  "project"
+ ],
+ "system_prompt_sha256": "0cda59baefac995b4e20a8dde5550077ed76c7f0f789f8c4661cf246f64e1596",
+ "answer_schema_sha256": "9dc6f412e8631752ce5bf4ce82b16ac3ce5d04d9dfb8709c8b459a7a11d2ad11",
+ "fallback_model": null,
+ "user_message_sha256": "fd4b3abd7f7de90db3fe2aaa3e3494c7fd5db7bd3d51f889069e205f1ba19388",
+ "requested_at": "2026-11-09T08:22:23-06:00",
+ "stop_reason": "tool_use",
+ "finished": true,
+ "answer_text": "{\"out_of_scope_reason\": \"in scope\", \"onset\": {\"category\": \"7.7\", \"documented_value\": \"2035-06-02\", \"explanation\": \"The first qualifying finding is ICE 7/10 (Grade 1) at 09:10 on 02 Jun 2035 (Day +5), documented in signed note D02. The tremor in the same note is excluded from ICANS grading and onset (A11). Tocilizumab is treatment for CRS, so it is not a competing cause (A35). The ICE 10/10 baseline in D01 is from Day -6, before the observation window, so it is not used. D04 repeats the D02 line word for word, so it is copied forward and not new evidence. The record onset of 2035-06-02 is the same calendar day as the documented onset.\", \"evidence\": [{\"document_id\": \"SYN-0034-D02\", \"version\": 1, \"quote\": \"ICE 7/10 at 09:10 on 02 Jun (lost 3: year, month, attention); alert; no seizures.\"}]}, \"max_grade\": {\"category\": \"7.7\", \"documented_value\": \"1\", \"explanation\": \"The worst documented assessment is ICE 7/10 with the patient alert and no seizures, which is Grade 1. No note documents a seizure, a motor finding, raised intracranial pressure or edema, or a depressed level of consciousness. Tremor is excluded from grading. D03 records ICE 10/10 on 05 Jun (Grade 0). The D05 line about ICE 7/10 on 09 Jun differs from D02 only in date and time, so under A31 it counts as copied forward. Even if it were read as a new observation, it would still be Grade 1. The documents support Grade 1, which equals the recorded maximum grade of 1.\", \"evidence\": [{\"document_id\": \"SYN-0034-D02\", \"version\": 1, \"quote\": \"ICE 7/10 at 09:10 on 02 Jun (lost 3: year, month, attention); alert; no seizures.\"}, {\"document_id\": \"SYN-0034-D03\", \"version\": 1, \"quote\": \"ICE 05 Jun 09:20 = 10/10. Alert. Back to baseline. No tremor.\"}, {\"document_id\": \"SYN-0034-D05\", \"version\": 1, \"quote\": \"ICE 7/10 at 09:25 on 09 Jun (lost 3: year, month, attention); alert; no seizures.\"}]}}",
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 1778,
+  "cache_read_input_tokens": 27340,
+  "output_tokens": 1339,
+  "output_tokens_details": {
+   "thinking_tokens": 470
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 1778,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 1339,
+    "cache_read_input_tokens": 27340,
+    "cache_creation_input_tokens": 1778,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 1778
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "models_reported": [
+  "claude-opus-5-5"
+ ],
+ "claude_code_cost_usd": 0.04648,
+ "duration_seconds": 13.583,
+ "cli_output": {
+  "duration_api_ms": 12766,
+  "stop_reason": "tool_use",
+  "session_id": "d8c74f4c-2a70-4b51-a1f1-3c6666012eba",
+  "total_cost_usd": 0.04648,
+  "usage": {
+   "input_tokens": 2,
+   "cache_creation_input_tokens": 1778,
+   "cache_read_input_tokens": 27340,
+   "output_tokens": 1339,
+   "output_tokens_details": {
+    "thinking_tokens": 470
+   },
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "service_tier": "standard",
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 1778,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "inference_geo": "global",
+   "iterations": [
+    {
+     "input_tokens": 2,
+     "output_tokens": 1339,
+     "cache_read_input_tokens": 27340,
+     "cache_creation_input_tokens": 1778,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 0,
+      "ephemeral_1h_input_tokens": 1778
+     },
+     "type": "message"
+    }
+   ],
+   "speed": "standard",
+   "fallback_credit": null
+  },
+  "modelUsage": {
+   "claude-opus-5-5": {
+    "inputTokens": 2,
+    "outputTokens": 1339,
+    "cacheReadInputTokens": 27340,
+    "cacheCreationInputTokens": 1778,
+    "webSearchRequests": 0,
+    "costUSD": 0.04648,
+    "contextWindow": 1000000,
+    "maxOutputTokens": 128000,
+    "thinkingTokens": 470,
+    "cacheCreationEphemeral5mInputTokens": 0,
+    "cacheCreationEphemeral1hInputTokens": 1778,
+    "canonicalModel": "claude-opus-5-5",
+    "provider": "firstParty",
+    "costBasis": "list"
+   }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+   "spawned": 0,
+   "requested": {
+    "background": 0,
+    "foreground": 0,
+    "unset": 0
+   },
+   "started_in_background": 0,
+   "max_depth": 0,
+   "spawned_by_subagents": 0,
+   "completed": 0,
+   "failed": 0,
+   "killed": {
+    "parent": 0,
+    "user": 0,
+    "system": 0
+   },
+   "refused": {
+    "depth_limit": 0,
+    "concurrency_limit": 0,
+    "budget": 0
+   },
+   "by_type": {}
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 2,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "{\"out_of_scope_reason\":\"in scope\",\"onset\":{\"category\":\"7.7\",\"documented_value\":\"2035-06-02\",\"explanation\":\"The first qualifying finding is ICE 7/10 (Grade 1) at 09:10 on 02 Jun 2035 (Day +5), documented in signed note D02. The tremor in the same note is excluded from ICANS grading and onset (A11). Tocilizumab is treatment for CRS, so it is not a competing cause (A35). The ICE 10/10 baseline in D01 is from Day -6, before the observation window, so it is not used. D04 repeats the D02 line word for word, so it is copied forward and not new evidence. The record onset of 2035-06-02 is the same calendar day as the documented onset.\",\"evidence\":[{\"document_id\":\"SYN-0034-D02\",\"version\":1,\"quote\":\"ICE 7/10 at 09:10 on 02 Jun (lost 3: year, month, attention); alert; no seizures.\"}]},\"max_grade\":{\"category\":\"7.7\",\"documented_value\":\"1\",\"explanation\":\"The worst documented assessment is ICE 7/10 with the patient alert and no seizures, which is Grade 1. No note documents a seizure, a motor finding, raised intracranial pressure or edema, or a depressed level of consciousness. Tremor is excluded from grading. D03 records ICE 10/10 on 05 Jun (Grade 0). The D05 line about ICE 7/10 on 09 Jun differs from D02 only in date and time, so under A31 it counts as copied forward. Even if it were read as a new observation, it would still be Grade 1. The documents support Grade 1, which equals the recorded maximum grade of 1.\",\"evidence\":[{\"document_id\":\"SYN-0034-D02\",\"version\":1,\"quote\":\"ICE 7/10 at 09:10 on 02 Jun (lost 3: year, month, attention); alert; no seizures.\"},{\"document_id\":\"SYN-0034-D03\",\"version\":1,\"quote\":\"ICE 05 Jun 09:20 = 10/10. Alert. Back to baseline. No tremor.\"},{\"document_id\":\"SYN-0034-D05\",\"version\":1,\"quote\":\"ICE 7/10 at 09:25 on 09 Jun (lost 3: year, month, attention); alert; no seizures.\"}]}}",
+  "structured_output": {
+   "out_of_scope_reason": "in scope",
+   "onset": {
+    "category": "7.7",
+    "documented_value": "2035-06-02",
+    "explanation": "The first qualifying finding is ICE 7/10 (Grade 1) at 09:10 on 02 Jun 2035 (Day +5), documented in signed note D02. The tremor in the same note is excluded from ICANS grading and onset (A11). Tocilizumab is treatment for CRS, so it is not a competing cause (A35). The ICE 10/10 baseline in D01 is from Day -6, before the observation window, so it is not used. D04 repeats the D02 line word for word, so it is copied forward and not new evidence. The record onset of 2035-06-02 is the same calendar day as the documented onset.",
+    "evidence": [
+     {
+      "document_id": "SYN-0034-D02",
+      "version": 1,
+      "quote": "ICE 7/10 at 09:10 on 02 Jun (lost 3: year, month, attention); alert; no seizures."
+     }
+    ]
+   },
+   "max_grade": {
+    "category": "7.7",
+    "documented_value": "1",
+    "explanation": "The worst documented assessment is ICE 7/10 with the patient alert and no seizures, which is Grade 1. No note documents a seizure, a motor finding, raised intracranial pressure or edema, or a depressed level of consciousness. Tremor is excluded from grading. D03 records ICE 10/10 on 05 Jun (Grade 0). The D05 line about ICE 7/10 on 09 Jun differs from D02 only in date and time, so under A31 it counts as copied forward. Even if it were read as a new observation, it would still be Grade 1. The documents support Grade 1, which equals the recorded maximum grade of 1.",
+    "evidence": [
+     {
+      "document_id": "SYN-0034-D02",
+      "version": 1,
+      "quote": "ICE 7/10 at 09:10 on 02 Jun (lost 3: year, month, attention); alert; no seizures."
+     },
+     {
+      "document_id": "SYN-0034-D03",
+      "version": 1,
+      "quote": "ICE 05 Jun 09:20 = 10/10. Alert. Back to baseline. No tremor."
+     },
+     {
+      "document_id": "SYN-0034-D05",
+      "version": 1,
+      "quote": "ICE 7/10 at 09:25 on 09 Jun (lost 3: year, month, attention); alert; no seizures."
+     }
+    ]
+   }
+  },
+  "ttft_ms": 6765,
+  "type": "result",
+  "duration_ms": 12930,
+  "uuid": "4af2521f-d081-41e6-913f-45ce6f04bebd",
+  "ttft_stream_ms": 2833,
+  "time_to_request_ms": 163,
+  "first_content_frame_ms": 2833,
+  "queued_turn_count": 0,
+  "result_index": 0,
+  "credential_expires_at": "2026-12-06T22:19:03.648Z"
+ }
+}

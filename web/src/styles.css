@@ -760,8 +760,9 @@ dialog.modal .row { display: flex; gap: 10px; justify-content: flex-end; margin-
    new colour (colour stays reserved for the meaning of findings). Three methods share a column, so the figures shrink. */
 .pct-baseline_b .pct-value { color: var(--ink-3); }
 .pct-baseline_b .pct-bar span { background: repeating-linear-gradient(-45deg, var(--ink-3) 0 3px, transparent 3px 5px); }
-.pair-pct.n-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
-.pair-pct.n-3 .pct-value { font-size: clamp(1.9rem, 0.9rem + 2.4vw, 3.7rem); }
+.pair-pct.n-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; container-type: inline-size; }
+/* Sized to the figures' own row (cqi), not the window, so "100%" never runs into the next method's figure. */
+.pair-pct.n-3 .pct-value { font-size: clamp(1.5rem, 10.5cqi, 3.7rem); }
 @keyframes bar-in { from { transform: scaleX(0); } }
 .measured { margin-top: 44px; border-top: 2px solid var(--rule); padding-top: 18px; }
 .measured > summary { cursor: pointer; font-weight: 800; font-size: 1.125rem; letter-spacing: -0.015em; list-style: none; display: inline-flex; gap: 10px; align-items: center; }

@@ -1,0 +1,223 @@
+{
+ "case_id": "SYN-0039",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "thinking": "adaptive (always on for this model)",
+ "route": "Claude Code print mode",
+ "command": [
+  "claude",
+  "-p",
+  "--model",
+  "claude-opus-5-5",
+  "--effort",
+  "high",
+  "--system-prompt",
+  "<instructions: system_prompt.md>",
+  "--tools",
+  "",
+  "--json-schema",
+  "<answer_schema.json>",
+  "--output-format",
+  "json",
+  "--no-session-persistence",
+  "--strict-mcp-config",
+  "--setting-sources",
+  "project"
+ ],
+ "system_prompt_sha256": "0cda59baefac995b4e20a8dde5550077ed76c7f0f789f8c4661cf246f64e1596",
+ "answer_schema_sha256": "9dc6f412e8631752ce5bf4ce82b16ac3ce5d04d9dfb8709c8b459a7a11d2ad11",
+ "fallback_model": null,
+ "user_message_sha256": "9521d3a926b45f7e4772c3cbcca478207dbdde72507dbc4024df105bc71baf8e",
+ "requested_at": "2026-11-09T08:22:38-06:00",
+ "stop_reason": "tool_use",
+ "finished": true,
+ "answer_text": "{\"out_of_scope_reason\": \"in scope\", \"onset\": {\"category\": \"7.7\", \"documented_value\": \"2034-01-03\", \"explanation\": \"The first qualifying finding is ICE 8/10 at 09:40 on 2034-01-03 (Day +3), which meets the Grade 1 criterion. The ICE the evening before, 2034-01-02 at 21:00, was 10/10, a formal Grade 0 assessment. The recorded onset of 2034-01-03 is the same calendar day as the documented onset.\", \"evidence\": [{\"document_id\": \"SYN-0039-D02\", \"version\": 1, \"quote\": \"ICE at 21:00 was 10/10, with quick and accurate answers.\"}, {\"document_id\": \"SYN-0039-D03\", \"version\": 1, \"quote\": \"Total ICE 8/10 at 09:40.\"}]}, \"max_grade\": {\"category\": \"7.2\", \"documented_value\": \"4\", \"explanation\": \"On 2034-01-06 (Day +6, inside the window) the patient could not be roused. There was no response to a loud voice, to repeated shaking or to a firm sternal rub, and the ICE was 0/10 because the patient could not be woken to attempt it. Being unarousable or needing repeated tactile stimuli to arouse is Grade 4 in Table 6, and ICE 0 in an unarousable patient is also Grade 4. No competing cause is documented: no sedating drug was given during the admission, and glucose and sodium were normal. The documents therefore prove Grade 4, which is one grade higher than the recorded maximum of Grade 3.\", \"evidence\": [{\"document_id\": \"SYN-0039-D05\", \"version\": 1, \"quote\": \"At the 10:40 neuro check the patient could not be roused: no eye opening and no movement to a loud voice, to repeated shaking of both shoulders or to a firm sternal rub.\"}, {\"document_id\": \"SYN-0039-D05\", \"version\": 1, \"quote\": \"No sedative, opioid, antihistamine or antipsychotic has been given during this admission.\"}, {\"document_id\": \"SYN-0039-D06\", \"version\": 1, \"quote\": \"ICE 0/10 because the patient could not be woken to attempt it.\"}, {\"document_id\": \"SYN-0039-D06\", \"version\": 1, \"quote\": \"Glucose and sodium are normal.\"}]}}",
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 2750,
+  "cache_read_input_tokens": 27340,
+  "output_tokens": 1112,
+  "output_tokens_details": {
+   "thinking_tokens": 256
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 2750,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 1112,
+    "cache_read_input_tokens": 27340,
+    "cache_creation_input_tokens": 2750,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 2750
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "models_reported": [
+  "claude-opus-5-5"
+ ],
+ "claude_code_cost_usd": 0.049715999999999996,
+ "duration_seconds": 11.67,
+ "cli_output": {
+  "duration_api_ms": 10860,
+  "stop_reason": "tool_use",
+  "session_id": "916cbb11-7d20-4247-ae2f-a43f35e7d69f",
+  "total_cost_usd": 0.049715999999999996,
+  "usage": {
+   "input_tokens": 2,
+   "cache_creation_input_tokens": 2750,
+   "cache_read_input_tokens": 27340,
+   "output_tokens": 1112,
+   "output_tokens_details": {
+    "thinking_tokens": 256
+   },
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "service_tier": "standard",
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 2750,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "inference_geo": "global",
+   "iterations": [
+    {
+     "input_tokens": 2,
+     "output_tokens": 1112,
+     "cache_read_input_tokens": 27340,
+     "cache_creation_input_tokens": 2750,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 0,
+      "ephemeral_1h_input_tokens": 2750
+     },
+     "type": "message"
+    }
+   ],
+   "speed": "standard",
+   "fallback_credit": null
+  },
+  "modelUsage": {
+   "claude-opus-5-5": {
+    "inputTokens": 2,
+    "outputTokens": 1112,
+    "cacheReadInputTokens": 27340,
+    "cacheCreationInputTokens": 2750,
+    "webSearchRequests": 0,
+    "costUSD": 0.049715999999999996,
+    "contextWindow": 1000000,
+    "maxOutputTokens": 128000,
+    "thinkingTokens": 256,
+    "cacheCreationEphemeral5mInputTokens": 0,
+    "cacheCreationEphemeral1hInputTokens": 2750,
+    "canonicalModel": "claude-opus-5-5",
+    "provider": "firstParty",
+    "costBasis": "list"
+   }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+   "spawned": 0,
+   "requested": {
+    "background": 0,
+    "foreground": 0,
+    "unset": 0
+   },
+   "started_in_background": 0,
+   "max_depth": 0,
+   "spawned_by_subagents": 0,
+   "completed": 0,
+   "failed": 0,
+   "killed": {
+    "parent": 0,
+    "user": 0,
+    "system": 0
+   },
+   "refused": {
+    "depth_limit": 0,
+    "concurrency_limit": 0,
+    "budget": 0
+   },
+   "by_type": {}
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 2,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "{\"out_of_scope_reason\":\"in scope\",\"onset\":{\"category\":\"7.7\",\"documented_value\":\"2034-01-03\",\"explanation\":\"The first qualifying finding is ICE 8/10 at 09:40 on 2034-01-03 (Day +3), which meets the Grade 1 criterion. The ICE the evening before, 2034-01-02 at 21:00, was 10/10, a formal Grade 0 assessment. The recorded onset of 2034-01-03 is the same calendar day as the documented onset.\",\"evidence\":[{\"document_id\":\"SYN-0039-D02\",\"version\":1,\"quote\":\"ICE at 21:00 was 10/10, with quick and accurate answers.\"},{\"document_id\":\"SYN-0039-D03\",\"version\":1,\"quote\":\"Total ICE 8/10 at 09:40.\"}]},\"max_grade\":{\"category\":\"7.2\",\"documented_value\":\"4\",\"explanation\":\"On 2034-01-06 (Day +6, inside the window) the patient could not be roused. There was no response to a loud voice, to repeated shaking or to a firm sternal rub, and the ICE was 0/10 because the patient could not be woken to attempt it. Being unarousable or needing repeated tactile stimuli to arouse is Grade 4 in Table 6, and ICE 0 in an unarousable patient is also Grade 4. No competing cause is documented: no sedating drug was given during the admission, and glucose and sodium were normal. The documents therefore prove Grade 4, which is one grade higher than the recorded maximum of Grade 3.\",\"evidence\":[{\"document_id\":\"SYN-0039-D05\",\"version\":1,\"quote\":\"At the 10:40 neuro check the patient could not be roused: no eye opening and no movement to a loud voice, to repeated shaking of both shoulders or to a firm sternal rub.\"},{\"document_id\":\"SYN-0039-D05\",\"version\":1,\"quote\":\"No sedative, opioid, antihistamine or antipsychotic has been given during this admission.\"},{\"document_id\":\"SYN-0039-D06\",\"version\":1,\"quote\":\"ICE 0/10 because the patient could not be woken to attempt it.\"},{\"document_id\":\"SYN-0039-D06\",\"version\":1,\"quote\":\"Glucose and sodium are normal.\"}]}}",
+  "structured_output": {
+   "out_of_scope_reason": "in scope",
+   "onset": {
+    "category": "7.7",
+    "documented_value": "2034-01-03",
+    "explanation": "The first qualifying finding is ICE 8/10 at 09:40 on 2034-01-03 (Day +3), which meets the Grade 1 criterion. The ICE the evening before, 2034-01-02 at 21:00, was 10/10, a formal Grade 0 assessment. The recorded onset of 2034-01-03 is the same calendar day as the documented onset.",
+    "evidence": [
+     {
+      "document_id": "SYN-0039-D02",
+      "version": 1,
+      "quote": "ICE at 21:00 was 10/10, with quick and accurate answers."
+     },
+     {
+      "document_id": "SYN-0039-D03",
+      "version": 1,
+      "quote": "Total ICE 8/10 at 09:40."
+     }
+    ]
+   },
+   "max_grade": {
+    "category": "7.2",
+    "documented_value": "4",
+    "explanation": "On 2034-01-06 (Day +6, inside the window) the patient could not be roused. There was no response to a loud voice, to repeated shaking or to a firm sternal rub, and the ICE was 0/10 because the patient could not be woken to attempt it. Being unarousable or needing repeated tactile stimuli to arouse is Grade 4 in Table 6, and ICE 0 in an unarousable patient is also Grade 4. No competing cause is documented: no sedating drug was given during the admission, and glucose and sodium were normal. The documents therefore prove Grade 4, which is one grade higher than the recorded maximum of Grade 3.",
+    "evidence": [
+     {
+      "document_id": "SYN-0039-D05",
+      "version": 1,
+      "quote": "At the 10:40 neuro check the patient could not be roused: no eye opening and no movement to a loud voice, to repeated shaking of both shoulders or to a firm sternal rub."
+     },
+     {
+      "document_id": "SYN-0039-D05",
+      "version": 1,
+      "quote": "No sedative, opioid, antihistamine or antipsychotic has been given during this admission."
+     },
+     {
+      "document_id": "SYN-0039-D06",
+      "version": 1,
+      "quote": "ICE 0/10 because the patient could not be woken to attempt it."
+     },
+     {
+      "document_id": "SYN-0039-D06",
+      "version": 1,
+      "quote": "Glucose and sodium are normal."
+     }
+    ]
+   }
+  },
+  "ttft_ms": 4896,
+  "type": "result",
+  "duration_ms": 11048,
+  "uuid": "ba508c11-ed64-4012-8e2d-889c11781e3d",
+  "ttft_stream_ms": 2427,
+  "time_to_request_ms": 185,
+  "first_content_frame_ms": 2427,
+  "queued_turn_count": 0,
+  "result_index": 0,
+  "credential_expires_at": "2026-12-06T22:19:03.648Z"
+ }
+}

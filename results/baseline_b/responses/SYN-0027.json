@@ -1,0 +1,243 @@
+{
+ "case_id": "SYN-0027",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "thinking": "adaptive (always on for this model)",
+ "route": "Claude Code print mode",
+ "command": [
+  "claude",
+  "-p",
+  "--model",
+  "claude-opus-5-5",
+  "--effort",
+  "high",
+  "--system-prompt",
+  "<instructions: system_prompt.md>",
+  "--tools",
+  "",
+  "--json-schema",
+  "<answer_schema.json>",
+  "--output-format",
+  "json",
+  "--no-session-persistence",
+  "--strict-mcp-config",
+  "--setting-sources",
+  "project"
+ ],
+ "system_prompt_sha256": "0cda59baefac995b4e20a8dde5550077ed76c7f0f789f8c4661cf246f64e1596",
+ "answer_schema_sha256": "9dc6f412e8631752ce5bf4ce82b16ac3ce5d04d9dfb8709c8b459a7a11d2ad11",
+ "fallback_model": null,
+ "user_message_sha256": "4ac2132df4addec271f6933bdfa98b4227b4219938fb70e2f0f1e1677243ac70",
+ "requested_at": "2026-11-09T08:21:56-06:00",
+ "stop_reason": "tool_use",
+ "finished": true,
+ "answer_text": "{\"out_of_scope_reason\": \"in scope\", \"onset\": {\"category\": \"7.7\", \"documented_value\": \"2036-08-28\", \"explanation\": \"The earliest qualifying finding is ICE 7/10 (Grade 1) at 08:00 on 2036-08-28, with no sedating medication in the previous 24 hours. A formal Grade 0 assessment (ICE 10/10) on 2036-08-26 shows no ICANS before that. The current record (v2) gives onset 2036-08-28, so the difference is 0 days. The record changed the onset from 2036-08-29 (v1) to 2036-08-28 (v2). This is not 7.6, because condition (c) fails: no supporting document version was written between v1 recorded_at (2036-09-13T10:00) and v2 recorded_at (2036-09-17T14:30). D02 was written 2036-08-28 and the latest document, D08, on 2036-09-09. So the field is 7.7 with the flag 'revision without new documentation'.\", \"evidence\": [{\"document_id\": \"SYN-0027-D02\", \"version\": 1, \"quote\": \"ICE assesment 2036-08-28 at 08:00\"}, {\"document_id\": \"SYN-0027-D02\", \"version\": 1, \"quote\": \"Total ICE 7/10\"}, {\"document_id\": \"SYN-0027-D02\", \"version\": 1, \"quote\": \"No sedating medications in last 24 h.\"}, {\"document_id\": \"SYN-0027-D01\", \"version\": 1, \"quote\": \"ICE at 20:00: 10/10.\"}]}, \"max_grade\": {\"category\": \"7.4\", \"documented_value\": \"2\", \"explanation\": \"The record's maximum grade is 4. The worst documented assessment is on 2036-08-29: ICE 5/10 (Grade 2) and 'Awakens to voice' (Grade 2), with no sedating medication, no seizure and no focal weakness. Every other assessment is Grade 1 or lower (ICE 7, 9 and 10). The EEG on 2036-09-04 was normal. No document supports Grade 3 or 4, so the record is over-graded. The result would normally be 7.3, but the window contains a documented 'not assessable' period: 'intubated and sedated, unable to assess' on 2036-08-30 and 2036-08-31. Under A25 this makes the result 7.4 (insufficient evidence). The documents support Grade 2.\", \"evidence\": [{\"document_id\": \"SYN-0027-D03\", \"version\": 1, \"quote\": \"Neuro at 07:30: ICE 5/10 (orientation 1/4, naming 2/3, commands 1/1, writing 0/1, attention 1/1). Awakens to voice.\"}, {\"document_id\": \"SYN-0027-D03\", \"version\": 1, \"quote\": \"No sedating medications given.\"}, {\"document_id\": \"SYN-0027-D03\", \"version\": 1, \"quote\": \"moves all extremities, no focal weakness. No seizure activity.\"}, {\"document_id\": \"SYN-0027-D05\", \"version\": 1, \"quote\": \"ICE not done this shift (2036-08-30): intubated and sedated, unable to assess.\"}, {\"document_id\": \"SYN-0027-D06\", \"version\": 1, \"quote\": \"NOT DONE - patient intubated and sedated on propofol, unable to assess today (2036-08-31).\"}, {\"document_id\": \"SYN-0027-D07\", \"version\": 1, \"quote\": \"No epileptiform discharges. No electrographic seizures.\"}]}}",
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 3259,
+  "cache_read_input_tokens": 27340,
+  "output_tokens": 1648,
+  "output_tokens_details": {
+   "thinking_tokens": 408
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 3259,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 1648,
+    "cache_read_input_tokens": 27340,
+    "cache_creation_input_tokens": 3259,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 3259
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "models_reported": [
+  "claude-opus-5-5"
+ ],
+ "claude_code_cost_usd": 0.064508,
+ "duration_seconds": 15.384,
+ "cli_output": {
+  "duration_api_ms": 14651,
+  "stop_reason": "tool_use",
+  "session_id": "be7c9a64-5647-46a9-8e72-fa43dc8b0db3",
+  "total_cost_usd": 0.064508,
+  "usage": {
+   "input_tokens": 2,
+   "cache_creation_input_tokens": 3259,
+   "cache_read_input_tokens": 27340,
+   "output_tokens": 1648,
+   "output_tokens_details": {
+    "thinking_tokens": 408
+   },
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "service_tier": "standard",
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 3259,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "inference_geo": "global",
+   "iterations": [
+    {
+     "input_tokens": 2,
+     "output_tokens": 1648,
+     "cache_read_input_tokens": 27340,
+     "cache_creation_input_tokens": 3259,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 0,
+      "ephemeral_1h_input_tokens": 3259
+     },
+     "type": "message"
+    }
+   ],
+   "speed": "standard",
+   "fallback_credit": null
+  },
+  "modelUsage": {
+   "claude-opus-5-5": {
+    "inputTokens": 2,
+    "outputTokens": 1648,
+    "cacheReadInputTokens": 27340,
+    "cacheCreationInputTokens": 3259,
+    "webSearchRequests": 0,
+    "costUSD": 0.064508,
+    "contextWindow": 1000000,
+    "maxOutputTokens": 128000,
+    "thinkingTokens": 408,
+    "cacheCreationEphemeral5mInputTokens": 0,
+    "cacheCreationEphemeral1hInputTokens": 3259,
+    "canonicalModel": "claude-opus-5-5",
+    "provider": "firstParty",
+    "costBasis": "list"
+   }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+   "spawned": 0,
+   "requested": {
+    "background": 0,
+    "foreground": 0,
+    "unset": 0
+   },
+   "started_in_background": 0,
+   "max_depth": 0,
+   "spawned_by_subagents": 0,
+   "completed": 0,
+   "failed": 0,
+   "killed": {
+    "parent": 0,
+    "user": 0,
+    "system": 0
+   },
+   "refused": {
+    "depth_limit": 0,
+    "concurrency_limit": 0,
+    "budget": 0
+   },
+   "by_type": {}
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 2,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "{\"out_of_scope_reason\":\"in scope\",\"onset\":{\"category\":\"7.7\",\"documented_value\":\"2036-08-28\",\"explanation\":\"The earliest qualifying finding is ICE 7/10 (Grade 1) at 08:00 on 2036-08-28, with no sedating medication in the previous 24 hours. A formal Grade 0 assessment (ICE 10/10) on 2036-08-26 shows no ICANS before that. The current record (v2) gives onset 2036-08-28, so the difference is 0 days. The record changed the onset from 2036-08-29 (v1) to 2036-08-28 (v2). This is not 7.6, because condition (c) fails: no supporting document version was written between v1 recorded_at (2036-09-13T10:00) and v2 recorded_at (2036-09-17T14:30). D02 was written 2036-08-28 and the latest document, D08, on 2036-09-09. So the field is 7.7 with the flag 'revision without new documentation'.\",\"evidence\":[{\"document_id\":\"SYN-0027-D02\",\"version\":1,\"quote\":\"ICE assesment 2036-08-28 at 08:00\"},{\"document_id\":\"SYN-0027-D02\",\"version\":1,\"quote\":\"Total ICE 7/10\"},{\"document_id\":\"SYN-0027-D02\",\"version\":1,\"quote\":\"No sedating medications in last 24 h.\"},{\"document_id\":\"SYN-0027-D01\",\"version\":1,\"quote\":\"ICE at 20:00: 10/10.\"}]},\"max_grade\":{\"category\":\"7.4\",\"documented_value\":\"2\",\"explanation\":\"The record's maximum grade is 4. The worst documented assessment is on 2036-08-29: ICE 5/10 (Grade 2) and 'Awakens to voice' (Grade 2), with no sedating medication, no seizure and no focal weakness. Every other assessment is Grade 1 or lower (ICE 7, 9 and 10). The EEG on 2036-09-04 was normal. No document supports Grade 3 or 4, so the record is over-graded. The result would normally be 7.3, but the window contains a documented 'not assessable' period: 'intubated and sedated, unable to assess' on 2036-08-30 and 2036-08-31. Under A25 this makes the result 7.4 (insufficient evidence). The documents support Grade 2.\",\"evidence\":[{\"document_id\":\"SYN-0027-D03\",\"version\":1,\"quote\":\"Neuro at 07:30: ICE 5/10 (orientation 1/4, naming 2/3, commands 1/1, writing 0/1, attention 1/1). Awakens to voice.\"},{\"document_id\":\"SYN-0027-D03\",\"version\":1,\"quote\":\"No sedating medications given.\"},{\"document_id\":\"SYN-0027-D03\",\"version\":1,\"quote\":\"moves all extremities, no focal weakness. No seizure activity.\"},{\"document_id\":\"SYN-0027-D05\",\"version\":1,\"quote\":\"ICE not done this shift (2036-08-30): intubated and sedated, unable to assess.\"},{\"document_id\":\"SYN-0027-D06\",\"version\":1,\"quote\":\"NOT DONE - patient intubated and sedated on propofol, unable to assess today (2036-08-31).\"},{\"document_id\":\"SYN-0027-D07\",\"version\":1,\"quote\":\"No epileptiform discharges. No electrographic seizures.\"}]}}",
+  "structured_output": {
+   "out_of_scope_reason": "in scope",
+   "onset": {
+    "category": "7.7",
+    "documented_value": "2036-08-28",
+    "explanation": "The earliest qualifying finding is ICE 7/10 (Grade 1) at 08:00 on 2036-08-28, with no sedating medication in the previous 24 hours. A formal Grade 0 assessment (ICE 10/10) on 2036-08-26 shows no ICANS before that. The current record (v2) gives onset 2036-08-28, so the difference is 0 days. The record changed the onset from 2036-08-29 (v1) to 2036-08-28 (v2). This is not 7.6, because condition (c) fails: no supporting document version was written between v1 recorded_at (2036-09-13T10:00) and v2 recorded_at (2036-09-17T14:30). D02 was written 2036-08-28 and the latest document, D08, on 2036-09-09. So the field is 7.7 with the flag 'revision without new documentation'.",
+    "evidence": [
+     {
+      "document_id": "SYN-0027-D02",
+      "version": 1,
+      "quote": "ICE assesment 2036-08-28 at 08:00"
+     },
+     {
+      "document_id": "SYN-0027-D02",
+      "version": 1,
+      "quote": "Total ICE 7/10"
+     },
+     {
+      "document_id": "SYN-0027-D02",
+      "version": 1,
+      "quote": "No sedating medications in last 24 h."
+     },
+     {
+      "document_id": "SYN-0027-D01",
+      "version": 1,
+      "quote": "ICE at 20:00: 10/10."
+     }
+    ]
+   },
+   "max_grade": {
+    "category": "7.4",
+    "documented_value": "2",
+    "explanation": "The record's maximum grade is 4. The worst documented assessment is on 2036-08-29: ICE 5/10 (Grade 2) and 'Awakens to voice' (Grade 2), with no sedating medication, no seizure and no focal weakness. Every other assessment is Grade 1 or lower (ICE 7, 9 and 10). The EEG on 2036-09-04 was normal. No document supports Grade 3 or 4, so the record is over-graded. The result would normally be 7.3, but the window contains a documented 'not assessable' period: 'intubated and sedated, unable to assess' on 2036-08-30 and 2036-08-31. Under A25 this makes the result 7.4 (insufficient evidence). The documents support Grade 2.",
+    "evidence": [
+     {
+      "document_id": "SYN-0027-D03",
+      "version": 1,
+      "quote": "Neuro at 07:30: ICE 5/10 (orientation 1/4, naming 2/3, commands 1/1, writing 0/1, attention 1/1). Awakens to voice."
+     },
+     {
+      "document_id": "SYN-0027-D03",
+      "version": 1,
+      "quote": "No sedating medications given."
+     },
+     {
+      "document_id": "SYN-0027-D03",
+      "version": 1,
+      "quote": "moves all extremities, no focal weakness. No seizure activity."
+     },
+     {
+      "document_id": "SYN-0027-D05",
+      "version": 1,
+      "quote": "ICE not done this shift (2036-08-30): intubated and sedated, unable to assess."
+     },
+     {
+      "document_id": "SYN-0027-D06",
+      "version": 1,
+      "quote": "NOT DONE - patient intubated and sedated on propofol, unable to assess today (2036-08-31)."
+     },
+     {
+      "document_id": "SYN-0027-D07",
+      "version": 1,
+      "quote": "No epileptiform discharges. No electrographic seizures."
+     }
+    ]
+   }
+  },
+  "ttft_ms": 6199,
+  "type": "result",
+  "duration_ms": 14818,
+  "uuid": "45daf91a-0108-49fa-9e7e-1b55de6738bb",
+  "ttft_stream_ms": 2540,
+  "time_to_request_ms": 165,
+  "first_content_frame_ms": 2540,
+  "queued_turn_count": 0,
+  "result_index": 0,
+  "credential_expires_at": "2026-12-06T22:19:03.648Z"
+ }
+}

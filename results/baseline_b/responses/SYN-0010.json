@@ -1,0 +1,228 @@
+{
+ "case_id": "SYN-0010",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "thinking": "adaptive (always on for this model)",
+ "route": "Claude Code print mode",
+ "command": [
+  "claude",
+  "-p",
+  "--model",
+  "claude-opus-5-5",
+  "--effort",
+  "high",
+  "--system-prompt",
+  "<instructions: system_prompt.md>",
+  "--tools",
+  "",
+  "--json-schema",
+  "<answer_schema.json>",
+  "--output-format",
+  "json",
+  "--no-session-persistence",
+  "--strict-mcp-config",
+  "--setting-sources",
+  "project"
+ ],
+ "system_prompt_sha256": "0cda59baefac995b4e20a8dde5550077ed76c7f0f789f8c4661cf246f64e1596",
+ "answer_schema_sha256": "9dc6f412e8631752ce5bf4ce82b16ac3ce5d04d9dfb8709c8b459a7a11d2ad11",
+ "fallback_model": null,
+ "user_message_sha256": "6baa8f7e50ca9de2525789cfee301a369ea86bbab29d4b234d4e896610ad3a2e",
+ "requested_at": "2026-11-09T08:20:50-06:00",
+ "stop_reason": "tool_use",
+ "finished": true,
+ "answer_text": "{\"out_of_scope_reason\": \"in scope\", \"onset\": {\"category\": \"7.7\", \"documented_value\": \"2032-06-23\", \"explanation\": \"The first qualifying finding is ICE 9/10 at 20:15 on 2032-06-23 (Day +5), which meets the Grade 1 criterion. The fever belongs to CRS, and neither CRS nor acetaminophen counts as a competing cause (A35). Blood cultures were drawn, but no infection is documented, and the hypertension is described as well controlled, not severe. No clinician attributes the finding to another cause. The record onset of 2032-06-23 is the same calendar day as the documented onset.\", \"evidence\": [{\"document_id\": \"SYN-0010-D02\", \"version\": 1, \"quote\": \"Neurologic check at 20:15: ICE screen: 9/10.\"}, {\"document_id\": \"SYN-0010-D02\", \"version\": 1, \"quote\": \"acetaminophen 650 mg was given at 14:20 per order\"}, {\"document_id\": \"SYN-0010-D03\", \"version\": 1, \"quote\": \"Assessment: neurotoxicity (ICANS) following CAR-T infusion, with fever from cytokine release syndrome now treated.\"}]}, \"max_grade\": {\"category\": \"7.7\", \"documented_value\": \"2\", \"explanation\": \"The worst assessment is on 2032-06-24 (Day +6). It records ICE 4/10, which is Grade 2, and the patient awakens to voice, which is also Grade 2. No sedating medication was given in the previous 24 hours. Tocilizumab is CRS treatment and not a competing cause. No seizure, motor or edema findings are documented. The Day +8 assessment is ICE 10/10. The highest supported grade is 2, which matches the record's Grade 2.\", \"evidence\": [{\"document_id\": \"SYN-0010-D03\", \"version\": 1, \"quote\": \"ICE score 4/10.\"}, {\"document_id\": \"SYN-0010-D03\", \"version\": 1, \"quote\": \"The patient is drowsy and awakens to voice, then drifts back to sleep without stimulation. No sedating medications have been given in the past 24 hours.\"}, {\"document_id\": \"SYN-0010-D03\", \"version\": 1, \"quote\": \"moving all four extremities with full strength, no focal motor deficits, and no seizure activity reported by nursing.\"}, {\"document_id\": \"SYN-0010-D04\", \"version\": 1, \"quote\": \"ICE total: 10/10.\"}]}}",
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 2784,
+  "cache_read_input_tokens": 27340,
+  "output_tokens": 1234,
+  "output_tokens_details": {
+   "thinking_tokens": 331
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 2784,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 1234,
+    "cache_read_input_tokens": 27340,
+    "cache_creation_input_tokens": 2784,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 2784
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "models_reported": [
+  "claude-opus-5-5"
+ ],
+ "claude_code_cost_usd": 0.052428,
+ "duration_seconds": 11.615,
+ "cli_output": {
+  "duration_api_ms": 10769,
+  "stop_reason": "tool_use",
+  "session_id": "8e936762-236a-4920-8af9-17f4f8aa3ae9",
+  "total_cost_usd": 0.052428,
+  "usage": {
+   "input_tokens": 2,
+   "cache_creation_input_tokens": 2784,
+   "cache_read_input_tokens": 27340,
+   "output_tokens": 1234,
+   "output_tokens_details": {
+    "thinking_tokens": 331
+   },
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "service_tier": "standard",
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 2784,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "inference_geo": "global",
+   "iterations": [
+    {
+     "input_tokens": 2,
+     "output_tokens": 1234,
+     "cache_read_input_tokens": 27340,
+     "cache_creation_input_tokens": 2784,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 0,
+      "ephemeral_1h_input_tokens": 2784
+     },
+     "type": "message"
+    }
+   ],
+   "speed": "standard",
+   "fallback_credit": null
+  },
+  "modelUsage": {
+   "claude-opus-5-5": {
+    "inputTokens": 2,
+    "outputTokens": 1234,
+    "cacheReadInputTokens": 27340,
+    "cacheCreationInputTokens": 2784,
+    "webSearchRequests": 0,
+    "costUSD": 0.052428,
+    "contextWindow": 1000000,
+    "maxOutputTokens": 128000,
+    "thinkingTokens": 331,
+    "cacheCreationEphemeral5mInputTokens": 0,
+    "cacheCreationEphemeral1hInputTokens": 2784,
+    "canonicalModel": "claude-opus-5-5",
+    "provider": "firstParty",
+    "costBasis": "list"
+   }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+   "spawned": 0,
+   "requested": {
+    "background": 0,
+    "foreground": 0,
+    "unset": 0
+   },
+   "started_in_background": 0,
+   "max_depth": 0,
+   "spawned_by_subagents": 0,
+   "completed": 0,
+   "failed": 0,
+   "killed": {
+    "parent": 0,
+    "user": 0,
+    "system": 0
+   },
+   "refused": {
+    "depth_limit": 0,
+    "concurrency_limit": 0,
+    "budget": 0
+   },
+   "by_type": {}
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 2,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "{\"out_of_scope_reason\":\"in scope\",\"onset\":{\"category\":\"7.7\",\"documented_value\":\"2032-06-23\",\"explanation\":\"The first qualifying finding is ICE 9/10 at 20:15 on 2032-06-23 (Day +5), which meets the Grade 1 criterion. The fever belongs to CRS, and neither CRS nor acetaminophen counts as a competing cause (A35). Blood cultures were drawn, but no infection is documented, and the hypertension is described as well controlled, not severe. No clinician attributes the finding to another cause. The record onset of 2032-06-23 is the same calendar day as the documented onset.\",\"evidence\":[{\"document_id\":\"SYN-0010-D02\",\"version\":1,\"quote\":\"Neurologic check at 20:15: ICE screen: 9/10.\"},{\"document_id\":\"SYN-0010-D02\",\"version\":1,\"quote\":\"acetaminophen 650 mg was given at 14:20 per order\"},{\"document_id\":\"SYN-0010-D03\",\"version\":1,\"quote\":\"Assessment: neurotoxicity (ICANS) following CAR-T infusion, with fever from cytokine release syndrome now treated.\"}]},\"max_grade\":{\"category\":\"7.7\",\"documented_value\":\"2\",\"explanation\":\"The worst assessment is on 2032-06-24 (Day +6). It records ICE 4/10, which is Grade 2, and the patient awakens to voice, which is also Grade 2. No sedating medication was given in the previous 24 hours. Tocilizumab is CRS treatment and not a competing cause. No seizure, motor or edema findings are documented. The Day +8 assessment is ICE 10/10. The highest supported grade is 2, which matches the record's Grade 2.\",\"evidence\":[{\"document_id\":\"SYN-0010-D03\",\"version\":1,\"quote\":\"ICE score 4/10.\"},{\"document_id\":\"SYN-0010-D03\",\"version\":1,\"quote\":\"The patient is drowsy and awakens to voice, then drifts back to sleep without stimulation. No sedating medications have been given in the past 24 hours.\"},{\"document_id\":\"SYN-0010-D03\",\"version\":1,\"quote\":\"moving all four extremities with full strength, no focal motor deficits, and no seizure activity reported by nursing.\"},{\"document_id\":\"SYN-0010-D04\",\"version\":1,\"quote\":\"ICE total: 10/10.\"}]}}",
+  "structured_output": {
+   "out_of_scope_reason": "in scope",
+   "onset": {
+    "category": "7.7",
+    "documented_value": "2032-06-23",
+    "explanation": "The first qualifying finding is ICE 9/10 at 20:15 on 2032-06-23 (Day +5), which meets the Grade 1 criterion. The fever belongs to CRS, and neither CRS nor acetaminophen counts as a competing cause (A35). Blood cultures were drawn, but no infection is documented, and the hypertension is described as well controlled, not severe. No clinician attributes the finding to another cause. The record onset of 2032-06-23 is the same calendar day as the documented onset.",
+    "evidence": [
+     {
+      "document_id": "SYN-0010-D02",
+      "version": 1,
+      "quote": "Neurologic check at 20:15: ICE screen: 9/10."
+     },
+     {
+      "document_id": "SYN-0010-D02",
+      "version": 1,
+      "quote": "acetaminophen 650 mg was given at 14:20 per order"
+     },
+     {
+      "document_id": "SYN-0010-D03",
+      "version": 1,
+      "quote": "Assessment: neurotoxicity (ICANS) following CAR-T infusion, with fever from cytokine release syndrome now treated."
+     }
+    ]
+   },
+   "max_grade": {
+    "category": "7.7",
+    "documented_value": "2",
+    "explanation": "The worst assessment is on 2032-06-24 (Day +6). It records ICE 4/10, which is Grade 2, and the patient awakens to voice, which is also Grade 2. No sedating medication was given in the previous 24 hours. Tocilizumab is CRS treatment and not a competing cause. No seizure, motor or edema findings are documented. The Day +8 assessment is ICE 10/10. The highest supported grade is 2, which matches the record's Grade 2.",
+    "evidence": [
+     {
+      "document_id": "SYN-0010-D03",
+      "version": 1,
+      "quote": "ICE score 4/10."
+     },
+     {
+      "document_id": "SYN-0010-D03",
+      "version": 1,
+      "quote": "The patient is drowsy and awakens to voice, then drifts back to sleep without stimulation. No sedating medications have been given in the past 24 hours."
+     },
+     {
+      "document_id": "SYN-0010-D03",
+      "version": 1,
+      "quote": "moving all four extremities with full strength, no focal motor deficits, and no seizure activity reported by nursing."
+     },
+     {
+      "document_id": "SYN-0010-D04",
+      "version": 1,
+      "quote": "ICE total: 10/10."
+     }
+    ]
+   }
+  },
+  "ttft_ms": 4873,
+  "type": "result",
+  "duration_ms": 10921,
+  "uuid": "0c0f37f3-5ef1-4693-b196-3e2858e12969",
+  "ttft_stream_ms": 1807,
+  "time_to_request_ms": 151,
+  "first_content_frame_ms": 1808,
+  "queued_turn_count": 0,
+  "result_index": 0,
+  "credential_expires_at": "2026-12-06T22:19:03.648Z"
+ }
+}

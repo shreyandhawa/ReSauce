@@ -1,0 +1,223 @@
+{
+ "case_id": "SYN-0023",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "thinking": "adaptive (always on for this model)",
+ "route": "Claude Code print mode",
+ "command": [
+  "claude",
+  "-p",
+  "--model",
+  "claude-opus-5-5",
+  "--effort",
+  "high",
+  "--system-prompt",
+  "<instructions: system_prompt.md>",
+  "--tools",
+  "",
+  "--json-schema",
+  "<answer_schema.json>",
+  "--output-format",
+  "json",
+  "--no-session-persistence",
+  "--strict-mcp-config",
+  "--setting-sources",
+  "project"
+ ],
+ "system_prompt_sha256": "0cda59baefac995b4e20a8dde5550077ed76c7f0f789f8c4661cf246f64e1596",
+ "answer_schema_sha256": "9dc6f412e8631752ce5bf4ce82b16ac3ce5d04d9dfb8709c8b459a7a11d2ad11",
+ "fallback_model": null,
+ "user_message_sha256": "e015e4d6d857af85691bfb1dd7648696659d218b16c0e91f425cd38fbaa5c82c",
+ "requested_at": "2026-11-09T08:21:41-06:00",
+ "stop_reason": "tool_use",
+ "finished": true,
+ "answer_text": "{\"out_of_scope_reason\": \"in scope\", \"onset\": {\"category\": \"7.5\", \"documented_value\": \"2031-01-29 or 2031-01-30 (two readings)\", \"explanation\": \"Reason: conflicting assessments (§6.4, A23). On 29 Jan a nurse scored ICE 9/10 at 20:15, which is Grade 1. A resident scored ICE 10/10 at 20:50, 35 minutes later, which is a formal Grade 0 assessment. If the 9/10 counts, onset is 2031-01-29: the record's 2031-01-30 is then 1 day late, which is category 7.1. If the 10/10 counts, the first qualifying finding is ICE 8/10 at 10:00 on 30 Jan, so onset is 2031-01-30, which matches the record (7.7). The two readings give different categories, so the result is 7.5. The 27 Jan ICE 10/10 is Grade 0, and the CRS fever is not a competing cause.\", \"evidence\": [{\"document_id\": \"SYN-0023-D02\", \"version\": 1, \"quote\": \"Evening neurological check on 29 Jan at 20:15: ICE 9/10 (orientation 4/4, naming 3/3, commands 1/1, writing 1/1, attention 0/1).\"}, {\"document_id\": \"SYN-0023-D03\", \"version\": 1, \"quote\": \"On my examination at 20:50 on 29 Jan the ICE was 10/10 (all items complete including the counting task).\"}, {\"document_id\": \"SYN-0023-D04\", \"version\": 1, \"quote\": \"Morning check 30 Jan at 10:00: ICE 8/10 (orientation 3/4, attention 0/1, other items complete).\"}]}, \"max_grade\": {\"category\": \"7.7\", \"documented_value\": \"1\", \"explanation\": \"The lowest ICE score is 8/10, on 30 Jan and again on 31 Jan, which is Grade 1. No note reaches a higher grade: the patient is awake throughout, and there is no seizure, focal motor deficit or edema finding. Headache is excluded from grading, and acetaminophen is not a competing cause. The conflicting reading on 29 Jan only changes the onset, not the grade. The documents support Grade 1, which equals the recorded Grade 1.\", \"evidence\": [{\"document_id\": \"SYN-0023-D04\", \"version\": 1, \"quote\": \"ICE 8/10 (orientation 3/4, attention 0/1, other items complete). Awake.\"}, {\"document_id\": \"SYN-0023-D05\", \"version\": 1, \"quote\": \"ICE 8/10 at 09:30 on 31 Jan (orientation 3/4, attention 0/1). Awake, no focal deficit.\"}, {\"document_id\": \"SYN-0023-D06\", \"version\": 1, \"quote\": \"Awake, cranial nerves intact, no focal motor deficit, no tremor, no seizure activity. Impression: mild neurotoxicity, improving.\"}]}}",
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 2268,
+  "cache_read_input_tokens": 27340,
+  "output_tokens": 1646,
+  "output_tokens_details": {
+   "thinking_tokens": 596
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 2268,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 1646,
+    "cache_read_input_tokens": 27340,
+    "cache_creation_input_tokens": 2268,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 2268
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "models_reported": [
+  "claude-opus-5-5"
+ ],
+ "claude_code_cost_usd": 0.05654,
+ "duration_seconds": 14.626,
+ "cli_output": {
+  "duration_api_ms": 13787,
+  "stop_reason": "tool_use",
+  "session_id": "bbf1bc3c-1e79-4b49-a92b-38e3f83a2aa0",
+  "total_cost_usd": 0.05654,
+  "usage": {
+   "input_tokens": 2,
+   "cache_creation_input_tokens": 2268,
+   "cache_read_input_tokens": 27340,
+   "output_tokens": 1646,
+   "output_tokens_details": {
+    "thinking_tokens": 596
+   },
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "service_tier": "standard",
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 2268,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "inference_geo": "global",
+   "iterations": [
+    {
+     "input_tokens": 2,
+     "output_tokens": 1646,
+     "cache_read_input_tokens": 27340,
+     "cache_creation_input_tokens": 2268,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 0,
+      "ephemeral_1h_input_tokens": 2268
+     },
+     "type": "message"
+    }
+   ],
+   "speed": "standard",
+   "fallback_credit": null
+  },
+  "modelUsage": {
+   "claude-opus-5-5": {
+    "inputTokens": 2,
+    "outputTokens": 1646,
+    "cacheReadInputTokens": 27340,
+    "cacheCreationInputTokens": 2268,
+    "webSearchRequests": 0,
+    "costUSD": 0.05654,
+    "contextWindow": 1000000,
+    "maxOutputTokens": 128000,
+    "thinkingTokens": 596,
+    "cacheCreationEphemeral5mInputTokens": 0,
+    "cacheCreationEphemeral1hInputTokens": 2268,
+    "canonicalModel": "claude-opus-5-5",
+    "provider": "firstParty",
+    "costBasis": "list"
+   }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+   "spawned": 0,
+   "requested": {
+    "background": 0,
+    "foreground": 0,
+    "unset": 0
+   },
+   "started_in_background": 0,
+   "max_depth": 0,
+   "spawned_by_subagents": 0,
+   "completed": 0,
+   "failed": 0,
+   "killed": {
+    "parent": 0,
+    "user": 0,
+    "system": 0
+   },
+   "refused": {
+    "depth_limit": 0,
+    "concurrency_limit": 0,
+    "budget": 0
+   },
+   "by_type": {}
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 2,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "{\"out_of_scope_reason\":\"in scope\",\"onset\":{\"category\":\"7.5\",\"documented_value\":\"2031-01-29 or 2031-01-30 (two readings)\",\"explanation\":\"Reason: conflicting assessments (§6.4, A23). On 29 Jan a nurse scored ICE 9/10 at 20:15, which is Grade 1. A resident scored ICE 10/10 at 20:50, 35 minutes later, which is a formal Grade 0 assessment. If the 9/10 counts, onset is 2031-01-29: the record's 2031-01-30 is then 1 day late, which is category 7.1. If the 10/10 counts, the first qualifying finding is ICE 8/10 at 10:00 on 30 Jan, so onset is 2031-01-30, which matches the record (7.7). The two readings give different categories, so the result is 7.5. The 27 Jan ICE 10/10 is Grade 0, and the CRS fever is not a competing cause.\",\"evidence\":[{\"document_id\":\"SYN-0023-D02\",\"version\":1,\"quote\":\"Evening neurological check on 29 Jan at 20:15: ICE 9/10 (orientation 4/4, naming 3/3, commands 1/1, writing 1/1, attention 0/1).\"},{\"document_id\":\"SYN-0023-D03\",\"version\":1,\"quote\":\"On my examination at 20:50 on 29 Jan the ICE was 10/10 (all items complete including the counting task).\"},{\"document_id\":\"SYN-0023-D04\",\"version\":1,\"quote\":\"Morning check 30 Jan at 10:00: ICE 8/10 (orientation 3/4, attention 0/1, other items complete).\"}]},\"max_grade\":{\"category\":\"7.7\",\"documented_value\":\"1\",\"explanation\":\"The lowest ICE score is 8/10, on 30 Jan and again on 31 Jan, which is Grade 1. No note reaches a higher grade: the patient is awake throughout, and there is no seizure, focal motor deficit or edema finding. Headache is excluded from grading, and acetaminophen is not a competing cause. The conflicting reading on 29 Jan only changes the onset, not the grade. The documents support Grade 1, which equals the recorded Grade 1.\",\"evidence\":[{\"document_id\":\"SYN-0023-D04\",\"version\":1,\"quote\":\"ICE 8/10 (orientation 3/4, attention 0/1, other items complete). Awake.\"},{\"document_id\":\"SYN-0023-D05\",\"version\":1,\"quote\":\"ICE 8/10 at 09:30 on 31 Jan (orientation 3/4, attention 0/1). Awake, no focal deficit.\"},{\"document_id\":\"SYN-0023-D06\",\"version\":1,\"quote\":\"Awake, cranial nerves intact, no focal motor deficit, no tremor, no seizure activity. Impression: mild neurotoxicity, improving.\"}]}}",
+  "structured_output": {
+   "out_of_scope_reason": "in scope",
+   "onset": {
+    "category": "7.5",
+    "documented_value": "2031-01-29 or 2031-01-30 (two readings)",
+    "explanation": "Reason: conflicting assessments (§6.4, A23). On 29 Jan a nurse scored ICE 9/10 at 20:15, which is Grade 1. A resident scored ICE 10/10 at 20:50, 35 minutes later, which is a formal Grade 0 assessment. If the 9/10 counts, onset is 2031-01-29: the record's 2031-01-30 is then 1 day late, which is category 7.1. If the 10/10 counts, the first qualifying finding is ICE 8/10 at 10:00 on 30 Jan, so onset is 2031-01-30, which matches the record (7.7). The two readings give different categories, so the result is 7.5. The 27 Jan ICE 10/10 is Grade 0, and the CRS fever is not a competing cause.",
+    "evidence": [
+     {
+      "document_id": "SYN-0023-D02",
+      "version": 1,
+      "quote": "Evening neurological check on 29 Jan at 20:15: ICE 9/10 (orientation 4/4, naming 3/3, commands 1/1, writing 1/1, attention 0/1)."
+     },
+     {
+      "document_id": "SYN-0023-D03",
+      "version": 1,
+      "quote": "On my examination at 20:50 on 29 Jan the ICE was 10/10 (all items complete including the counting task)."
+     },
+     {
+      "document_id": "SYN-0023-D04",
+      "version": 1,
+      "quote": "Morning check 30 Jan at 10:00: ICE 8/10 (orientation 3/4, attention 0/1, other items complete)."
+     }
+    ]
+   },
+   "max_grade": {
+    "category": "7.7",
+    "documented_value": "1",
+    "explanation": "The lowest ICE score is 8/10, on 30 Jan and again on 31 Jan, which is Grade 1. No note reaches a higher grade: the patient is awake throughout, and there is no seizure, focal motor deficit or edema finding. Headache is excluded from grading, and acetaminophen is not a competing cause. The conflicting reading on 29 Jan only changes the onset, not the grade. The documents support Grade 1, which equals the recorded Grade 1.",
+    "evidence": [
+     {
+      "document_id": "SYN-0023-D04",
+      "version": 1,
+      "quote": "ICE 8/10 (orientation 3/4, attention 0/1, other items complete). Awake."
+     },
+     {
+      "document_id": "SYN-0023-D05",
+      "version": 1,
+      "quote": "ICE 8/10 at 09:30 on 31 Jan (orientation 3/4, attention 0/1). Awake, no focal deficit."
+     },
+     {
+      "document_id": "SYN-0023-D06",
+      "version": 1,
+      "quote": "Awake, cranial nerves intact, no focal motor deficit, no tremor, no seizure activity. Impression: mild neurotoxicity, improving."
+     }
+    ]
+   }
+  },
+  "ttft_ms": 6840,
+  "type": "result",
+  "duration_ms": 13944,
+  "uuid": "d7af7a30-7891-46e6-9b31-9d9830592ed9",
+  "ttft_stream_ms": 1776,
+  "time_to_request_ms": 155,
+  "first_content_frame_ms": 1776,
+  "queued_turn_count": 0,
+  "result_index": 0,
+  "credential_expires_at": "2026-12-06T22:19:03.648Z"
+ }
+}

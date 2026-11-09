@@ -1,0 +1,223 @@
+{
+ "case_id": "SYN-0022",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "thinking": "adaptive (always on for this model)",
+ "route": "Claude Code print mode",
+ "command": [
+  "claude",
+  "-p",
+  "--model",
+  "claude-opus-5-5",
+  "--effort",
+  "high",
+  "--system-prompt",
+  "<instructions: system_prompt.md>",
+  "--tools",
+  "",
+  "--json-schema",
+  "<answer_schema.json>",
+  "--output-format",
+  "json",
+  "--no-session-persistence",
+  "--strict-mcp-config",
+  "--setting-sources",
+  "project"
+ ],
+ "system_prompt_sha256": "0cda59baefac995b4e20a8dde5550077ed76c7f0f789f8c4661cf246f64e1596",
+ "answer_schema_sha256": "9dc6f412e8631752ce5bf4ce82b16ac3ce5d04d9dfb8709c8b459a7a11d2ad11",
+ "fallback_model": null,
+ "user_message_sha256": "218feecdf5be8fa107a9a74036265a0a9f6d5a0fc5186d42213a2bc93e677c9c",
+ "requested_at": "2026-11-09T08:21:34-06:00",
+ "stop_reason": "tool_use",
+ "finished": true,
+ "answer_text": "{\"out_of_scope_reason\": \"in scope\", \"onset\": {\"category\": \"7.7\", \"documented_value\": \"2034-02-13\", \"explanation\": \"The earliest qualifying finding is ICE 9/10 at 08:50 on 2034-02-13 (Day +4), which is Grade 1. The note rules out a competing cause: no sedating medicines were given in the past day. Earlier formal assessments on Days 0, +1 and +2 were all ICE 10/10. Fever, tocilizumab and acetaminophen do not count as competing causes under A35. The recorded onset is also 2034-02-13, so the difference is 0 days. The discharge summary's 'from Day +4' gives the same date.\", \"evidence\": [{\"document_id\": \"SYN-0022-D04\", \"version\": 1, \"quote\": \"the ICE at 08:50 was 9/10, losing only the written sentence. No sedating medicines in the past day.\"}, {\"document_id\": \"SYN-0022-D03\", \"version\": 1, \"quote\": \"ICE at 09:15: 10/10; no abnormal neurological signs.\"}, {\"document_id\": \"SYN-0022-D11\", \"version\": 1, \"quote\": \"Neurotoxicity from Day +4, treated with dexamethasone.\"}]}, \"max_grade\": {\"category\": \"7.2\", \"documented_value\": \"3\", \"explanation\": \"The current signed version of D06 (version 2, an addendum signed 2034-02-16) records a witnessed generalized tonic-clonic seizure on 2034-02-15. It lasted about 40 seconds, stopped without treatment and the patient returned to baseline. Under Table 6, a clinical seizure that resolves rapidly is Grade 3. The same day's ICE of 6/10 alone would be Grade 2. No sedating medicine was given during the admission. Levetiracetam was prophylaxis, so it is not a competing cause. The record says Grade 2, so the documents prove a grade one higher. This is a mismatch. Extra flag: superseded-version match. The record's Grade 2 fits D06 version 1, which had only the ICE 6/10 and no seizure, but not the current version 2.\", \"evidence\": [{\"document_id\": \"SYN-0022-D06\", \"version\": 2, \"quote\": \"Addendum: at 15:10 on 2034-02-15 I witnessed a generalized tonic-clonic seizure lasting about 40 seconds, which stopped without treatment; the patient was back to the pre-seizure state within 20 minutes, with no further events.\"}, {\"document_id\": \"SYN-0022-D06\", \"version\": 2, \"quote\": \"the ICE was 6/10, with errors in orientation (2 of 4), naming (2 of 3) and writing\"}, {\"document_id\": \"SYN-0022-D06\", \"version\": 2, \"quote\": \"no sedating medicine has been given during this admission\"}]}}",
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 3425,
+  "cache_read_input_tokens": 27340,
+  "output_tokens": 1422,
+  "output_tokens_details": {
+   "thinking_tokens": 398
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 3425,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 1422,
+    "cache_read_input_tokens": 27340,
+    "cache_creation_input_tokens": 3425,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 3425
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "models_reported": [
+  "claude-opus-5-5"
+ ],
+ "claude_code_cost_usd": 0.061316,
+ "duration_seconds": 13.255,
+ "cli_output": {
+  "duration_api_ms": 12443,
+  "stop_reason": "tool_use",
+  "session_id": "89a3ebd9-fc9e-4007-809b-cee147032027",
+  "total_cost_usd": 0.061316,
+  "usage": {
+   "input_tokens": 2,
+   "cache_creation_input_tokens": 3425,
+   "cache_read_input_tokens": 27340,
+   "output_tokens": 1422,
+   "output_tokens_details": {
+    "thinking_tokens": 398
+   },
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "service_tier": "standard",
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 3425,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "inference_geo": "global",
+   "iterations": [
+    {
+     "input_tokens": 2,
+     "output_tokens": 1422,
+     "cache_read_input_tokens": 27340,
+     "cache_creation_input_tokens": 3425,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 0,
+      "ephemeral_1h_input_tokens": 3425
+     },
+     "type": "message"
+    }
+   ],
+   "speed": "standard",
+   "fallback_credit": null
+  },
+  "modelUsage": {
+   "claude-opus-5-5": {
+    "inputTokens": 2,
+    "outputTokens": 1422,
+    "cacheReadInputTokens": 27340,
+    "cacheCreationInputTokens": 3425,
+    "webSearchRequests": 0,
+    "costUSD": 0.061316,
+    "contextWindow": 1000000,
+    "maxOutputTokens": 128000,
+    "thinkingTokens": 398,
+    "cacheCreationEphemeral5mInputTokens": 0,
+    "cacheCreationEphemeral1hInputTokens": 3425,
+    "canonicalModel": "claude-opus-5-5",
+    "provider": "firstParty",
+    "costBasis": "list"
+   }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+   "spawned": 0,
+   "requested": {
+    "background": 0,
+    "foreground": 0,
+    "unset": 0
+   },
+   "started_in_background": 0,
+   "max_depth": 0,
+   "spawned_by_subagents": 0,
+   "completed": 0,
+   "failed": 0,
+   "killed": {
+    "parent": 0,
+    "user": 0,
+    "system": 0
+   },
+   "refused": {
+    "depth_limit": 0,
+    "concurrency_limit": 0,
+    "budget": 0
+   },
+   "by_type": {}
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 2,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "{\"out_of_scope_reason\":\"in scope\",\"onset\":{\"category\":\"7.7\",\"documented_value\":\"2034-02-13\",\"explanation\":\"The earliest qualifying finding is ICE 9/10 at 08:50 on 2034-02-13 (Day +4), which is Grade 1. The note rules out a competing cause: no sedating medicines were given in the past day. Earlier formal assessments on Days 0, +1 and +2 were all ICE 10/10. Fever, tocilizumab and acetaminophen do not count as competing causes under A35. The recorded onset is also 2034-02-13, so the difference is 0 days. The discharge summary's 'from Day +4' gives the same date.\",\"evidence\":[{\"document_id\":\"SYN-0022-D04\",\"version\":1,\"quote\":\"the ICE at 08:50 was 9/10, losing only the written sentence. No sedating medicines in the past day.\"},{\"document_id\":\"SYN-0022-D03\",\"version\":1,\"quote\":\"ICE at 09:15: 10/10; no abnormal neurological signs.\"},{\"document_id\":\"SYN-0022-D11\",\"version\":1,\"quote\":\"Neurotoxicity from Day +4, treated with dexamethasone.\"}]},\"max_grade\":{\"category\":\"7.2\",\"documented_value\":\"3\",\"explanation\":\"The current signed version of D06 (version 2, an addendum signed 2034-02-16) records a witnessed generalized tonic-clonic seizure on 2034-02-15. It lasted about 40 seconds, stopped without treatment and the patient returned to baseline. Under Table 6, a clinical seizure that resolves rapidly is Grade 3. The same day's ICE of 6/10 alone would be Grade 2. No sedating medicine was given during the admission. Levetiracetam was prophylaxis, so it is not a competing cause. The record says Grade 2, so the documents prove a grade one higher. This is a mismatch. Extra flag: superseded-version match. The record's Grade 2 fits D06 version 1, which had only the ICE 6/10 and no seizure, but not the current version 2.\",\"evidence\":[{\"document_id\":\"SYN-0022-D06\",\"version\":2,\"quote\":\"Addendum: at 15:10 on 2034-02-15 I witnessed a generalized tonic-clonic seizure lasting about 40 seconds, which stopped without treatment; the patient was back to the pre-seizure state within 20 minutes, with no further events.\"},{\"document_id\":\"SYN-0022-D06\",\"version\":2,\"quote\":\"the ICE was 6/10, with errors in orientation (2 of 4), naming (2 of 3) and writing\"},{\"document_id\":\"SYN-0022-D06\",\"version\":2,\"quote\":\"no sedating medicine has been given during this admission\"}]}}",
+  "structured_output": {
+   "out_of_scope_reason": "in scope",
+   "onset": {
+    "category": "7.7",
+    "documented_value": "2034-02-13",
+    "explanation": "The earliest qualifying finding is ICE 9/10 at 08:50 on 2034-02-13 (Day +4), which is Grade 1. The note rules out a competing cause: no sedating medicines were given in the past day. Earlier formal assessments on Days 0, +1 and +2 were all ICE 10/10. Fever, tocilizumab and acetaminophen do not count as competing causes under A35. The recorded onset is also 2034-02-13, so the difference is 0 days. The discharge summary's 'from Day +4' gives the same date.",
+    "evidence": [
+     {
+      "document_id": "SYN-0022-D04",
+      "version": 1,
+      "quote": "the ICE at 08:50 was 9/10, losing only the written sentence. No sedating medicines in the past day."
+     },
+     {
+      "document_id": "SYN-0022-D03",
+      "version": 1,
+      "quote": "ICE at 09:15: 10/10; no abnormal neurological signs."
+     },
+     {
+      "document_id": "SYN-0022-D11",
+      "version": 1,
+      "quote": "Neurotoxicity from Day +4, treated with dexamethasone."
+     }
+    ]
+   },
+   "max_grade": {
+    "category": "7.2",
+    "documented_value": "3",
+    "explanation": "The current signed version of D06 (version 2, an addendum signed 2034-02-16) records a witnessed generalized tonic-clonic seizure on 2034-02-15. It lasted about 40 seconds, stopped without treatment and the patient returned to baseline. Under Table 6, a clinical seizure that resolves rapidly is Grade 3. The same day's ICE of 6/10 alone would be Grade 2. No sedating medicine was given during the admission. Levetiracetam was prophylaxis, so it is not a competing cause. The record says Grade 2, so the documents prove a grade one higher. This is a mismatch. Extra flag: superseded-version match. The record's Grade 2 fits D06 version 1, which had only the ICE 6/10 and no seizure, but not the current version 2.",
+    "evidence": [
+     {
+      "document_id": "SYN-0022-D06",
+      "version": 2,
+      "quote": "Addendum: at 15:10 on 2034-02-15 I witnessed a generalized tonic-clonic seizure lasting about 40 seconds, which stopped without treatment; the patient was back to the pre-seizure state within 20 minutes, with no further events."
+     },
+     {
+      "document_id": "SYN-0022-D06",
+      "version": 2,
+      "quote": "the ICE was 6/10, with errors in orientation (2 of 4), naming (2 of 3) and writing"
+     },
+     {
+      "document_id": "SYN-0022-D06",
+      "version": 2,
+      "quote": "no sedating medicine has been given during this admission"
+     }
+    ]
+   }
+  },
+  "ttft_ms": 5356,
+  "type": "result",
+  "duration_ms": 12609,
+  "uuid": "db2828c2-91dc-4db8-9f6b-98dcb5c9dd88",
+  "ttft_stream_ms": 1974,
+  "time_to_request_ms": 165,
+  "first_content_frame_ms": 1974,
+  "queued_turn_count": 0,
+  "result_index": 0,
+  "credential_expires_at": "2026-12-06T22:19:03.648Z"
+ }
+}

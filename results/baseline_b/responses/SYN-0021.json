@@ -1,0 +1,223 @@
+{
+ "case_id": "SYN-0021",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "thinking": "adaptive (always on for this model)",
+ "route": "Claude Code print mode",
+ "command": [
+  "claude",
+  "-p",
+  "--model",
+  "claude-opus-5-5",
+  "--effort",
+  "high",
+  "--system-prompt",
+  "<instructions: system_prompt.md>",
+  "--tools",
+  "",
+  "--json-schema",
+  "<answer_schema.json>",
+  "--output-format",
+  "json",
+  "--no-session-persistence",
+  "--strict-mcp-config",
+  "--setting-sources",
+  "project"
+ ],
+ "system_prompt_sha256": "0cda59baefac995b4e20a8dde5550077ed76c7f0f789f8c4661cf246f64e1596",
+ "answer_schema_sha256": "9dc6f412e8631752ce5bf4ce82b16ac3ce5d04d9dfb8709c8b459a7a11d2ad11",
+ "fallback_model": null,
+ "user_message_sha256": "df2c4bab98fdfabf9296a52c59bc40ccb5957d9d171106e044c8b97182ca5289",
+ "requested_at": "2026-11-09T08:21:41-06:00",
+ "stop_reason": "tool_use",
+ "finished": true,
+ "answer_text": "{\"out_of_scope_reason\": \"in scope\", \"onset\": {\"category\": \"7.7\", \"documented_value\": \"2031-07-24\", \"explanation\": \"The earliest qualifying finding is ICE 7/10 (Grade 1) at 08:30 on 2031-07-24 (Day +5). It is unattributed, and the note states no sedating meds in the previous 24 h. The fever on Day +3 is CRS, and APAP is CRS treatment; neither is a competing cause (A35). Earlier formal ICE assessments were 10/10 (Day 0, Day +3). The record onset of 2031-07-24 matches. The onset never changed between record versions, so it is not 7.6.\", \"evidence\": [{\"document_id\": \"SYN-0021-D03\", \"version\": 1, \"quote\": \"TOTAL 7/10\"}, {\"document_id\": \"SYN-0021-D03\", \"version\": 1, \"quote\": \"LOC: alert. No sedating meds last 24 h.\"}, {\"document_id\": \"SYN-0021-D02\", \"version\": 1, \"quote\": \"ICE @ 21:00: 10/10. A&Ox4. No tremor. No HA.\"}]}, \"max_grade\": {\"category\": \"7.6\", \"documented_value\": \"3\", \"explanation\": \"The cEEG on 2031-07-26 (Day +7) documented non-convulsive electrographic seizures that resolved after IV levetiracetam. That is Grade 3 (Table 6). It is not Grade 4, because the background returned to baseline between seizures and each lasted under 2 min. No competing cause applies: levetiracetam is not one (A35), and no sedating meds were given. The record changed from Grade 2 (v1, 2031-07-27T11:00) to Grade 3 (v2, 2031-07-29T15:30). The supporting EEG report was signed at 2031-07-29T09:15, which falls between the two record versions, so all three conditions for a legitimate revision are met.\", \"evidence\": [{\"document_id\": \"SYN-0021-D07\", \"version\": 1, \"quote\": \"Recording: 2031-07-26 13:40 to 16:00.\"}, {\"document_id\": \"SYN-0021-D07\", \"version\": 1, \"quote\": \"1. Nonconvulsive electrographic seizures, L temporal, each <2 min with return to baseline background between them; resolved after IV levetiracetam.\"}, {\"document_id\": \"SYN-0021-D04\", \"version\": 1, \"quote\": \"ICE 5/10 (orient 1/4, naming 2/3, cmds 1/1, writing 0/1, attn 1/1). Awake, alert, conversant.\"}]}}",
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 3369,
+  "cache_read_input_tokens": 27340,
+  "output_tokens": 2291,
+  "output_tokens_details": {
+   "thinking_tokens": 421
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 3369,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 2291,
+    "cache_read_input_tokens": 27340,
+    "cache_creation_input_tokens": 3369,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 3369
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "models_reported": [
+  "claude-opus-5-5"
+ ],
+ "claude_code_cost_usd": 0.078248,
+ "duration_seconds": 21.755,
+ "cli_output": {
+  "duration_api_ms": 21075,
+  "stop_reason": "tool_use",
+  "session_id": "b5ac80da-b077-41ab-8191-cbcf2f72447f",
+  "total_cost_usd": 0.078248,
+  "usage": {
+   "input_tokens": 2,
+   "cache_creation_input_tokens": 3369,
+   "cache_read_input_tokens": 27340,
+   "output_tokens": 2291,
+   "output_tokens_details": {
+    "thinking_tokens": 421
+   },
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "service_tier": "standard",
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 3369,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "inference_geo": "global",
+   "iterations": [
+    {
+     "input_tokens": 2,
+     "output_tokens": 2291,
+     "cache_read_input_tokens": 27340,
+     "cache_creation_input_tokens": 3369,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 0,
+      "ephemeral_1h_input_tokens": 3369
+     },
+     "type": "message"
+    }
+   ],
+   "speed": "standard",
+   "fallback_credit": null
+  },
+  "modelUsage": {
+   "claude-opus-5-5": {
+    "inputTokens": 2,
+    "outputTokens": 2291,
+    "cacheReadInputTokens": 27340,
+    "cacheCreationInputTokens": 3369,
+    "webSearchRequests": 0,
+    "costUSD": 0.078248,
+    "contextWindow": 1000000,
+    "maxOutputTokens": 128000,
+    "thinkingTokens": 421,
+    "cacheCreationEphemeral5mInputTokens": 0,
+    "cacheCreationEphemeral1hInputTokens": 3369,
+    "canonicalModel": "claude-opus-5-5",
+    "provider": "firstParty",
+    "costBasis": "list"
+   }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+   "spawned": 0,
+   "requested": {
+    "background": 0,
+    "foreground": 0,
+    "unset": 0
+   },
+   "started_in_background": 0,
+   "max_depth": 0,
+   "spawned_by_subagents": 0,
+   "completed": 0,
+   "failed": 0,
+   "killed": {
+    "parent": 0,
+    "user": 0,
+    "system": 0
+   },
+   "refused": {
+    "depth_limit": 0,
+    "concurrency_limit": 0,
+    "budget": 0
+   },
+   "by_type": {}
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 2,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "{\"out_of_scope_reason\":\"in scope\",\"onset\":{\"category\":\"7.7\",\"documented_value\":\"2031-07-24\",\"explanation\":\"The earliest qualifying finding is ICE 7/10 (Grade 1) at 08:30 on 2031-07-24 (Day +5). It is unattributed, and the note states no sedating meds in the previous 24 h. The fever on Day +3 is CRS, and APAP is CRS treatment; neither is a competing cause (A35). Earlier formal ICE assessments were 10/10 (Day 0, Day +3). The record onset of 2031-07-24 matches. The onset never changed between record versions, so it is not 7.6.\",\"evidence\":[{\"document_id\":\"SYN-0021-D03\",\"version\":1,\"quote\":\"TOTAL 7/10\"},{\"document_id\":\"SYN-0021-D03\",\"version\":1,\"quote\":\"LOC: alert. No sedating meds last 24 h.\"},{\"document_id\":\"SYN-0021-D02\",\"version\":1,\"quote\":\"ICE @ 21:00: 10/10. A&Ox4. No tremor. No HA.\"}]},\"max_grade\":{\"category\":\"7.6\",\"documented_value\":\"3\",\"explanation\":\"The cEEG on 2031-07-26 (Day +7) documented non-convulsive electrographic seizures that resolved after IV levetiracetam. That is Grade 3 (Table 6). It is not Grade 4, because the background returned to baseline between seizures and each lasted under 2 min. No competing cause applies: levetiracetam is not one (A35), and no sedating meds were given. The record changed from Grade 2 (v1, 2031-07-27T11:00) to Grade 3 (v2, 2031-07-29T15:30). The supporting EEG report was signed at 2031-07-29T09:15, which falls between the two record versions, so all three conditions for a legitimate revision are met.\",\"evidence\":[{\"document_id\":\"SYN-0021-D07\",\"version\":1,\"quote\":\"Recording: 2031-07-26 13:40 to 16:00.\"},{\"document_id\":\"SYN-0021-D07\",\"version\":1,\"quote\":\"1. Nonconvulsive electrographic seizures, L temporal, each <2 min with return to baseline background between them; resolved after IV levetiracetam.\"},{\"document_id\":\"SYN-0021-D04\",\"version\":1,\"quote\":\"ICE 5/10 (orient 1/4, naming 2/3, cmds 1/1, writing 0/1, attn 1/1). Awake, alert, conversant.\"}]}}",
+  "structured_output": {
+   "out_of_scope_reason": "in scope",
+   "onset": {
+    "category": "7.7",
+    "documented_value": "2031-07-24",
+    "explanation": "The earliest qualifying finding is ICE 7/10 (Grade 1) at 08:30 on 2031-07-24 (Day +5). It is unattributed, and the note states no sedating meds in the previous 24 h. The fever on Day +3 is CRS, and APAP is CRS treatment; neither is a competing cause (A35). Earlier formal ICE assessments were 10/10 (Day 0, Day +3). The record onset of 2031-07-24 matches. The onset never changed between record versions, so it is not 7.6.",
+    "evidence": [
+     {
+      "document_id": "SYN-0021-D03",
+      "version": 1,
+      "quote": "TOTAL 7/10"
+     },
+     {
+      "document_id": "SYN-0021-D03",
+      "version": 1,
+      "quote": "LOC: alert. No sedating meds last 24 h."
+     },
+     {
+      "document_id": "SYN-0021-D02",
+      "version": 1,
+      "quote": "ICE @ 21:00: 10/10. A&Ox4. No tremor. No HA."
+     }
+    ]
+   },
+   "max_grade": {
+    "category": "7.6",
+    "documented_value": "3",
+    "explanation": "The cEEG on 2031-07-26 (Day +7) documented non-convulsive electrographic seizures that resolved after IV levetiracetam. That is Grade 3 (Table 6). It is not Grade 4, because the background returned to baseline between seizures and each lasted under 2 min. No competing cause applies: levetiracetam is not one (A35), and no sedating meds were given. The record changed from Grade 2 (v1, 2031-07-27T11:00) to Grade 3 (v2, 2031-07-29T15:30). The supporting EEG report was signed at 2031-07-29T09:15, which falls between the two record versions, so all three conditions for a legitimate revision are met.",
+    "evidence": [
+     {
+      "document_id": "SYN-0021-D07",
+      "version": 1,
+      "quote": "Recording: 2031-07-26 13:40 to 16:00."
+     },
+     {
+      "document_id": "SYN-0021-D07",
+      "version": 1,
+      "quote": "1. Nonconvulsive electrographic seizures, L temporal, each <2 min with return to baseline background between them; resolved after IV levetiracetam."
+     },
+     {
+      "document_id": "SYN-0021-D04",
+      "version": 1,
+      "quote": "ICE 5/10 (orient 1/4, naming 2/3, cmds 1/1, writing 0/1, attn 1/1). Awake, alert, conversant."
+     }
+    ]
+   }
+  },
+  "ttft_ms": 6644,
+  "type": "result",
+  "duration_ms": 21223,
+  "uuid": "6da6cbd6-c90d-4c57-be52-906733743753",
+  "ttft_stream_ms": 2863,
+  "time_to_request_ms": 145,
+  "first_content_frame_ms": 2863,
+  "queued_turn_count": 0,
+  "result_index": 0,
+  "credential_expires_at": "2026-12-06T22:19:03.648Z"
+ }
+}

@@ -1,0 +1,248 @@
+{
+ "case_id": "SYN-0003",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "thinking": "adaptive (always on for this model)",
+ "route": "Claude Code print mode",
+ "command": [
+  "claude",
+  "-p",
+  "--model",
+  "claude-opus-5-5",
+  "--effort",
+  "high",
+  "--system-prompt",
+  "<instructions: system_prompt.md>",
+  "--tools",
+  "",
+  "--json-schema",
+  "<answer_schema.json>",
+  "--output-format",
+  "json",
+  "--no-session-persistence",
+  "--strict-mcp-config",
+  "--setting-sources",
+  "project"
+ ],
+ "system_prompt_sha256": "0cda59baefac995b4e20a8dde5550077ed76c7f0f789f8c4661cf246f64e1596",
+ "answer_schema_sha256": "9dc6f412e8631752ce5bf4ce82b16ac3ce5d04d9dfb8709c8b459a7a11d2ad11",
+ "fallback_model": null,
+ "user_message_sha256": "a19dad06b655283585d72594360f6ad094d7cd4994e624372acd560aa50e6ac9",
+ "requested_at": "2026-11-09T08:20:31-06:00",
+ "stop_reason": "tool_use",
+ "finished": true,
+ "answer_text": "{\"out_of_scope_reason\": \"in scope\", \"onset\": {\"category\": \"7.7\", \"documented_value\": \"2034-01-30\", \"explanation\": \"The earliest qualifying finding is ICE 9/10 (Grade 1) at 08:30 on 2034-01-30 (Day +4), with no sedating medication in the previous 24 h. The earlier ICE checks on Day 0 and Day +2 were 10/10, which are formal Grade 0 assessments. The discharge summary also gives ICANS from Day +4. This matches the record onset of 2034-01-30.\", \"evidence\": [{\"document_id\": \"SYN-0003-D03\", \"version\": 1, \"quote\": \"ICE Assessment, 2034-01-30, performed at 08:30\"}, {\"document_id\": \"SYN-0003-D03\", \"version\": 1, \"quote\": \"ICE score: 9/10.\"}, {\"document_id\": \"SYN-0003-D03\", \"version\": 1, \"quote\": \"No sedating medications in the previous 24 hours.\"}, {\"document_id\": \"SYN-0003-D02\", \"version\": 1, \"quote\": \"The ICE screen at 22:15 was 10/10.\"}, {\"document_id\": \"SYN-0003-D01\", \"version\": 1, \"quote\": \"At 08:20, before the infusion, the ICE screen was 10/10\"}, {\"document_id\": \"SYN-0003-D07\", \"version\": 1, \"quote\": \"ICANS from Day +4\"}]}, \"max_grade\": {\"category\": \"7.7\", \"documented_value\": \"3\", \"explanation\": \"On 2034-01-31 the patient had one generalized tonic-clonic seizure of about 50 seconds that stopped on its own. A rapidly resolving clinical seizure is Grade 3 under Table 6. It was not prolonged (>5 min) and not repeated, and no Grade 4 motor, ICP or consciousness finding is documented: strength was full, there was no papilledema, and the patient was awake and conversing. No competing cause is documented (no sedatives; levetiracetam prophylaxis is excluded). The other ICE scores (7-9) are Grade 1. The documents support Grade 3, which equals the record.\", \"evidence\": [{\"document_id\": \"SYN-0003-D04\", \"version\": 1, \"quote\": \"At 14:52, while I was in the room, the patient had a generalized tonic-clonic seizure lasting about 50 seconds, which stopped on its own.\"}, {\"document_id\": \"SYN-0003-D05\", \"version\": 1, \"quote\": \"No benzodiazepine or other sedating drug was given before or after it.\"}, {\"document_id\": \"SYN-0003-D05\", \"version\": 1, \"quote\": \"Examination at 17:45: alert and conversing, ICE 8/10, full strength in all limbs\"}, {\"document_id\": \"SYN-0003-D06\", \"version\": 1, \"quote\": \"power is full in every muscle group, reflexes are symmetric, and there is no papilledema.\"}, {\"document_id\": \"SYN-0003-D06\", \"version\": 1, \"quote\": \"Impression: ICANS with one self-limited generalized seizure\"}]}}",
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 3336,
+  "cache_read_input_tokens": 27340,
+  "output_tokens": 2068,
+  "output_tokens_details": {
+   "thinking_tokens": 283
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 3336,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 2068,
+    "cache_read_input_tokens": 27340,
+    "cache_creation_input_tokens": 3336,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 3336
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "models_reported": [
+  "claude-opus-5-5"
+ ],
+ "claude_code_cost_usd": 0.073524,
+ "duration_seconds": 17.74,
+ "cli_output": {
+  "duration_api_ms": 16967,
+  "stop_reason": "tool_use",
+  "session_id": "a09684e6-ebfa-4680-bad8-c74b6c39572b",
+  "total_cost_usd": 0.073524,
+  "usage": {
+   "input_tokens": 2,
+   "cache_creation_input_tokens": 3336,
+   "cache_read_input_tokens": 27340,
+   "output_tokens": 2068,
+   "output_tokens_details": {
+    "thinking_tokens": 283
+   },
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "service_tier": "standard",
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 3336,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "inference_geo": "global",
+   "iterations": [
+    {
+     "input_tokens": 2,
+     "output_tokens": 2068,
+     "cache_read_input_tokens": 27340,
+     "cache_creation_input_tokens": 3336,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 0,
+      "ephemeral_1h_input_tokens": 3336
+     },
+     "type": "message"
+    }
+   ],
+   "speed": "standard",
+   "fallback_credit": null
+  },
+  "modelUsage": {
+   "claude-opus-5-5": {
+    "inputTokens": 2,
+    "outputTokens": 2068,
+    "cacheReadInputTokens": 27340,
+    "cacheCreationInputTokens": 3336,
+    "webSearchRequests": 0,
+    "costUSD": 0.073524,
+    "contextWindow": 1000000,
+    "maxOutputTokens": 128000,
+    "thinkingTokens": 283,
+    "cacheCreationEphemeral5mInputTokens": 0,
+    "cacheCreationEphemeral1hInputTokens": 3336,
+    "canonicalModel": "claude-opus-5-5",
+    "provider": "firstParty",
+    "costBasis": "list"
+   }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+   "spawned": 0,
+   "requested": {
+    "background": 0,
+    "foreground": 0,
+    "unset": 0
+   },
+   "started_in_background": 0,
+   "max_depth": 0,
+   "spawned_by_subagents": 0,
+   "completed": 0,
+   "failed": 0,
+   "killed": {
+    "parent": 0,
+    "user": 0,
+    "system": 0
+   },
+   "refused": {
+    "depth_limit": 0,
+    "concurrency_limit": 0,
+    "budget": 0
+   },
+   "by_type": {}
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 2,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "{\"out_of_scope_reason\":\"in scope\",\"onset\":{\"category\":\"7.7\",\"documented_value\":\"2034-01-30\",\"explanation\":\"The earliest qualifying finding is ICE 9/10 (Grade 1) at 08:30 on 2034-01-30 (Day +4), with no sedating medication in the previous 24 h. The earlier ICE checks on Day 0 and Day +2 were 10/10, which are formal Grade 0 assessments. The discharge summary also gives ICANS from Day +4. This matches the record onset of 2034-01-30.\",\"evidence\":[{\"document_id\":\"SYN-0003-D03\",\"version\":1,\"quote\":\"ICE Assessment, 2034-01-30, performed at 08:30\"},{\"document_id\":\"SYN-0003-D03\",\"version\":1,\"quote\":\"ICE score: 9/10.\"},{\"document_id\":\"SYN-0003-D03\",\"version\":1,\"quote\":\"No sedating medications in the previous 24 hours.\"},{\"document_id\":\"SYN-0003-D02\",\"version\":1,\"quote\":\"The ICE screen at 22:15 was 10/10.\"},{\"document_id\":\"SYN-0003-D01\",\"version\":1,\"quote\":\"At 08:20, before the infusion, the ICE screen was 10/10\"},{\"document_id\":\"SYN-0003-D07\",\"version\":1,\"quote\":\"ICANS from Day +4\"}]},\"max_grade\":{\"category\":\"7.7\",\"documented_value\":\"3\",\"explanation\":\"On 2034-01-31 the patient had one generalized tonic-clonic seizure of about 50 seconds that stopped on its own. A rapidly resolving clinical seizure is Grade 3 under Table 6. It was not prolonged (>5 min) and not repeated, and no Grade 4 motor, ICP or consciousness finding is documented: strength was full, there was no papilledema, and the patient was awake and conversing. No competing cause is documented (no sedatives; levetiracetam prophylaxis is excluded). The other ICE scores (7-9) are Grade 1. The documents support Grade 3, which equals the record.\",\"evidence\":[{\"document_id\":\"SYN-0003-D04\",\"version\":1,\"quote\":\"At 14:52, while I was in the room, the patient had a generalized tonic-clonic seizure lasting about 50 seconds, which stopped on its own.\"},{\"document_id\":\"SYN-0003-D05\",\"version\":1,\"quote\":\"No benzodiazepine or other sedating drug was given before or after it.\"},{\"document_id\":\"SYN-0003-D05\",\"version\":1,\"quote\":\"Examination at 17:45: alert and conversing, ICE 8/10, full strength in all limbs\"},{\"document_id\":\"SYN-0003-D06\",\"version\":1,\"quote\":\"power is full in every muscle group, reflexes are symmetric, and there is no papilledema.\"},{\"document_id\":\"SYN-0003-D06\",\"version\":1,\"quote\":\"Impression: ICANS with one self-limited generalized seizure\"}]}}",
+  "structured_output": {
+   "out_of_scope_reason": "in scope",
+   "onset": {
+    "category": "7.7",
+    "documented_value": "2034-01-30",
+    "explanation": "The earliest qualifying finding is ICE 9/10 (Grade 1) at 08:30 on 2034-01-30 (Day +4), with no sedating medication in the previous 24 h. The earlier ICE checks on Day 0 and Day +2 were 10/10, which are formal Grade 0 assessments. The discharge summary also gives ICANS from Day +4. This matches the record onset of 2034-01-30.",
+    "evidence": [
+     {
+      "document_id": "SYN-0003-D03",
+      "version": 1,
+      "quote": "ICE Assessment, 2034-01-30, performed at 08:30"
+     },
+     {
+      "document_id": "SYN-0003-D03",
+      "version": 1,
+      "quote": "ICE score: 9/10."
+     },
+     {
+      "document_id": "SYN-0003-D03",
+      "version": 1,
+      "quote": "No sedating medications in the previous 24 hours."
+     },
+     {
+      "document_id": "SYN-0003-D02",
+      "version": 1,
+      "quote": "The ICE screen at 22:15 was 10/10."
+     },
+     {
+      "document_id": "SYN-0003-D01",
+      "version": 1,
+      "quote": "At 08:20, before the infusion, the ICE screen was 10/10"
+     },
+     {
+      "document_id": "SYN-0003-D07",
+      "version": 1,
+      "quote": "ICANS from Day +4"
+     }
+    ]
+   },
+   "max_grade": {
+    "category": "7.7",
+    "documented_value": "3",
+    "explanation": "On 2034-01-31 the patient had one generalized tonic-clonic seizure of about 50 seconds that stopped on its own. A rapidly resolving clinical seizure is Grade 3 under Table 6. It was not prolonged (>5 min) and not repeated, and no Grade 4 motor, ICP or consciousness finding is documented: strength was full, there was no papilledema, and the patient was awake and conversing. No competing cause is documented (no sedatives; levetiracetam prophylaxis is excluded). The other ICE scores (7-9) are Grade 1. The documents support Grade 3, which equals the record.",
+    "evidence": [
+     {
+      "document_id": "SYN-0003-D04",
+      "version": 1,
+      "quote": "At 14:52, while I was in the room, the patient had a generalized tonic-clonic seizure lasting about 50 seconds, which stopped on its own."
+     },
+     {
+      "document_id": "SYN-0003-D05",
+      "version": 1,
+      "quote": "No benzodiazepine or other sedating drug was given before or after it."
+     },
+     {
+      "document_id": "SYN-0003-D05",
+      "version": 1,
+      "quote": "Examination at 17:45: alert and conversing, ICE 8/10, full strength in all limbs"
+     },
+     {
+      "document_id": "SYN-0003-D06",
+      "version": 1,
+      "quote": "power is full in every muscle group, reflexes are symmetric, and there is no papilledema."
+     },
+     {
+      "document_id": "SYN-0003-D06",
+      "version": 1,
+      "quote": "Impression: ICANS with one self-limited generalized seizure"
+     }
+    ]
+   }
+  },
+  "ttft_ms": 4228,
+  "type": "result",
+  "duration_ms": 17084,
+  "uuid": "565e8a27-aba0-4900-8717-f68ad3a3d87c",
+  "ttft_stream_ms": 2217,
+  "time_to_request_ms": 118,
+  "first_content_frame_ms": 2217,
+  "queued_turn_count": 0,
+  "result_index": 0,
+  "credential_expires_at": "2026-12-06T22:19:03.648Z"
+ }
+}

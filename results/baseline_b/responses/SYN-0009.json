@@ -1,0 +1,228 @@
+{
+ "case_id": "SYN-0009",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "thinking": "adaptive (always on for this model)",
+ "route": "Claude Code print mode",
+ "command": [
+  "claude",
+  "-p",
+  "--model",
+  "claude-opus-5-5",
+  "--effort",
+  "high",
+  "--system-prompt",
+  "<instructions: system_prompt.md>",
+  "--tools",
+  "",
+  "--json-schema",
+  "<answer_schema.json>",
+  "--output-format",
+  "json",
+  "--no-session-persistence",
+  "--strict-mcp-config",
+  "--setting-sources",
+  "project"
+ ],
+ "system_prompt_sha256": "0cda59baefac995b4e20a8dde5550077ed76c7f0f789f8c4661cf246f64e1596",
+ "answer_schema_sha256": "9dc6f412e8631752ce5bf4ce82b16ac3ce5d04d9dfb8709c8b459a7a11d2ad11",
+ "fallback_model": null,
+ "user_message_sha256": "bdcee241e747ff894b94462b0650b918fa3b443b6cb6f4d6ba3d48b1d017f8fe",
+ "requested_at": "2026-11-09T08:20:47-06:00",
+ "stop_reason": "tool_use",
+ "finished": true,
+ "answer_text": "{\"out_of_scope_reason\": \"in scope\", \"onset\": {\"category\": \"7.7\", \"documented_value\": \"2036-06-02\", \"explanation\": \"The earliest qualifying finding is the signed ICE assessment on 02 Jun (Day +5) at 10:55: ICE 9/10, which meets the Grade 1 criterion. The earlier in-window assessments (ICE 10/10 on Day 0 and on 31 May) are formal Grade 0 assessments. The 25 May baseline is outside the observation window (Day -3), so it is not used. The 31 May headache is excluded from grading (§4.2) and does not count. The record onset of 2036-06-02 is the same calendar day as the documented onset.\", \"evidence\": [{\"document_id\": \"SYN-0009-D05\", \"version\": 1, \"quote\": \"ICE assessment on 02 Jun at 10:55: orientation 3/4 (could not give the date), naming 3/3, following commands 1/1, writing 1/1, attention 1/1. Total 9/10.\"}, {\"document_id\": \"SYN-0009-D04\", \"version\": 1, \"quote\": \"ICE 10/10 at 09:20 this morning.\"}, {\"document_id\": \"SYN-0009-D02\", \"version\": 1, \"quote\": \"Neurological screen before infusion: ICE 10/10 at 13:30, alert, no focal deficits.\"}]}, \"max_grade\": {\"category\": \"7.5\", \"documented_value\": \"1 or 2 (ambiguous: Grade 2 if the 14:10 ICE 5/10 is accepted, Grade 1 if the 14:40 ICE 8/10 is accepted)\", \"explanation\": \"Reason: conflicting assessments (§6.4, A23). On 04 Jun two signed assessments 30 minutes apart disagree. The nurse recorded ICE 5/10 at 14:10 (Grade 2) and the resident recorded ICE 8/10 at 14:40 (Grade 1). Every other assessment is ICE 8, 9 or 10, with no consciousness, seizure, motor or edema criterion met. If the ICE 5 reading is accepted, the maximum is Grade 2, which equals the record (7.7). If the ICE 8 reading is accepted, the maximum is Grade 1, so the record's Grade 2 is unsupported (7.3). The two readings lead to different categories, so the result is 7.5. No competing cause is documented: acetaminophen and tocilizumab are not competing causes.\", \"evidence\": [{\"document_id\": \"SYN-0009-D07\", \"version\": 1, \"quote\": \"Afternoon neurological check on 04 Jun at 14:10: ICE score 5/10 (orientation 2/4, naming 1/3, following commands 1/1, writing 0/1, attention 1/1).\"}, {\"document_id\": \"SYN-0009-D08\", \"version\": 1, \"quote\": \"On my examination at 14:40 the ICE score was 8/10 (orientation 3/4, attention 0/1, all other items complete).\"}, {\"document_id\": \"SYN-0009-D06\", \"version\": 1, \"quote\": \"ICE 8/10 at 09:05 (orientation 3/4, attention 0/1, remaining items complete).\"}, {\"document_id\": \"SYN-0009-D09\", \"version\": 1, \"quote\": \"Neurology consultation requested for fluctuating ICE scores on 04 Jun. At 10:15 today ICE 9/10 (attention 0/1).\"}]}}",
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 3724,
+  "cache_read_input_tokens": 27340,
+  "output_tokens": 1859,
+  "output_tokens_details": {
+   "thinking_tokens": 625
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 3724,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 1859,
+    "cache_read_input_tokens": 27340,
+    "cache_creation_input_tokens": 3724,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 3724
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "models_reported": [
+  "claude-opus-5-5"
+ ],
+ "claude_code_cost_usd": 0.072448,
+ "duration_seconds": 16.358,
+ "cli_output": {
+  "duration_api_ms": 15711,
+  "stop_reason": "tool_use",
+  "session_id": "c7600e93-3d72-4ddf-9c05-ef2f7e945d7c",
+  "total_cost_usd": 0.072448,
+  "usage": {
+   "input_tokens": 2,
+   "cache_creation_input_tokens": 3724,
+   "cache_read_input_tokens": 27340,
+   "output_tokens": 1859,
+   "output_tokens_details": {
+    "thinking_tokens": 625
+   },
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "service_tier": "standard",
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 3724,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "inference_geo": "global",
+   "iterations": [
+    {
+     "input_tokens": 2,
+     "output_tokens": 1859,
+     "cache_read_input_tokens": 27340,
+     "cache_creation_input_tokens": 3724,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 0,
+      "ephemeral_1h_input_tokens": 3724
+     },
+     "type": "message"
+    }
+   ],
+   "speed": "standard",
+   "fallback_credit": null
+  },
+  "modelUsage": {
+   "claude-opus-5-5": {
+    "inputTokens": 2,
+    "outputTokens": 1859,
+    "cacheReadInputTokens": 27340,
+    "cacheCreationInputTokens": 3724,
+    "webSearchRequests": 0,
+    "costUSD": 0.072448,
+    "contextWindow": 1000000,
+    "maxOutputTokens": 128000,
+    "thinkingTokens": 625,
+    "cacheCreationEphemeral5mInputTokens": 0,
+    "cacheCreationEphemeral1hInputTokens": 3724,
+    "canonicalModel": "claude-opus-5-5",
+    "provider": "firstParty",
+    "costBasis": "list"
+   }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+   "spawned": 0,
+   "requested": {
+    "background": 0,
+    "foreground": 0,
+    "unset": 0
+   },
+   "started_in_background": 0,
+   "max_depth": 0,
+   "spawned_by_subagents": 0,
+   "completed": 0,
+   "failed": 0,
+   "killed": {
+    "parent": 0,
+    "user": 0,
+    "system": 0
+   },
+   "refused": {
+    "depth_limit": 0,
+    "concurrency_limit": 0,
+    "budget": 0
+   },
+   "by_type": {}
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 2,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "{\"out_of_scope_reason\":\"in scope\",\"onset\":{\"category\":\"7.7\",\"documented_value\":\"2036-06-02\",\"explanation\":\"The earliest qualifying finding is the signed ICE assessment on 02 Jun (Day +5) at 10:55: ICE 9/10, which meets the Grade 1 criterion. The earlier in-window assessments (ICE 10/10 on Day 0 and on 31 May) are formal Grade 0 assessments. The 25 May baseline is outside the observation window (Day -3), so it is not used. The 31 May headache is excluded from grading (§4.2) and does not count. The record onset of 2036-06-02 is the same calendar day as the documented onset.\",\"evidence\":[{\"document_id\":\"SYN-0009-D05\",\"version\":1,\"quote\":\"ICE assessment on 02 Jun at 10:55: orientation 3/4 (could not give the date), naming 3/3, following commands 1/1, writing 1/1, attention 1/1. Total 9/10.\"},{\"document_id\":\"SYN-0009-D04\",\"version\":1,\"quote\":\"ICE 10/10 at 09:20 this morning.\"},{\"document_id\":\"SYN-0009-D02\",\"version\":1,\"quote\":\"Neurological screen before infusion: ICE 10/10 at 13:30, alert, no focal deficits.\"}]},\"max_grade\":{\"category\":\"7.5\",\"documented_value\":\"1 or 2 (ambiguous: Grade 2 if the 14:10 ICE 5/10 is accepted, Grade 1 if the 14:40 ICE 8/10 is accepted)\",\"explanation\":\"Reason: conflicting assessments (§6.4, A23). On 04 Jun two signed assessments 30 minutes apart disagree. The nurse recorded ICE 5/10 at 14:10 (Grade 2) and the resident recorded ICE 8/10 at 14:40 (Grade 1). Every other assessment is ICE 8, 9 or 10, with no consciousness, seizure, motor or edema criterion met. If the ICE 5 reading is accepted, the maximum is Grade 2, which equals the record (7.7). If the ICE 8 reading is accepted, the maximum is Grade 1, so the record's Grade 2 is unsupported (7.3). The two readings lead to different categories, so the result is 7.5. No competing cause is documented: acetaminophen and tocilizumab are not competing causes.\",\"evidence\":[{\"document_id\":\"SYN-0009-D07\",\"version\":1,\"quote\":\"Afternoon neurological check on 04 Jun at 14:10: ICE score 5/10 (orientation 2/4, naming 1/3, following commands 1/1, writing 0/1, attention 1/1).\"},{\"document_id\":\"SYN-0009-D08\",\"version\":1,\"quote\":\"On my examination at 14:40 the ICE score was 8/10 (orientation 3/4, attention 0/1, all other items complete).\"},{\"document_id\":\"SYN-0009-D06\",\"version\":1,\"quote\":\"ICE 8/10 at 09:05 (orientation 3/4, attention 0/1, remaining items complete).\"},{\"document_id\":\"SYN-0009-D09\",\"version\":1,\"quote\":\"Neurology consultation requested for fluctuating ICE scores on 04 Jun. At 10:15 today ICE 9/10 (attention 0/1).\"}]}}",
+  "structured_output": {
+   "out_of_scope_reason": "in scope",
+   "onset": {
+    "category": "7.7",
+    "documented_value": "2036-06-02",
+    "explanation": "The earliest qualifying finding is the signed ICE assessment on 02 Jun (Day +5) at 10:55: ICE 9/10, which meets the Grade 1 criterion. The earlier in-window assessments (ICE 10/10 on Day 0 and on 31 May) are formal Grade 0 assessments. The 25 May baseline is outside the observation window (Day -3), so it is not used. The 31 May headache is excluded from grading (§4.2) and does not count. The record onset of 2036-06-02 is the same calendar day as the documented onset.",
+    "evidence": [
+     {
+      "document_id": "SYN-0009-D05",
+      "version": 1,
+      "quote": "ICE assessment on 02 Jun at 10:55: orientation 3/4 (could not give the date), naming 3/3, following commands 1/1, writing 1/1, attention 1/1. Total 9/10."
+     },
+     {
+      "document_id": "SYN-0009-D04",
+      "version": 1,
+      "quote": "ICE 10/10 at 09:20 this morning."
+     },
+     {
+      "document_id": "SYN-0009-D02",
+      "version": 1,
+      "quote": "Neurological screen before infusion: ICE 10/10 at 13:30, alert, no focal deficits."
+     }
+    ]
+   },
+   "max_grade": {
+    "category": "7.5",
+    "documented_value": "1 or 2 (ambiguous: Grade 2 if the 14:10 ICE 5/10 is accepted, Grade 1 if the 14:40 ICE 8/10 is accepted)",
+    "explanation": "Reason: conflicting assessments (§6.4, A23). On 04 Jun two signed assessments 30 minutes apart disagree. The nurse recorded ICE 5/10 at 14:10 (Grade 2) and the resident recorded ICE 8/10 at 14:40 (Grade 1). Every other assessment is ICE 8, 9 or 10, with no consciousness, seizure, motor or edema criterion met. If the ICE 5 reading is accepted, the maximum is Grade 2, which equals the record (7.7). If the ICE 8 reading is accepted, the maximum is Grade 1, so the record's Grade 2 is unsupported (7.3). The two readings lead to different categories, so the result is 7.5. No competing cause is documented: acetaminophen and tocilizumab are not competing causes.",
+    "evidence": [
+     {
+      "document_id": "SYN-0009-D07",
+      "version": 1,
+      "quote": "Afternoon neurological check on 04 Jun at 14:10: ICE score 5/10 (orientation 2/4, naming 1/3, following commands 1/1, writing 0/1, attention 1/1)."
+     },
+     {
+      "document_id": "SYN-0009-D08",
+      "version": 1,
+      "quote": "On my examination at 14:40 the ICE score was 8/10 (orientation 3/4, attention 0/1, all other items complete)."
+     },
+     {
+      "document_id": "SYN-0009-D06",
+      "version": 1,
+      "quote": "ICE 8/10 at 09:05 (orientation 3/4, attention 0/1, remaining items complete)."
+     },
+     {
+      "document_id": "SYN-0009-D09",
+      "version": 1,
+      "quote": "Neurology consultation requested for fluctuating ICE scores on 04 Jun. At 10:15 today ICE 9/10 (attention 0/1)."
+     }
+    ]
+   }
+  },
+  "ttft_ms": 7470,
+  "type": "result",
+  "duration_ms": 15833,
+  "uuid": "94536090-ac5d-46ed-ac31-a00a5b6cd650",
+  "ttft_stream_ms": 1896,
+  "time_to_request_ms": 118,
+  "first_content_frame_ms": 1897,
+  "queued_turn_count": 0,
+  "result_index": 0,
+  "credential_expires_at": "2026-12-06T22:19:03.648Z"
+ }
+}

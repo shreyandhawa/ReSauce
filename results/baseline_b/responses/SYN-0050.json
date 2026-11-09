@@ -1,0 +1,218 @@
+{
+ "case_id": "SYN-0050",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "thinking": "adaptive (always on for this model)",
+ "route": "Claude Code print mode",
+ "command": [
+  "claude",
+  "-p",
+  "--model",
+  "claude-opus-5-5",
+  "--effort",
+  "high",
+  "--system-prompt",
+  "<instructions: system_prompt.md>",
+  "--tools",
+  "",
+  "--json-schema",
+  "<answer_schema.json>",
+  "--output-format",
+  "json",
+  "--no-session-persistence",
+  "--strict-mcp-config",
+  "--setting-sources",
+  "project"
+ ],
+ "system_prompt_sha256": "0cda59baefac995b4e20a8dde5550077ed76c7f0f789f8c4661cf246f64e1596",
+ "answer_schema_sha256": "9dc6f412e8631752ce5bf4ce82b16ac3ce5d04d9dfb8709c8b459a7a11d2ad11",
+ "fallback_model": null,
+ "user_message_sha256": "8c1a1c4a309764001ede14615eb560f52983bdd7b618dba46ce44515817fb040",
+ "requested_at": "2026-11-09T08:23:22-06:00",
+ "stop_reason": "tool_use",
+ "finished": true,
+ "answer_text": "{\"out_of_scope_reason\": \"in scope\", \"onset\": {\"category\": \"7.7\", \"documented_value\": \"2032-08-25\", \"explanation\": \"The earliest qualifying finding is ICE 7/10 (Grade 1) at 09:50 on 25 Aug 2032 (Day +5). The physician attributes it to ICANS. Fever is part of CRS and does not count as a competing cause (A35). The day before, 24 Aug, has a formal Grade 0 assessment (ICE 10/10, alert and oriented), so onset cannot be earlier. The record's onset of 2032-08-25 is the same calendar day, so there is no discrepancy.\", \"evidence\": [{\"document_id\": \"SYN-0050-D01\", \"version\": 1, \"quote\": \"ICE 10/10 at 13:30, alert and oriented.\"}, {\"document_id\": \"SYN-0050-D02\", \"version\": 1, \"quote\": \"At 09:50 on 25 Aug ICE 7/10 (orientation 2/4, naming 3/3, commands 1/1, writing 1/1, attention 0/1).\"}, {\"document_id\": \"SYN-0050-D02\", \"version\": 1, \"quote\": \"In my assessment the reduced ICE score is due to ICANS rather than the fever alone; cytokine release syndrome and ICANS are present together.\"}]}, \"max_grade\": {\"category\": \"7.7\", \"documented_value\": \"2\", \"explanation\": \"The worst assessment is the neurology consult on 27 Aug (Day +7). It records ICE 5/10 (Grade 2) and 'awakens to voice' (Grade 2). The neurologist attributes these findings to ICANS, not fever. No seizure, motor finding or edema finding is documented. Dexamethasone is ICANS treatment and does not count as a competing cause. The documents support Grade 2, which matches the record's Grade 2.\", \"evidence\": [{\"document_id\": \"SYN-0050-D03\", \"version\": 1, \"quote\": \"ICE 5/10 at 11:10 (orientation 1/4, naming 2/3, commands 1/1, writing 0/1, attention 1/1). Awakens to voice.\"}, {\"document_id\": \"SYN-0050-D03\", \"version\": 1, \"quote\": \"The findings are consistent with ICANS and are not explained by the fever. No seizures, no focal motor deficit.\"}]}}",
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 1683,
+  "cache_read_input_tokens": 27340,
+  "output_tokens": 1024,
+  "output_tokens_details": {
+   "thinking_tokens": 162
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 1683,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 1024,
+    "cache_read_input_tokens": 27340,
+    "cache_creation_input_tokens": 1683,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 1683
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "models_reported": [
+  "claude-opus-5-5"
+ ],
+ "claude_code_cost_usd": 0.03942,
+ "duration_seconds": 10.089,
+ "cli_output": {
+  "duration_api_ms": 9304,
+  "stop_reason": "tool_use",
+  "session_id": "81df31b2-936a-4db7-b33d-857c15506331",
+  "total_cost_usd": 0.03942,
+  "usage": {
+   "input_tokens": 2,
+   "cache_creation_input_tokens": 1683,
+   "cache_read_input_tokens": 27340,
+   "output_tokens": 1024,
+   "output_tokens_details": {
+    "thinking_tokens": 162
+   },
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "service_tier": "standard",
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 1683,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "inference_geo": "global",
+   "iterations": [
+    {
+     "input_tokens": 2,
+     "output_tokens": 1024,
+     "cache_read_input_tokens": 27340,
+     "cache_creation_input_tokens": 1683,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 0,
+      "ephemeral_1h_input_tokens": 1683
+     },
+     "type": "message"
+    }
+   ],
+   "speed": "standard",
+   "fallback_credit": null
+  },
+  "modelUsage": {
+   "claude-opus-5-5": {
+    "inputTokens": 2,
+    "outputTokens": 1024,
+    "cacheReadInputTokens": 27340,
+    "cacheCreationInputTokens": 1683,
+    "webSearchRequests": 0,
+    "costUSD": 0.03942,
+    "contextWindow": 1000000,
+    "maxOutputTokens": 128000,
+    "thinkingTokens": 162,
+    "cacheCreationEphemeral5mInputTokens": 0,
+    "cacheCreationEphemeral1hInputTokens": 1683,
+    "canonicalModel": "claude-opus-5-5",
+    "provider": "firstParty",
+    "costBasis": "list"
+   }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+   "spawned": 0,
+   "requested": {
+    "background": 0,
+    "foreground": 0,
+    "unset": 0
+   },
+   "started_in_background": 0,
+   "max_depth": 0,
+   "spawned_by_subagents": 0,
+   "completed": 0,
+   "failed": 0,
+   "killed": {
+    "parent": 0,
+    "user": 0,
+    "system": 0
+   },
+   "refused": {
+    "depth_limit": 0,
+    "concurrency_limit": 0,
+    "budget": 0
+   },
+   "by_type": {}
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 2,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "{\"out_of_scope_reason\":\"in scope\",\"onset\":{\"category\":\"7.7\",\"documented_value\":\"2032-08-25\",\"explanation\":\"The earliest qualifying finding is ICE 7/10 (Grade 1) at 09:50 on 25 Aug 2032 (Day +5). The physician attributes it to ICANS. Fever is part of CRS and does not count as a competing cause (A35). The day before, 24 Aug, has a formal Grade 0 assessment (ICE 10/10, alert and oriented), so onset cannot be earlier. The record's onset of 2032-08-25 is the same calendar day, so there is no discrepancy.\",\"evidence\":[{\"document_id\":\"SYN-0050-D01\",\"version\":1,\"quote\":\"ICE 10/10 at 13:30, alert and oriented.\"},{\"document_id\":\"SYN-0050-D02\",\"version\":1,\"quote\":\"At 09:50 on 25 Aug ICE 7/10 (orientation 2/4, naming 3/3, commands 1/1, writing 1/1, attention 0/1).\"},{\"document_id\":\"SYN-0050-D02\",\"version\":1,\"quote\":\"In my assessment the reduced ICE score is due to ICANS rather than the fever alone; cytokine release syndrome and ICANS are present together.\"}]},\"max_grade\":{\"category\":\"7.7\",\"documented_value\":\"2\",\"explanation\":\"The worst assessment is the neurology consult on 27 Aug (Day +7). It records ICE 5/10 (Grade 2) and 'awakens to voice' (Grade 2). The neurologist attributes these findings to ICANS, not fever. No seizure, motor finding or edema finding is documented. Dexamethasone is ICANS treatment and does not count as a competing cause. The documents support Grade 2, which matches the record's Grade 2.\",\"evidence\":[{\"document_id\":\"SYN-0050-D03\",\"version\":1,\"quote\":\"ICE 5/10 at 11:10 (orientation 1/4, naming 2/3, commands 1/1, writing 0/1, attention 1/1). Awakens to voice.\"},{\"document_id\":\"SYN-0050-D03\",\"version\":1,\"quote\":\"The findings are consistent with ICANS and are not explained by the fever. No seizures, no focal motor deficit.\"}]}}",
+  "structured_output": {
+   "out_of_scope_reason": "in scope",
+   "onset": {
+    "category": "7.7",
+    "documented_value": "2032-08-25",
+    "explanation": "The earliest qualifying finding is ICE 7/10 (Grade 1) at 09:50 on 25 Aug 2032 (Day +5). The physician attributes it to ICANS. Fever is part of CRS and does not count as a competing cause (A35). The day before, 24 Aug, has a formal Grade 0 assessment (ICE 10/10, alert and oriented), so onset cannot be earlier. The record's onset of 2032-08-25 is the same calendar day, so there is no discrepancy.",
+    "evidence": [
+     {
+      "document_id": "SYN-0050-D01",
+      "version": 1,
+      "quote": "ICE 10/10 at 13:30, alert and oriented."
+     },
+     {
+      "document_id": "SYN-0050-D02",
+      "version": 1,
+      "quote": "At 09:50 on 25 Aug ICE 7/10 (orientation 2/4, naming 3/3, commands 1/1, writing 1/1, attention 0/1)."
+     },
+     {
+      "document_id": "SYN-0050-D02",
+      "version": 1,
+      "quote": "In my assessment the reduced ICE score is due to ICANS rather than the fever alone; cytokine release syndrome and ICANS are present together."
+     }
+    ]
+   },
+   "max_grade": {
+    "category": "7.7",
+    "documented_value": "2",
+    "explanation": "The worst assessment is the neurology consult on 27 Aug (Day +7). It records ICE 5/10 (Grade 2) and 'awakens to voice' (Grade 2). The neurologist attributes these findings to ICANS, not fever. No seizure, motor finding or edema finding is documented. Dexamethasone is ICANS treatment and does not count as a competing cause. The documents support Grade 2, which matches the record's Grade 2.",
+    "evidence": [
+     {
+      "document_id": "SYN-0050-D03",
+      "version": 1,
+      "quote": "ICE 5/10 at 11:10 (orientation 1/4, naming 2/3, commands 1/1, writing 0/1, attention 1/1). Awakens to voice."
+     },
+     {
+      "document_id": "SYN-0050-D03",
+      "version": 1,
+      "quote": "The findings are consistent with ICANS and are not explained by the fever. No seizures, no focal motor deficit."
+     }
+    ]
+   }
+  },
+  "ttft_ms": 3490,
+  "type": "result",
+  "duration_ms": 9436,
+  "uuid": "01fd44cf-14f8-4d61-838e-3348ebdfd51a",
+  "ttft_stream_ms": 2012,
+  "time_to_request_ms": 131,
+  "first_content_frame_ms": 2012,
+  "queued_turn_count": 0,
+  "result_index": 0,
+  "credential_expires_at": "2026-12-06T22:19:03.648Z"
+ }
+}

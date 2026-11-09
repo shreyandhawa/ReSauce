@@ -1,0 +1,233 @@
+{
+ "case_id": "SYN-0069",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "thinking": "adaptive (always on for this model)",
+ "route": "Claude Code print mode",
+ "command": [
+  "claude",
+  "-p",
+  "--model",
+  "claude-opus-5-5",
+  "--effort",
+  "high",
+  "--system-prompt",
+  "<instructions: system_prompt.md>",
+  "--tools",
+  "",
+  "--json-schema",
+  "<answer_schema.json>",
+  "--output-format",
+  "json",
+  "--no-session-persistence",
+  "--strict-mcp-config",
+  "--setting-sources",
+  "project"
+ ],
+ "system_prompt_sha256": "0cda59baefac995b4e20a8dde5550077ed76c7f0f789f8c4661cf246f64e1596",
+ "answer_schema_sha256": "9dc6f412e8631752ce5bf4ce82b16ac3ce5d04d9dfb8709c8b459a7a11d2ad11",
+ "fallback_model": null,
+ "user_message_sha256": "b2c22ae44f3d88bf8c7f2760452c1068702c0a028460372bb47afb5b5c0a8651",
+ "requested_at": "2026-11-09T08:24:49-06:00",
+ "stop_reason": "tool_use",
+ "finished": true,
+ "answer_text": "{\"out_of_scope_reason\": \"in scope\", \"onset\": {\"category\": \"7.7\", \"documented_value\": \"2034-04-28\", \"explanation\": \"The first qualifying finding is on Day +3, 2034-04-28: ICE 8/10 (Grade 1), taken with an interpreter, in a patient who was awake and had no sedating medicines. The evening before (2034-04-27), a formal ICE with an interpreter scored 10/10. The current record (v2) gives onset 2034-04-28, the same calendar day, so there is no discrepancy. The onset changed from 2034-04-29 in v1 to 2034-04-28 in v2, but this is not a legitimate revision (7.6). Condition (c) of §7.6 fails: no supporting document was written between v1 (recorded 2034-05-11T10:20) and v2 (recorded 2034-05-16T14:10). The supporting note D03 was written on 2034-04-28. So the category is 7.7 with the extra flag 'revision without new documentation'.\", \"evidence\": [{\"document_id\": \"SYN-0069-D02\", \"version\": 1, \"quote\": \"ICE at 20:30 through the video interpreter: 10/10.\"}, {\"document_id\": \"SYN-0069-D03\", \"version\": 1, \"quote\": \"ICE with telephone interpreter at 08:45: 8/10 (wrong month, unable to finish the sentence).\"}, {\"document_id\": \"SYN-0069-D03\", \"version\": 1, \"quote\": \"Awake and smiling, sitting in chair. No sedating medicines in the last day.\"}]}, \"max_grade\": {\"category\": \"7.5\", \"documented_value\": \"1 or 2 (ambiguous; reason: assessment barrier)\", \"explanation\": \"The record's maximum grade is 1. The ICE scores taken with an interpreter support Grade 1: ICE 8/10 on 2034-04-28 and ICE 9/10 on 2034-05-01. There are no findings on consciousness, seizures, motor function or edema, and the MRI was normal. On 2034-04-29 the ICE was 4/10, which would be Grade 2. But that test was given in English without an interpreter, and the notes document a language barrier (primary language Portuguese, limited English). Under A10, this low score is ambiguous. Counting it gives Grade 2, which is higher than the record (7.2). Not counting it gives Grade 1, which matches the record (7.7). The two readings lead to different categories, so the result is 7.5, ambiguous evidence, with the reason 'assessment barrier'.\", \"evidence\": [{\"document_id\": \"SYN-0069-D01\", \"version\": 1, \"quote\": \"Primary language Portuguese; limited English.\"}, {\"document_id\": \"SYN-0069-D04\", \"version\": 1, \"quote\": \"ICE 4/10 at 14:20; language barrier: interpreter line not reached after two attempts, ICE given in English, which the patient speaks only a little.\"}, {\"document_id\": \"SYN-0069-D03\", \"version\": 1, \"quote\": \"ICE with telephone interpreter at 08:45: 8/10 (wrong month, unable to finish the sentence).\"}, {\"document_id\": \"SYN-0069-D06\", \"version\": 1, \"quote\": \"Examined at 10:00 with an in-person interpreter: ICE 9/10 (sentence incomplete).\"}, {\"document_id\": \"SYN-0069-D05\", \"version\": 1, \"quote\": \"Impression: no acute intracranial abnormality.\"}]}}",
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 2410,
+  "cache_read_input_tokens": 27340,
+  "output_tokens": 2175,
+  "output_tokens_details": {
+   "thinking_tokens": 937
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 2410,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 2175,
+    "cache_read_input_tokens": 27340,
+    "cache_creation_input_tokens": 2410,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 2410
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "models_reported": [
+  "claude-opus-5-5"
+ ],
+ "claude_code_cost_usd": 0.068256,
+ "duration_seconds": 19.011,
+ "cli_output": {
+  "duration_api_ms": 18347,
+  "stop_reason": "tool_use",
+  "session_id": "02375720-8aa3-4b2d-ab50-ab6753834ba6",
+  "total_cost_usd": 0.068256,
+  "usage": {
+   "input_tokens": 2,
+   "cache_creation_input_tokens": 2410,
+   "cache_read_input_tokens": 27340,
+   "output_tokens": 2175,
+   "output_tokens_details": {
+    "thinking_tokens": 937
+   },
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "service_tier": "standard",
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 2410,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "inference_geo": "global",
+   "iterations": [
+    {
+     "input_tokens": 2,
+     "output_tokens": 2175,
+     "cache_read_input_tokens": 27340,
+     "cache_creation_input_tokens": 2410,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 0,
+      "ephemeral_1h_input_tokens": 2410
+     },
+     "type": "message"
+    }
+   ],
+   "speed": "standard",
+   "fallback_credit": null
+  },
+  "modelUsage": {
+   "claude-opus-5-5": {
+    "inputTokens": 2,
+    "outputTokens": 2175,
+    "cacheReadInputTokens": 27340,
+    "cacheCreationInputTokens": 2410,
+    "webSearchRequests": 0,
+    "costUSD": 0.068256,
+    "contextWindow": 1000000,
+    "maxOutputTokens": 128000,
+    "thinkingTokens": 937,
+    "cacheCreationEphemeral5mInputTokens": 0,
+    "cacheCreationEphemeral1hInputTokens": 2410,
+    "canonicalModel": "claude-opus-5-5",
+    "provider": "firstParty",
+    "costBasis": "list"
+   }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+   "spawned": 0,
+   "requested": {
+    "background": 0,
+    "foreground": 0,
+    "unset": 0
+   },
+   "started_in_background": 0,
+   "max_depth": 0,
+   "spawned_by_subagents": 0,
+   "completed": 0,
+   "failed": 0,
+   "killed": {
+    "parent": 0,
+    "user": 0,
+    "system": 0
+   },
+   "refused": {
+    "depth_limit": 0,
+    "concurrency_limit": 0,
+    "budget": 0
+   },
+   "by_type": {}
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 2,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "{\"out_of_scope_reason\":\"in scope\",\"onset\":{\"category\":\"7.7\",\"documented_value\":\"2034-04-28\",\"explanation\":\"The first qualifying finding is on Day +3, 2034-04-28: ICE 8/10 (Grade 1), taken with an interpreter, in a patient who was awake and had no sedating medicines. The evening before (2034-04-27), a formal ICE with an interpreter scored 10/10. The current record (v2) gives onset 2034-04-28, the same calendar day, so there is no discrepancy. The onset changed from 2034-04-29 in v1 to 2034-04-28 in v2, but this is not a legitimate revision (7.6). Condition (c) of §7.6 fails: no supporting document was written between v1 (recorded 2034-05-11T10:20) and v2 (recorded 2034-05-16T14:10). The supporting note D03 was written on 2034-04-28. So the category is 7.7 with the extra flag 'revision without new documentation'.\",\"evidence\":[{\"document_id\":\"SYN-0069-D02\",\"version\":1,\"quote\":\"ICE at 20:30 through the video interpreter: 10/10.\"},{\"document_id\":\"SYN-0069-D03\",\"version\":1,\"quote\":\"ICE with telephone interpreter at 08:45: 8/10 (wrong month, unable to finish the sentence).\"},{\"document_id\":\"SYN-0069-D03\",\"version\":1,\"quote\":\"Awake and smiling, sitting in chair. No sedating medicines in the last day.\"}]},\"max_grade\":{\"category\":\"7.5\",\"documented_value\":\"1 or 2 (ambiguous; reason: assessment barrier)\",\"explanation\":\"The record's maximum grade is 1. The ICE scores taken with an interpreter support Grade 1: ICE 8/10 on 2034-04-28 and ICE 9/10 on 2034-05-01. There are no findings on consciousness, seizures, motor function or edema, and the MRI was normal. On 2034-04-29 the ICE was 4/10, which would be Grade 2. But that test was given in English without an interpreter, and the notes document a language barrier (primary language Portuguese, limited English). Under A10, this low score is ambiguous. Counting it gives Grade 2, which is higher than the record (7.2). Not counting it gives Grade 1, which matches the record (7.7). The two readings lead to different categories, so the result is 7.5, ambiguous evidence, with the reason 'assessment barrier'.\",\"evidence\":[{\"document_id\":\"SYN-0069-D01\",\"version\":1,\"quote\":\"Primary language Portuguese; limited English.\"},{\"document_id\":\"SYN-0069-D04\",\"version\":1,\"quote\":\"ICE 4/10 at 14:20; language barrier: interpreter line not reached after two attempts, ICE given in English, which the patient speaks only a little.\"},{\"document_id\":\"SYN-0069-D03\",\"version\":1,\"quote\":\"ICE with telephone interpreter at 08:45: 8/10 (wrong month, unable to finish the sentence).\"},{\"document_id\":\"SYN-0069-D06\",\"version\":1,\"quote\":\"Examined at 10:00 with an in-person interpreter: ICE 9/10 (sentence incomplete).\"},{\"document_id\":\"SYN-0069-D05\",\"version\":1,\"quote\":\"Impression: no acute intracranial abnormality.\"}]}}",
+  "structured_output": {
+   "out_of_scope_reason": "in scope",
+   "onset": {
+    "category": "7.7",
+    "documented_value": "2034-04-28",
+    "explanation": "The first qualifying finding is on Day +3, 2034-04-28: ICE 8/10 (Grade 1), taken with an interpreter, in a patient who was awake and had no sedating medicines. The evening before (2034-04-27), a formal ICE with an interpreter scored 10/10. The current record (v2) gives onset 2034-04-28, the same calendar day, so there is no discrepancy. The onset changed from 2034-04-29 in v1 to 2034-04-28 in v2, but this is not a legitimate revision (7.6). Condition (c) of §7.6 fails: no supporting document was written between v1 (recorded 2034-05-11T10:20) and v2 (recorded 2034-05-16T14:10). The supporting note D03 was written on 2034-04-28. So the category is 7.7 with the extra flag 'revision without new documentation'.",
+    "evidence": [
+     {
+      "document_id": "SYN-0069-D02",
+      "version": 1,
+      "quote": "ICE at 20:30 through the video interpreter: 10/10."
+     },
+     {
+      "document_id": "SYN-0069-D03",
+      "version": 1,
+      "quote": "ICE with telephone interpreter at 08:45: 8/10 (wrong month, unable to finish the sentence)."
+     },
+     {
+      "document_id": "SYN-0069-D03",
+      "version": 1,
+      "quote": "Awake and smiling, sitting in chair. No sedating medicines in the last day."
+     }
+    ]
+   },
+   "max_grade": {
+    "category": "7.5",
+    "documented_value": "1 or 2 (ambiguous; reason: assessment barrier)",
+    "explanation": "The record's maximum grade is 1. The ICE scores taken with an interpreter support Grade 1: ICE 8/10 on 2034-04-28 and ICE 9/10 on 2034-05-01. There are no findings on consciousness, seizures, motor function or edema, and the MRI was normal. On 2034-04-29 the ICE was 4/10, which would be Grade 2. But that test was given in English without an interpreter, and the notes document a language barrier (primary language Portuguese, limited English). Under A10, this low score is ambiguous. Counting it gives Grade 2, which is higher than the record (7.2). Not counting it gives Grade 1, which matches the record (7.7). The two readings lead to different categories, so the result is 7.5, ambiguous evidence, with the reason 'assessment barrier'.",
+    "evidence": [
+     {
+      "document_id": "SYN-0069-D01",
+      "version": 1,
+      "quote": "Primary language Portuguese; limited English."
+     },
+     {
+      "document_id": "SYN-0069-D04",
+      "version": 1,
+      "quote": "ICE 4/10 at 14:20; language barrier: interpreter line not reached after two attempts, ICE given in English, which the patient speaks only a little."
+     },
+     {
+      "document_id": "SYN-0069-D03",
+      "version": 1,
+      "quote": "ICE with telephone interpreter at 08:45: 8/10 (wrong month, unable to finish the sentence)."
+     },
+     {
+      "document_id": "SYN-0069-D06",
+      "version": 1,
+      "quote": "Examined at 10:00 with an in-person interpreter: ICE 9/10 (sentence incomplete)."
+     },
+     {
+      "document_id": "SYN-0069-D05",
+      "version": 1,
+      "quote": "Impression: no acute intracranial abnormality."
+     }
+    ]
+   }
+  },
+  "ttft_ms": 9758,
+  "type": "result",
+  "duration_ms": 18519,
+  "uuid": "de86c65c-babd-4707-9405-adecfc75ceff",
+  "ttft_stream_ms": 1928,
+  "time_to_request_ms": 168,
+  "first_content_frame_ms": 1929,
+  "queued_turn_count": 0,
+  "result_index": 0,
+  "credential_expires_at": "2026-12-06T22:19:03.648Z"
+ }
+}

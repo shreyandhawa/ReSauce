@@ -1,0 +1,258 @@
+{
+ "case_id": "SYN-0063",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "thinking": "adaptive (always on for this model)",
+ "route": "Claude Code print mode",
+ "command": [
+  "claude",
+  "-p",
+  "--model",
+  "claude-opus-5-5",
+  "--effort",
+  "high",
+  "--system-prompt",
+  "<instructions: system_prompt.md>",
+  "--tools",
+  "",
+  "--json-schema",
+  "<answer_schema.json>",
+  "--output-format",
+  "json",
+  "--no-session-persistence",
+  "--strict-mcp-config",
+  "--setting-sources",
+  "project"
+ ],
+ "system_prompt_sha256": "0cda59baefac995b4e20a8dde5550077ed76c7f0f789f8c4661cf246f64e1596",
+ "answer_schema_sha256": "9dc6f412e8631752ce5bf4ce82b16ac3ce5d04d9dfb8709c8b459a7a11d2ad11",
+ "fallback_model": null,
+ "user_message_sha256": "8297a82ea572b2b36b5cd58505c5d2b1e6c762f56f3eb69b660ec86bb5fc290f",
+ "requested_at": "2026-11-09T08:24:30-06:00",
+ "stop_reason": "tool_use",
+ "finished": true,
+ "answer_text": "{\"out_of_scope_reason\": \"in scope\", \"onset\": {\"category\": \"7.5\", \"documented_value\": \"2033-01-25 if the ICE 6/10 is attributed to ICANS; none if it is attributed to hypoglycaemia\", \"explanation\": \"The record (v2) reports no ICANS. The only possible qualifying finding is ICE 6/10 on 2033-01-25 at 10:00 (Day +6), which would be Grade 2. The same note documents hypoglycaemia (BG 2.8 mmol/L at 09:40), 20 minutes before the ICE. Hypoglycaemia is on the closed list of competing causes (A35) and falls inside the A30 timing window. No clinician says what caused the low score: the D03 note says only 'MD informed', and the discharge summary just mentions the hypoglycaemia episode. If the finding is ICANS, §7.9(a) gives onset 7.1 'record has no onset', with documented onset 2033-01-25. If it is not ICANS, there is no qualifying finding. Formal Grade 0 assessments exist (ICE 10/10 on Jan 22, 24, 26, 28 and 31), and there is no documented 'not assessable' period. So §7.9(b) gives 7.7. The two readings lead to different categories, so the result is 7.5 Ambiguous evidence, reason attribution.\", \"evidence\": [{\"document_id\": \"SYN-0063-D03\", \"version\": 1, \"quote\": \"BG 2.8 mmol/L at 09:40 (hypoglycaemia), IV dextrose 09:50, recheck 10:30 BG 5.1.\"}, {\"document_id\": \"SYN-0063-D03\", \"version\": 1, \"quote\": \"ICE 6/10 at 10:00 (orient 2/4, name 2/3, cmd 1/1, write 0/1, attn 1/1). Awake. MD informed.\"}, {\"document_id\": \"SYN-0063-D06\", \"version\": 1, \"quote\": \"One episode of hypoglycaemia 25 Jan, treated.\"}, {\"document_id\": \"SYN-0063-D01\", \"version\": 1, \"quote\": \"ICE 22 Jan 10:00 = 10/10. Alert.\"}, {\"document_id\": \"SYN-0063-D02\", \"version\": 1, \"quote\": \"ICE 10/10 at 09:50. No focal def. No sz.\"}, {\"document_id\": \"SYN-0063-D04\", \"version\": 1, \"quote\": \"ICE 10/10 at 09:00.\"}, {\"document_id\": \"SYN-0063-D05\", \"version\": 1, \"quote\": \"ICE 28 Jan 10:05 = 10/10. Alert, coop.\"}, {\"document_id\": \"SYN-0063-D06\", \"version\": 1, \"quote\": \"ICE 10/10 31 Jan.\"}]}, \"max_grade\": {\"category\": \"7.5\", \"documented_value\": \"Grade 2 if the ICE 6/10 is attributed to ICANS; Grade 0 if it is attributed to hypoglycaemia\", \"explanation\": \"The record reports no ICANS, which is compared as Grade 0 (A19). ICE 6/10 on Jan 25 has a stated total and every item scored (sum 6), so it meets the Grade 2 criterion (ICE 3–6). The patient was 'Awake', so no consciousness criterion is met. The same note documents hypoglycaemia (BG 2.8 at 09:40) just before the assessment. Hypoglycaemia is a listed competing cause (A35, A30), and no clinician attributes the low score either way. If the score is ICANS, the documents prove Grade 2, which is higher than the record: 7.2. If it is not ICANS, there is no qualifying finding. The window contains formal Grade 0 assessments (several ICE 10/10) and no documented 'not assessable' period, so §7.9(b) gives 7.7. The readings give different categories, so the result is 7.5, reason attribution.\", \"evidence\": [{\"document_id\": \"SYN-0063-D03\", \"version\": 1, \"quote\": \"BG 2.8 mmol/L at 09:40 (hypoglycaemia), IV dextrose 09:50, recheck 10:30 BG 5.1.\"}, {\"document_id\": \"SYN-0063-D03\", \"version\": 1, \"quote\": \"ICE 6/10 at 10:00 (orient 2/4, name 2/3, cmd 1/1, write 0/1, attn 1/1). Awake. MD informed.\"}, {\"document_id\": \"SYN-0063-D06\", \"version\": 1, \"quote\": \"One episode of hypoglycaemia 25 Jan, treated.\"}, {\"document_id\": \"SYN-0063-D02\", \"version\": 1, \"quote\": \"ICE 10/10 at 09:50. No focal def. No sz.\"}, {\"document_id\": \"SYN-0063-D04\", \"version\": 1, \"quote\": \"ICE 10/10 at 09:00.\"}]}}",
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 1932,
+  "cache_read_input_tokens": 27340,
+  "output_tokens": 2215,
+  "output_tokens_details": {
+   "thinking_tokens": 492
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 1932,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 2215,
+    "cache_read_input_tokens": 27340,
+    "cache_creation_input_tokens": 1932,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 1932
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "models_reported": [
+  "claude-opus-5-5"
+ ],
+ "claude_code_cost_usd": 0.065232,
+ "duration_seconds": 19.185,
+ "cli_output": {
+  "duration_api_ms": 18272,
+  "stop_reason": "tool_use",
+  "session_id": "d4bc9f34-bbda-4e87-be17-ec9b5bc38fca",
+  "total_cost_usd": 0.065232,
+  "usage": {
+   "input_tokens": 2,
+   "cache_creation_input_tokens": 1932,
+   "cache_read_input_tokens": 27340,
+   "output_tokens": 2215,
+   "output_tokens_details": {
+    "thinking_tokens": 492
+   },
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "service_tier": "standard",
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 1932,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "inference_geo": "global",
+   "iterations": [
+    {
+     "input_tokens": 2,
+     "output_tokens": 2215,
+     "cache_read_input_tokens": 27340,
+     "cache_creation_input_tokens": 1932,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 0,
+      "ephemeral_1h_input_tokens": 1932
+     },
+     "type": "message"
+    }
+   ],
+   "speed": "standard",
+   "fallback_credit": null
+  },
+  "modelUsage": {
+   "claude-opus-5-5": {
+    "inputTokens": 2,
+    "outputTokens": 2215,
+    "cacheReadInputTokens": 27340,
+    "cacheCreationInputTokens": 1932,
+    "webSearchRequests": 0,
+    "costUSD": 0.065232,
+    "contextWindow": 1000000,
+    "maxOutputTokens": 128000,
+    "thinkingTokens": 492,
+    "cacheCreationEphemeral5mInputTokens": 0,
+    "cacheCreationEphemeral1hInputTokens": 1932,
+    "canonicalModel": "claude-opus-5-5",
+    "provider": "firstParty",
+    "costBasis": "list"
+   }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+   "spawned": 0,
+   "requested": {
+    "background": 0,
+    "foreground": 0,
+    "unset": 0
+   },
+   "started_in_background": 0,
+   "max_depth": 0,
+   "spawned_by_subagents": 0,
+   "completed": 0,
+   "failed": 0,
+   "killed": {
+    "parent": 0,
+    "user": 0,
+    "system": 0
+   },
+   "refused": {
+    "depth_limit": 0,
+    "concurrency_limit": 0,
+    "budget": 0
+   },
+   "by_type": {}
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 2,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "{\"out_of_scope_reason\":\"in scope\",\"onset\":{\"category\":\"7.5\",\"documented_value\":\"2033-01-25 if the ICE 6/10 is attributed to ICANS; none if it is attributed to hypoglycaemia\",\"explanation\":\"The record (v2) reports no ICANS. The only possible qualifying finding is ICE 6/10 on 2033-01-25 at 10:00 (Day +6), which would be Grade 2. The same note documents hypoglycaemia (BG 2.8 mmol/L at 09:40), 20 minutes before the ICE. Hypoglycaemia is on the closed list of competing causes (A35) and falls inside the A30 timing window. No clinician says what caused the low score: the D03 note says only 'MD informed', and the discharge summary just mentions the hypoglycaemia episode. If the finding is ICANS, §7.9(a) gives onset 7.1 'record has no onset', with documented onset 2033-01-25. If it is not ICANS, there is no qualifying finding. Formal Grade 0 assessments exist (ICE 10/10 on Jan 22, 24, 26, 28 and 31), and there is no documented 'not assessable' period. So §7.9(b) gives 7.7. The two readings lead to different categories, so the result is 7.5 Ambiguous evidence, reason attribution.\",\"evidence\":[{\"document_id\":\"SYN-0063-D03\",\"version\":1,\"quote\":\"BG 2.8 mmol/L at 09:40 (hypoglycaemia), IV dextrose 09:50, recheck 10:30 BG 5.1.\"},{\"document_id\":\"SYN-0063-D03\",\"version\":1,\"quote\":\"ICE 6/10 at 10:00 (orient 2/4, name 2/3, cmd 1/1, write 0/1, attn 1/1). Awake. MD informed.\"},{\"document_id\":\"SYN-0063-D06\",\"version\":1,\"quote\":\"One episode of hypoglycaemia 25 Jan, treated.\"},{\"document_id\":\"SYN-0063-D01\",\"version\":1,\"quote\":\"ICE 22 Jan 10:00 = 10/10. Alert.\"},{\"document_id\":\"SYN-0063-D02\",\"version\":1,\"quote\":\"ICE 10/10 at 09:50. No focal def. No sz.\"},{\"document_id\":\"SYN-0063-D04\",\"version\":1,\"quote\":\"ICE 10/10 at 09:00.\"},{\"document_id\":\"SYN-0063-D05\",\"version\":1,\"quote\":\"ICE 28 Jan 10:05 = 10/10. Alert, coop.\"},{\"document_id\":\"SYN-0063-D06\",\"version\":1,\"quote\":\"ICE 10/10 31 Jan.\"}]},\"max_grade\":{\"category\":\"7.5\",\"documented_value\":\"Grade 2 if the ICE 6/10 is attributed to ICANS; Grade 0 if it is attributed to hypoglycaemia\",\"explanation\":\"The record reports no ICANS, which is compared as Grade 0 (A19). ICE 6/10 on Jan 25 has a stated total and every item scored (sum 6), so it meets the Grade 2 criterion (ICE 3–6). The patient was 'Awake', so no consciousness criterion is met. The same note documents hypoglycaemia (BG 2.8 at 09:40) just before the assessment. Hypoglycaemia is a listed competing cause (A35, A30), and no clinician attributes the low score either way. If the score is ICANS, the documents prove Grade 2, which is higher than the record: 7.2. If it is not ICANS, there is no qualifying finding. The window contains formal Grade 0 assessments (several ICE 10/10) and no documented 'not assessable' period, so §7.9(b) gives 7.7. The readings give different categories, so the result is 7.5, reason attribution.\",\"evidence\":[{\"document_id\":\"SYN-0063-D03\",\"version\":1,\"quote\":\"BG 2.8 mmol/L at 09:40 (hypoglycaemia), IV dextrose 09:50, recheck 10:30 BG 5.1.\"},{\"document_id\":\"SYN-0063-D03\",\"version\":1,\"quote\":\"ICE 6/10 at 10:00 (orient 2/4, name 2/3, cmd 1/1, write 0/1, attn 1/1). Awake. MD informed.\"},{\"document_id\":\"SYN-0063-D06\",\"version\":1,\"quote\":\"One episode of hypoglycaemia 25 Jan, treated.\"},{\"document_id\":\"SYN-0063-D02\",\"version\":1,\"quote\":\"ICE 10/10 at 09:50. No focal def. No sz.\"},{\"document_id\":\"SYN-0063-D04\",\"version\":1,\"quote\":\"ICE 10/10 at 09:00.\"}]}}",
+  "structured_output": {
+   "out_of_scope_reason": "in scope",
+   "onset": {
+    "category": "7.5",
+    "documented_value": "2033-01-25 if the ICE 6/10 is attributed to ICANS; none if it is attributed to hypoglycaemia",
+    "explanation": "The record (v2) reports no ICANS. The only possible qualifying finding is ICE 6/10 on 2033-01-25 at 10:00 (Day +6), which would be Grade 2. The same note documents hypoglycaemia (BG 2.8 mmol/L at 09:40), 20 minutes before the ICE. Hypoglycaemia is on the closed list of competing causes (A35) and falls inside the A30 timing window. No clinician says what caused the low score: the D03 note says only 'MD informed', and the discharge summary just mentions the hypoglycaemia episode. If the finding is ICANS, §7.9(a) gives onset 7.1 'record has no onset', with documented onset 2033-01-25. If it is not ICANS, there is no qualifying finding. Formal Grade 0 assessments exist (ICE 10/10 on Jan 22, 24, 26, 28 and 31), and there is no documented 'not assessable' period. So §7.9(b) gives 7.7. The two readings lead to different categories, so the result is 7.5 Ambiguous evidence, reason attribution.",
+    "evidence": [
+     {
+      "document_id": "SYN-0063-D03",
+      "version": 1,
+      "quote": "BG 2.8 mmol/L at 09:40 (hypoglycaemia), IV dextrose 09:50, recheck 10:30 BG 5.1."
+     },
+     {
+      "document_id": "SYN-0063-D03",
+      "version": 1,
+      "quote": "ICE 6/10 at 10:00 (orient 2/4, name 2/3, cmd 1/1, write 0/1, attn 1/1). Awake. MD informed."
+     },
+     {
+      "document_id": "SYN-0063-D06",
+      "version": 1,
+      "quote": "One episode of hypoglycaemia 25 Jan, treated."
+     },
+     {
+      "document_id": "SYN-0063-D01",
+      "version": 1,
+      "quote": "ICE 22 Jan 10:00 = 10/10. Alert."
+     },
+     {
+      "document_id": "SYN-0063-D02",
+      "version": 1,
+      "quote": "ICE 10/10 at 09:50. No focal def. No sz."
+     },
+     {
+      "document_id": "SYN-0063-D04",
+      "version": 1,
+      "quote": "ICE 10/10 at 09:00."
+     },
+     {
+      "document_id": "SYN-0063-D05",
+      "version": 1,
+      "quote": "ICE 28 Jan 10:05 = 10/10. Alert, coop."
+     },
+     {
+      "document_id": "SYN-0063-D06",
+      "version": 1,
+      "quote": "ICE 10/10 31 Jan."
+     }
+    ]
+   },
+   "max_grade": {
+    "category": "7.5",
+    "documented_value": "Grade 2 if the ICE 6/10 is attributed to ICANS; Grade 0 if it is attributed to hypoglycaemia",
+    "explanation": "The record reports no ICANS, which is compared as Grade 0 (A19). ICE 6/10 on Jan 25 has a stated total and every item scored (sum 6), so it meets the Grade 2 criterion (ICE 3–6). The patient was 'Awake', so no consciousness criterion is met. The same note documents hypoglycaemia (BG 2.8 at 09:40) just before the assessment. Hypoglycaemia is a listed competing cause (A35, A30), and no clinician attributes the low score either way. If the score is ICANS, the documents prove Grade 2, which is higher than the record: 7.2. If it is not ICANS, there is no qualifying finding. The window contains formal Grade 0 assessments (several ICE 10/10) and no documented 'not assessable' period, so §7.9(b) gives 7.7. The readings give different categories, so the result is 7.5, reason attribution.",
+    "evidence": [
+     {
+      "document_id": "SYN-0063-D03",
+      "version": 1,
+      "quote": "BG 2.8 mmol/L at 09:40 (hypoglycaemia), IV dextrose 09:50, recheck 10:30 BG 5.1."
+     },
+     {
+      "document_id": "SYN-0063-D03",
+      "version": 1,
+      "quote": "ICE 6/10 at 10:00 (orient 2/4, name 2/3, cmd 1/1, write 0/1, attn 1/1). Awake. MD informed."
+     },
+     {
+      "document_id": "SYN-0063-D06",
+      "version": 1,
+      "quote": "One episode of hypoglycaemia 25 Jan, treated."
+     },
+     {
+      "document_id": "SYN-0063-D02",
+      "version": 1,
+      "quote": "ICE 10/10 at 09:50. No focal def. No sz."
+     },
+     {
+      "document_id": "SYN-0063-D04",
+      "version": 1,
+      "quote": "ICE 10/10 at 09:00."
+     }
+    ]
+   }
+  },
+  "ttft_ms": 6563,
+  "type": "result",
+  "duration_ms": 18419,
+  "uuid": "85ae799f-c12c-4fe0-979e-2cc9f659c24d",
+  "ttft_stream_ms": 2377,
+  "time_to_request_ms": 146,
+  "first_content_frame_ms": 2378,
+  "queued_turn_count": 0,
+  "result_index": 0,
+  "credential_expires_at": "2026-12-06T22:19:03.648Z"
+ }
+}

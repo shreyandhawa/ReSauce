@@ -1,0 +1,218 @@
+{
+ "case_id": "SYN-0015",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "thinking": "adaptive (always on for this model)",
+ "route": "Claude Code print mode",
+ "command": [
+  "claude",
+  "-p",
+  "--model",
+  "claude-opus-5-5",
+  "--effort",
+  "high",
+  "--system-prompt",
+  "<instructions: system_prompt.md>",
+  "--tools",
+  "",
+  "--json-schema",
+  "<answer_schema.json>",
+  "--output-format",
+  "json",
+  "--no-session-persistence",
+  "--strict-mcp-config",
+  "--setting-sources",
+  "project"
+ ],
+ "system_prompt_sha256": "0cda59baefac995b4e20a8dde5550077ed76c7f0f789f8c4661cf246f64e1596",
+ "answer_schema_sha256": "9dc6f412e8631752ce5bf4ce82b16ac3ce5d04d9dfb8709c8b459a7a11d2ad11",
+ "fallback_model": null,
+ "user_message_sha256": "af4438fea5703780eb0b41d5bd8af3d6c3c588e284848687ea659aa3125afe07",
+ "requested_at": "2026-11-09T08:21:10-06:00",
+ "stop_reason": "tool_use",
+ "finished": true,
+ "answer_text": "{\"out_of_scope_reason\": \"in scope\", \"onset\": {\"category\": \"7.1\", \"documented_value\": \"2034-02-20\", \"explanation\": \"Record reports no ICANS, so it is treated as having no onset (§7.9(a), A19); reported as 'record has no onset', with no signed difference. The earliest qualifying finding is ICE 7/10 (Grade 1) at 14:00 on 20 Feb 2034 (Day +4) in signed nursing note D02. No clinician gives another cause and no competing cause is documented. Day +2 had a formal Grade 0 assessment (ICE 10/10).\", \"evidence\": [{\"document_id\": \"SYN-0015-D02\", \"version\": 1, \"quote\": \"ICE 7/10 at 14:00 on 20 Feb (orient 2/4, attn 0/1, rest full).\"}, {\"document_id\": \"SYN-0015-D01\", \"version\": 1, \"quote\": \"ICE 10/10 at 09:30.\"}]}, \"max_grade\": {\"category\": \"7.2\", \"documented_value\": \"2\", \"explanation\": \"Record reports no ICANS, so it is compared as Grade 0 (§7.9(a), A19). Signed notes prove Grade 2: on 21 Feb, D03 records ICE 4/10 and 'Awakens to voice', both Grade 2; on 22 Feb, D04 records ICE 5/10, also Grade 2. No seizure, motor or edema findings are documented. Tremor is excluded from grading. Tocilizumab and dexamethasone are not competing causes (A35). The documents prove a higher grade than the record: a mismatch, with the record lower by 2.\", \"evidence\": [{\"document_id\": \"SYN-0015-D03\", \"version\": 1, \"quote\": \"ICE 4/10 at 09:15 on 21 Feb (orient 1/4, name 1/3, cmd 1/1, write 0/1, attn 1/1).\"}, {\"document_id\": \"SYN-0015-D03\", \"version\": 1, \"quote\": \"Awakens to voice, falls asleep when not stimulated.\"}, {\"document_id\": \"SYN-0015-D04\", \"version\": 1, \"quote\": \"ICE 5/10 at 11:00 (orient 2/4, name 1/3, cmd 1/1, write 0/1, attn 1/1).\"}]}}",
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 1744,
+  "cache_read_input_tokens": 27340,
+  "output_tokens": 1855,
+  "output_tokens_details": {
+   "thinking_tokens": 271
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 1744,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 1855,
+    "cache_read_input_tokens": 27340,
+    "cache_creation_input_tokens": 1744,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 1744
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "models_reported": [
+  "claude-opus-5-5"
+ ],
+ "claude_code_cost_usd": 0.056528,
+ "duration_seconds": 16.466,
+ "cli_output": {
+  "duration_api_ms": 15690,
+  "stop_reason": "tool_use",
+  "session_id": "27c0d8a3-9f15-419d-a4e7-0d47d495e527",
+  "total_cost_usd": 0.056528,
+  "usage": {
+   "input_tokens": 2,
+   "cache_creation_input_tokens": 1744,
+   "cache_read_input_tokens": 27340,
+   "output_tokens": 1855,
+   "output_tokens_details": {
+    "thinking_tokens": 271
+   },
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "service_tier": "standard",
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 1744,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "inference_geo": "global",
+   "iterations": [
+    {
+     "input_tokens": 2,
+     "output_tokens": 1855,
+     "cache_read_input_tokens": 27340,
+     "cache_creation_input_tokens": 1744,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 0,
+      "ephemeral_1h_input_tokens": 1744
+     },
+     "type": "message"
+    }
+   ],
+   "speed": "standard",
+   "fallback_credit": null
+  },
+  "modelUsage": {
+   "claude-opus-5-5": {
+    "inputTokens": 2,
+    "outputTokens": 1855,
+    "cacheReadInputTokens": 27340,
+    "cacheCreationInputTokens": 1744,
+    "webSearchRequests": 0,
+    "costUSD": 0.056528,
+    "contextWindow": 1000000,
+    "maxOutputTokens": 128000,
+    "thinkingTokens": 271,
+    "cacheCreationEphemeral5mInputTokens": 0,
+    "cacheCreationEphemeral1hInputTokens": 1744,
+    "canonicalModel": "claude-opus-5-5",
+    "provider": "firstParty",
+    "costBasis": "list"
+   }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+   "spawned": 0,
+   "requested": {
+    "background": 0,
+    "foreground": 0,
+    "unset": 0
+   },
+   "started_in_background": 0,
+   "max_depth": 0,
+   "spawned_by_subagents": 0,
+   "completed": 0,
+   "failed": 0,
+   "killed": {
+    "parent": 0,
+    "user": 0,
+    "system": 0
+   },
+   "refused": {
+    "depth_limit": 0,
+    "concurrency_limit": 0,
+    "budget": 0
+   },
+   "by_type": {}
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 2,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "{\"out_of_scope_reason\":\"in scope\",\"onset\":{\"category\":\"7.1\",\"documented_value\":\"2034-02-20\",\"explanation\":\"Record reports no ICANS, so it is treated as having no onset (§7.9(a), A19); reported as 'record has no onset', with no signed difference. The earliest qualifying finding is ICE 7/10 (Grade 1) at 14:00 on 20 Feb 2034 (Day +4) in signed nursing note D02. No clinician gives another cause and no competing cause is documented. Day +2 had a formal Grade 0 assessment (ICE 10/10).\",\"evidence\":[{\"document_id\":\"SYN-0015-D02\",\"version\":1,\"quote\":\"ICE 7/10 at 14:00 on 20 Feb (orient 2/4, attn 0/1, rest full).\"},{\"document_id\":\"SYN-0015-D01\",\"version\":1,\"quote\":\"ICE 10/10 at 09:30.\"}]},\"max_grade\":{\"category\":\"7.2\",\"documented_value\":\"2\",\"explanation\":\"Record reports no ICANS, so it is compared as Grade 0 (§7.9(a), A19). Signed notes prove Grade 2: on 21 Feb, D03 records ICE 4/10 and 'Awakens to voice', both Grade 2; on 22 Feb, D04 records ICE 5/10, also Grade 2. No seizure, motor or edema findings are documented. Tremor is excluded from grading. Tocilizumab and dexamethasone are not competing causes (A35). The documents prove a higher grade than the record: a mismatch, with the record lower by 2.\",\"evidence\":[{\"document_id\":\"SYN-0015-D03\",\"version\":1,\"quote\":\"ICE 4/10 at 09:15 on 21 Feb (orient 1/4, name 1/3, cmd 1/1, write 0/1, attn 1/1).\"},{\"document_id\":\"SYN-0015-D03\",\"version\":1,\"quote\":\"Awakens to voice, falls asleep when not stimulated.\"},{\"document_id\":\"SYN-0015-D04\",\"version\":1,\"quote\":\"ICE 5/10 at 11:00 (orient 2/4, name 1/3, cmd 1/1, write 0/1, attn 1/1).\"}]}}",
+  "structured_output": {
+   "out_of_scope_reason": "in scope",
+   "onset": {
+    "category": "7.1",
+    "documented_value": "2034-02-20",
+    "explanation": "Record reports no ICANS, so it is treated as having no onset (§7.9(a), A19); reported as 'record has no onset', with no signed difference. The earliest qualifying finding is ICE 7/10 (Grade 1) at 14:00 on 20 Feb 2034 (Day +4) in signed nursing note D02. No clinician gives another cause and no competing cause is documented. Day +2 had a formal Grade 0 assessment (ICE 10/10).",
+    "evidence": [
+     {
+      "document_id": "SYN-0015-D02",
+      "version": 1,
+      "quote": "ICE 7/10 at 14:00 on 20 Feb (orient 2/4, attn 0/1, rest full)."
+     },
+     {
+      "document_id": "SYN-0015-D01",
+      "version": 1,
+      "quote": "ICE 10/10 at 09:30."
+     }
+    ]
+   },
+   "max_grade": {
+    "category": "7.2",
+    "documented_value": "2",
+    "explanation": "Record reports no ICANS, so it is compared as Grade 0 (§7.9(a), A19). Signed notes prove Grade 2: on 21 Feb, D03 records ICE 4/10 and 'Awakens to voice', both Grade 2; on 22 Feb, D04 records ICE 5/10, also Grade 2. No seizure, motor or edema findings are documented. Tremor is excluded from grading. Tocilizumab and dexamethasone are not competing causes (A35). The documents prove a higher grade than the record: a mismatch, with the record lower by 2.",
+    "evidence": [
+     {
+      "document_id": "SYN-0015-D03",
+      "version": 1,
+      "quote": "ICE 4/10 at 09:15 on 21 Feb (orient 1/4, name 1/3, cmd 1/1, write 0/1, attn 1/1)."
+     },
+     {
+      "document_id": "SYN-0015-D03",
+      "version": 1,
+      "quote": "Awakens to voice, falls asleep when not stimulated."
+     },
+     {
+      "document_id": "SYN-0015-D04",
+      "version": 1,
+      "quote": "ICE 5/10 at 11:00 (orient 2/4, name 1/3, cmd 1/1, write 0/1, attn 1/1)."
+     }
+    ]
+   }
+  },
+  "ttft_ms": 4004,
+  "type": "result",
+  "duration_ms": 15843,
+  "uuid": "5e4fe1df-708f-4b7a-8453-32ec8d39e94d",
+  "ttft_stream_ms": 1836,
+  "time_to_request_ms": 151,
+  "first_content_frame_ms": 1836,
+  "queued_turn_count": 0,
+  "result_index": 0,
+  "credential_expires_at": "2026-12-06T22:19:03.648Z"
+ }
+}

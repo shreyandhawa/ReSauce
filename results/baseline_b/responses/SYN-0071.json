@@ -1,0 +1,223 @@
+{
+ "case_id": "SYN-0071",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "thinking": "adaptive (always on for this model)",
+ "route": "Claude Code print mode",
+ "command": [
+  "claude",
+  "-p",
+  "--model",
+  "claude-opus-5-5",
+  "--effort",
+  "high",
+  "--system-prompt",
+  "<instructions: system_prompt.md>",
+  "--tools",
+  "",
+  "--json-schema",
+  "<answer_schema.json>",
+  "--output-format",
+  "json",
+  "--no-session-persistence",
+  "--strict-mcp-config",
+  "--setting-sources",
+  "project"
+ ],
+ "system_prompt_sha256": "0cda59baefac995b4e20a8dde5550077ed76c7f0f789f8c4661cf246f64e1596",
+ "answer_schema_sha256": "9dc6f412e8631752ce5bf4ce82b16ac3ce5d04d9dfb8709c8b459a7a11d2ad11",
+ "fallback_model": null,
+ "user_message_sha256": "5ddc9fb0703857066cb0e3f9025426fac2ed1cee05eb1c06e3f6c15d308a7bcf",
+ "requested_at": "2026-11-09T08:24:48-06:00",
+ "stop_reason": "tool_use",
+ "finished": true,
+ "answer_text": "{\"out_of_scope_reason\": \"in scope\", \"onset\": {\"category\": \"7.7\", \"documented_value\": \"2031-11-23\", \"explanation\": \"The earliest qualifying finding is ICE 8/10 at 08:40 on 2031-11-23 (Day +4), which meets the Grade 1 ICE criterion (7-9). Acetaminophen is a treatment for CRS or ICANS and does not count as a competing cause (A35). The note also documents a headache, which is excluded from grading (§4.2) and does not affect onset. The documented onset falls on the record's onset date, 2031-11-23.\", \"evidence\": [{\"document_id\": \"SYN-0071-D01\", \"version\": 1, \"quote\": \"NEURO: ICE 8/10 @0840 (ORIENT 3/4 NAME 3/3 CMD 1/1 WRT 1/1 ATTN 0/1)\"}, {\"document_id\": \"SYN-0071-D01\", \"version\": 1, \"quote\": \"HA: mild 3/10, acetaminophen PRN given\"}]}, \"max_grade\": {\"category\": \"7.7\", \"documented_value\": \"2\", \"explanation\": \"On 2031-11-24 (Day +5) the patient had ICE 5/10 (Grade 2) and 'awakens to voice' (Grade 2). No sedating medication or other competing cause is documented; dexamethasone was ordered after the assessment and is not a competing cause anyway. The 2031-11-25 EEG was normal, with no seizures. On 2031-11-28 the current version of D04 (v2, whose only change is a corrected vital sign) shows ICE 10/10 and alert. No Grade 3 or 4 finding is documented. The documented maximum is Grade 2, the same as the record.\", \"evidence\": [{\"document_id\": \"SYN-0071-D02\", \"version\": 1, \"quote\": \"NEURO: ICE 5/10 @0820 (ORIENT 1/4 NAME 2/3 CMD 1/1 WRT 0/1 ATTN 1/1)\"}, {\"document_id\": \"SYN-0071-D02\", \"version\": 1, \"quote\": \"LOC: awakens to voice\"}, {\"document_id\": \"SYN-0071-D03\", \"version\": 1, \"quote\": \"IMPRESSION: normal EEG\"}, {\"document_id\": \"SYN-0071-D04\", \"version\": 2, \"quote\": \"NEURO: ICE 10/10 @0900\"}]}}",
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 1996,
+  "cache_read_input_tokens": 27340,
+  "output_tokens": 1208,
+  "output_tokens_details": {
+   "thinking_tokens": 316
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 1996,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 1208,
+    "cache_read_input_tokens": 27340,
+    "cache_creation_input_tokens": 1996,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 1996
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "models_reported": [
+  "claude-opus-5-5"
+ ],
+ "claude_code_cost_usd": 0.045604000000000006,
+ "duration_seconds": 11.772,
+ "cli_output": {
+  "duration_api_ms": 11004,
+  "stop_reason": "tool_use",
+  "session_id": "6ee47a4c-ca8e-4524-952f-24c6cd8c9ccc",
+  "total_cost_usd": 0.045604000000000006,
+  "usage": {
+   "input_tokens": 2,
+   "cache_creation_input_tokens": 1996,
+   "cache_read_input_tokens": 27340,
+   "output_tokens": 1208,
+   "output_tokens_details": {
+    "thinking_tokens": 316
+   },
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "service_tier": "standard",
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 1996,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "inference_geo": "global",
+   "iterations": [
+    {
+     "input_tokens": 2,
+     "output_tokens": 1208,
+     "cache_read_input_tokens": 27340,
+     "cache_creation_input_tokens": 1996,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 0,
+      "ephemeral_1h_input_tokens": 1996
+     },
+     "type": "message"
+    }
+   ],
+   "speed": "standard",
+   "fallback_credit": null
+  },
+  "modelUsage": {
+   "claude-opus-5-5": {
+    "inputTokens": 2,
+    "outputTokens": 1208,
+    "cacheReadInputTokens": 27340,
+    "cacheCreationInputTokens": 1996,
+    "webSearchRequests": 0,
+    "costUSD": 0.045604000000000006,
+    "contextWindow": 1000000,
+    "maxOutputTokens": 128000,
+    "thinkingTokens": 316,
+    "cacheCreationEphemeral5mInputTokens": 0,
+    "cacheCreationEphemeral1hInputTokens": 1996,
+    "canonicalModel": "claude-opus-5-5",
+    "provider": "firstParty",
+    "costBasis": "list"
+   }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+   "spawned": 0,
+   "requested": {
+    "background": 0,
+    "foreground": 0,
+    "unset": 0
+   },
+   "started_in_background": 0,
+   "max_depth": 0,
+   "spawned_by_subagents": 0,
+   "completed": 0,
+   "failed": 0,
+   "killed": {
+    "parent": 0,
+    "user": 0,
+    "system": 0
+   },
+   "refused": {
+    "depth_limit": 0,
+    "concurrency_limit": 0,
+    "budget": 0
+   },
+   "by_type": {}
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 2,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "{\"out_of_scope_reason\":\"in scope\",\"onset\":{\"category\":\"7.7\",\"documented_value\":\"2031-11-23\",\"explanation\":\"The earliest qualifying finding is ICE 8/10 at 08:40 on 2031-11-23 (Day +4), which meets the Grade 1 ICE criterion (7-9). Acetaminophen is a treatment for CRS or ICANS and does not count as a competing cause (A35). The note also documents a headache, which is excluded from grading (§4.2) and does not affect onset. The documented onset falls on the record's onset date, 2031-11-23.\",\"evidence\":[{\"document_id\":\"SYN-0071-D01\",\"version\":1,\"quote\":\"NEURO: ICE 8/10 @0840 (ORIENT 3/4 NAME 3/3 CMD 1/1 WRT 1/1 ATTN 0/1)\"},{\"document_id\":\"SYN-0071-D01\",\"version\":1,\"quote\":\"HA: mild 3/10, acetaminophen PRN given\"}]},\"max_grade\":{\"category\":\"7.7\",\"documented_value\":\"2\",\"explanation\":\"On 2031-11-24 (Day +5) the patient had ICE 5/10 (Grade 2) and 'awakens to voice' (Grade 2). No sedating medication or other competing cause is documented; dexamethasone was ordered after the assessment and is not a competing cause anyway. The 2031-11-25 EEG was normal, with no seizures. On 2031-11-28 the current version of D04 (v2, whose only change is a corrected vital sign) shows ICE 10/10 and alert. No Grade 3 or 4 finding is documented. The documented maximum is Grade 2, the same as the record.\",\"evidence\":[{\"document_id\":\"SYN-0071-D02\",\"version\":1,\"quote\":\"NEURO: ICE 5/10 @0820 (ORIENT 1/4 NAME 2/3 CMD 1/1 WRT 0/1 ATTN 1/1)\"},{\"document_id\":\"SYN-0071-D02\",\"version\":1,\"quote\":\"LOC: awakens to voice\"},{\"document_id\":\"SYN-0071-D03\",\"version\":1,\"quote\":\"IMPRESSION: normal EEG\"},{\"document_id\":\"SYN-0071-D04\",\"version\":2,\"quote\":\"NEURO: ICE 10/10 @0900\"}]}}",
+  "structured_output": {
+   "out_of_scope_reason": "in scope",
+   "onset": {
+    "category": "7.7",
+    "documented_value": "2031-11-23",
+    "explanation": "The earliest qualifying finding is ICE 8/10 at 08:40 on 2031-11-23 (Day +4), which meets the Grade 1 ICE criterion (7-9). Acetaminophen is a treatment for CRS or ICANS and does not count as a competing cause (A35). The note also documents a headache, which is excluded from grading (§4.2) and does not affect onset. The documented onset falls on the record's onset date, 2031-11-23.",
+    "evidence": [
+     {
+      "document_id": "SYN-0071-D01",
+      "version": 1,
+      "quote": "NEURO: ICE 8/10 @0840 (ORIENT 3/4 NAME 3/3 CMD 1/1 WRT 1/1 ATTN 0/1)"
+     },
+     {
+      "document_id": "SYN-0071-D01",
+      "version": 1,
+      "quote": "HA: mild 3/10, acetaminophen PRN given"
+     }
+    ]
+   },
+   "max_grade": {
+    "category": "7.7",
+    "documented_value": "2",
+    "explanation": "On 2031-11-24 (Day +5) the patient had ICE 5/10 (Grade 2) and 'awakens to voice' (Grade 2). No sedating medication or other competing cause is documented; dexamethasone was ordered after the assessment and is not a competing cause anyway. The 2031-11-25 EEG was normal, with no seizures. On 2031-11-28 the current version of D04 (v2, whose only change is a corrected vital sign) shows ICE 10/10 and alert. No Grade 3 or 4 finding is documented. The documented maximum is Grade 2, the same as the record.",
+    "evidence": [
+     {
+      "document_id": "SYN-0071-D02",
+      "version": 1,
+      "quote": "NEURO: ICE 5/10 @0820 (ORIENT 1/4 NAME 2/3 CMD 1/1 WRT 0/1 ATTN 1/1)"
+     },
+     {
+      "document_id": "SYN-0071-D02",
+      "version": 1,
+      "quote": "LOC: awakens to voice"
+     },
+     {
+      "document_id": "SYN-0071-D03",
+      "version": 1,
+      "quote": "IMPRESSION: normal EEG"
+     },
+     {
+      "document_id": "SYN-0071-D04",
+      "version": 2,
+      "quote": "NEURO: ICE 10/10 @0900"
+     }
+    ]
+   }
+  },
+  "ttft_ms": 5013,
+  "type": "result",
+  "duration_ms": 11167,
+  "uuid": "17e9b871-d7f9-48dd-831d-fc39dcf1ed57",
+  "ttft_stream_ms": 2339,
+  "time_to_request_ms": 162,
+  "first_content_frame_ms": 2339,
+  "queued_turn_count": 0,
+  "result_index": 0,
+  "credential_expires_at": "2026-12-06T22:19:03.648Z"
+ }
+}
