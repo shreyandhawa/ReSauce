@@ -38,11 +38,12 @@ class Api:
                 "reference_errors": r.get("reference_errors", []),
                 "disclosures": list(SPLIT_DISCLOSURES.get(split.name, ())),
             })
+        with_b = any("baseline_b" in (s["metrics"] or {}) for s in splits)
         return {
             "splits": splits,
             "methods": ev.METHOD_TITLES,
             "reference_label": ev.LABEL,
-            "limitations": list(ev.LIMITATIONS),
+            "limitations": ev.limitations(with_b),
             "scoring": {"positive": ev.POSITIVE, "negative": ev.NEGATIVE, "review": ev.REVIEW},
         }
 

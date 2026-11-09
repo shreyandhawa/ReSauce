@@ -72,6 +72,7 @@ export default function About() {
           <li><strong>Folder preview.</strong> The server has no way to describe a folder before importing it, so the import reports what it found afterwards.</li>
           <li><strong>Dropping files.</strong> The server only accepts a folder path inside this project, so case folders cannot be dropped onto the page. A single note (.txt) can be dropped into the New case form.</li>
           <li><strong>Baseline A.</strong> When it is chosen, the simpler method runs beside the pipeline on the same case. It is a comparison, not a stage the record passes through, so the stage does not draw it; the inspector and the case page list its measured time, and it is left out of the pipeline time.</li>
+          <li><strong>Baseline B.</strong> The AI-model comparison is never run by this app: it would send case text to an outside service, and the app makes no network calls. Its answers are collected separately, once (<span className="mono">python -m resauce.baseline_b</span>), stored, and appear only on the Results page.</li>
           <li><strong>Stages inside “verify all”.</strong> That endpoint reports whole cases only, so the page verifies cases one by one through the single-case endpoint, which reports each stage. Each call stores a run and an audit entry exactly as before.</li>
         </ul>
 

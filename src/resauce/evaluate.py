@@ -34,12 +34,13 @@ import time
 from datetime import datetime
 from pathlib import Path
 
-from resauce import baseline_a, engine
+from resauce import baseline_a, baseline_b, engine
 from resauce.extract import extract_case
 from resauce.loader import check_evidence_ref, load_case
 from resauce.models import EvidenceRef
 
 ROOT = Path(__file__).resolve().parents[2]
+DEFAULT_BASELINE_B = ROOT / "results" / "baseline_b" / "responses"
 FIELDS = ("onset", "max_grade")
 CATEGORIES = tuple(f"7.{n}" for n in range(1, 9))
 POSITIVE = ("7.1", "7.2", "7.3", "7.8")  # reference classes (spec §3)
@@ -48,8 +49,9 @@ REVIEW = ("7.4", "7.5")
 ALERTS = POSITIVE  # a method's discrepancy alerts are the same four categories
 REVIEW_FLAGS = REVIEW
 SPLIT_NAMES = ("dev", "held_out")
-METHODS = ("resauce", "baseline_a")
-METHOD_TITLES = {"resauce": "ReSauce", "baseline_a": "Baseline A"}
+METHODS = ("resauce", "baseline_a")  # always run; Baseline B is added from a complete set of stored answers (spec §5)
+OUT_OF_SCOPE_METHODS = ("resauce", "baseline_b")  # the methods that can flag a case out of scope (spec §3)
+METHOD_TITLES = {"resauce": "ReSauce", "baseline_a": "Baseline A", "baseline_b": "Baseline B"}
 ERROR_TEXT_LIMIT = 300
 
 LABEL = ("intended answers, agreed by a blind re-derivation by a separate Claude session (same model family); "
@@ -64,7 +66,6 @@ LIMITATIONS = (
     "All data is synthetic. Results are not clinical validation.",
     "Cases and intended answers were written by Claude sessions; the answers are not independently "
     "verified and not clinician-verified.",
-    "Baseline B (LLM) is deferred until an API key is available, so it has no result here.",
     "Rules that are not yet implemented return a \"review: …\" result, never a guess.",
     "The user does not read the development cases; they are checked only by tools.check_dev and the "
     "reviewer's sampled reviews (evaluation-spec §6).",
@@ -72,6 +73,23 @@ LIMITATIONS = (
     "or more letters one letter away from a list word is read as an uncertain \"spelling variant\" and listed "
     "for review; swapped letters and shorter words are missed without a warning.",
 )
+BASELINE_B_NOT_RUN = "Baseline B (LLM) has no stored answers for this report, so it has no result here."
+BASELINE_B_LIMITATIONS = (
+    "Baseline B is the same model family (Claude) that wrote the cases and the reference answers. Its agreement "
+    "with the reference may come partly from shared habits of reading the same rules text, not only from being "
+    "right (evaluation-spec §6).",
+    "Baseline B's answers are not deterministic and come from one run; a second run could give different numbers.",
+    "The held-out split is new to Baseline B, but it is not sealed.",
+)
+
+
+def limitations(with_baseline_b: bool) -> list[str]:
+    """The limitations reported with every result (spec §6)."""
+    return [*LIMITATIONS, *(BASELINE_B_LIMITATIONS if with_baseline_b else (BASELINE_B_NOT_RUN,))]
+
+
+def methods_for(responses: Path | None) -> tuple[str, ...]:
+    return (*METHODS, "baseline_b") if responses else METHODS
 
 
 # ---------------------------------------------------------------------------
@@ -305,11 +323,42 @@ def read_reference(reference_dir: Path, case_id: str) -> dict:
     return {"out_of_scope": oos["reason"] if oos else None, "fields": fields}
 
 
-def run_case(case_id: str, data_dir: Path, reference_dir: Path) -> dict:
-    """Run both methods on one case. Failures become error entries; this never raises."""
+def run_baseline_b(case, window, responses: Path, run_settings: dict) -> tuple[dict, float]:
+    """Baseline B's entry for one case from its stored answer, and the stored request time (spec §5).
+
+    Never calls the model. A missing, unreadable or unusable answer, or one whose fingerprints do not match
+    the run's instructions or the current case files, becomes an error entry.
+    """
+    try:
+        stored = baseline_b.load_answer(responses, case.case_id)
+    except (OSError, ValueError) as exc:
+        return {"error": "stored Baseline B answer unreadable: " + _error_text(exc)}, 0.0
+    if stored is None:
+        return {"error": "no stored Baseline B answer"}, 0.0
+    cost = baseline_b.cost_usd(stored.get("usage") or {})
+    seconds = stored.get("duration_seconds") or 0.0
+    if stored.get("system_prompt_sha256") != run_settings.get("system_prompt_sha256") \
+            or stored.get("user_message_sha256") != baseline_b.sha256(baseline_b.user_message(case, window)):
+        return {"error": "stored Baseline B answer does not match the run's instructions or the current case files",
+                "cost_usd": cost}, seconds
+    try:
+        output = baseline_b.evaluate_case(case, stored)
+    except Exception as exc:
+        return {"error": _error_text(exc), "cost_usd": cost}, seconds
+    return {"output": output, "evidence_valid": evidence_validity(case, output), "cost_usd": cost}, seconds
+
+
+def run_case(case_id: str, data_dir: Path, reference_dir: Path, responses: Path | None = None,
+             run_settings: dict | None = None) -> dict:
+    """Run every method on one case. Failures become error entries; this never raises.
+
+    responses: the folder of Baseline B's stored answers (run_settings: its run.json settings), or None
+    to leave Baseline B out.
+    """
+    methods = methods_for(responses)
     record = {"case_id": case_id, "reference": None, "reference_error": None,
-              "resauce": None, "baseline_a": None,
-              "runtime_seconds": {"extract": 0.0, "resauce": 0.0, "baseline_a": 0.0}}
+              **{method: None for method in methods},
+              "runtime_seconds": {"extract": 0.0, **{method: 0.0 for method in methods}}}
     try:
         record["reference"] = read_reference(reference_dir, case_id)
     except Exception as exc:
@@ -320,8 +369,12 @@ def run_case(case_id: str, data_dir: Path, reference_dir: Path) -> dict:
         case = load_case(folder)
         window = engine.load_window(folder)
     except Exception as exc:
-        record["resauce"], record["baseline_a"] = ({"error": "load: " + _error_text(exc)} for _ in METHODS)
+        for method in methods:
+            record[method] = {"error": "load: " + _error_text(exc)}
         return record
+    if responses:  # Baseline B reads the case files only, so it does not depend on the extraction below
+        record["baseline_b"], record["runtime_seconds"]["baseline_b"] = run_baseline_b(
+            case, window, responses, run_settings or {})
     started = time.perf_counter()
     try:
         observations = extract_case(case)
@@ -360,13 +413,15 @@ def read_folder_split(data_dir: Path) -> list[str]:
     return sorted(p.name for p in (data_dir / "cases").iterdir() if p.is_dir())
 
 
-def run_split(name: str, case_ids: list[str], data_dir: Path, reference_dir: Path) -> dict:
+def run_split(name: str, case_ids: list[str], data_dir: Path, reference_dir: Path,
+              responses: Path | None = None, run_settings: dict | None = None) -> dict:
     started = time.perf_counter()
-    records = [run_case(case_id, data_dir, reference_dir) for case_id in case_ids]
+    methods = methods_for(responses)
+    records = [run_case(case_id, data_dir, reference_dir, responses, run_settings) for case_id in case_ids]
     metrics = {}
-    for method in METHODS:
+    for method in methods:
         scored = [(r["case_id"], r["reference"], r[method].get("output")) for r in records]
-        result = score_method(scored, scores_out_of_scope=method == "resauce")
+        result = score_method(scored, scores_out_of_scope=method in OUT_OF_SCOPE_METHODS)
         valid = total = 0
         for r in records:
             v, t = r[method].get("evidence_valid", (0, 0))
@@ -374,10 +429,12 @@ def run_split(name: str, case_ids: list[str], data_dir: Path, reference_dir: Pat
         result["evidence_validity"] = ratio(valid, total)
         result["errors"] = [{"case_id": r["case_id"], "error": r[method]["error"]}
                             for r in records if "error" in r[method]]
+        if method == "baseline_b":
+            result["cost_usd"] = round(sum(r[method].get("cost_usd", 0.0) for r in records), 4)
         metrics[method] = result
-    runtime = {key: sum(r["runtime_seconds"][key] for r in records) for key in ("extract", *METHODS)}
+    runtime = {key: sum(r["runtime_seconds"][key] for r in records) for key in ("extract", *methods)}
     runtime["wall_clock"] = time.perf_counter() - started
-    return {"split": name, "case_ids": case_ids, "cases": records, "metrics": metrics,
+    return {"split": name, "methods": list(methods), "case_ids": case_ids, "cases": records, "metrics": metrics,
             "runtime_seconds": runtime,
             "reference_errors": [{"case_id": r["case_id"], "error": r["reference_error"]}
                                  for r in records if r["reference_error"]]}
@@ -397,7 +454,26 @@ def _git(*args: str) -> str | None:
         return None
 
 
-def run_metadata(data_dir: Path, reference_dir: Path) -> dict:
+def baseline_b_check(responses: Path, data_dir: Path) -> tuple[dict | None, str]:
+    """(run.json, "") if every case of the dataset has a stored answer from one run, else (None, why not).
+
+    Spec §5: a partial run is left out of the report, never scored as if complete.
+    """
+    try:
+        run = json.loads((responses.parent / "run.json").read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return None, f"no readable run.json beside {responses}"
+    if run.get("data") != baseline_b.display_path(data_dir):
+        return None, f"its answers are for {run.get('data')}, not {baseline_b.display_path(data_dir)}"
+    cases = [f.name for f in baseline_b.case_folders(data_dir)]
+    missing = [c for c in cases if not (responses / f"{c}.json").is_file()]
+    if missing:
+        return None, f"incomplete run: {len(cases) - len(missing)} of {len(cases)} answers stored"
+    return run, ""
+
+
+def run_metadata(data_dir: Path, reference_dir: Path, baseline_b_run: dict | None = None,
+                 baseline_b_note: str = "") -> dict:
     try:
         dataset = json.loads((data_dir / "dataset.json").read_text(encoding="utf-8"))
     except (OSError, ValueError):
@@ -414,6 +490,8 @@ def run_metadata(data_dir: Path, reference_dir: Path) -> dict:
         "date": datetime.now().astimezone().isoformat(timespec="seconds"),
         "python_version": sys.version.split()[0],
         "platform": platform.platform(),
+        "baseline_b": baseline_b_run,
+        "baseline_b_note": baseline_b_note,
     }
 
 
@@ -423,6 +501,8 @@ def _fmt(r: dict) -> str:
 
 def _split_report(split: dict) -> list[str]:
     name, metrics = split["split"], split["metrics"]
+    methods = split.get("methods", METHODS)
+    flaggers = [m for m in methods if m in OUT_OF_SCOPE_METHODS]  # methods that give review and out-of-scope flags
     if name == "dev":
         title = "dev"
     elif name == "held_out":
@@ -432,7 +512,7 @@ def _split_report(split: dict) -> list[str]:
     lines = [f"## Split: {title}", ""]
     if name == "held_out":
         lines += [f"**{HELD_OUT_SEEN[0].upper()}{HELD_OUT_SEEN[1:]}.**", ""]
-    for method in METHODS:
+    for method in methods:
         s = metrics[method]["summary"]
         lines.append(f"- **{METHOD_TITLES[method]}:** {s['cases']} cases; {s['in_scope']} in scope and "
                      f"{s['out_of_scope']} out of scope by the reference; {s['without_reference']} without a "
@@ -442,7 +522,7 @@ def _split_report(split: dict) -> list[str]:
               "| Method | Field | Positive | Negative | Review | Detections | Misses | False alerts | "
               "Alerts on review fields | \"review: …\" results | Precision | Recall | F1 |",
               "|---|---|---|---|---|---|---|---|---|---|---|---|---|"]
-    for method in METHODS:
+    for method in methods:
         for field_name in (*FIELDS, "combined"):
             f = metrics[method]["fields"][field_name]
             c = f["counts"]
@@ -461,45 +541,54 @@ def _split_report(split: dict) -> list[str]:
               "| Method | Misses | With a review flag (7.4/7.5) | With a \"review: …\" result | "
               "From an error | Flagged out of scope | With no alert |",
               "|---|---|---|---|---|---|---|"]
-    for method in METHODS:
+    for method in methods:
         c = metrics[method]["fields"]["combined"]["counts"]
         lines.append(f"| {METHOD_TITLES[method]} | {c['misses']} | {c['misses_with_review_flag']} | "
                      f"{c['misses_with_review_result']} | {c['misses_from_errors']} | "
                      f"{c['misses_from_out_of_scope']} | {c['misses_with_no_alert']} |")
     lines += ["", "**Exact-category agreement** (the method's category equals the reference category)", "",
               "| Method | Field | All in-scope fields | Positive fields only |", "|---|---|---|---|"]
-    for method in METHODS:
+    for method in methods:
         for field_name in (*FIELDS, "combined"):
             f = metrics[method]["fields"][field_name]
             lines.append(f"| {METHOD_TITLES[method]} | {field_name} | {_fmt(f['exact_agreement_all_fields'])} | "
                          f"{_fmt(f['exact_agreement_positive_fields'])} |")
-    c = metrics["resauce"]["fields"]["combined"]["counts"]
-    lines += ["", "**Review flags by reference category** (ReSauce, both fields). Review flags are never "
-              "counted as detections or false alerts.", "",
-              "| Reference category | Fields | Flagged 7.4 | Flagged 7.5 |", "|---|---|---|---|"]
-    for category in CATEGORIES:
-        lines.append(f"| {category} | {c[f'ref_{category}']} | {c[f'ref_{category}_flagged_7.4']} | "
-                     f"{c[f'ref_{category}_flagged_7.5']} |")
+    for method in flaggers:
+        c = metrics[method]["fields"]["combined"]["counts"]
+        lines += ["", f"**Review flags by reference category** ({METHOD_TITLES[method]}, both fields). Review "
+                  "flags are never counted as detections or false alerts.", "",
+                  "| Reference category | Fields | Flagged 7.4 | Flagged 7.5 |", "|---|---|---|---|"]
+        for category in CATEGORIES:
+            lines.append(f"| {category} | {c[f'ref_{category}']} | {c[f'ref_{category}_flagged_7.4']} | "
+                         f"{c[f'ref_{category}_flagged_7.5']} |")
     lines += ["", "Baseline A: n/a (method cannot produce review flags).", ""]
-    oos = metrics["resauce"]["out_of_scope"]
-    lines += ["**Out of scope (ReSauce only)**", "",
-              f"- Reference out-of-scope cases: {oos['reference_cases']}; flagged out of scope: {oos['flagged']} "
-              f"(reason matches the reference: {oos['reason_matches']}; a different reason: "
-              f"{oos['flagged_other_reason']}); not flagged: {oos['not_flagged']}; errors: {oos['errors']}.",
-              f"- In-scope cases wrongly flagged out of scope: {oos['in_scope_wrongly_flagged']} (their positive "
-              "fields count as misses).",
-              "- Baseline A produces no out-of-scope flags, so no out-of-scope score is reported for it.", "",
+    who_flags = " and ".join(METHOD_TITLES[m] for m in flaggers) + (" only" if len(flaggers) == 1 else "")
+    lines += [f"**Out of scope ({who_flags})**", ""]
+    for method in flaggers:
+        oos = metrics[method]["out_of_scope"]
+        who = "" if len(flaggers) == 1 else f"{METHOD_TITLES[method]}: "
+        lines += [f"- {who}Reference out-of-scope cases: {oos['reference_cases']}; flagged out of scope: "
+                  f"{oos['flagged']} (reason matches the reference: {oos['reason_matches']}; a different reason: "
+                  f"{oos['flagged_other_reason']}); not flagged: {oos['not_flagged']}; errors: {oos['errors']}.",
+                  f"- {who}In-scope cases wrongly flagged out of scope: {oos['in_scope_wrongly_flagged']} (their "
+                  "positive fields count as misses)."]
+    lines += ["- Baseline A produces no out-of-scope flags, so no out-of-scope score is reported for it.", "",
               "**Evidence-quote validity** (references that pass `check_evidence_ref`, over every evidence "
               "reference in the method's outputs)", ""]
-    for method in METHODS:
+    for method in methods:
         lines.append(f"- {METHOD_TITLES[method]}: {_fmt(metrics[method]['evidence_validity'])}")
     rt = split["runtime_seconds"]
-    lines += ["", f"**Runtime** (seconds, summed over cases): extraction {rt['extract']:.3f} (shared by both "
-              f"methods), ReSauce rules engine {rt['resauce']:.3f}, Baseline A {rt['baseline_a']:.3f}. "
+    lines += ["", f"**Runtime** (seconds, summed over cases): extraction {rt['extract']:.3f} (shared by ReSauce "
+              f"and Baseline A), ReSauce rules engine {rt['resauce']:.3f}, Baseline A {rt['baseline_a']:.3f}. "
               f"Per method including extraction: ReSauce {rt['extract'] + rt['resauce']:.3f}, "
               f"Baseline A {rt['extract'] + rt['baseline_a']:.3f}. Whole split {rt['wall_clock']:.3f} "
               "including loading and evidence checks.", ""]
-    errors = [(METHOD_TITLES[m], e) for m in METHODS for e in metrics[m]["errors"]]
+    if "baseline_b" in methods:
+        lines += [f"**Baseline B model requests:** {rt['baseline_b']:.1f} seconds, summed over cases (each "
+                  "streamed request, timed when the answers were collected; requests ran in parallel, so this is "
+                  f"not the elapsed time). Cost ${metrics['baseline_b']['cost_usd']:.2f} (measured token usage x "
+                  "listed prices).", ""]
+    errors = [(METHOD_TITLES[m], e) for m in methods for e in metrics[m]["errors"]]
     if errors or split["reference_errors"]:
         lines += ["**Errors** (counted above; the run carried on)", ""]
         lines += [f"- {m}, {e['case_id']}: {e['error']}" for m, e in errors]
@@ -526,10 +615,23 @@ def build_report(splits: list[dict], metadata: dict) -> str:
               f"- Date: {metadata['date']}",
               f"- Python {metadata['python_version']} on {metadata['platform']}",
               f"- Splits in this report: {', '.join(s['split'] for s in splits)}",
-              "- Baseline B (LLM): not run (deferred, evaluation-spec §5)", "",
-              "## Limitations", ""]
-    lines += [f"- {text}" for text in LIMITATIONS]
+              f"- Baseline B (LLM): {_baseline_b_line(metadata.get('baseline_b'), metadata.get('baseline_b_note'))}"]
+    disclosures = (metadata.get("baseline_b") or {}).get("disclosures") or []
+    lines += [f"- Baseline B disclosure: {text}" for text in disclosures]
+    lines += ["", "## Limitations", ""]
+    lines += [f"- {text}" for text in limitations(metadata.get("baseline_b") is not None)]
     return "\n".join(lines) + "\n"
+
+
+def _baseline_b_line(run: dict | None, note: str | None) -> str:
+    if run is None:
+        return f"not in this report ({note or 'no stored answers'}; evaluation-spec §5)"
+    settings, sessions = run["settings"], run.get("sessions") or [{}]
+    return (f"{settings['model']}, effort {settings['effort']}, adaptive thinking, no fallback model; dataset "
+            f"{run.get('dataset_id')} version {run.get('dataset_version')}; answers collected from "
+            f"{run.get('started_at')} at code commit {sessions[0].get('code_commit')} with anthropic "
+            f"{sessions[0].get('anthropic_library_version')} in {len(sessions)} session(s); instructions SHA-256 "
+            f"{settings['system_prompt_sha256']}; stored in results/baseline_b/ (evaluation-spec §5)")
 
 
 def main(argv: list[str]) -> int:
@@ -539,6 +641,10 @@ def main(argv: list[str]) -> int:
     parser.add_argument("--out", type=Path, default=ROOT / "results")
     parser.add_argument("--splits", nargs="+", choices=SPLIT_NAMES, default=None)
     parser.add_argument("--split-name", help="score every case in --data as one split with this name")
+    parser.add_argument("--baseline-b", type=Path, default=None,
+                        help="folder of Baseline B's stored answers (default: results/baseline_b/responses, "
+                             "if it exists, for the dev and held-out splits only)")
+    parser.add_argument("--no-baseline-b", action="store_true", help="leave Baseline B out")
     args = parser.parse_args(argv)
     if args.split_name and args.splits:
         parser.error("--split-name and --splits cannot be used together")
@@ -551,15 +657,25 @@ def main(argv: list[str]) -> int:
     else:
         ids = read_splits(args.data, args.reference)
         names = [n for n in SPLIT_NAMES if n in (args.splits or SPLIT_NAMES)]
-    metadata = run_metadata(args.data, args.reference)
+    responses, run, note = args.baseline_b, None, ""
+    if responses is None and not args.split_name and DEFAULT_BASELINE_B.is_dir():
+        responses = DEFAULT_BASELINE_B  # checked below against --data, so it never scores another dataset
+    if args.no_baseline_b:
+        responses, note = None, "left out with --no-baseline-b"
+    if responses:
+        run, note = baseline_b_check(responses, args.data)
+        if run is None:
+            print(f"Baseline B left out: {note}")
+            responses = None
+    metadata = run_metadata(args.data, args.reference, run, note)
     args.out.mkdir(parents=True, exist_ok=True)
     results = []
     for name in names:
-        split = run_split(name, ids[name], args.data, args.reference)
+        split = run_split(name, ids[name], args.data, args.reference, responses, run and run["settings"])
         results.append(split)
         (args.out / f"{name}.json").write_text(
             json.dumps({"metadata": metadata, **split}, indent=1, ensure_ascii=False) + "\n", encoding="utf-8")
-        errors = sum(len(split["metrics"][m]["errors"]) for m in METHODS)
+        errors = sum(len(split["metrics"][m]["errors"]) for m in split["methods"])
         print(f"{name}: {len(ids[name])} cases run, {errors} method errors")
     report = f"report-{args.split_name}.md" if args.split_name else "report.md"  # never overwrite report.md
     (args.out / report).write_text(build_report(results, metadata), encoding="utf-8")

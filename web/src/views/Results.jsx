@@ -11,12 +11,15 @@ const MEASURES = [
   ['recall', 'Recall', 'Of the discrepancies in the reference answers, the share that were caught.', 'detections ÷ positive fields'],
   ['exact_agreement_all_fields', 'Exact agreement', 'Fields whose category matched the reference answer exactly.', 'category equals the reference, all in-scope fields'],
 ]
-const METHODS = ['resauce', 'baseline_a']
+// Baseline B appears only where a results file holds it (its answers are stored, evaluation-spec §5).
+const ALL_METHODS = ['resauce', 'baseline_a', 'baseline_b']
 const SPLIT_LINES = {
   dev: 'Used to build the pipeline, so expected to be optimistic.',
 }
 
 const pct = (r) => (r && r.value != null ? `${Math.round(r.value * 100)}%` : '—')
+const methodsOf = (split) => ALL_METHODS.filter((m) => split.metrics?.[m])
+const usd = (v) => `$${v.toFixed(2)}`
 
 export default function Results() {
   const loaded = useLoad(() => api.summary(), [])
@@ -24,17 +27,28 @@ export default function Results() {
   if (loaded.error) return <div className="page"><Problem title="The stored results could not be loaded" error={loaded.error} /></div>
   if (!s) return <div className="page"><Loading label="Loading results" /></div>
   const names = s.methods
+  const columns = ALL_METHODS.filter((m) => s.splits.some((x) => x.metrics?.[m]))
+  const withB = columns.includes('baseline_b')
+  const bModel = s.splits.find((x) => x.metrics?.baseline_b)?.metadata?.baseline_b?.settings?.model
 
   return (
     <div className="page results">
       <header className="page-hero">
         <h1>Results</h1>
-        <p className="lede">How often the frozen pipeline agreed with the reference answers, beside a simpler method (Baseline A) measured on the same cases.</p>
-        <p className="caveat">Synthetic data. Not clinical validation. Reference answers: {s.reference_label}.</p>
+        <p className="lede">
+          {withB
+            ? 'How often the frozen pipeline agreed with the reference answers, beside two other methods measured on the same cases: Baseline A, a simpler conventional check, and Baseline B, an AI model given the same written rules.'
+            : 'How often the frozen pipeline agreed with the reference answers, beside a simpler method (Baseline A) measured on the same cases.'}
+        </p>
+        <p className="caveat">
+          Synthetic data. Not clinical validation. Reference answers: {s.reference_label}.
+          {withB && ' Baseline B is the same model family that wrote the reference answers, so its agreement with them may be inflated.'}
+        </p>
       </header>
 
       {s.splits.map((split, si) => {
         const m = (method) => split.metrics?.[method]?.fields?.combined || {}
+        const methods = methodsOf(split)
         return (
           <section key={split.name} className="split" aria-labelledby={`split-${split.name}`} style={{ '--si': si }}>
             <div className="split-head">
@@ -46,8 +60,8 @@ export default function Results() {
                 <div key={key} className="measure" style={{ '--mi': mi }}>
                   <h3>{label}</h3>
                   <p className="measure-plain">{plain}</p>
-                  <div className="pair-pct">
-                    {METHODS.map((method) => {
+                  <div className={`pair-pct n-${methods.length}`}>
+                    {methods.map((method) => {
                       const r = m(method)[key]
                       return (
                         <figure key={method} className={`pct pct-${method}`}>
@@ -70,14 +84,17 @@ export default function Results() {
         <div className="measured-body">
           <p>Each in-scope case has two fields, onset date and maximum grade; both are counted. Splits are reported separately and never pooled. Values are rounded to a whole percent; the exact fractions are below.</p>
           <table className="data">
-            <thead><tr><th scope="col">Split</th><th scope="col">Measure</th>{METHODS.map((x) => <th key={x} scope="col">{names[x]}</th>)}</tr></thead>
+            <thead><tr><th scope="col">Split</th><th scope="col">Measure</th>{columns.map((x) => <th key={x} scope="col">{names[x]}</th>)}</tr></thead>
             <tbody>
-              {s.splits.flatMap((split) => MEASURES.map(([key, label, , formula]) => (
+              {s.splits.flatMap((split) => [
+                ...MEASURES.map(([key, label, , formula]) => [key, label, formula, (method) => split.metrics?.[method]?.fields?.combined?.[key]]),
+                ['evidence', 'Evidence quotes valid', 'quote equals the source text at its position', (method) => split.metrics?.[method]?.evidence_validity],
+              ].map(([key, label, formula, get]) => (
                 <tr key={split.name + key}>
                   <td>{split.title}</td>
                   <td>{label}<span className="muted"> · {formula}</span></td>
-                  {METHODS.map((method) => {
-                    const r = split.metrics?.[method]?.fields?.combined?.[key]
+                  {columns.map((method) => {
+                    const r = get(method)
                     return <td key={method} className="mono">{r ? `${r.n}/${r.d}${r.value == null ? ' (undefined)' : ''}` : '—'}</td>
                   })}
                 </tr>
@@ -85,6 +102,16 @@ export default function Results() {
             </tbody>
           </table>
           <p>Baseline A is conventional validation on the same extracted observations: no event-time reconstruction, attribution, observation window or record history (evaluation-spec §4).</p>
+          {withB && (
+            <p>
+              Baseline B is an AI model (<span className="mono">{bModel}</span>) given the same written rules (clinical-methods §1–§9) and each case's files, answering once per case with quoted evidence. Its answers were collected once, stored and scored like the other methods; the model is not called by this app (evaluation-spec §5).
+              {' '}Cost of collecting the answers: {s.splits.filter((x) => x.metrics?.baseline_b).map((x) => `${usd(x.metrics.baseline_b.cost_usd)} (${x.title})`).join(', ')}.
+              {' '}{s.splits.map((x) => {
+                const n = x.metrics?.baseline_b?.errors?.length
+                return n ? `${n} answer${n === 1 ? '' : 's'} in ${x.title} could not be used and count as errors.` : null
+              }).filter(Boolean).join(' ')}
+            </p>
+          )}
           <ul className="measured-list">{s.limitations.map((l) => <li key={l}>{l}</li>)}</ul>
           <p className="muted">From {s.splits.map((x) => x.results_file).join(' and ')}.</p>
         </div>

@@ -756,6 +756,12 @@ dialog.modal .row { display: flex; gap: 10px; justify-content: flex-end; margin-
 /* Explanation: each bar fills to its real value once, as the page opens. */
 .pct-bar span { display: block; height: 100%; border-radius: 3px; background: var(--ink); transform-origin: left; transform: scaleX(var(--v)); animation: bar-in 1000ms var(--ease-out) both; animation-delay: calc(var(--si, 0) * 160ms + var(--mi, 0) * 70ms + 220ms); }
 .pct-baseline_a .pct-bar span { background: var(--ink-3); }
+/* Baseline B: grey like the other comparison method; its bar is striped so the two baselines differ without a
+   new colour (colour stays reserved for the meaning of findings). Three methods share a column, so the figures shrink. */
+.pct-baseline_b .pct-value { color: var(--ink-3); }
+.pct-baseline_b .pct-bar span { background: repeating-linear-gradient(-45deg, var(--ink-3) 0 3px, transparent 3px 5px); }
+.pair-pct.n-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+.pair-pct.n-3 .pct-value { font-size: clamp(1.9rem, 0.9rem + 2.4vw, 3.7rem); }
 @keyframes bar-in { from { transform: scaleX(0); } }
 .measured { margin-top: 44px; border-top: 2px solid var(--rule); padding-top: 18px; }
 .measured > summary { cursor: pointer; font-weight: 800; font-size: 1.125rem; letter-spacing: -0.015em; list-style: none; display: inline-flex; gap: 10px; align-items: center; }

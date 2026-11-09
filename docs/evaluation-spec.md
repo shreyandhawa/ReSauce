@@ -1,6 +1,6 @@
 # ReSauce evaluation specification
 
-- **Status:** v0.1, draft (2026-11-08). Milestone 3 session 3. Written **before** any pipeline result exists, so the definitions cannot be chosen to suit the results.
+- **Status:** v0.2, draft (2026-11-09). v0.1 (2026-11-08, Milestone 3 session 3) was written **before** any pipeline result existed, so the definitions could not be chosen to suit the results. v0.2 specifies Baseline B (§5) before any Baseline B result exists.
 - **Builds on:** `docs/clinical-methods.md` v0.4.1 (cited as §), `docs/dataset-plan.md` v0.3.1 with its v0.3.2 changelog entry (cited as "plan §"), `docs/data-format.md` v0.1.2.
 - Results on synthetic data are not clinical validation.
 
@@ -84,7 +84,35 @@ What a careful data manager would check without temporal reconciliation. It is b
 
 ## 5. Baseline B: LLM
 
-Deferred until an API key is available. This is disclosed in every report until it is run. When it is specified, it is measured on the same cases with the same scoring.
+Specified on 2026-11-09, **before any Baseline B call was made**, and committed before the run. Implemented in `src/resauce/baseline_b.py`.
+
+**Question it answers:** given the same written rules and the same case files, can a general AI model do this check as well as the rule-based pipeline?
+
+- **Model:** Claude Opus 5.5 (`claude-opus-5-5`, chosen by the user), through Anthropic's Messages API and the official `anthropic` Python library.
+- **Settings:** adaptive thinking (always on for this model; it cannot be switched off), effort `high`, `max_tokens` 64000, streamed. The model accepts no temperature setting, so its answers are **not deterministic**: a second run could differ. No fallback to another model: if the model declines a case, that is recorded as an error for that case.
+- **Instructions (system prompt):** a short fixed task description, followed by `docs/clinical-methods.md` verbatim from "How to read this document" through §9 (assumptions). The changelog and §10 (references) are left out. These are the same rules the pipeline implements and the reference answers follow.
+- **Input per case (user message):** the case files as JSON: case ID, age at infusion, infusion date (Day 0), the observation window, every research record version, and every version of every document with its metadata (status, note type, author role, documented time, amendment reason) and text. Nothing from `reference/`, `results/` or the pipeline's output is sent.
+- **No examples and no tuning:** the instructions are written before any case is run and are not changed after any answer is seen. A rerun for a technical fault in ReSauce's own code (for example, a parsing bug) is disclosed with the results.
+- **Output:** JSON constrained by a schema:
+  - out-of-scope reason: "in scope" or one of the five A29 reasons ("age under 18", "CAPD assessment", "record Grade 5", "documented death", "developmental delay");
+  - for onset and for maximum grade: a §7 category allowed for that field (onset 7.1, 7.4–7.8; grade 7.2–7.8), the documented value, an explanation, and evidence quotes (document ID, version, exact quote).
+- **Turning the answer into a method output:**
+  - Each quote is located by exact search in the named document version, and its first occurrence gives the offsets. A quote that is not found exactly keeps offsets −1 and fails the evidence-quote check (§3).
+  - A reason other than "in scope" makes both fields "out of scope (reason)", as for ReSauce.
+- **Errors:** a declined request, a cut-off answer or an answer that is not valid JSON is stored and counts as an error (§3). So does a stored answer whose fingerprints do not match the run's instructions or the current case files. A network or server failure stores nothing, so the case is requested again when the run resumes.
+- **Scoring:** exactly §3. Baseline B can give review flags (7.4, 7.5) and out-of-scope flags, so both are scored as for ReSauce. Baseline B enters a report **only when every case of the dataset has a stored answer from the same run**. A partial run is left out of the report, never scored as if complete.
+- **Run and storage:** one run on all 72 cases of `data/dev-v1` (dev and held-out).
+  - Each raw answer is stored in `results/baseline_b/responses/<case_id>.json` with the model, settings, fingerprints of the instructions and of the case message, token usage and time. The instructions and schema are stored next to them.
+  - `results/baseline_b/run.json` records the settings, the code commit and dataset version at collection time, the prices used for cost, and for each session the number of parallel requests and the spending cap.
+  - The shared instructions are cached by the API between requests. This lowers cost and does not change what the model receives.
+  - Requests run in parallel. A spending cap, agreed with the user before the run, stops new requests once reached; a run stopped by it is incomplete (see Scoring).
+  - A rerun for a technical fault in ReSauce's own code is recorded in `run.json` under "disclosures" and printed with the results.
+  - Scoring reads only the stored answers and never calls the model.
+- **Cost:** measured token usage × Anthropic's listed prices, reported with the results.
+
+## 5a. Changelog
+
+- **v0.2 (2026-11-09):** §5 Baseline B specified before its run; Baseline B limitations added to §6.
 
 ## 6. Limitations (reported with every result)
 
@@ -94,3 +122,6 @@ Deferred until an API key is available. This is disclosed in every report until 
 - The held-out split is not sealed (same writer, same repository).
 - Rules that are not yet implemented return a review result, never a guess.
 - The extractor's phrase lists were built from the 20 dev cases and `clinical-methods.md` only. Since session 4b, a word of 6 or more letters that is one letter away from a list word is read as an uncertain "spelling variant" and listed for review. Swapped letters (for example "seziure") are two changes, so they are still missed without a warning, as are shorter words.
+- **Baseline B is the same model family that wrote the cases and the reference answers** (Claude). Its agreement with the reference may come partly from shared habits of reading the same rules text, not only from being right.
+- Baseline B's answers are not deterministic and come from one run. A second run could give different numbers.
+- The held-out split is new to Baseline B, but it is not sealed.
