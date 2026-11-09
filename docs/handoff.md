@@ -31,6 +31,19 @@ This replaces the earlier plan of a 3 to 4 hour time box. No "§0 time box" exis
 
 ---
 
+## 2026-11-09: "failed to load on localhost" — the app is on port 8004, not 8000
+
+- **Status:** no code changed and no tests were run. The app runs and loads fully at http://localhost:8004/.
+- **Done:**
+  - Found nothing listening on port 8000. The stale servers on 8000–8003 from earlier entries are gone, so the old link http://localhost:8000 gives "can't connect".
+  - The only server running is `.venv/bin/python -m app --port 8004`, started from the main `ReSauce/` folder at 14:16 for the demo video.
+  - Checked it: the page, its script and style files and `/api/summary` all return 200. Headless Chrome draws the Pipeline page.
+  - Opened http://localhost:8004/ in the user's Chrome.
+- **Next steps:** to use port 8000 again, stop the 8004 server (`kill 630`) and restart from the project folder with `.venv/bin/python -m app`.
+- **How to verify:** `lsof -nP -iTCP -sTCP:LISTEN | grep Python` shows the port in use; open that port in the browser.
+
+---
+
 ## 2026-11-09: 8-slide pitch deck for the 3-minute script
 
 - **Status:** `docs/demo/ReSauce-Engine-pitch.pptx` is an 8-slide widescreen PowerPoint matching the user's final script. Like the video, it is **kept out of git** (`docs/demo/` is ignored), because it will hold the 54 MB video once inserted. No code changed and no tests were run.
