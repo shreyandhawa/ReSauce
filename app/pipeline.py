@@ -22,13 +22,17 @@ from resauce import baseline_a, engine
 from resauce import evaluate as ev
 from resauce import timeline as T
 from resauce.extract import Observation, extract_case
+from resauce import v2
 from resauce.loader import DataFormatError, load_case, study_day
 from resauce.models import EvidenceRef
+from resauce.v2 import extract as v2_extract
+from resauce.v2.steps import STEPS as V2_STEPS
 
 from app.sources import ROOT
 
 FREEZE_DOC = ROOT / "docs" / "freeze.md"
 FREEZE_TAG = "pipeline-freeze-v1"
+LINES = ("v1", "v2")  # v1 is the frozen pipeline; v2 is the development line (docs/v2.md)
 _FREEZE_ROW = re.compile(r"^\|\s*(src/resauce/[a-z_]+\.py)\s*\|\s*([0-9a-f]{64})\s*\|\s*$")
 
 
@@ -75,6 +79,14 @@ def pipeline_version() -> dict:
         "frozen_files_match": bool(files) and all(f["match"] for f in files),
         "hashes_from": "docs/freeze.md",
     }
+
+
+def v2_version() -> dict:
+    """The v2 line: its status and the hash of each of its files as they are now (not frozen)."""
+    folder = ROOT / "src" / "resauce" / "v2"
+    names = ["__init__", *v2.FILES]
+    return {"line": v2.LINE, "status": v2.STATUS,
+            "files": {f"src/resauce/v2/{n}.py": sha256_file(folder / f"{n}.py") for n in names}}
 
 
 def jsonable(value):
@@ -155,13 +167,35 @@ def _timeline_summary(case, observations, window) -> dict:
     }
 
 
-def run_stages(folder: Path, with_baseline: bool):
-    """Yield (stage, payload) as each stage of the frozen pipeline finishes.
+def normalisation_dict(extracted) -> dict:
+    """What the v2 clean-up changed, in original-text offsets, so the page can mark it."""
+    def edit(e):
+        return {"rule_id": e.rule_id, "start": e.start, "end": e.end, "original": e.original,
+                "replacement": e.replacement}
+    documents = [{"version_id": version_id, "edits": [edit(e) for e in n.edits],
+                  "dropped": [edit(e) for e in n.dropped]}
+                 for version_id, n in extracted.normalised.items() if n.edits or n.dropped]
+    return {"rules": [{"rule_id": s.rule_id, "description": s.description} for s in V2_STEPS],
+            "documents": documents,
+            "total_edits": sum(len(d["edits"]) for d in documents),
+            "total_dropped": sum(len(d["dropped"]) for d in documents)}
 
-    Stages: load, extraction, timeline, verdict (the rules engine computes the comparison
-    and the verdict together), baseline (only when asked). A failure is yielded as
-    ("error", ...) and ends the run; it is never hidden, as in resauce.evaluate.run_case.
+
+def run_stages(folder: Path, with_baseline: bool, line: str = "v1"):
+    """Yield (stage, payload) as each stage of the pipeline finishes.
+
+    line "v1" is the frozen pipeline. Line "v2" adds a text clean-up before extraction
+    (docs/v2.md); its "normalisation" stage arrives just before "extraction", and the
+    extraction time then includes the clean-up.
+
+    Stages: load, [normalisation, v2 only], extraction, timeline, verdict (the rules engine
+    computes the comparison and the verdict together), baseline (only when asked). A failure
+    is yielded as ("error", ...) and ends the run; it is never hidden, as in
+    resauce.evaluate.run_case.
     """
+    if line not in LINES:
+        raise ValueError(f"unknown pipeline line {line!r}")
+
     def timed(call):
         started = time.perf_counter()
         result = call()
@@ -176,7 +210,12 @@ def run_stages(folder: Path, with_baseline: bool):
                    "versions": len(case.documents)}
 
     try:
-        observations, seconds = timed(lambda: extract_case(case))
+        if line == "v2":
+            extracted, seconds = timed(lambda: v2_extract.extract_case(case))
+            observations = extracted.observations
+            yield "normalisation", normalisation_dict(extracted)
+        else:
+            observations, seconds = timed(lambda: extract_case(case))
     except Exception as exc:
         yield "error", {"stage": "extraction", "error": error_text(exc), "problems": []}
         return

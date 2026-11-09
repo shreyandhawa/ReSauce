@@ -22,6 +22,8 @@ ReSauce is a computational proof of concept. It checks whether a clinical resear
 
 The pipeline is frozen (git tag `pipeline-freeze-v1`, see `docs/freeze.md`); `tests/test_freeze.py` checks that its files have not changed.
 
+A development line, **v2**, adds a text clean-up step before extraction for messier notes (`src/resauce/v2/`, rules in `docs/v2.md`). It is selectable in the workstation, is not frozen, and has not been scored on any data. v1 is unchanged.
+
 ## Set up (once)
 
 You need Python 3.13 or newer (`python3 --version`) and Git. In a terminal, in the project folder:

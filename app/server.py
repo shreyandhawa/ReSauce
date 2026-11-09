@@ -18,6 +18,7 @@ from pathlib import Path
 from urllib.parse import parse_qs, unquote, urlsplit
 
 from app.api import Api
+from app.pipeline import LINES
 from app.sources import ROOT
 from app.workstation import BadRequest, NotFound, Workstation
 
@@ -166,11 +167,14 @@ def make_handler(validation: Api, station: Workstation, static_dir: Path = STATI
             query = parse_qs(parts.query)
             baseline = query.get("baseline", ["0"])[0] == "1"
             reviewer = query.get("reviewer", [""])[0].strip()[:120] or None
+            line = query.get("pipeline", ["v1"])[0]  # "v1" (frozen) or "v2" (development line)
             match = VERIFY_PATH.fullmatch(path)
-            if match:
-                return self._stream(station.verify(match.group(1), baseline, reviewer))
-            if path == "/api/verify-all":
-                return self._stream(station.verify_all(baseline, reviewer))
+            if match or path == "/api/verify-all":
+                if line not in LINES:
+                    return self._json(HTTPStatus.BAD_REQUEST, {"error": f"unknown pipeline {line!r}; use one of {', '.join(LINES)}"})
+                if match:
+                    return self._stream(station.verify(match.group(1), baseline, reviewer, line))
+                return self._stream(station.verify_all(baseline, reviewer, line))
             match = EXPORT_CASE_PATH.fullmatch(path)
             if match:
                 return self._api(lambda: station.export_case(match.group(1)))

@@ -72,7 +72,7 @@ function Entry({ e, open, onToggle }) {
         <td>{e.field ? FIELD_NAMES[e.field] || e.field : e.type === 'decision' ? <span className="muted">{e.finding_id}</span> : ''}</td>
         <td>{e.type === 'decision' ? <><strong>{result}</strong><div className="muted">{e.finding}</div></> : result}</td>
         <td>{e.note || ''}</td>
-        <td className="mono" style={{ whiteSpace: 'nowrap' }}>{p.tag} {(p.tag_commit || '').slice(0, 7)} <span className={`sign ${p.frozen_files_match ? 'sign-reviewed' : 'sign-alert'}`} style={{ fontWeight: 400 }}><Icon name={p.frozen_files_match ? 'clear' : 'error'} size={14} />{p.frozen_files_match ? 'frozen' : 'changed'}</span></td>
+        <td className="mono" style={{ whiteSpace: 'nowrap' }}>{p.line === 'v2' ? 'v2 on ' : ''}{p.tag} {(p.tag_commit || '').slice(0, 7)} <span className={`sign ${p.frozen_files_match ? 'sign-reviewed' : 'sign-alert'}`} style={{ fontWeight: 400 }}><Icon name={p.frozen_files_match ? 'clear' : 'error'} size={14} />{p.frozen_files_match ? 'frozen' : 'changed'}</span></td>
       </tr>
       {open && (
         <tr><td colSpan={8} style={{ background: 'var(--surface-2)' }}>
@@ -80,6 +80,8 @@ function Entry({ e, open, onToggle }) {
             <dt>Run</dt><dd className="mono">{e.run_id}</dd>
             <dt>Output SHA-256</dt><dd className="mono">{e.output_sha256 || 'none'}</dd>
             {e.type === 'run' && <><dt>Matches stored</dt><dd>{e.matches_stored ? Object.entries(e.matches_stored).map(([m, v]) => `${m}: ${v === true ? 'yes' : v === false ? 'NO' : 'n/a'}`).join(' · ') : 'no stored result for this case folder'}</dd></>}
+            <dt>Pipeline</dt><dd>{p.line === 'v2' ? 'v2 (development line, not frozen, not evaluated)' : 'v1 (frozen)'}</dd>
+            {Object.entries(p.v2?.files || {}).map(([f, h]) => <Fragment key={f}><dt className="mono">{f}</dt><dd className="mono">{h}</dd></Fragment>)}
             <dt>Pipeline commit</dt><dd className="mono">{p.tag_commit || 'unknown'} (HEAD {p.head_commit?.slice(0, 7) || 'unknown'})</dd>
             {Object.entries(p.frozen_files || {}).map(([f, h]) => <Fragment key={f}><dt className="mono">{f}</dt><dd className="mono">{h}</dd></Fragment>)}
           </dl>

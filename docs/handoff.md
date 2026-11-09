@@ -31,6 +31,26 @@ This replaces the earlier plan of a 3 to 4 hour time box. No "§0 time box" exis
 
 ---
 
+## 2026-11-09: Pipeline v2, architecture and workstation support (no messy-case work yet)
+
+- **Status:** a v2 development line exists beside v1: a text clean-up step before the v1 extractor, selectable in the workstation. v1 and its freeze are untouched. v2 has **not been scored on any data** and has no clinical clean-up rules yet. `pytest`: 183 passed (176 + 7 new in `tests/test_v2.py`), including `test_freeze.py`.
+- **Done:**
+  - `src/resauce/v2/` (new files only): `normalise.py` (steps propose edits on the original text; an offset map from cleaned text back to original; overlaps keep the earlier step and report the other as dropped; pure insertions refused), `steps.py` (one step with no clinical meaning: remove zero-width characters, turn non-breaking spaces into spaces), `extract.py` (clean each note, call the unchanged v1 `extract_case`, map every evidence quote back to the original text, check it against the original case).
+  - The timeline, rules engine and scoring are v1's, fed with v2's observations: `engine.evaluate_case(case, v2_extract.extract_case(case).observations, window)`.
+  - `docs/v2.md`: the rules this line follows (v1 untouched; every quote exact original text; every change recorded and shown; clinical clean-up needs a written rule first; no tuning on the locked set; results labelled v2).
+  - Workstation: `?pipeline=v1|v2` on verify and verify-all (bad value gives 400); v2 runs add a "normalisation" stage, store it, and record `pipeline.line` plus the SHA-256 of each v2 file; v2 runs are never compared with the stored v1 evaluation runs; CSV gains a `pipeline_line` column; the report and audit trail show the line. Page source (`web/src`): v1/v2 switch on the case screen and on Verify all, a "Text clean-up (v2)" list where each change jumps to the original text, a "v2 · in development" label, and the line in the audit view.
+- **Checks made:** v2 gives exactly v1's observations on the 20 dev cases when nothing needs cleaning (a test). On a copy of SYN-0001 with a zero-width space and a non-breaking space injected, v2 made 2 recorded changes and all 23 observation quotes still equal the original text. A live v1 run and v2 run of SYN-0001 through the workstation gave identical verdicts; v1 still matched its stored run. HTTP check: `pipeline=v2` streams the extra stage, `pipeline=v3` returns 400. Page source: syntax checked with esbuild and undefined names with ESLint, but **not built and not opened in a browser** (no network here for `npm install`).
+- **Decisions & why:**
+  - New files beside v1, not an edit of v1: the freeze exists so the locked set is scored by a pipeline fixed beforehand. v2 reuses v1 instead of copying it, so there is one extractor to keep correct.
+  - The clean-up maps back to original offsets rather than changing the notes: the rule "every observation links to its exact source text" stays true.
+  - No abbreviation or spelling steps yet: they are clinical wording, so each needs a rule in `docs/clinical-methods.md` first, and messy synthetic cases to show whether it helps (the user chose architecture and frontend first, messy cases later).
+  - A v2 run is not compared with the stored runs: those are v1 results.
+- **Next steps:** (1) the user rebuilds the page: `cd web && npm install && npm run build` (`web/dist/` is stale until then), then tries v1/v2 on a case. (2) Write messy synthetic cases (abbreviations, misspellings, copy-paste noise) with their reference answers, in a way that does not look at the locked set. (3) Add clean-up steps one at a time, each with its rule in `clinical-methods.md` and a focused test. (4) Add v2 as a method in `evaluate.py` (allowed by `docs/freeze.md`: a new method only, no change to scoring) and run v1 and v2 on the same messy cases, labelled.
+- **Open questions:** whether the locked set has been evaluated. The last log entry says its writer had not started and no locked results exist in this repo; the locked repo was not opened. If v2 will ever be scored on it, say so before it is, and record v2's file hashes with the result.
+- **How to verify:** `pytest tests/test_v2.py tests/test_freeze.py`; `git diff --stat pipeline-freeze-v1 -- src/resauce/loader.py src/resauce/models.py src/resauce/extract.py src/resauce/phrases.py src/resauce/engine.py src/resauce/timeline.py src/resauce/baseline_a.py` shows nothing; after the page rebuild, choose "v2 (in development)" on a case and press Verify.
+
+---
+
 ## 2026-11-08: Step 9 redo (researcher workstation)
 
 - **Status:** the demo dashboard is replaced by a local researcher workstation (`python -m app`, optional `--workspace <folder>`). Commits `c8a0df9` "Workstation: backend", `2f082ca` "Workstation: frontend", then docs and this entry (pushed). `src/`, `tests/`, `data/`, `reference/`, `results/` unchanged. `pytest`: 176 passed (incl. `test_freeze.py`).

@@ -154,3 +154,6 @@ export function valueText(value) {
   if (value.grade != null) return `Grade ${value.grade}`
   return JSON.stringify(value)
 }
+
+// Which pipeline a verification uses. v1 is frozen; v2 adds a text clean-up step and is still in development (docs/v2.md).
+export const PIPELINES = [['v1', 'v1 (frozen)'], ['v2', 'v2 (in development)']]

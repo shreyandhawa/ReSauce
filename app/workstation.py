@@ -15,7 +15,7 @@ from resauce.loader import load_case, study_day
 from resauce.models import FICTIONAL_NOTICE
 
 from app import findings as F
-from app.pipeline import canonical_sha, error_text, pipeline_version, problems_of, run_stages
+from app.pipeline import LINES, canonical_sha, error_text, pipeline_version, problems_of, run_stages, v2_version
 from app.sources import Sources, display_path
 from app.workspace import FormProblems, Workspace, WorkspaceError, folder_fingerprint, now
 
@@ -30,11 +30,18 @@ class BadRequest(Exception):
         self.problems = problems or []
 
 
-def _pipeline_brief(version: dict) -> dict:
-    """The pipeline version as written into every run and audit entry."""
-    return {"tag": version["tag"], "tag_commit": version["tag_commit"], "head_commit": version["head_commit"],
-            "frozen_files_match": version["frozen_files_match"],
-            "frozen_files": {f["path"]: f["actual"] for f in version["frozen_files"]}}
+def _pipeline_brief(version: dict, line: str = "v1") -> dict:
+    """The pipeline version as written into every run and audit entry.
+
+    The frozen v1 facts are always recorded (v2 reuses the frozen files). A v2 run also
+    records the status of the v2 line and the hash of each of its files.
+    """
+    brief = {"line": line, "tag": version["tag"], "tag_commit": version["tag_commit"],
+             "head_commit": version["head_commit"], "frozen_files_match": version["frozen_files_match"],
+             "frozen_files": {f["path"]: f["actual"] for f in version["frozen_files"]}}
+    if line == "v2":
+        brief["v2"] = v2_version()
+    return brief
 
 
 class Workstation:
@@ -146,22 +153,26 @@ class Workstation:
 
     # -- POST /api/cases/<id>/verify (stream) -----------------------------------------------
 
-    def verify(self, case_id: str, with_baseline: bool, reviewer: str | None = None):
-        """Run the frozen pipeline on one case; yield each stage as it finishes, then the stored run."""
+    def verify(self, case_id: str, with_baseline: bool, reviewer: str | None = None, line: str = "v1"):
+        """Run the pipeline (v1 frozen, or the v2 line) on one case; yield each stage as it finishes, then the stored run."""
+        if line not in LINES:
+            raise BadRequest(f"unknown pipeline {line!r}; use one of {', '.join(LINES)}")
         folder = self._folder(case_id)
         version = pipeline_version()
         run = {"run_id": self.ws.new_run_id(), "case_id": case_id, "started_at": now(),
-               "with_baseline": with_baseline, "pipeline": _pipeline_brief(version),
-               "timings_seconds": {}, "error": None, "observations": [], "timeline": None,
-               "resauce": {}, "baseline_a": None}
-        for stage, payload in run_stages(folder, with_baseline):
+               "with_baseline": with_baseline, "pipeline": _pipeline_brief(version, line),
+               "timings_seconds": {}, "error": None, "observations": [], "normalisation": None,
+               "timeline": None, "resauce": {}, "baseline_a": None}
+        for stage, payload in run_stages(folder, with_baseline, line):
             yield {"event": "stage", "stage": stage, **payload}
             if stage == "error":
                 run["error"] = payload
                 break
             if "seconds" in payload:
                 run["timings_seconds"][stage] = payload["seconds"]
-            if stage == "extraction":
+            if stage == "normalisation":
+                run["normalisation"] = payload
+            elif stage == "extraction":
                 run["observations"] = payload["observations"]
             elif stage == "timeline":
                 run["timeline"] = {k: v for k, v in payload.items() if k != "seconds"}
@@ -172,12 +183,14 @@ class Workstation:
 
         output = run["resauce"].get("output")
         run["output_sha256"] = canonical_sha(output) if output is not None else None
-        run["stored_comparison"] = self._compare_stored(case_id, folder, run)
+        # The stored evaluation runs are v1 runs; a v2 run is never compared with them.
+        run["stored_comparison"] = self._compare_stored(case_id, folder, run) if line == "v1" else None
         with self.ws.lock:
             self.ws.save_run(case_id, run)
             items = F.with_decisions(case_id, run, F.latest_decisions(self.ws.audit_entries()))
             self.ws.append_audit({
             "type": "run", "case_id": case_id, "run_id": run["run_id"], "with_baseline": with_baseline,
+            "line": line,
             "reviewer": reviewer or None,
             "error": (run["error"] or {}).get("error") or run["resauce"].get("error"),
             "categories": ({n: f["category"] for n, f in output["fields"].items()} if output else None),
@@ -202,12 +215,14 @@ class Workstation:
         return {"results_file": display_path(split.results_path), "split": split.name,
                 "stored_run_date": (split.results.get("metadata") or {}).get("date"), "matches": matches}
 
-    def verify_all(self, with_baseline: bool, reviewer: str | None = None):
+    def verify_all(self, with_baseline: bool, reviewer: str | None = None, line: str = "v1"):
+        if line not in LINES:
+            raise BadRequest(f"unknown pipeline {line!r}; use one of {', '.join(LINES)}")
         ids = self.ws.case_ids()
         yield {"event": "start", "total": len(ids)}
         for index, case_id in enumerate(ids, start=1):
             last = None
-            for event in self.verify(case_id, with_baseline, reviewer):
+            for event in self.verify(case_id, with_baseline, reviewer, line):
                 last = event
             if last and last["event"] == "done":
                 run = last["run"]
@@ -272,7 +287,7 @@ class Workstation:
             "field": finding["field"], "finding": finding["label"], "decision": decision,
             "decision_label": F.decision_label(decision, finding["kind"]), "note": note, "reviewer": reviewer,
             "run_id": run["run_id"], "output_sha256": run["output_sha256"],
-            "pipeline": _pipeline_brief(pipeline_version()),
+            "pipeline": _pipeline_brief(pipeline_version(), (run.get("pipeline") or {}).get("line", "v1")),
         })
         return {"entry": entry}
 
@@ -293,24 +308,25 @@ class Workstation:
         decisions = F.latest_decisions(self.ws.audit_entries())
         out = io.StringIO()
         writer = csv.writer(out)
-        writer.writerow(["case_id", "run_id", "run_time", "pipeline_tag", "pipeline_tag_commit", "frozen_files_match",
+        writer.writerow(["case_id", "run_id", "run_time", "pipeline_line", "pipeline_tag", "pipeline_tag_commit", "frozen_files_match",
                          "finding_id", "tier", "field", "category", "finding", "record_value", "documented_value",
                          "detail", "evidence", "decision", "note", "reviewer", "decision_time"])
         for case_id in self.ws.case_ids():
             run = self.ws.latest_run(case_id)
             if run is None:
-                writer.writerow([case_id, "", "", "", "", "", "", "", "", "", "not verified"] + [""] * 8)
+                writer.writerow([case_id, "", "", "", "", "", "", "", "", "", "", "not verified"] + [""] * 8)
                 continue
             p = run["pipeline"]
+            line = p.get("line", "v1")  # runs stored before v2 existed are v1 runs
             items = F.with_decisions(case_id, run, decisions)
             if not items:
                 status = "error" if F.status(run, items) == "error" else "no findings"
-                writer.writerow([case_id, run["run_id"], run["started_at"], p["tag"], p["tag_commit"],
+                writer.writerow([case_id, run["run_id"], run["started_at"], line, p["tag"], p["tag_commit"],
                                  p["frozen_files_match"], "", "", "", "", status] + [""] * 8)
             for i in items:
                 d = i["decision"] or {}
                 writer.writerow([
-                    case_id, run["run_id"], run["started_at"], p["tag"], p["tag_commit"], p["frozen_files_match"],
+                    case_id, run["run_id"], run["started_at"], line, p["tag"], p["tag_commit"], p["frozen_files_match"],
                     i["finding_id"], F.TIER_NAMES[i["tier"]], i["field"] or "", i["category"] or "", i["label"],
                     _plain(i.get("record_value")), _plain(i.get("documented_value")), i.get("detail") or "",
                     " | ".join(f'{e.get("document_id")} v{e.get("version")} {e.get("start")}-{e.get("end")} "{e.get("quote")}"'
@@ -351,9 +367,16 @@ def _report_html(d: dict, audit: list[dict]) -> str:
     else:
         p = run["pipeline"]
         body.append("<h2>Verification</h2>")
-        body.append(f"<p>Run {e(run['run_id'])} at {e(run['started_at'])}. Pipeline {e(p['tag'])} "
+        line = p.get("line", "v1")
+        body.append(f"<p>Run {e(run['run_id'])} at {e(run['started_at'])}. Pipeline line {e(line)}"
+                    f"{' (development line, not frozen, not evaluated)' if line == 'v2' else ''}; frozen base {e(p['tag'])} "
                     f"(commit {e((p['tag_commit'] or 'unknown')[:12])}); frozen files match docs/freeze.md: "
                     f"{'yes' if p['frozen_files_match'] else 'NO'}.</p>")
+        norm = run.get("normalisation")
+        if line == "v2" and norm:
+            refused = f", {norm['total_dropped']} refused as overlapping" if norm["total_dropped"] else ""
+            body.append(f"<p>v2 text clean-up: {norm['total_edits']} change(s) made{refused}. "
+                        f"Quotes below are the original text.</p>")
         if run.get("error"):
             body.append(f"<p><strong>The run stopped with an error:</strong> {e(run['error'].get('error', ''))}</p>")
         out = run.get("resauce", {}).get("output")

@@ -2,7 +2,7 @@ import { useMemo, useRef, useState } from 'react'
 import { api } from '../api.js'
 import { Loading, Problem, STATUS_WORDS, Segmented, StatusSign } from '../components/Bits.jsx'
 import Icon from '../components/Icon.jsx'
-import { signedDay } from '../lib/format.js'
+import { PIPELINES, signedDay } from '../lib/format.js'
 import { useLoad } from '../lib/hooks.js'
 import { setOrigin } from '../lib/motion.js'
 
@@ -16,6 +16,7 @@ export default function Cases({ workspace, onChanged }) {
   const [status, setStatus] = useState(memory.status)
   const [batch, setBatch] = useState(null) // { done, total, current, failed }
   const [baseline, setBaseline] = useState(false)
+  const [pipeline, setPipeline] = useState('v1')
   const [changed, setChanged] = useState({}) // case_id -> live status from the batch run
   const [opening, setOpening] = useState(false)
   const [loadingExamples, setLoadingExamples] = useState(false)
@@ -42,7 +43,7 @@ export default function Cases({ workspace, onChanged }) {
           setChanged((c) => ({ ...c, [e.case_id]: { status: e.status, open: e.open, flash: true } }))
         }
         if (e.event === 'done') setBatch((b) => ({ ...b, finished: true }))
-      })
+      }, pipeline)
     } catch (error) {
       setBatch((b) => ({ ...b, failed: error }))
     }
@@ -104,6 +105,7 @@ export default function Cases({ workspace, onChanged }) {
           <div className="toolbar">
             <div className="search"><Icon name="search" size={16} /><input className="input" type="search" placeholder="Find a case ID" aria-label="Find a case ID" value={query} onChange={(e) => setQ(e.target.value)} /></div>
             <Segmented label="Verification status" options={FILTERS} value={status} onChange={setS} />
+            <Segmented label="Pipeline to verify with" options={PIPELINES} value={pipeline} onChange={setPipeline} />
             <label className="check" style={{ marginLeft: 'auto' }}><input type="checkbox" checked={baseline} onChange={(e) => setBaseline(e.target.checked)} /> Verify all with simple baseline too</label>
           </div>
           <div className="table-wrap">

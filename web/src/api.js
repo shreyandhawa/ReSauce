@@ -57,8 +57,9 @@ export const api = {
   cases: () => request('/api/cases'),
   caseDetail: (caseId) => request(`/api/cases/${id(caseId)}`),
   createCase: (body) => post('/api/cases', body),
-  verify: (caseId, baseline, onEvent) => stream(`/api/cases/${id(caseId)}/verify?baseline=${baseline ? 1 : 0}&reviewer=${who()}`, onEvent),
-  verifyAll: (baseline, onEvent) => stream(`/api/verify-all?baseline=${baseline ? 1 : 0}&reviewer=${who()}`, onEvent),
+  // pipeline: 'v1' (the frozen pipeline) or 'v2' (the development line with a text clean-up step)
+  verify: (caseId, baseline, onEvent, pipeline = 'v1') => stream(`/api/cases/${id(caseId)}/verify?baseline=${baseline ? 1 : 0}&pipeline=${pipeline}&reviewer=${who()}`, onEvent),
+  verifyAll: (baseline, onEvent, pipeline = 'v1') => stream(`/api/verify-all?baseline=${baseline ? 1 : 0}&pipeline=${pipeline}&reviewer=${who()}`, onEvent),
   queue: () => request('/api/queue'),
   decide: (body) => post('/api/decisions', body),
   audit: () => request('/api/audit'),
