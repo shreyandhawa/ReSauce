@@ -6,19 +6,20 @@ files as JSON, and answers with a schema-constrained JSON object: the
 out-of-scope reason, and for onset and maximum grade a §7 category, the
 documented value, an explanation and evidence quotes.
 
-Two commands (the API key is read from ANTHROPIC_API_KEY or the project's
-.env file, and never printed):
+The model is called through Claude Code's print mode ("claude -p") on the user's
+own Claude plan: the instructions replace Claude Code's system prompt, all tools
+are off (the model cannot open any file), and the answer is constrained by a
+JSON schema. Run these in your own terminal, not inside a Claude Code session:
 
-    python -m resauce.baseline_b count                    # input tokens per case (free) and input cost
-    python -m resauce.baseline_b run --budget USD [--workers N]   # one call per case, each answer stored
+    python -m resauce.baseline_b check              # one tiny test request, no case data
+    python -m resauce.baseline_b run [--workers N]  # one request per case, each answer stored
 
 `run` skips cases that already have a stored answer, so an interrupted run can
 be resumed; it never asks again for a stored case. Scoring (the evaluation runner)
 reads only the stored answers and never calls the model.
 
 The functions that build the request and turn an answer into a method output
-are pure and tested without the API. The `anthropic` library is imported only
-when the model is called, so the rest of ReSauce needs no extra dependency.
+are pure and tested without calling the model. Standard library only.
 This module never reads reference answers or pipeline outputs.
 """
 
@@ -30,6 +31,7 @@ import json
 import os
 import subprocess
 import sys
+import tempfile
 import threading
 import time
 from concurrent.futures import ThreadPoolExecutor
@@ -48,10 +50,11 @@ DEFAULT_OUT = ROOT / "results" / "baseline_b"
 # evaluation-spec §5. Fixed before the run; changing any of these makes a new, separate run.
 MODEL = "claude-opus-5-5"
 EFFORT = "high"
-MAX_TOKENS = 64000
+CASE_TIMEOUT_SECONDS = 1800
 
 # USD per million tokens for claude-opus-5-5, from Anthropic's listed prices (claude-api reference,
-# cached 2026-10-06). Cache writes are 1.25 x input (5-minute cache). Used only to report cost.
+# cached 2026-10-06). Cache writes are 1.25 x input (5-minute cache). Used only to report what the measured
+# tokens would cost on the API; a run on the user's Claude plan is not billed per token.
 PRICES = {"input": 4.00, "output": 20.00, "cache_write": 5.00, "cache_read": 0.20}
 PRICES_SOURCE = "Anthropic listed prices for claude-opus-5-5, claude-api reference cached 2026-10-06"
 
@@ -175,15 +178,11 @@ def user_message(case: Case, window: ObservationWindow) -> str:
     return "Case to check:\n\n```json\n" + json.dumps(case_json(case, window), indent=1, ensure_ascii=False) + "\n```"
 
 
-def request_params(case: Case, window: ObservationWindow, system: str) -> dict:
-    """Keyword arguments for client.messages.stream (evaluation-spec §5)."""
-    return {
-        "model": MODEL,
-        "max_tokens": MAX_TOKENS,
-        "system": [{"type": "text", "text": system, "cache_control": {"type": "ephemeral"}}],
-        "messages": [{"role": "user", "content": user_message(case, window)}],
-        "output_config": {"effort": EFFORT, "format": {"type": "json_schema", "schema": ANSWER_SCHEMA}},
-    }
+def claude_command(system: str, schema: dict = ANSWER_SCHEMA) -> list[str]:
+    """The Claude Code print-mode command (evaluation-spec §5). The case message goes to its standard input."""
+    return ["claude", "-p", "--model", MODEL, "--effort", EFFORT, "--system-prompt", system, "--tools", "",
+            "--json-schema", json.dumps(schema), "--output-format", "json", "--no-session-persistence",
+            "--strict-mcp-config", "--setting-sources", "project"]
 
 
 def sha256(text: str) -> str:
@@ -196,13 +195,19 @@ def sha256(text: str) -> str:
 
 
 def parse_answer(stored: dict) -> dict:
-    """The model's JSON answer, or AnswerError if it declined, was cut off or is not valid JSON."""
+    """The model's JSON answer, or AnswerError if it came from another model, declined, did not finish or is
+    not valid JSON (spec §5)."""
+    models = stored.get("models_reported")
+    if models is not None and not any(str(m).startswith(MODEL) for m in models):
+        raise AnswerError(f"not answered by {MODEL} (reported: {', '.join(map(str, models)) or 'none'})")
     reason = stored.get("stop_reason")
     if reason == "refusal":
         details = stored.get("stop_details") or {}
         raise AnswerError(f"the model declined (category: {details.get('category')})")
     if reason == "max_tokens":
         raise AnswerError("the answer was cut off at max_tokens")
+    if reason not in (None, "end_turn"):
+        raise AnswerError(f"the answer did not complete ({reason})")
     try:
         answer = json.loads(stored.get("answer_text") or "")
     except json.JSONDecodeError as exc:
@@ -265,46 +270,54 @@ def cost_usd(usage: dict) -> float:
 # ---------------------------------------------------------------------------
 
 
-def _load_api_key() -> None:
-    """Set ANTHROPIC_API_KEY from the project's .env file if it is not already set. Never prints it."""
-    if os.environ.get("ANTHROPIC_API_KEY"):
-        return
-    env = ROOT / ".env"
-    if env.is_file():
-        for line in env.read_text(encoding="utf-8").splitlines():
-            key, sep, value = line.strip().removeprefix("export ").partition("=")
-            if sep and key.strip() == "ANTHROPIC_API_KEY" and value.strip():
-                os.environ["ANTHROPIC_API_KEY"] = value.strip().strip("'\"")
-                return
-    raise SystemExit("No API key: put ANTHROPIC_API_KEY=... in the project's .env file (it is git-ignored).")
+class ClaudeCodeError(Exception):
+    """Claude Code did not return an answer (not logged in, a usage limit, a timeout...): nothing is stored."""
 
 
-def _client():
-    try:
-        import anthropic
-    except ImportError:
-        raise SystemExit('The anthropic library is not installed: run  pip install -e ".[llm]"') from None
-    _load_api_key()
-    return anthropic, anthropic.Anthropic()
+def call_claude(command: list[str], message: str) -> dict:
+    """One print-mode request from an empty folder. Returns what is stored for the case.
 
-
-def call_model(client, params: dict) -> dict:
-    """One streamed request. Returns what is stored for the case (raises on network or server failure)."""
+    The empty folder means no project instructions or settings are loaded. ANTHROPIC_API_KEY and
+    ANTHROPIC_AUTH_TOKEN are removed so the request runs on the user's Claude plan, never on a billed key.
+    """
+    env = {k: v for k, v in os.environ.items() if k not in ("ANTHROPIC_API_KEY", "ANTHROPIC_AUTH_TOKEN")}
     started = time.perf_counter()
-    with client.messages.stream(**params) as stream:
-        message = stream.get_final_message()
-    texts = [block.text for block in message.content if block.type == "text"]
-    details = getattr(message, "stop_details", None)
+    with tempfile.TemporaryDirectory(prefix="resauce-baseline-b-") as empty:
+        try:
+            done = subprocess.run(command, input=message, capture_output=True, text=True, cwd=empty, env=env,
+                                  timeout=CASE_TIMEOUT_SECONDS)
+        except (OSError, subprocess.TimeoutExpired) as exc:
+            raise ClaudeCodeError(f"{type(exc).__name__}: {exc}") from None
+    try:
+        output = json.loads(done.stdout)
+    except json.JSONDecodeError:
+        raise ClaudeCodeError(f"exit {done.returncode}: {(done.stderr or done.stdout).strip()[:500]}") from None
+    if done.returncode != 0 or output.get("is_error") or output.get("subtype") != "success":
+        raise ClaudeCodeError(f"{output.get('subtype')}: {str(output.get('result'))[:500]}")
+    structured = output.get("structured_output")
     return {
-        "response_id": message.id,
-        "model_reported": message.model,
-        "stop_reason": message.stop_reason,
-        "stop_details": details.to_dict() if details is not None and hasattr(details, "to_dict") else None,
-        "answer_text": "".join(texts) if texts else None,
-        "text_blocks": len(texts),
-        "usage": message.usage.to_dict(),
+        "route": "Claude Code print mode",
+        "stop_reason": output.get("stop_reason") or "end_turn",
+        "answer_text": json.dumps(structured, ensure_ascii=False) if structured is not None else output.get("result"),
+        "usage": output.get("usage") or {},
+        "models_reported": sorted(output.get("modelUsage") or {}),
+        "claude_code_cost_usd": output.get("total_cost_usd"),
         "duration_seconds": round(time.perf_counter() - started, 3),
+        "cli_output": output,  # everything Claude Code returned, kept as it came
     }
+
+
+def claude_code_version() -> str | None:
+    try:
+        return subprocess.run(["claude", "--version"], capture_output=True, text=True, timeout=60).stdout.strip()
+    except (OSError, subprocess.SubprocessError):
+        return None
+
+
+def _not_inside_claude_code() -> None:
+    if os.environ.get("CLAUDECODE"):
+        raise SystemExit("Run this in your own terminal, not inside a Claude Code session "
+                         "(Claude Code cannot be started inside itself).")
 
 
 def case_folders(data: Path) -> list[Path]:
@@ -334,25 +347,38 @@ def _write_json(path: Path, data: dict) -> None:
 
 
 def _settings(system: str) -> dict:
-    return {"model": MODEL, "effort": EFFORT, "max_tokens": MAX_TOKENS, "thinking": "adaptive (always on)",
+    command = claude_command(system)
+    shown = [("<instructions: system_prompt.md>" if arg == system else "<answer_schema.json>"
+              if arg == json.dumps(ANSWER_SCHEMA) else arg) for arg in command]
+    return {"model": MODEL, "effort": EFFORT, "thinking": "adaptive (always on for this model)",
+            "route": "Claude Code print mode on the user's Claude plan", "command": shown,
             "system_prompt_sha256": sha256(system),
             "answer_schema_sha256": sha256(json.dumps(ANSWER_SCHEMA, sort_keys=True)),
             "fallback_model": None}
 
 
-def count(data: Path) -> int:
-    anthropic, client = _client()
-    system = system_prompt()
-    total = 0
-    for folder in case_folders(data):
-        params = request_params(load_case(folder), load_window(folder), system)
-        tokens = client.messages.count_tokens(model=params["model"], system=params["system"],
-                                              messages=params["messages"]).input_tokens
-        total += tokens
-    n = len(case_folders(data))
-    print(f"{n} cases, {total} input tokens in total (system prompt counted once per case).")
-    print(f"Input cost without caching: ${total * PRICES['input'] / 1e6:.2f}. "
-          "Output (thinking + answer) is not known before the run.")
+CHECK_SCHEMA = {"type": "object", "properties": {"extra_context": {"type": "string"}, "model": {"type": "string"}},
+                "required": ["extra_context", "model"], "additionalProperties": False}
+CHECK_MESSAGE = ('Apart from this message and the system prompt "You are a test.", did you receive any other text, '
+                 "context, reminders or instructions? If yes, copy all of it verbatim into extra_context. If not, "
+                 "write NONE. In model, give the exact model name you are, if you know it.")
+
+
+def check(out: Path) -> int:
+    """One tiny request with no case data: are the settings accepted, and is anything added to the request?"""
+    _not_inside_claude_code()
+    out.mkdir(parents=True, exist_ok=True)
+    try:
+        stored = call_claude(claude_command("You are a test.", CHECK_SCHEMA), CHECK_MESSAGE)
+    except ClaudeCodeError as exc:
+        print(f"The check failed: {exc}")
+        return 1
+    stored["checked_at"] = datetime.now().astimezone().isoformat(timespec="seconds")
+    stored["claude_code_version"] = claude_code_version()
+    _write_json(out / "check.json", stored)
+    print(f"Claude Code {stored['claude_code_version']}; models that answered: {', '.join(stored['models_reported'])}")
+    print(f"The model's report of extra context: {stored['answer_text']}")
+    print(f"Saved to {display_path(out / 'check.json')}. If this looks right, run: python -m resauce.baseline_b run")
     return 0
 
 
@@ -364,15 +390,16 @@ def _dataset(data: Path) -> dict:
         return {"dataset_id": None, "dataset_version": None}
 
 
-def run(data: Path, out: Path, budget: float, workers: int) -> int:
-    anthropic, client = _client()
+def run(data: Path, out: Path, workers: int) -> int:
+    _not_inside_claude_code()
     system = system_prompt()
     settings = _settings(system)
+    command = claude_command(system)
     responses = out / "responses"
     responses.mkdir(parents=True, exist_ok=True)
     manifest_path = out / "run.json"
     session = {"started_at": datetime.now().astimezone().isoformat(timespec="seconds"), "code_commit": _git_commit(),
-               "anthropic_library_version": anthropic.__version__, "workers": workers, "budget_usd": budget}
+               "claude_code_version": claude_code_version(), "workers": workers}
     if manifest_path.is_file():
         manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
         if manifest["settings"] != settings or manifest["data"] != display_path(data):
@@ -388,60 +415,51 @@ def run(data: Path, out: Path, budget: float, workers: int) -> int:
     manifest["sessions"].append(session)
     _write_json(manifest_path, manifest)
 
-    spent = sum(cost_usd(json.loads(p.read_text(encoding="utf-8"))["usage"]) for p in responses.glob("*.json"))
     todo = [f for f in case_folders(data) if not (responses / f"{f.name}.json").is_file()]
-    print(f"{len(todo)} cases to run; ${spent:.2f} already spent in this run; spending cap ${budget:.2f}.")
+    print(f"{len(todo)} of {len(case_folders(data))} cases to run, {workers} at a time. "
+          "Each takes a minute or more; progress is printed as answers arrive.")
     lock, stopped = threading.Lock(), []
 
     def one(folder: Path) -> None:
-        nonlocal spent
         with lock:
-            if stopped or spent >= budget:
+            if stopped:
                 return
-        params = request_params(load_case(folder), load_window(folder), system)
+        message = user_message(load_case(folder), load_window(folder))
         try:
-            stored = call_model(client, params)
-        except (anthropic.AuthenticationError, anthropic.PermissionDeniedError, anthropic.BadRequestError,
-                anthropic.NotFoundError) as exc:  # a setup problem: no further case is requested
+            stored = call_claude(command, message)
+        except ClaudeCodeError as exc:  # login, usage limit, timeout...: stop starting cases; resume later
             with lock:
-                stopped.append(f"{folder.name}: {type(exc).__name__}: {exc}")
+                stopped.append(f"{folder.name}: {exc}")
             return
-        except anthropic.APIError as exc:  # network or server failure after the library's retries: nothing stored
-            print(f"{folder.name}: not stored ({type(exc).__name__}); it will be requested again on resume")
-            return
-        record = {"case_id": folder.name, **settings, "user_message_sha256": sha256(params["messages"][0]["content"]),
+        record = {"case_id": folder.name, **settings, "user_message_sha256": sha256(message),
                   "requested_at": datetime.now().astimezone().isoformat(timespec="seconds"), **stored}
         _write_json(responses / f"{folder.name}.json", record)
         with lock:
-            spent += cost_usd(stored["usage"])
-            print(f"{folder.name}: {stored['stop_reason']}, {stored['duration_seconds']:.0f} s, "
-                  f"total so far ${spent:.2f}")
+            done = sum(1 for _ in responses.glob("*.json"))
+            print(f"{folder.name}: answered in {stored['duration_seconds']:.0f} s ({done} stored)")
 
     if todo:
-        one(todo[0])  # alone first, so the shared instructions are written to the cache once
+        one(todo[0])  # alone first: if the setup is wrong, only one request is spent finding out
         with ThreadPoolExecutor(max_workers=workers) as pool:
             list(pool.map(one, todo[1:]))
     left = [f.name for f in case_folders(data) if not (responses / f"{f.name}.json").is_file()]
-    print(f"${spent:.2f} spent in this run. Cases without a stored answer: {len(left)}"
-          + (f" ({', '.join(left)})" if left else "") + ".")
     if stopped:
-        print("Stopped by a setup problem: " + stopped[0])
+        print("Stopped early: " + stopped[0])
+    print(f"Cases without a stored answer: {len(left)}. "
+          + ("All answers are stored." if not left else "Run the same command again to continue."))
     return 0 if not left else 1
 
 
 def main(argv: list[str]) -> int:
     parser = argparse.ArgumentParser(prog="python -m resauce.baseline_b", description=__doc__.split("\n")[0])
-    parser.add_argument("command", choices=("count", "run"))
+    parser.add_argument("command", choices=("check", "run"))
     parser.add_argument("--data", type=Path, default=DEFAULT_DATA)
     parser.add_argument("--out", type=Path, default=DEFAULT_OUT)
-    parser.add_argument("--budget", type=float, help="spending cap in USD: no new case is started once reached")
     parser.add_argument("--workers", type=int, default=4, help="requests at the same time")
     args = parser.parse_args(argv)
-    if args.command == "count":
-        return count(args.data)
-    if args.budget is None:
-        parser.error("run needs --budget (the spending cap agreed before the run)")
-    return run(args.data.resolve(), args.out, args.budget, args.workers)
+    if args.command == "check":
+        return check(args.out)
+    return run(args.data.resolve(), args.out, args.workers)
 
 
 if __name__ == "__main__":

@@ -586,8 +586,8 @@ def _split_report(split: dict) -> list[str]:
     if "baseline_b" in methods:
         lines += [f"**Baseline B model requests:** {rt['baseline_b']:.1f} seconds, summed over cases (each "
                   "streamed request, timed when the answers were collected; requests ran in parallel, so this is "
-                  f"not the elapsed time). Cost ${metrics['baseline_b']['cost_usd']:.2f} (measured token usage x "
-                  "listed prices).", ""]
+                  f"not the elapsed time). The measured tokens would cost ${metrics['baseline_b']['cost_usd']:.2f} on the "
+                  "API at listed prices; the run used the user's Claude plan and was not billed per token.", ""]
     errors = [(METHOD_TITLES[m], e) for m in methods for e in metrics[m]["errors"]]
     if errors or split["reference_errors"]:
         lines += ["**Errors** (counted above; the run carried on)", ""]
@@ -627,10 +627,10 @@ def _baseline_b_line(run: dict | None, note: str | None) -> str:
     if run is None:
         return f"not in this report ({note or 'no stored answers'}; evaluation-spec §5)"
     settings, sessions = run["settings"], run.get("sessions") or [{}]
-    return (f"{settings['model']}, effort {settings['effort']}, adaptive thinking, no fallback model; dataset "
-            f"{run.get('dataset_id')} version {run.get('dataset_version')}; answers collected from "
-            f"{run.get('started_at')} at code commit {sessions[0].get('code_commit')} with anthropic "
-            f"{sessions[0].get('anthropic_library_version')} in {len(sessions)} session(s); instructions SHA-256 "
+    return (f"{settings['model']}, effort {settings['effort']}, adaptive thinking, no fallback model, through "
+            f"{settings.get('route')}; dataset {run.get('dataset_id')} version {run.get('dataset_version')}; answers "
+            f"collected from {run.get('started_at')} at code commit {sessions[0].get('code_commit')} with Claude Code "
+            f"{sessions[0].get('claude_code_version')} in {len(sessions)} session(s); instructions SHA-256 "
             f"{settings['system_prompt_sha256']}; stored in results/baseline_b/ (evaluation-spec §5)")
 
 

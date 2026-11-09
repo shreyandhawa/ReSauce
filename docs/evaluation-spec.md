@@ -88,8 +88,16 @@ Specified on 2026-11-09, **before any Baseline B call was made**, and committed 
 
 **Question it answers:** given the same written rules and the same case files, can a general AI model do this check as well as the rule-based pipeline?
 
-- **Model:** Claude Opus 5.5 (`claude-opus-5-5`, chosen by the user), through Anthropic's Messages API and the official `anthropic` Python library.
-- **Settings:** adaptive thinking (always on for this model; it cannot be switched off), effort `high`, `max_tokens` 64000, streamed. The model accepts no temperature setting, so its answers are **not deterministic**: a second run could differ. No fallback to another model: if the model declines a case, that is recorded as an error for that case.
+- **Model:** Claude Opus 5.5 (`claude-opus-5-5`), chosen by the user.
+- **Route** (user's choice, 2026-11-09, made before any case was sent): Claude Code's print mode on the user's own Claude plan, one request per case. The command is:
+
+  `claude -p --model claude-opus-5-5 --effort high --system-prompt <instructions> --tools "" --json-schema <schema> --output-format json --no-session-persistence --strict-mcp-config --setting-sources project`
+
+  The case message goes to its standard input. Each request runs from a new empty folder, so no project instructions or settings are loaded. `ANTHROPIC_API_KEY` and `ANTHROPIC_AUTH_TOKEN` are removed from its environment, so it can never use a billed key.
+  - `--tools ""` switches off every tool, so **the model cannot open any file**, including the reference answers.
+  - `--system-prompt` replaces Claude Code's own system prompt with the instructions below.
+- **Settings:** adaptive thinking (always on for this model; it cannot be switched off), effort `high`. The model accepts no temperature setting, so its answers are **not deterministic**: a second run could differ. No fallback to another model. An answer that reports a different model is an error.
+- **Not controlled on this route** (disclosed): the maximum answer length is Claude Code's default, and Claude Code may add a small amount of its own context to a request. Before the run, `python -m resauce.baseline_b check` sends one tiny request with no case data, asking the model to copy any extra context it received. Its full output is stored in `results/baseline_b/check.json` and reported with the results.
 - **Instructions (system prompt):** a short fixed task description, followed by `docs/clinical-methods.md` verbatim from "How to read this document" through §9 (assumptions). The changelog and §10 (references) are left out. These are the same rules the pipeline implements and the reference answers follow.
 - **Input per case (user message):** the case files as JSON: case ID, age at infusion, infusion date (Day 0), the observation window, every research record version, and every version of every document with its metadata (status, note type, author role, documented time, amendment reason) and text. Nothing from `reference/`, `results/` or the pipeline's output is sent.
 - **No examples and no tuning:** the instructions are written before any case is run and are not changed after any answer is seen. A rerun for a technical fault in ReSauce's own code (for example, a parsing bug) is disclosed with the results.
@@ -99,20 +107,19 @@ Specified on 2026-11-09, **before any Baseline B call was made**, and committed 
 - **Turning the answer into a method output:**
   - Each quote is located by exact search in the named document version, and its first occurrence gives the offsets. A quote that is not found exactly keeps offsets −1 and fails the evidence-quote check (§3).
   - A reason other than "in scope" makes both fields "out of scope (reason)", as for ReSauce.
-- **Errors:** a declined request, a cut-off answer or an answer that is not valid JSON is stored and counts as an error (§3). So does a stored answer whose fingerprints do not match the run's instructions or the current case files. A network or server failure stores nothing, so the case is requested again when the run resumes.
+- **Errors:** a declined request, a cut-off or unfinished answer, an answer from another model, or an answer that is not valid JSON is stored and counts as an error (§3). So does a stored answer whose fingerprints do not match the run's instructions or the current case files. If Claude Code returns no answer at all (for example not logged in, a usage limit or a timeout), nothing is stored and the run stops; the same command continues it later.
 - **Scoring:** exactly §3. Baseline B can give review flags (7.4, 7.5) and out-of-scope flags, so both are scored as for ReSauce. Baseline B enters a report **only when every case of the dataset has a stored answer from the same run**. A partial run is left out of the report, never scored as if complete.
 - **Run and storage:** one run on all 72 cases of `data/dev-v1` (dev and held-out).
-  - Each raw answer is stored in `results/baseline_b/responses/<case_id>.json` with the model, settings, fingerprints of the instructions and of the case message, token usage and time. The instructions and schema are stored next to them.
-  - `results/baseline_b/run.json` records the settings, the code commit and dataset version at collection time, the prices used for cost, and for each session the number of parallel requests and the spending cap.
-  - The shared instructions are cached by the API between requests. This lowers cost and does not change what the model receives.
-  - Requests run in parallel. A spending cap, agreed with the user before the run, stops new requests once reached; a run stopped by it is incomplete (see Scoring).
+  - Each answer is stored in `results/baseline_b/responses/<case_id>.json`. The record holds Claude Code's full output as returned, plus the model, settings, fingerprints of the instructions and of the case message, token usage and time. The instructions and schema are stored next to them.
+  - `results/baseline_b/run.json` records the settings and command, the code commit and dataset version at collection time, the prices used for cost, and for each session the Claude Code version and the number of parallel requests.
+  - Requests run in parallel (4 by default). The first case runs alone, so a setup fault costs only one request.
   - A rerun for a technical fault in ReSauce's own code is recorded in `run.json` under "disclosures" and printed with the results.
   - Scoring reads only the stored answers and never calls the model.
-- **Cost:** measured token usage × Anthropic's listed prices, reported with the results.
+- **Cost:** the run uses the user's Claude plan and is not billed per token. For comparison, the measured token usage × Anthropic's listed API prices is reported with the results, labelled as such.
 
 ## 5a. Changelog
 
-- **v0.2 (2026-11-09):** §5 Baseline B specified before its run; Baseline B limitations added to §6.
+- **v0.2 (2026-11-09):** §5 Baseline B specified before its run; Baseline B limitations added to §6. Before any case was sent, the route was changed from the Messages API to Claude Code's print mode on the user's plan (the user's choice), with the differences listed under "Not controlled on this route".
 
 ## 6. Limitations (reported with every result)
 
