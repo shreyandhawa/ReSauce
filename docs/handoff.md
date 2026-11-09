@@ -31,6 +31,80 @@ This replaces the earlier plan of a 3 to 4 hour time box. No "§0 time box" exis
 
 ---
 
+## 2026-11-09: Frontend overhaul ("the pipeline is the application")
+
+- **Status:** the workstation's frontend is redesigned around an animated pipeline view. The approved plan was `~/.claude/plans/list-all-the-skills-cached-teacup.md`. `src/`, `tests/`, `data/`, `reference/` and `results/` are unchanged. The backend has one additive field set. `pytest`: 176 passed. `npm run build` passes.
+- **Done:**
+  - **Home page "Pipeline"** (`web/src/views/Pipeline.jsx`, `components/network/*`): a full-bleed black stage. Every imported case is one mark. Marks fan into the four real stages (Load, Extraction, Timeline, Rules engine) and land in one of three destinations:
+    - red **Discrepancy** network with a slow turning beacon, with hubs 7.1/7.2/7.3/7.8;
+    - amber **Needs review**, with hubs 7.4, 7.5, "review: …", out of scope (§5), and "unrecognised";
+    - green **No discrepancy detected**, a socket; both fields must be 7.6/7.7.
+    - A failed run shows ✕ at the stage that stopped.
+  - **Network interaction:** zoom/pan on a spring, roving keyboard focus, hover tooltip, path tracing, and filters. The List view is the equivalent table.
+  - **Run** (`lib/runner.js`): cases are verified one by one through the existing `POST /api/cases/<id>/verify` stream. The display is a paced replay that never shows a stage before its real event; it offers Pause, Resume and Show result now. Rules and the shared filter test are in `lib/outcome.js`.
+  - **Inspector** (side sheet; bottom sheet with drag-to-dismiss on phones):
+    - for a case: its fields, path with measured times (including Baseline A when run), and findings with quotes;
+    - for a destination: its meaning, plus the "not proof" caveat on the clean endpoint.
+  - **Other pages:** Import sheet (examples, folder in the project, form). Results page: headline percentages only, exact fractions in a closed disclosure. Top bar: Pipeline, Review, Audit, Results, About. Case, review, audit, export, new-case and About pages restyled.
+  - **Look:** system font plus IBM Plex Mono. Atkinson Hyperlegible Next removed (dependency uninstalled).
+  - **Motion:** Apple-style springs as CSS `linear()` (`lib/spring.js`) and a canvas for moving signals. DESIGN.md is rewritten.
+  - **Backend** (`app/workstation.py`, `cases()`): each row adds `categories`, `tiers` (alert/review/other counts, decided or not) and `failed_stage`. Nothing is renamed or removed.
+  - **Skills** (from github.com/emilkowalski/skills, under `.claude/skills/`, not committed): `apple-design`, `animate`, `review-animations`.
+- **Decisions & why:**
+  - **Three destinations, paced replay, numbers hidden until asked for (N key), percentages-only Results:** the user's choices.
+  - **Jet black / pure white with one colour per meaning:** the user's colour direction. Review state (open/reviewed) is set in ink, including the navigation dot, because it is a to-do list, not a finding.
+  - **A destination comes only from field categories and §5.** Review decisions never move a case. Anything not recognised goes to Needs review, never to "No discrepancy detected".
+  - **The additive backend fields:** after a decision, the old rows could no longer tell which destination a case belongs to. Fetching 72 case details instead would be wasteful.
+  - **Per-case verify calls instead of `verify-all`:** that endpoint does not stream stages. Each call stores a run and an audit entry exactly as before.
+  - **Baseline A is not drawn on the stage:** it is a comparison beside the pipeline, not a stage. It is listed in the inspector and left out of "pipeline time"; About says so.
+  - **One deliberate spring overshoot:** a record landing in its destination (damping 0.84). Documented in DESIGN.md.
+- **Reviews:** `/code-review` (standards and spec sub-agents). Fixed:
+  - gate counts counted failed cases as passing later stages (and the failed stage);
+  - unknown categories defaulted to "No discrepancy detected";
+  - after a live run, later review decisions did not reach the marks or stop the beacon (verified: after 30 decisions the beacon stops and 28 red marks show as decided);
+  - a failed run left unreached cases drawn as waiting;
+  - the server's mid-stream `failed` event was ignored;
+  - inspector times could belong to a different run than the run ID shown;
+  - destination counts, tooltips and the list ignored cases still moving;
+  - "differs from the stored evaluation run" was lost (now in the stage status, in red);
+  - drag-to-dismiss failed under reduced motion and did not return focus;
+  - the review-state filter was missing in the list;
+  - "real discrepancies" wording on Results (now "the reference answers");
+  - signals beyond 64 were cut off mid-flight;
+  - duplicated rules (failed stage, filter, stages, icons) and dead code.
+  
+  Not changed (judgement calls):
+  - Network takes many props, and Pipeline.jsx both runs and counts;
+  - the hand-written spring and canvas code (no animation library, by plan);
+  - no socket/beacon glyphs in `Icon.jsx` (they are drawn as SVG parts on the stage);
+  - run-button labels carry no numbers (numbers are hidden by the user's choice);
+  - no automatic zoom to a cluster (double-click zooms on a spring wherever pointed).
+- **Checks made:** headless Chrome on a fresh scratch workspace:
+  - import 72 → verify all → "Verification complete";
+  - with numbers on: 28 cases · 30 discrepancies / 26 / 18 (12 with flags), equal to an independent classification of `/api/cases`;
+  - inspector quotes;
+  - list "Findings to review" 66 = server 66;
+  - Results percentages equal `/api/summary` × 100;
+  - light/dark, 1440×900 and 390×844 (no horizontal overflow), reduced motion;
+  - no console errors;
+  - impeccable detector: one advisory, the intentional landing overshoot.
+- **Not as planned (disclosed):**
+  - `review-animations` can only be started by the user (`/review-animations`); it was not run.
+  - `.impeccable/design.json` is stale against the new DESIGN.md; refresh it with `$impeccable document`.
+- **Next steps:**
+  1. The user tries the new flow: Import data → Verify → inspect → review.
+  2. Optionally run `/review-animations`.
+  3. Locked set as planned.
+- **Open questions:** none new.
+- **How to verify:**
+  ```bash
+  .venv/bin/python -m pytest -p no:cacheprovider -q   # 176 passed
+  cd web && npm run build && cd ..
+  .venv/bin/python -m app                             # http://localhost:8000 → Import data → Verify all cases; press N for numbers
+  ```
+
+---
+
 ## 2026-11-08: Step 9 redo (researcher workstation)
 
 - **Status:** the demo dashboard is replaced by a local researcher workstation (`python -m app`, optional `--workspace <folder>`). Commits `c8a0df9` "Workstation: backend", `2f082ca` "Workstation: frontend", then docs and this entry (pushed). `src/`, `tests/`, `data/`, `reference/`, `results/` unchanged. `pytest`: 176 passed (incl. `test_freeze.py`).
