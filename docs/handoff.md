@@ -35,18 +35,19 @@ This replaces the earlier plan of a 3 to 4 hour time box. No "§0 time box" exis
 
 - **Status:** `docs/demo/ReSauce-Engine-pitch.pptx` is an 8-slide widescreen PowerPoint matching the user's final script. Like the video, it is **kept out of git** (`docs/demo/` is ignored), because it will hold the 54 MB video once inserted. No code changed and no tests were run.
 - **Done:**
-  - Slides: 1 nurse's note; 2 chart vs spreadsheet, with the dropped rash and stopped treatment in red, then the ReSauce Engine name; 3 an empty full-screen video placeholder for the user to fill; 4 the held-out numbers (0.82 vs 0.65, 0.2 s for 52 cases, the AI-model caveat, "synthetic data only, not clinical validation"); 5 one engine, many pipelines; 6 runs locally; 7 fixed rules, with the app's three outcome labels; 8 team (four empty name boxes) and close.
+  - Slides: 1 nurse's note; 2 chart vs spreadsheet, with the dropped rash and stopped treatment in red, then the ReSauce Engine name; 3 the held-out numbers (0.82 vs 0.65, 0.2 s for 52 cases, the AI-model caveat, "synthetic data only, not clinical validation"); 4 one engine, many pipelines; 5 runs locally; 6 fixed rules, with the app's three outcome labels; 7 an empty full-screen video placeholder for the user to fill; 8 team (four empty name boxes) and close.
+  - The demo was slide 3 at first. The user then asked for it second last, just before the close. The time cues in the notes were shifted to match, keeping each section's length from the script: numbers 0:50–1:12, impact 1:12–2:05, demo 2:05–2:35.
   - Morph transitions on slides 2–8, with a fade fallback for older PowerPoint; a fade on slide 1. Shapes that carry over share names, so the note card, the black engine block and the step pills on slides 5–7 slide smoothly. The script is in each slide's speaker notes.
   - Style follows `DESIGN.md`: black and white, Arial bold, red, green and amber only for their one meaning each.
   - Built with a Python standard-library script, so nothing was installed. Checked by having Microsoft PowerPoint open, export and re-save the file. It opened without a repair prompt and kept the Morph transitions and both placeholders. The generator script stayed in the session scratchpad.
 - **Decisions & why:**
-  - Kept the user's 8-slide numbering so the script's slide cues still match.
+  - Kept 8 slides, as in the user's script.
   - The numbers are from `results/report.md` (held-out split): F1 0.82 vs 0.65, ReSauce 0.206 s including extraction.
   - The script says the 52 cases were ones "it had never seen", but the README labels the held-out split "seen" (the pipeline changed after the first held-out run). The slide says only "52 made-up cases". The notes keep the user's own words.
 - **Next steps / open questions:**
-  - User: insert `resauce-demo.mp4` on slide 3, set it to start automatically, and fill in the team names on slide 8.
-  - User: choose the "to keep it going" line on slide 7 (expert-written pipelines or a lab pilot).
-  - The video is 40 s, but the script gives it 30 s (0:50–1:20). Trim it in PowerPoint or adjust the timing.
+  - User: insert `resauce-demo.mp4` on slide 7, set it to start automatically, and fill in the team names on slide 8.
+  - User: choose the "to keep it going" line on slide 6 (expert-written pipelines or a lab pilot).
+  - The video is 40 s, but the script gives it 30 s. Trim it in PowerPoint or adjust the timing.
 - **How to verify:** open `docs/demo/ReSauce-Engine-pitch.pptx` in PowerPoint and play the slideshow. Transitions → slide 2 shows "Morph".
 
 ---
