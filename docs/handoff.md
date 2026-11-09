@@ -31,6 +31,29 @@ This replaces the earlier plan of a 3 to 4 hour time box. No "§0 time box" exis
 
 ---
 
+## 2026-11-09: README rewrite with screenshots, broader subtitle
+
+- **Status:** README rewritten for a professional first impression, with seven screenshots. The home-page subtitle now presents ReSauce as a checker for clinical research records in general, with ICANS named as the current dataset. `src/`, `tests/`, `data/`, `reference/` and `results/` are unchanged. `pytest`: 176 passed. `npm run build` passes.
+- **Done:**
+  - **Subtitle** (`web/src/views/Pipeline.jsx`, hero lede; `web/dist/` rebuilt): "ReSauce checks clinical research records against the medical documents behind them. The current dataset covers ICANS after CAR-T therapy, with synthetic cases only. …"
+  - **README:** centred header with logo, tagline and static badges; hero screenshot that switches between light and dark with the reader's GitHub theme (`<picture>`); overview with aim and current scope; design-principles table; screenshot gallery (inspector, case evidence, review queue, audit trail, results); Mermaid pipeline diagram; §7 category table with destinations; results tables (unchanged numbers, quoted from `results/report.md`); quick start; workstation step table, shortcuts and options; development notes folded away; reproducibility; limitations; layout; documentation index.
+  - **Screenshots** in `docs/images/` (2880 px wide, 2.5 MB total), taken in headless Chrome on a temporary workspace (`workspace-readme/`, deleted afterwards) with the 72 example cases verified, Baseline A included. Example case: SYN-0015 (onset 7.1, grade 7.2). The script is a scratch file, not committed.
+- **Decisions & why:**
+  - **Aim vs current scope:** the user wants ReSauce framed as a checker of clinical records generally. The README says "meant to check clinical research records in general" and states plainly that only ICANS onset date and maximum grade are built, and that other conditions would need new rules and data. Claiming more would break the "never overstate" rule.
+  - **No new numbers:** every figure in the README is quoted from `results/report.md` or existing docs. New wording was checked against its source (ICE parts from clinical-methods §3.2, quote validity from `check_evidence_ref`, Baseline A from evaluation-spec §4, category names from clinical-methods §7 headings).
+  - **No review decisions in the screenshots:** the audit shot shows only real verification runs, so no invented reviewer notes appear.
+- **Next steps:**
+  1. The user checks the README on GitHub (badges, dark/light hero, Mermaid diagram).
+  2. Locked set as planned.
+- **Open questions:** licence still not chosen. The About page still describes ReSauce in ICANS-only terms (accurate for the current pipeline); change it too if the user wants the broader framing there.
+- **How to verify:**
+  ```bash
+  .venv/bin/python -m pytest -p no:cacheprovider -q   # 176 passed
+  .venv/bin/python -m app                             # http://localhost:8000: new subtitle under the headline
+  ```
+
+---
+
 ## 2026-11-09: Frontend overhaul ("the pipeline is the application")
 
 - **Status:** the workstation's frontend is redesigned around an animated pipeline view. The approved plan was `~/.claude/plans/list-all-the-skills-cached-teacup.md`. `src/`, `tests/`, `data/`, `reference/` and `results/` are unchanged. The backend has one additive field set. `pytest`: 176 passed. `npm run build` passes.

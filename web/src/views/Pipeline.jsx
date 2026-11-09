@@ -166,7 +166,7 @@ export default function Pipeline({ workspace, arrivals, onArrived, onChanged, on
     <div className={`pipeline${intro ? ' is-intro' : ''}`}>
       <header className="hero">
         <h1 className="hero-title">Watch every record meet its evidence.</h1>
-        <p className="hero-lede">ReSauce checks research records of ICANS after CAR-T therapy against the clinical documents behind them. Import synthetic cases, run the frozen pipeline, and follow each record to its outcome.</p>
+        <p className="hero-lede">ReSauce checks clinical research records against the medical documents behind them. The current dataset covers ICANS after CAR-T therapy, with synthetic cases only. Import cases, run the frozen pipeline, and follow each record to its outcome.</p>
         <div className="hero-actions">
           {empty ? (
             <button type="button" className="btn btn-primary btn-lg" onClick={onImport}><Icon name="import" size={18} />Import data</button>
