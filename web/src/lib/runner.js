@@ -39,7 +39,7 @@ function blank() {
     withBaseline: false,
     paused: false,
     instant: false,
-    live: {}, // id -> { reached: index into PATH, failedAt: stage | null, seconds: {stage: s}, record }
+    live: {}, // id -> { reached: index into PATH, failedAt: stage | null, seconds: {stage: s}, facts, record }
     shown: {}, // id -> index into PATH the display has reached (x.5 while moving)
     launched: 0,
     measured: 0, // the sum of this run's measured ReSauce stage times, in seconds (Baseline A not included)
@@ -87,7 +87,9 @@ export function showNow() {
 async function realRun(mine) {
   for (const id of state.ids) {
     if (mine !== token) return
-    const live = { reached: 0, failedAt: null, seconds: {}, record: null }
+    // facts: what each stage reported, kept as it arrives (the branching network draws only these;
+    // components/network/route.js turns them into the case's route).
+    const live = { reached: 0, failedAt: null, seconds: {}, facts: { observations: null, use: null, scope: null, scopeByMention: false }, record: null }
     state.live[id] = live
     try {
       await api.verify(id, state.withBaseline, (e) => {
@@ -100,6 +102,13 @@ async function realRun(mine) {
           if (e.seconds != null) { live.seconds[e.stage] = e.seconds; if (index > 0) state.measured += e.seconds }
           if (index > 0) live.reached = Math.max(live.reached, index)
           if (e.error && e.stage !== 'baseline') live.failedAt = index > 0 ? e.stage : 'load'
+          else if (e.stage === 'extraction') live.facts.observations = (e.observations || []).map((o) => [o.evidence?.document_id, o.kind])
+          else if (e.stage === 'timeline') live.facts.use = e.use || []
+          else if (e.stage === 'verdict' && e.output) {
+            live.facts.scope = e.output.out_of_scope ? 'oos' : 'fields'
+            live.facts.scopeByMention = Boolean(e.output.out_of_scope?.evidence?.length)
+          }
+          if (index > 0) emit() // the layout gains this stage's lines before any record is moved along them
         } else if (e.event === 'done') {
           live.record = fromRun(id, e.run, e.findings || [])
           if (!live.failedAt) live.reached = PATH.length - 1
@@ -204,5 +213,5 @@ function hop(id, now) {
   transit[id] = { to: from + 1, at: now + HOP_MS }
   state.shown[id] = from + 0.5
   const record = state.live[id]?.record
-  hopListeners.forEach((fn) => fn({ id, from: PATH[from], to: PATH[from + 1], ms: HOP_MS, outcome: record?.outcome, hubs: record?.hubs }))
+  hopListeners.forEach((fn) => fn({ id, from: PATH[from], to: PATH[from + 1], ms: HOP_MS, outcome: record?.outcome }))
 }

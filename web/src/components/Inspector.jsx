@@ -2,11 +2,12 @@ import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { api } from '../api.js'
 import { EvidenceList, Loading, OutcomeSign, Problem, Sign, findingSign } from './Bits.jsx'
 import Icon from './Icon.jsx'
-import { CATEGORY_NAMES, FIELDS, FIELD_NAMES, code, days, valueText } from '../lib/format.js'
+import { CATEGORY_NAMES, FIELDS, FIELD_NAMES, code, days, plural, valueText } from '../lib/format.js'
 import { useLoad } from '../lib/hooks.js'
 import { animate, duration, reducedMotion } from '../lib/motion.js'
 import { HUBS, HUB_NAMES, OUTCOMES, failedStage } from '../lib/outcome.js'
-import { STAGES } from '../lib/runner.js'
+import { PATH, STAGES } from '../lib/runner.js'
+import { COLUMN, NODE_INFO, groupOf, kindName } from './network/route.js'
 
 const MEANING = {
   discrepancy: 'At least one field came out 7.1, 7.2, 7.3 or 7.8 (clinical-methods §7). Each is a potential discrepancy for a person to review, never a verdict.',
@@ -117,10 +118,11 @@ export default function Inspector({ selection, origin, records, place, onClose, 
       <div className="insp-grab" onPointerDown={onGrab} onPointerMove={onDrag} onPointerUp={onDrop} onPointerCancel={onDrop} aria-hidden="true"><span /></div>
       <button type="button" className="icon-btn insp-close" onClick={close} aria-label="Close the inspector"><Icon name="close" size={18} /></button>
       <div className="insp-scroll">
-        <div key={selection.type + (selection.id || selection.name || selection.ids?.[0])} className="insp-body">
+        <div key={selection.type + (selection.id || selection.name || selection.ids?.[0] || `${selection.column}:${selection.key}`)} className="insp-body">
           {selection.type === 'case' && <CaseDetail id={selection.id} rec={records.get(selection.id)} headRef={headRef} />}
           {selection.type === 'group' && <GroupDetail ids={selection.ids} records={records} headRef={headRef} onSelect={onSelect} />}
           {selection.type === 'cluster' && <ClusterDetail name={selection.name} records={records} place={place} headRef={headRef} onSelect={onSelect} onHub={onHub} />}
+          {selection.type === 'node' && <NodeDetail column={selection.column} nodeKey={selection.key} records={records} place={place} headRef={headRef} onSelect={onSelect} />}
         </div>
       </div>
     </aside>
@@ -271,6 +273,39 @@ function ClusterDetail({ name, records, place, headRef, onSelect, onHub }) {
               <li key={key}><button type="button" className="linkish" onClick={() => onHub(name, key)}>{HUB_NAMES[key]}</button><span className="mono">{n}</span></li>
             ) : null
           })}
+        </ul>
+      )}
+      <CaseChips ids={members.map((r) => r.id)} records={records} onSelect={onSelect} />
+    </>
+  )
+}
+
+/** A node of a stage column: what it means, what it groups, and the cases the stage has taken through it. */
+function NodeDetail({ column, nodeKey, records, place, headRef, onSelect }) {
+  const col = COLUMN[column]
+  const info = NODE_INFO[column]?.[nodeKey]
+  if (!col || !info) return null
+  // Only the cases the stage shows there now: during a run, a case counts once it has passed this stage.
+  const members = [...records.values()].filter((r) => place(r.id).passed >= PATH.indexOf(column) && r.route?.nodes[column].has(nodeKey))
+  const items = members.reduce((n, r) => n + r.route.nodes[column].get(nodeKey), 0)
+  const kindCount = (k) => members.reduce((n, r) => n + (r.route.kinds.get(k) || 0), 0)
+  // the group's kinds, plus any kind the cases carry that this view does not know (it is counted here too)
+  const kinds = info.kinds && [...new Set([...info.kinds, ...members.flatMap((r) => [...r.route.kinds.keys()].filter((k) => groupOf(k) === nodeKey))])]
+  return (
+    <>
+      <header className="insp-head">
+        <h2 id="insp-title" className="insp-title" ref={headRef} tabIndex={-1}>{info.name || info.label}</h2>
+      </header>
+      <p className="insp-count">
+        {col.title} stage · {plural(members.length, 'case')}
+        {col.unit && members.length ? ` · ${plural(items, col.unit)}` : ''}
+      </p>
+      <p className="insp-lead">{info.about}</p>
+      {kinds && (
+        <ul className="insp-hubs" aria-label="Observation kinds in this group">
+          {kinds.map((k) => (
+            <li key={k}><span>{kindName(k)}</span><span className="mono">{kindCount(k)}</span></li>
+          ))}
         </ul>
       )}
       <CaseChips ids={members.map((r) => r.id)} records={records} onSelect={onSelect} />

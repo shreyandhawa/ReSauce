@@ -72,6 +72,11 @@ export function days(n) {
   return `${sign}${Math.abs(n)} ${Math.abs(n) === 1 ? 'day' : 'days'}`
 }
 
+/** "1 case", "3 cases". */
+export function plural(n, word) {
+  return `${n} ${word}${n === 1 ? '' : 's'}`
+}
+
 export function ms(seconds) {
   if (seconds == null) return '—'
   const v = seconds * 1000

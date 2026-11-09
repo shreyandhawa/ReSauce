@@ -6,6 +6,7 @@ import Icon from '../components/Icon.jsx'
 import Inspector from '../components/Inspector.jsx'
 import Network from '../components/network/Network.jsx'
 import { layout } from '../components/network/layout.js'
+import { routeOf, rowFacts } from '../components/network/route.js'
 import { useLoad, useMedia } from '../lib/hooks.js'
 import { HUB_NAMES, OUTCOMES, fromRow } from '../lib/outcome.js'
 import { PATH, STAGES, pause, resume, showNow, start, useRunner } from '../lib/runner.js'
@@ -61,13 +62,18 @@ export default function Pipeline({ workspace, arrivals, onArrived, onChanged, on
 
   const rows = useMemo(() => cases.data?.cases || [], [cases.data])
   // A live result is shown until the server's row has caught up with that run (or a later one); from
-  // then on the row wins, because it also carries the review decisions made since.
+  // then on the row wins, because it also carries the review decisions made since. A case in the
+  // current run takes its route only from this run's stage events, never from its previous run.
   const records = useMemo(() => {
     const m = new Map()
     for (const row of rows) {
-      const live = runner.live[row.case_id]?.record
-      const caughtUp = live && row.last_run && live.runAt && row.last_run >= live.runAt
-      m.set(row.case_id, live && !caughtUp ? { ...live, record: row.record } : fromRow(row))
+      const live = runner.live[row.case_id]
+      const caughtUp = live?.record && row.last_run && live.record.runAt && row.last_run >= live.record.runAt
+      const fresh = live && !caughtUp
+      const rec = fresh && live.record ? { ...live.record, record: row.record } : fromRow(row)
+      const facts = fresh ? { noteTypes: row.route?.note_types, ...live.facts } : rowFacts(row)
+      const outcome = fresh && !live.record ? {} : { outcome: rec.outcome, fieldHubs: rec.fieldHubs }
+      m.set(row.case_id, { ...rec, route: routeOf({ ...facts, ...outcome }) })
     }
     return m
   }, [rows, runner.version]) // eslint-disable-line react-hooks/exhaustive-deps
@@ -240,7 +246,8 @@ export default function Pipeline({ workspace, arrivals, onArrived, onChanged, on
           ))}
         </ul>
         <div className="legend-side">
-          <p>Each mark is one case. A record moves only after its real stage result has arrived; the motion is slowed so it can be followed. Review decisions never move a record. Synthetic data; not clinical validation.</p>
+          <p>Each mark is one case. Each column is a stage, and each node in it is a kind of result that stage reports; a line joins two nodes once a case’s result has passed through both, and grows heavier as more cases take it. Dashed lines into the rules engine carry content it reads only for flags and checks, never as evidence for onset or grade (§6.3–6.5, §7.10). A record moves only after its real stage result has arrived; the motion is slowed so it can be followed. Review decisions never move a record.</p>
+          <p>The network is a way of drawing the pipeline. ReSauce applies fixed rules, not machine learning. Synthetic data; not clinical validation.</p>
           <p className="legend-links">
             <a href="#/about">How a case is checked</a>
             <button type="button" className="linkish" onClick={exportCsv} disabled={csv?.busy || empty}>{csv?.busy ? 'Writing…' : 'Export all findings (CSV)'}</button>

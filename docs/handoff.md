@@ -31,6 +31,81 @@ This replaces the earlier plan of a 3 to 4 hour time box. No "§0 time box" exis
 
 ---
 
+## 2026-11-09: Home page pipeline redrawn as a branching (neural-network-style) network
+
+- **Status:** the pipeline stage on the home page no longer draws four pills on one line. Each stage is now a column of real nodes, and each case branches through the nodes its real results reached. The approved plan was `~/.claude/plans/i-am-not-satisfied-polymorphic-candle.md`. `src/`, `tests/`, `data/`, `reference/` and `results/` are unchanged by this work. The backend has one additive field. `pytest`: 186 passed. `npm run build` passes, and `web/dist/` is rebuilt (it also includes the other chat's committed Results CSS fix, as agreed).
+- **Done:**
+  - **Columns** (`web/src/components/network/route.js`, new; the one place that defines nodes and turns a case's raw facts into its route):
+    - Load: the 8 document types.
+    - Extraction: 7 groups of the 16 observation kinds, by the grading domains of clinical-methods §3.3 (ICE score, consciousness, seizure and EEG, motor, raised ICP / edema), plus grading context and "excluded and other".
+    - Timeline: the 6 sorting groups of `app/pipeline.py`.
+    - Rules engine: onset date, maximum grade, out of scope.
+    - Every node carries an inspector text with its § reference.
+  - **Lines** (each one a real flow):
+    - case → document type;
+    - per observation: document type → group → timeline group;
+    - timeline group → field: solid from used, time unresolved and context; dashed from outside window, copied forward and not current version, which the engine reads only for flags and checks (§6.3–6.5, §7.10);
+    - extraction → out of scope, only when a mention was the §5 reason;
+    - field → destination hub, for the field whose category sent the case there (`classify` now returns `fieldHubs`).
+    - A line is drawn only once the display has moved a case along it. Its weight grows with the share of cases that took it.
+  - **Live run** (`lib/runner.js`): stage events keep their facts and refresh the screen. A case being re-verified takes its route only from the new run, and hubs show only once a case of the current display lands on them. At each hop a case's signal splits into one dot per line it takes (at most 6), and the node it reaches flashes a ring (`signals.js`).
+  - **Look:**
+    - Wide screens: nodes are slim pills (dot + name); lines enter on the left and leave on the right, so none crosses a name. Pill widths come from the widest names, measured in Chrome at 13px.
+    - Phones: plain dots, with the stage pills on a left rail; the clean cases' lines run down the gap between the two clusters.
+    - Hover or focus a node to trace its lines in blue; click it to open the inspector (meaning, kinds in the group, cases).
+    - Numbers (N) shows counts above the nodes.
+  - **Backend** (`app/workstation.py` `cases()`): each row gains `route` with the raw facts note_types, observations as [document, kind], timeline use and `out_of_scope_by_mention`. Nothing is renamed or removed.
+  - **Words:**
+    - Pipeline legend: what nodes and lines mean, and that the network shape is a drawing, since ReSauce applies fixed rules, not machine learning.
+    - About: corrected the "links between records" line and added "The network".
+    - DESIGN.md: Overview, Electric Blue, layout, shapes, Gate / Stage node / Line components, motion.
+  - **README screenshots:** `docs/images/pipeline-dark.png` and `pipeline-light.png` retaken at the same size (2880×2480), on a scratch workspace that has since been deleted.
+- **Decisions & why:**
+  - **Grouped extraction nodes and labels always shown on computer screens:** the user's choices.
+  - **The whole set of possible nodes is always drawn,** so the layout never jumps. Lines appear only as real cases take them, so a fresh workspace shows the structure and no lines.
+  - **Dashed instead of dead ends:** the first version ended the set-aside groups with a bar. Review showed that the engine does read them, for the outside-window flag, the copied-forward review item, and the superseded-version re-run. §7.10 says a flag never changes a category, so they are drawn dashed into the fields: read, never used as evidence.
+  - **Out of scope has no timeline lines:** `engine._out_of_scope` runs before the timeline is used.
+  - **"Time unresolved" cites no §:** clinical-methods never mentions unresolved event times. The engine's own review items cite §6.1, but the document does not support that, so the UI describes the code's behaviour instead.
+  - **Coordination with the other chat (Baseline B):** file ownership was agreed by message. It built nothing; this session built `web/dist` last, after its commit `b12a9da`.
+- **Reviews:** `/code-review` (standards and spec sub-agents).
+  - Fixed:
+    - the unsupported §6.1 citation;
+    - the false dead ends;
+    - the out-of-scope lines;
+    - hubs from the previous run during a re-run;
+    - missing motion job comments;
+    - repeated unit and plural code (`plural()` in `lib/format.js`, `unit` on each column);
+    - column order encoded in four places (now `PATH`);
+    - a duplicated "line touches node" test;
+    - string keys split apart in `layout.js` (now line objects);
+    - `rowFacts` without note types;
+    - unknown kinds missing from the inspector list;
+    - ICP and copied-forward wording.
+  - Not changed (judgement calls):
+    - `Gate` kept rather than renamed to `LayerHead`; nodes are drawn in `Network.jsx` rather than in `parts.jsx`;
+    - node labels shortened for the pills ("Consciousness", "Grading context", "Excluded and other");
+    - the spine joining the stage heads stays: it is the real stage order, and a record with no line to follow moves along it;
+    - `.cn` and `{column, key}` kept as they are.
+- **Checks made:** headless Chrome over the DevTools protocol (a scratch script, not committed), on a scratch workspace with the 72 examples:
+  - verify all, mid-run and done;
+  - re-run: 2.2s in, only 2 hubs (those of landed cases) instead of the previous run's 8;
+  - **independent count:** a separate Python count from `/api/cases` matched all 24 node case counts, 0 mismatches, after the first run and again after a re-run; the inspector showed 196 observations for "Seizure and EEG", the same as 166 seizure + 30 EEG counted from the stored runs;
+  - case trace, node hover, inspector, filter and Numbers;
+  - light and dark; 1440×900 and 390×844 with no horizontal overflow; reduced motion (run completes, nothing travels);
+  - no console errors;
+  - impeccable detector: only the known landing-spring advisory.
+- **Next steps:**
+  1. The user tries it: Verify all again, hover and click nodes, and press N.
+  2. Locked set as planned.
+- **Open questions:** whether the engine's "§6.1" label on unresolved event times should be added to clinical-methods §6.1 or reworded. That needs a methods decision; the frozen engine was not touched.
+- **How to verify:**
+  ```bash
+  .venv/bin/python -m pytest -p no:cacheprovider -q   # 186 passed
+  .venv/bin/python -m app                             # http://localhost:8000 → Verify all again; hover/click nodes; N for counts
+  ```
+
+---
+
 ## 2026-11-09: Baseline B (Claude Opus 5.5) specified, run once and scored
 
 - **Status:** Baseline B is measured on all 72 dev-v1 cases. It is shown on the Results page (no rebuild needed: the page reads results/*.json; one CSS fix is waiting for the other chat's final web/dist build) and in the README. ReSauce and Baseline A results are unchanged (metrics and per-case outputs identical to the previous committed run). `pytest`: 186 passed. Frozen files untouched.

@@ -1,7 +1,7 @@
 import { memo } from 'react'
 
 /**
- * One pipeline stage. Its state comes from real results only: idle, active (records are inside
+ * One pipeline stage, at the head of its column. Its state comes from real results only: idle, active (records are inside
  * it now), done (every record of the run has passed it), error (a record stopped here).
  * The bar inside fills with the share of records that have passed (show progress, no number).
  */

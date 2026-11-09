@@ -93,6 +93,17 @@ class Workstation:
                                 if run else None,
                 "documents": len({d.document_id for d in case.documents}),
                 "document_versions": len(case.documents),
+                # Raw facts the pipeline view draws its branching network from: each document's type,
+                # each observation's source document and kind, how the timeline sorted it, and whether
+                # an out-of-scope result came from a mention in the notes (it has quoted evidence) rather
+                # than from case.json or the record (§5).
+                "route": {
+                    "note_types": {d.document_id: d.note_type for d in case.documents},
+                    "observations": [[o["evidence"]["document_id"], o["kind"]]
+                                     for o in (run or {}).get("observations") or []],
+                    "use": ((run or {}).get("timeline") or {}).get("use"),
+                    "out_of_scope_by_mention": bool(((output or {}).get("out_of_scope") or {}).get("evidence")),
+                },
                 "record": {"icans_reported": current.icans_reported,
                            "onset_date": current.onset_date.isoformat() if current.onset_date else None,
                            "onset_day": study_day(case, current.onset_date) if current.onset_date else None,

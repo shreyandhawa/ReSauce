@@ -106,7 +106,7 @@ components:
 
 **Creative North Star: "The pipeline is the application."**
 
-The home page is a black stage on which every imported case is a mark. The marks fan into four real stages (Load, Extraction, Timeline, Rules engine), and each one resolves into one of three destinations. Discrepancies branch off into a red network under a turning beacon; uncertain or out-of-scope cases branch into an amber network; cases with no discrepancy converge on a grounded plug and socket. Everything else on the site is set in the same voice: jet black and pure white, bold system type, strong rules, and very few colours, each with exactly one meaning.
+The home page is a black stage on which every imported case is a mark. The stage is drawn as a layered network: each of the four real stages (Load, Extraction, Timeline, Rules engine) is a column of nodes, one per kind of result that stage reports, and each case branches through the nodes its real results reached before it resolves into one of three destinations. Lines thicken as more cases take them. Discrepancies branch off into a red network under a turning beacon; uncertain or out-of-scope cases branch into an amber network; cases with no discrepancy converge on a grounded plug and socket. Everything else on the site is set in the same voice: jet black and pure white, bold system type, strong rules, and very few colours, each with exactly one meaning.
 
 The look follows Apple's interface principles (the `apple-design` skill): the platform's system font, size-specific tracking, translucent chrome over content, critically damped springs, motion that starts where it was interrupted, and reduced-motion forms that keep the information. It is not a dashboard. There are no card grids, KPI tiles or pastel tints, and numbers stay in the background until the researcher asks for them.
 
@@ -127,7 +127,7 @@ The look follows Apple's interface principles (the `apple-design` skill): the pl
 - **Signal Red** (`red` / `red-vivid`): discrepancy only. The ◆ mark, the red branch and network, the beacon, the discrepancy sign, form problems and "differs from stored run".
 - **Vivid Amber** (`amber` / `amber-vivid`): needs review only. The ▲ mark and the amber branch and network. (The open-review dot in the navigation is review state, so it is white ink.)
 - **Vivid Green** (`green` / `green-vivid`): no discrepancy detected only. The ● mark, the converging wires and the seated socket.
-- **Electric Blue** (`blue` / `blue-vivid`, `focus`): focus rings, the traced path of the selected record, the selection ring, and linked hover in documents.
+- **Electric Blue** (`blue` / `blue-vivid`, `focus`): focus rings, the traced path of the selected record (or the lines of the stage node under the pointer or in the inspector), the selection ring, and linked hover in documents.
 
 ### Black and white islands
 Components inside `.on-dark` (top bar, stage, the case's mini pipeline, the phone menu) and `.on-light` (the stage tooltip) pick up the matching token set automatically, so a sign on black uses the vivid accent and a sign on white uses the darker one.
@@ -154,7 +154,7 @@ Components inside `.on-dark` (top bar, stage, the case's mini pipeline, the phon
 ## Layout
 
 - **Top bar:** a full-width translucent black bar (blur and saturate) with the logo and wordmark on the left, the five destinations in the centre (Pipeline, Review, Audit, Results, About) with an indicator that travels between them, and **Import data** plus the theme switch on the right. It sits on the slim, permanent synthetic-data line. There is no sidebar.
-- **Pipeline:** a compact two-column hero (statement left; lede and the one primary action right), then the full-bleed black stage with its toolbar (status in words; filters; Numbers; Network/List), then a ruled legend. Under 760px the stage turns vertical: the same flow runs top to bottom.
+- **Pipeline:** a compact two-column hero (statement left; lede and the one primary action right), then the full-bleed black stage with its toolbar (status in words; filters; Numbers; Network/List), then a ruled legend. Under 760px the stage turns vertical: the same flow runs top to bottom, the stage pills form a rail on the left level with their rows, and the network runs to the right of it so no line crosses a stage name.
 - **Pages:** max 1360px with `side` padding, a heavy title above a 2px black rule, and content separated by rules rather than boxes.
 - **Inspector:** a parallel sheet beside the stage (no scrim; the stage stays usable); a draggable bottom sheet on phones.
 
@@ -164,15 +164,17 @@ Flat by default. Depth comes from the black stage against white, the translucent
 
 ## Shapes
 
-12px on inputs and wells, 16px on floating surfaces and documents, pills on buttons, segmented controls and chips. On the stage: pill-shaped gates, diamond, triangle and circle marks, and an original logo, socket and beacon drawn as SVG. Icons are authored on a 20×20 grid with a 1.75 round stroke; the outcome shapes are filled.
+12px on inputs and wells, 16px on floating surfaces and documents, pills on buttons, segmented controls and chips. On the stage: pill-shaped gates, slim pill-shaped stage nodes (a dot and a name), diamond, triangle and circle marks, and an original logo, socket and beacon drawn as SVG. Icons are authored on a 20×20 grid with a 1.75 round stroke; the outcome shapes are filled.
 
 ## Components
 
-- **Gate:** a stage pill. Idle: grey outline. Active: white outline while records are inside it. Done: solid white with black text. A bar inside fills with the share of records that have passed. A ✕ badge marks a stage where a record stopped.
+- **Gate:** a stage pill at the head of its column, joined to the next by the spine (the stage order; dashed until a record has passed). Idle: grey outline. Active: white outline while records are inside it. Done: solid white with black text. A bar inside fills with the share of records that have passed. A ✕ badge marks a stage where a record stopped.
+- **Stage node:** one kind of result a stage reports (`components/network/route.js`): Load, the 8 document types; Extraction, 7 groups of observation kinds by the grading domains of clinical-methods §3.3; Timeline, the 6 ways an observation is sorted; Rules engine, onset date, maximum grade and out of scope. Every possible node is always drawn: hollow until a record has reached it, then a solid dot and white name. On wide screens a node is a slim pill whose lines enter on the left and leave on the right, so no line crosses a name (widths fit the widest name, measured at 13px). On phones it is a plain dot and the name is in the inspector.
+- **Line:** a real flow between two nodes, drawn only once a record has taken it; weight and brightness grow with the share of all cases that took it (no number). Into the rules engine, lines from the timeline groups it reads only for flags and checks (outside window, copied forward, not current version) are dashed. Out of scope is decided before any timeline, so its only line comes from the extraction group of the mention that put a case out of scope.
 - **Mark:** one case. Input marks are white while waiting and hollow once they have left. Destination marks are filled while their findings are open and outlined once all are decided. A small dot means a clean case still carries flags.
 - **Beacon:** a red lamp with a slow turning sweep (one turn per 2.6s, no strobe) while any discrepancy is undecided; it is still once all are decided, or when paused.
 - **Socket:** the grounded endpoint. Green wires converge on a plug that seats when the run completes.
-- **Inspector:** a case's outcome, its two fields (record vs documents), its path with measured times, and its findings with quoted evidence; or a destination's meaning, finding types and cases.
+- **Inspector:** a case's outcome, its two fields (record vs documents), its path with measured times, and its findings with quoted evidence; or a destination's meaning, finding types and cases; or a stage node's meaning with its § reference, the observation kinds it groups, and its cases.
 - **Buttons:** primary black pills, default outlined pills that invert on hover, and white pills on black. All scale to 0.97 when pressed.
 
 ## Motion
@@ -181,8 +183,8 @@ Every animation names its job in a comment (feedback, orient, show progress, con
 
 - **Tokens:** fast 150ms, base 220ms, slow 300ms, layout 420ms. `--ease-out` (0.23, 1, 0.32, 1) to enter and leave; `--ease-in-out` (0.77, 0, 0.175, 1) to move on screen; `--ease-drawer` for sheets. Never ease-in on UI.
 - **Springs:** `lib/spring.js` turns Apple's damping and response into CSS `linear()` curves (ui 1.0/0.3, move 1.0/0.42, sheet 0.86/0.36). Zoom and pan use an interruptible rAF spring.
-- **The authored moment, the run:** records launch from the input, travel each segment on a canvas signal with a speed trail, and land in their destination. The display is paced for viewing and a record never moves before its real stage result exists.
-- **Arrival and landing:** imported records arrive with a stagger and their paths draw in. On the first visit the hero rises and the stage opens.
+- **The authored moment, the run:** records launch from the input, and at each hop a record's signal splits into one dot per line it really takes into the next column (at most six), with a speed trail; each node it reaches flashes a short fading ring, and the lines thicken as records pass. Records land in their destination. The display is paced for viewing and a record never moves, and no line or node lights, before its real stage result exists.
+- **Arrival and landing:** imported records arrive with a stagger. On the first visit the hero rises, the stage opens, and the network assembles column by column, its lines drawing in left to right (dashed lines fade in).
 - **Elsewhere:** the inspector materialises with blur and offset, and a mark flies from the stage into it. Page changes cross-fade, the nav indicator glides, the Numbers layer slides in, and Results bars fill once.
 - **Reduced motion:** nothing travels or scales. Steps become short fades, the beacon is a static lamp, and the run is announced in text.
 - **The one exception:** a record landing in its destination uses a slightly underdamped spring (damping 0.84), because it arrives with momentum. Nothing else overshoots.
@@ -190,7 +192,7 @@ Every animation names its job in a comment (feedback, orient, show progress, con
 ## Do's and Don'ts
 
 ### Do
-- Draw only real things on the stage: real cases, real stages, real outcomes. Where the data says nothing (links between records, a folder before import), draw nothing and say so on the About page.
+- Draw only real things on the stage: real cases, real stages, real kinds of stage result, real outcomes. Where the data says nothing (links between records, a folder before import), draw nothing and say so on the About page. The network shape is a way of drawing the pipeline; the legend says that ReSauce applies fixed rules, not machine learning.
 - Keep numbers behind **Numbers**, hover and the inspector. Words and shapes carry the default view.
 - Put every new status into the shape + word + colour vocabulary.
 - Set dark values in both the system-preference block and the `data-theme="dark"` block.

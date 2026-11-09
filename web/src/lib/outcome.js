@@ -38,17 +38,21 @@ export function failedStage(run) {
   return run?.error?.stage || (run?.resauce?.error ? 'verdict' : null)
 }
 
-/** Classify from the field categories ({ onset, max_grade } or null) and the run state. */
+/**
+ * Classify from the field categories ({ onset, max_grade } or null) and the run state.
+ * fieldHubs says which field sent the case to which hub (the pipeline view draws a line for each):
+ * the alert fields of a discrepancy, the undecided fields of a review case, both fields of a clean one.
+ */
 export function classify({ verified, failed, outOfScope, categories }) {
-  if (!verified) return { outcome: 'not_run', hubs: [], alerts: 0 }
-  if (failed) return { outcome: 'error', hubs: [], alerts: 0 }
-  if (outOfScope) return { outcome: 'review', hubs: ['oos'], alerts: 0 }
-  const fields = FIELDS.map((f) => ({ category: categories?.[f], kind: categoryKind(categories?.[f]) }))
-  const alerts = fields.filter((x) => x.kind === 'alert').map((x) => code(x.category))
-  if (alerts.length) return { outcome: 'discrepancy', hubs: [...new Set(alerts)], alerts: alerts.length }
-  if (fields.every((x) => x.kind === 'clear')) return { outcome: 'clear', hubs: [], alerts: 0 }
-  const hubs = fields.filter((x) => x.kind !== 'clear').map((x) => (x.kind === 'flag' ? code(x.category) : HUB_OF_KIND[x.kind] || 'other'))
-  return { outcome: 'review', hubs: [...new Set(hubs)], alerts: 0 }
+  if (!verified) return { outcome: 'not_run', hubs: [], fieldHubs: {}, alerts: 0 }
+  if (failed) return { outcome: 'error', hubs: [], fieldHubs: {}, alerts: 0 }
+  if (outOfScope) return { outcome: 'review', hubs: ['oos'], fieldHubs: { oos: 'oos' }, alerts: 0 }
+  const fields = FIELDS.map((f) => ({ field: f, category: categories?.[f], kind: categoryKind(categories?.[f]) }))
+  const alerts = fields.filter((x) => x.kind === 'alert').map((x) => [x.field, code(x.category)])
+  if (alerts.length) return { outcome: 'discrepancy', hubs: [...new Set(alerts.map(([, h]) => h))], fieldHubs: Object.fromEntries(alerts), alerts: alerts.length }
+  if (fields.every((x) => x.kind === 'clear')) return { outcome: 'clear', hubs: [], fieldHubs: Object.fromEntries(FIELDS.map((f) => [f, 'clear'])), alerts: 0 }
+  const open = fields.filter((x) => x.kind !== 'clear').map((x) => [x.field, x.kind === 'flag' ? code(x.category) : HUB_OF_KIND[x.kind] || 'other'])
+  return { outcome: 'review', hubs: [...new Set(open.map(([, h]) => h))], fieldHubs: Object.fromEntries(open), alerts: 0 }
 }
 
 /** Whether a record passes the stage filter; a record without a settled outcome only passes "All". */
@@ -105,5 +109,5 @@ export function fromRun(caseId, run, findings) {
 
 /** A case whose run broke off on the server (a "failed" event): it could not run; nothing else is known. */
 export function brokenRun(caseId, stage) {
-  return { id: caseId, outcome: 'error', hubs: [], alerts: 0, failedStage: stage, annotated: false, openAlerts: 0, open: 0, runAt: null, differs: false, record: null, invalid: null }
+  return { id: caseId, outcome: 'error', hubs: [], fieldHubs: {}, alerts: 0, failedStage: stage, annotated: false, openAlerts: 0, open: 0, runAt: null, differs: false, record: null, invalid: null }
 }

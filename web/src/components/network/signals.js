@@ -1,5 +1,6 @@
 // Moving signals on the stage: one canvas above the SVG, so hundreds of dots stay cheap.
-// A signal is one record travelling one hop of its real path (lib/runner.js decides when).
+// A signal is one record travelling one line of one hop of its real path (lib/runner.js decides
+// when; layout.js hopPaths gives one path per line the record took, so its signal splits).
 // Show progress / connect cause and effect: the dot leaves when the real stage result is in and
 // arrives where that result sends it. Position follows the strong ease-in-out curve (moving on
 // screen); a short trail encodes direction and speed. Under reduced motion nothing travels.
@@ -35,12 +36,15 @@ function cubicBezier(p1x, p1y, p2x, p2y) {
 }
 
 const easeMove = cubicBezier(0.77, 0, 0.175, 1) // --ease-in-out in styles.css
-const MAX = 64 // signals drawn at once; past that a hop moves its mark without a signal (none is cut off mid-flight)
+const easeOut = cubicBezier(0.23, 1, 0.32, 1) // --ease-out
+const MAX = 240 // signals drawn at once; past that a hop moves its mark without a signal (none is cut off mid-flight)
 const TRAIL = 7
+const RING_MS = 420 // a stage node flashes when a signal reaches it
 
 export function createSignals(canvas) {
   const ctx = canvas.getContext('2d')
   const active = []
+  const rings = []
   let view = { k: 1, s: 1, x: 0, y: 0 }
   let colors = { signal: '#fff' }
   let raf = 0
@@ -74,10 +78,27 @@ export function createSignals(canvas) {
     ctx.clearRect(0, 0, size[0], size[1])
     ctx.translate(view.x, view.y)
     ctx.scale(view.k * view.s, view.k * view.s)
+    // Arrival: an expanding, fading ring where a signal reached a stage node (show progress).
+    for (let n = rings.length - 1; n >= 0; n--) {
+      const ring = rings[n]
+      const p = (now - ring.t0) / RING_MS
+      if (p >= 1) { rings.splice(n, 1); continue }
+      const e = easeOut(p)
+      ctx.globalAlpha = 0.75 * (1 - e)
+      ctx.strokeStyle = colors[ring.kind] || colors.signal
+      ctx.lineWidth = 1.6
+      ctx.beginPath()
+      ctx.arc(ring.x, ring.y, 7 + 9 * e, 0, Math.PI * 2)
+      ctx.stroke()
+    }
     for (let n = active.length - 1; n >= 0; n--) {
       const sig = active[n]
       const p = (now - sig.t0) / sig.ms
-      if (p >= 1) { active.splice(n, 1); continue }
+      if (p >= 1) {
+        active.splice(n, 1)
+        if (sig.ring && rings.length < MAX) { const end = sig.pts[sig.pts.length - 1]; rings.push({ x: end[0], y: end[1], t0: now, kind: sig.kind }) }
+        continue
+      }
       if (p < 0) continue // waiting for its delay
       const d = easeMove(Math.max(0, p)) * sig.total
       const speed = Math.min(1, Math.abs(easeMove(Math.min(1, p + 0.05)) - easeMove(p)) * 12) // trail grows with speed
@@ -91,19 +112,20 @@ export function createSignals(canvas) {
       }
     }
     ctx.globalAlpha = 1
-    if (active.length) raf = requestAnimationFrame(frame)
+    if (active.length || rings.length) raf = requestAnimationFrame(frame)
   }
 
   return {
-    add(pts, ms, kind, delay = 0) {
+    /** pts: the path; ms: travel time; kind: colour; delay: ms before it leaves; ring: flash where it arrives. */
+    add(pts, ms, kind, delay = 0, ring = false) {
       if (!pts || pts.length < 2 || active.length >= MAX || reducedMotion() || document.visibilityState !== 'visible') return
       const lens = [0]
       for (let i = 1; i < pts.length; i++) lens.push(lens[i - 1] + Math.hypot(pts[i][0] - pts[i - 1][0], pts[i][1] - pts[i - 1][1]))
-      active.push({ pts, lens, total: lens[lens.length - 1], t0: performance.now() + delay, ms, kind })
+      active.push({ pts, lens, total: lens[lens.length - 1], t0: performance.now() + delay, ms, kind, ring })
       if (!raf) raf = requestAnimationFrame(frame)
     },
-    setView(v) { view = v; if (!raf && active.length) raf = requestAnimationFrame(frame) },
+    setView(v) { view = v; if (!raf && (active.length || rings.length)) raf = requestAnimationFrame(frame) },
     setColors(c) { colors = c },
-    destroy() { cancelAnimationFrame(raf); active.length = 0 },
+    destroy() { cancelAnimationFrame(raf); active.length = 0; rings.length = 0 },
   }
 }
