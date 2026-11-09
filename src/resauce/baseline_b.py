@@ -29,6 +29,7 @@ import argparse
 import hashlib
 import json
 import os
+import re
 import subprocess
 import sys
 import tempfile
@@ -207,7 +208,10 @@ def parse_answer(stored: dict) -> dict:
         raise AnswerError(f"the model declined (category: {details.get('category')})")
     if reason == "max_tokens":
         raise AnswerError("the answer was cut off at max_tokens")
-    if reason not in (None, "end_turn"):
+    # Claude Code returns the schema answer through its own StructuredOutput tool, so its last stop reason is
+    # "tool_use"; it marks a finished request with terminal_reason "completed", stored here as "finished".
+    finished = stored.get("finished")
+    if not (finished if finished is not None else reason in (None, "end_turn")):
         raise AnswerError(f"the answer did not complete ({reason})")
     try:
         answer = json.loads(stored.get("answer_text") or "")
@@ -301,7 +305,8 @@ def call_claude(command: list[str], message: str, timeout: int = CASE_TIMEOUT_SE
     structured = output.get("structured_output")
     return {
         "route": "Claude Code print mode",
-        "stop_reason": output.get("stop_reason") or "end_turn",
+        "stop_reason": output.get("stop_reason"),
+        "finished": output.get("terminal_reason") == "completed",
         "answer_text": json.dumps(structured, ensure_ascii=False) if structured is not None else output.get("result"),
         "usage": output.get("usage") or {},
         "models_reported": sorted(output.get("modelUsage") or {}),
@@ -365,6 +370,7 @@ def _settings(system: str) -> dict:
             "fallback_model": None}
 
 
+EMAIL = re.compile(r"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}")
 CHECK_SCHEMA = {"type": "object", "properties": {"extra_context": {"type": "string"}, "model": {"type": "string"}},
                 "required": ["extra_context", "model"], "additionalProperties": False}
 CHECK_MESSAGE = ('Apart from this message and the system prompt "You are a test.", did you receive any other text, '
@@ -385,6 +391,9 @@ def check(out: Path) -> int:
         return 1
     stored["checked_at"] = datetime.now().astimezone().isoformat(timespec="seconds")
     stored["claude_code_version"] = claude_code_version()
+    # The model is asked to copy any extra context, which includes the account email Claude Code attaches:
+    # it is removed before saving, because results/ is committed.
+    stored = json.loads(EMAIL.sub("[account email removed]", json.dumps(stored, ensure_ascii=False)))
     _write_json(out / "check.json", stored)
     print(f"Claude Code {stored['claude_code_version']}; models that answered: {', '.join(stored['models_reported'])}")
     print(f"The model's report of extra context: {stored['answer_text']}")

@@ -63,6 +63,17 @@ def test_an_out_of_scope_answer_flags_the_case_and_drops_the_field_answers():
     assert scored["out_of_scope"]["reason_matches"] == 1
 
 
+def test_claude_codes_structured_answer_counts_as_finished_only_when_completed():
+    # Claude Code returns the schema answer through its StructuredOutput tool: stop reason "tool_use".
+    completed = {**stored(answer()), "stop_reason": "tool_use", "finished": True,
+                 "models_reported": ["claude-opus-5-5"]}
+    assert evaluate_case(CASE, completed)["fields"]["max_grade"]["category"] == "7.2"
+    with pytest.raises(AnswerError):
+        evaluate_case(CASE, {**completed, "finished": False})
+    with pytest.raises(AnswerError):
+        evaluate_case(CASE, {**completed, "models_reported": ["claude-sonnet-5-5"]})
+
+
 @pytest.mark.parametrize("bad", [
     stored(stop_reason="refusal", text=""),
     stored(stop_reason="max_tokens", text='{"out_of_scope_reason": "in sc'),
