@@ -30,6 +30,13 @@ export default function Results() {
   const columns = ALL_METHODS.filter((m) => s.splits.some((x) => x.metrics?.[m]))
   const withB = columns.includes('baseline_b')
   const bModel = s.splits.find((x) => x.metrics?.baseline_b)?.metadata?.baseline_b?.settings?.model
+  // Whether the AI model scores above ReSauce on any headline measure of any split (read from the stored
+  // results, so the note below never claims more than the numbers show).
+  const bAhead = withB && s.splits.some((split) => MEASURES.some(([key]) => {
+    const b = split.metrics?.baseline_b?.fields?.combined?.[key]?.value
+    const r = split.metrics?.resauce?.fields?.combined?.[key]?.value
+    return b != null && r != null && b > r
+  }))
 
   return (
     <div className="page results">
@@ -42,8 +49,13 @@ export default function Results() {
         </p>
         <p className="caveat">
           Synthetic data. Not clinical validation. Reference answers: {s.reference_label}.
-          {withB && ' Baseline B is the same model family that wrote the reference answers, so its agreement with them may be inflated.'}
         </p>
+        {withB && (
+          <p className="caveat-ai">
+            <strong>{bAhead ? 'Why the AI model scores higher than ReSauce.' : 'Reading the AI model’s scores.'}</strong>{' '}
+            Baseline B is {bModel ? <span className="mono">{bModel}</span> : 'an AI model'}, from the same AI model family (Claude) that wrote these synthetic cases and their reference answers, from the same rules text. That is most likely why it agrees with them so closely. Its scores show that it reproduces answers written the same way; they are not evidence that it would do better than ReSauce on real records, or that either is clinically right. A fair comparison needs cases and answers written and checked independently, by clinicians.
+          </p>
+        )}
       </header>
 
       {s.splits.map((split, si) => {
