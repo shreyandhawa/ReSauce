@@ -33,7 +33,7 @@ export default function About() {
   const p = ws.data?.pipeline
   return (
     <div className="page">
-      <div className="page-head"><h1>About &amp; limitations</h1></div>
+      <header className="page-hero"><h1>About</h1><p className="lede">What ReSauce is, how a case is checked, and the limits of what it shows.</p></header>
       <div className="prose">
         <h2>What ReSauce is</h2>
         <p>A computational proof of concept. It reads the clinical documents behind a research record of ICANS after CAR-T therapy, extracts the neurological observations, each with its exact quoted source, rebuilds the timeline from Day 0 to Day +28 with event time kept apart from documentation time, and compares the record’s onset date and maximum grade with what the documents support. Each result is a potential discrepancy for a person to review, never a verdict (clinical-methods §7).</p>
@@ -61,7 +61,19 @@ export default function About() {
           <li><strong>Timeline</strong>: latest signed versions, the observation window and copied-forward notes applied (clinical-methods §6).</li>
           <li><strong>Compare and categorise</strong> each field (7.1–7.8) with its evidence; flag what the rules cannot decide as “needs human review”.</li>
         </ol>
+        <p>On the pipeline stage each case then reaches one of three destinations, decided only from the two field categories: <strong>Discrepancy</strong> (either field 7.1, 7.2, 7.3 or 7.8), <strong>Needs review</strong> (no alert, but 7.4, 7.5, a “review: …” result, or out of scope under §5) or <strong>No discrepancy detected</strong> (both fields 7.6 or 7.7). Review decisions never move a case.</p>
         <p>The pipeline is deterministic and frozen. {p ? <>Tag <span className="mono">{p.tag}</span>, commit <span className="mono">{p.tag_commit?.slice(0, 12) || 'unknown'}</span>; the {p.frozen_files.length} frozen files {p.frozen_files_match ? 'match' : <strong>do not match</strong>} the hashes in docs/freeze.md.</> : 'Loading its version…'}</p>
+
+        <h2>What the pipeline view does not show</h2>
+        <p>The animation is driven by real results only. Where the data does not say something, nothing is drawn for it:</p>
+        <ul>
+          <li><strong>Pace.</strong> The pipeline finishes a case in milliseconds. The stage replays the real stage results slowly enough to follow; a record never moves before its real result exists. The measured times are shown under Numbers.</li>
+          <li><strong>Links between records.</strong> Each mark is one case. The data holds no relationships between cases, so none are drawn; the only links are case → stage → destination → finding type.</li>
+          <li><strong>Folder preview.</strong> The server has no way to describe a folder before importing it, so the import reports what it found afterwards.</li>
+          <li><strong>Dropping files.</strong> The server only accepts a folder path inside this project, so case folders cannot be dropped onto the page. A single note (.txt) can be dropped into the New case form.</li>
+          <li><strong>Baseline A.</strong> When it is chosen, the simpler method runs beside the pipeline on the same case. It is a comparison, not a stage the record passes through, so the stage does not draw it; the inspector and the case page list its measured time, and it is left out of the pipeline time.</li>
+          <li><strong>Stages inside “verify all”.</strong> That endpoint reports whole cases only, so the page verifies cases one by one through the single-case endpoint, which reports each stage. Each call stores a run and an audit entry exactly as before.</li>
+        </ul>
 
         <h2>Discrepancy categories</h2>
         <dl className="cat-list">

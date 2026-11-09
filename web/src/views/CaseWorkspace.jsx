@@ -1,20 +1,16 @@
 import { useCallback, useLayoutEffect, useMemo, useRef, useState } from 'react'
 import { api } from '../api.js'
-import { EvidenceList, Loading, Problem, Sign, StatusSign, findingSign } from '../components/Bits.jsx'
+import { EvidenceList, Loading, OutcomeSign, Problem, Sign, StatusSign, findingSign } from '../components/Bits.jsx'
 import DocumentReader, { observationLabel } from '../components/DocumentReader.jsx'
 import Icon from '../components/Icon.jsx'
 import Timeline from '../components/Timeline.jsx'
 import { CATEGORY_NAMES, FIELDS, FIELD_NAMES, code, days, ms, signedDay, valueText } from '../lib/format.js'
 import { useLoad } from '../lib/hooks.js'
 import { animate, duration, takeOrigin } from '../lib/motion.js'
-
-// Each stage lights when its own result arrives. The rules engine returns the comparison and
-// the verdict from one call, so they are one stage here.
-const STAGES = [
-  ['extraction', 'Extraction', 'extraction'],
-  ['timeline', 'Timeline', 'timeline'],
-  ['verdict', 'Comparison and verdict', 'verdict'],
-]
+import { failedStage, fromRun } from '../lib/outcome.js'
+// The same stages as the pipeline stage. Each lights when its own result arrives. The rules engine
+// returns the comparison and the verdict from one call, so they are one stage here.
+import { STAGES } from '../lib/runner.js'
 
 export default function CaseWorkspace({ caseId, onChanged }) {
   const detail = useLoad(() => api.caseDetail(caseId), [caseId])
@@ -56,10 +52,12 @@ export default function CaseWorkspace({ caseId, onChanged }) {
       await api.verify(caseId, baseline, (e) => {
         if (e.event === 'stage') {
           setLive((l) => {
+            // A failed stage arrives under its own name with an "error" field (the server merges
+            // the payload over the event), so it is recorded as the error, not as done.
+            if (e.error && e.stage !== 'baseline') return { ...l, error: e }
             const next = { ...l, stages: { ...l.stages, [e.stage]: e } }
             if (e.stage === 'extraction') next.observations = e.observations
             if (e.stage === 'timeline') next.timeline = e
-            if (e.stage === 'error') next.error = e
             return next
           })
         } else if (e.event === 'done') {
@@ -114,42 +112,36 @@ export default function CaseWorkspace({ caseId, onChanged }) {
   const pickObservation = (id) => { const o = observations.find((x) => x.id === id); if (o) cite(o.evidence) }
   const stageState = (event) => {
     const seen = live && !live.run ? live.stages : null
-    if (seen) return seen[event] ? 'done' : seen.error?.stage === event ? 'error' : 'idle'
-    if (run?.error?.stage === event) return 'error'
+    if (seen) return seen[event] ? 'done' : live.error?.stage === event ? 'error' : 'idle'
+    if (failedStage(run) === event) return 'error'
     return run?.timings_seconds?.[event] != null ? 'done' : 'idle'
   }
   const stageMs = (event) => live?.stages?.[event]?.seconds ?? run?.timings_seconds?.[event]
   const status = live?.caseStatus || (run ? statusOf(run, items) : 'not_run')
-  const alerts = items.filter((i) => !i.decision && i.tier === 0).length
+  const outcome = run ? fromRun(d.case_id, run, items).outcome : null
+  const stageList = [...STAGES, ...(baseline || run?.baseline_a ? [['baseline', 'Baseline A']] : [])]
+    .map(([key, label]) => ({ key, label, state: stageState(key), ms: stageMs(key) }))
 
   return (
     <div className="ws" ref={rootRef}>
       <header className="ws-head">
         <div>
-          <p className="crumb"><a href="#/cases">Cases</a></p>
+          <p className="crumb"><a href="#/pipeline"><Icon name="back" size={14} />Pipeline</a></p>
           <h1>{d.case_id}</h1>
         </div>
         <div className="ws-facts">
-          <StatusSign status={status} alerts={alerts} />
+          <div className="ws-signs">{outcome && <OutcomeSign outcome={outcome} />}<StatusSign status={status} /></div>
           <p className="facts">Age at infusion {d.facts.age_at_infusion} · infusion (Day 0) <span className="mono">{d.facts.infusion_date}</span> · {new Set(docs.map((x) => x.document_id)).size} documents, {docs.length} versions</p>
         </div>
         <div className="actions">
-          <label className="check"><input type="checkbox" checked={baseline} onChange={(e) => setBaseline(e.target.checked)} /> Compare with simple baseline</label>
+          <label className="check"><input type="checkbox" checked={baseline} onChange={(e) => setBaseline(e.target.checked)} /> Compare with Baseline A</label>
           <button type="button" className="btn btn-primary" onClick={verify} disabled={running}>
             <Icon name="play" size={16} />{running ? 'Verifying…' : run ? 'Verify again' : 'Verify'}
           </button>
         </div>
       </header>
 
-      <div className="stages" aria-label="Pipeline stages" role="status">
-        {[...STAGES, ...(baseline || run?.baseline_a ? [['baseline', 'Baseline A', 'baseline']] : [])].map(([key, label, event]) => (
-          <span key={key} className="stage" data-state={stageState(event)}>
-            <span className="dot" aria-hidden="true" />{label}
-            {stageState(event) === 'done' && stageMs(event) != null && <span className="ms">{ms(stageMs(event))}</span>}
-          </span>
-        ))}
-        <span className="stage-note">{run ? 'Measured run times' : running ? 'Running the frozen pipeline…' : 'Not verified yet'}</span>
-      </div>
+      <MiniPipeline stages={stageList} outcome={live && !live.run ? null : outcome} note={run ? 'Measured run times' : running ? 'Running the frozen pipeline…' : 'Not verified yet'} />
 
       <div className="ws-body">
         <DocumentReader documents={docs} activeId={current} onSelect={(id) => { setActiveDoc(id); setFocus(null) }}
@@ -194,6 +186,46 @@ export default function CaseWorkspace({ caseId, onChanged }) {
           {run && <RunFacts run={run} storedAvailable={d.stored_available} />}
         </div>
       </div>
+    </div>
+  )
+}
+
+/**
+ * The case's own pass through the pipeline: the same stages as the stage view, lit by real
+ * results. Show progress: when a stage's result lands, a dot travels to it from the stage before.
+ */
+function MiniPipeline({ stages, outcome, note }) {
+  const rootRef = useRef(null)
+  const dotRef = useRef(null)
+  const before = useRef(null)
+  const doneKeys = stages.filter((s) => s.state === 'done').map((s) => s.key).join()
+
+  useLayoutEffect(() => {
+    const done = stages.filter((s) => s.state === 'done')
+    const prev = before.current
+    before.current = done.length
+    if (prev === null || done.length <= prev || !rootRef.current || !dotRef.current) return
+    const gates = rootRef.current.querySelectorAll('.mini-gate')
+    const root = rootRef.current.getBoundingClientRect()
+    const centre = (i) => { const r = gates[i]?.getBoundingClientRect(); return r ? r.left - root.left + r.width / 2 : 0 }
+    const to = stages.findIndex((s) => s.key === done[done.length - 1].key)
+    const from = Math.max(0, to - 1)
+    animate(dotRef.current, [{ opacity: 1, transform: `translateX(${centre(from)}px)` }, { opacity: 1, transform: `translateX(${centre(to)}px)`, offset: 0.85 }, { opacity: 0, transform: `translateX(${centre(to)}px)` }], { dur: 'layout', ease: 'in-out', fill: 'none' })
+  }, [doneKeys]) // eslint-disable-line react-hooks/exhaustive-deps
+
+  return (
+    <div className="mini on-dark" ref={rootRef} role="status" aria-label={`Pipeline stages: ${stages.map((s) => `${s.label} ${s.state === 'idle' ? 'not run' : s.state}`).join(', ')}`}>
+      <ol className="mini-track">
+        {stages.map((s) => (
+          <li key={s.key} className="mini-step" data-state={s.state}>
+            <span className="mini-gate">{s.state === 'error' && <Icon name="cross" size={12} />}{s.label}</span>
+            {s.state === 'done' && s.ms != null && <span className="mini-ms">{ms(s.ms)}</span>}
+          </li>
+        ))}
+        <li className="mini-step mini-out">{outcome ? <OutcomeSign outcome={outcome} /> : <span className="mini-wait">Outcome</span>}</li>
+      </ol>
+      <span className="mini-dot" ref={dotRef} aria-hidden="true" />
+      <span className="mini-note">{note}</span>
     </div>
   )
 }

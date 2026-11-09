@@ -63,7 +63,7 @@ export default function ReviewQueue({ caseFilter, onChanged }) {
     <div className="page">
       <div className="page-head">
         <div>
-          <h1>Review queue</h1>
+          <h1>Review</h1>
           <p className="sub">
             {/* No count-up: the number simply changes when a decision is saved. */}
             <strong>{items.length}</strong> open finding{items.length === 1 ? '' : 's'}{caseFilter ? <> in <span className="mono">{caseFilter}</span> · <a href="#/queue">show all cases</a></> : ''} · {q.cases_verified} of {q.cases_total} cases verified. The pipeline output is never edited; each decision is added to the audit log beside it.
@@ -78,8 +78,8 @@ export default function ReviewQueue({ caseFilter, onChanged }) {
       {items.length === 0 && !leaving ? (
         <div className="panel empty">
           <h2>{q.cases_verified ? 'No open findings' : 'Nothing verified yet'}</h2>
-          <p>{q.cases_verified ? 'Every finding in the verified cases has a decision. They are listed in the audit trail.' : 'Verify cases first (Cases, Verify all); their findings appear here, most serious first.'}</p>
-          <a className="btn" href={q.cases_verified ? '#/audit' : '#/cases'}>{q.cases_verified ? 'Open the audit trail' : 'Go to cases'}</a>
+          <p>{q.cases_verified ? 'Every finding in the verified cases has a decision. They are listed in the audit trail.' : 'Verify cases on the pipeline first; their findings appear here, most serious first.'}</p>
+          <a className="btn" href={q.cases_verified ? '#/audit' : '#/pipeline'}>{q.cases_verified ? 'Open the audit trail' : 'Go to the pipeline'}</a>
         </div>
       ) : (
         <div className="queue">
@@ -204,8 +204,9 @@ function Card({ item, documents, reviewer, askName, onDecided, onMove, entering 
 function Leaving({ item, decision, documents, onDone }) {
   const ref = useRef(null)
   useLayoutEffect(() => {
-    // Connect cause and effect: the decided item leaves in its decision's direction (fast, ease-in).
-    const a = animate(ref.current, [{ opacity: 1, transform: 'none' }, { opacity: 0, transform: EXIT[decision] }], { dur: 'fast', ease: 'in', fill: 'forwards' })
+    // Connect cause and effect: the decided item leaves in its decision's direction (fast, ease-out:
+    // a slow start would delay the very moment the reviewer is watching).
+    const a = animate(ref.current, [{ opacity: 1, transform: 'none' }, { opacity: 0, transform: EXIT[decision] }], { dur: 'fast', ease: 'out', fill: 'forwards' })
     if (!a) { onDone(); return }
     a.finished.then(onDone, () => {})
     return () => a.cancel() // interruptible: a newer decision replaces this one at once

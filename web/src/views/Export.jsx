@@ -34,7 +34,7 @@ export default function Export() {
   return (
     <div className="page">
       <div className="page-head">
-        <div><h1>Export</h1><p className="sub">Files are written into the workspace’s <span className="mono">exports/</span> folder and opened from there. Each carries the pipeline version it was made with.</p></div>
+        <div><p className="crumb"><a href="#/audit"><Icon name="back" size={14} />Audit</a></p><h1>Export</h1><p className="sub">Files are written into the workspace’s <span className="mono">exports/</span> folder and opened from there. Each carries the pipeline version it was made with.</p></div>
       </div>
       {list.length === 0 ? <p className="note">The workspace has no cases yet.</p> : (
         <div className="export-grid">

@@ -1,15 +1,17 @@
 import Icon from './Icon.jsx'
 import { citation } from '../lib/format.js'
+import { OUTCOMES } from '../lib/outcome.js'
 
-// The fixed severity ramp: one symbol, one word and at most one colour per state.
+// The fixed status vocabulary: one shape, one word and at most one colour per state.
+// Red is discrepancy only; amber is needs review only; green is no discrepancy only.
 const FINDING_SIGNS = {
-  alert: ['discrepancy', 'Discrepancy'],
-  flag: ['review', 'Needs review'],
-  review: ['review', 'Needs human review'],
-  review_item: ['review', 'Needs human review'],
-  other: ['flag', 'Flag'],
-  oos: ['flag', 'Out of scope'],
-  clear: ['clear', 'No alert'],
+  alert: ['discrepancy', 'Discrepancy', 'alert'],
+  flag: ['review', 'Needs review', 'review'],
+  review: ['review', 'Needs human review', 'review'],
+  review_item: ['review', 'Needs human review', 'review'],
+  other: ['flag', 'Flag', 'flag'],
+  oos: ['flag', 'Out of scope', 'flag'],
+  clear: ['clear', 'No alert', 'clear'],
 }
 
 /** A finding's sign: from its tier and kind. */
@@ -21,32 +23,43 @@ export function findingSign(f) {
 }
 
 export function Sign({ kind, children }) {
-  const [icon, word] = FINDING_SIGNS[kind] || FINDING_SIGNS.other
-  const cls = kind === 'alert' ? 'alert' : kind === 'clear' ? 'clear' : kind === 'other' || kind === 'oos' ? 'flag' : 'review'
+  const [icon, word, cls] = FINDING_SIGNS[kind] || FINDING_SIGNS.other
   return (
     <span className={`sign sign-${cls}`}>
-      <Icon name={icon} size={16} />
+      <Icon name={icon} size={15} />
       {children ?? word}
     </span>
   )
 }
 
-const STATUS = {
-  not_run: ['notrun', 'Not run', 'none'],
-  no_findings: ['clear', 'No findings', 'clear'],
-  to_review: ['review', 'Findings to review', 'review'],
-  reviewed: ['reviewed', 'Reviewed', 'reviewed'],
-  error: ['error', 'Run failed', 'error'],
-  invalid: ['error', 'Invalid case folder', 'invalid'],
+/** Where the pipeline placed a case (lib/outcome.js). */
+export function OutcomeSign({ outcome, children }) {
+  return (
+    <span className={`sign sign-o-${outcome}`}>
+      <Icon name={OUTCOMES[outcome]?.icon || 'ring'} size={15} />
+      {children ?? OUTCOMES[outcome]?.word}
+    </span>
+  )
 }
 
-export function StatusSign({ status, alerts = 0 }) {
+// Review state is the reviewer's to-do list, not a finding about the data, so it is shown in ink:
+// the colours stay with the pipeline outcome (OutcomeSign).
+const STATUS = {
+  not_run: ['notrun', 'Not verified yet', 'none'],
+  no_findings: ['reviewed', 'Nothing to review', 'flag'],
+  to_review: ['queue', 'Findings to review', 'flag'],
+  reviewed: ['reviewed', 'Reviewed', 'flag'],
+  error: ['error', 'Run failed', 'error'],
+  invalid: ['error', 'Invalid case folder', 'error'],
+}
+
+/** The review state of a case (decisions), separate from its pipeline outcome. */
+export function StatusSign({ status }) {
   const [icon, word, cls] = STATUS[status] || STATUS.not_run
-  const showAlert = status === 'to_review' && alerts > 0
   return (
-    <span className={`sign sign-${showAlert ? 'alert' : cls}`}>
-      <Icon name={showAlert ? 'discrepancy' : icon} size={16} />
-      {showAlert ? 'Discrepancy to review' : word}
+    <span className={`sign sign-${cls}`}>
+      <Icon name={icon} size={15} />
+      {word}
     </span>
   )
 }
@@ -63,10 +76,10 @@ export function Problem({ title, error }) {
 }
 
 export function Loading({ label = 'Loading' }) {
-  return <p className="note" role="status">{label}…</p>
+  return <p className="loading" role="status"><span className="loading-dot" aria-hidden="true" />{label}…</p>
 }
 
-/** A clickable evidence citation: jumps to the quote in its document. */
+/** An evidence citation: jumps to the quote in its document when that is possible. */
 export function Evidence({ evidence, onCite }) {
   const clickable = onCite && evidence.start != null && evidence.document_id && evidence.document_id.includes('-D')
   const body = (

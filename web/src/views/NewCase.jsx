@@ -52,25 +52,35 @@ export default function NewCase({ onChanged }) {
     setSaving(false)
   }
 
-  const loadTxt = (di, vi) => async (e) => {
-    const file = e.target.files?.[0]
+  const readTxt = async (di, vi, file) => {
     if (!file) return
+    if (!(file.type === 'text/plain' || file.name.toLowerCase().endsWith('.txt'))) {
+      update((f) => { f.documents[di].versions[vi].loaded = `${file.name} is not a .txt file, so it was not read.` })
+      return
+    }
     const raw = await file.text()
     const text = raw.replace(/\r\n?/g, '\n')
     update((f) => { const v = f.documents[di].versions[vi]; v.text = text; v.loaded = `Loaded ${file.name}${text !== raw ? ' (Windows line endings changed to \\n, as the data format requires)' : ''}.` })
-    e.target.value = ''
   }
+  const loadTxt = (di, vi) => async (e) => { await readTxt(di, vi, e.target.files?.[0]); e.target.value = '' }
+  // A .txt file can also be dropped onto the note (read here in the browser; nothing is uploaded).
+  const dropTxt = (di, vi) => ({
+    onDragOver: (e) => { if ([...e.dataTransfer.types].includes('Files')) { e.preventDefault(); e.currentTarget.dataset.drop = '' } },
+    onDragLeave: (e) => { delete e.currentTarget.dataset.drop },
+    onDrop: (e) => { if (!e.dataTransfer.files?.length) return; e.preventDefault(); delete e.currentTarget.dataset.drop; readTxt(di, vi, e.dataTransfer.files[0]) },
+  })
 
   if (saved) {
     return (
       <div className="page">
-        <div className="page-head"><h1>New case</h1></div>
+        <div className="page-head"><div><p className="crumb"><a href="#/pipeline"><Icon name="back" size={14} />Pipeline</a></p><h1>New case</h1></div></div>
         {/* Connect cause and effect: the save is confirmed in place of the form's save bar. */}
         <div className="panel saved-in" role="status" style={{ display: 'grid', gap: 12, maxWidth: 640 }}>
           <span className="saved"><Icon name="reviewed" size={20} />Saved {saved} and validated with the data-format loader.</span>
           <p className="note">The case is in the workspace. Verify it to run the frozen pipeline.</p>
           <div style={{ display: 'flex', gap: 10 }}>
-            <a className="btn btn-primary" href={`#/case/${encodeURIComponent(saved)}`}>Open {saved}</a>
+            <a className="btn btn-primary" href="#/pipeline">Go to the pipeline</a>
+            <a className="btn" href={`#/case/${encodeURIComponent(saved)}`}>Open {saved}</a>
             <button type="button" className="btn" onClick={() => { setForm(blank()); setSaved(null); setRound(0) }}>Enter another case</button>
           </div>
         </div>
@@ -81,7 +91,7 @@ export default function NewCase({ onChanged }) {
   return (
     <div className="page">
       <div className="page-head">
-        <div><h1>New case</h1><p className="sub">Enter a fictional case. Saving writes it in the ReSauce data format and checks it with the same loader the pipeline uses; any problem appears next to its field.</p></div>
+        <div><p className="crumb"><a href="#/pipeline"><Icon name="back" size={14} />Pipeline</a></p><h1>New case</h1><p className="sub">Enter a fictional case. Saving writes it in the ReSauce data format and checks it with the same loader the pipeline uses; any problem appears next to its field.</p></div>
       </div>
       <form className="form" ref={formRef} onSubmit={askSave} noValidate>
         <section className="form-section" aria-labelledby="nc-case">
@@ -141,8 +151,8 @@ export default function NewCase({ onChanged }) {
                         <input className="input" value={v.amendment_reason} onChange={(e) => update((f) => { f.documents[di].versions[vi].amendment_reason = e.target.value })} />
                       </Field>
                     )}
-                    <Field k={key('text')} label="Note text" hint="Paste the note, or load a .txt file. Event times stay in the text." problem={p(key('text'))} round={round}>
-                      <textarea className="textarea" value={v.text} onChange={(e) => update((f) => { f.documents[di].versions[vi].text = e.target.value; f.documents[di].versions[vi].loaded = '' })} />
+                    <Field k={key('text')} label="Note text" hint="Paste the note, drop a .txt file onto it, or load one. Event times stay in the text." problem={p(key('text'))} round={round}>
+                      <textarea className="textarea" value={v.text} {...dropTxt(di, vi)} onChange={(e) => update((f) => { f.documents[di].versions[vi].text = e.target.value; f.documents[di].versions[vi].loaded = '' })} />
                       <span className="hint" style={{ display: 'flex', gap: 10, alignItems: 'center', flexWrap: 'wrap' }}>
                         <label className="btn btn-sm">Load .txt file<input type="file" accept=".txt,text/plain" className="sr-only" onChange={loadTxt(di, vi)} /></label>
                         {v.loaded}

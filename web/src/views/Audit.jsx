@@ -33,6 +33,7 @@ export default function Audit() {
           <h1>Audit trail</h1>
           <p className="sub">Every verification run and review decision, newest first. Append-only, one JSON object per line in <span className="mono">{audit.data.path}</span>. Entries are never changed; a later decision on the same finding is added below the earlier one.</p>
         </div>
+        <div className="actions"><a className="btn" href="#/export"><Icon name="export" size={16} />Export reports and CSV</a></div>
       </div>
       <div className="toolbar">
         <Segmented label="Entry type" options={TYPES} value={type} onChange={setType} />
