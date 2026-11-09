@@ -81,7 +81,16 @@ class Workstation:
             current = case.record.current
             run = self.ws.latest_run(case_id)
             items = F.with_decisions(case_id, run, decisions)
+            output = ((run or {}).get("resauce") or {}).get("output")
             row.update({
+                # Where the latest run placed the case, whether or not its findings have decisions yet:
+                # the field categories as the engine wrote them, and every finding counted by tier.
+                "categories": ({n: f["category"] for n, f in output["fields"].items()}
+                               if output and not output.get("out_of_scope") else None),
+                "tiers": {name: sum(1 for i in items if i["tier"] == tier)
+                          for tier, name in ((F.TIER_ALERT, "alert"), (F.TIER_REVIEW, "review"), (F.TIER_OTHER, "other"))},
+                "failed_stage": ((run.get("error") or {}).get("stage") or ("verdict" if run.get("resauce", {}).get("error") else None))
+                                if run else None,
                 "documents": len({d.document_id for d in case.documents}),
                 "document_versions": len(case.documents),
                 "record": {"icans_reported": current.icans_reported,
@@ -93,7 +102,7 @@ class Workstation:
                 "open_alerts": sum(1 for i in items if i["decision"] is None and i["tier"] == F.TIER_ALERT),
                 "findings": len(items),
                 "last_run": run["started_at"] if run else None,
-                "out_of_scope": bool(run and (run.get("resauce", {}).get("output") or {}).get("out_of_scope")),
+                "out_of_scope": bool((output or {}).get("out_of_scope")),
             })
             rows.append(row)
         return {"cases": rows}
