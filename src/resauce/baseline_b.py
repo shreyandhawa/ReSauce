@@ -51,6 +51,7 @@ DEFAULT_OUT = ROOT / "results" / "baseline_b"
 MODEL = "claude-opus-5-5"
 EFFORT = "high"
 CASE_TIMEOUT_SECONDS = 1800
+CHECK_TIMEOUT_SECONDS = 180
 
 # USD per million tokens for claude-opus-5-5, from Anthropic's listed prices (claude-api reference,
 # cached 2026-10-06). Cache writes are 1.25 x input (5-minute cache). Used only to report what the measured
@@ -274,7 +275,7 @@ class ClaudeCodeError(Exception):
     """Claude Code did not return an answer (not logged in, a usage limit, a timeout...): nothing is stored."""
 
 
-def call_claude(command: list[str], message: str) -> dict:
+def call_claude(command: list[str], message: str, timeout: int = CASE_TIMEOUT_SECONDS) -> dict:
     """One print-mode request from an empty folder. Returns what is stored for the case.
 
     The empty folder means no project instructions or settings are loaded. ANTHROPIC_API_KEY and
@@ -285,8 +286,11 @@ def call_claude(command: list[str], message: str) -> dict:
     with tempfile.TemporaryDirectory(prefix="resauce-baseline-b-") as empty:
         try:
             done = subprocess.run(command, input=message, capture_output=True, text=True, cwd=empty, env=env,
-                                  timeout=CASE_TIMEOUT_SECONDS)
-        except (OSError, subprocess.TimeoutExpired) as exc:
+                                  timeout=timeout)
+        except subprocess.TimeoutExpired as exc:
+            said = " ".join(_text(x) for x in (exc.stderr, exc.stdout)).strip()[:800] or "nothing"
+            raise ClaudeCodeError(f"no answer within {timeout} s. Claude Code printed: {said}") from None
+        except OSError as exc:
             raise ClaudeCodeError(f"{type(exc).__name__}: {exc}") from None
     try:
         output = json.loads(done.stdout)
@@ -305,6 +309,10 @@ def call_claude(command: list[str], message: str) -> dict:
         "duration_seconds": round(time.perf_counter() - started, 3),
         "cli_output": output,  # everything Claude Code returned, kept as it came
     }
+
+
+def _text(value) -> str:
+    return value.decode("utf-8", "replace") if isinstance(value, bytes) else (value or "")
 
 
 def claude_code_version() -> str | None:
@@ -368,8 +376,10 @@ def check(out: Path) -> int:
     """One tiny request with no case data: are the settings accepted, and is anything added to the request?"""
     _not_inside_claude_code()
     out.mkdir(parents=True, exist_ok=True)
+    print(f"Sending one tiny test request through Claude Code (no case data). Waiting up to "
+          f"{CHECK_TIMEOUT_SECONDS // 60} minutes...", flush=True)
     try:
-        stored = call_claude(claude_command("You are a test.", CHECK_SCHEMA), CHECK_MESSAGE)
+        stored = call_claude(claude_command("You are a test.", CHECK_SCHEMA), CHECK_MESSAGE, CHECK_TIMEOUT_SECONDS)
     except ClaudeCodeError as exc:
         print(f"The check failed: {exc}")
         return 1
@@ -439,6 +449,7 @@ def run(data: Path, out: Path, workers: int) -> int:
             print(f"{folder.name}: answered in {stored['duration_seconds']:.0f} s ({done} stored)")
 
     if todo:
+        print(f"Sending {todo[0].name} alone first...", flush=True)
         one(todo[0])  # alone first: if the setup is wrong, only one request is spent finding out
         with ThreadPoolExecutor(max_workers=workers) as pool:
             list(pool.map(one, todo[1:]))
